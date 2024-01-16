@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 572a94e89cdfe364ba8d59fdb758ce97, type: 3}
+    - {fileID: 2800000, guid: 36c293653258c474e80c8fcdc1b7b9de, type: 3}
+    - {fileID: 2800000, guid: 16d1538fadb443b418de564b17eb0bca, type: 3}
+    - {fileID: 2800000, guid: 8bec63e53b2cf0047aa8ee1976860831, type: 3}
+    - {fileID: 2800000, guid: 056445cea17e6a94abc2508cd36b96e6, type: 3}
+    - {fileID: 2800000, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+    - {fileID: 2800000, guid: dcafec6506ab2bc4aa50784a8ea721e8, type: 3}
+    - {fileID: 2800000, guid: 4e0b4ac32dcbd86418da74331831974d, type: 3}
+    - {fileID: 2800000, guid: d8451892259b2264b8a0109b299617b0, type: 3}
+    - {fileID: 2800000, guid: 9e9c1776f1f0eb646ab71cef12d33f7e, type: 3}
+    - {fileID: 2800000, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+    - {fileID: 2800000, guid: 29ab535492dac1c49a28cd99b759cded, type: 3}
+    - {fileID: 2800000, guid: 74c514638fb97294eaf85e8bd5a036e8, type: 3}
+    - {fileID: 2800000, guid: ec39c5c8fff1b594d869d5dbb4165fec, type: 3}
+    - {fileID: 2800000, guid: c38b4d75032f58744b519337494b470e, type: 3}
+    - {fileID: 2800000, guid: 80ab1dd8479350547b03c91694261938, type: 3}
+    - {fileID: 2800000, guid: cceb9f1e54185974483bbb1a796edc7b, type: 3}
+    - {fileID: 2800000, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 1180460109, guid: d8451892259b2264b8a0109b299617b0, type: 3}
+  - {fileID: 21300000, guid: 74c514638fb97294eaf85e8bd5a036e8, type: 3}
+  - {fileID: 21300000, guid: 4e0b4ac32dcbd86418da74331831974d, type: 3}
+  - {fileID: -1003030644, guid: 29ab535492dac1c49a28cd99b759cded, type: 3}
+  - {fileID: 556035685, guid: 29ab535492dac1c49a28cd99b759cded, type: 3}
+  - {fileID: -284859799, guid: 36c293653258c474e80c8fcdc1b7b9de, type: 3}
+  - {fileID: 309898680, guid: 36c293653258c474e80c8fcdc1b7b9de, type: 3}
+  - {fileID: -1265909727, guid: dcafec6506ab2bc4aa50784a8ea721e8, type: 3}
+  - {fileID: -894496510, guid: dcafec6506ab2bc4aa50784a8ea721e8, type: 3}
+  - {fileID: 1796962303, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: -1178247746, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: -1780362712, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 1075719676, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: -948504917, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: -914593294, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: -955642367, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 1154914688, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 1160391372, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: -1761988355, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: -144850611, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 521456486, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 1725099004, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 200493614, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 1460134487, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 759968707, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 1984819083, guid: c38b4d75032f58744b519337494b470e, type: 3}
+  - {fileID: 831776282, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: -1464795609, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: -286631845, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: -122970611, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: 1226319234, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: -1309896677, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: 513682671, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: -1522308004, guid: 8bec63e53b2cf0047aa8ee1976860831, type: 3}
+  - {fileID: 1120971530, guid: 8bec63e53b2cf0047aa8ee1976860831, type: 3}
+  - {fileID: -408845793, guid: 9e9c1776f1f0eb646ab71cef12d33f7e, type: 3}
+  - {fileID: 1127371103, guid: 9e9c1776f1f0eb646ab71cef12d33f7e, type: 3}
+  - {fileID: 21300000, guid: ec39c5c8fff1b594d869d5dbb4165fec, type: 3}
+  - {fileID: -677906384, guid: 80ab1dd8479350547b03c91694261938, type: 3}
+  - {fileID: 1743425261, guid: 80ab1dd8479350547b03c91694261938, type: 3}
+  - {fileID: 1389012048, guid: 572a94e89cdfe364ba8d59fdb758ce97, type: 3}
+  - {fileID: 681087660, guid: 572a94e89cdfe364ba8d59fdb758ce97, type: 3}
+  - {fileID: 1442433116, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: 734784091, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: 1967948963, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: -95790598, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: -265879957, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: -321288202, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: -1972240451, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: 154816082, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: 836899796, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: 1489015148, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: 1386099358, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: -1870467879, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+  - {fileID: -171787832, guid: cceb9f1e54185974483bbb1a796edc7b, type: 3}
+  - {fileID: 21300000, guid: 056445cea17e6a94abc2508cd36b96e6, type: 3}
+  - {fileID: 780274141, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+  - {fileID: -1371713247, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+  - {fileID: 1784657347, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+  - {fileID: -634011902, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+  - {fileID: -1441582017, guid: 16d1538fadb443b418de564b17eb0bca, type: 3}
+  - {fileID: -347914672, guid: 16d1538fadb443b418de564b17eb0bca, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Trash Count_0
+  - Cursor 1
+  - Using
+  - Buttons On Off_1
+  - Buttons On Off_0
+  - Dialogs_1
+  - Dialogs_0
+  - Wheel
+  - Selector
+  - Keyboard_1
+  - Keyboard_0
+  - Keyboard_3
+  - Keyboard_2
+  - Keyboard_5
+  - Keyboard_4
+  - Keyboard_7
+  - Keyboard_6
+  - Keyboard_9
+  - Keyboard_8
+  - Keyboard_10
+  - Keyboard_11
+  - Keyboard_12
+  - Keyboard_13
+  - Keyboard_14
+  - Keyboard_15
+  - Keyboard_16
+  - spawn_5
+  - spawn_4
+  - spawn_6
+  - spawn_1
+  - spawn_0
+  - spawn_3
+  - spawn_2
+  - HP_0
+  - HP_1
+  - Button_pull
+  - Button_push
+  - Game Name
+  - Slider_1
+  - Slider_0
+  - Cursor 2_0
+  - Cursor 2_1
+  - Buttons On Off Animation_10
+  - Buttons On Off Animation_11
+  - Buttons On Off Animation_9
+  - Buttons On Off Animation_8
+  - Buttons On Off Animation_5
+  - Buttons On Off Animation_4
+  - Buttons On Off Animation_7
+  - Buttons On Off Animation_6
+  - Buttons On Off Animation_1
+  - Buttons On Off Animation_0
+  - Buttons On Off Animation_3
+  - Buttons On Off Animation_2
+  - Store Stuff_0
+  - Info
+  - Inv 0
+  - Inv 1
+  - Inv 2
+  - Inv 3
+  - HP Roots_1
+  - HP Roots_0
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0
