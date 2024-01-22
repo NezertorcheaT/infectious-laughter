@@ -13,6 +13,11 @@ namespace Scripts.Entity
             base.Initialize();
             rb = GetComponent<Rigidbody2D>();
         }
-        public void Move(float velocity) => rb.velocity = new Vector2(velocity * speed, rb.velocity.y);
+        public void Move(float velocity)
+        {
+            if (!Avaiable()) return;
+
+            rb.velocity = new Vector2(velocity * speed, rb.velocity.y);
+        }
     }
 }

@@ -18,6 +18,8 @@ namespace Scripts.Entity
         }
         public void Jump()
         {
+            if (!Avaiable()) return;
+
             Vector2 transformWithOffset = transform.position + new Vector3(groundRaycastOffset.x, groundRaycastOffset.y, 0.0f);
             if (Physics2D.OverlapBox(
                 new Vector2(transformWithOffset.x, transformWithOffset.y - 0.025f), // Center
