@@ -5,9 +5,9 @@ namespace Scripts.Entity
     public abstract class Ability : MonoBehaviour
     {
         public Entity Entity { get; private set; }
-
-        protected virtual void Start() { } // Нужно для активации галочки выключения скрипта в инспекторе
+        
+        protected virtual void Start() { } // РќСѓР¶РЅРѕ РґР»СЏ Р°РєС‚РёРІР°С†РёРё РіР°Р»РѕС‡РєРё РІС‹РєР»СЋС‡РµРЅРёСЏ СЃРєСЂРёРїС‚Р° РІ РёРЅСЃРїРµРєС‚РѕСЂРµ
         public virtual void Initialize() { Entity = GetComponent<Entity>(); }
-        public virtual bool Avaiable() { return isActiveAndEnabled; }
+        public virtual bool Available() { return isActiveAndEnabled; }
     }
 }

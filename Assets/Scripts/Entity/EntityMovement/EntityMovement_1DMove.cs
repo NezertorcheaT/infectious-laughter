@@ -15,7 +15,7 @@ namespace Scripts.Entity
         }
         public void Move(float velocity)
         {
-            if (!Avaiable()) return;
+            if (!Available()) return;
 
             rb.velocity = new Vector2(velocity * speed, rb.velocity.y);
         }
