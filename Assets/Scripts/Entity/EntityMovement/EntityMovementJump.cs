@@ -1,5 +1,5 @@
+using System.Linq;
 using System.Threading.Tasks;
-using Scripts.Entity;
 using UnityEngine;
 
 namespace Entity.EntityMovement
@@ -58,7 +58,6 @@ namespace Entity.EntityMovement
                 new Vector3(0, groundDistance / 2f + colliderOffset);
 
             DrawBox(checkPosition, checkSize);
-
             return Physics2D.OverlapBoxAll(
                     checkPosition,
                     checkSize,

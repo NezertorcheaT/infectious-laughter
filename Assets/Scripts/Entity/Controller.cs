@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace Scripts.Entity
+namespace Entity
 {
     public abstract class Controller : MonoBehaviour
     {
-        public Entity Entity {  get; private set; }
+        public global::Entity.Entity Entity {  get; private set; }
 
-        public virtual void Initialize() { Entity = GetComponent<Entity>(); }
+        public virtual void Initialize() { Entity = GetComponent<global::Entity.Entity>(); }
     }
 }

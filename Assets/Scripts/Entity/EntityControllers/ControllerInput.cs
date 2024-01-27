@@ -1,5 +1,4 @@
 using Entity.EntityMovement;
-using Scripts.Entity;
 
 namespace Entity.EntityControllers
 {

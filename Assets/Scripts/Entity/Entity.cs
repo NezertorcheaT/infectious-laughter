@@ -1,11 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine;
 
-namespace Scripts.Entity
+namespace Entity
 {
     public class Entity : MonoBehaviour
     {
@@ -44,7 +43,7 @@ namespace Scripts.Entity
         private void FixedUpdate() => OnFixedUpdate?.Invoke();
         private void LateUpdate() => OnLateUpdate?.Invoke();
 
-        public T FindAbilityByType<T>() where T : Ability => FindAbilitiesByType<T>().First();
+        public T FindAbilityByType<T>() where T : Ability => FindAbilitiesByType<T>().FirstOrDefault();
 
         public IEnumerable<T> FindAbilitiesByType<T>() where T : Ability
         {

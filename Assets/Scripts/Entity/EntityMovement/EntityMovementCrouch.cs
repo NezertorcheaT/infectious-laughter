@@ -1,4 +1,3 @@
-using Scripts.Entity;
 using UnityEngine;
 
 namespace Entity.EntityMovement
