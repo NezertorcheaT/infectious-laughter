@@ -1,23 +1,24 @@
+using Scripts.Entity;
 using UnityEngine;
 
-namespace Scripts.Entity
+namespace Entity.EntityMovement
 {
     public class EntityMovement_1DMove : Ability
     {
         [SerializeField] private float speed;
 
-        private Rigidbody2D rb;
+        private Rigidbody2D _rb;
 
         public override void Initialize()
         {
             base.Initialize();
-            rb = GetComponent<Rigidbody2D>();
+            _rb = GetComponent<Rigidbody2D>();
         }
         public void Move(float velocity)
         {
             if (!Available()) return;
 
-            rb.velocity = new Vector2(velocity * speed, rb.velocity.y);
+            _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
         }
     }
 }

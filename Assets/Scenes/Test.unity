@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 1471444239}
   - component: {fileID: 1471444236}
   - component: {fileID: 1471444235}
+  - component: {fileID: 1471444240}
   - component: {fileID: 1471444238}
   - component: {fileID: 1471444237}
   m_Layer: 0
@@ -682,7 +683,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.38938054
     - serializedVersion: 3
-      time: 0.65000004
+      time: 0.8
       value: 0
       inSlope: 0.023339873
       outSlope: -6.24855
@@ -702,7 +703,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpForce: 15
+  jumpForce: 10
   jumpTime: 1
   groundLayer:
     serializedVersion: 2
@@ -779,6 +780,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfbadd9dcf751b4eb846ab3e6be9742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1471444240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471444232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7035ecaf4d82a4d8a0f41f85cef589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crouchSizeMultiplier: 0.5
 --- !u!1 &1478113458
 GameObject:
   m_ObjectHideFlags: 0

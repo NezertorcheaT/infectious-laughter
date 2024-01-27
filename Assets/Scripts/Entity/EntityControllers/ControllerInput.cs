@@ -1,0 +1,48 @@
+using Entity.EntityMovement;
+using Scripts.Entity;
+
+namespace Entity.EntityControllers
+{
+    public class ControllerInput : Controller
+    {
+        private Controls _actions;
+        
+        // Cache
+        private EntityMovement_1DMove _moveAbility;
+        private EntityMovement_Jump _jumpAbility;
+        private EntityMovementCrouch _crouchAbility;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            _actions = new Controls();
+
+            _moveAbility = Entity.FindAbilityByType<EntityMovement_1DMove>();
+            _jumpAbility = Entity.FindAbilityByType<EntityMovement_Jump>();
+            _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
+
+            OnEnable();
+        }
+
+        private void OnEnable()
+        {
+            if (_actions == null) return;
+            _actions.Enable();
+
+            Entity.OnFixedUpdate += Move;
+            _actions.Gameplay.Jump.performed += ctx => _jumpAbility.Jump();
+            _actions.Gameplay.Crouch.started += ctx => _crouchAbility.Crouch();
+            _actions.Gameplay.Crouch.canceled += ctx => _crouchAbility.UnCrouch();
+        }
+        private void OnDisable()
+        {
+            if (_actions == null) return;
+            _actions.Disable();
+
+            Entity.OnFixedUpdate -= Move;
+            _actions.Gameplay.Jump.performed -= ctx => _jumpAbility.Jump();
+        }
+
+        private void Move() => _moveAbility.Move(_actions.Gameplay.Move.ReadValue<float>());
+    }
+}

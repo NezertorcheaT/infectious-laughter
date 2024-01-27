@@ -1,9 +1,8 @@
-using System;
-using System.Linq;
 using System.Threading.Tasks;
+using Scripts.Entity;
 using UnityEngine;
 
-namespace Scripts.Entity
+namespace Entity.EntityMovement
 {
     public class EntityMovement_Jump : Ability
     {
@@ -12,52 +11,52 @@ namespace Scripts.Entity
         [SerializeField] private float jumpTime = 1f;
         [SerializeField] private LayerMask groundLayer;
 
-        private Rigidbody2D rb;
-        private Collider2D col;
+        private Rigidbody2D _rb;
+        private Collider2D _col;
 
         public override void Initialize()
         {
             base.Initialize();
-            rb = GetComponent<Rigidbody2D>();
-            col = GetComponent<Collider2D>();
+            _rb = GetComponent<Rigidbody2D>();
+            _col = GetComponent<Collider2D>();
         }
 
 
         public void Jump()
         {
             if (!Available()) return;
-            if (!CheckGround(transform.position, col, groundLayer, 0.1f)) return;
+            if (!CheckGround(transform.position, _col, groundLayer, 0.1f)) return;
             ForceJump();
             //rb.velocity = new Vector2(rb.velocity.x, force);
         }
 
         private async void ForceJump()
         {
-            rb.gravityScale = 0f;
+            _rb.gravityScale = 0f;
 
             for (float t = 0; t < jumpTime; t += Time.deltaTime)
             {
-                if (t > jumpTime / 5f && CheckGround(transform.position, col, groundLayer, 0.1f)) break;
-                rb.velocity = new Vector2(rb.velocity.x, jumpCurve.Evaluate(t / jumpTime) * jumpForce);
+                if (t > jumpTime / 5f && CheckGround(transform.position, _col, groundLayer, 0.1f)) break;
+                _rb.velocity = new Vector2(_rb.velocity.x, jumpCurve.Evaluate(t / jumpTime) * jumpForce);
                 await Task.Yield();
             }
 
-            rb.gravityScale = 1f;
+            _rb.gravityScale = 1f;
         }
 
         private static bool CheckGround(
             Vector3 worldPosition,
             Collider2D collider,
-            LayerMask GroundLayer,
-            float GroundDistance,
+            LayerMask groundLayer,
+            float groundDistance,
             float colliderOffset = 0.1f)
         {
-            var checkSize = new Vector3(collider.bounds.size.x - 2f * colliderOffset, GroundDistance);
+            var checkSize = new Vector3(collider.bounds.size.x - 2f * colliderOffset, groundDistance);
             var checkPosition =
                 worldPosition +
                 new Vector3(0, -collider.bounds.size.y / 2f) +
                 (Vector3) collider.offset -
-                new Vector3(0, GroundDistance / 2f + colliderOffset);
+                new Vector3(0, groundDistance / 2f + colliderOffset);
 
             DrawBox(checkPosition, checkSize);
 
@@ -65,7 +64,7 @@ namespace Scripts.Entity
                     checkPosition,
                     checkSize,
                     0,
-                    GroundLayer)
+                    groundLayer)
                 .Length > 0;
         }
 
