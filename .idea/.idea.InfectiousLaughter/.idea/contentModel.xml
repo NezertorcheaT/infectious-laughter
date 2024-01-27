@@ -1049,9 +1049,9 @@
               <e p="ControllerInput.cs" t="Include" />
             </e>
             <e p="EntityMovement" t="Include">
-              <e p="EntityMovement_1DMove.cs" t="Include" />
-              <e p="EntityMovement_Jump.cs" t="Include" />
               <e p="EntityMovementCrouch.cs" t="Include" />
+              <e p="EntityMovementHorizontalMove.cs" t="Include" />
+              <e p="EntityMovementJump.cs" t="Include" />
             </e>
           </e>
         </e>

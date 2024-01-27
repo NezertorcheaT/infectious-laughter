@@ -8,8 +8,8 @@ namespace Entity.EntityControllers
         private Controls _actions;
         
         // Cache
-        private EntityMovement_1DMove _moveAbility;
-        private EntityMovement_Jump _jumpAbility;
+        private EntityMovementHorizontalMove _moveAbility;
+        private EntityMovementJump _jumpAbility;
         private EntityMovementCrouch _crouchAbility;
 
         public override void Initialize()
@@ -17,8 +17,8 @@ namespace Entity.EntityControllers
             base.Initialize();
             _actions = new Controls();
 
-            _moveAbility = Entity.FindAbilityByType<EntityMovement_1DMove>();
-            _jumpAbility = Entity.FindAbilityByType<EntityMovement_Jump>();
+            _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
+            _jumpAbility = Entity.FindAbilityByType<EntityMovementJump>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
 
             OnEnable();

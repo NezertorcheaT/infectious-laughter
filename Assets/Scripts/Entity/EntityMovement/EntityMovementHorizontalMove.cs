@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Entity.EntityMovement
 {
-    public class EntityMovement_1DMove : Ability
+    public class EntityMovementHorizontalMove : Ability
     {
         [SerializeField] private float speed;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Entity.EntityMovement
 {
-    public class EntityMovement_Jump : Ability
+    public class EntityMovementJump : Ability
     {
         [SerializeField] private AnimationCurve jumpCurve;
         [SerializeField] private float jumpForce = 5f;
