@@ -20,13 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_1DMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorizontalMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_1DMove.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorizontalMove.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_Jump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_Jump.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +44,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementCrouch.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_1DMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_Jump.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorisontalMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorizontalMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
       </list>
     </option>
   </component>
@@ -102,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1706088702137</updated>
       <workItem from="1706088717537" duration="6063000" />
-      <workItem from="1706353478963" duration="1474000" />
+      <workItem from="1706353478963" duration="2046000" />
     </task>
     <servers />
   </component>

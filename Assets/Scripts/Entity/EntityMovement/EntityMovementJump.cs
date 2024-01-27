@@ -27,7 +27,6 @@ namespace Entity.EntityMovement
             if (!Available()) return;
             if (!CheckGround(transform.position, _col, groundLayer, 0.1f)) return;
             ForceJump();
-            //rb.velocity = new Vector2(rb.velocity.x, force);
         }
 
         private async void ForceJump()
