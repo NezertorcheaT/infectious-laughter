@@ -23,7 +23,7 @@ namespace Entity
         public event Action OnUpdate;
         public event Action OnFixedUpdate;
         public event Action OnLateUpdate;
-        
+
 
         /// <summary>
         /// В идеале тут и этого быть не должно ведь класс нацелен на его наследование, ну да ладно
@@ -35,7 +35,8 @@ namespace Entity
             if (Controller == null || AutoFindController) Controller = GetComponent<Controller>();
             if (Abilities == null || AutoFindAbilities) Abilities = GetComponents<Ability>();
 
-            Controller?.Initialize();
+            (Controller as IInitializeByEntity)?.Initialize();
+            if (Controller is IInitializeByEntity) (Controller as IInitializeByEntity).Initialized = true;
             foreach (var ability in Abilities) ability?.Initialize();
         }
 

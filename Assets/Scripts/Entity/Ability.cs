@@ -4,12 +4,12 @@ namespace Entity
 {
     public abstract class Ability : MonoBehaviour
     {
-        public global::Entity.Entity Entity { get; private set; }
+        public Entity Entity { get; private set; }
 
         // Нужно для активации галочки выключения скрипта в инспекторе
         protected virtual void Start() { }
 
-        public virtual void Initialize() => Entity = GetComponent<global::Entity.Entity>();
+        public virtual void Initialize() => Entity = GetComponent<Entity>();
 
         public virtual bool Available() => isActiveAndEnabled;
     }

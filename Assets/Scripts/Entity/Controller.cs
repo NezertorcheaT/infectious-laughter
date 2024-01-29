@@ -2,10 +2,26 @@ using UnityEngine;
 
 namespace Entity
 {
-    public abstract class Controller : MonoBehaviour
+    public abstract class Controller : MonoBehaviour, IInitializeByEntity
     {
-        public global::Entity.Entity Entity {  get; private set; }
+        public Entity Entity { get; private set; }
+        public bool IsInitialized { get; private set; }
 
-        public virtual void Initialize() { Entity = GetComponent<global::Entity.Entity>(); }
+        public virtual void Initialize()
+        {
+            Entity = GetComponent<Entity>();
+        }
+
+        bool IInitializeByEntity.Initialized
+        {
+            get => IsInitialized;
+            set => IsInitialized = value;
+        }
+    }
+
+    public interface IInitializeByEntity
+    {
+        void Initialize();
+        bool Initialized { get; set; }
     }
 }

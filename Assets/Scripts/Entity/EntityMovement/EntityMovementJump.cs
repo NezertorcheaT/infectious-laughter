@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Entity.EntityMovement
 {
     public class EntityMovementJump : Ability
     {
-        [SerializeField] private AnimationCurve jumpCurve;
+        [SerializeField, CurveRange(0,0,1,1)] private AnimationCurve jumpCurve;
         [SerializeField] private float jumpHeight = 5f;
         [SerializeField] private float jumpTime = 1f;
         [SerializeField] private float groundDistance = 0.1f;
