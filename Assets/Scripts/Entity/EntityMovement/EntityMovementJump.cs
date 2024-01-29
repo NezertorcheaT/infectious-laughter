@@ -10,6 +10,7 @@ namespace Entity.EntityMovement
         [SerializeField, CurveRange(0,0,1,1)] private AnimationCurve jumpCurve;
         [SerializeField] private float jumpHeight = 5f;
         [SerializeField] private float jumpTime = 1f;
+        [SerializeField] private float whenMax = 0.5f;
         [SerializeField] private float groundDistance = 0.1f;
         [SerializeField] private LayerMask groundLayer;
 
@@ -51,7 +52,7 @@ namespace Entity.EntityMovement
                 }
 
                 if (CheckTop(transform.position, _col, groundLayer, groundDistance, groundDistance))
-                    t = t >= 0.5f * jumpTime ? t : jumpTime - t;
+                    t = t >= whenMax * jumpTime ? t : jumpTime - t;
 
                 _rb.position = new Vector2(_rb.position.x, initialYPos + avFunc(t));
                 yield return new WaitForFixedUpdate();
