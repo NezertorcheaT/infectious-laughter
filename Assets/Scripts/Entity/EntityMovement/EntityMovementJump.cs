@@ -69,7 +69,6 @@ namespace Entity.EntityMovement
                     t = timesEquals.Last();
                 }
 
-                Debug.Log(t);
                 _rb.position = new Vector2(_rb.position.x, initialYPos + avFunc(t));
                 yield return new WaitForFixedUpdate();
             }

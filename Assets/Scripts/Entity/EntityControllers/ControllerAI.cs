@@ -9,6 +9,9 @@ namespace Entity.EntityControllers
         private Collider2D _coll;
         private EntityMovementHorizontalMove _moveAbility;
         private EntityMovementJump _jumpAbility;
+        private bool _direction;
+        [SerializeField] private float rayDistance = 0.1f;
+        [SerializeField] private LayerMask groundLayer;
 
         public override void Initialize()
         {
@@ -33,11 +36,15 @@ namespace Entity.EntityControllers
 
         private void Move()
         {
-            //_moveAbility.Move(1);
             var ray = new Ray(
-                transform.position + (Vector3) _coll.offset + _coll.bounds.size / 2f,
-                Vector3.up);
-            Debug.DrawRay(ray.origin, ray.direction);
+                transform.position + (Vector3) _coll.offset +
+                _coll.bounds.size.Multiply(new Vector3(_direction ? 1 : -1, -1f / 2f, 1)),
+                Vector3.down);
+            if (!Physics2D.Raycast(ray.origin, ray.direction, rayDistance, groundLayer))
+                _direction = !_direction;
+            Debug.DrawRay(ray.origin, ray.direction * rayDistance);
+
+            _moveAbility.Move(_direction ? 1 : -1);
         }
     }
 }
