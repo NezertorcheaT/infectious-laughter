@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Entity.EntityMovement
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class EntityMovementHorizontalMove : Ability
     {
         [SerializeField] private float speed;

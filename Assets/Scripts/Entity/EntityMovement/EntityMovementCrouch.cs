@@ -2,18 +2,17 @@ using UnityEngine;
 
 namespace Entity.EntityMovement
 {
+    [RequireComponent(typeof(Collider2D))]
     public class EntityMovementCrouch : Ability
     {
         [SerializeField] private float crouchSizeMultiplier = .5f;
 
         private float _origCrouchSizer;
-        private Rigidbody2D _rb;
         private Collider2D _col;
 
         public override void Initialize()
         {
             base.Initialize();
-            _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<Collider2D>();
         }
 

@@ -37,6 +37,8 @@ namespace Entity
 
             (Controller as IInitializeByEntity)?.Initialize();
             if (Controller is IInitializeByEntity) (Controller as IInitializeByEntity).Initialized = true;
+            Controller?.OnInitializationComplete?.Invoke();
+
             foreach (var ability in Abilities) ability?.Initialize();
         }
 

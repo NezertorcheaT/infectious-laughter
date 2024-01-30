@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Entity
@@ -6,7 +7,8 @@ namespace Entity
     {
         public Entity Entity { get; private set; }
         public bool IsInitialized { get; private set; }
-
+        public Action OnInitializationComplete;
+        
         public virtual void Initialize()
         {
             Entity = GetComponent<Entity>();

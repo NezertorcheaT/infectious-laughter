@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
 namespace Entity.EntityMovement
 {
+    [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class EntityMovementJump : Ability
     {
-        [SerializeField, CurveRange(0,0,1,1)] private AnimationCurve jumpCurve;
+        [SerializeField, CurveRange(0, 0, 1, 1)]
+        private AnimationCurve jumpCurve;
+
         [SerializeField] private float jumpHeight = 5f;
         [SerializeField] private float jumpTime = 1f;
         [SerializeField] private float whenMax = 0.5f;
@@ -28,7 +33,7 @@ namespace Entity.EntityMovement
         public void Jump()
         {
             if (!Available()) return;
-            if (!CheckGround(transform.position, _col, groundLayer, 0.1f)) return;
+            if (!CheckGround(transform.position, transform.lossyScale, _col, groundLayer, 0.1f)) return;
             StartCoroutine(ForceJump());
         }
 
@@ -45,15 +50,26 @@ namespace Entity.EntityMovement
             {
                 prev = (t - Time.fixedDeltaTime) / jumpTime;
                 if (t > jumpTime / 5f &&
-                    CheckGround(transform.position, _col, groundLayer, groundDistance, groundDistance))
+                    CheckGround(transform.position, transform.lossyScale, _col, groundLayer, groundDistance,
+                        groundDistance))
                 {
                     prev = (t - Time.fixedDeltaTime) / jumpTime;
                     break;
                 }
 
-                if (CheckTop(transform.position, _col, groundLayer, groundDistance, groundDistance))
-                    t = t >= whenMax * jumpTime ? t : jumpTime - t;
+                if (CheckTop(transform.position, transform.lossyScale, _col, groundLayer, groundDistance,
+                    groundDistance) && t < whenMax)
+                {
+                    var timesEquals = new List<float>(0);
+                    for (var tt = 0f; tt < jumpTime; tt += Time.fixedDeltaTime)
+                    {
+                        if (Math.Abs(avFunc(tt) - avFunc(t)) < Time.fixedDeltaTime) timesEquals.Add(tt);
+                    }
 
+                    t = timesEquals.Last();
+                }
+
+                Debug.Log(t);
                 _rb.position = new Vector2(_rb.position.x, initialYPos + avFunc(t));
                 yield return new WaitForFixedUpdate();
             }
@@ -64,6 +80,7 @@ namespace Entity.EntityMovement
 
         private static bool CheckGround(
             Vector3 worldPosition,
+            Vector2 size,
             Collider2D collider,
             LayerMask groundLayer,
             float groundDistance,
@@ -73,8 +90,8 @@ namespace Entity.EntityMovement
             var checkPosition =
                 worldPosition +
                 new Vector3(0, -collider.bounds.size.y / 2f) +
-                (Vector3) collider.offset -
-                new Vector3(0, groundDistance / 2f + colliderOffset);
+                (Vector3) collider.offset.Multiply(size) -
+                new Vector3(0, groundDistance / 2f / size.y + colliderOffset);
 
             DrawBox(checkPosition, checkSize);
             return Physics2D.OverlapBoxAll(
@@ -87,6 +104,7 @@ namespace Entity.EntityMovement
 
         private static bool CheckTop(
             Vector3 worldPosition,
+            Vector2 size,
             Collider2D collider,
             LayerMask groundLayer,
             float groundDistance,
@@ -96,8 +114,8 @@ namespace Entity.EntityMovement
             var checkPosition =
                 worldPosition +
                 new Vector3(0, collider.bounds.size.y / 2f) +
-                (Vector3) collider.offset +
-                new Vector3(0, groundDistance / 2f + colliderOffset);
+                (Vector3) collider.offset.Multiply(size) +
+                new Vector3(0, groundDistance / 2f / size.y + colliderOffset);
 
             DrawBox(checkPosition, checkSize);
             return Physics2D.OverlapBoxAll(
@@ -120,4 +138,12 @@ namespace Entity.EntityMovement
                 point + new Vector2(size.x / 2f, size.y / 2f));
         }
     }
+}
+
+public static class Vectors
+{
+    public static Vector2 Multiply(this Vector2 a, Vector2 b) => new Vector2(a.x * b.x, a.y * b.y);
+    public static Vector3 Multiply(this Vector3 a, Vector3 b) => new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
+    public static Vector2 Divide(this Vector2 a, Vector2 b) => new Vector2(a.x / b.x, a.y / b.y);
+    public static Vector3 Divide(this Vector3 a, Vector3 b) => new Vector3(a.x / b.x, a.y / b.y, a.z / b.z);
 }

@@ -21,6 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementCrouch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementCrouch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorizontalMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorizontalMove.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +38,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/ec/0a30fd5f/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/80/01865649/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/0d/13af831a/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -39,13 +46,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/Controller_Input.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementCrouch.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_1DMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_Jump.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorisontalMove.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorizontalMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Ability.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorizontalMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementCrouch.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" />
@@ -101,7 +108,8 @@
       <updated>1706088702137</updated>
       <workItem from="1706088717537" duration="6063000" />
       <workItem from="1706353478963" duration="3403000" />
-      <workItem from="1706546154092" duration="9684000" />
+      <workItem from="1706546154092" duration="9924000" />
+      <workItem from="1706638319762" duration="6826000" />
     </task>
     <servers />
   </component>
