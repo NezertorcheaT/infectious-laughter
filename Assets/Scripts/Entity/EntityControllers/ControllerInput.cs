@@ -1,9 +1,11 @@
 using Entity.EntityMovement;
+using Zenject;
 
 namespace Entity.EntityControllers
 {
     public class ControllerInput : Controller
     {
+        [Inject]
         private Controls _actions;
         
         // Cache
@@ -14,8 +16,6 @@ namespace Entity.EntityControllers
         public override void Initialize()
         {
             base.Initialize();
-            _actions = new Controls();
-
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
             _jumpAbility = Entity.FindAbilityByType<EntityMovementJump>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();

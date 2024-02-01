@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:GroupBox name="LeftMenu" style="height: 658px; width: 440px; max-width: 100%; max-height: 100%; min-height: 0; min-width: 0; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+        <ui:DropdownField label="Trees" index="-1" name="TreesDropdown" style="height: 23px; width: 426px; align-items: flex-start; flex-direction: row; justify-content: flex-start;" />
+        <ui:GroupBox name="Nodes" style="height: 608px; width: 424px; position: relative; border-left-color: rgba(0, 0, 0, 0.11); border-right-color: rgba(0, 0, 0, 0.11); border-top-color: rgba(0, 0, 0, 0.11); border-bottom-color: rgba(0, 0, 0, 0.11); border-left-width: 4px; border-right-width: 4px; border-top-width: 4px; border-bottom-width: 4px; border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px;" />
+    </ui:GroupBox>
+</ui:UXML>

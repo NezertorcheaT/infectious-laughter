@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
 using Entity.EntityMovement;
 using UnityEngine;
 
@@ -6,12 +9,14 @@ namespace Entity.EntityControllers
     [RequireComponent(typeof(Collider2D))]
     public class ControllerAI : Controller
     {
+        [SerializeField] private float rayDistance = 0.1f;
+        [SerializeField] private LayerMask groundLayer;
+        [SerializeReference] private string stateMachine;
         private Collider2D _coll;
         private EntityMovementHorizontalMove _moveAbility;
         private EntityMovementJump _jumpAbility;
         private bool _direction;
-        [SerializeField] private float rayDistance = 0.1f;
-        [SerializeField] private LayerMask groundLayer;
+        private bool _stateCycleDestroy;
 
         public override void Initialize()
         {
@@ -23,6 +28,23 @@ namespace Entity.EntityControllers
             _jumpAbility = Entity.FindAbilityByType<EntityMovementJump>();
             OnInitializationComplete += OnEnable;
             OnEnable();
+            StateCycle();
+        }
+
+        private async void StateCycle()
+        {
+            for (;;)
+            {
+                if (_stateCycleDestroy) return;
+                await Task.Yield();
+                if (!IsInitialized || !isActiveAndEnabled)
+                {
+                    await Task.Delay(500);
+                    continue;
+                }
+
+                continue;
+            }
         }
 
         private void OnEnable()
@@ -45,6 +67,11 @@ namespace Entity.EntityControllers
             Debug.DrawRay(ray.origin, ray.direction * rayDistance);
 
             _moveAbility.Move(_direction ? 1 : -1);
+        }
+
+        private void OnDestroy()
+        {
+            _stateCycleDestroy = true;
         }
     }
 }
