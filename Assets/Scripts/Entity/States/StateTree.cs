@@ -82,6 +82,7 @@ namespace Entity.States
         }
 
         IState IStateTree.GetState(int id) => _states[id];
+        IState IStateTree.First() => _states[0];
 
         private Dictionary<int, IState> _states;
 

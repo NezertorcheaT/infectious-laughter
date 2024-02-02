@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edcb0ad9a2f946f8b69b313e14c295dc, type: 3}
-  m_Name: New State Tree 1
+  m_Script: {fileID: 11500000, guid: 70d96d9e087c4b2ea16e760250fa7007, type: 3}
+  m_Name: Patrolling State
   m_EditorClassIdentifier: 
+  rayDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1

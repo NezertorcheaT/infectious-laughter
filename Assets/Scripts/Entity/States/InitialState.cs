@@ -1,18 +1,20 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Entity.States
 {
     [CreateAssetMenu(fileName = "Initial State", menuName = "States/Initial State", order = 0)]
-    public class InitialState : ScriptableObject, IState
+    public class InitialState : State
     {
-        string IState.Name => throw new System.NotImplementedException();
+        protected override string Name => "InitialState";
 
-        int IState.Id { get; set; }
+        protected override int Id { get; set; }
 
-        IState IState.Next { get; set; }
+        protected override IState Next { get; set; }
 
-        void IState.Activate(Entity entity, IState previous)
+        protected override async Task Activate(Entity entity, IState previous)
         {
+            await Task.Yield();
         }
     }
 }

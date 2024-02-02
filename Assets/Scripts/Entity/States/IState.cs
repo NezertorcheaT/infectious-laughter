@@ -7,6 +7,6 @@ namespace Entity.States
         string Name { get; }
         int Id { get; set; }
         IState Next { get; set; }
-        void Activate(Entity entity, IState previous);
+        Task Activate(Entity entity, IState previous);
     }
 }

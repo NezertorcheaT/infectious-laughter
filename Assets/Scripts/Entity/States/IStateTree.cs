@@ -14,6 +14,7 @@ namespace Entity.States
         bool IsIdValid(int id);
         bool TryGetState(int id, ref IState state);
         IState GetState(int id);
+        IState First();
         Dictionary<int, IState> States { get; }
     }
 }
