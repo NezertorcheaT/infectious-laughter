@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Entity.EntityMovement;
@@ -24,20 +25,30 @@ namespace Entity.EntityControllers
 
         private async void StateCycle()
         {
-            var state = _stateTree.First();
-            await state.Activate(Entity, null);
+            var states = new List<IState> {_stateTree.First()};
+            await states[0].Activate(Entity, null);
             for (;;)
             {
                 if (_stateCycleDestroy) return;
+                if (states.Count == 0) return;
                 if (!IsInitialized || !isActiveAndEnabled)
                 {
                     await Task.Delay(500);
                     continue;
                 }
 
-                if (state.Next == null) break;
-                await state.Next.Activate(Entity, state);
-                state = state.Next;
+                var newStates = new List<IState>(0);
+                foreach (var state in states)
+                {
+                    if (state.Nexts.Count == 0) break;
+                    foreach (var next in state.Nexts)
+                    {
+                        await next.Activate(Entity, state);
+                        newStates.AddRange(next.Nexts);
+                    }
+                }
+
+                states = newStates;
             }
         }
 

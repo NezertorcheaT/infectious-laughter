@@ -2,6 +2,8 @@
 
 namespace Entity.States
 {
+#if true
+    
     public interface IStateTree
     {
         int Hash(IState state);
@@ -17,4 +19,5 @@ namespace Entity.States
         IState First();
         Dictionary<int, IState> States { get; }
     }
+#endif
 }

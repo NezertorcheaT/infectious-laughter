@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Entity.States;
@@ -21,9 +20,14 @@ namespace Editor
         private State[] _statesAssets;
         private IState[] _states;
         private string[] _statesPaths;
-        private IState _selectedState;
-        private IState _selectedTreeState;
-        private IStateTree _currentTree;
+        private int _selectedTreeStateID;
+        private int _currentTreeID;
+        private int _selectedStateID;
+        private IState SelectedState => _states[_selectedStateID];
+        private IState SelectedTreeState => CurrentTree.GetState(_selectedTreeStateID);
+        private IStateTree CurrentTree => _trees[_currentTreeID];
+        private VisualElement _root;
+        private VisualElement _nodes;
 
         [MenuItem("Window/UI Toolkit/State Machine Window")]
         public static void ShowExample()
@@ -32,31 +36,32 @@ namespace Editor
             wnd.titleContent = new GUIContent("State Machine");
         }
 
-
-        // ReSharper disable once UnusedMember.Local
         private void CreateGUI()
         {
-            var root = rootVisualElement;
+            _root = rootVisualElement;
             FindTrees();
             FindStates();
-            _currentTree = _trees[0];
-            _selectedState = _states[0];
-            _selectedTreeState = _states[0];
+
+            VisualElement ui = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/StateMachine.uxml")
+                .CloneTree();
 
             _label = new Label();
-            _treesDropdown =
-                new DropdownField("Trees", _treesPaths.Select(Path.GetFileNameWithoutExtension).ToList(), 0);
+            _nodes = ui.Q<VisualElement>("Nodes");
+            _treesDropdown = ui.Q<DropdownField>("Trees");
+            _treesDropdown.choices = _treesPaths.Select(Path.GetFileNameWithoutExtension).ToList();
+            _treesDropdown.index = 0;
             _treesDropdown.RegisterValueChangedCallback(evt => OnPickTree());
-            _statesDropdown =
-                new DropdownField("States", _statesPaths.Select(Path.GetFileNameWithoutExtension).ToList(), 0);
-            _statesDropdown.RegisterValueChangedCallback(evt => OnPickState());
-            _stateAddButton = new Button(AddState);
-            _stateAddButton.text = "Add state";
 
-            root.Add(_label);
-            root.Add(_treesDropdown);
-            root.Add(_statesDropdown);
-            root.Add(_stateAddButton);
+            _statesDropdown = ui.Q<DropdownField>("States");
+            _statesDropdown.choices = _statesPaths.Select(Path.GetFileNameWithoutExtension).ToList();
+            _statesDropdown.index = 0;
+            _statesDropdown.RegisterValueChangedCallback(evt => OnPickState());
+
+            _stateAddButton = ui.Q<Button>("AddState");
+            _stateAddButton.clicked += AddState;
+
+            _nodes.Add(_label);
+            _root.Add(ui);
         }
 
         private void OnInspectorUpdate()
@@ -65,16 +70,22 @@ namespace Editor
             FindTrees();
             FindStates();
             UpdateDropdown();
+            if (_trees.Length == 0)
+            {
+                _label.SetEnabled(false);
+                _treesDropdown.SetEnabled(false);
+                _statesDropdown.SetEnabled(false);
+            }
+
             _label.text = "";
-            _label.text += $"{_currentTree.States.Count}";
-            
+            _label.text += $"{CurrentTree.States.Count}";
         }
 
         private void AddState()
         {
-            _currentTree.AddState(_selectedState);
-            _currentTree.TryConnect(_selectedTreeState.Id, _selectedState.Id);
-            
+            CurrentTree.AddState(SelectedState);
+            CurrentTree.TryConnect(SelectedTreeState.Id, SelectedState.Id);
+
             FindTrees();
             FindStates();
         }
@@ -87,12 +98,12 @@ namespace Editor
 
         private void OnPickTree()
         {
-            _currentTree = _trees[_treesDropdown.index];
+            _currentTreeID = _treesDropdown.index;
         }
 
         private void OnPickState()
         {
-            _selectedState = _states[_statesDropdown.index];
+            _selectedStateID = _statesDropdown.index;
         }
 
         private void FindTrees()
@@ -114,7 +125,8 @@ namespace Editor
         private void Update()
         {
             if (!hasFocus) return;
-            _label.transform.position = Mouse.current.position.ReadValue() - position.position;
+            _label.transform.position = Mouse.current.position.ReadValue() - (Vector2) _nodes.transform.position -
+                                        position.position;
         }
     }
 }

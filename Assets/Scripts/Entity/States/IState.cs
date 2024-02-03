@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Entity.States
 {
@@ -6,7 +7,9 @@ namespace Entity.States
     {
         string Name { get; }
         int Id { get; set; }
-        IState Next { get; set; }
-        Task Activate(Entity entity, IState previous);
+        List<IState> Nexts { get; set; }
+        void Connect(IState state);
+        void Disconnect(IState state);
+        Task<IState> Activate(Entity entity, IState previous);
     }
 }

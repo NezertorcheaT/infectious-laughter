@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Entity.EntityMovement;
 using UnityEngine;
 
@@ -10,17 +11,27 @@ namespace Entity.States
         [SerializeField] private float rayDistance = 0.1f;
         [SerializeField] private LayerMask groundLayer;
         private bool _direction;
-        protected override string Name => "InitialState";
+        protected override string Name => "PatrollingState";
 
         protected override int Id { get; set; }
 
-        protected override IState Next { get; set; }
+        protected override List<IState> Nexts { get; set; }
 
-        protected override async Task Activate(Entity entity, IState previous)
+        protected override void Connect(IState state)
+        {
+            Nexts.Add(state);
+        }
+
+        protected override void Disconnect(IState state)
+        {
+            Nexts.Remove(state);
+        }
+
+        protected override async Task<IState> Activate(Entity entity, IState previous)
         {
             var coll = entity.GetComponent<Collider2D>();
             var moveAbility = entity.FindAbilityByType<EntityMovementHorizontalMove>();
-            if (!moveAbility) return;
+            if (!moveAbility) return Nexts[0];
             for (;;)
             {
                 await Task.Yield();
@@ -35,6 +46,7 @@ namespace Entity.States
 
                 moveAbility.Move(_direction ? 1 : -1);
             }
+            return Nexts[0];
         }
     }
 }

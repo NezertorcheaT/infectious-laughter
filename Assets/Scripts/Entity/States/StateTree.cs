@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -8,11 +10,18 @@ namespace Entity.States
     [CreateAssetMenu(fileName = "New State Tree", menuName = "States/State Tree", order = 0)]
     public class StateTree : ScriptableObject, IStateTree
     {
+        [Serializable]
+        public struct StateForList
+        {
+            public int id;
+            public State state;
+        }
+
         public int Hash(IState state)
         {
             var n = state.GetType().FullName + state.Name;
             var h = n.GetHashCode();
-            while (_states.ContainsKey(h))
+            while (Ids.Contains(h))
             {
                 h++;
             }
@@ -20,85 +29,87 @@ namespace Entity.States
             return h;
         }
 
-        void IStateTree.AddState(IState state)
+        public void AddState(IState state)
         {
             var h = Hash(state);
             state.Id = h;
-            _states.Add(h, state);
+            states.Add(new StateForList {id = h, state = state as State});
         }
 
-        bool IStateTree.TryConnect(int idA, int idB)
+        public bool TryConnect(int idA, int idB)
         {
-            var th = this as IStateTree;
-            var b = IsIdValid(idA) && IsIdValid(idB);
+            if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
 
-            if (!b) return false;
-            th.GetState(idA).Next = th.GetState(idB);
+            GetState(idA).Connect(AtID(idB));
+
             return true;
         }
 
-        bool IStateTree.TryDisconnect(int idA, int idB)
+        public bool TryDisconnect(int idA, int idB)
         {
-            var th = this as IStateTree;
-            var b = IsIdValid(idA) && IsIdValid(idB);
+            if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
 
-            if (!b) return false;
-            th.GetState(idA).Next = null;
+            GetState(idA).Disconnect(AtID(idB));
+
             return true;
         }
 
-        bool IStateTree.TryDisconnect(int id)
+        public bool TryDisconnect(int id)
         {
-            var th = this as IStateTree;
-            var b = IsIdValid(id);
+            if (!IsIdValid(id)) return false;
 
-            if (!b) return false;
-            foreach (var idA in th.FindConnections(id))
+            var i = FindConnections(id);
+            foreach (var Id in i)
             {
-                th.GetState(idA).Next = null;
+                GetState(Id).Nexts.Remove(GetState(id));
             }
 
             return true;
         }
 
-        int[] IStateTree.FindConnections(int id) =>
-            (from value in _states.Values where value.Next.Id == id select value.Id).ToArray();
-
-        public bool IsIdValid(int id) => _states.ContainsKey(id);
-
-        bool IStateTree.TryRemoveState(int id)
+        public int[] FindConnections(int id)
         {
-            if (!_states.ContainsKey(id)) return false;
-            _states[id].Id = -1;
-            _states.Remove(id);
-            return true;
+            var i = new List<int>();
+            if (!IsIdValid(id)) return i.ToArray();
+            i.AddRange(from state in states
+                where (state.state as IState).Nexts.Select(item => item.Id).Contains(id)
+                select state.id);
+            return i.ToArray();
         }
 
-        bool IStateTree.TryGetState(int id, ref IState state)
+        public bool TryRemoveState(int id)
         {
-            if (!_states.ContainsKey(id)) return false;
-            state = _states[id];
-            return true;
-        }
-
-        IState IStateTree.GetState(int id) => _states[id];
-        IState IStateTree.First() => _states[0];
-
-        private Dictionary<int, IState> _states;
-
-        Dictionary<int, IState> IStateTree.States
-        {
-            get
+            if (!Ids.Contains(id)) return false;
+            for (var i = 0; i < states.Count; i++)
             {
-                if (_states != null) return _states;
-
-                _states = new Dictionary<int, IState>();
-                _states.Add(0,
-                    AssetDatabase.LoadAssetAtPath<InitialState>(
-                        AssetDatabase.GUIDToAssetPath(
-                            AssetDatabase.FindAssets("t:InitialState")[0])));
-                return _states;
+                if (states[i].id != id) continue;
+                (states[i].state as IState).Id = -1;
+                states.RemoveAt(i);
+                return true;
             }
+
+            return false;
         }
+
+        public bool IsIdValid(int id) => Ids.Contains(id);
+
+        public bool TryGetState(int id, ref IState state)
+        {
+            if (!Ids.Contains(id)) return false;
+            state = AtID(id);
+            return true;
+        }
+
+        public IState GetState(int id) => AtID(id);
+
+        public IState First() => AtID(0);
+
+        [SerializeField] private List<StateForList> states;
+        private IEnumerable<int> Ids => states.Select(i => i.id);
+
+        private State AtID(int id) =>
+            states.Where(state => state.id == id).Select(state => state.state).FirstOrDefault();
+
+        public Dictionary<int, IState> States => states.ToDictionary(item => item.id, item => (IState) item.state);
     }
 }

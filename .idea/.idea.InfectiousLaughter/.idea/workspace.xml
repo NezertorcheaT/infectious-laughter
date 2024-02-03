@@ -20,18 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrollingstate.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Controls.inputactions.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Initial State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Initial State.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrolling State.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrolling State.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTreeUI.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTreeUI.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/ass.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/ass.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout.wlt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +61,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/80/01865649/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/0d/13af831a/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Installers/ControlsInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759E14D-EF7C-40B6-8C65-7C638E8A0434/3e/d22f0d57/MeshGenerationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759E14D-EF7C-40B6-8C65-7C638E8A0434/40/471fd236/TextElement.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -66,16 +80,17 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Installers/ControlsInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrolingState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrollingstate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
       </list>
     </option>
   </component>
@@ -134,7 +149,9 @@
       <workItem from="1706793446776" duration="1246000" />
       <workItem from="1706801625181" duration="7784000" />
       <workItem from="1706817926027" duration="5621000" />
-      <workItem from="1706909921215" duration="5648000" />
+      <workItem from="1706909921215" duration="5921000" />
+      <workItem from="1706967857377" duration="8484000" />
+      <workItem from="1706978980535" duration="6206000" />
     </task>
     <servers />
   </component>
@@ -159,14 +176,14 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="780" y="191" key="RiderGenerateDialog" timestamp="1706823042827">
+    <state x="780" y="191" key="RiderGenerateDialog" timestamp="1706984198161">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="780" y="191" key="RiderGenerateDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1706823042827" />
-    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog" timestamp="1706550216714">
+    <state x="780" y="191" key="RiderGenerateDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1706984198161" />
+    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog" timestamp="1706986158833">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1706550216714" />
+    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1706986158833" />
     <state x="616" y="239" width="672" height="677" key="run.anything.popup" timestamp="1706914439927">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>

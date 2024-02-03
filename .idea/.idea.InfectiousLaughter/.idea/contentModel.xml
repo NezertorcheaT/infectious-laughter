@@ -9,10 +9,9 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
+          <e p="NodeElement.cs" t="Include" />
           <e p="StateMachine.cs" t="Include" />
-        </e>
-        <e p="Other" t="Include">
-          <e p="Controls.cs" t="Include" />
+          <e p="StateMachine.uxml" t="Include" />
         </e>
         <e p="Plugins" t="Include">
           <e p="NaughtyAttributes" t="Include">
@@ -1045,6 +1044,7 @@
           <e p="BillingMode.json" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="Controls.cs" t="Include" />
           <e p="Entity" t="Include">
             <e p="Ability.cs" t="Include" />
             <e p="Controller.cs" t="Include" />
@@ -1065,7 +1065,6 @@
               <e p="Patrollingstate.cs" t="Include" />
               <e p="State.cs" t="Include" />
               <e p="StateTree.cs" t="Include" />
-              <e p="StateTreeUI.uxml" t="Include" />
             </e>
           </e>
           <e p="Installers" t="Include">
