@@ -7,9 +7,6 @@ namespace Entity.States
     {
         string Name { get; }
         int Id { get; set; }
-        List<IState> Nexts { get; set; }
-        void Connect(IState state);
-        void Disconnect(IState state);
-        Task<IState> Activate(Entity entity, IState previous);
+        Task<int> Activate(Entity entity, IState previous);
     }
 }

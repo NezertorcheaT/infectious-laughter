@@ -15,6 +15,7 @@ namespace Entity.States
         {
             public int id;
             public State state;
+            public List<StateForList> nexts;
         }
 
         public int Hash(IState state)
@@ -33,14 +34,14 @@ namespace Entity.States
         {
             var h = Hash(state);
             state.Id = h;
-            states.Add(new StateForList {id = h, state = state as State});
+            states.Add(new StateForList {id = h, state = state as State, nexts = new List<StateForList>(0)});
         }
 
         public bool TryConnect(int idA, int idB)
         {
             if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
 
-            GetState(idA).Connect(AtID(idB));
+            SflAtID(idA).Value.nexts.Add(SflAtID(idB).Value);
 
             return true;
         }
@@ -49,7 +50,7 @@ namespace Entity.States
         {
             if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
 
-            GetState(idA).Disconnect(AtID(idB));
+            SflAtID(idA).Value.nexts.Remove(SflAtID(idB).Value);
 
             return true;
         }
@@ -59,9 +60,10 @@ namespace Entity.States
             if (!IsIdValid(id)) return false;
 
             var i = FindConnections(id);
+            var th = SflAtID(id).Value;
             foreach (var Id in i)
             {
-                GetState(Id).Nexts.Remove(GetState(id));
+                SflAtID(Id).Value.nexts.Remove(th);
             }
 
             return true;
@@ -72,7 +74,7 @@ namespace Entity.States
             var i = new List<int>();
             if (!IsIdValid(id)) return i.ToArray();
             i.AddRange(from state in states
-                where (state.state as IState).Nexts.Select(item => item.Id).Contains(id)
+                where state.nexts.Select(item => item.id).Contains(id)
                 select state.id);
             return i.ToArray();
         }
@@ -80,6 +82,7 @@ namespace Entity.States
         public bool TryRemoveState(int id)
         {
             if (!Ids.Contains(id)) return false;
+            TryDisconnect(id);
             for (var i = 0; i < states.Count; i++)
             {
                 if (states[i].id != id) continue;
@@ -102,10 +105,43 @@ namespace Entity.States
 
         public IState GetState(int id) => AtID(id);
 
+        public IState[] GetNextsTo(int id)
+        {
+            var i = new List<IState>(0);
+            
+            if (!IsIdValid(id)) return i.ToArray();
+            
+            var inst = SflAtID(id).Value;
+            i.AddRange(inst.nexts.Select(next => next.state));
+            return i.ToArray();
+        }
+
         public IState First() => AtID(0);
 
         [SerializeField] private List<StateForList> states;
         private IEnumerable<int> Ids => states.Select(i => i.id);
+
+        private int IdToInd(int id)
+        {
+            if (!IsIdValid(id)) return -1;
+            for (var i = 0; i < states.Count; i++)
+            {
+                if (id == states[i].id) return i;
+            }
+
+            return -1;
+        }
+
+        private StateForList? SflAtID(int id)
+        {
+            if (!IsIdValid(id)) return null;
+            for (var i = 0; i < states.Count; i++)
+            {
+                if (id == states[i].id) return states[i];
+            }
+
+            return null;
+        }
 
         private State AtID(int id) =>
             states.Where(state => state.id == id).Select(state => state.state).FirstOrDefault();

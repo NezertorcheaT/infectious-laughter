@@ -15,25 +15,16 @@ namespace Entity.States
 
         protected override int Id { get; set; }
 
-        protected override List<IState> Nexts { get; set; }
-
-        protected override void Connect(IState state)
+        protected override async Task<int> Activate(Entity entity, IState previous)
         {
-            Nexts.Add(state);
-        }
-
-        protected override void Disconnect(IState state)
-        {
-            Nexts.Remove(state);
-        }
-
-        protected override async Task<IState> Activate(Entity entity, IState previous)
-        {
+            var nextId = 0;
             var coll = entity.GetComponent<Collider2D>();
             var moveAbility = entity.FindAbilityByType<EntityMovementHorizontalMove>();
-            if (!moveAbility) return Nexts[0];
+            if (!moveAbility) return nextId;
+            
             for (;;)
             {
+                if (!entity) break;
                 await Task.Yield();
 
                 var ray = new Ray(
@@ -46,7 +37,8 @@ namespace Entity.States
 
                 moveAbility.Move(_direction ? 1 : -1);
             }
-            return Nexts[0];
+
+            return nextId;
         }
     }
 }

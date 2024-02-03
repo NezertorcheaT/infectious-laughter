@@ -20,31 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Controls.inputactions.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Initial State.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Initial State.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrolling State.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrolling State.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTreeUI.uxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTreeUI.uxml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/ass.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/ass.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout.wlt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,14 +67,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrolingState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrollingstate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
       </list>
     </option>
@@ -151,7 +136,8 @@
       <workItem from="1706817926027" duration="5621000" />
       <workItem from="1706909921215" duration="5921000" />
       <workItem from="1706967857377" duration="8484000" />
-      <workItem from="1706978980535" duration="6206000" />
+      <workItem from="1706978980535" duration="6805000" />
+      <workItem from="1706995299209" duration="1665000" />
     </task>
     <servers />
   </component>

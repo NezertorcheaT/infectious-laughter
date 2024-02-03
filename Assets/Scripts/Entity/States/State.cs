@@ -19,25 +19,7 @@ namespace Entity.States
         }
 
         protected abstract int Id { get; set; }
-
-        protected abstract List<IState> Nexts { get; set; }
-
-        List<IState> IState.Nexts
-        {
-            get
-            {
-                Nexts ??= new List<IState>(0);
-                return Nexts;
-            }
-            set => Nexts = value;
-        }
-
-        protected abstract void Connect(IState state);
-        void IState.Connect(IState state) => Connect(state);
-        protected abstract void Disconnect(IState state);
-        void IState.Disconnect(IState state) => Disconnect(state);
-
-        protected abstract Task<IState> Activate(Entity entity, IState previous);
-        Task<IState> IState.Activate(Entity entity, IState previous) => Activate(entity, previous);
+        protected abstract Task<int> Activate(Entity entity, IState previous);
+        Task<int> IState.Activate(Entity entity, IState previous) => Activate(entity, previous);
     }
 }

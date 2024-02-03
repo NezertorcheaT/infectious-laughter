@@ -40,11 +40,12 @@ namespace Entity.EntityControllers
                 var newStates = new List<IState>(0);
                 foreach (var state in states)
                 {
-                    if (state.Nexts.Count == 0) break;
-                    foreach (var next in state.Nexts)
+                    var nexts = _stateTree.GetNextsTo(state.Id);
+                    if (nexts.Length == 0) break;
+                    foreach (var next in nexts)
                     {
                         await next.Activate(Entity, state);
-                        newStates.AddRange(next.Nexts);
+                        newStates.AddRange(_stateTree.GetNextsTo(next.Id));
                     }
                 }
 
