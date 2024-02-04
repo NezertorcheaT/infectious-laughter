@@ -21,9 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +45,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Installers/ControlsInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759E14D-EF7C-40B6-8C65-7C638E8A0434/3e/d22f0d57/MeshGenerationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759E14D-EF7C-40B6-8C65-7C638E8A0434/40/471fd236/TextElement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/105DA115-9EC9-496A-B931-0694C7B11DD2/72/48e3cdd8/List`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -54,22 +58,22 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorizontalMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementCrouch.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/StateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Installers/ControlsInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrolingState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrollingstate.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementJump.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" />
       </list>
     </option>
   </component>
@@ -131,7 +135,8 @@
       <workItem from="1706909921215" duration="5921000" />
       <workItem from="1706967857377" duration="8484000" />
       <workItem from="1706978980535" duration="6805000" />
-      <workItem from="1706995299209" duration="3005000" />
+      <workItem from="1706995299209" duration="3234000" />
+      <workItem from="1707060970751" duration="2084000" />
     </task>
     <servers />
   </component>

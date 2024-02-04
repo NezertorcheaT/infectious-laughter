@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 namespace Entity.States
@@ -22,13 +20,26 @@ namespace Entity.States
         {
             var n = state.GetType().FullName + state.Name;
             var h = n.GetHashCode();
-            while (Ids.Contains(h))
+            while (IsIdValid(h))
             {
                 h++;
             }
 
             return h;
         }
+
+        private static bool Contains<T>(IEnumerable<T> where, T that)
+        {
+            foreach (var it in where)
+            {
+                if (it.Equals(that)) return true;
+            }
+
+            return false;
+        }
+
+        private static bool Contains<T>(T[] where, T that) => Contains(where.AsEnumerable(), that);
+        private static bool Contains<T>(List<T> where, T that) => Contains(where.AsEnumerable(), that);
 
         public void AddState(IState state)
         {
@@ -73,15 +84,18 @@ namespace Entity.States
         {
             var i = new List<int>();
             if (!IsIdValid(id)) return i.ToArray();
-            i.AddRange(from state in states
-                where state.nexts.Select(item => item.id).Contains(id)
-                select state.id);
+
+            foreach (var state in states)
+            {
+                if (Contains(state.nexts, SflAtID(id).Value)) i.Add(state.id);
+            }
+
             return i.ToArray();
         }
 
         public bool TryRemoveState(int id)
         {
-            if (!Ids.Contains(id)) return false;
+            if (!IsIdValid(id)) return false;
             TryDisconnect(id);
             for (var i = 0; i < states.Count; i++)
             {
@@ -94,11 +108,11 @@ namespace Entity.States
             return false;
         }
 
-        public bool IsIdValid(int id) => Ids.Contains(id);
+        public bool IsIdValid(int id) => Contains(Ids, id);
 
         public bool TryGetState(int id, ref IState state)
         {
-            if (!Ids.Contains(id)) return false;
+            if (!IsIdValid(id)) return false;
             state = AtID(id);
             return true;
         }
@@ -108,18 +122,32 @@ namespace Entity.States
         public IState[] GetNextsTo(int id)
         {
             var i = new List<IState>(0);
-            
+
             if (!IsIdValid(id)) return i.ToArray();
-            
+
             var inst = SflAtID(id).Value;
-            i.AddRange(inst.nexts.Select(next => next.state));
+            foreach (var next in inst.nexts)
+            {
+                i.Add(next.state);
+            }
+
             return i.ToArray();
         }
 
         public IState First() => AtID(0);
 
         [SerializeField] private List<StateForList> states;
-        private IEnumerable<int> Ids => states.Select(i => i.id);
+
+        private IEnumerable<int> Ids
+        {
+            get
+            {
+                foreach (var state in states)
+                {
+                    yield return state.id;
+                }
+            }
+        }
 
         private int IdToInd(int id)
         {
@@ -135,16 +163,15 @@ namespace Entity.States
         private StateForList? SflAtID(int id)
         {
             if (!IsIdValid(id)) return null;
-            for (var i = 0; i < states.Count; i++)
+            foreach (var state in states)
             {
-                if (id == states[i].id) return states[i];
+                if (state.id == id) return state;
             }
 
             return null;
         }
 
-        private State AtID(int id) =>
-            states.Where(state => state.id == id).Select(state => state.state).FirstOrDefault();
+        private State AtID(int id) => SflAtID(id)?.state;
 
         public Dictionary<int, IState> States => states.ToDictionary(item => item.id, item => (IState) item.state);
     }
