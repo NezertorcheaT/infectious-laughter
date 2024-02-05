@@ -9,7 +9,7 @@ namespace Entity.EntityControllers
     public class ControllerAI : Controller
     {
         [SerializeField] private StateTree stateTree;
-        private IStateTree _stateTree => stateTree;
+        private StateTree _stateTree => stateTree;
         private bool _stateCycleDestroy;
 
         public override void Initialize()
@@ -22,31 +22,27 @@ namespace Entity.EntityControllers
 
         private async void StateCycle()
         {
-            var states = new List<IState> {_stateTree.First()};
-            await states[0].Activate(Entity, null);
-            for (;;)
+            State prew;
+            var state = _stateTree.First();
+
+            while (true)
             {
+                await Task.Yield();
+
                 if (_stateCycleDestroy) return;
-                if (states.Count == 0) return;
+                if (!state) return;
                 if (!IsInitialized || !isActiveAndEnabled)
                 {
                     await Task.Delay(500);
                     continue;
                 }
 
-                var newStates = new List<IState>(0);
-                foreach (var state in states)
-                {
-                    var nexts = _stateTree.GetNextsTo(state.Id);
-                    if (nexts.Length == 0) break;
-                    foreach (var next in nexts)
-                    {
-                        await next.Activate(Entity, state);
-                        newStates.AddRange(_stateTree.GetNextsTo(next.Id));
-                    }
-                }
+                prew = state;
+                var t = await state.Activate(Entity, prew);
 
-                states = newStates;
+                if (_stateTree.GetNextsTo(state.Id).Length == 0) return;
+
+                state = _stateTree.GetNextsTo(state.Id)[t];
             }
         }
 

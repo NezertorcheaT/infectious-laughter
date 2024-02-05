@@ -14,18 +14,16 @@ namespace Editor
         private DropdownField _treesDropdown;
         private DropdownField _statesDropdown;
         private Button _stateAddButton;
-        private StateTree[] _treesAssets;
-        private IStateTree[] _trees;
+        private StateTree[] _trees;
         private string[] _treesPaths;
-        private State[] _statesAssets;
-        private IState[] _states;
+        private State[] _states;
         private string[] _statesPaths;
         private int _selectedTreeStateID;
         private int _currentTreeID;
         private int _selectedStateID;
-        private IState SelectedState => _states[_selectedStateID];
-        private IState SelectedTreeState => CurrentTree.GetState(_selectedTreeStateID);
-        private IStateTree CurrentTree => _trees[_currentTreeID];
+        private State SelectedState => _states[_selectedStateID];
+        private State SelectedTreeState => CurrentTree.GetState(_selectedTreeStateID);
+        private StateTree CurrentTree => _trees[_currentTreeID];
         private VisualElement _root;
         private VisualElement _nodes;
 
@@ -110,16 +108,14 @@ namespace Editor
         {
             _treesPaths = AssetDatabase.FindAssets("t:StateTree");
             _treesPaths = _treesPaths.Select(AssetDatabase.GUIDToAssetPath).ToArray();
-            _treesAssets = _treesPaths.Select(AssetDatabase.LoadAssetAtPath<StateTree>).ToArray();
-            _trees = _treesAssets.Cast<IStateTree>().ToArray();
+            _trees = _treesPaths.Select(AssetDatabase.LoadAssetAtPath<StateTree>).ToArray();
         }
 
         private void FindStates()
         {
             _statesPaths = AssetDatabase.FindAssets("t:State");
             _statesPaths = _statesPaths.Select(AssetDatabase.GUIDToAssetPath).ToArray();
-            _statesAssets = _statesPaths.Select(AssetDatabase.LoadAssetAtPath<State>).ToArray();
-            _states = _statesAssets.Cast<IState>().ToArray();
+            _states = _statesPaths.Select(AssetDatabase.LoadAssetAtPath<State>).ToArray();
         }
 
         private void Update()

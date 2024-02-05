@@ -22,6 +22,9 @@ namespace Entity.EntityMovement
         private Rigidbody2D _rb;
         private Collider2D _col;
 
+        public float JumpTime => jumpTime;
+        public float JumpHeight => jumpHeight;
+        
         public override void Initialize()
         {
             base.Initialize();

@@ -1062,6 +1062,7 @@
               <e p="InitialState.cs" t="Include" />
               <e p="IState.cs" t="Include" />
               <e p="IStateTree.cs" t="Include" />
+              <e p="JumpState.cs" t="Include" />
               <e p="Patrollingstate.cs" t="Include" />
               <e p="State.cs" t="Include" />
               <e p="StateTree.cs" t="Include" />

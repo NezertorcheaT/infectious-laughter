@@ -6,14 +6,10 @@ namespace Entity.States
     [CreateAssetMenu(fileName = "Initial State", menuName = "States/Initial State", order = 0)]
     public class InitialState : State
     {
-        protected override string Name => "InitialState";
+        public override string Name => "InitialState";
 
-        protected override int Id { get; set; }
-        
-        protected override async Task<int> Activate(Entity entity, IState previous)
-        {
-            await Task.Yield();
-            return 0;
-        }
+        public override int Id { get; set; }
+
+        public override async Task<int> Activate(Entity entity, State previous) => 0;
     }
 }

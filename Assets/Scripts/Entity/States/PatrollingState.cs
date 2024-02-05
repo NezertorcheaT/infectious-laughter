@@ -4,23 +4,24 @@ using UnityEngine;
 
 namespace Entity.States
 {
-    [CreateAssetMenu(fileName = "Initial State", menuName = "States/Patrolling State", order = 0)]
+    [CreateAssetMenu(fileName = "Patrolling State", menuName = "States/Patrolling State", order = 0)]
     public class PatrollingState : State
     {
         [SerializeField] private float rayDistance = 0.1f;
         [SerializeField] private LayerMask groundLayer;
         private bool _direction;
-        protected override string Name => "PatrollingState";
+        public override string Name => "PatrollingState";
 
-        protected override int Id { get; set; }
+        public override int Id { get; set; }
 
-        protected override async Task<int> Activate(Entity entity, IState previous)
+        public override async Task<int> Activate(Entity entity, State previous)
         {
             var nextId = 0;
             var coll = entity.GetComponent<Collider2D>();
             var moveAbility = entity.FindAbilityByType<EntityMovementHorizontalMove>();
-            if (!moveAbility) return nextId;
             
+            if (!moveAbility) return nextId;
+
             for (;;)
             {
                 if (!entity) break;

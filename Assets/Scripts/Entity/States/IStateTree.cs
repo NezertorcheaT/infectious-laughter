@@ -9,13 +9,13 @@ namespace Entity.States
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
-        int Hash(IState state);
+        int Hash(State state);
 
         /// <summary>
         /// добавить состояние в общий пул
         /// </summary>
         /// <param name="state">состояние</param>
-        void AddState(IState state);
+        void AddState(State state);
 
         /// <summary>
         /// попытаться соеденить два состояния
@@ -67,21 +67,21 @@ namespace Entity.States
         /// <param name="id">айди</param>
         /// <param name="state">ссылка на выходное значение состояния</param>
         /// <returns>получилось или нет</returns>
-        bool TryGetState(int id, ref IState state);
+        bool TryGetState(int id, ref State state);
 
         /// <summary>
         /// получить состояние по айди на прямую
         /// </summary>
         /// <param name="id">айди</param>
         /// <returns>состояние</returns>
-        IState GetState(int id);
+        State GetState(int id);
 
         /// <summary>
         /// получить состояния следующие после этого состояния
         /// </summary>
         /// <param name="id">айди</param>
         /// <returns>состояния</returns>
-        IState[] GetNextsTo(int id);
+        State[] GetNextsTo(int id);
 
         /// <summary>
         /// получить начальное состояние
@@ -89,11 +89,11 @@ namespace Entity.States
         /// это разные вещи
         /// </summary>
         /// <returns>состояние</returns>
-        IState First();
+        State First();
 
         /// <summary>
         /// все состояния в соответствии с их айди
         /// </summary>
-        Dictionary<int, IState> States { get; }
+        Dictionary<int, State> States { get; }
     }
 }
