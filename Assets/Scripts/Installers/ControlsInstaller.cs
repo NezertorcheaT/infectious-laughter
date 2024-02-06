@@ -1,7 +1,9 @@
+using UnityEngine;
 using Zenject;
 
 namespace Installers
 {
+    [AddComponentMenu("Installers/Controls")]
     public class ControlsInstaller : MonoInstaller
     {
         public override void InstallBindings()

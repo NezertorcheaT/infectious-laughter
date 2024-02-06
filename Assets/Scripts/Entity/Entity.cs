@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Entity
 {
+    [AddComponentMenu("Entity/Entity")]
     public class Entity : MonoBehaviour
     {
         [Header("Controller")] [SerializeField]

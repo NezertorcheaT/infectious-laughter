@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Entity.States;
@@ -6,6 +7,7 @@ using UnityEngine;
 namespace Entity.EntityControllers
 {
     [RequireComponent(typeof(Collider2D))]
+    [AddComponentMenu("Entity/Controllers/AI")]
     public class ControllerAI : Controller
     {
         [SerializeField] private StateTree stateTree;
@@ -20,29 +22,33 @@ namespace Entity.EntityControllers
             StateCycle();
         }
 
+        public State CurrentState { get; private set; }
+        public event Action<State> OnStateActivating;
+        
         private async void StateCycle()
         {
             State prew;
-            var state = _stateTree.First();
+            CurrentState = _stateTree.First();
 
             while (true)
             {
                 await Task.Yield();
 
                 if (_stateCycleDestroy) return;
-                if (!state) return;
+                if (!CurrentState) return;
                 if (!IsInitialized || !isActiveAndEnabled)
                 {
                     await Task.Delay(500);
                     continue;
                 }
 
-                prew = state;
-                var t = await state.Activate(Entity, prew);
+                prew = CurrentState;
+                OnStateActivating?.Invoke(CurrentState);
+                var t = await CurrentState.Activate(Entity, prew);
 
-                if (_stateTree.GetNextsTo(state.Id).Length == 0) return;
+                if (_stateTree.GetNextsTo(CurrentState.Id).Length == 0) return;
 
-                state = _stateTree.GetNextsTo(state.Id)[t];
+                CurrentState = _stateTree.GetNextsTo(CurrentState.Id)[t];
             }
         }
 

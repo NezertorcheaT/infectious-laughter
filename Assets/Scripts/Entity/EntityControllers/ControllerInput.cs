@@ -1,8 +1,10 @@
 using Entity.EntityMovement;
+using UnityEngine;
 using Zenject;
 
 namespace Entity.EntityControllers
 {
+    [AddComponentMenu("Entity/Controllers/Input")]
     public class ControllerInput : Controller
     {
         [Inject]
