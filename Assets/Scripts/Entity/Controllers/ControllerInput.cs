@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Entity.Controllers
 {
-    [AddComponentMenu("Entity/Controllers/Input")]
+    [AddComponentMenu("Entity/Controllers/Input Controller")]
     public class ControllerInput : Controller
     {
         [Inject] private Controls _actions;

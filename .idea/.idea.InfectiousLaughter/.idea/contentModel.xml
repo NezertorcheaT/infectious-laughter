@@ -1047,6 +1047,7 @@
           <e p="Controls.cs" t="Include" />
           <e p="Entity" t="Include">
             <e p="Abilities" t="Include">
+              <e p="EntityHP.cs" t="Include" />
               <e p="EntityMovementCrouch.cs" t="Include" />
               <e p="EntityMovementHorizontalMove.cs" t="Include" />
               <e p="EntityMovementJump.cs" t="Include" />

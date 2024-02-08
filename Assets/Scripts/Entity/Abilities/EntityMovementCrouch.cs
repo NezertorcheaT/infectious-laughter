@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Entity.Abilities
 {
     [RequireComponent(typeof(Collider2D))]
-    [AddComponentMenu("Entity/Abilities/Crouch")]
+    [AddComponentMenu("Entity/Abilities/Crouch Ability")]
     public class EntityMovementCrouch : Ability
     {
         [SerializeField] private float crouchSizeMultiplier = .5f;

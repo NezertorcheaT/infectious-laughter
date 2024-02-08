@@ -572,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000010424141, y: -0.24275005, z: -10}
+  m_LocalPosition: {x: 0.000014249699, y: -0.24275005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1202,6 +1202,7 @@ GameObject:
   - component: {fileID: 1471444240}
   - component: {fileID: 1471444238}
   - component: {fileID: 1471444237}
+  - component: {fileID: 1471444241}
   m_Layer: 3
   m_Name: Entity
   m_TagString: Untagged
@@ -1378,6 +1379,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crouchSizeMultiplier: 0.5
+--- !u!114 &1471444241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471444232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169a6f498cfa4a3d8e14fc7194683e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  addictiveHealth: 0
+  maxAddictiveHealth: 0
+  maxHealth: 5
 --- !u!1 &1478113458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,6 +1748,7 @@ GameObject:
   - component: {fileID: 1974376984}
   - component: {fileID: 1974376983}
   - component: {fileID: 1974376982}
+  - component: {fileID: 1974376989}
   m_Layer: 3
   m_Name: Entity (1)
   m_TagString: Untagged
@@ -1810,29 +1828,29 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.75
+      time: 0.5
       value: 1
-      inSlope: 0.027528485
-      outSlope: 0.027528485
-      tangentMode: 0
+      inSlope: 1.9652174
+      outSlope: -0.010162279
+      tangentMode: 1
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.3451327
+      inWeight: 1
+      outWeight: 0.40412974
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -6.292689
-      outSlope: -6.292689
+      inSlope: -5.5687857
+      outSlope: -5.5687857
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.63716817
+      inWeight: 0.035398245
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   jumpHeight: 3
   jumpTime: 1
-  whenMax: 0.75
+  whenMax: 5
   groundDistance: 0.1
   groundLayer:
     serializedVersion: 2
@@ -1895,3 +1913,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1974376989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974376981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169a6f498cfa4a3d8e14fc7194683e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  addictiveHealth: 0
+  maxAddictiveHealth: 0
+  maxHealth: 5

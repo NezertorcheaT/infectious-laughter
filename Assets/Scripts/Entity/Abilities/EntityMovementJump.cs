@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-    [AddComponentMenu("Entity/Abilities/Jump")]
+    [AddComponentMenu("Entity/Abilities/Jump Ability")]
     public class EntityMovementJump : Ability
     {
         [SerializeField, CurveRange(0, 0, 1, 1)]
