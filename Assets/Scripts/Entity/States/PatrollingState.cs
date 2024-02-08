@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Entity.EntityMovement;
+using Entity.Abilities;
 using UnityEngine;
 
 namespace Entity.States

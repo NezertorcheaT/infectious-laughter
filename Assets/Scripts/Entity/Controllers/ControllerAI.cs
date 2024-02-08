@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Entity.States;
 using UnityEngine;
 
-namespace Entity.EntityControllers
+namespace Entity.Controllers
 {
     [RequireComponent(typeof(Collider2D))]
     [AddComponentMenu("Entity/Controllers/AI")]

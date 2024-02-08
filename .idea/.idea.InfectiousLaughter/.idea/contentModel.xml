@@ -1046,22 +1046,22 @@
         <e p="Scripts" t="Include">
           <e p="Controls.cs" t="Include" />
           <e p="Entity" t="Include">
-            <e p="Ability.cs" t="Include" />
-            <e p="Controller.cs" t="Include" />
-            <e p="Entity.cs" t="Include" />
-            <e p="EntityAnimation" t="Include">
-              <e p="EntityAnimations.cs" t="Include" />
-              <e p="IAnimatableState.cs" t="Include" />
-            </e>
-            <e p="EntityControllers" t="Include">
-              <e p="ControllerAI.cs" t="Include" />
-              <e p="ControllerInput.cs" t="Include" />
-            </e>
-            <e p="EntityMovement" t="Include">
+            <e p="Abilities" t="Include">
               <e p="EntityMovementCrouch.cs" t="Include" />
               <e p="EntityMovementHorizontalMove.cs" t="Include" />
               <e p="EntityMovementJump.cs" t="Include" />
             </e>
+            <e p="Ability.cs" t="Include" />
+            <e p="Animation" t="Include">
+              <e p="EntityAnimations.cs" t="Include" />
+              <e p="IAnimatableState.cs" t="Include" />
+            </e>
+            <e p="Controller.cs" t="Include" />
+            <e p="Controllers" t="Include">
+              <e p="ControllerAI.cs" t="Include" />
+              <e p="ControllerInput.cs" t="Include" />
+            </e>
+            <e p="Entity.cs" t="Include" />
             <e p="States" t="Include">
               <e p="InitialState.cs" t="Include" />
               <e p="IStateTree.cs" t="Include" />

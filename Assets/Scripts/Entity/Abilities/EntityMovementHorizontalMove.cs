@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Entity.EntityMovement
+namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [AddComponentMenu("Entity/Abilities/Horizontal Movement")]

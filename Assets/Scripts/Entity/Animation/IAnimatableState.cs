@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Entity.EntityAnimation
+namespace Entity.Animation
 {
     public interface IAnimatableState
     {

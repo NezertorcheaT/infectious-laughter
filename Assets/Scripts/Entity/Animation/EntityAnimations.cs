@@ -1,8 +1,8 @@
-using Entity.EntityControllers;
+using Entity.Controllers;
 using Entity.States;
 using UnityEngine;
 
-namespace Entity.EntityAnimation
+namespace Entity.Animation
 {
     [RequireComponent(typeof(Animator))]
     [Tooltip("без него не будут работать все состояния реализующие IAnimatableState")]

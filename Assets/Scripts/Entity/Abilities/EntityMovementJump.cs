@@ -5,7 +5,7 @@ using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Entity.EntityMovement
+namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     [AddComponentMenu("Entity/Abilities/Jump")]

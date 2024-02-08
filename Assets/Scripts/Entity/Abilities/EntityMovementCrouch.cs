@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Entity.EntityMovement
+namespace Entity.Abilities
 {
     [RequireComponent(typeof(Collider2D))]
     [AddComponentMenu("Entity/Abilities/Crouch")]
