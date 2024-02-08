@@ -25,6 +25,9 @@ namespace Entity
         public event Action OnFixedUpdate;
         public event Action OnLateUpdate;
 
+        // Ахахахвахва, я кешировал трансформ! Ухахаха
+        public Transform CachedTransform { get; protected set; }
+
 
         /// <summary>
         /// В идеале тут и этого быть не должно ведь класс нацелен на его наследование, ну да ладно
@@ -35,6 +38,8 @@ namespace Entity
         {
             if (Controller == null || AutoFindController) Controller = GetComponent<Controller>();
             if (Abilities == null || AutoFindAbilities) Abilities = GetComponents<Ability>();
+
+            CachedTransform = transform;
 
             (Controller as IInitializeByEntity)?.Initialize();
             if (Controller is IInitializeByEntity) (Controller as IInitializeByEntity).Initialized = true;

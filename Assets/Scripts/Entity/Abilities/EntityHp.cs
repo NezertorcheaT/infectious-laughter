@@ -11,11 +11,6 @@ namespace Entity.Abilities
         [SerializeField] private int maxAddictiveHealth;
         [SerializeField] private int maxHealth = 5;
 
-        public override void Initialize()
-        {
-            base.Initialize();
-        }
-
         public Action<int, int, int, int> OnDamaged;
         public Action<int, int, int, int> OnHealed;
         public Action<int, int, int, int> OnHpStarted;

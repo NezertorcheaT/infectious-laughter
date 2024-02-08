@@ -37,7 +37,7 @@ namespace Entity.Abilities
         public void Jump()
         {
             if (!Available()) return;
-            if (!CheckGround(transform.position, transform.lossyScale, _col, groundLayer, 0.1f)) return;
+            if (!CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer, 0.1f)) return;
             StartCoroutine(ForceJump());
         }
 
@@ -54,14 +54,14 @@ namespace Entity.Abilities
             {
                 prev = (t - Time.fixedDeltaTime) / jumpTime;
                 if (t > jumpTime / 5f &&
-                    CheckGround(transform.position, transform.lossyScale, _col, groundLayer, groundDistance,
+                    CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer, groundDistance,
                         groundDistance))
                 {
                     prev = (t - Time.fixedDeltaTime) / jumpTime;
                     break;
                 }
 
-                if (CheckTop(transform.position, transform.lossyScale, _col, groundLayer, groundDistance,
+                if (CheckTop(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer, groundDistance,
                     groundDistance) && t < whenMax)
                 {
                     var timesEquals = new List<float>(0);
