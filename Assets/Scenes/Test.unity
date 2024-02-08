@@ -1197,12 +1197,12 @@ GameObject:
   - component: {fileID: 1471444234}
   - component: {fileID: 1471444233}
   - component: {fileID: 1471444239}
+  - component: {fileID: 1471444241}
   - component: {fileID: 1471444236}
   - component: {fileID: 1471444235}
   - component: {fileID: 1471444240}
   - component: {fileID: 1471444238}
   - component: {fileID: 1471444237}
-  - component: {fileID: 1471444241}
   m_Layer: 3
   m_Name: Entity
   m_TagString: Untagged
@@ -1744,11 +1744,11 @@ GameObject:
   - component: {fileID: 1974376988}
   - component: {fileID: 1974376987}
   - component: {fileID: 1974376986}
+  - component: {fileID: 1974376989}
   - component: {fileID: 1974376985}
   - component: {fileID: 1974376984}
   - component: {fileID: 1974376983}
   - component: {fileID: 1974376982}
-  - component: {fileID: 1974376989}
   m_Layer: 3
   m_Name: Entity (1)
   m_TagString: Untagged
