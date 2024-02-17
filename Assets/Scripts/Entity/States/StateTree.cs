@@ -143,7 +143,7 @@ namespace Entity.States
         public State First() => GetState(0);
 
 
-        private IEnumerable<int> Ids
+        public IEnumerable<int> Ids
         {
             get
             {

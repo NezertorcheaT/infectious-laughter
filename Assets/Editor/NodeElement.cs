@@ -1,35 +1,15 @@
-﻿using UnityEngine;
+﻿using Entity.States;
 using UnityEngine.UIElements;
 
 namespace Editor
 {
-    public class NodeElement : VisualElement
+    public class NodeElement : Button
     {
-        float m_Radius = 100.0f;
-        float m_Value = 40.0f;
+        public State State;
 
-        public float radius
-        {
-            get => m_Radius;
-            set
-            {
-                m_Radius = value;
-            }
-        }
+        public override string text => State.Name;
 
-        public float Diameter => m_Radius * 2.0f;
-
-        public float Value {
-            get => m_Value;
-            set { m_Value = value; MarkDirtyRepaint(); }
-        }
-
-        public NodeElement()
-        {
-            generateVisualContent += DrawCanvas;
-        }
-
-        private void DrawCanvas(MeshGenerationContext ctx)
+        public void DrawCanvas(MeshGenerationContext ctx)
         {
             
         }

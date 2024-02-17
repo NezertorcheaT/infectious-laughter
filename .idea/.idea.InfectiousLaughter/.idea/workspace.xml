@@ -20,10 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,14 +59,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrolingState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrollingstate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JunpState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IAnimatableState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityAnimation/фыы.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityAnimation/IAnimatableState.cs" />
@@ -88,6 +86,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
       </list>
     </option>
   </component>
@@ -155,6 +157,10 @@
       <workItem from="1707159211979" duration="6939000" />
       <workItem from="1707241243001" duration="1983000" />
       <workItem from="1707420319370" duration="1597000" />
+      <workItem from="1708105176021" duration="254000" />
+      <workItem from="1708171623986" duration="5379000" />
+      <workItem from="1708182881406" duration="2095000" />
+      <workItem from="1708187821087" duration="513000" />
     </task>
     <servers />
   </component>
@@ -179,14 +185,14 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="780" y="191" key="RiderGenerateDialog" timestamp="1706984198161">
+    <state x="780" y="191" key="RiderGenerateDialog" timestamp="1708174113262">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="780" y="191" key="RiderGenerateDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1706984198161" />
-    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog" timestamp="1706986158833">
+    <state x="780" y="191" key="RiderGenerateDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1708174113262" />
+    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog" timestamp="1708174084548">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1706986158833" />
+    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1708174084548" />
     <state x="607" y="221" width="705" height="592" key="find.popup" timestamp="1707165751629">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>

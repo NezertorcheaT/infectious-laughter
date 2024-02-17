@@ -5,6 +5,8 @@
             <ui:DropdownField label="States" name="States" index="-1" style="flex-direction: column;" />
             <ui:Button text="Add State" display-tooltip-when-elided="true" name="AddState" style="flex-direction: column; align-items: stretch; justify-content: flex-start; -unity-text-align: middle-left;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Nodes" style="width: 562px; flex-grow: 1;" />
+        <ui:VisualElement name="Nodes" style="width: 514px; flex-grow: 1;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" style="align-items: center; justify-content: space-around; top: 77px; left: 34px; position: absolute; height: 130px; width: 193px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
