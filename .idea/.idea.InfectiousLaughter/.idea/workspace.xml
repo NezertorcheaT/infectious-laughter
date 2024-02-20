@@ -20,12 +20,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Bell of Fear.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Bell of Fear.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Blessed Fire.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Blessed Fire.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Bracer UP.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Bracer UP.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Broken radio.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Broken radio.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Detector LAM-PO 4 KA.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Detector LAM-PO 4 KA.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Great Attractor Shard.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Great Attractor Shard.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/HP Up.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/HP Up.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Homing Dart.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Homing Dart.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Immortal Seed.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Immortal Seed.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Infected phone.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Infected phone.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/ItemTextureImporter.preset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/ItemTextureImporter.preset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Old Spyglass.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Old Spyglass.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Old Umbrella.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Old Umbrella.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Outcast Wings.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Outcast Wings.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Poisoned Meat.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Poisoned Meat.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Regulator Up.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Regulator Up.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Sky Dome.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Sky Dome.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Suit UP.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Suit UP.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Trap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Trap.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Worn Backpack.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Worn Backpack.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Dash.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Dash.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Fire trail.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Fire trail.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Hover.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Hover.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Invisibility.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Invisibility.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Primordial Fear.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Primordial Fear.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Tree/The fruit of secrecy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Tree/The fruit of secrecy.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Tree/The fruit of striving forward.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Tree/The fruit of striving forward.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +64,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/ec/0a30fd5f/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759E14D-EF7C-40B6-8C65-7C638E8A0434/3c/42ae3ea7/Label.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759E14D-EF7C-40B6-8C65-7C638E8A0434/60/04435e5c/DropdownField.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/80/01865649/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/0d/13af831a/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" root0="FORCE_HIGHLIGHTING" />
@@ -90,6 +116,13 @@
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/IInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/FooItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/Inventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Input/InventoryInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/InventoryUI.cs" />
       </list>
     </option>
   </component>
@@ -160,7 +193,9 @@
       <workItem from="1708105176021" duration="254000" />
       <workItem from="1708171623986" duration="5379000" />
       <workItem from="1708182881406" duration="2095000" />
-      <workItem from="1708187821087" duration="513000" />
+      <workItem from="1708187821087" duration="555000" />
+      <workItem from="1708346188006" duration="4860000" />
+      <workItem from="1708430825742" duration="4642000" />
     </task>
     <servers />
   </component>
@@ -185,10 +220,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="780" y="191" key="RiderGenerateDialog" timestamp="1708174113262">
+    <state x="780" y="191" key="RiderGenerateDialog" timestamp="1708349241135">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="780" y="191" key="RiderGenerateDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1708174113262" />
+    <state x="780" y="191" key="RiderGenerateDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1708349241135" />
     <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog" timestamp="1708174084548">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
@@ -197,9 +232,9 @@
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state x="607" y="221" width="705" height="592" key="find.popup/0.0.1920.1034@0.0.1920.1034" timestamp="1707165751629" />
-    <state x="616" y="239" width="672" height="677" key="run.anything.popup" timestamp="1707242523940">
+    <state x="616" y="239" width="672" height="677" key="run.anything.popup" timestamp="1708346628885">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="616" y="239" width="672" height="677" key="run.anything.popup/0.0.1920.1034@0.0.1920.1034" timestamp="1707242523940" />
+    <state x="616" y="239" width="672" height="677" key="run.anything.popup/0.0.1920.1034@0.0.1920.1034" timestamp="1708346628885" />
   </component>
 </project>

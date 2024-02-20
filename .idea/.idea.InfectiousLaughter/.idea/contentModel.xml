@@ -1075,6 +1075,18 @@
           <e p="Installers" t="Include">
             <e p="ControlsInstaller.cs" t="Include" />
           </e>
+          <e p="Inventory" t="Include">
+            <e p="FooItem.cs" t="Include" />
+            <e p="IInventory.cs" t="Include" />
+            <e p="Input" t="Include">
+              <e p="InventoryInput.cs" t="Include" />
+            </e>
+            <e p="Inventory.cs" t="Include" />
+            <e p="Slot.cs" t="Include" />
+            <e p="UI" t="Include">
+              <e p="InventoryUI.cs" t="Include" />
+            </e>
+          </e>
         </e>
       </e>
       <e p="InfectiousLaughter.sln" t="IncludeFlat" />
