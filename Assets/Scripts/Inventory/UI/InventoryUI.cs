@@ -1,30 +1,38 @@
-﻿using System;
-using Inventory.Input;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Inventory.UI
 {
+    [AddComponentMenu("Inventory/Inventory UI")]
     public class InventoryUI : MonoBehaviour
     {
         [SerializeField] private Inventory inventory;
-        [SerializeField] private Entity.Entity entity;
         [SerializeField] private HorizontalLayoutGroup inventoryBase;
         [SerializeField, Min(1)] private float imageSize;
-        private InventoryInput _ability;
         private IInventory _inventory;
-
+        private bool _hasOnChange;
         private void Start()
         {
-            _ability = entity.FindAbilityByType<InventoryInput>();
             if (inventory is IInventory inv) _inventory = inv;
-            //if (_inventory is not null) _inventory.OnChange += UpdateGUI;
+            if (_inventory is not null && !_hasOnChange) _inventory.OnChange += UpdateGUI;
+            _hasOnChange = true;
+            UpdateGUI();
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            if (!_ability) return;
+            if (_inventory is not null && !_hasOnChange) _inventory.OnChange += UpdateGUI;
+            _hasOnChange = true;
+        }
 
+        private void OnDisable()
+        {
+            if (_inventory is not null && _hasOnChange) _inventory.OnChange -= UpdateGUI;
+            _hasOnChange = false;
+        }
+
+        private void UpdateGUI()
+        {
             for (var i = 0; i < inventoryBase.transform.childCount; i++)
             {
                 Destroy(inventoryBase.transform.GetChild(i).gameObject);

@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCapacity: 6
   <_slots>k__BackingField:
-  - _count: 1
-    _lastItem: {fileID: 11400000, guid: eed28fb523c6f7e4199993b7367f8755, type: 2}
-  - _count: 0
-    _lastItem: {fileID: 11400000, guid: eed28fb523c6f7e4199993b7367f8755, type: 2}
   - _count: 0
     _lastItem: {fileID: 0}
-  - _count: 1
-    _lastItem: {fileID: 11400000, guid: eed28fb523c6f7e4199993b7367f8755, type: 2}
+  - _count: 0
+    _lastItem: {fileID: 0}
+  - _count: 0
+    _lastItem: {fileID: 0}
+  - _count: 0
+    _lastItem: {fileID: 0}
   - _count: 0
     _lastItem: {fileID: 0}
   - _count: 0

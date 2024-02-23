@@ -21,36 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Bell of Fear.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Bell of Fear.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Blessed Fire.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Blessed Fire.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Bracer UP.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Bracer UP.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Broken radio.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Broken radio.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Detector LAM-PO 4 KA.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Detector LAM-PO 4 KA.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Great Attractor Shard.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Great Attractor Shard.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/HP Up.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/HP Up.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Homing Dart.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Homing Dart.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Immortal Seed.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Immortal Seed.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Infected phone.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Infected phone.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/ItemTextureImporter.preset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/ItemTextureImporter.preset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Old Spyglass.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Old Spyglass.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Old Umbrella.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Old Umbrella.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Outcast Wings.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Outcast Wings.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Poisoned Meat.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Poisoned Meat.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Regulator Up.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Regulator Up.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Sky Dome.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Sky Dome.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Suit UP.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Suit UP.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Trap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Trap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Worn Backpack.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Items/Worn Backpack.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Dash.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Dash.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Fire trail.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Fire trail.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Hover.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Hover.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Invisibility.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Invisibility.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Primordial Fear.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Spells/Primordial Fear.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Tree/The fruit of secrecy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Tree/The fruit of secrecy.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Tree/The fruit of striving forward.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Drive/Icons/Stuff/Tree/The fruit of striving forward.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Controls.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Input/InventoryInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Input/InventoryInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/New Inventory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/New Inventory.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/InventoryUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,11 +95,12 @@
         <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/IInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/FooItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/Inventory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Input/InventoryInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/InventoryUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemToAdd.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Input/InventoryInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
       </list>
     </option>
   </component>
@@ -195,7 +173,8 @@
       <workItem from="1708182881406" duration="2095000" />
       <workItem from="1708187821087" duration="555000" />
       <workItem from="1708346188006" duration="4860000" />
-      <workItem from="1708430825742" duration="4642000" />
+      <workItem from="1708430825742" duration="4814000" />
+      <workItem from="1708704921300" duration="5740000" />
     </task>
     <servers />
   </component>

@@ -1082,6 +1082,7 @@
               <e p="InventoryInput.cs" t="Include" />
             </e>
             <e p="Inventory.cs" t="Include" />
+            <e p="ItemToAdd.cs" t="Include" />
             <e p="Slot.cs" t="Include" />
             <e p="UI" t="Include">
               <e p="InventoryUI.cs" t="Include" />
