@@ -17,6 +17,7 @@ namespace Inventory
 
     public interface IItem
     {
+        ScriptableObject SelfRef{ get; }
         string Name { get; }
         int MaxStackSize { get; }
         Sprite Sprite { get; }

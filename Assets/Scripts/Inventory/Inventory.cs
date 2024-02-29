@@ -26,20 +26,20 @@ namespace Inventory
         {
             for (var i = 0; i < Slots.Count; i++)
             {
-                if (Slots[i].IsEmpty) continue;
-                if (Slots[i].LastItem.GetType().Name != item.GetType().Name) continue;
-                if (Slots[i].Count >= Slots[i].LastItem.MaxStackSize) continue;
+                if (_slots[i].IsEmpty) continue;
+                if (_slots[i].LastItem.GetType().Name != item.GetType().Name) continue;
+                if (_slots[i].Count >= Slots[i].LastItem.MaxStackSize) continue;
 
-                Slots[i] = new Slot(item, Slots[i].Count + 1);
+                _slots[i] = new Slot(item, _slots[i].Count + 1);
                 OnChange?.Invoke();
                 return true;
             }
 
-            for (var i = 0; i < Slots.Count; i++)
+            for (var i = 0; i < _slots.Count; i++)
             {
-                if (!Slots[i].IsEmpty) continue;
+                if (!_slots[i].IsEmpty) continue;
 
-                Slots[i] = new Slot(item, 1);
+                _slots[i] = new Slot(item, 1);
                 OnChange?.Invoke();
                 return true;
             }

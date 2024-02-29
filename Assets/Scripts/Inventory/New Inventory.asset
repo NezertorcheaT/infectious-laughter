@@ -15,14 +15,14 @@ MonoBehaviour:
   maxCapacity: 6
   <_slots>k__BackingField:
   - _count: 0
-    _lastItem: {fileID: 0}
+    lastItem: {fileID: 0}
   - _count: 0
-    _lastItem: {fileID: 0}
+    lastItem: {fileID: 0}
   - _count: 0
-    _lastItem: {fileID: 0}
+    lastItem: {fileID: 0}
   - _count: 0
-    _lastItem: {fileID: 0}
+    lastItem: {fileID: 0}
   - _count: 0
-    _lastItem: {fileID: 0}
+    lastItem: {fileID: 0}
   - _count: 0
-    _lastItem: {fileID: 0}
+    lastItem: {fileID: 0}

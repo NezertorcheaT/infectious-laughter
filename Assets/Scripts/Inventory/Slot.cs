@@ -19,11 +19,11 @@ namespace Inventory
 
         public IItem LastItem
         {
-            get => _lastItem as IItem;
-            private set => _lastItem = value as ScriptableObject;
+            get => lastItem as IItem;
+            private set => lastItem = value.SelfRef;
         }
 
-        [SerializeField] private ScriptableObject _lastItem;
+        [SerializeField] private ScriptableObject lastItem;
 
         public void Use(Entity.Entity entity)
         {

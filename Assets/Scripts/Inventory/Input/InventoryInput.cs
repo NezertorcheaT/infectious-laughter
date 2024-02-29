@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Inventory.Input
 {
-    [AddComponentMenu("Entity/Abilities/Inventory")]
+    [AddComponentMenu("Entity/Abilities/Inventory Picking Ability")]
     public class InventoryInput : Ability
     {
         [SerializeField] private Inventory inventory;

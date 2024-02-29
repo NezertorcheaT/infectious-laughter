@@ -7,6 +7,7 @@ namespace Inventory
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public int MaxStackSize { get; private set; }
+        public ScriptableObject SelfRef => this;
 
         public Sprite Sprite => sprite;
 

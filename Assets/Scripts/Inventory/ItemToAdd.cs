@@ -10,11 +10,17 @@ namespace Inventory
     {
         [SerializeField] private InventoryInput input;
         [SerializeField] private ScriptableObject item;
+        [SerializeField] private LayerMask layer;
         [Inject] private Controls _actions;
 
         private void OnPickItem(InputAction.CallbackContext ctx)
         {
             if (Vector2.Distance(input.Entity.CachedTransform.position, transform.position) > input.MaxDistance) return;
+            var entityPosition = input.Entity.CachedTransform.position;
+            var substr = transform.position - entityPosition;
+            Debug.DrawRay(entityPosition, substr);
+
+            if (Physics2D.Raycast(entityPosition, substr.normalized, substr.magnitude, layer)) return;
             input.AddItem(item);
             Destroy(gameObject);
         }

@@ -9,26 +9,21 @@ namespace Inventory.UI
         [SerializeField] private Inventory inventory;
         [SerializeField] private HorizontalLayoutGroup inventoryBase;
         [SerializeField, Min(1)] private float imageSize;
-        private IInventory _inventory;
-        private bool _hasOnChange;
+        private IInventory _inventory => inventory as IInventory;
+
         private void Start()
         {
-            if (inventory is IInventory inv) _inventory = inv;
-            if (_inventory is not null && !_hasOnChange) _inventory.OnChange += UpdateGUI;
-            _hasOnChange = true;
             UpdateGUI();
         }
 
         private void OnEnable()
         {
-            if (_inventory is not null && !_hasOnChange) _inventory.OnChange += UpdateGUI;
-            _hasOnChange = true;
+            if (_inventory is not null) _inventory.OnChange += UpdateGUI;
         }
 
         private void OnDisable()
         {
-            if (_inventory is not null && _hasOnChange) _inventory.OnChange -= UpdateGUI;
-            _hasOnChange = false;
+            if (_inventory is not null) _inventory.OnChange -= UpdateGUI;
         }
 
         private void UpdateGUI()
@@ -37,6 +32,8 @@ namespace Inventory.UI
             {
                 Destroy(inventoryBase.transform.GetChild(i).gameObject);
             }
+
+            if (_inventory is null) return;
 
             foreach (var slot in _inventory.Slots)
             {
