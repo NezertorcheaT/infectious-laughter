@@ -297,34 +297,6 @@
             "id": "1f498cf4-da71-447e-82ca-3f0f2b70a91d",
             "actions": [],
             "bindings": []
-        },
-        {
-            "name": "Editor",
-            "id": "a2480a5a-9f54-4f30-a03f-a0b4d84fb706",
-            "actions": [
-                {
-                    "name": "MousePosition",
-                    "type": "Value",
-                    "id": "69b6e853-fa8e-4975-96ad-582cc83a5977",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "a761a507-dcc8-4428-bd38-e6837f16a099",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "MousePosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": [

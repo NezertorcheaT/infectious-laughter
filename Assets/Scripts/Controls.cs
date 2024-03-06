@@ -319,34 +319,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ""id"": ""1f498cf4-da71-447e-82ca-3f0f2b70a91d"",
             ""actions"": [],
             ""bindings"": []
-        },
-        {
-            ""name"": ""Editor"",
-            ""id"": ""a2480a5a-9f54-4f30-a03f-a0b4d84fb706"",
-            ""actions"": [
-                {
-                    ""name"": ""MousePosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""69b6e853-fa8e-4975-96ad-582cc83a5977"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""a761a507-dcc8-4428-bd38-e6837f16a099"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""MousePosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": [
@@ -390,9 +362,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_PickItem = m_Gameplay.FindAction("PickItem", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        // Editor
-        m_Editor = asset.FindActionMap("Editor", throwIfNotFound: true);
-        m_Editor_MousePosition = m_Editor.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -554,39 +523,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public MenuActions @Menu => new MenuActions(this);
-
-    // Editor
-    private readonly InputActionMap m_Editor;
-    private IEditorActions m_EditorActionsCallbackInterface;
-    private readonly InputAction m_Editor_MousePosition;
-    public struct EditorActions
-    {
-        private @Controls m_Wrapper;
-        public EditorActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MousePosition => m_Wrapper.m_Editor_MousePosition;
-        public InputActionMap Get() { return m_Wrapper.m_Editor; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(EditorActions set) { return set.Get(); }
-        public void SetCallbacks(IEditorActions instance)
-        {
-            if (m_Wrapper.m_EditorActionsCallbackInterface != null)
-            {
-                @MousePosition.started -= m_Wrapper.m_EditorActionsCallbackInterface.OnMousePosition;
-                @MousePosition.performed -= m_Wrapper.m_EditorActionsCallbackInterface.OnMousePosition;
-                @MousePosition.canceled -= m_Wrapper.m_EditorActionsCallbackInterface.OnMousePosition;
-            }
-            m_Wrapper.m_EditorActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @MousePosition.started += instance.OnMousePosition;
-                @MousePosition.performed += instance.OnMousePosition;
-                @MousePosition.canceled += instance.OnMousePosition;
-            }
-        }
-    }
-    public EditorActions @Editor => new EditorActions(this);
     private int m_PCSchemeIndex = -1;
     public InputControlScheme PCScheme
     {
@@ -617,9 +553,5 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     }
     public interface IMenuActions
     {
-    }
-    public interface IEditorActions
-    {
-        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

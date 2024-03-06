@@ -25,7 +25,7 @@ namespace Entity.Abilities
 
         public float JumpTime => jumpTime;
         public float JumpHeight => jumpHeight;
-        
+
         public override void Initialize()
         {
             base.Initialize();
@@ -37,7 +37,8 @@ namespace Entity.Abilities
         public void Jump()
         {
             if (!Available()) return;
-            if (!CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer, 0.1f)) return;
+            if (!CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
+                0.1f)) return;
             StartCoroutine(ForceJump());
         }
 
@@ -52,16 +53,24 @@ namespace Entity.Abilities
 
             for (t = 0; t < jumpTime; t += Time.fixedDeltaTime)
             {
+                while (!enabled)
+                {
+                    initialYPos = _rb.position.y - avFunc(t);
+                    yield return new WaitForFixedUpdate();
+                }
+
                 prev = (t - Time.fixedDeltaTime) / jumpTime;
                 if (t > jumpTime / 5f &&
-                    CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer, groundDistance,
+                    CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
+                        groundDistance,
                         groundDistance))
                 {
                     prev = (t - Time.fixedDeltaTime) / jumpTime;
                     break;
                 }
 
-                if (CheckTop(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer, groundDistance,
+                if (CheckTop(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
+                    groundDistance,
                     groundDistance) && t < whenMax)
                 {
                     var timesEquals = new List<float>(0);
@@ -96,7 +105,7 @@ namespace Entity.Abilities
                 (Vector3) collider.offset.Multiply(size) -
                 new Vector3(0, groundDistance / 2f / size.y + colliderOffset);
 
-            DrawBox(checkPosition, checkSize);
+            Helper.DrawBox(checkPosition, checkSize);
             return Physics2D.OverlapBoxAll(
                     checkPosition,
                     checkSize,
@@ -120,7 +129,7 @@ namespace Entity.Abilities
                 (Vector3) collider.offset.Multiply(size) +
                 new Vector3(0, groundDistance / 2f / size.y + colliderOffset);
 
-            DrawBox(checkPosition, checkSize);
+            Helper.DrawBox(checkPosition, checkSize);
             return Physics2D.OverlapBoxAll(
                     checkPosition,
                     checkSize,
@@ -128,25 +137,26 @@ namespace Entity.Abilities
                     groundLayer)
                 .Length > 0;
         }
-
-        private static void DrawBox(Vector2 point, Vector2 size)
-        {
-            Debug.DrawLine(point + new Vector2(size.x / 2f, size.y / 2f),
-                point + new Vector2(-size.x / 2f, size.y / 2f));
-            Debug.DrawLine(point + new Vector2(-size.x / 2f, size.y / 2f),
-                point + new Vector2(-size.x / 2f, -size.y / 2f));
-            Debug.DrawLine(point + new Vector2(-size.x / 2f, -size.y / 2f),
-                point + new Vector2(size.x / 2f, -size.y / 2f));
-            Debug.DrawLine(point + new Vector2(size.x / 2f, -size.y / 2f),
-                point + new Vector2(size.x / 2f, size.y / 2f));
-        }
     }
 }
 
-public static class Vectors
+public static class Helper
 {
     public static Vector2 Multiply(this Vector2 a, Vector2 b) => new Vector2(a.x * b.x, a.y * b.y);
     public static Vector3 Multiply(this Vector3 a, Vector3 b) => new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
     public static Vector2 Divide(this Vector2 a, Vector2 b) => new Vector2(a.x / b.x, a.y / b.y);
     public static Vector3 Divide(this Vector3 a, Vector3 b) => new Vector3(a.x / b.x, a.y / b.y, a.z / b.z);
+
+
+    public static void DrawBox(Vector2 point, Vector2 size)
+    {
+        Debug.DrawLine(point + new Vector2(size.x / 2f, size.y / 2f),
+            point + new Vector2(-size.x / 2f, size.y / 2f));
+        Debug.DrawLine(point + new Vector2(-size.x / 2f, size.y / 2f),
+            point + new Vector2(-size.x / 2f, -size.y / 2f));
+        Debug.DrawLine(point + new Vector2(-size.x / 2f, -size.y / 2f),
+            point + new Vector2(size.x / 2f, -size.y / 2f));
+        Debug.DrawLine(point + new Vector2(size.x / 2f, -size.y / 2f),
+            point + new Vector2(size.x / 2f, size.y / 2f));
+    }
 }
