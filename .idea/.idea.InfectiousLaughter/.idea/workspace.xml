@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Controls.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" afterDir="false" />
     </list>
@@ -81,7 +79,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHP.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementHorizontalMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/EntityAnimations.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" />
@@ -100,8 +97,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/InventoryUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Input/InventoryInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementDowning.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
       </list>
     </option>
   </component>
@@ -178,7 +176,8 @@
       <workItem from="1708704921300" duration="5740000" />
       <workItem from="1709234483265" duration="3003000" />
       <workItem from="1709672565163" duration="4546000" />
-      <workItem from="1709742927974" duration="1806000" />
+      <workItem from="1709742927974" duration="6224000" />
+      <workItem from="1710853523533" duration="4266000" />
     </task>
     <servers />
   </component>
