@@ -14,11 +14,17 @@ namespace Entity.Abilities
         [SerializeField, CurveRange(0, 0, 1, 1)]
         private AnimationCurve jumpCurve;
 
+        [Space(10.0f)]
         [SerializeField] private float jumpHeight = 5f;
         [SerializeField] private float jumpTime = 1f;
         [SerializeField] private float whenMax = 0.5f;
+        [Space(10.0f)]
         [SerializeField] private float groundDistance = 0.1f;
         [SerializeField] private LayerMask groundLayer;
+        [Space(10.0f)]
+        [SerializeField] private int jumpsCount = 1;
+        
+        private int curJumpsCount;
 
         private Rigidbody2D _rb;
         private Collider2D _col;
@@ -31,14 +37,22 @@ namespace Entity.Abilities
             base.Initialize();
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<Collider2D>();
+
+            curJumpsCount = jumpsCount;
         }
 
 
         public void Jump()
         {
             if (!Available()) return;
-            if (!CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
-                0.1f)) return;
+            if (curJumpsCount == 0)
+            {
+                if (!CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
+                    0.1f)) return;
+                else
+                    curJumpsCount = jumpsCount;
+            }
+            curJumpsCount--;
             StartCoroutine(ForceJump());
         }
 
