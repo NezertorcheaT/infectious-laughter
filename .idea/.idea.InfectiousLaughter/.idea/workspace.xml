@@ -22,7 +22,10 @@
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/UI.spriteatlas" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/UI.spriteatlas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,8 +98,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Input/InventoryInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementDowning.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
       </list>
     </option>
   </component>
@@ -175,8 +178,6 @@
       <workItem from="1709672565163" duration="4546000" />
       <workItem from="1709742927974" duration="6224000" />
       <workItem from="1710853523533" duration="4266000" />
-      <workItem from="1712262621125" duration="568000" />
-      <workItem from="1712937470085" duration="1504000" />
     </task>
     <servers />
   </component>
@@ -201,10 +202,6 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="249" key="Rider.ProjectTemplateDialog.Size" timestamp="1712939430827">
-      <screen x="0" y="0" width="1920" height="1034" />
-    </state>
-    <state x="552" y="249" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1034@0.0.1920.1034" timestamp="1712939430827" />
     <state x="780" y="191" key="RiderGenerateDialog" timestamp="1708349241135">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>

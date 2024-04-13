@@ -67,6 +67,7 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 1180460109, guid: d8451892259b2264b8a0109b299617b0, type: 3}
   - {fileID: 21300000, guid: 74c514638fb97294eaf85e8bd5a036e8, type: 3}
   - {fileID: 21300000, guid: 4e0b4ac32dcbd86418da74331831974d, type: 3}
   - {fileID: -1003030644, guid: 29ab535492dac1c49a28cd99b759cded, type: 3}
@@ -99,6 +100,8 @@ SpriteAtlas:
   - {fileID: 1226319234, guid: c619f0a5878bc54408954bccb04db833, type: 3}
   - {fileID: -1309896677, guid: c619f0a5878bc54408954bccb04db833, type: 3}
   - {fileID: 513682671, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: -1522308004, guid: 8bec63e53b2cf0047aa8ee1976860831, type: 3}
+  - {fileID: 1120971530, guid: 8bec63e53b2cf0047aa8ee1976860831, type: 3}
   - {fileID: -408845793, guid: 9e9c1776f1f0eb646ab71cef12d33f7e, type: 3}
   - {fileID: 1127371103, guid: 9e9c1776f1f0eb646ab71cef12d33f7e, type: 3}
   - {fileID: 21300000, guid: ec39c5c8fff1b594d869d5dbb4165fec, type: 3}
@@ -120,7 +123,14 @@ SpriteAtlas:
   - {fileID: -1870467879, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
   - {fileID: -171787832, guid: cceb9f1e54185974483bbb1a796edc7b, type: 3}
   - {fileID: 21300000, guid: 056445cea17e6a94abc2508cd36b96e6, type: 3}
+  - {fileID: 780274141, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+  - {fileID: -1371713247, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+  - {fileID: 1784657347, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+  - {fileID: -634011902, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+  - {fileID: -1441582017, guid: 16d1538fadb443b418de564b17eb0bca, type: 3}
+  - {fileID: -347914672, guid: 16d1538fadb443b418de564b17eb0bca, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Trash Count_0
   - Cursor 1
   - Using
   - Buttons On Off_1
@@ -153,6 +163,8 @@ SpriteAtlas:
   - spawn_0
   - spawn_3
   - spawn_2
+  - HP_0
+  - HP_1
   - Button_pull
   - Button_push
   - Game Name
@@ -174,6 +186,12 @@ SpriteAtlas:
   - Buttons On Off Animation_2
   - Store Stuff_0
   - Info
+  - Inv 0
+  - Inv 1
+  - Inv 2
+  - Inv 3
+  - HP Roots_1
+  - HP Roots_0
   m_RenderDataMap: {}
   m_Tag: UI
   m_IsVariant: 0
