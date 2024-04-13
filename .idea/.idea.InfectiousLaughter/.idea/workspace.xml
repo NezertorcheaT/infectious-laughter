@@ -20,12 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/UI.spriteatlas" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/UI.spriteatlas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,17 +53,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/Controller_Input.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_1DMove.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovement_Jump.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementHorisontalMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Ability.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrolingState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrollingstate.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JunpState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IAnimatableState.cs" />
@@ -85,8 +82,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/Inventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/IInventory.cs" />
@@ -100,6 +95,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/NewStateMachine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.uss" />
+        <option value="$PROJECT_DIR$/Assets/Editor/SplitView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
       </list>
     </option>
   </component>
@@ -178,6 +182,8 @@
       <workItem from="1709672565163" duration="4546000" />
       <workItem from="1709742927974" duration="6224000" />
       <workItem from="1710853523533" duration="4266000" />
+      <workItem from="1713029844419" duration="1169000" />
+      <workItem from="1713032194797" duration="5924000" />
     </task>
     <servers />
   </component>

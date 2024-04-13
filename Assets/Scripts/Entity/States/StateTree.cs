@@ -47,7 +47,7 @@ namespace Entity.States
         {
             var h = Hash(state);
             state.Id = h;
-            states.Add(new StateForList {id = h, state = state as State, nexts = new List<int>(0)});
+            states.Add(new StateForList {id = h, state = state, nexts = new List<int>(0)});
         }
 
         public bool TryConnect(int idA, int idB)
