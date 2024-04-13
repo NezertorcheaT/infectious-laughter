@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="Base" style="flex-direction: row; align-items: stretch; flex-shrink: 1; flex-grow: 1; flex-basis: 81px; justify-content: space-between; flex-wrap: nowrap; height: initial;">
+        <ui:VisualElement name="LeftPanel" style="width: 150px; border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 7px; border-bottom-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-left-color: rgba(0, 0, 0, 0.12); border-right-color: rgba(0, 0, 0, 0.12); border-top-color: rgba(0, 0, 0, 0.12); border-bottom-color: rgba(0, 0, 0, 0.12); margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; justify-content: flex-start; flex-wrap: nowrap; flex-direction: column; height: initial; flex-grow: 0; flex-shrink: 0;">
+            <ui:DropdownField label="Trees" index="-1" name="Trees" style="flex-direction: column;" />
+            <ui:DropdownField label="States" name="States" index="-1" style="flex-direction: column;" />
+            <ui:Button text="Add State" display-tooltip-when-elided="true" name="AddState" style="flex-direction: column; align-items: stretch; justify-content: flex-start; -unity-text-align: middle-left;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Nodes" style="width: 514px; flex-grow: 1;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" style="align-items: center; justify-content: space-around; top: 77px; left: 34px; position: absolute; height: 130px; width: 193px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
