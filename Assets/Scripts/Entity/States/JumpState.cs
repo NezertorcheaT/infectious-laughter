@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Entity.States
 {
     [CreateAssetMenu(fileName = "Jump State", menuName = "States/Jump State", order = 0)]
-    public class JumpState : State
+    public class JumpState : State,IOneExitState
     {
-        public override string Name => "JumpState";
+        public override string Name => "Jump";
 
         public override int Id { get; set; }
 

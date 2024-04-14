@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Entity.States
 {
     [CreateAssetMenu(fileName = "Initial State", menuName = "States/Initial State", order = 0)]
-    public class InitialState : State
+    public class InitialState : State,IOneExitState
     {
-        public override string Name => "InitialState";
+        public override string Name => "Root";
 
         public override int Id { get; set; }
 

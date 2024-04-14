@@ -8,7 +8,7 @@ namespace Entity.States
     public abstract class State : ScriptableObject
     {
         /// <summary>
-        /// бесполезно, пока я эдитор не сделаю
+        /// имя для редактора
         /// </summary>
         public abstract string Name { get; }
 
@@ -28,5 +28,10 @@ namespace Entity.States
         /// <param name="previous">предыдущее состояние, хз может нужно кому</param>
         /// <returns>должен вернуть номер следующего в массиве следующих состояний</returns>
         public abstract Task<int> Activate(Entity entity, State previous);
+    }
+
+    public interface IOneExitState
+    {
+        
     }
 }

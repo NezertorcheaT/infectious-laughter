@@ -1076,6 +1076,7 @@
               <e p="Patrollingstate.cs" t="Include" />
               <e p="State.cs" t="Include" />
               <e p="StateTree.cs" t="Include" />
+              <e p="WaitState.cs" t="Include" />
             </e>
           </e>
           <e p="Installers" t="Include">

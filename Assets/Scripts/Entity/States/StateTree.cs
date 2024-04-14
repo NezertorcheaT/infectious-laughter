@@ -51,11 +51,12 @@ namespace Entity.States
         private static bool Contains<T>(T[] where, T that) => Contains(where.AsEnumerable(), that);
         private static bool Contains<T>(List<T> where, T that) => Contains(where.AsEnumerable(), that);
 
-        public void AddState(State state)
+        public int AddState(State state)
         {
             var h = Hash(state);
             state.Id = h;
             states.Add(new StateForList {id = h, state = state, nexts = new List<int>(0)});
+            return h;
         }
 
         public bool TryConnect(int idA, int idB)

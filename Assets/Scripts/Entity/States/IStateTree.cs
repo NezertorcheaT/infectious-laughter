@@ -15,7 +15,8 @@ namespace Entity.States
         /// добавить состояние в общий пул
         /// </summary>
         /// <param name="state">состояние</param>
-        void AddState(State state);
+        /// <returns>айиншик нового состояния</returns>
+        int AddState(State state);
 
         /// <summary>
         /// попытаться соеденить два состояния

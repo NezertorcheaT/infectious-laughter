@@ -27,6 +27,7 @@ namespace Editor
         private List<NodeElement> _nodeElements;
         private StateTreeView _stateTreeView;
         private InspectorView _inspectorView;
+        private Label _stateTreeLabel;
 
         [MenuItem("Window/State Machine Window")]
         public static void ShowExample()
@@ -44,12 +45,13 @@ namespace Editor
             var ui = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/StateMachine.uxml");
 
             ui.CloneTree(rootVisualElement);
-            
+
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/StateMachine.uss");
             rootVisualElement.styleSheets.Add(styleSheet);
 
             _stateTreeView = rootVisualElement.Q<StateTreeView>();
             _inspectorView = rootVisualElement.Q<InspectorView>();
+            _stateTreeLabel = rootVisualElement.Q<Label>("GraphViewName");
 
             OnSelectionChange();
         }
@@ -58,6 +60,7 @@ namespace Editor
         {
             if (Selection.activeObject is IStateTree tree)
             {
+                _stateTreeLabel.text = $"Graph view of \"{(tree as ScriptableObject)?.name}\"";
                 _stateTreeView.PopulateTree(tree);
             }
         }
@@ -77,6 +80,5 @@ namespace Editor
             _statesPaths = _statesPaths.Select(AssetDatabase.GUIDToAssetPath).ToArray();
             _states = _statesPaths.Select(AssetDatabase.LoadAssetAtPath<State>).ToArray();
         }
-
     }
 }

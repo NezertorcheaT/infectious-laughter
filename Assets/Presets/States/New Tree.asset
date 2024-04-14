@@ -16,4 +16,8 @@ MonoBehaviour:
   - id: 0
     position: {x: 0, y: 0}
     state: {fileID: 11400000, guid: 4c0c8f86bb97e5a40afdf4c71f78e669, type: 2}
+    nexts: b34a26af
+  - id: -1356445005
+    position: {x: 235.09755, y: -0.000015258789}
+    state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
     nexts: 
