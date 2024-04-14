@@ -33,14 +33,20 @@ namespace Editor
         public void PopulateTree(IStateTree tree)
         {
             _tree = tree;
-            
+
             graphViewChanged -= OnGraphViewChanged;
             DeleteElements(graphElements);
             graphViewChanged += OnGraphViewChanged;
-            
+
             foreach (var id in tree.States.Keys)
             {
-                CreateNodeView(tree.GetState(id));
+                CreateNodeView(new StateTree.StateForList
+                {
+                    id = id, 
+                    nexts = tree.GetNextsTo(id).Select(state => state.Id).ToList(), 
+                    state = tree.GetState(id),
+                    position = ((IPositionableStateTree) tree).GetPosition(id)
+                });
             }
         }
 
@@ -52,10 +58,11 @@ namespace Editor
                 {
                     if (element is StateNodeView nodeView)
                     {
-                        _tree.TryRemoveState(nodeView.State.Id);
+                        _tree.TryRemoveState(nodeView.State.id);
                     }
                 }
             }
+
             return graphViewChange;
         }
 
@@ -72,17 +79,21 @@ namespace Editor
         void CreateNode(Type type)
         {
             Debug.Log(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets($"t:{type.Name}").First()));
-            Debug.Log(AssetDatabase.LoadAssetAtPath<State>(AssetDatabase.FindAssets($"t:{type.Name}").Select(AssetDatabase.GUIDToAssetPath).First()));
-            Debug.Log(AssetDatabase.LoadAssetAtPath<State>(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets($"t:{type.Name}").First())));
-            Debug.Log(AssetDatabase.LoadAssetAtPath(AssetDatabase.FindAssets($"t:{type.Name}").Select(AssetDatabase.GUIDToAssetPath).First(),type) as State);
-            
+            Debug.Log(AssetDatabase.LoadAssetAtPath<State>(AssetDatabase.FindAssets($"t:{type.Name}")
+                .Select(AssetDatabase.GUIDToAssetPath).First()));
+            Debug.Log(AssetDatabase.LoadAssetAtPath<State>(
+                AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets($"t:{type.Name}").First())));
+            Debug.Log(AssetDatabase.LoadAssetAtPath(
+                AssetDatabase.FindAssets($"t:{type.Name}").Select(AssetDatabase.GUIDToAssetPath).First(),
+                type) as State);
+
             _tree.AddState(AssetDatabase.LoadAssetAtPath(AssetDatabase.FindAssets($"t:{type.Name}")
-                .Select(AssetDatabase.GUIDToAssetPath).First(),type) as State);
+                .Select(AssetDatabase.GUIDToAssetPath).First(), type) as State);
         }
 
-        void CreateNodeView(State state)
+        void CreateNodeView(StateTree.StateForList state)
         {
-            var nodeView = new StateNodeView(state);
+            var nodeView = new StateNodeView(state, _tree as IPositionableStateTree);
             AddElement(nodeView);
         }
     }

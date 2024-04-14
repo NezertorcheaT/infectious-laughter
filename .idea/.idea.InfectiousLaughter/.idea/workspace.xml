@@ -20,13 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/UI.spriteatlas" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/UI.spriteatlas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,10 +96,10 @@
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.uss" />
         <option value="$PROJECT_DIR$/Assets/Editor/SplitView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
       </list>
     </option>
   </component>
@@ -183,7 +179,8 @@
       <workItem from="1709742927974" duration="6224000" />
       <workItem from="1710853523533" duration="4266000" />
       <workItem from="1713029844419" duration="1169000" />
-      <workItem from="1713032194797" duration="5924000" />
+      <workItem from="1713032194797" duration="6321000" />
+      <workItem from="1713087847971" duration="1585000" />
     </task>
     <servers />
   </component>

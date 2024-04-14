@@ -5,8 +5,15 @@ using UnityEngine;
 
 namespace Entity.States
 {
+    public interface IPositionableStateTree
+    {
+        bool TrySetPosition(int id, Vector2 position);
+        Vector2 GetPosition(int id);
+        bool TryGetPosition(int id, ref Vector2 position);
+    }
+
     [CreateAssetMenu(fileName = "New State Tree", menuName = "States/State Tree", order = 0)]
-    public class StateTree : ScriptableObject, IStateTree
+    public class StateTree : ScriptableObject, IStateTree, IPositionableStateTree
     {
         [SerializeField] private List<StateForList> states;
 
@@ -14,6 +21,7 @@ namespace Entity.States
         public struct StateForList
         {
             public int id;
+            public Vector2 position;
             public State state;
             public List<int> nexts;
         }
@@ -101,7 +109,7 @@ namespace Entity.States
             for (var i = 0; i < states.Count; i++)
             {
                 if (states[i].id != id) continue;
-                (states[i].state as State).Id = -1;
+                states[i].state.Id = -1;
                 states.RemoveAt(i);
                 return true;
             }
@@ -118,12 +126,46 @@ namespace Entity.States
             return true;
         }
 
+        public bool TryGetPosition(int id, ref Vector2 position)
+        {
+            if (!IsIdValid(id)) return false;
+            position = GetPosition(id);
+            return true;
+        }
+
         public State GetState(int id)
         {
             var a = SflAtID(id)?.state;
             if (!a) return null;
             a.Id = id;
             return a;
+        }
+
+        public Vector2 GetPosition(int id)
+        {
+            var a = SflAtID(id);
+            if (!a.HasValue) return Vector2.zero;
+            a.Value.state.Id = id;
+            return a.Value.position;
+        }
+
+        public bool TrySetPosition(int id, Vector2 position)
+        {
+            if (!IsIdValid(id)) return false;
+            for (var i = 0; i < states.Count; i++)
+            {
+                if (states[i].id != id) continue;
+                states[i] = new StateForList
+                {
+                    id = states[i].id,
+                    nexts = states[i].nexts,
+                    position = position,
+                    state = states[i].state
+                };
+                return true;
+            }
+
+            return false;
         }
 
         public State[] GetNextsTo(int id)
