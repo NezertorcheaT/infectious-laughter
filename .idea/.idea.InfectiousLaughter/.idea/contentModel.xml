@@ -10,7 +10,6 @@
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
           <e p="InspectorView.cs" t="Include" />
-          <e p="NodeElement.cs" t="Include" />
           <e p="SplitView.cs" t="Include" />
           <e p="StateMachine.cs" t="Include" />
           <e p="StateMachine.uss" t="Include" />
@@ -1071,7 +1070,9 @@
             <e p="Entity.cs" t="Include" />
             <e p="States" t="Include">
               <e p="InitialState.cs" t="Include" />
+              <e p="IPositionableStateTree.cs" t="Include" />
               <e p="IStateTree.cs" t="Include" />
+              <e p="IUpdatableAssetStateTree.cs" t="Include" />
               <e p="JumpState.cs" t="Include" />
               <e p="Patrollingstate.cs" t="Include" />
               <e p="State.cs" t="Include" />

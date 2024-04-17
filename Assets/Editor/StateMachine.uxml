@@ -6,6 +6,9 @@
         </ui:VisualElement>
         <ui:VisualElement name="RightPanel">
             <ui:Label text="Graph View" display-tooltip-when-elided="true" name="GraphViewName" style="background-color: rgb(37, 37, 37);" />
+            <uie:Toolbar>
+                <uie:ToolbarButton text="Save File" display-tooltip-when-elided="true" name="SaveButton" />
+            </uie:Toolbar>
             <Editor.StateTreeView focusable="true" style="flex-grow: 1;" />
         </ui:VisualElement>
     </SplitView>

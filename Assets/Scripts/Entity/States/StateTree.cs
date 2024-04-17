@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Entity.States
 {
-    public interface IPositionableStateTree
-    {
-        bool TrySetPosition(int id, Vector2 position);
-        Vector2 GetPosition(int id);
-        bool TryGetPosition(int id, ref Vector2 position);
-    }
-
     [CreateAssetMenu(fileName = "New State Tree", menuName = "States/State Tree", order = 0)]
-    public class StateTree : ScriptableObject, IStateTree, IPositionableStateTree
+    public class StateTree : ScriptableObject, IPositionableStateTree, IUpdatableAssetStateTree
     {
         [SerializeField] private List<StateForList> states;
 
@@ -56,6 +50,8 @@ namespace Entity.States
             var h = Hash(state);
             state.Id = h;
             states.Add(new StateForList {id = h, state = state, nexts = new List<int>(0)});
+
+            Unsaved = true;
             return h;
         }
 
@@ -65,6 +61,7 @@ namespace Entity.States
 
             SflAtID(idA).Value.nexts.Add(idB);
 
+            Unsaved = true;
             return true;
         }
 
@@ -74,6 +71,7 @@ namespace Entity.States
 
             SflAtID(idA).Value.nexts.Remove(idB);
 
+            Unsaved = true;
             return true;
         }
 
@@ -87,6 +85,7 @@ namespace Entity.States
                 SflAtID(Id).Value.nexts.Remove(id);
             }
 
+            Unsaved = true;
             return true;
         }
 
@@ -112,6 +111,7 @@ namespace Entity.States
                 if (states[i].id != id) continue;
                 states[i].state.Id = -1;
                 states.RemoveAt(i);
+                Unsaved = true;
                 return true;
             }
 
@@ -163,10 +163,27 @@ namespace Entity.States
                     position = position,
                     state = states[i].state
                 };
+                Unsaved = true;
                 return true;
             }
 
             return false;
+        }
+
+        [SerializeField] private bool unsaved;
+
+        public bool Unsaved
+        {
+            get => unsaved;
+            private set => unsaved = value;
+        }
+
+        public void UpdateAsset()
+        {
+            Unsaved = false;
+            AssetDatabase.Refresh();
+            EditorUtility.SetDirty(this);
+            AssetDatabase.SaveAssets();
         }
 
         public State[] GetNextsTo(int id)
