@@ -1088,10 +1088,12 @@
           </e>
           <e p="Inventory" t="Include">
             <e p="IInventory.cs" t="Include" />
+            <e p="IItem.cs" t="Include" />
             <e p="Input" t="Include">
               <e p="InventoryInput.cs" t="Include" />
             </e>
             <e p="Inventory.cs" t="Include" />
+            <e p="ISlot.cs" t="Include" />
             <e p="Items" t="Include">
               <e p="FooItem.cs" t="Include" />
             </e>

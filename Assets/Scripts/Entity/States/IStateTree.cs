@@ -2,6 +2,11 @@
 
 namespace Entity.States
 {
+    /// <summary>
+    /// ДЕРЕВОООООО<br />
+    /// АХУЕЕЕЕЕТЬ<br /> <br />
+    /// кароч сборник стейтов для <c>ControllerAI</c>
+    /// </summary>
     public interface IStateTree
     {
         /// <summary>

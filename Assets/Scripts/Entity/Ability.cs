@@ -2,15 +2,39 @@ using UnityEngine;
 
 namespace Entity
 {
-    public abstract class Ability : MonoBehaviour
+    /// <summary>
+    /// ну значт способность<br />
+    /// дохуя раз вешается рядом с ентити
+    /// </summary>
+    public abstract class Ability : MonoBehaviour, IInitializeByEntity
     {
+        /// <summary>
+        /// ссылочка на контролируемую сущность
+        /// </summary>
         public Entity Entity { get; private set; }
 
         // Нужно для активации галочки выключения скрипта в инспекторе
-        protected virtual void Start() { }
+        protected virtual void Start()
+        {
+        }
 
         public virtual void Initialize() => Entity = GetComponent<Entity>();
 
+        /// <summary>
+        /// бесполезная хуйня
+        /// </summary>
+        /// <returns>аналог <code>isActiveAndEnabled</code></returns>
         public virtual bool Available() => isActiveAndEnabled;
+
+        bool IInitializeByEntity.Initialized
+        {
+            get => IsInitialized;
+            set => IsInitialized = value;
+        }
+
+        /// <summary>
+        /// готово ли к запуску
+        /// </summary>
+        public bool IsInitialized { get; private set; }
     }
 }

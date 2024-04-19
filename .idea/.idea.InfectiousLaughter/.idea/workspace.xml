@@ -20,7 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Ability.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/EntityAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/EntityAnimations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/IAnimatableState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/IAnimatableState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTreeWithEdits.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTreeWithEdits.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IUpdatableAssetStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IUpdatableAssetStateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/IInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/IInventory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +65,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrolingState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrollingstate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JunpState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IAnimatableState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityAnimation/фыы.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityAnimation/IAnimatableState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityAnimation/EntityMovementCrouch.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityAnimation/EntityAnimations.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityMovement/EntityMovementCrouch.cs" />
@@ -66,15 +73,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/EntityControllers/ControllerInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Installers/ControlsInstaller.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/IAnimatableState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHP.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementHorizontalMove.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/EntityAnimations.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHp.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/Inventory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/IInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/FooItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Slot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" />
@@ -88,20 +91,31 @@
         <option value="$PROJECT_DIR$/Assets/Editor/NewStateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/SplitView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/ScriptTemplates.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.uss" />
         <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Ability.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IUpdatableAssetStateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTreeWithEdits.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/EntityAnimations.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/IAnimatableState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/IInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/IItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ISlot.cs" />
       </list>
     </option>
   </component>
@@ -187,7 +201,8 @@
       <workItem from="1713296083748" duration="3019000" />
       <workItem from="1713372939004" duration="5043000" />
       <workItem from="1713379915022" duration="833000" />
-      <workItem from="1713536572771" duration="8176000" />
+      <workItem from="1713536572771" duration="8384000" />
+      <workItem from="1713556053243" duration="4506000" />
     </task>
     <servers />
   </component>
@@ -220,10 +235,10 @@
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state x="695" y="195" key="SettingsEditor/0.0.1920.1034@0.0.1920.1034" timestamp="1713376686353" />
-    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog" timestamp="1708174084548">
+    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog" timestamp="1713559167422">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1708174084548" />
+    <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1713559167422" />
     <state x="607" y="221" width="705" height="592" key="find.popup" timestamp="1707165751629">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>

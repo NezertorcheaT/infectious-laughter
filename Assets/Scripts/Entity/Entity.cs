@@ -6,26 +6,49 @@ using UnityEngine;
 
 namespace Entity
 {
+    /// <summary>
+    /// кароч это энтити, используется как база для сущности<br />
+    /// на неё будут навешиваться всякие хуйни типа коньтроллеров и способностей<br />
+    /// коньтроллер (<c>Controller</c>) может быть только один, а вот способностей (<c>Ability</c>) сколько душе угодно
+    /// </summary>
     [AddComponentMenu("Entity/Entity")]
     public class Entity : MonoBehaviour
     {
         [Header("Controller")] [SerializeField]
         protected bool AutoFindController = true;
 
+        /// <summary>
+        /// эээ ну контроллер, он контролирует
+        /// </summary>
         [field: SerializeField, HideIf(nameof(AutoFindController))]
         public Controller Controller { get; protected set; }
 
         [Header("Abilities")] [SerializeField] protected bool AutoFindAbilities = true;
 
+        /// <summary>
+        /// эта кароч массивчик способностей
+        /// </summary>
         [field: SerializeField, HideIf(nameof(AutoFindAbilities))]
         public Ability[] Abilities { get; protected set; }
 
-        // Кэшируем все апдейты для того чтобы на каждую энтитюху вызывался только один апдейт каждого вида и мы получили парочку фпс
+        /// <summary>
+        /// Кэшируем все апдейты для того чтобы на каждую энтитюху вызывался только один апдейт каждого вида и мы получили парочку фпс
+        /// </summary>
         public event Action OnUpdate;
+
+        /// <summary>
+        /// Кэшируем все апдейты для того чтобы на каждую энтитюху вызывался только один апдейт каждого вида и мы получили парочку фпс
+        /// </summary>
         public event Action OnFixedUpdate;
+
+        /// <summary>
+        /// Кэшируем все апдейты для того чтобы на каждую энтитюху вызывался только один апдейт каждого вида и мы получили парочку фпс
+        /// </summary>
         public event Action OnLateUpdate;
 
-        // Ахахахвахва, я кешировал трансформ! Ухахаха
+        /// <summary>
+        /// Ахахахвахва, я кешировал трансформ! Ухахаха
+        /// </summary>
         public Transform CachedTransform { get; protected set; }
 
 
@@ -34,6 +57,10 @@ namespace Entity
         /// </summary>
         protected virtual void Awake() => Initialize();
 
+        /// <summary>
+        /// ну типа инициализация<br />
+        /// нахождение контроллеров и способностей
+        /// </summary>
         protected virtual void Initialize()
         {
             if (Controller == null || AutoFindController) Controller = GetComponent<Controller>();
@@ -52,8 +79,18 @@ namespace Entity
         private void FixedUpdate() => OnFixedUpdate?.Invoke();
         private void LateUpdate() => OnLateUpdate?.Invoke();
 
+        /// <summary>
+        /// ищем значт одну способность конкретного типа
+        /// </summary>
+        /// <typeparam name="T">тип способности</typeparam>
+        /// <returns>способность этого типа</returns>
         public T FindAbilityByType<T>() where T : Ability => FindAbilitiesByType<T>().FirstOrDefault();
 
+        /// <summary>
+        /// ищем значт все способности конкретного типа
+        /// </summary>
+        /// <typeparam name="T">тип способностей</typeparam>
+        /// <returns>массивчик способностей этого типа</returns>
         public IEnumerable<T> FindAbilitiesByType<T>() where T : Ability
         {
             foreach (var ability in Abilities)

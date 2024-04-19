@@ -1,0 +1,39 @@
+﻿using UnityEngine;
+
+namespace Inventory
+{
+    /// <summary>
+    /// это предмет для инвентаря
+    /// </summary>
+    public interface IItem
+    {
+        /// <summary>
+        /// ссылка на самого себя
+        /// </summary>
+        ScriptableObject SelfRef{ get; }
+        /// <summary>
+        /// отображаемое имя предмета
+        /// </summary>
+        string Name { get; }
+        /// <summary>
+        /// максимальное колличество в стаке
+        /// </summary>
+        int MaxStackSize { get; }
+        /// <summary>
+        /// спрайт для отрисовки
+        /// </summary>
+        Sprite Sprite { get; }
+    }
+
+    /// <summary>
+    /// предмет, который можно использовать
+    /// </summary>
+    public interface IUsableItem : IItem
+    {
+        /// <summary>
+        /// использовать предмет
+        /// </summary>
+        /// <param name="entity">сущность куда</param>
+        void Use(Entity.Entity entity);
+    }
+}

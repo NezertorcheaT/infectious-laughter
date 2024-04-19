@@ -4,12 +4,16 @@ using UnityEngine;
 
 namespace Entity.Animation
 {
+    /// <summary>
+    /// без него не будут работать все состояния реализующие IAnimatableState
+    /// вешать как способность
+    /// </summary>
     [RequireComponent(typeof(Animator))]
     [Tooltip("без него не будут работать все состояния реализующие IAnimatableState")]
     [AddComponentMenu("Entity/Abilities/States Animation Ability")]
     public class EntityAnimations : Ability
     {
-        [Tooltip("обязателен для работы")] [SerializeField]
+        [Tooltip("обязателен для работы"), SerializeField]
         private Animator animator;
 
 

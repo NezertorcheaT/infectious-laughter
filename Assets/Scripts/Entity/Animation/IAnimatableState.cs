@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Entity.Animation
 {
+    /// <summary>
+    /// это интерфейс для состояния<br />
+    /// он позволяет использовать анимации в стейтах<br />
+    /// </summary>
     public interface IAnimatableState
     {
         /// <summary>
