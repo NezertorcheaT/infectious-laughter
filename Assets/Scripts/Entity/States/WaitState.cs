@@ -23,6 +23,7 @@ namespace Entity.States
         Type IEditableState.GetTypeOfEdit() => typeof(Edit);
 
         [Serializable]
+        [CreateAssetMenu(fileName = "Wait Edit", menuName = "States/Edits/Wait Edit", order = 0)]
         private class Edit : IEditableState.Properties
         {
             public float time;

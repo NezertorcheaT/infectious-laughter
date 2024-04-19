@@ -44,6 +44,7 @@ namespace Entity.States
         Type IEditableState.GetTypeOfEdit() => typeof(Edit);
 
         [Serializable]
+        [CreateAssetMenu(fileName = "Patrolling Edit", menuName = "States/Edits/Patrolling Edit", order = 0)]
         private class Edit : IEditableState.Properties
         {
             public float rayDistance;

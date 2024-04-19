@@ -61,14 +61,21 @@ namespace Entity.States
             states.Add(new StateForList {id = h, state = state, nexts = new List<int>(0)});
             if (state is IEditableState editableState)
             {
-                var edit = CreateInstance(editableState.GetTypeOfEdit()) as IEditableState.Properties;
-                AssetDatabase.AddObjectToAsset(edit, this);
-                edits.Add(new EditForList {id = h, edit = edit});
+                edits.Add(new EditForList {id = h, edit = CreateEdit(editableState.GetTypeOfEdit(), h, state)});
             }
 
             Unsaved = true;
             UpdateAsset();
             return h;
+        }
+
+        private IEditableState.Properties CreateEdit(Type type, int id, State state)
+        {
+            var edit = CreateInstance(type) as IEditableState.Properties;
+            edit.name = $"Properies({state.Name.Replace(" ", "")}.{type.Name}) of State({id}) of Tree(\"{name}\")";
+            //AssetDatabase.CreateAsset(edit, AssetDatabase.GenerateUniqueAssetPath($"Assets/Presets/{type.Name + id + name}.asset"));
+            AssetDatabase.AddObjectToAsset(edit, this);
+            return edit;
         }
 
         public bool TryConnect(int idA, int idB)
