@@ -7,9 +7,10 @@ using UnityEngine;
 namespace Entity.States
 {
     [CreateAssetMenu(fileName = "New State Tree", menuName = "States/State Tree", order = 0)]
-    public class StateTree : ScriptableObject, IPositionableStateTree, IUpdatableAssetStateTree
+    public class StateTree : ScriptableObject, IPositionableStateTree, IUpdatableAssetStateTree, IStateTreeWithEdits
     {
         [SerializeField] private List<StateForList> states;
+        [SerializeField] private List<EditForList> edits;
 
         [Serializable]
         public struct StateForList
@@ -18,6 +19,14 @@ namespace Entity.States
             public Vector2 position;
             public State state;
             public List<int> nexts;
+            public Type Edit => (state as IEditableState)?.GetTypeOfEdit();
+        }
+
+        [Serializable]
+        public struct EditForList
+        {
+            public int id;
+            public IEditableState.Properties edit;
         }
 
         public int Hash(State state)
@@ -50,8 +59,15 @@ namespace Entity.States
             var h = Hash(state);
             state.Id = h;
             states.Add(new StateForList {id = h, state = state, nexts = new List<int>(0)});
+            if (state is IEditableState editableState)
+            {
+                var edit = CreateInstance(editableState.GetTypeOfEdit()) as IEditableState.Properties;
+                AssetDatabase.AddObjectToAsset(edit, this);
+                edits.Add(new EditForList {id = h, edit = edit});
+            }
 
             Unsaved = true;
+            UpdateAsset();
             return h;
         }
 
@@ -110,8 +126,21 @@ namespace Entity.States
             {
                 if (states[i].id != id) continue;
                 states[i].state.Id = -1;
+
+                if (states[i].state is IEditableState)
+                {
+                    for (var j = 0; j < edits.Count; j++)
+                    {
+                        if (edits[j].id != id) continue;
+                        DestroyImmediate(edits[j].edit, true);
+                        edits.RemoveAt(j);
+                        break;
+                    }
+                }
+
                 states.RemoveAt(i);
                 Unsaved = true;
+                UpdateAsset();
                 return true;
             }
 
@@ -239,5 +268,25 @@ namespace Entity.States
         }
 
         public Dictionary<int, State> States => states.ToDictionary(item => item.id, item => item.state);
+
+
+        public bool TryGetEdit(int id, ref IEditableState.Properties edit)
+        {
+            State state = null;
+            if (!TryGetState(id, ref state)) return false;
+            if (state is not IEditableState) return false;
+            edit = GetEdit(id);
+            return true;
+        }
+
+        public IEditableState.Properties GetEdit(int id)
+        {
+            foreach (var edit in edits)
+            {
+                if (edit.id == id) return edit.edit;
+            }
+
+            throw new ArgumentException("Id is invalid");
+        }
     }
 }

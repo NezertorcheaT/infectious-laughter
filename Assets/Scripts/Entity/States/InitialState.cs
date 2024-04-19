@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Entity.States
@@ -10,6 +11,6 @@ namespace Entity.States
 
         public override int Id { get; set; }
 
-        public override async Task<int> Activate(Entity entity, State previous) => 0;
+        public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties) => 0;
     }
 }

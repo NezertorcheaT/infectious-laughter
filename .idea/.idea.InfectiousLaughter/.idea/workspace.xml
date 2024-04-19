@@ -20,22 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IUpdatableAssetStateTree.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IUpdatableAssetStateTree.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/ScriptTemplates.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/ScriptTemplates.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Controls.inputactions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/New Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/States/New Tree.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/New Tree.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/New Tree.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +52,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/ec/0a30fd5f/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/8c/3d9e33e1/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7114F06D-16F1-436A-B84F-F423F37F3652/c6/b6b0f5f5/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/11D97693-183D-4A6B-B35C-29AE7882C66B/8a/7741e2fb/EditorWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759E14D-EF7C-40B6-8C65-7C638E8A0434/3e/d22f0d57/MeshGenerationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8759E14D-EF7C-40B6-8C65-7C638E8A0434/40/471fd236/TextElement.cs" root0="SKIP_HIGHLIGHTING" />
@@ -58,13 +65,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4746C126-B0B5-4F3B-8348-45974D1A9190/0d/13af831a/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Installers/ControlsInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7114F06D-16F1-436A-B84F-F423F37F3652/a3/f35eabc3/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/105DA115-9EC9-496A-B931-0694C7B11DD2/72/48e3cdd8/List`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrolingState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/Patrollingstate.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IState.cs" />
@@ -84,7 +90,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHP.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementHorizontalMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Animation/EntityAnimations.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityHp.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NodeElement.cs" />
@@ -101,19 +106,22 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NewStateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.uss" />
         <option value="$PROJECT_DIR$/Assets/Editor/SplitView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/ScriptTemplates.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.uss" />
+        <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
       </list>
     </option>
   </component>
@@ -133,7 +141,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -197,7 +205,9 @@
       <workItem from="1713087847971" duration="6705000" />
       <workItem from="1713294571374" duration="692000" />
       <workItem from="1713296083748" duration="3019000" />
-      <workItem from="1713372939004" duration="1018000" />
+      <workItem from="1713372939004" duration="5043000" />
+      <workItem from="1713379915022" duration="833000" />
+      <workItem from="1713536572771" duration="8021000" />
     </task>
     <servers />
   </component>
@@ -222,10 +232,14 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="780" y="191" key="RiderGenerateDialog" timestamp="1708349241135">
+    <state x="780" y="191" key="RiderGenerateDialog" timestamp="1713375245308">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="780" y="191" key="RiderGenerateDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1708349241135" />
+    <state x="780" y="191" key="RiderGenerateDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1713375245308" />
+    <state x="695" y="195" key="SettingsEditor" timestamp="1713376686353">
+      <screen x="0" y="0" width="1920" height="1034" />
+    </state>
+    <state x="695" y="195" key="SettingsEditor/0.0.1920.1034@0.0.1920.1034" timestamp="1713376686353" />
     <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog" timestamp="1708174084548">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>

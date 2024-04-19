@@ -1,4 +1,3 @@
-using System;
 using Entity.States;
 using UnityEditor;
 using UnityEditor.UIElements;
@@ -59,6 +58,7 @@ namespace Editor
                 _treeLabelText = $"Nodes of \"{(_tree as ScriptableObject)?.name}\"";
                 OnInspectorUpdate();
                 _stateTreeView.PopulateTree(tree);
+                _stateTreeView.OnStateSelected += a => _inspectorView.InitializeState(a.State, a.Tree);
                 return;
             }
 

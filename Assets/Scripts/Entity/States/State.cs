@@ -15,23 +15,19 @@ namespace Entity.States
         /// <summary>
         /// не менять пж
         /// </summary>
-        public abstract int Id
-        {
-            get;
-            set;
-        }
+        public abstract int Id { get; set; }
 
         /// <summary>
-        /// асинхронный метод собственно действия
+        /// асинхронный метод действия
         /// </summary>
         /// <param name="entity">над кем будет действие произведено</param>
         /// <param name="previous">предыдущее состояние, хз может нужно кому</param>
-        /// <returns>должен вернуть номер следующего в массиве следующих состояний</returns>
-        public abstract Task<int> Activate(Entity entity, State previous);
+        /// <param name="properties">эта кароч типа аргуметы дерева</param>
+        /// <returns>должен вернуть номер следующего в массиве следующих состояний, НЕ АЙДИ</returns>
+        public abstract Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties);
     }
 
     public interface IOneExitState
     {
-        
     }
 }

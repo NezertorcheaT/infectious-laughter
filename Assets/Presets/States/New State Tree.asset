@@ -1,6 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1052723341816336293
+--- !u!114 &-7872064782885887774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:Entity.States:WaitState/Edit
+  time: 2
+  next: 0
+--- !u!114 &-6584136874036544349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -28,42 +42,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edcb0ad9a2f946f8b69b313e14c295dc, type: 3}
-  m_Name: Tree
+  m_Name: New State Tree
   m_EditorClassIdentifier: 
   states:
   - id: 0
-    position: {x: -154.51999, y: 30}
+    position: {x: 0, y: 0}
     state: {fileID: 11400000, guid: 4c0c8f86bb97e5a40afdf4c71f78e669, type: 2}
     nexts: ee92308d
-  - id: -1926196498
-    position: {x: -26, y: 30}
-    state: {fileID: 11400000, guid: e0f9682b72b8e8e4aa6b00cb71256637, type: 2}
-    nexts: 886f4276
-  - id: 1984065416
-    position: {x: 118, y: 30}
-    state: {fileID: 11400000, guid: 998f51bc49d7c35458b777e361133ef0, type: 2}
-    nexts: 341cac38
   - id: 950803508
-    position: {x: 272, y: 30}
+    position: {x: 281, y: 0}
     state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
     nexts: 
-  edits:
   - id: -1926196498
-    edit: {fileID: 5570422344951789804}
+    position: {x: 128, y: 0}
+    state: {fileID: 11400000, guid: e0f9682b72b8e8e4aa6b00cb71256637, type: 2}
+    nexts: 341cac38
+  edits:
   - id: 950803508
-    edit: {fileID: -1052723341816336293}
+    edit: {fileID: -6584136874036544349}
+  - id: -1926196498
+    edit: {fileID: -7872064782885887774}
   unsaved: 0
---- !u!114 &5570422344951789804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp:Entity.States:WaitState/Edit
-  time: 5
-  next: 0

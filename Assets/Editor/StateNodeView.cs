@@ -1,8 +1,7 @@
+using System;
 using Entity.States;
-using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Editor
 {
@@ -12,6 +11,7 @@ namespace Editor
         public IStateTree Tree;
         public Port Input;
         public Port Output;
+        public event Action<StateNodeView> OnStateSelected;
 
         public StateNodeView(StateTree.StateForList state, IStateTree tree)
         {
@@ -52,6 +52,11 @@ namespace Editor
                 Output.portName = string.Empty;
                 outputContainer.Add(Output);
             }
+        }
+
+        public override void OnSelected()
+        {
+            OnStateSelected?.Invoke(this);
         }
 
         public override void SetPosition(Rect newPos)

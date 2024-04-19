@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Entity.Abilities;
 using UnityEngine;
 
@@ -11,14 +12,13 @@ namespace Entity.States
 
         public override int Id { get; set; }
 
-        public override async Task<int> Activate(Entity entity, State previous)
+        public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties)
         {
             var nextId = 0;
             var ability = entity.FindAbilityByType<EntityMovementJump>();
 
             if (!ability) return nextId;
 
-            await Task.Delay(2000);
             ability.Jump();
             await Task.Delay((int) (ability.JumpTime * 1000f));
 

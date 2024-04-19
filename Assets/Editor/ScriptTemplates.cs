@@ -115,7 +115,8 @@ namespace Entity.Abilities
         [MenuItem("Assets/Code Presets/Controller", priority = 10000)]
         public static void CreateControllerMenu()
         {
-            CreateFile("Controller", "ControllerNew", ZenUnityEditorUtil.GetCurrentDirectoryAssetPathFromSelection(), @"using UnityEngine;
+            CreateFile("Controller", "ControllerNew", ZenUnityEditorUtil.GetCurrentDirectoryAssetPathFromSelection(),
+                @"using UnityEngine;
 
 namespace Entity.Controllers
 {

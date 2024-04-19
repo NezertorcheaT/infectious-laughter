@@ -23,7 +23,7 @@ namespace Entity.Controllers
 
         public State CurrentState { get; private set; }
         public event Action<State> OnStateActivating;
-        
+
         private async void StateCycle()
         {
             State prew;
@@ -43,7 +43,15 @@ namespace Entity.Controllers
 
                 prew = CurrentState;
                 OnStateActivating?.Invoke(CurrentState);
-                var t = await CurrentState.Activate(Entity, prew);
+
+                var t = await CurrentState.Activate(
+                    Entity,
+                    prew,
+                    CurrentState is IEditableState &&
+                    _stateTree is IStateTreeWithEdits stateTreeWithEdits
+                        ? stateTreeWithEdits.GetEdit(CurrentState.Id)
+                        : null
+                );
 
                 if (_stateTree.GetNextsTo(CurrentState.Id).Length == 0) return;
 

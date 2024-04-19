@@ -1,13 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <SplitView fixed-pane-initial-dimension="248" style="flex-grow: 1;">
         <ui:VisualElement name="LeftPanel">
-            <InspectorView />
             <ui:Label text="Inspector" display-tooltip-when-elided="true" style="background-color: rgb(37, 37, 37);" />
+            <Editor.InspectorView style="flex-grow: 1;" />
         </ui:VisualElement>
         <ui:VisualElement name="RightPanel">
             <ui:Label text="Graph View" display-tooltip-when-elided="true" name="GraphViewName" style="background-color: rgb(37, 37, 37);" />
             <uie:Toolbar>
-                <uie:ToolbarButton text="Save File" display-tooltip-when-elided="true" name="SaveButton" />
+                <uie:ToolbarButton text="Save File" display-tooltip-when-elided="true" name="SaveButton" focusable="false" />
             </uie:Toolbar>
             <Editor.StateTreeView focusable="true" style="flex-grow: 1;" />
         </ui:VisualElement>

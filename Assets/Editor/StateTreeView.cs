@@ -4,7 +4,6 @@ using System.Linq;
 using Entity.States;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 using UnityEngine.UIElements;
 using State = Entity.States.State;
 
@@ -12,6 +11,7 @@ namespace Editor
 {
     public class StateTreeView : GraphView
     {
+        public event Action<StateNodeView> OnStateSelected;
         public new class UxmlFactory : UxmlFactory<StateTreeView, GraphView.UxmlTraits>
         {
         }
@@ -136,6 +136,7 @@ namespace Editor
         void CreateNodeView(StateTree.StateForList state)
         {
             var nodeView = new StateNodeView(state, _tree);
+            if (OnStateSelected != null) nodeView.OnStateSelected += OnStateSelected.Invoke;
             AddElement(nodeView);
         }
     }
