@@ -7,7 +7,6 @@ namespace Entity.States
     [CreateAssetMenu(fileName = "Wait State", menuName = "States/Wait State", order = 0)]
     public class WaitState : State, IOneExitState, IEditableState
     {
-        [SerializeField, Min(0)] private float time = 2f;
         public override string Name => "Wait";
 
         public override int Id { get; set; }
