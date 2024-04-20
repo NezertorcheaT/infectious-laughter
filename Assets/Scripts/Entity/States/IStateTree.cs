@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Entity.States
 {
@@ -103,6 +105,13 @@ namespace Entity.States
         /// </summary>
         /// <returns>состояние</returns>
         State First();
+
+        /// <summary>
+        /// эээ кароч если вы стейт ещё не создали, ооооон создаст его за вас
+        /// </summary>
+        /// <param name="type">тип стейта</param>
+        /// <returns>объект стейта</returns>
+        ScriptableObject CreateMissingStateObject(Type type);
 
         /// <summary>
         /// все состояния в соответствии с их айди

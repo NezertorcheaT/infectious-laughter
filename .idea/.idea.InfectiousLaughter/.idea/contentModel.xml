@@ -1045,6 +1045,11 @@
             <e p="zenject.asmdef" t="Include" />
           </e>
         </e>
+        <e p="Presets" t="Include">
+          <e p="States" t="Include">
+            <e p="ShitState.cs" t="Include" />
+          </e>
+        </e>
         <e p="Resources" t="Include">
           <e p="BillingMode.json" t="Include" />
         </e>

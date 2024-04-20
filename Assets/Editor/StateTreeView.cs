@@ -12,6 +12,7 @@ namespace Editor
     public class StateTreeView : GraphView
     {
         public event Action<StateNodeView> OnStateSelected;
+
         public new class UxmlFactory : UxmlFactory<StateTreeView, GraphView.UxmlTraits>
         {
         }
@@ -123,6 +124,9 @@ namespace Editor
 
         void CreateNode(Type type)
         {
+            if (AssetDatabase.FindAssets($"t:{type.Name}").Length == 0)
+                _tree.CreateMissingStateObject(type);
+
             var newState = _tree.AddState(AssetDatabase.LoadAssetAtPath(AssetDatabase.FindAssets($"t:{type.Name}")
                 .Select(AssetDatabase.GUIDToAssetPath).First(), type) as State);
             CreateNodeView(new StateTree.StateForList

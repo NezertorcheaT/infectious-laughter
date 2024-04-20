@@ -11,6 +11,7 @@ namespace Entity.States
     {
         [SerializeField] private List<StateForList> states;
         [SerializeField] private List<EditForList> edits;
+        [SerializeField] private bool unsaved;
 
         [Serializable]
         public struct StateForList
@@ -19,22 +20,24 @@ namespace Entity.States
             public Vector2 position;
             public State state;
             public List<int> nexts;
-            public Type Edit => (state as IEditableState)?.GetTypeOfEdit();
         }
 
         [Serializable]
         public struct EditForList
         {
             public int id;
-            [SerializeReference]
-            public ScriptableObject edit;
+            [SerializeReference] public ScriptableObject edit;
         }
 
         private void Reset()
         {
             states = new List<StateForList>();
             edits = new List<EditForList>();
-            AddState(AssetDatabase.LoadAssetAtPath<InitialState>(AssetDatabase.FindAssets($"t:{nameof(InitialState)}")
+            if (AssetDatabase.FindAssets($"t:{nameof(InitialState)}").Length == 0)
+                CreateMissingStateObject(typeof(InitialState));
+
+            AddState(AssetDatabase.LoadAssetAtPath<InitialState>(AssetDatabase
+                .FindAssets($"t:{nameof(InitialState)}")
                 .Select(AssetDatabase.GUIDToAssetPath).First()));
             states[0] = new StateForList
             {
@@ -91,6 +94,16 @@ namespace Entity.States
             edit.name = $"Properies({state.Name.Replace(" ", "")}.{type.Name}) of State({id}) of Tree(\"{name}\")";
             AssetDatabase.AddObjectToAsset(edit, this);
             return edit;
+        }
+
+        public ScriptableObject CreateMissingStateObject(Type type)
+        {
+            var state = CreateInstance(type);
+            state.name = $"New{type.Name}";
+            AssetDatabase.CreateAsset(state, $"Assets/New{type.Name}.asset");
+            EditorUtility.SetDirty(state);
+            UpdateAsset();
+            return state;
         }
 
         public bool TryConnect(int idA, int idB)
@@ -219,8 +232,6 @@ namespace Entity.States
             return false;
         }
 
-        [SerializeField] private bool unsaved;
-
         public bool Unsaved
         {
             get => unsaved;
@@ -229,13 +240,14 @@ namespace Entity.States
 
         public void UpdateAsset()
         {
-            Unsaved = false;
             AssetDatabase.Refresh();
             EditorUtility.SetDirty(this);
             foreach (var edit in edits)
             {
                 EditorUtility.SetDirty(edit.edit);
             }
+
+            Unsaved = false;
             AssetDatabase.SaveAssets();
         }
 

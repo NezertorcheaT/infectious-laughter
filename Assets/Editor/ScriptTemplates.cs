@@ -81,9 +81,7 @@ namespace Entity.States
     {
         public override string Name => ""#REJECTED_CLASS_NAME#"";
 
-        public override int Id { get; set; }
-
-        public override async Task<int> Activate(Entity entity, State previous)
+        public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties)
         {
             var nextId = 0;
 

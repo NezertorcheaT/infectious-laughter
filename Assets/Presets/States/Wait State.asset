@@ -12,4 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29daefd0a2a4db4ae8971844acb84bf, type: 3}
   m_Name: Wait State
   m_EditorClassIdentifier: 
-  time: 2

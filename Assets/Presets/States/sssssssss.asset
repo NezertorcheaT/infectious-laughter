@@ -19,10 +19,10 @@ MonoBehaviour:
     nexts: ee92308d
   - id: -1926196498
     position: {x: 130.0652, y: -0.00002002716}
-    state: {fileID: 11400000, guid: e0f9682b72b8e8e4aa6b00cb71256637, type: 2}
+    state: {fileID: 11400000, guid: 917d2f3ed691df44490f31a582fb314a, type: 2}
     nexts: 341cac38
   - id: 950803508
-    position: {x: 279.841, y: -0.00002002716}
+    position: {x: 260.26688, y: -0.000011920929}
     state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
     nexts: 
   edits:
