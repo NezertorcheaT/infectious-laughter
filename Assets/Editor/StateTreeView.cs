@@ -49,7 +49,7 @@ namespace Editor
                 CreateNodeView(new StateTree.StateForList
                 {
                     id = id,
-                    nexts = _tree.GetNextsTo(id).Select(state => state.Id).ToList(),
+                    nexts = _tree.GetNextsTo(id).ToList(),
                     state = _tree.GetState(id),
                     position = ((IPositionableStateTree) _tree).GetPosition(id)
                 });
@@ -59,10 +59,11 @@ namespace Editor
             {
                 var childrens = _tree.GetNextsTo(id);
 
-                foreach (var children in childrens)
+                foreach (var childrenID in childrens)
                 {
+                    var children = _tree.GetState(childrenID);
                     var parentView = FindStateView(id);
-                    var childView = FindStateView(children.Id);
+                    var childView = FindStateView(childrenID);
 
                     var edge = parentView.Output.ConnectTo(childView.Input);
                     AddElement(edge);
@@ -127,7 +128,7 @@ namespace Editor
             CreateNodeView(new StateTree.StateForList
             {
                 id = newState,
-                nexts = _tree.GetNextsTo(newState).Select(state => state.Id).ToList(),
+                nexts = _tree.GetNextsTo(newState).ToList(),
                 state = _tree.GetState(newState),
                 position = ((IPositionableStateTree) _tree).GetPosition(newState)
             });

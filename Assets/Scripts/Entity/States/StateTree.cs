@@ -26,7 +26,24 @@ namespace Entity.States
         public struct EditForList
         {
             public int id;
-            public IEditableState.Properties edit;
+            [SerializeReference]
+            public ScriptableObject edit;
+        }
+
+        private void Reset()
+        {
+            states = new List<StateForList>();
+            edits = new List<EditForList>();
+            AddState(AssetDatabase.LoadAssetAtPath<InitialState>(AssetDatabase.FindAssets($"t:{nameof(InitialState)}")
+                .Select(AssetDatabase.GUIDToAssetPath).First()));
+            states[0] = new StateForList
+            {
+                id = 0,
+                nexts = states[0].nexts,
+                position = states[0].position,
+                state = states[0].state
+            };
+            UpdateAsset();
         }
 
         public int Hash(State state)
@@ -57,7 +74,6 @@ namespace Entity.States
         public int AddState(State state)
         {
             var h = Hash(state);
-            state.Id = h;
             states.Add(new StateForList {id = h, state = state, nexts = new List<int>(0)});
             if (state is IEditableState editableState)
             {
@@ -69,11 +85,10 @@ namespace Entity.States
             return h;
         }
 
-        private IEditableState.Properties CreateEdit(Type type, int id, State state)
+        private ScriptableObject CreateEdit(Type type, int id, State state)
         {
-            var edit = CreateInstance(type) as IEditableState.Properties;
+            var edit = CreateInstance(type);
             edit.name = $"Properies({state.Name.Replace(" ", "")}.{type.Name}) of State({id}) of Tree(\"{name}\")";
-            //AssetDatabase.CreateAsset(edit, AssetDatabase.GenerateUniqueAssetPath($"Assets/Presets/{type.Name + id + name}.asset"));
             AssetDatabase.AddObjectToAsset(edit, this);
             return edit;
         }
@@ -127,12 +142,12 @@ namespace Entity.States
 
         public bool TryRemoveState(int id)
         {
+            if (id == 0) return false;
             if (!IsIdValid(id)) return false;
             TryDisconnect(id);
             for (var i = 0; i < states.Count; i++)
             {
                 if (states[i].id != id) continue;
-                states[i].state.Id = -1;
 
                 if (states[i].state is IEditableState)
                 {
@@ -174,7 +189,6 @@ namespace Entity.States
         {
             var a = SflAtID(id)?.state;
             if (!a) return null;
-            a.Id = id;
             return a;
         }
 
@@ -182,7 +196,6 @@ namespace Entity.States
         {
             var a = SflAtID(id);
             if (!a.HasValue) return Vector2.zero;
-            a.Value.state.Id = id;
             return a.Value.position;
         }
 
@@ -219,21 +232,26 @@ namespace Entity.States
             Unsaved = false;
             AssetDatabase.Refresh();
             EditorUtility.SetDirty(this);
+            foreach (var edit in edits)
+            {
+                EditorUtility.SetDirty(edit.edit);
+            }
             AssetDatabase.SaveAssets();
         }
 
-        public State[] GetNextsTo(int id)
+        public int[] GetNextsTo(int id) => GetNextsIdsTo(id).ToArray();
+
+        public bool IsNextsTo(int id) => IsIdValid(id) && SflAtID(id).Value.nexts.Count != 0;
+
+        private IEnumerable<int> GetNextsIdsTo(int id)
         {
-            if (!IsIdValid(id)) return new State[0];
+            if (!IsIdValid(id)) yield break;
             var inst = SflAtID(id).Value;
-            var i = new List<State>(inst.nexts.Count);
 
             foreach (var nextId in inst.nexts)
             {
-                i.Add(GetState(nextId));
+                yield return nextId;
             }
-
-            return i.ToArray();
         }
 
         public State First() => GetState(0);
@@ -290,7 +308,7 @@ namespace Entity.States
         {
             foreach (var edit in edits)
             {
-                if (edit.id == id) return edit.edit;
+                if (edit.id == id) return edit.edit as IEditableState.Properties;
             }
 
             throw new ArgumentException("Id is invalid");

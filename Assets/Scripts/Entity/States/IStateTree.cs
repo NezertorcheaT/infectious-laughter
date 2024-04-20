@@ -87,11 +87,18 @@ namespace Entity.States
         /// </summary>
         /// <param name="id">айди</param>
         /// <returns>состояния</returns>
-        State[] GetNextsTo(int id);
+        int[] GetNextsTo(int id);
+
+        /// <summary>
+        /// а имеются ли следующие состояния
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        bool IsNextsTo(int id);
 
         /// <summary>
         /// получить начальное состояние
-        /// не путать с GetState(0)
+        /// не путать с <code>GetState(0)</code>
         /// это разные вещи
         /// </summary>
         /// <returns>состояние</returns>

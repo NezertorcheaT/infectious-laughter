@@ -9,8 +9,6 @@ namespace Entity.States
     {
         public override string Name => "Jump";
 
-        public override int Id { get; set; }
-
         public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties)
         {
             var nextId = 0;

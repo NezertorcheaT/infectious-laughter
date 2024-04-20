@@ -10,7 +10,7 @@ namespace Entity.Controllers
     public class ControllerAI : Controller
     {
         [SerializeField] private StateTree stateTree;
-        private StateTree _stateTree => stateTree;
+        private IStateTree _stateTree => stateTree;
         private bool _stateCycleDestroy;
 
         public override void Initialize()
@@ -22,12 +22,14 @@ namespace Entity.Controllers
         }
 
         public State CurrentState { get; private set; }
+        public int CurrentStateID { get; private set; }
         public event Action<State> OnStateActivating;
 
         private async void StateCycle()
         {
             State prew;
             CurrentState = _stateTree.First();
+            CurrentStateID = 0;
 
             while (true)
             {
@@ -49,13 +51,14 @@ namespace Entity.Controllers
                     prew,
                     CurrentState is IEditableState &&
                     _stateTree is IStateTreeWithEdits stateTreeWithEdits
-                        ? stateTreeWithEdits.GetEdit(CurrentState.Id)
+                        ? stateTreeWithEdits.GetEdit(CurrentStateID)
                         : null
                 );
 
-                if (_stateTree.GetNextsTo(CurrentState.Id).Length == 0) return;
+                if (!_stateTree.IsNextsTo(CurrentStateID)) return;
 
-                CurrentState = _stateTree.GetNextsTo(CurrentState.Id)[t];
+                CurrentStateID = _stateTree.GetNextsTo(CurrentStateID)[t];
+                CurrentState = _stateTree.GetState(CurrentStateID);
             }
         }
 

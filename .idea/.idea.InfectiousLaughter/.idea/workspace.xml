@@ -21,10 +21,18 @@
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/New State Tree.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/New State Tree.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree 1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree 1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/Tree.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" afterDir="false" />
     </list>
@@ -82,21 +90,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NewStateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/SplitView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/ScriptTemplates.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.uss" />
         <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Ability.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IUpdatableAssetStateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTreeWithEdits.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs" />
@@ -105,8 +107,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/IInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/IItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/ISlot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
       </list>
     </option>
@@ -194,7 +202,8 @@
       <workItem from="1713372939004" duration="5043000" />
       <workItem from="1713379915022" duration="833000" />
       <workItem from="1713536572771" duration="8384000" />
-      <workItem from="1713556053243" duration="6183000" />
+      <workItem from="1713556053243" duration="6716000" />
+      <workItem from="1713619606990" duration="6095000" />
     </task>
     <servers />
   </component>
@@ -231,13 +240,17 @@
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state x="92" y="92" width="1736" height="850" key="VCS.FileHistoryDialog/0.0.1920.1034@0.0.1920.1034" timestamp="1713559167422" />
-    <state x="607" y="221" width="705" height="592" key="find.popup" timestamp="1707165751629">
+    <state x="607" y="221" width="705" height="592" key="find.popup" timestamp="1713620102229">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="607" y="221" width="705" height="592" key="find.popup/0.0.1920.1034@0.0.1920.1034" timestamp="1707165751629" />
+    <state x="607" y="221" width="705" height="592" key="find.popup/0.0.1920.1034@0.0.1920.1034" timestamp="1713620102229" />
     <state x="616" y="239" width="672" height="677" key="run.anything.popup" timestamp="1708346628885">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state x="616" y="239" width="672" height="677" key="run.anything.popup/0.0.1920.1034@0.0.1920.1034" timestamp="1708346628885" />
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1713619990108">
+      <screen x="0" y="0" width="1920" height="1034" />
+    </state>
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1034@0.0.1920.1034" timestamp="1713619990108" />
   </component>
 </project>

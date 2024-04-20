@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edcb0ad9a2f946f8b69b313e14c295dc, type: 3}
-  m_Name: Tree 1
+  m_Name: sssssssss
   m_EditorClassIdentifier: 
   states:
   - id: 0
@@ -18,20 +18,20 @@ MonoBehaviour:
     state: {fileID: 11400000, guid: 4c0c8f86bb97e5a40afdf4c71f78e669, type: 2}
     nexts: ee92308d
   - id: -1926196498
-    position: {x: 122, y: 0}
+    position: {x: 130.0652, y: -0.00002002716}
     state: {fileID: 11400000, guid: e0f9682b72b8e8e4aa6b00cb71256637, type: 2}
     nexts: 341cac38
   - id: 950803508
-    position: {x: 205, y: -104}
+    position: {x: 279.841, y: -0.00002002716}
     state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
     nexts: 
   edits:
   - id: -1926196498
-    edit: {fileID: 6443033618901286812}
+    edit: {fileID: 8167659359931514969}
   - id: 950803508
-    edit: {fileID: 1295353730795041392}
+    edit: {fileID: 1379230535832634839}
   unsaved: 0
---- !u!114 &1295353730795041392
+--- !u!114 &1379230535832634839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Edit950803508Tree 1
+  m_Name: Properies(Patrolling.Edit) of State(950803508) of Tree("sssssssss")
   m_EditorClassIdentifier: Assembly-CSharp:Entity.States:PatrollingState/Edit
   rayDistance: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  initialDirection: 1
+  initialDirection: 0
   next: 0
---- !u!114 &6443033618901286812
+--- !u!114 &8167659359931514969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Edit-1926196498Tree 1
+  m_Name: Properies(Wait.Edit) of State(-1926196498) of Tree("sssssssss")
   m_EditorClassIdentifier: Assembly-CSharp:Entity.States:WaitState/Edit
   time: 5
   next: 0

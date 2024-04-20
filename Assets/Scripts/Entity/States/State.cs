@@ -19,12 +19,6 @@ namespace Entity.States
         public abstract string Name { get; }
 
         /// <summary>
-        /// не менять пж<br />
-        /// когда нибудь я уберу его нахуй отсюда
-        /// </summary>
-        public abstract int Id { get; set; }
-
-        /// <summary>
         /// асинхронный метод действия
         /// </summary>
         /// <param name="entity">над кем будет действие произведено</param>

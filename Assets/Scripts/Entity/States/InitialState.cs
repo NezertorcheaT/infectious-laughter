@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Entity.States
@@ -8,8 +7,6 @@ namespace Entity.States
     public class InitialState : State,IOneExitState
     {
         public override string Name => "Root";
-
-        public override int Id { get; set; }
 
         public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties) => 0;
     }

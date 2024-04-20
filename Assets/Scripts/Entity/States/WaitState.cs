@@ -9,8 +9,6 @@ namespace Entity.States
     {
         public override string Name => "Wait";
 
-        public override int Id { get; set; }
-
         public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties)
         {
             var edit = properties as Edit;
@@ -26,7 +24,7 @@ namespace Entity.States
         [CreateAssetMenu(fileName = "Wait Edit", menuName = "States/Edits/Wait Edit", order = 0)]
         private class Edit : IEditableState.Properties
         {
-            public float time;
+            public float time = 2f;
             public int next;
 
             public override T Get<T>(string name) => GetType().GetField(name).GetValue(this) is T

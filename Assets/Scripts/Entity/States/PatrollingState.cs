@@ -10,8 +10,6 @@ namespace Entity.States
     {
         public override string Name => "Patrolling";
 
-        public override int Id { get; set; }
-
         public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties)
         {
             var edit = properties as Edit;
@@ -51,6 +49,12 @@ namespace Entity.States
             public LayerMask groundLayer;
             public bool initialDirection;
             public int next;
+
+            private void Reset()
+            {
+                groundLayer = LayerMask.GetMask("Default");
+                rayDistance = 0.1f;
+            }
 
             public override T Get<T>(string name) => GetType().GetField(name).GetValue(this) is T
                 ? (T) GetType().GetField(name).GetValue(this)
