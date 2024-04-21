@@ -6,7 +6,7 @@ namespace Inventory.Input
     [AddComponentMenu("Entity/Abilities/Inventory Picking Ability")]
     public class InventoryInput : Ability
     {
-        [SerializeField] private Inventory inventory;
+        [SerializeField] private ScriptableObject inventory;
         [SerializeField] private float maxDistance = 5f;
         private IInventory _inventory;
         public float MaxDistance => maxDistance;

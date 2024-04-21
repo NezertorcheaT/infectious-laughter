@@ -22,13 +22,15 @@ namespace Entity.Abilities
         [
             SerializeField,
             Tooltip("Выставьте значение от 0 до 1, при котором на графике находится максимальная точка"),
-            Min(0)
+            Range(0f, 1f)
         ]
         private float whenMax = 0.5f;
 
-        [Space(10.0f)] [SerializeField] private float groundDistance = 0.1f;
+        [Space(10.0f), SerializeField, Min(0.01f)]
+        private float groundDistance = 0.1f;
+
         [SerializeField] private LayerMask groundLayer;
-        [Space(10.0f)] [SerializeField] private int jumpsCount = 1;
+        [Space(10.0f), SerializeField, Min(1)] private int jumpsCount = 1;
 
         private int curJumpsCount;
 
