@@ -12,13 +12,14 @@ namespace Editor
         public Port Input;
         public Port Output;
         public event Action<StateNodeView> OnStateSelected;
+        public event Action<StateNodeView> OnStateUnselected;
 
         public StateNodeView(StateTree.StateForList state, IStateTree tree)
         {
             State = state;
             Tree = tree;
             title = state.state.Name;
-            viewDataKey = state.id.ToString();
+            viewDataKey = state.id;
 
             style.left = state.position.x;
             style.top = state.position.y;
@@ -57,6 +58,11 @@ namespace Editor
         public override void OnSelected()
         {
             OnStateSelected?.Invoke(this);
+        }
+
+        public override void OnUnselected()
+        {
+            OnStateUnselected?.Invoke(this);
         }
 
         public override void SetPosition(Rect newPos)

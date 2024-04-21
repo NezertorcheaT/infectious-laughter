@@ -12,6 +12,7 @@ namespace Editor
     public class StateTreeView : GraphView
     {
         public event Action<StateNodeView> OnStateSelected;
+        public event Action<StateNodeView> OnStateUnselected;
 
         public new class UxmlFactory : UxmlFactory<StateTreeView, GraphView.UxmlTraits>
         {
@@ -142,6 +143,7 @@ namespace Editor
         {
             var nodeView = new StateNodeView(state, _tree);
             if (OnStateSelected != null) nodeView.OnStateSelected += OnStateSelected.Invoke;
+            if (OnStateUnselected != null) nodeView.OnStateUnselected += OnStateUnselected.Invoke;
             AddElement(nodeView);
         }
     }

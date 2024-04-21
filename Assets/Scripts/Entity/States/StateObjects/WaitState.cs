@@ -16,7 +16,7 @@ namespace Entity.States.StateObjects
 
             await Task.Delay((int) (edit.time * 1000f));
 
-            return edit.next;
+            return 0;
         }
 
         Type IEditableState.GetTypeOfEdit() => typeof(WaitStateEdit);

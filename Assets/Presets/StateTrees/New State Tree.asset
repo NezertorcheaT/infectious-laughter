@@ -38,7 +38,7 @@ MonoBehaviour:
     nexts:
     - a9437c7993dea114d95c11dd56f68a72
   - id: a9437c7993dea114d95c11dd56f68a72
-    position: {x: 113, y: 0}
+    position: {x: 115, y: 0}
     state: {fileID: 11400000, guid: 917d2f3ed691df44490f31a582fb314a, type: 2}
     nexts:
     - aae96ee8444da0b45afd43c53a62252b
@@ -71,4 +71,3 @@ MonoBehaviour:
     of Tree("New State Tree")
   m_EditorClassIdentifier: 
   time: 2
-  next: 0

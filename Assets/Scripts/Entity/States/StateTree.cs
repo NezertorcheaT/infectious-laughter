@@ -32,6 +32,7 @@ namespace Entity.States
 
         private void Reset()
         {
+#if UNITY_EDITOR
             states = new List<StateForList>();
             edits = new List<EditForList>();
             if (AssetDatabase.FindAssets($"t:{nameof(InitialState)}").Length == 0)
@@ -48,17 +49,25 @@ namespace Entity.States
                 state = states[0].state
             };
             UpdateAsset();
+#endif
         }
 
         public string Hash(State state)
         {
+#if UNITY_EDITOR
             var h = GUID.Generate().ToString();
             while (IsIdValid(h))
             {
                 h = GUID.Generate().ToString();
             }
-
-            return h;
+#else
+            var h = (state.GetType().FullName + state.Name).GetHashCode();
+            while (IsIdValid(h.ToString()))
+            {
+                h++;
+            }
+#endif
+            return h.ToString();
         }
 
         private static bool Contains<T>(IEnumerable<T> where, T that)
@@ -90,20 +99,28 @@ namespace Entity.States
 
         private ScriptableObject CreateEdit(Type type, string id, State state)
         {
+#if UNITY_EDITOR
             var edit = CreateInstance(type);
             edit.name = $"Properies({state.Name.Replace(" ", "")}.{type.Name}) of State({id}) of Tree(\"{name}\")";
             AssetDatabase.AddObjectToAsset(edit, this);
             return edit;
+#else
+            return null;
+#endif
         }
 
         public ScriptableObject CreateMissingStateObject(Type type)
         {
+#if UNITY_EDITOR
             var state = CreateInstance(type);
             state.name = $"New{type.Name}";
             AssetDatabase.CreateAsset(state, $"Assets/New{type.Name}.asset");
             EditorUtility.SetDirty(state);
             UpdateAsset();
             return state;
+#else
+            return null;
+#endif
         }
 
         public bool TryConnect(string idA, string idB)
@@ -240,6 +257,8 @@ namespace Entity.States
 
         public void UpdateAsset()
         {
+#if UNITY_EDITOR
+
             AssetDatabase.Refresh();
             EditorUtility.SetDirty(this);
             foreach (var edit in edits)
@@ -249,6 +268,7 @@ namespace Entity.States
 
             Unsaved = false;
             AssetDatabase.SaveAssets();
+#endif
         }
 
         public string[] GetNextsTo(string id) => GetNextsIdsTo(id).ToArray();

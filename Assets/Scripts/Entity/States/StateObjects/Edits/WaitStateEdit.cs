@@ -8,7 +8,6 @@ namespace Entity.States.StateObjects.Edits
     public class WaitStateEdit : EditableStateProperties
     {
         [Min(0)] public float time = 2f;
-        [Min(0)] public int next;
 
         public override T Get<T>(string name) => GetType().GetField(name).GetValue(this) is T
             ? (T) GetType().GetField(name).GetValue(this)

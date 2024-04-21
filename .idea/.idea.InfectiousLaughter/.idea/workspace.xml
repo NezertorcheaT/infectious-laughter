@@ -20,34 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/EditableStateProperties.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/EditableStateProperties.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/PatrollingStateEdit.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/PatrollingStateEdit.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/WaitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/New State Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/States/New State Tree.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/States/sssssssss.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/States/sssssssss.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTreeWithEdits.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTreeWithEdits.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/InitialState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/InitialState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/InitialState.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/JumpState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/JumpState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/JumpState.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/PatrollingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/PatrollingState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/PatrollingState.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/State.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/StateTrees/New State Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/StateTrees/New State Tree.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Presets/StateTrees/sssssssss.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/StateTrees/sssssssss.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/WaitStateEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/WaitStateEdit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/WaitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/WaitState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/WaitState.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,9 +83,6 @@
         <option value="$PROJECT_DIR$/Assets/Editor/NewStateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/SplitView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.uss" />
-        <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Entity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Ability.cs" />
@@ -118,18 +101,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IPositionableStateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IStateTreeWithEdits.cs" />
-        <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerAI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/IEditableState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/EditableStateProperties.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/WaitState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/InitialState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/JumpState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/PatrollingState.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/PatrollingStateEdit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/WaitState.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/WaitStateEdit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/PatrollingStateEdit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
       </list>
     </option>
   </component>
@@ -218,7 +204,7 @@
       <workItem from="1713536572771" duration="8384000" />
       <workItem from="1713556053243" duration="6716000" />
       <workItem from="1713619606990" duration="7719000" />
-      <workItem from="1713693061910" duration="1298000" />
+      <workItem from="1713693061910" duration="5344000" />
     </task>
     <servers />
   </component>

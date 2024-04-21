@@ -1,6 +1,7 @@
 using Entity.States;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor
@@ -10,6 +11,7 @@ namespace Editor
         public IStateTree Tree;
         public IStateTreeWithEdits EditableTree;
         private InspectorElement _inspector;
+        private UnityEditor.Editor _editor;
 
         public new class UxmlFactory : UxmlFactory<InspectorView, VisualElement.UxmlTraits>
         {
@@ -21,6 +23,12 @@ namespace Editor
             styleSheets.Add(styleSheet);
         }
 
+        public void DeinitializeState(StateTree.StateForList state, IStateTree tree)
+        {
+            Clear();
+            Object.DestroyImmediate(_editor);
+        }
+
         public void InitializeState(StateTree.StateForList state, IStateTree tree)
         {
             Clear();
@@ -30,11 +38,12 @@ namespace Editor
             EditableTree = Tree as IStateTreeWithEdits;
             if (EditableTree is null) return;
 
-            _inspector = new InspectorElement();
-            _inspector.Bind(new SerializedObject(EditableTree.GetEdit(state.id)));
+            Object.DestroyImmediate(_editor);
+            _editor = UnityEditor.Editor.CreateEditor(EditableTree.GetEdit(state.id));
+            var container = new IMGUIContainer(() => _editor.OnInspectorGUI());
             var sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/StateMachine.uss");
-            _inspector.styleSheets.Add(sheet);
-            Add(_inspector);
+            container.styleSheets.Add(sheet);
+            Add(container);
         }
     }
 }
