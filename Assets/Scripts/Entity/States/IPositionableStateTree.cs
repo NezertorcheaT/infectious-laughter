@@ -14,14 +14,14 @@ namespace Entity.States
         /// <param name="id">айдишник</param>
         /// <param name="position">новая позиция</param>
         /// <returns>получилось записать или нет</returns>
-        bool TrySetPosition(int id, Vector2 position);
+        bool TrySetPosition(string id, Vector2 position);
 
         /// <summary>
         /// гарантировано получить позицию стейта по айдишнику
         /// </summary>
         /// <param name="id">айдишник</param>
         /// <returns>позиция</returns>
-        Vector2 GetPosition(int id);
+        Vector2 GetPosition(string id);
 
         /// <summary>
         /// попытаться получить позицию стейта по айдишнику
@@ -29,6 +29,6 @@ namespace Entity.States
         /// <param name="id">айдишник</param>
         /// <param name="position">ссылка на позицию</param>
         /// <returns>получилось получить или нет</returns>
-        bool TryGetPosition(int id, ref Vector2 position);
+        bool TryGetPosition(string id, ref Vector2 position);
     }
 }

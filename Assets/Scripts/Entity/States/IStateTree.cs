@@ -16,14 +16,14 @@ namespace Entity.States
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
-        int Hash(State state);
+        string Hash(State state);
 
         /// <summary>
         /// добавить состояние в общий пул
         /// </summary>
         /// <param name="state">состояние</param>
         /// <returns>айиншик нового состояния</returns>
-        int AddState(State state);
+        string AddState(State state);
 
         /// <summary>
         /// попытаться соеденить два состояния
@@ -31,7 +31,7 @@ namespace Entity.States
         /// <param name="idA">айди того куда подсоединять</param>
         /// <param name="idB">айди того что подсоединять</param>
         /// <returns>получилось или нет</returns>
-        bool TryConnect(int idA, int idB);
+        bool TryConnect(string idA, string idB);
 
         /// <summary>
         /// попытаться открепить два состояния
@@ -39,35 +39,35 @@ namespace Entity.States
         /// <param name="idA">айди того откуда открепить</param>
         /// <param name="idB">айди того что открепить</param>
         /// <returns>получилось или нет</returns>
-        bool TryDisconnect(int idA, int idB);
+        bool TryDisconnect(string idA, string idB);
 
         /// <summary>
         /// попытаться открепить состояние от вообще всего
         /// </summary>
         /// <param name="id">айди того что открепить</param>
         /// <returns>получилось или нет</returns>
-        bool TryDisconnect(int id);
+        bool TryDisconnect(string id);
 
         /// <summary>
         /// находит все айди состояний, в Next которых есть нужное
         /// </summary>
         /// <param name="id">айди состояния</param>
         /// <returns>массив айди</returns>
-        int[] FindConnections(int id);
+        string[] FindConnections(string id);
 
         /// <summary>
         /// попытаться безопасно удалить состояние из пула
         /// </summary>
         /// <param name="id">айди состояния</param>
         /// <returns>получилось или нет</returns>
-        bool TryRemoveState(int id);
+        bool TryRemoveState(string id);
 
         /// <summary>
         /// проверить, является ли число корректны айди
         /// </summary>
         /// <param name="id">айди</param>
         /// <returns></returns>
-        bool IsIdValid(int id);
+        bool IsIdValid(string id);
 
         /// <summary>
         /// попытаться получить состояние по айди
@@ -75,28 +75,28 @@ namespace Entity.States
         /// <param name="id">айди</param>
         /// <param name="state">ссылка на выходное значение состояния</param>
         /// <returns>получилось или нет</returns>
-        bool TryGetState(int id, ref State state);
+        bool TryGetState(string id, ref State state);
 
         /// <summary>
         /// получить состояние по айди на прямую
         /// </summary>
         /// <param name="id">айди</param>
         /// <returns>состояние</returns>
-        State GetState(int id);
+        State GetState(string id);
 
         /// <summary>
         /// получить состояния следующие после этого состояния
         /// </summary>
         /// <param name="id">айди</param>
         /// <returns>состояния</returns>
-        int[] GetNextsTo(int id);
+        string[] GetNextsTo(string id);
 
         /// <summary>
         /// а имеются ли следующие состояния
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        bool IsNextsTo(int id);
+        bool IsNextsTo(string id);
 
         /// <summary>
         /// получить начальное состояние
@@ -116,6 +116,6 @@ namespace Entity.States
         /// <summary>
         /// все состояния в соответствии с их айди
         /// </summary>
-        Dictionary<int, State> States { get; }
+        Dictionary<string, State> States { get; }
     }
 }

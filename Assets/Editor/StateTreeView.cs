@@ -32,9 +32,9 @@ namespace Editor
             styleSheets.Add(styleSheet);
         }
 
-        private StateNodeView FindStateView(int id)
+        private StateNodeView FindStateView(string id)
         {
-            return GetNodeByGuid(id.ToString()) as StateNodeView;
+            return GetNodeByGuid(id) as StateNodeView;
         }
 
         public void PopulateTree(IStateTree tree)

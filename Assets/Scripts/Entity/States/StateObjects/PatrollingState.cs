@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Entity.Abilities;
+using Entity.States.StateObjects.Edits;
 using UnityEngine;
 
-namespace Entity.States
+namespace Entity.States.StateObjects
 {
     [CreateAssetMenu(fileName = "Patrolling State", menuName = "States/Patrolling State", order = 0)]
     public class PatrollingState : State, IEditableState
     {
         public override string Name => "Patrolling";
 
-        public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties)
+        public override async Task<int> Activate(Entity entity, State previous, EditableStateProperties properties)
         {
-            var edit = properties as Edit;
+            var edit = properties as PatrollingStateEdit;
             var nextId = edit.next;
             var coll = entity.GetComponent<Collider2D>();
             var moveAbility = entity.FindAbilityByType<EntityMovementHorizontalMove>();
@@ -39,28 +40,7 @@ namespace Entity.States
             return nextId;
         }
 
-        Type IEditableState.GetTypeOfEdit() => typeof(Edit);
+        Type IEditableState.GetTypeOfEdit() => typeof(PatrollingStateEdit);
 
-        [Serializable]
-        [CreateAssetMenu(fileName = "Patrolling Edit", menuName = "States/Edits/Patrolling Edit", order = 0)]
-        private class Edit : IEditableState.Properties
-        {
-            public float rayDistance;
-            public LayerMask groundLayer;
-            public bool initialDirection;
-            public int next;
-
-            private void Reset()
-            {
-                groundLayer = LayerMask.GetMask("Default");
-                rayDistance = 0.1f;
-            }
-
-            public override T Get<T>(string name) => GetType().GetField(name).GetValue(this) is T
-                ? (T) GetType().GetField(name).GetValue(this)
-                : default;
-
-            public override void Set<T>(string name, T value) => GetType().GetField(name).SetValue(this, value);
-        }
     }
 }

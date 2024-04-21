@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Entity.States.StateObjects;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,16 +17,16 @@ namespace Entity.States
         [Serializable]
         public struct StateForList
         {
-            public int id;
+            public string id;
             public Vector2 position;
             public State state;
-            public List<int> nexts;
+            public List<string> nexts;
         }
 
         [Serializable]
         public struct EditForList
         {
-            public int id;
+            public string id;
             [SerializeReference] public ScriptableObject edit;
         }
 
@@ -41,7 +42,7 @@ namespace Entity.States
                 .Select(AssetDatabase.GUIDToAssetPath).First()));
             states[0] = new StateForList
             {
-                id = 0,
+                id = "0",
                 nexts = states[0].nexts,
                 position = states[0].position,
                 state = states[0].state
@@ -49,13 +50,12 @@ namespace Entity.States
             UpdateAsset();
         }
 
-        public int Hash(State state)
+        public string Hash(State state)
         {
-            var n = state.GetType().FullName + state.Name;
-            var h = n.GetHashCode();
+            var h = GUID.Generate().ToString();
             while (IsIdValid(h))
             {
-                h++;
+                h = GUID.Generate().ToString();
             }
 
             return h;
@@ -74,10 +74,10 @@ namespace Entity.States
         private static bool Contains<T>(T[] where, T that) => Contains(where.AsEnumerable(), that);
         private static bool Contains<T>(List<T> where, T that) => Contains(where.AsEnumerable(), that);
 
-        public int AddState(State state)
+        public string AddState(State state)
         {
             var h = Hash(state);
-            states.Add(new StateForList {id = h, state = state, nexts = new List<int>(0)});
+            states.Add(new StateForList {id = h, state = state, nexts = new List<string>(0)});
             if (state is IEditableState editableState)
             {
                 edits.Add(new EditForList {id = h, edit = CreateEdit(editableState.GetTypeOfEdit(), h, state)});
@@ -88,7 +88,7 @@ namespace Entity.States
             return h;
         }
 
-        private ScriptableObject CreateEdit(Type type, int id, State state)
+        private ScriptableObject CreateEdit(Type type, string id, State state)
         {
             var edit = CreateInstance(type);
             edit.name = $"Properies({state.Name.Replace(" ", "")}.{type.Name}) of State({id}) of Tree(\"{name}\")";
@@ -106,7 +106,7 @@ namespace Entity.States
             return state;
         }
 
-        public bool TryConnect(int idA, int idB)
+        public bool TryConnect(string idA, string idB)
         {
             if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
 
@@ -116,7 +116,7 @@ namespace Entity.States
             return true;
         }
 
-        public bool TryDisconnect(int idA, int idB)
+        public bool TryDisconnect(string idA, string idB)
         {
             if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
 
@@ -126,7 +126,7 @@ namespace Entity.States
             return true;
         }
 
-        public bool TryDisconnect(int id)
+        public bool TryDisconnect(string id)
         {
             if (!IsIdValid(id)) return false;
 
@@ -140,9 +140,9 @@ namespace Entity.States
             return true;
         }
 
-        public int[] FindConnections(int id)
+        public string[] FindConnections(string id)
         {
-            var i = new List<int>();
+            var i = new List<string>();
             if (!IsIdValid(id)) return i.ToArray();
 
             foreach (var state in states)
@@ -153,9 +153,9 @@ namespace Entity.States
             return i.ToArray();
         }
 
-        public bool TryRemoveState(int id)
+        public bool TryRemoveState(string id)
         {
-            if (id == 0) return false;
+            if (id == "0") return false;
             if (!IsIdValid(id)) return false;
             TryDisconnect(id);
             for (var i = 0; i < states.Count; i++)
@@ -182,37 +182,37 @@ namespace Entity.States
             return false;
         }
 
-        public bool IsIdValid(int id) => Contains(Ids, id);
+        public bool IsIdValid(string id) => Contains(Ids, id);
 
-        public bool TryGetState(int id, ref State state)
+        public bool TryGetState(string id, ref State state)
         {
             if (!IsIdValid(id)) return false;
             state = GetState(id);
             return true;
         }
 
-        public bool TryGetPosition(int id, ref Vector2 position)
+        public bool TryGetPosition(string id, ref Vector2 position)
         {
             if (!IsIdValid(id)) return false;
             position = GetPosition(id);
             return true;
         }
 
-        public State GetState(int id)
+        public State GetState(string id)
         {
             var a = SflAtID(id)?.state;
             if (!a) return null;
             return a;
         }
 
-        public Vector2 GetPosition(int id)
+        public Vector2 GetPosition(string id)
         {
             var a = SflAtID(id);
             if (!a.HasValue) return Vector2.zero;
             return a.Value.position;
         }
 
-        public bool TrySetPosition(int id, Vector2 position)
+        public bool TrySetPosition(string id, Vector2 position)
         {
             if (!IsIdValid(id)) return false;
             for (var i = 0; i < states.Count; i++)
@@ -251,11 +251,11 @@ namespace Entity.States
             AssetDatabase.SaveAssets();
         }
 
-        public int[] GetNextsTo(int id) => GetNextsIdsTo(id).ToArray();
+        public string[] GetNextsTo(string id) => GetNextsIdsTo(id).ToArray();
 
-        public bool IsNextsTo(int id) => IsIdValid(id) && SflAtID(id).Value.nexts.Count != 0;
+        public bool IsNextsTo(string id) => IsIdValid(id) && SflAtID(id).Value.nexts.Count != 0;
 
-        private IEnumerable<int> GetNextsIdsTo(int id)
+        private IEnumerable<string> GetNextsIdsTo(string id)
         {
             if (!IsIdValid(id)) yield break;
             var inst = SflAtID(id).Value;
@@ -266,10 +266,10 @@ namespace Entity.States
             }
         }
 
-        public State First() => GetState(0);
+        public State First() => GetState("0");
 
 
-        public IEnumerable<int> Ids
+        public IEnumerable<string> Ids
         {
             get
             {
@@ -280,9 +280,9 @@ namespace Entity.States
             }
         }
 
-        public int IndToId(int ind) => ind > 0 && ind < states.Count ? states[ind].id : -1;
+        public string IndToId(int ind) => ind > 0 && ind < states.Count ? states[ind].id : "0";
 
-        public int IdToInd(int id)
+        public int IdToInd(string id)
         {
             if (!IsIdValid(id)) return -1;
             for (var i = 0; i < states.Count; i++)
@@ -293,7 +293,7 @@ namespace Entity.States
             return -1;
         }
 
-        private StateForList? SflAtID(int id)
+        private StateForList? SflAtID(string id)
         {
             if (!IsIdValid(id)) return null;
             foreach (var state in states)
@@ -304,10 +304,10 @@ namespace Entity.States
             return null;
         }
 
-        public Dictionary<int, State> States => states.ToDictionary(item => item.id, item => item.state);
+        public Dictionary<string, State> States => states.ToDictionary(item => item.id, item => item.state);
 
 
-        public bool TryGetEdit(int id, ref IEditableState.Properties edit)
+        public bool TryGetEdit(string id, ref EditableStateProperties edit)
         {
             State state = null;
             if (!TryGetState(id, ref state)) return false;
@@ -316,11 +316,11 @@ namespace Entity.States
             return true;
         }
 
-        public IEditableState.Properties GetEdit(int id)
+        public EditableStateProperties GetEdit(string id)
         {
             foreach (var edit in edits)
             {
-                if (edit.id == id) return edit.edit as IEditableState.Properties;
+                if (edit.id == id) return edit.edit as EditableStateProperties;
             }
 
             throw new ArgumentException("Id is invalid");

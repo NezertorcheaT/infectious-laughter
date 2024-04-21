@@ -1045,11 +1045,6 @@
             <e p="zenject.asmdef" t="Include" />
           </e>
         </e>
-        <e p="Presets" t="Include">
-          <e p="States" t="Include">
-            <e p="ShitState.cs" t="Include" />
-          </e>
-        </e>
         <e p="Resources" t="Include">
           <e p="BillingMode.json" t="Include" />
         </e>
@@ -1075,17 +1070,24 @@
             </e>
             <e p="Entity.cs" t="Include" />
             <e p="States" t="Include">
+              <e p="EditableStateProperties.cs" t="Include" />
               <e p="IEditableState.cs" t="Include" />
-              <e p="InitialState.cs" t="Include" />
               <e p="IPositionableStateTree.cs" t="Include" />
               <e p="IStateTree.cs" t="Include" />
               <e p="IStateTreeWithEdits.cs" t="Include" />
               <e p="IUpdatableAssetStateTree.cs" t="Include" />
-              <e p="JumpState.cs" t="Include" />
-              <e p="Patrollingstate.cs" t="Include" />
               <e p="State.cs" t="Include" />
+              <e p="StateObjects" t="Include">
+                <e p="Edits" t="Include">
+                  <e p="PatrollingStateEdit.cs" t="Include" />
+                  <e p="WaitStateEdit.cs" t="Include" />
+                </e>
+                <e p="InitialState.cs" t="Include" />
+                <e p="JumpState.cs" t="Include" />
+                <e p="Patrollingstate.cs" t="Include" />
+                <e p="WaitState.cs" t="Include" />
+              </e>
               <e p="StateTree.cs" t="Include" />
-              <e p="WaitState.cs" t="Include" />
             </e>
           </e>
           <e p="Installers" t="Include">

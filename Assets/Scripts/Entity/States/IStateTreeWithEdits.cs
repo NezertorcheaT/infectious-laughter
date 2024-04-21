@@ -3,7 +3,7 @@
     /// <summary>
     /// эта кароч дерево, которе имеет редактируемые состояния
     /// </summary>
-    public interface IStateTreeWithEdits
+    public interface IStateTreeWithEdits : IStateTree
     {
         /// <summary>
         /// попробовать получить параметры состояния по айдишнику
@@ -11,13 +11,13 @@
         /// <param name="id">айдишник состояния</param>
         /// <param name="edit">ссылка на параметры для записи</param>
         /// <returns>получилось получить или нет</returns>
-        bool TryGetEdit(int id, ref IEditableState.Properties edit);
+        bool TryGetEdit(string id, ref EditableStateProperties edit);
 
         /// <summary>
         /// гарантированно получить параметры состояния по айдишнику
         /// </summary>
         /// <param name="id">айдишник состояния</param>
         /// <returns>полученые параметры</returns>
-        IEditableState.Properties GetEdit(int id);
+        EditableStateProperties GetEdit(string id);
     }
 }

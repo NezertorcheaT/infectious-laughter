@@ -30,7 +30,7 @@ namespace Entity.States
         /// можно будет получить собственные настройки апкастом к спецтипу
         /// </param>
         /// <returns>должен вернуть номер следующего в массиве следующих состояний, НЕ АЙДИ</returns>
-        public abstract Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties);
+        public abstract Task<int> Activate(Entity entity, State previous, EditableStateProperties properties);
     }
 
     /// <summary>

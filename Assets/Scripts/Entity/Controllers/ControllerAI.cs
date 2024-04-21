@@ -22,14 +22,14 @@ namespace Entity.Controllers
         }
 
         public State CurrentState { get; private set; }
-        public int CurrentStateID { get; private set; }
+        public string CurrentStateID { get; private set; }
         public event Action<State> OnStateActivating;
 
         private async void StateCycle()
         {
             State prew;
             CurrentState = _stateTree.First();
-            CurrentStateID = 0;
+            CurrentStateID = "0";
 
             while (true)
             {
