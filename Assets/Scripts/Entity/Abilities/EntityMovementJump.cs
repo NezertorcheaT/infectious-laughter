@@ -14,16 +14,22 @@ namespace Entity.Abilities
         [SerializeField, CurveRange(0, 0, 1, 1)]
         private AnimationCurve jumpCurve;
 
-        [Space(10.0f)]
-        [SerializeField] private float jumpHeight = 5f;
-        [SerializeField] private float jumpTime = 1f;
-        [SerializeField] private float whenMax = 0.5f;
-        [Space(10.0f)]
-        [SerializeField] private float groundDistance = 0.1f;
+        [Space(10.0f)] [SerializeField] private float jumpHeight = 5f;
+
+        [SerializeField, Min(0.69f), Tooltip("Значения меньше 0.69 могут обосрать платформы")]
+        private float jumpTime = 1f;
+
+        [
+            SerializeField,
+            Tooltip("Выставьте значение от 0 до 1, при котором на графике находится максимальная точка"),
+            Min(0)
+        ]
+        private float whenMax = 0.5f;
+
+        [Space(10.0f)] [SerializeField] private float groundDistance = 0.1f;
         [SerializeField] private LayerMask groundLayer;
-        [Space(10.0f)]
-        [SerializeField] private int jumpsCount = 1;
-        
+        [Space(10.0f)] [SerializeField] private int jumpsCount = 1;
+
         private int curJumpsCount;
 
         private Rigidbody2D _rb;
@@ -52,6 +58,7 @@ namespace Entity.Abilities
                 else
                     curJumpsCount = jumpsCount;
             }
+
             curJumpsCount--;
             StartCoroutine(ForceJump());
         }
@@ -67,7 +74,7 @@ namespace Entity.Abilities
 
             for (t = 0; t < jumpTime; t += Time.fixedDeltaTime)
             {
-                while (!enabled)
+                while (!Available())
                 {
                     initialYPos = _rb.position.y - avFunc(t);
                     yield return new WaitForFixedUpdate();
@@ -85,7 +92,7 @@ namespace Entity.Abilities
 
                 if (CheckTop(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
                     groundDistance,
-                    groundDistance) && t < whenMax)
+                    groundDistance) && t < whenMax * jumpTime)
                 {
                     var timesEquals = new List<float>(0);
                     for (var tt = 0f; tt < jumpTime; tt += Time.fixedDeltaTime)
@@ -100,7 +107,7 @@ namespace Entity.Abilities
                 yield return new WaitForFixedUpdate();
             }
 
-            _rb.velocity += new Vector2(0, (avFunc(t) - avFunc(prev)) / (t - prev));
+            _rb.velocity += new Vector2(0, (avFunc(t) - avFunc(prev * jumpTime)) / (t - prev * jumpTime));
             _rb.gravityScale = 1f;
         }
 

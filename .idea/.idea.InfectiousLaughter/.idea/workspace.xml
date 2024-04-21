@@ -20,20 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8e69fea-f010-427a-98f2-d5a4ddfd9ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InfectiousLaughter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateMachine.uxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateNodeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/StateTreeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/StateTrees/New State Tree.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/StateTrees/New State Tree.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Presets/StateTrees/sssssssss.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Presets/StateTrees/sssssssss.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/WaitStateEdit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/Edits/WaitStateEdit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/WaitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateObjects/WaitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +68,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Input/InventoryInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementDowning.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementCrouch.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/NewStateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/SplitView.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.uss" />
@@ -116,6 +104,8 @@
         <option value="$PROJECT_DIR$/Assets/Editor/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/InspectorView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Entity/States/StateTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Controllers/ControllerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity/Abilities/EntityMovementJump.cs" />
       </list>
     </option>
   </component>
@@ -139,6 +129,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/Infectious Laughter.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Games\Unity\Unity Prog\InfectiousLaughter\Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -204,7 +202,7 @@
       <workItem from="1713536572771" duration="8384000" />
       <workItem from="1713556053243" duration="6716000" />
       <workItem from="1713619606990" duration="7719000" />
-      <workItem from="1713693061910" duration="5344000" />
+      <workItem from="1713693061910" duration="7733000" />
     </task>
     <servers />
   </component>

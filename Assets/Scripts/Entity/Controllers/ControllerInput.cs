@@ -82,10 +82,12 @@ namespace Entity.Controllers
             var leftUp = bounds.center + new Vector3(-bounds.size.x / 2f, bounds.size.y / 2f) +
                          new Vector3(-sizeX / 2f, -sizeY / 2f);
 
+#if UNITY_EDITOR
             Helper.DrawBox(rightDown, size);
             Helper.DrawBox(leftDown, size);
             Helper.DrawBox(rightUp, size);
-            Helper.DrawBox(leftUp, size);
+            Helper.DrawBox(leftUp, size);    
+#endif
 
             var rightDownCheck = Physics2D.OverlapBoxAll(rightDown, size, 0, groundLayer).Length > 0;
             var leftDownCheck = Physics2D.OverlapBoxAll(leftDown, size, 0, groundLayer).Length > 0;
@@ -94,6 +96,12 @@ namespace Entity.Controllers
 
             _moveAbility.Move(_input);
 
+            if (rightDownCheck && leftDownCheck)
+            {
+                _hangingLeft = false;
+                _hangingRight = false;
+                return;
+            }
 
             if (_hangingLeft)
             {

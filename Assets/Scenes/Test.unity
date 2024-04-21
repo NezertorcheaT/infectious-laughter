@@ -1595,13 +1595,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5
+      time: 0.6
       value: 1
-      inSlope: 1.9652174
+      inSlope: 0.00000041747876
       outSlope: -0.010162279
       tangentMode: 1
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0.2379548
       outWeight: 0.40412974
     - serializedVersion: 3
       time: 1
@@ -1616,8 +1616,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jumpHeight: 3
-  jumpTime: 1
-  whenMax: 5
+  jumpTime: 0.69
+  whenMax: 0.6
   groundDistance: 0.1
   groundLayer:
     serializedVersion: 2
@@ -1780,13 +1780,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5
+      time: 0.6
       value: 1
-      inSlope: 1.9652174
+      inSlope: 0.00000041747876
       outSlope: -0.010162279
       tangentMode: 1
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0.2379548
       outWeight: 0.40412974
     - serializedVersion: 3
       time: 1
@@ -1801,8 +1801,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jumpHeight: 3
-  jumpTime: 1
-  whenMax: 0.5
+  jumpTime: 0.69
+  whenMax: 0.6
   groundDistance: 0.1
   groundLayer:
     serializedVersion: 2
@@ -2459,13 +2459,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5
+      time: 0.6
       value: 1
-      inSlope: 1.9652174
+      inSlope: 0.00000041747876
       outSlope: -0.010162279
       tangentMode: 1
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0.2379548
       outWeight: 0.40412974
     - serializedVersion: 3
       time: 1
@@ -2480,8 +2480,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jumpHeight: 3
-  jumpTime: 1
-  whenMax: 5
+  jumpTime: 0.69
+  whenMax: 0.6
   groundDistance: 0.1
   groundLayer:
     serializedVersion: 2
