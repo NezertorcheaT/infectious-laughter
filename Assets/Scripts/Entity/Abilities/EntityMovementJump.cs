@@ -39,7 +39,9 @@ namespace Entity.Abilities
         private Collider2D _col;
 
         public float JumpTime => jumpTime;
+        public float CurrentJumpTime { get; private set; }
         public float JumpHeight => jumpHeight;
+        public float WhenMax => whenMax;
 
         public override void Initialize()
         {
@@ -77,6 +79,14 @@ namespace Entity.Abilities
             _jumping = false;
         }
 
+        public void DropRigidBody(float t)
+        {
+            Func<float, float> avFunc = ctx => jumpHeight * jumpCurve.Evaluate(ctx / jumpTime);
+            var prev = t - Time.fixedDeltaTime;
+            _rb.velocity += new Vector2(0, (avFunc(t) - avFunc(prev)) / (t - prev));
+            _rb.gravityScale = 1f;
+        }
+
         private async UniTask ForceJump()
         {
             if (_jumping)
@@ -89,12 +99,14 @@ namespace Entity.Abilities
             _rb.gravityScale = 0f;
 
             var initialYPos = _rb.position.y;
+            CurrentJumpTime = 0.0f;
             float t;
             float prev = 0;
             Func<float, float> avFunc = ctx => jumpHeight * jumpCurve.Evaluate(ctx / jumpTime);
 
             for (t = 0; t < jumpTime; t += Time.fixedDeltaTime)
             {
+                CurrentJumpTime = t;
                 if (_stopAllJumps) return;
                 while (!Available())
                 {
@@ -124,11 +136,14 @@ namespace Entity.Abilities
                     }
 
                     t = timesEquals.Last();
+                    CurrentJumpTime = t;
                 }
 
                 _rb.position = new Vector2(_rb.position.x, initialYPos + avFunc(t));
                 await UniTask.WaitForFixedUpdate();
             }
+
+            CurrentJumpTime = jumpTime;
 
             if (_stopAllJumps) return;
             _rb.velocity += new Vector2(0, (avFunc(t) - avFunc(prev * jumpTime)) / (t - prev * jumpTime));

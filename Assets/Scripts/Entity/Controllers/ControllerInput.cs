@@ -140,7 +140,9 @@ namespace Entity.Controllers
         private async void Downing(bool direction)
         {
             var prevGravity = _rb.gravityScale;
+            var prevJumpTime = _jumpAbility.CurrentJumpTime;
             _rb.gravityScale = 0f;
+            await _jumpAbility.StopJumps();
             _jumpAbility.enabled = false;
 
             for (float i = 0; i < downingTime; i += Time.deltaTime)
@@ -149,6 +151,10 @@ namespace Entity.Controllers
                 {
                     _rb.gravityScale = prevGravity;
                     _jumpAbility.enabled = true;
+                    await _jumpAbility.StopJumps();
+                    _jumpAbility.DropRigidBody(prevJumpTime > _jumpAbility.WhenMax
+                        ? prevJumpTime
+                        : _jumpAbility.WhenMax+ prevJumpTime);
                     return;
                 }
 
@@ -163,6 +169,10 @@ namespace Entity.Controllers
                     _downingAbility.enabled = false;
                     _rb.gravityScale = prevGravity;
                     _jumpAbility.enabled = true;
+                    await _jumpAbility.StopJumps();
+                    _jumpAbility.DropRigidBody(prevJumpTime > _jumpAbility.WhenMax
+                        ? prevJumpTime
+                        : _jumpAbility.WhenMax+ prevJumpTime);
                     return;
                 }
 

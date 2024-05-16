@@ -43,7 +43,7 @@ MonoBehaviour:
     nexts:
     - aae96ee8444da0b45afd43c53a62252b
   - id: aae96ee8444da0b45afd43c53a62252b
-    position: {x: 226, y: 0.000015258789}
+    position: {x: 226, y: 0}
     state: {fileID: 11400000, guid: 998f51bc49d7c35458b777e361133ef0, type: 2}
     nexts:
     - db44149061f7b884397ebc2356e11c7d
