@@ -6,6 +6,8 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/Crouch Ability")]
     public class EntityMovementCrouch : Ability
     {
+        public bool IsCrouching { get; set; }
+
         [SerializeField] private float crouchSizeMultiplier = .5f;
 
         private float _origCrouchSizer;
@@ -22,6 +24,7 @@ namespace Entity.Abilities
         {
             var localScale = _col.gameObject.transform.localScale;
             _col.gameObject.transform.localScale = new Vector3(localScale.x, _origCrouchSizer, localScale.z);
+            IsCrouching = false;
         }
 
         public void Crouch()
@@ -33,6 +36,7 @@ namespace Entity.Abilities
                 localScale.x,
                 _origCrouchSizer * crouchSizeMultiplier,
                 localScale.z);
+            IsCrouching = true;
         }
     }
 }

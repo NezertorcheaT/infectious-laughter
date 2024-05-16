@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -50,23 +51,41 @@ namespace Entity.Abilities
         }
 
 
-        public void Jump()
+        public async UniTaskVoid Jump()
         {
             if (!Available()) return;
             if (curJumpsCount == 0)
             {
                 if (!CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
                     0.1f)) return;
-                else
-                    curJumpsCount = jumpsCount;
+                curJumpsCount = jumpsCount;
             }
 
             curJumpsCount--;
-            StartCoroutine(ForceJump());
+            await StopJumps();
+            await ForceJump();
         }
 
-        private IEnumerator ForceJump()
+        private bool _jumping = false;
+        private bool _stopAllJumps = false;
+
+        public async UniTask StopJumps()
         {
+            _stopAllJumps = true;
+            await UniTask.WaitForFixedUpdate();
+            _stopAllJumps = false;
+            _jumping = false;
+        }
+
+        private async UniTask ForceJump()
+        {
+            if (_jumping)
+            {
+                _jumping = false;
+                await StopJumps();
+            }
+
+            _jumping = true;
             _rb.gravityScale = 0f;
 
             var initialYPos = _rb.position.y;
@@ -76,10 +95,12 @@ namespace Entity.Abilities
 
             for (t = 0; t < jumpTime; t += Time.fixedDeltaTime)
             {
+                if (_stopAllJumps) return;
                 while (!Available())
                 {
+                    if (_stopAllJumps) return;
                     initialYPos = _rb.position.y - avFunc(t);
-                    yield return new WaitForFixedUpdate();
+                    await UniTask.WaitForFixedUpdate();
                 }
 
                 prev = (t - Time.fixedDeltaTime) / jumpTime;
@@ -106,11 +127,13 @@ namespace Entity.Abilities
                 }
 
                 _rb.position = new Vector2(_rb.position.x, initialYPos + avFunc(t));
-                yield return new WaitForFixedUpdate();
+                await UniTask.WaitForFixedUpdate();
             }
 
+            if (_stopAllJumps) return;
             _rb.velocity += new Vector2(0, (avFunc(t) - avFunc(prev * jumpTime)) / (t - prev * jumpTime));
             _rb.gravityScale = 1f;
+            _jumping = false;
         }
 
         private static bool CheckGround(

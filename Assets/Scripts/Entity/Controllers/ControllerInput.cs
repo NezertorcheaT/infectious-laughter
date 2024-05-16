@@ -86,7 +86,7 @@ namespace Entity.Controllers
             Helper.DrawBox(rightDown, size);
             Helper.DrawBox(leftDown, size);
             Helper.DrawBox(rightUp, size);
-            Helper.DrawBox(leftUp, size);    
+            Helper.DrawBox(leftUp, size);
 #endif
 
             var rightDownCheck = Physics2D.OverlapBoxAll(rightDown, size, 0, groundLayer).Length > 0;
@@ -145,7 +145,7 @@ namespace Entity.Controllers
 
             for (float i = 0; i < downingTime; i += Time.deltaTime)
             {
-                if (direction ? _input < 0 : _input > 0)
+                if ((direction ? _input < 0 : _input > 0) || _crouchAbility.IsCrouching)
                 {
                     _rb.gravityScale = prevGravity;
                     _jumpAbility.enabled = true;
@@ -158,7 +158,7 @@ namespace Entity.Controllers
             _downingAbility.enabled = true;
             for (;;)
             {
-                if (direction ? _input < 0 : _input > 0)
+                if ((direction ? _input < 0 : _input > 0) || _crouchAbility.IsCrouching)
                 {
                     _downingAbility.enabled = false;
                     _rb.gravityScale = prevGravity;
