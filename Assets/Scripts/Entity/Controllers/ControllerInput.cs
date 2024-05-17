@@ -147,14 +147,23 @@ namespace Entity.Controllers
 
             for (float i = 0; i < downingTime; i += Time.deltaTime)
             {
+                if (_actions.Gameplay.Jump.WasPerformedThisFrame())
+                {
+                    _rb.gravityScale = prevGravity;
+                    _jumpAbility.enabled = true;
+                    await _jumpAbility.StopJumps();
+                    await _jumpAbility.Jump(true);
+                    return;
+                }
                 if ((direction ? _input < 0 : _input > 0) || _crouchAbility.IsCrouching)
                 {
                     _rb.gravityScale = prevGravity;
                     _jumpAbility.enabled = true;
                     await _jumpAbility.StopJumps();
-                    _jumpAbility.DropRigidBody(prevJumpTime > _jumpAbility.WhenMax
+                    await _jumpAbility.DropRigidBody(prevJumpTime > _jumpAbility.WhenMax
                         ? prevJumpTime
-                        : _jumpAbility.WhenMax+ prevJumpTime);
+                        : _jumpAbility.WhenMax + (prevJumpTime / _jumpAbility.WhenMax) *
+                        (_jumpAbility.JumpTime - _jumpAbility.WhenMax));
                     return;
                 }
 
@@ -164,15 +173,24 @@ namespace Entity.Controllers
             _downingAbility.enabled = true;
             for (;;)
             {
+                if (_actions.Gameplay.Jump.WasPerformedThisFrame())
+                {
+                    _rb.gravityScale = prevGravity;
+                    _jumpAbility.enabled = true;
+                    await _jumpAbility.StopJumps();
+                    await _jumpAbility.Jump(true);
+                    return;
+                }
                 if ((direction ? _input < 0 : _input > 0) || _crouchAbility.IsCrouching)
                 {
                     _downingAbility.enabled = false;
                     _rb.gravityScale = prevGravity;
                     _jumpAbility.enabled = true;
                     await _jumpAbility.StopJumps();
-                    _jumpAbility.DropRigidBody(prevJumpTime > _jumpAbility.WhenMax
+                    await _jumpAbility.DropRigidBody(prevJumpTime > _jumpAbility.WhenMax
                         ? prevJumpTime
-                        : _jumpAbility.WhenMax+ prevJumpTime);
+                        : _jumpAbility.WhenMax + (prevJumpTime / _jumpAbility.WhenMax) *
+                        (_jumpAbility.JumpTime - _jumpAbility.WhenMax));
                     return;
                 }
 

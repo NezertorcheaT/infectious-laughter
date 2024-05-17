@@ -53,16 +53,16 @@ namespace Entity.Abilities
         }
 
 
-        public async UniTaskVoid Jump()
+        public async UniTask Jump(bool force = false)
         {
             if (!Available()) return;
-            if (curJumpsCount == 0)
+            if (curJumpsCount == 0 && !force)
             {
                 if (!CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
                     0.1f)) return;
                 curJumpsCount = jumpsCount;
             }
-
+            
             curJumpsCount--;
             await StopJumps();
             await ForceJump();
@@ -79,15 +79,17 @@ namespace Entity.Abilities
             _jumping = false;
         }
 
-        public void DropRigidBody(float t)
+        public async UniTask DropRigidBody(float t)
         {
-            Func<float, float> avFunc = ctx => jumpHeight * jumpCurve.Evaluate(ctx / jumpTime);
-            var prev = t - Time.fixedDeltaTime;
-            _rb.velocity += new Vector2(0, (avFunc(t) - avFunc(prev)) / (t - prev));
-            _rb.gravityScale = 1f;
+            await ForceJump(t / jumpTime);
         }
 
-        private async UniTask ForceJump()
+        /// <summary>
+        /// initialTime от 0 до 1
+        /// </summary>
+        /// <param name="initialTime">initialTime от 0 до 1</param>
+        /// <returns></returns>
+        private async UniTask ForceJump(float initialTime = 0.0f)
         {
             if (_jumping)
             {
@@ -98,20 +100,21 @@ namespace Entity.Abilities
             _jumping = true;
             _rb.gravityScale = 0f;
 
-            var initialYPos = _rb.position.y;
-            CurrentJumpTime = 0.0f;
-            float t;
-            float prev = 0;
             Func<float, float> avFunc = ctx => jumpHeight * jumpCurve.Evaluate(ctx / jumpTime);
+            var initialMaxedTime = Mathf.Clamp01(initialTime) * jumpTime;
+            var t = initialMaxedTime;
+            var prev = t;
+            CurrentJumpTime = t;
+            var initialYPos = _rb.position.y - avFunc(initialMaxedTime);
 
-            for (t = 0; t < jumpTime; t += Time.fixedDeltaTime)
+            for (; t < jumpTime; t += Time.fixedDeltaTime)
             {
                 CurrentJumpTime = t;
                 if (_stopAllJumps) return;
                 while (!Available())
                 {
                     if (_stopAllJumps) return;
-                    initialYPos = _rb.position.y - avFunc(t);
+                    initialYPos = _rb.position.y - avFunc(initialMaxedTime) - avFunc(t);
                     await UniTask.WaitForFixedUpdate();
                 }
 
