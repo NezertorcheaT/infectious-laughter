@@ -13,10 +13,6 @@ namespace Entity
         /// </summary>
         public Entity Entity { get; private set; }
 
-        // Нужно для активации галочки выключения скрипта в инспекторе
-        protected virtual void Start()
-        {
-        }
 
         public virtual void Initialize() => Entity = GetComponent<Entity>();
 

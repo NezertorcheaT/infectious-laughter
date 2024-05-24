@@ -13,15 +13,14 @@ namespace Entity.Abilities
         private float _origCrouchSizer;
         private Collider2D _col;
 
-        public override void Initialize()
+        private void Start()
         {
-            base.Initialize();
             _col = GetComponent<Collider2D>();
         }
 
-
         public void UnCrouch()
         {
+            if (!Available()) return;
             var localScale = _col.gameObject.transform.localScale;
             _col.gameObject.transform.localScale = new Vector3(localScale.x, _origCrouchSizer, localScale.z);
             IsCrouching = false;
@@ -29,6 +28,7 @@ namespace Entity.Abilities
 
         public void Crouch()
         {
+            if (!Available()) return;
             var localScale = _col.gameObject.transform.localScale;
             _origCrouchSizer = localScale.y;
 

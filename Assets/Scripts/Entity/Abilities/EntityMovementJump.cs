@@ -43,15 +43,13 @@ namespace Entity.Abilities
         public float JumpHeight => jumpHeight;
         public float WhenMax => whenMax;
 
-        public override void Initialize()
+        private void Start()
         {
-            base.Initialize();
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<Collider2D>();
 
             curJumpsCount = jumpsCount;
         }
-
 
         public async UniTask Jump(bool force = false)
         {

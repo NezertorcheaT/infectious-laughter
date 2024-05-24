@@ -11,14 +11,15 @@ namespace Inventory.Input
         private IInventory _inventory;
         public float MaxDistance => maxDistance;
 
-        protected override void Start()
+        private void Start()
         {
             if (inventory is IInventory inv) _inventory = inv;
         }
 
         public void AddItem(ScriptableObject item)
         {
-            _inventory?.TryAddItem(item as IItem);
+            if (Available())
+                _inventory?.TryAddItem(item as IItem);
         }
 
         private void OnDrawGizmosSelected()

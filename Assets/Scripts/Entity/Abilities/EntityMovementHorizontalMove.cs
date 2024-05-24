@@ -7,14 +7,13 @@ namespace Entity.Abilities
     public class EntityMovementHorizontalMove : Ability
     {
         [SerializeField] private float speed;
-
         private Rigidbody2D _rb;
 
-        public override void Initialize()
+        private void Start()
         {
-            base.Initialize();
             _rb = GetComponent<Rigidbody2D>();
         }
+
         public void Move(float velocity)
         {
             if (!Available()) return;

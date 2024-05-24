@@ -10,9 +10,8 @@ namespace Entity.Abilities
 
         private Rigidbody2D _rb;
 
-        public override void Initialize()
+        private void Start()
         {
-            base.Initialize();
             _rb = GetComponent<Rigidbody2D>();
         }
 
