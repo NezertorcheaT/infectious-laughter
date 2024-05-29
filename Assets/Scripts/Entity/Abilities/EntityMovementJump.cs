@@ -12,11 +12,12 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/Jump Ability")]
     public class EntityMovementJump : Ability
     {
+        [SerializeField, CurveRange(0, 0, 1, 1)]
+        private AnimationCurve jumpCurve;
 
         [Space(10.0f)] [SerializeField] private float jumpHeight = 5f;
 
         [SerializeField, Min(0.69f), Tooltip("Значения меньше 0.69 могут обосрать платформы")]
-        
         private float jumpTime = 1f;
 
         [
@@ -24,10 +25,10 @@ namespace Entity.Abilities
             Tooltip("Выставьте значение от 0 до 1, при котором на графике находится максимальная точка"),
             Range(0f, 1f)
         ]
-        
         private float whenMax = 0.5f;
 
-        //private float groundDistance = 0.1f;
+        [Space(10.0f), SerializeField, Min(0.01f)]
+        private float groundDistance = 0.1f;
 
         [SerializeField] private LayerMask groundLayer;
         [Space(10.0f), SerializeField, Min(1)] private int jumpsCount = 1;
@@ -38,7 +39,7 @@ namespace Entity.Abilities
         private Collider2D _col;
 
         public float JumpTime => jumpTime;
-        //public float CurrentJumpTime { get; private set; }
+        public float CurrentJumpTime { get; private set; }
         public float JumpHeight => jumpHeight;
         public float WhenMax => whenMax;
 
@@ -61,11 +62,25 @@ namespace Entity.Abilities
             }
             
             curJumpsCount--;
+            await StopJumps();
             await ForceJump();
         }
 
         private bool _jumping = false;
         private bool _stopAllJumps = false;
+
+        public async UniTask StopJumps()
+        {
+            _stopAllJumps = true;
+            await UniTask.WaitForFixedUpdate();
+            _stopAllJumps = false;
+            _jumping = false;
+        }
+
+        public async UniTask DropRigidBody(float t)
+        {
+            await ForceJump(t / jumpTime);
+        }
 
         /// <summary>
         /// initialTime от 0 до 1
@@ -77,28 +92,64 @@ namespace Entity.Abilities
             if (_jumping)
             {
                 _jumping = false;
+                await StopJumps();
             }
 
             _jumping = true;
-            _rb.gravityScale = 1f;
+            _rb.gravityScale = 0f;
 
+            Func<float, float> avFunc = ctx => jumpHeight * jumpCurve.Evaluate(ctx / jumpTime);
+            var initialMaxedTime = Mathf.Clamp01(initialTime) * jumpTime;
+            var t = initialMaxedTime;
+            var prev = t;
+            CurrentJumpTime = t;
+            var initialYPos = _rb.position.y - avFunc(initialMaxedTime);
 
-            var initialYPos = _rb.position.y;
-            
-            
+            for (; t < jumpTime; t += Time.fixedDeltaTime)
+            {
+                CurrentJumpTime = t;
+                if (_stopAllJumps) return;
+                while (!Available())
+                {
+                    if (_stopAllJumps) return;
+                    initialYPos = _rb.position.y - avFunc(initialMaxedTime) - avFunc(t);
+                    await UniTask.WaitForFixedUpdate();
+                }
 
-                //_rb.position = new Vector2(_rb.position.x, initialYPos);
-            
-            
-            //_rb.velocity += new Vector2(0, initialYPos * jumpHeight * 100 * Time.deltaTime);
-            //_rb.position = new Vector2(_rb.position.x, initialYPos);
+                prev = (t - Time.fixedDeltaTime) / jumpTime;
+                if (t > jumpTime / 5f &&
+                    CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
+                        groundDistance,
+                        groundDistance))
+                {
+                    prev = (t - Time.fixedDeltaTime) / jumpTime;
+                    break;
+                }
+
+                if (CheckTop(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
+                    groundDistance,
+                    groundDistance) && t < whenMax * jumpTime)
+                {
+                    var timesEquals = new List<float>(0);
+                    for (var tt = 0f; tt < jumpTime; tt += Time.fixedDeltaTime)
+                    {
+                        if (Math.Abs(avFunc(tt) - avFunc(t)) < Time.fixedDeltaTime) timesEquals.Add(tt);
+                    }
+
+                    t = timesEquals.Last();
+                    CurrentJumpTime = t;
+                }
+
+                _rb.position = new Vector2(_rb.position.x, initialYPos + avFunc(t));
+                await UniTask.WaitForFixedUpdate();
+            }
+
+            CurrentJumpTime = jumpTime;
 
             if (_stopAllJumps) return;
-            // Блябуду где то че то сломалось потому что я не поверю что это делается 1 строчкой :(
-            _rb.velocity += new Vector2(0, initialYPos * jumpHeight * 100 * Time.deltaTime);
-            Debug.Log("Проигралась функция прыжка типа ");
-            //_rb.AddForce(new Vector2(0, initialYPos * jumpHeight * 10 * Time.deltaTime), ForceMode2D.Impulse);
+            _rb.velocity += new Vector2(0, (avFunc(t) - avFunc(prev * jumpTime)) / (t - prev * jumpTime));
             _rb.gravityScale = 1f;
+            _jumping = false;
         }
 
         private static bool CheckGround(
