@@ -40,11 +40,14 @@ public class PlayerJumpAbility : Ability
     }
     private bool CheckGround()
     {
-        if(Physics2D.Raycast(_playerRb.position, -_playerRb.transform.up, groundDistance))
+        RaycastHit2D CheckgroundHit = Physics2D.Raycast(_playerRb.position, -_playerRb.transform.up,groundDistance);
+        if(CheckgroundHit.collider !=  null)
         {
             return true;
+        }else{
+            return false;
         }
-
+    
     }
 }
 }
