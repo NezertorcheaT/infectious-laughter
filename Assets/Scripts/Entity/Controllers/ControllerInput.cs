@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Entity.Abilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,18 +10,11 @@ namespace Entity.Controllers
     public class ControllerInput : Controller
     {
         [Inject] private Controls _actions;
-        [SerializeField, Min(0)] private float sizeX = .1f;
-        [SerializeField, Min(0)] private float sizeY = .1f;
-        [SerializeField, Min(.1f)] private float downingTime = 3f;
-        [SerializeField] private LayerMask groundLayer;
 
         // Cache
         private EntityMovementHorizontalMove _moveAbility;
         private PlayerJumpAbility _jumpAbility;
         private EntityMovementCrouch _crouchAbility;
-        private EntityMovementDowning _downingAbility;
-        private Collider2D _collider;
-        private Rigidbody2D _rb;
 
         public override void Initialize()
         {
@@ -30,9 +22,6 @@ namespace Entity.Controllers
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
             _jumpAbility = Entity.FindAbilityByType<PlayerJumpAbility>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
-            _downingAbility = Entity.FindAbilityByType<EntityMovementDowning>();
-            _collider = Entity.GetComponent<Collider2D>();
-            _rb = Entity.GetComponent<Rigidbody2D>();
 
             OnEnable();
         }
@@ -72,6 +61,5 @@ namespace Entity.Controllers
             _input = _actions.Gameplay.Move.ReadValue<float>();
             _moveAbility.Move(_input);
         }
-
     }
 }
