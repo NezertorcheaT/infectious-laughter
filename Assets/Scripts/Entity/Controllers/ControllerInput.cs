@@ -18,7 +18,7 @@ namespace Entity.Controllers
 
         // Cache
         private EntityMovementHorizontalMove _moveAbility;
-        private EntityMovementJump _jumpAbility;
+        private PlayerJumpAbility _jumpAbility;
         private EntityMovementCrouch _crouchAbility;
         private EntityMovementDowning _downingAbility;
         private Collider2D _collider;
@@ -28,7 +28,7 @@ namespace Entity.Controllers
         {
             base.Initialize();
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
-            _jumpAbility = Entity.FindAbilityByType<EntityMovementJump>();
+            _jumpAbility = Entity.FindAbilityByType<PlayerJumpAbility>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
             _downingAbility = Entity.FindAbilityByType<EntityMovementDowning>();
             _collider = Entity.GetComponent<Collider2D>();
@@ -70,132 +70,8 @@ namespace Entity.Controllers
         private void Move()
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
-            var bounds = _collider.bounds;
-            var size = new Vector2(sizeX, sizeY);
-
-            var rightDown = bounds.center + new Vector3(bounds.size.x / 2f, -bounds.size.y / 2f) +
-                            new Vector3(sizeX / 2f, sizeY / 2f);
-            var leftDown = bounds.center + new Vector3(-bounds.size.x / 2f, -bounds.size.y / 2f) +
-                           new Vector3(-sizeX / 2f, sizeY / 2f);
-            var rightUp = bounds.center + new Vector3(bounds.size.x / 2f, bounds.size.y / 2f) +
-                          new Vector3(sizeX / 2f, -sizeY / 2f);
-            var leftUp = bounds.center + new Vector3(-bounds.size.x / 2f, bounds.size.y / 2f) +
-                         new Vector3(-sizeX / 2f, -sizeY / 2f);
-
-#if UNITY_EDITOR
-            Helper.DrawBox(rightDown, size);
-            Helper.DrawBox(leftDown, size);
-            Helper.DrawBox(rightUp, size);
-            Helper.DrawBox(leftUp, size);
-#endif
-
-            var rightDownCheck = Physics2D.OverlapBoxAll(rightDown, size, 0, groundLayer).Length > 0;
-            var leftDownCheck = Physics2D.OverlapBoxAll(leftDown, size, 0, groundLayer).Length > 0;
-            var rightUpCheck = Physics2D.OverlapBoxAll(rightUp, size, 0, groundLayer).Length > 0;
-            var leftUpCheck = Physics2D.OverlapBoxAll(leftUp, size, 0, groundLayer).Length > 0;
-
             _moveAbility.Move(_input);
-
-            if (rightDownCheck && leftDownCheck)
-            {
-                _hangingLeft = false;
-                _hangingRight = false;
-                return;
-            }
-
-            if (_hangingLeft)
-            {
-                if (_input > 0)
-                {
-                    _hangingLeft = false;
-                    return;
-                }
-            }
-            else if (leftDownCheck && leftUpCheck && !(_hangingRight && _hangingLeft))
-            {
-                _hangingLeft = true;
-                Downing(false);
-                return;
-            }
-
-            if (_hangingRight)
-            {
-                if (_input < 0)
-                {
-                    _hangingRight = false;
-                    return;
-                }
-            }
-            else if (rightDownCheck && rightUpCheck && !(_hangingRight && _hangingLeft))
-            {
-                _hangingRight = true;
-                Downing(true);
-                return;
-            }
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="direction">true - right, false - left</param>
-        private async void Downing(bool direction)
-        {
-            var prevGravity = _rb.gravityScale;
-            var prevJumpTime = _jumpAbility.CurrentJumpTime;
-            _rb.gravityScale = 0f;
-            await _jumpAbility.StopJumps();
-            _jumpAbility.enabled = false;
-
-            for (float i = 0; i < downingTime; i += Time.deltaTime)
-            {
-                if (_actions.Gameplay.Jump.WasPerformedThisFrame())
-                {
-                    _rb.gravityScale = prevGravity;
-                    _jumpAbility.enabled = true;
-                    await _jumpAbility.StopJumps();
-                    await _jumpAbility.Jump(true);
-                    return;
-                }
-                if ((direction ? _input < 0 : _input > 0) || _crouchAbility.IsCrouching)
-                {
-                    _rb.gravityScale = prevGravity;
-                    _jumpAbility.enabled = true;
-                    await _jumpAbility.StopJumps();
-                    await _jumpAbility.DropRigidBody(prevJumpTime > _jumpAbility.WhenMax
-                        ? prevJumpTime
-                        : _jumpAbility.WhenMax + (prevJumpTime / _jumpAbility.WhenMax) *
-                        (_jumpAbility.JumpTime - _jumpAbility.WhenMax));
-                    return;
-                }
-
-                await Task.Yield();
-            }
-
-            _downingAbility.enabled = true;
-            for (;;)
-            {
-                if (_actions.Gameplay.Jump.WasPerformedThisFrame())
-                {
-                    _rb.gravityScale = prevGravity;
-                    _jumpAbility.enabled = true;
-                    await _jumpAbility.StopJumps();
-                    await _jumpAbility.Jump(true);
-                    return;
-                }
-                if ((direction ? _input < 0 : _input > 0) || _crouchAbility.IsCrouching)
-                {
-                    _downingAbility.enabled = false;
-                    _rb.gravityScale = prevGravity;
-                    _jumpAbility.enabled = true;
-                    await _jumpAbility.StopJumps();
-                    await _jumpAbility.DropRigidBody(prevJumpTime > _jumpAbility.WhenMax
-                        ? prevJumpTime
-                        : _jumpAbility.WhenMax + (prevJumpTime / _jumpAbility.WhenMax) *
-                        (_jumpAbility.JumpTime - _jumpAbility.WhenMax));
-                    return;
-                }
-
-                await Task.Yield();
-            }
-        }
     }
 }
