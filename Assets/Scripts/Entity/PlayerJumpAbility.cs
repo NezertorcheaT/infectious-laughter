@@ -15,7 +15,7 @@ public class PlayerJumpAbility : Ability
 
     [Space(10.0f), SerializeField, Min(1)] private int jumpCount = 1;
     [SerializeField] private float jumpHeight = 3;
-    private float groundDistance;
+    [SerializeField] private float groundDistance = 3;
 
 
     private void Start()
@@ -43,14 +43,8 @@ public class PlayerJumpAbility : Ability
         if(Physics2D.Raycast(_playerRb.position, -_playerRb.transform.up, groundDistance))
         {
             return true;
-        }else{
-            return false;
         }
 
-    }
-    private void Update()
-    {
-        Debug.DrawRay(_playerRb.position, -_playerRb.transform.up * groundDistance, Color.yellow);
     }
 }
 }
