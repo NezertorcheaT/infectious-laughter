@@ -2098,7 +2098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpCount: 1
   jumpHeight: 7
-  groundDistance: 3
+  groundDistance: 2
 --- !u!1 &1478113458
 GameObject:
   m_ObjectHideFlags: 0
