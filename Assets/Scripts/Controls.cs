@@ -89,6 +89,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickGarbage"",
+                    ""type"": ""Button"",
+                    ""id"": ""ccafd9ce-a3f5-4cbc-bd30-575007418362"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -311,6 +320,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""PickItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ac2caa2-6ce0-4bd8-a058-b808b2c8b6fd"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""PickGarbage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -360,6 +380,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Run = m_Gameplay.FindAction("Run", throwIfNotFound: true);
         m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
         m_Gameplay_PickItem = m_Gameplay.FindAction("PickItem", throwIfNotFound: true);
+        m_Gameplay_PickGarbage = m_Gameplay.FindAction("PickGarbage", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
     }
@@ -428,6 +449,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Run;
     private readonly InputAction m_Gameplay_Crouch;
     private readonly InputAction m_Gameplay_PickItem;
+    private readonly InputAction m_Gameplay_PickGarbage;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -439,6 +461,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Run => m_Wrapper.m_Gameplay_Run;
         public InputAction @Crouch => m_Wrapper.m_Gameplay_Crouch;
         public InputAction @PickItem => m_Wrapper.m_Gameplay_PickItem;
+        public InputAction @PickGarbage => m_Wrapper.m_Gameplay_PickGarbage;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -469,6 +492,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @PickItem.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickItem;
                 @PickItem.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickItem;
                 @PickItem.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickItem;
+                @PickGarbage.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
+                @PickGarbage.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
+                @PickGarbage.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -494,6 +520,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @PickItem.started += instance.OnPickItem;
                 @PickItem.performed += instance.OnPickItem;
                 @PickItem.canceled += instance.OnPickItem;
+                @PickGarbage.started += instance.OnPickGarbage;
+                @PickGarbage.performed += instance.OnPickGarbage;
+                @PickGarbage.canceled += instance.OnPickGarbage;
             }
         }
     }
@@ -550,6 +579,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnPickItem(InputAction.CallbackContext context);
+        void OnPickGarbage(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

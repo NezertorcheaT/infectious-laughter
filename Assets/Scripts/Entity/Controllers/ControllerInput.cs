@@ -15,10 +15,12 @@ namespace Entity.Controllers
         private EntityMovementHorizontalMove _moveAbility;
         private PlayerJumpAbility _jumpAbility;
         private EntityMovementCrouch _crouchAbility;
+        private GarbageAbility _garbageAbility;
 
         public override void Initialize()
         {
             base.Initialize();
+            _garbageAbility = Entity.FindAbilityByType<GarbageAbility>();
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
             _jumpAbility = Entity.FindAbilityByType<PlayerJumpAbility>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
@@ -33,6 +35,7 @@ namespace Entity.Controllers
 
             Entity.OnFixedUpdate += Move;
             _actions.Gameplay.Jump.performed += JumpOnPerformed;
+            _actions.Gameplay.PickGarbage.performed += PickGarbagePerformed;
             _actions.Gameplay.Crouch.started += CrouchOnStarted;
             _actions.Gameplay.Crouch.canceled += CrouchOnCanceled;
         }
@@ -51,6 +54,7 @@ namespace Entity.Controllers
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UnCrouch();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();
         private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Jump();
+        private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _garbageAbility.PickGarbage();
 
         private bool _hangingRight;
         private bool _hangingLeft;

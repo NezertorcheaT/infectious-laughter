@@ -67,6 +67,7 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: d8451892259b2264b8a0109b299617b0, type: 3}
   - {fileID: 21300000, guid: 74c514638fb97294eaf85e8bd5a036e8, type: 3}
   - {fileID: 21300000, guid: 4e0b4ac32dcbd86418da74331831974d, type: 3}
   - {fileID: -1003030644, guid: 29ab535492dac1c49a28cd99b759cded, type: 3}
@@ -121,6 +122,7 @@ SpriteAtlas:
   - {fileID: -171787832, guid: cceb9f1e54185974483bbb1a796edc7b, type: 3}
   - {fileID: 21300000, guid: 056445cea17e6a94abc2508cd36b96e6, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Trash Count
   - Cursor 1
   - Using
   - Buttons On Off_1
