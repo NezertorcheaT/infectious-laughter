@@ -2135,6 +2135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _garbageText: {fileID: 1948628180}
   defaultGarbagePerLevel: 1
+  _oneMoneyColdown: 0.05
 --- !u!1 &1478113458
 GameObject:
   m_ObjectHideFlags: 0

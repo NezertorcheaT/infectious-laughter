@@ -1,6 +1,7 @@
 using Inventory;
 using Inventory.Garbage;
 using UnityEngine;
+using System.Collections;
 using TMPro;
 
 namespace Entity.Abilities
@@ -15,22 +16,31 @@ namespace Entity.Abilities
         private bool _garbageHasDetected;
         private int _detectedGarbageLevel;
         private GameObject _saveLastGarbage;
+        [SerializeField]private float _oneMoneyColdown;
 
         public void Start()
         {
-            GiveGarbage(10);
+            StartCoroutine(GiveGarbage(10));
+            UpdateGarbageUI();
         }
 
-        public void GiveGarbage(int GiveGarbageBalance)
+        public IEnumerator GiveGarbage(int GiveGarbageBalance)
         {
-            GarbageBalance += GiveGarbageBalance;
+            int givedGarbage = 0;
+            Debug.Log("Lololololo");
+            while(GiveGarbageBalance != givedGarbage)
+            {
+            yield return new WaitForSeconds(_oneMoneyColdown);
+            GarbageBalance++;
+            givedGarbage++;
             UpdateGarbageUI();
+            }
         }
 
         public void PickGarbage()
         {
             if (_garbageHasDetected != true) return;
-            GiveGarbage(_detectedGarbageLevel * defaultGarbagePerLevel);
+            StartCoroutine(GiveGarbage(_detectedGarbageLevel * defaultGarbagePerLevel));
             _saveLastGarbage.GetComponent<GarbageItem>().Suicide();
             Debug.Log("Типа если тру");
         }
