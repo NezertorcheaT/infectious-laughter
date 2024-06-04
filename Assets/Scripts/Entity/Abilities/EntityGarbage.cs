@@ -27,7 +27,6 @@ namespace Entity.Abilities
         public IEnumerator GiveGarbage(int GiveGarbageBalance)
         {
             int givedGarbage = 0;
-            Debug.Log("Lololololo");
             while(GiveGarbageBalance != givedGarbage)
             {
             yield return new WaitForSeconds(_oneMoneyColdown);
@@ -42,7 +41,6 @@ namespace Entity.Abilities
             if (_garbageHasDetected != true) return;
             StartCoroutine(GiveGarbage(_detectedGarbageLevel * defaultGarbagePerLevel));
             _saveLastGarbage.GetComponent<GarbageItem>().Suicide();
-            Debug.Log("Типа если тру");
         }
 
         private void OnTriggerEnter2D(Collider2D other)
