@@ -10,18 +10,18 @@ namespace Entity.Abilities
     {
         public int GarbageBalance { get; private set; }
 
-        [SerializeField] private TextMeshProUGUI _garbageText;
-        [SerializeField, Min(1)] private int defaultGarbagePerLevel;
-
         private bool _garbageHasDetected;
+        [SerializeField, Min(1)] private int defaultGarbagePerLevel;
         private int _detectedGarbageLevel;
         private GameObject _saveLastGarbage;
+        private GarbageUIUpdater _uiUpdater;
         [SerializeField]private float _oneMoneyColdown;
 
         public void Start()
         {
+            _uiUpdater = GetComponent<GarbageUIUpdater>();
             StartCoroutine(GiveGarbage(10));
-            UpdateGarbageUI();
+            _uiUpdater.UpdateGarbageUI();
         }
 
         public IEnumerator GiveGarbage(int GiveGarbageBalance)
@@ -32,7 +32,7 @@ namespace Entity.Abilities
             yield return new WaitForSeconds(_oneMoneyColdown);
             GarbageBalance++;
             givedGarbage++;
-            UpdateGarbageUI();
+            _uiUpdater.UpdateGarbageUI();
             }
         }
 
@@ -57,9 +57,5 @@ namespace Entity.Abilities
             _garbageHasDetected = false;
         }
 
-        private void UpdateGarbageUI()
-        {
-            _garbageText.text = GarbageBalance.ToString();
-        }
     }
 }

@@ -16,21 +16,19 @@ namespace Inventory.Garbage
         [SerializeField] private Material DefaultMaterial;
         [SerializeField] private Material OutlineMaterial;    
 
+
         public void Suicide()
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = _ballAnimSprite;
             gameObject.GetComponent<Collider2D>().enabled = false;
-            //_iamPicked = true;
-            StartCoroutine(StartAnim(LifeTime));
+            StartAnim();
             _keyCodeTablet.SetActive(false);
             gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * 10,gameObject.transform.localScale.y * 10,gameObject.transform.localScale.x * 10);
-            //Destroy(gameObject);
         }
-        private IEnumerator StartAnim(float DeathDelay)
+        private void StartAnim()
         {
             _iamPicked = true;
-            yield return new WaitForSeconds(DeathDelay);
-            Destroy(I);
+            Destroy(I, LifeTime);
         }
         private void Update()
         {

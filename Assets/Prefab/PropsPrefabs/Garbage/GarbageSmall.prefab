@@ -87,7 +87,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 91ec8ceae5f73214096df83a8bbe1b63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,7 +158,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 1
-  KeyCodeTablet: {fileID: 3324330189364019239}
+  _keyCodeTablet: {fileID: 3324330189364019239}
+  _pointTargetUIForAnim: {fileID: 0}
+  _ballAnimSprite: {fileID: 21300000, guid: f3ecb970f28364945bd8daa01229de09, type: 3}
+  _iamPicked: 0
+  _animSpeed: 1
+  I: {fileID: 3188310474906912162}
+  DefaultMaterial: {fileID: 2100000, guid: 91ec8ceae5f73214096df83a8bbe1b63, type: 2}
+  OutlineMaterial: {fileID: 2100000, guid: ea95a2274a6dc3e40ae1e319e67c3040, type: 2}
 --- !u!1 &3324330189364019239
 GameObject:
   m_ObjectHideFlags: 0
