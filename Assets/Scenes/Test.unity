@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 189264673}
   - component: {fileID: 189264672}
   - component: {fileID: 189264671}
+  - component: {fileID: 189264675}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -472,6 +473,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &189264675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189264670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f6ab9590e3aaa4a90fc0c2fff4b407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  garbageText: {fileID: 1948628180}
+  garbage: {fileID: 1471444245}
 --- !u!1 &227561048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000014846269, y: -0.24274999, z: -10}
+  m_LocalPosition: {x: 0.0000024274311, y: -0.24274999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1916,7 +1931,6 @@ GameObject:
   - component: {fileID: 1471444242}
   - component: {fileID: 1471444244}
   - component: {fileID: 1471444245}
-  - component: {fileID: 1471444246}
   - component: {fileID: 1471444238}
   - component: {fileID: 1471444237}
   m_Layer: 3
@@ -2167,20 +2181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGarbagePerLevel: 1
-  _oneMoneyColdown: 0.05
---- !u!114 &1471444246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471444232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f6ab9590e3aaa4a90fc0c2fff4b407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _garbageText: {fileID: 1948628180}
+  oneMoneyColdown: 0.05
 --- !u!1 &1478113458
 GameObject:
   m_ObjectHideFlags: 0

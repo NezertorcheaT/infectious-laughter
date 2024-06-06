@@ -1,10 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Entity.Abilities;
 using TMPro;
+using UnityEngine;
 
-public class GarbageUIUpdater : MonoBehaviour
+namespace Inventory.UI
 {
-    [SerializeField] private TextMeshProUGUI _garbageText;
-    public void UpdateGarbageUI() => _garbageText.text = gameObject.GetComponent<Entity.Abilities.EntityGarbage>().GarbageBalance.ToString();
+    public class GarbageUIUpdater : MonoBehaviour
+    {
+        [SerializeField] private TextMeshProUGUI garbageText;
+        [SerializeField] private EntityGarbage garbage;
+
+        private void OnEnable()
+        {
+            garbage.OnBalanceChanged += UpdateGarbageUI;
+        }
+
+        private void OnDisable()
+        {
+            garbage.OnBalanceChanged -= UpdateGarbageUI;
+        }
+
+        public void UpdateGarbageUI(int garbageCount) => garbageText.text = garbageCount.ToString();
+    }
 }
