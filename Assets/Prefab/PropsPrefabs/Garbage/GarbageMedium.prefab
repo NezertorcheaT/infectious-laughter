@@ -124,15 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26613f3959d44184881172c27109bc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 5
-  _keyCodeTablet: {fileID: 999060363426674710}
-  _pointTargetUIForAnim: {fileID: 0}
-  _ballAnimSprite: {fileID: 21300000, guid: f3ecb970f28364945bd8daa01229de09, type: 3}
-  _iamPicked: 0
-  _animSpeed: 1
-  I: {fileID: 1915039935906369916}
-  DefaultMaterial: {fileID: 2100000, guid: 91ec8ceae5f73214096df83a8bbe1b63, type: 2}
-  OutlineMaterial: {fileID: 2100000, guid: ea95a2274a6dc3e40ae1e319e67c3040, type: 2}
+  level: 5
+  keyCodeTablet: {fileID: 999060363426674710}
+  animSpeed: 1
+  lifeTime: 2.5
+  defaultMaterial: {fileID: 2100000, guid: 91ec8ceae5f73214096df83a8bbe1b63, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: ea95a2274a6dc3e40ae1e319e67c3040, type: 2}
 --- !u!1 &999060363426674710
 GameObject:
   m_ObjectHideFlags: 0

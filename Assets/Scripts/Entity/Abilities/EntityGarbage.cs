@@ -1,43 +1,25 @@
 using System;
 using Inventory.Garbage;
 using UnityEngine;
-using System.Collections;
 
 namespace Entity.Abilities
 {
     public class EntityGarbage : Ability
     {
         [SerializeField, Min(1)] private int defaultGarbagePerLevel;
-        [SerializeField] private float oneMoneyColdown = .05f;
 
         private bool _garbageHasDetected;
         private int _detectedGarbageLevel;
         private GameObject _saveLastGarbage;
-        private int _garbageBalance;
-        
+
+        public int GarbageBalance { get; private set; }
         public event Action<int> OnBalanceChanged;
-
-        public void Start()
-        {
-            StartCoroutine(GiveGarbage(10));
-        }
-
-        public IEnumerator GiveGarbage(int GiveGarbageBalance)
-        {
-            var givedGarbage = 0;
-            while (GiveGarbageBalance != givedGarbage)
-            {
-                yield return new WaitForSeconds(oneMoneyColdown);
-                _garbageBalance++;
-                givedGarbage++;
-                OnBalanceChanged?.Invoke(_garbageBalance);
-            }
-        }
 
         public void PickGarbage()
         {
             if (_garbageHasDetected != true) return;
-            StartCoroutine(GiveGarbage(_detectedGarbageLevel * defaultGarbagePerLevel));
+            GarbageBalance += _detectedGarbageLevel * defaultGarbagePerLevel;
+            OnBalanceChanged?.Invoke(_detectedGarbageLevel * defaultGarbagePerLevel);
             _saveLastGarbage.GetComponent<GarbageItem>().Suicide();
         }
 

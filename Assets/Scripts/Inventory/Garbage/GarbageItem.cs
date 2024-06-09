@@ -1,53 +1,64 @@
 using UnityEngine;
-using System.Collections;
+using Zenject;
 
 namespace Inventory.Garbage
 {
     public class GarbageItem : MonoBehaviour
     {
-        [Min(1)] public int Level;
-        [Space(10f)] [SerializeField] private GameObject _keyCodeTablet;
-        [SerializeField] private GameObject _pointTargetUIForAnim;
-        [SerializeField] private Sprite _ballAnimSprite;
-        [SerializeField] private bool _iamPicked;
-        [SerializeField, Min(1)] private float _animSpeed;
-        private float LifeTime = 2.5f;
-        [SerializeField] private GameObject I; // Ссылка на самого себя
-        [SerializeField] private Material DefaultMaterial;
-        [SerializeField] private Material OutlineMaterial;    
+        [SerializeField] [Min(1)] private int level;
+        [SerializeField] private GameObject keyCodeTablet;
+        [SerializeField] [Min(1)] private float animSpeed = 1f;
+        [SerializeField] private float lifeTime = 2.5f;
+        [SerializeField] private Material defaultMaterial;
+        [SerializeField] private Material outlineMaterial;
 
+        [Inject] private PointTargetForGarbageAnimation _pointTargetForGarbageAnimation;
+
+        public int Level => level;
+
+        private Transform _pointTargetUIForAnim;
+        private bool _iamPicked;
 
         public void Suicide()
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = _ballAnimSprite;
             gameObject.GetComponent<Collider2D>().enabled = false;
             StartAnim();
-            _keyCodeTablet.SetActive(false);
-            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * 10,gameObject.transform.localScale.y * 10,gameObject.transform.localScale.x * 10);
+            keyCodeTablet.SetActive(false);
         }
+
+        private void Start()
+        {
+            _pointTargetUIForAnim = _pointTargetForGarbageAnimation.Target;
+        }
+
         private void StartAnim()
         {
             _iamPicked = true;
-            Destroy(I, LifeTime);
+            Destroy(gameObject, lifeTime);
         }
+
         private void Update()
         {
-            if(_iamPicked)
-            {
-                gameObject.transform.position = Vector2.Lerp(gameObject.transform.position, _pointTargetUIForAnim.transform.position, _animSpeed * Time.deltaTime * Vector2.Distance(gameObject.transform.position, _pointTargetUIForAnim.transform.position));
-            }
+            if (!_iamPicked) return;
+            gameObject.transform.position =
+                Vector2.Lerp(
+                    gameObject.transform.position,
+                    _pointTargetUIForAnim.position,
+                    animSpeed * Time.deltaTime *
+                    Vector2.Distance(gameObject.transform.position, _pointTargetUIForAnim.position)
+                );
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _keyCodeTablet.SetActive(other.gameObject.GetComponent<Entity.Abilities.EntityGarbage>());
-            gameObject.GetComponent<SpriteRenderer>().material = OutlineMaterial;
+            keyCodeTablet.SetActive(other.gameObject.GetComponent<Entity.Abilities.EntityGarbage>() is not null);
+            gameObject.GetComponent<SpriteRenderer>().material = outlineMaterial;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            _keyCodeTablet.SetActive(!other.gameObject.GetComponent<Entity.Abilities.EntityGarbage>());
-            gameObject.GetComponent<SpriteRenderer>().material = DefaultMaterial;
+            keyCodeTablet.SetActive(other.gameObject.GetComponent<Entity.Abilities.EntityGarbage>() is null);
+            gameObject.GetComponent<SpriteRenderer>().material = defaultMaterial;
         }
     }
 }

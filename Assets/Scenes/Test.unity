@@ -382,7 +382,6 @@ GameObject:
   - component: {fileID: 189264673}
   - component: {fileID: 189264672}
   - component: {fileID: 189264671}
-  - component: {fileID: 189264675}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -473,20 +472,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &189264675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189264670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f6ab9590e3aaa4a90fc0c2fff4b407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  garbageText: {fileID: 1948628180}
-  garbage: {fileID: 1471444245}
 --- !u!1 &227561048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1039,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0000024274311, y: -0.24274999, z: -10}
+  m_LocalPosition: {x: 0.000013561726, y: -0.24274999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1107,6 +1092,7 @@ GameObject:
   - component: {fileID: 539015063}
   - component: {fileID: 539015062}
   - component: {fileID: 539015061}
+  - component: {fileID: 539015064}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -1141,6 +1127,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 539015061}
+  - {fileID: 539015064}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1173,6 +1160,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &539015064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539015060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38679609a07a6d84bbdd082c69d0c5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointTargetUIForAnim: {fileID: 1404030172}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,6 +1434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 935782344}
+  - component: {fileID: 935782345}
   m_Layer: 5
   m_Name: Garbage counter
   m_TagString: Untagged
@@ -1459,11 +1460,26 @@ RectTransform:
   m_Father: {fileID: 189264674}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 466, y: 355}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -494, y: -185}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &935782345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935782343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f6ab9590e3aaa4a90fc0c2fff4b407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  garbageText: {fileID: 1948628180}
+  garbage: {fileID: 1471444245}
+  oneMoneyCooldown: 0.05
 --- !u!1 &1303842865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,7 +1724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404030171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.07, y: 3.47, z: 9.98}
+  m_LocalPosition: {x: 5.07, y: 3.47, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2181,7 +2197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultGarbagePerLevel: 1
-  oneMoneyColdown: 0.05
 --- !u!1 &1478113458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,6 +3187,10 @@ PrefabInstance:
       value: Garbage_small
       objectReference: {fileID: 0}
     - target: {fileID: 3324330188774912070, guid: 774c9079c61c1dc4897e46f4387184c8, type: 3}
+      propertyPath: pointTargetUIForAnim
+      value: 
+      objectReference: {fileID: 1404030171}
+    - target: {fileID: 3324330188774912070, guid: 774c9079c61c1dc4897e46f4387184c8, type: 3}
       propertyPath: _pointTargetUIForAnim
       value: 
       objectReference: {fileID: 1404030171}
@@ -3210,15 +3229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 117114633180509468, guid: b09d4a2d6b16c454a9cb8048c569bc76, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 117114633180509468, guid: b09d4a2d6b16c454a9cb8048c569bc76, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 117114633180509468, guid: b09d4a2d6b16c454a9cb8048c569bc76, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 117114633180509468, guid: b09d4a2d6b16c454a9cb8048c569bc76, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3236,6 +3255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Garbage_medium
       objectReference: {fileID: 0}
+    - target: {fileID: 6596635931188697631, guid: b09d4a2d6b16c454a9cb8048c569bc76, type: 3}
+      propertyPath: pointTargetUIForAnim
+      value: 
+      objectReference: {fileID: 1404030171}
     - target: {fileID: 6596635931188697631, guid: b09d4a2d6b16c454a9cb8048c569bc76, type: 3}
       propertyPath: _pointTargetUIForAnim
       value: 
@@ -3297,6 +3320,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 621563913991554625, guid: a25f82304800601438ca3600b0aa2e25, type: 3}
+      propertyPath: pointTargetUIForAnim
+      value: 
+      objectReference: {fileID: 1404030171}
     - target: {fileID: 621563913991554625, guid: a25f82304800601438ca3600b0aa2e25, type: 3}
       propertyPath: _pointTargetUIForAnim
       value: 
