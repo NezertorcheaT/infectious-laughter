@@ -17,11 +17,8 @@ public class PlayerJumpAbility : Ability
 
         [Space(10.0f), SerializeField, Min(1)] private int jumpCount = 1;
         [Space(10f)]
-        [SerializeField, Min(-2f)] private float rayOffsetY;
 
         [SerializeField] private float jumpHeight = 3;
-        private float rayGroundRange = 0.9f; // Не изменять, идеяльно находится под игроком
-        private Vector2 _startRayPoint = new Vector2(0.45f, -1.5f); // Не изменять, ровно под игроком
 
         private Rigidbody2D _playerRb;
         private int jumpCountActive;
