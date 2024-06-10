@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-    [AddComponentMenu("Entity/Abilities/Jump Ability")]
+    [AddComponentMenu("Entity/Abilities/Alt Jump Ability")]
     public class EntityMovementJump : Ability
     {
         [SerializeField, CurveRange(0, 0, 1, 1)]
@@ -37,6 +37,7 @@ namespace Entity.Abilities
 
         private Rigidbody2D _rb;
         private Collider2D _col;
+        private GroundCheck _groundCheck;
 
         public float JumpTime => jumpTime;
         public float CurrentJumpTime { get; private set; }
@@ -47,6 +48,7 @@ namespace Entity.Abilities
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<Collider2D>();
+            _groundCheck = Entity.FindAbilityByType<GroundCheck>();
 
             curJumpsCount = jumpsCount;
         }
@@ -56,8 +58,7 @@ namespace Entity.Abilities
             if (!Available()) return;
             if (curJumpsCount == 0 && !force)
             {
-                if (!CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
-                    0.1f)) return;
+                if (!_groundCheck.IsTouchingGround) return;
                 curJumpsCount = jumpsCount;
             }
             
@@ -117,18 +118,13 @@ namespace Entity.Abilities
                 }
 
                 prev = (t - Time.fixedDeltaTime) / jumpTime;
-                if (t > jumpTime / 5f &&
-                    CheckGround(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
-                        groundDistance,
-                        groundDistance))
+                if (t > jumpTime / 5f && _groundCheck.IsTouchingGround)
                 {
                     prev = (t - Time.fixedDeltaTime) / jumpTime;
                     break;
                 }
 
-                if (CheckTop(Entity.CachedTransform.position, Entity.CachedTransform.lossyScale, _col, groundLayer,
-                    groundDistance,
-                    groundDistance) && t < whenMax * jumpTime)
+                if (_groundCheck.IsTouchingTop && t < whenMax * jumpTime)
                 {
                     var timesEquals = new List<float>(0);
                     for (var tt = 0f; tt < jumpTime; tt += Time.fixedDeltaTime)

@@ -1,48 +1,44 @@
-using Entity.Abilities;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Zenject;
 
-namespace Entity.Controllers
+namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [AddComponentMenu("Entity/Abilities/Ground Check")]
+    [AddComponentMenu("Entity/Abilities/Ground Check Ability")]
     public class GroundCheck : Ability
     {
-        [Space(10.0f), SerializeField, Min(1)] private int jumpCount = 1;
-        [Space(10f)][SerializeField] private float jumpHeight = 3;
         [SerializeField] private int maxSlopeAngle;
 
-        private int _jumpCountActive;
-        private bool _ñanJumpCountRecover;
+        public bool IsTouchingGround { get; private set; }
+        public bool IsTouchingTop { get; private set; }
+        public bool IsTouchingRight { get; private set; }
+        public bool IsTouchingLeft { get; private set; }
 
-        bool OnGround = false;
-
-        private void Start()
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            _jumpCountActive = jumpCount;
+            IsTouchingGround = IsTouchingGround != IsTouching(collision.contacts, Vector2.up);
+            IsTouchingTop = IsTouchingTop != IsTouching(collision.contacts, Vector2.down);
+            IsTouchingRight = IsTouchingRight != IsTouching(collision.contacts, Vector2.left);
+            IsTouchingLeft = IsTouchingLeft != IsTouching(collision.contacts, Vector2.right);
         }
 
-        private void OnCollisionStay2D(Collision2D collision)
+        private void OnCollisionExit2D(Collision2D collision)
         {
-            for (var i = 0; i < collision.contactCount; i++)
+            IsTouchingGround = IsTouching(collision.contacts, Vector2.up);
+            IsTouchingTop = IsTouching(collision.contacts, Vector2.down);
+            IsTouchingRight = IsTouching(collision.contacts, Vector2.left);
+            IsTouchingLeft = IsTouching(collision.contacts, Vector2.right);
+        }
+
+        private bool IsTouching(IEnumerable<ContactPoint2D> points, Vector2 direction)
+        {
+            foreach (var contact in points)
             {
-                if (Vector2.Angle(Vector2.up, collision.contacts[i].normal) >= maxSlopeAngle) continue;
-                if (!_ñanJumpCountRecover) continue;
-                _jumpCountActive = jumpCount;
-                _ñanJumpCountRecover = false;
-                OnGround = true;
-                return;
+                if (Vector2.Angle(direction.normalized, contact.normal) >= maxSlopeAngle) continue;
+                return true;
             }
 
-            OnGround = false;
-        }
-
-        private void OnCollisionExit2D(Collision2D other) => _ñanJumpCountRecover = true;
-
-        public int JumpCounter()
-        {
-            return _jumpCountActive;
+            return false;
         }
     }
 }

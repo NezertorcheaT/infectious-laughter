@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Entity.Abilities
 {
+    [AddComponentMenu("Entity/Abilities/Garbage Ability")]
     public class EntityGarbage : Ability
     {
         [SerializeField, Min(1)] private int defaultGarbagePerLevel;
