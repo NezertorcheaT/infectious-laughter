@@ -42,6 +42,17 @@ namespace Entity.Abilities
             if (_jumpCountActive == 0) return;
             _playerRb.AddForce(new Vector2(_playerRb.velocity.x, jumpHeight), ForceMode2D.Impulse);
             _jumpCountActive -= 1;
-        }
+        } 
+        /*private bool CheckGround()
+        {
+            RaycastHit2D CheckgroundHit = Physics2D.Raycast(new Vector2(_playerRb.position.x, _playerRb.position.y + rayOffsetY), -_playerRb.transform.up, rayGroundRange);
+            if(CheckgroundHit.collider !=  null)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        
+        }*/
     }
 }
