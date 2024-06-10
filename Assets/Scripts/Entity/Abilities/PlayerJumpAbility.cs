@@ -25,15 +25,27 @@ public class PlayerJumpAbility : Ability
 
         private Rigidbody2D _playerRb;
         private int jumpCountActive;
-
+        [SerializeField]private int maxSlopeAngle;
+        private bool сanJumpCountRecover;
         private void Start()
         {
             _playerRb = GetComponent<Rigidbody2D>();
             jumpCountActive = jumpCount;
         }
 
-        private void OnCollisionEnter2D(Collision2D other)=>
-            jumpCountActive = CheckGround() ? jumpCount : jumpCountActive;
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            for (int i = 0; i < collision.contactCount; i++)
+            {
+                if (Vector2.Angle(Vector2.up, collision.contacts[i].normal) < maxSlopeAngle)
+                {
+                    if(!сanJumpCountRecover) continue;
+                    jumpCountActive = jumpCount;
+                    сanJumpCountRecover = false;
+                }
+            }
+        }
+        private void OnCollisionExit2D(Collision2D other) => сanJumpCountRecover = true;
 
         
         public void Jump()
@@ -42,27 +54,6 @@ public class PlayerJumpAbility : Ability
             _playerRb.AddForce(new Vector2(_playerRb.velocity.x, jumpHeight), ForceMode2D.Impulse);
             jumpCountActive -= 1;
         }
-
-        private bool CheckGround() =>
-            Physics2D.Raycast(new Vector2(_startRayPoint.x + _playerRb.position.x, _startRayPoint.y + _playerRb.position.y), -_playerRb.transform.right, rayGroundRange).collider != null;
-        private void Update()
-        {
-            Debug.DrawRay(new Vector2(_startRayPoint.x + _playerRb.position.x, _startRayPoint.y + _playerRb.position.y), -_playerRb.transform.right * rayGroundRange, Color.yellow);
-        }
-    
-    /*
-    private bool CheckGround()
-    {
-        RaycastHit2D CheckgroundHit = Physics2D.Raycast(new Vector2(_playerRb.position.x, _playerRb.position.y + rayOffsetY), -_playerRb.transform.up, rayGroundRange);
-        if(CheckgroundHit.collider !=  null)
-        {
-            return true;
-        }else{
-            return false;
-        }
-    
-    }
-    */
 }
 
 }
