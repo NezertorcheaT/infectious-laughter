@@ -1745,9 +1745,9 @@ GameObject:
   - component: {fileID: 1458251031}
   - component: {fileID: 1458251030}
   - component: {fileID: 1458251029}
+  - component: {fileID: 1458251035}
   - component: {fileID: 1458251028}
   - component: {fileID: 1458251027}
-  - component: {fileID: 1458251035}
   m_Layer: 3
   m_Name: Entity (2)
   m_TagString: Untagged
@@ -2795,9 +2795,9 @@ GameObject:
   - component: {fileID: 1974376989}
   - component: {fileID: 1974376985}
   - component: {fileID: 1974376984}
+  - component: {fileID: 1974376990}
   - component: {fileID: 1974376983}
   - component: {fileID: 1974376982}
-  - component: {fileID: 1974376990}
   m_Layer: 3
   m_Name: Entity (1)
   m_TagString: Untagged
