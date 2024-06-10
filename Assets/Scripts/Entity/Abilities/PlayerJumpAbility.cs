@@ -2,55 +2,46 @@ using UnityEngine;
 
 namespace Entity.Abilities
 {
-public class PlayerJumpAbility : Ability
-{
-
-    //private Rigidbody2D _playerRb;
-
-
-    //private int jumpCountActive;
-
-    //[Space(10.0f), SerializeField, Min(1)] private int jumpCount = 1;
-    //[SerializeField] private float jumpHeight = 3;
-
-
-
+    public class PlayerJumpAbility : Ability
+    {
         [Space(10.0f), SerializeField, Min(1)] private int jumpCount = 1;
-        [Space(10f)]
-
-        [SerializeField] private float jumpHeight = 3;
+        [Space(10f)] [SerializeField] private float jumpHeight = 3;
+        [SerializeField] private int maxSlopeAngle;
 
         private Rigidbody2D _playerRb;
-        private int jumpCountActive;
-        [SerializeField]private int maxSlopeAngle;
-        private bool сanJumpCountRecover;
+        private int _jumpCountActive;
+        private bool _сanJumpCountRecover;
+
+        public bool OnGround { get; private set; }
+
         private void Start()
         {
             _playerRb = GetComponent<Rigidbody2D>();
-            jumpCountActive = jumpCount;
+            _jumpCountActive = jumpCount;
         }
 
         private void OnCollisionStay2D(Collision2D collision)
         {
-            for (int i = 0; i < collision.contactCount; i++)
+            for (var i = 0; i < collision.contactCount; i++)
             {
-                if (Vector2.Angle(Vector2.up, collision.contacts[i].normal) < maxSlopeAngle)
-                {
-                    if(!сanJumpCountRecover) continue;
-                    jumpCountActive = jumpCount;
-                    сanJumpCountRecover = false;
-                }
+                if (Vector2.Angle(Vector2.up, collision.contacts[i].normal) >= maxSlopeAngle) continue;
+                if (!_сanJumpCountRecover) continue;
+                _jumpCountActive = jumpCount;
+                _сanJumpCountRecover = false;
+                OnGround = true;
+                return;
             }
-        }
-        private void OnCollisionExit2D(Collision2D other) => сanJumpCountRecover = true;
 
-        
+            OnGround = false;
+        }
+
+        private void OnCollisionExit2D(Collision2D other) => _сanJumpCountRecover = true;
+
         public void Jump()
         {
-            if (jumpCountActive == 0) return;
+            if (_jumpCountActive == 0) return;
             _playerRb.AddForce(new Vector2(_playerRb.velocity.x, jumpHeight), ForceMode2D.Impulse);
-            jumpCountActive -= 1;
+            _jumpCountActive -= 1;
         }
-}
-
+    }
 }
