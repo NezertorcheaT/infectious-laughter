@@ -15,11 +15,16 @@ namespace Entity.Abilities
             _rb = GetComponent<Rigidbody2D>();
         }
 
-        private void FixedUpdate()
+        public void WallDowning(float velocity, bool onWall)
         {
-            if (!Available()) return;
+            //if () return;
 
             _rb.velocity = new Vector2(0, -speed);
+        }
+
+        public void JumpFromWall()
+        {
+
         }
     }
 }

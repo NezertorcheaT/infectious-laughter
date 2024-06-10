@@ -5,12 +5,13 @@ namespace Entity.Abilities
     public class PlayerJumpAbility : Ability
     {
         [Space(10.0f), SerializeField, Min(1)] private int jumpCount = 1;
-        [Space(10f)] [SerializeField] private float jumpHeight = 3;
+        [Space(10f)][SerializeField] private float jumpHeight = 3;
         [SerializeField] private int maxSlopeAngle;
 
         private Rigidbody2D _playerRb;
         private int _jumpCountActive;
         private bool _сanJumpCountRecover;
+
 
         public bool OnGround { get; private set; }
 
@@ -19,7 +20,7 @@ namespace Entity.Abilities
             _playerRb = GetComponent<Rigidbody2D>();
             _jumpCountActive = jumpCount;
         }
-
+        
         private void OnCollisionStay2D(Collision2D collision)
         {
             for (var i = 0; i < collision.contactCount; i++)
@@ -36,6 +37,7 @@ namespace Entity.Abilities
         }
 
         private void OnCollisionExit2D(Collision2D other) => _сanJumpCountRecover = true;
+        
 
         public void Jump()
         {

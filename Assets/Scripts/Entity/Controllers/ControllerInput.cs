@@ -16,6 +16,8 @@ namespace Entity.Controllers
         private PlayerJumpAbility _jumpAbility;
         private EntityMovementCrouch _crouchAbility;
         private EntityGarbage _entityGarbage;
+        private EntityMovementDowning _movementDowning;
+        private GroundCheck _groundCheck;
 
         public override void Initialize()
         {
@@ -24,6 +26,8 @@ namespace Entity.Controllers
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
             _jumpAbility = Entity.FindAbilityByType<PlayerJumpAbility>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
+            _movementDowning = Entity.FindAbilityByType<EntityMovementDowning>();
+            _groundCheck = Entity.FindAbilityByType<GroundCheck>();
 
             OnEnable();
         }
