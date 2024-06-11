@@ -4,8 +4,8 @@ using UnityEngine;
 namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [AddComponentMenu("Entity/Abilities/Ground Check Ability")]
-    public class GroundCheck : Ability
+    [AddComponentMenu("Entity/Abilities/Collide Check Ability")]
+    public class CollideCheck : Ability
     {
         [SerializeField] private int maxSlopeAngle;
 
@@ -39,6 +39,19 @@ namespace Entity.Abilities
             }
 
             return false;
+        }
+
+        public int RightTrajectory(float inputVelocity)
+        {
+            int answ = 0;
+            if (IsTouchingLeft && inputVelocity < 0) answ = -1;
+            else if (IsTouchingRight && inputVelocity > 0) answ = 1;
+            return answ;
+        }
+
+        public bool TestOnWall()
+        {
+            return (IsTouchingLeft || IsTouchingRight);
         }
     }
 }

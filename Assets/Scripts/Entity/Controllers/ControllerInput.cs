@@ -17,7 +17,7 @@ namespace Entity.Controllers
         private EntityMovementCrouch _crouchAbility;
         private EntityGarbage _entityGarbage;
         private EntityMovementDowning _movementDowning;
-        private GroundCheck _groundCheck;
+        private CollideCheck _collideCheck;
 
         public override void Initialize()
         {
@@ -27,7 +27,7 @@ namespace Entity.Controllers
             _jumpAbility = Entity.FindAbilityByType<PlayerJumpAbility>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
             _movementDowning = Entity.FindAbilityByType<EntityMovementDowning>();
-            _groundCheck = Entity.FindAbilityByType<GroundCheck>();
+            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
 
             OnEnable();
         }
@@ -57,7 +57,7 @@ namespace Entity.Controllers
 
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UnCrouch();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();
-        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Jump();
+        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.TryToJump();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
 
         private bool _hangingRight;
@@ -67,6 +67,7 @@ namespace Entity.Controllers
         private void Move()
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
+            _movementDowning.WallDowning(_input);
             _moveAbility.Move(_input);
         }
     }

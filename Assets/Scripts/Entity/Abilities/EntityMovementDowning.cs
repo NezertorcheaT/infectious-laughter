@@ -9,22 +9,23 @@ namespace Entity.Abilities
         [SerializeField] private float speed;
 
         private Rigidbody2D _rb;
+        private CollideCheck _collideCheck;
+
+        private bool getToWallOnce;
 
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
         }
 
-        public void WallDowning(float velocity, bool onWall)
+        public void WallDowning(float playerInput)
         {
-            //if () return;
-
+            if (!Available()) return;
+            if (!(_collideCheck.RightTrajectory(playerInput) != 0 || getToWallOnce)) return;
+            getToWallOnce = true;
             _rb.velocity = new Vector2(0, -speed);
-        }
-
-        public void JumpFromWall()
-        {
-
+            if (!_collideCheck.TestOnWall()) getToWallOnce = false;
         }
     }
 }
