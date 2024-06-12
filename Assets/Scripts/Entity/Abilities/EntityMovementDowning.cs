@@ -8,13 +8,13 @@ namespace Entity.Abilities
     public class EntityMovementDowning : Ability
     {
         [SerializeField] private float speed;
-        [Space(10f)][SerializeField] private float downingTime;
+        [SerializeField] private float downingTime;
 
         private Rigidbody2D _rb;
         private CollideCheck _collideCheck;
 
-        private bool getToWall;
-        private bool isDowning;
+        private bool _getToWall;
+        private bool _isDowning;
 
         private void Start()
         {
@@ -24,28 +24,29 @@ namespace Entity.Abilities
 
         public void WallDowning(float playerInput)
         {
-            float downingActive = 0;
-            float velX = _rb.velocity.x;
-            if (!Available() || !(_collideCheck.RightTrajectory(playerInput) != 0 || getToWall) || _collideCheck.IsTouchingGround) return;
+            var downingActive = 0f;
+            var velX = _rb.velocity.x;
+            if (!Available() || !(_collideCheck.GetTrajectory(playerInput) != 0 || _getToWall) ||
+                _collideCheck.IsTouchingGround) return;
 
-            if (!getToWall)
+            if (!_getToWall)
             {
-                getToWall = true;
-                isDowning = false;
-                WaitSeconds(downingTime);
+                _getToWall = true;
+                _isDowning = false;
+                WaitDowningDelay(downingTime);
             }
 
-            if (isDowning) downingActive = -speed;
-            if (_collideCheck.RightTrajectory(playerInput) != 0) velX = 0;
+            if (_isDowning) downingActive = -speed;
+            if (_collideCheck.GetTrajectory(playerInput) != 0) velX = 0;
             _rb.velocity = new Vector2(velX, downingActive);
 
-            if (!_collideCheck.TestOnWall()) getToWall = false;
+            if (!_collideCheck.IsOnWall) _getToWall = false;
         }
 
-        private async void WaitSeconds(float seconds)
+        private async void WaitDowningDelay(float seconds)
         {
-            await Task.Delay((int)(seconds * 1000f));
-            isDowning = true;
+            await Task.Delay((int) (seconds * 1000f));
+            _isDowning = true;
         }
     }
 }

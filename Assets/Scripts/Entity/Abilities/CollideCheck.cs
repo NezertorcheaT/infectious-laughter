@@ -13,6 +13,7 @@ namespace Entity.Abilities
         public bool IsTouchingTop { get; private set; }
         public bool IsTouchingRight { get; private set; }
         public bool IsTouchingLeft { get; private set; }
+        public bool IsOnWall => IsTouchingLeft || IsTouchingRight;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -41,17 +42,11 @@ namespace Entity.Abilities
             return false;
         }
 
-        public int RightTrajectory(float inputVelocity)
-        {
-            int answ = 0;
-            if (IsTouchingLeft && inputVelocity < 0) answ = -1;
-            else if (IsTouchingRight && inputVelocity > 0) answ = 1;
-            return answ;
-        }
-
-        public bool TestOnWall()
-        {
-            return (IsTouchingLeft || IsTouchingRight);
-        }
+        public int GetTrajectory(float inputVelocity) =>
+            IsTouchingLeft && inputVelocity < 0
+                ? -1
+                : IsTouchingRight && inputVelocity > 0
+                    ? 1
+                    : 0;
     }
 }

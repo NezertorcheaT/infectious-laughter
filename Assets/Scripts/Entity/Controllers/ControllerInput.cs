@@ -58,7 +58,7 @@ namespace Entity.Controllers
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UnCrouch();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
-        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.TryToJump();
+        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.TryJump();
 
         private bool _hangingRight;
         private bool _hangingLeft;
