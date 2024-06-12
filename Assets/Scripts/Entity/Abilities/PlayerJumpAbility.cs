@@ -33,7 +33,7 @@ namespace Entity.Abilities
 
         public void Jump()
         {
-            if (_collideCheck && _collideCheck.IsTouchingGround) _jumpCountActive = jumpCount;
+            _jumpCountActive = jumpCount;
             if (_jumpCountActive == 0) return;
             _playerRb.AddForce(new Vector2(_playerRb.velocity.x, jumpHeight), ForceMode2D.Impulse);
             _jumpCountActive -= 1;
@@ -42,7 +42,9 @@ namespace Entity.Abilities
         public void JumpFromWall()
         {
             _playerRb.AddForce(new Vector2(walljumpPush * GetTrajectory(), walljumpHeight), ForceMode2D.Impulse);
+            Debug.Log(_playerRb.velocity);
         }
+
         private int GetTrajectory()
         {
             int answ = 0;

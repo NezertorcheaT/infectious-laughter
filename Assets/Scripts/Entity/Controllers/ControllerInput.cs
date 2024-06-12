@@ -57,8 +57,8 @@ namespace Entity.Controllers
 
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UnCrouch();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();
-        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.TryToJump();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
+        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.TryToJump();
 
         private bool _hangingRight;
         private bool _hangingLeft;
@@ -67,8 +67,8 @@ namespace Entity.Controllers
         private void Move()
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
-            _movementDowning.WallDowning(_input);
             _moveAbility.Move(_input);
+            _movementDowning.WallDowning(_input);
         }
     }
 }
