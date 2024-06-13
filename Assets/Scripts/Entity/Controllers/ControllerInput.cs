@@ -35,7 +35,6 @@ namespace Entity.Controllers
         private void Start()
         {
             _jumpAbility = Entity.FindAvailableAbilityByInterface<IJumpableAbility>();
-            Debug.Log(_jumpAbility);
         }
 
         private void OnEnable()

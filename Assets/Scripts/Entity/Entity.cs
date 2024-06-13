@@ -125,11 +125,6 @@ namespace Entity
         {
             foreach (var ability in Abilities)
             {
-                Debug.Log(ability);
-                Debug.Log(ability.Available());
-                Debug.Log(ability.enabled);
-                Debug.Log(ability.gameObject.activeSelf);
-                Debug.Log(ability is T);
                 if (ability.Available() && ability is T t) yield return t;
             }
         }
