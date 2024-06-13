@@ -374,15 +374,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "db9fcfac-a49f-46d8-997e-56752c801d47",
-                    "path": "",
+                    "name": "1D Axis",
+                    "id": "06a02047-c0e8-4f79-962e-eebf1e089045",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseWheel",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "c10722ca-40fa-4b1c-b0cc-7d6d165cfeaa",
+                    "path": "<Mouse>/scroll/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
                     "action": "MouseWheel",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "91c4b6d5-028f-4a29-a432-3eeb9edd91b0",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "MouseWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
