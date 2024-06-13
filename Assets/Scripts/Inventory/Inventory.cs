@@ -28,6 +28,8 @@ namespace Inventory
             {
                 if (_slots[i].IsEmpty) continue;
                 if (_slots[i].LastItem.GetType().Name != item.GetType().Name) continue;
+                if (_slots[i].LastItem.SelfRef != item.SelfRef) continue;
+                if (_slots[i].LastItem != item) continue;
                 if (_slots[i].Count >= Slots[i].LastItem.MaxStackSize) continue;
 
                 _slots[i] = new Slot(item, _slots[i].Count + 1);
@@ -63,11 +65,11 @@ namespace Inventory
             if (i >= MaxCapacity) return;
             if (Slots[i].IsEmpty) return;
 
-            Slots[i].Use(entity);
+            Slots[i].Use(entity, this);
             OnChange?.Invoke();
         }
 
-        private void Start()
+        private void Reset()
         {
             Slots = new List<ISlot>(MaxCapacity);
             for (var i = 0; i < MaxCapacity; i++)

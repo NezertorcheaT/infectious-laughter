@@ -42,6 +42,8 @@ namespace Entity
     /// </summary>
     public interface IInitializeByEntity
     {
+        Entity Entity { get; }
+
         /// <summary>
         /// это нужно для инициализации типа вместо старта<br />
         /// всегда юзать <code>base.Initialize()</code> вначале, иначе пидр ты

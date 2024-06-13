@@ -10,8 +10,10 @@ namespace Inventory
         public int Count
         {
             get => Mathf.Clamp(_count, 0, LastItem.MaxStackSize);
-            private set => _count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
+            set => _count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
         }
+
+        [SerializeField] private ScriptableObject lastItem;
 
         public int _count = 0;
 
@@ -20,20 +22,17 @@ namespace Inventory
         public IItem LastItem
         {
             get => lastItem as IItem;
-            private set => lastItem = value.SelfRef;
+            set => lastItem = value?.SelfRef;
         }
 
-        [SerializeField] private ScriptableObject lastItem;
-
-        public void Use(Entity.Entity entity)
+        public void Use(Entity.Entity entity, IInventory inventory)
         {
             var usableItem = (IUsableItem) LastItem;
             if (usableItem == null) return;
 
-            usableItem.Use(entity);
-            Count--;
-            if (Count == 0)
-                LastItem = null;
+            usableItem.Use(entity, inventory, this);
+            if (Count > 0) return;
+            Count = 0;
         }
 
         public Slot(IItem item, int count)

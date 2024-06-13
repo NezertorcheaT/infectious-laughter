@@ -8,12 +8,12 @@
         /// <summary>
         /// колличество предметов в слоте
         /// </summary>
-        int Count { get; }
+        int Count { get; set; }
 
         /// <summary>
         /// предмет
         /// </summary>
-        IItem LastItem { get; }
+        IItem LastItem { get; set; }
 
         /// <summary>
         /// пуст ли слот
@@ -24,6 +24,7 @@
         /// использовать предмет в слоте
         /// </summary>
         /// <param name="entity">сущность куда</param>
-        void Use(Entity.Entity entity);
+        /// <param name="inventory">слоте, где</param>
+        void Use(Entity.Entity entity, IInventory inventory);
     }
 }

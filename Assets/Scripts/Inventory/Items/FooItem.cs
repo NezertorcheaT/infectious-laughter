@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#nullable enable
+using System;
+using UnityEngine;
 
 namespace Inventory.Items
 {
@@ -12,5 +14,28 @@ namespace Inventory.Items
         public Sprite Sprite => sprite;
 
         [SerializeField] private Sprite sprite;
+
+
+        public static bool operator ==(FooItem a, FooItem b) => a.Equals(b);
+        public static bool operator !=(FooItem a, FooItem b) => !a.Equals(b);
+
+        protected bool Equals(IItem? other)
+        {
+            if (other is null) return false;
+            return Name.Equals(other.Name) && MaxStackSize.Equals(other.MaxStackSize);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((IItem) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, MaxStackSize);
+        }
     }
 }
