@@ -98,6 +98,69 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseWheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""28207a3a-f9af-48a9-be2a-d1a1da7acc41"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inv_selectSlot1"",
+                    ""type"": ""Button"",
+                    ""id"": ""c387c2af-7329-4093-86ee-ff4f3ddbf234"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inv_selectSlot2"",
+                    ""type"": ""Button"",
+                    ""id"": ""1daa091e-5870-4721-9200-09e9fe5a28c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inv_selectSlot3"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c578794-5e69-4937-a0d4-89b317a03b78"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inv_selectSlot4"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6212f08-c808-498f-bc10-4c88556c3634"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inv_selectSlot5"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb509fb2-b1c8-47b4-a061-01f71665c7f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inv_selectSlot6"",
+                    ""type"": ""Button"",
+                    ""id"": ""95067a2d-e576-4ed6-9833-92e375f196ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -331,6 +394,83 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""PickGarbage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db9fcfac-a49f-46d8-997e-56752c801d47"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""MouseWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95d81327-1382-48fe-9b9b-c37bda327ae2"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Inv_selectSlot1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cd4a047-6ce3-48b2-8576-20fdbb629af9"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Inv_selectSlot2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcd085db-c8ae-4d32-85c7-20dca22e4921"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Inv_selectSlot3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f5daafd-6c7c-4ef1-9cf3-23c9a857e141"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Inv_selectSlot4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9955743d-db04-457a-934b-4c37e33e4407"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Inv_selectSlot5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""416424a3-c9a7-4ca3-9b9e-4091626ff3c3"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Inv_selectSlot6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -381,6 +521,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
         m_Gameplay_PickItem = m_Gameplay.FindAction("PickItem", throwIfNotFound: true);
         m_Gameplay_PickGarbage = m_Gameplay.FindAction("PickGarbage", throwIfNotFound: true);
+        m_Gameplay_MouseWheel = m_Gameplay.FindAction("MouseWheel", throwIfNotFound: true);
+        m_Gameplay_Inv_selectSlot1 = m_Gameplay.FindAction("Inv_selectSlot1", throwIfNotFound: true);
+        m_Gameplay_Inv_selectSlot2 = m_Gameplay.FindAction("Inv_selectSlot2", throwIfNotFound: true);
+        m_Gameplay_Inv_selectSlot3 = m_Gameplay.FindAction("Inv_selectSlot3", throwIfNotFound: true);
+        m_Gameplay_Inv_selectSlot4 = m_Gameplay.FindAction("Inv_selectSlot4", throwIfNotFound: true);
+        m_Gameplay_Inv_selectSlot5 = m_Gameplay.FindAction("Inv_selectSlot5", throwIfNotFound: true);
+        m_Gameplay_Inv_selectSlot6 = m_Gameplay.FindAction("Inv_selectSlot6", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
     }
@@ -450,6 +597,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Crouch;
     private readonly InputAction m_Gameplay_PickItem;
     private readonly InputAction m_Gameplay_PickGarbage;
+    private readonly InputAction m_Gameplay_MouseWheel;
+    private readonly InputAction m_Gameplay_Inv_selectSlot1;
+    private readonly InputAction m_Gameplay_Inv_selectSlot2;
+    private readonly InputAction m_Gameplay_Inv_selectSlot3;
+    private readonly InputAction m_Gameplay_Inv_selectSlot4;
+    private readonly InputAction m_Gameplay_Inv_selectSlot5;
+    private readonly InputAction m_Gameplay_Inv_selectSlot6;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -462,6 +616,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Gameplay_Crouch;
         public InputAction @PickItem => m_Wrapper.m_Gameplay_PickItem;
         public InputAction @PickGarbage => m_Wrapper.m_Gameplay_PickGarbage;
+        public InputAction @MouseWheel => m_Wrapper.m_Gameplay_MouseWheel;
+        public InputAction @Inv_selectSlot1 => m_Wrapper.m_Gameplay_Inv_selectSlot1;
+        public InputAction @Inv_selectSlot2 => m_Wrapper.m_Gameplay_Inv_selectSlot2;
+        public InputAction @Inv_selectSlot3 => m_Wrapper.m_Gameplay_Inv_selectSlot3;
+        public InputAction @Inv_selectSlot4 => m_Wrapper.m_Gameplay_Inv_selectSlot4;
+        public InputAction @Inv_selectSlot5 => m_Wrapper.m_Gameplay_Inv_selectSlot5;
+        public InputAction @Inv_selectSlot6 => m_Wrapper.m_Gameplay_Inv_selectSlot6;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -495,6 +656,27 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @PickGarbage.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
                 @PickGarbage.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
                 @PickGarbage.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
+                @MouseWheel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseWheel;
+                @MouseWheel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseWheel;
+                @MouseWheel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseWheel;
+                @Inv_selectSlot1.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot1;
+                @Inv_selectSlot1.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot1;
+                @Inv_selectSlot1.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot1;
+                @Inv_selectSlot2.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot2;
+                @Inv_selectSlot2.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot2;
+                @Inv_selectSlot2.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot2;
+                @Inv_selectSlot3.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot3;
+                @Inv_selectSlot3.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot3;
+                @Inv_selectSlot3.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot3;
+                @Inv_selectSlot4.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot4;
+                @Inv_selectSlot4.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot4;
+                @Inv_selectSlot4.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot4;
+                @Inv_selectSlot5.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot5;
+                @Inv_selectSlot5.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot5;
+                @Inv_selectSlot5.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot5;
+                @Inv_selectSlot6.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot6;
+                @Inv_selectSlot6.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot6;
+                @Inv_selectSlot6.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot6;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -523,6 +705,27 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @PickGarbage.started += instance.OnPickGarbage;
                 @PickGarbage.performed += instance.OnPickGarbage;
                 @PickGarbage.canceled += instance.OnPickGarbage;
+                @MouseWheel.started += instance.OnMouseWheel;
+                @MouseWheel.performed += instance.OnMouseWheel;
+                @MouseWheel.canceled += instance.OnMouseWheel;
+                @Inv_selectSlot1.started += instance.OnInv_selectSlot1;
+                @Inv_selectSlot1.performed += instance.OnInv_selectSlot1;
+                @Inv_selectSlot1.canceled += instance.OnInv_selectSlot1;
+                @Inv_selectSlot2.started += instance.OnInv_selectSlot2;
+                @Inv_selectSlot2.performed += instance.OnInv_selectSlot2;
+                @Inv_selectSlot2.canceled += instance.OnInv_selectSlot2;
+                @Inv_selectSlot3.started += instance.OnInv_selectSlot3;
+                @Inv_selectSlot3.performed += instance.OnInv_selectSlot3;
+                @Inv_selectSlot3.canceled += instance.OnInv_selectSlot3;
+                @Inv_selectSlot4.started += instance.OnInv_selectSlot4;
+                @Inv_selectSlot4.performed += instance.OnInv_selectSlot4;
+                @Inv_selectSlot4.canceled += instance.OnInv_selectSlot4;
+                @Inv_selectSlot5.started += instance.OnInv_selectSlot5;
+                @Inv_selectSlot5.performed += instance.OnInv_selectSlot5;
+                @Inv_selectSlot5.canceled += instance.OnInv_selectSlot5;
+                @Inv_selectSlot6.started += instance.OnInv_selectSlot6;
+                @Inv_selectSlot6.performed += instance.OnInv_selectSlot6;
+                @Inv_selectSlot6.canceled += instance.OnInv_selectSlot6;
             }
         }
     }
@@ -580,6 +783,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnPickItem(InputAction.CallbackContext context);
         void OnPickGarbage(InputAction.CallbackContext context);
+        void OnMouseWheel(InputAction.CallbackContext context);
+        void OnInv_selectSlot1(InputAction.CallbackContext context);
+        void OnInv_selectSlot2(InputAction.CallbackContext context);
+        void OnInv_selectSlot3(InputAction.CallbackContext context);
+        void OnInv_selectSlot4(InputAction.CallbackContext context);
+        void OnInv_selectSlot5(InputAction.CallbackContext context);
+        void OnInv_selectSlot6(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

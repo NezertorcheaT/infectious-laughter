@@ -25,6 +25,12 @@ namespace Inventory.UI
             if (_inventory is null) return;
             _inventory.OnChange += UpdateGUI;
             _actions.Gameplay.PickGarbage.performed += UseItem;
+            _actions.Gameplay.Inv_selectSlot1.performed += SelectSlotNum1;
+            _actions.Gameplay.Inv_selectSlot2.performed += SelectSlotNum2;
+            _actions.Gameplay.Inv_selectSlot3.performed += SelectSlotNum3;
+            _actions.Gameplay.Inv_selectSlot4.performed += SelectSlotNum4;
+            _actions.Gameplay.Inv_selectSlot5.performed += SelectSlotNum5;
+            _actions.Gameplay.Inv_selectSlot6.performed += SelectSlotNum6;
         }
 
         private void OnDisable()
@@ -32,9 +38,23 @@ namespace Inventory.UI
             if (_inventory is null) return;
             _inventory.OnChange -= UpdateGUI;
             _actions.Gameplay.PickGarbage.performed -= UseItem;
+            _actions.Gameplay.Inv_selectSlot1.performed -= SelectSlotNum1;
+            _actions.Gameplay.Inv_selectSlot2.performed -= SelectSlotNum2;
+            _actions.Gameplay.Inv_selectSlot3.performed -= SelectSlotNum3;
+            _actions.Gameplay.Inv_selectSlot4.performed -= SelectSlotNum4;
+            _actions.Gameplay.Inv_selectSlot5.performed -= SelectSlotNum5;
+            _actions.Gameplay.Inv_selectSlot6.performed -= SelectSlotNum6;
         }
 
-        private void UseItem(InputAction.CallbackContext ctx) => _inventory.UseLast(player);
+        private void UseItem(InputAction.CallbackContext ctx) => _inventory.UseSelectItem(player);
+        private void SelectSlotNum1(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(1);
+        private void SelectSlotNum2(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(2);
+        private void SelectSlotNum3(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(3);
+        private void SelectSlotNum4(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(4);
+        private void SelectSlotNum5(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(5);
+        private void SelectSlotNum6(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(6);
+
+
 
         private void UpdateGUI()
         {

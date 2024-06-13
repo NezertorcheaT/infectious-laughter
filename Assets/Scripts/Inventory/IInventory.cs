@@ -47,5 +47,15 @@ namespace Inventory
         /// </summary>
         /// <param name="entity">сущность куда</param>
         void UseLast(Entity.Entity entity);
+
+        ///<summary>
+        /// ну вот выделить определенную ячейку
+        ///</summary>
+        void SelectingSlot(int slotForSelectNum);
+
+        ///<summary>
+        /// Использовать выделенный предмет
+        ///</summary>
+        void UseSelectItem(Entity.Entity entity);
     }
 }

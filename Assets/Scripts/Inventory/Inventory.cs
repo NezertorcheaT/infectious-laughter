@@ -9,11 +9,11 @@ namespace Inventory
     public class Inventory : ScriptableObject, IInventory
     {
         [SerializeField] private int maxCapacity;
+        private int SelectSlot = 1;
         public event Action OnChange;
 
         public int MaxCapacity => maxCapacity;
         public int Capacity => Slots.Count(slot => !slot.IsEmpty);
-
         public List<ISlot> Slots
         {
             get => _slots.Cast<ISlot>().ToList();
@@ -68,6 +68,16 @@ namespace Inventory
             Slots[i].Use(entity, this);
             OnChange?.Invoke();
         }
+        public void UseSelectItem(Entity.Entity entity)
+        {
+            if (SelectSlot >= MaxCapacity) return;
+            if (Slots[SelectSlot].IsEmpty) return;
+
+            Slots[SelectSlot].Use(entity, this);
+            OnChange?.Invoke();
+        }
+        public void SelectingSlot(int slotForSelectNum) =>
+            SelectSlot = slotForSelectNum - 1; //Типа чтобы не ебать потом InventoryUI если будут какие то анимации при переключении слота или такая хуйня да
 
         private void Reset()
         {
