@@ -3,12 +3,12 @@ using UnityEngine;
 namespace Entity.Abilities
 {
     [AddComponentMenu("Entity/Abilities/Jump Ability")]
-    public class PlayerJumpAbility : Ability
+    public class PlayerJumpAbility : Ability, IJumpableAbility
     {
         [SerializeField, Min(1)] private int jumpCount = 1;
         [SerializeField, Min(0)] private float jumpHeight = 3;
-        [Space(10)]
-        [SerializeField, Min(0)] private float walljumpHeight;
+        [SerializeField, Min(0)] private float jumpTime = 3;
+        [Space(10)] [SerializeField, Min(0)] private float walljumpHeight;
         [SerializeField, Min(0)] private float walljumpPush;
 
         private int _jumpCountActive;
@@ -26,11 +26,14 @@ namespace Entity.Abilities
             _jumpCountActive = jumpCount;
         }
 
-        public void TryJump()
+        private void TryJump()
         {
             if (_collideCheck.IsTouchingGround) Jump();
             else if (_collideCheck.IsOnWall) JumpFromWall();
         }
+
+        void IJumpableAbility.Jump() => TryJump();
+        float IJumpableAbility.JumpTime => jumpTime;
 
         private void Jump()
         {

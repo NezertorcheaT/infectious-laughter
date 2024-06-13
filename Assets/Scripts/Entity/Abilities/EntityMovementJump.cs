@@ -10,7 +10,7 @@ namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     [AddComponentMenu("Entity/Abilities/Alt Jump Ability")]
-    public class EntityMovementJump : Ability
+    public class EntityMovementJump : Ability, IJumpableAbility
     {
         [SerializeField, CurveRange(0, 0, 1, 1)]
         private AnimationCurve jumpCurve;
@@ -39,7 +39,6 @@ namespace Entity.Abilities
         private Collider2D _col;
         private CollideCheck _collideCheck;
 
-        public float JumpTime => jumpTime;
         public float CurrentJumpTime { get; private set; }
         public float JumpHeight => jumpHeight;
         public float WhenMax => whenMax;
@@ -61,11 +60,14 @@ namespace Entity.Abilities
                 if (!_collideCheck.IsTouchingGround) return;
                 curJumpsCount = jumpsCount;
             }
-            
+
             curJumpsCount--;
             await StopJumps();
             await ForceJump();
         }
+
+        async void IJumpableAbility.Jump() => await Jump();
+        float IJumpableAbility.JumpTime => jumpTime;
 
         private bool _jumping = false;
         private bool _stopAllJumps = false;

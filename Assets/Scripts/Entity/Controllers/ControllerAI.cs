@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Entity.States;
 using UnityEngine;
 
@@ -37,11 +38,8 @@ namespace Entity.Controllers
 
                 if (_stateCycleDestroy) return;
                 if (!CurrentState) return;
-                if (!IsInitialized || !isActiveAndEnabled)
-                {
-                    await Task.Delay(500);
-                    continue;
-                }
+
+                await UniTask.WaitUntil(() => IsInitialized && isActiveAndEnabled);
 
                 prew = CurrentState;
                 OnStateActivating?.Invoke(CurrentState);

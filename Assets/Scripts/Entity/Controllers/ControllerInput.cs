@@ -1,3 +1,4 @@
+using System;
 using Entity.Abilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,7 @@ namespace Entity.Controllers
 
         // Cache
         private EntityMovementHorizontalMove _moveAbility;
-        private PlayerJumpAbility _jumpAbility;
+        private IJumpableAbility _jumpAbility;
         private EntityMovementCrouch _crouchAbility;
         private EntityGarbage _entityGarbage;
         private EntityMovementDowning _movementDowning;
@@ -24,12 +25,17 @@ namespace Entity.Controllers
             base.Initialize();
             _entityGarbage = Entity.FindAbilityByType<EntityGarbage>();
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
-            _jumpAbility = Entity.FindAbilityByType<PlayerJumpAbility>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
             _movementDowning = Entity.FindAbilityByType<EntityMovementDowning>();
             _collideCheck = Entity.FindAbilityByType<CollideCheck>();
 
             OnEnable();
+        }
+
+        private void Start()
+        {
+            _jumpAbility = Entity.FindAvailableAbilityByInterface<IJumpableAbility>();
+            Debug.Log(_jumpAbility);
         }
 
         private void OnEnable()
@@ -58,7 +64,7 @@ namespace Entity.Controllers
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UnCrouch();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
-        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.TryJump();
+        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Jump();
 
         private bool _hangingRight;
         private bool _hangingLeft;

@@ -55,7 +55,7 @@ namespace Entity
         /// <summary>
         /// В идеале тут и этого быть не должно ведь класс нацелен на его наследование, ну да ладно
         /// </summary>
-        protected virtual void Awake() => Initialize();
+        protected void Awake() => Initialize();
 
         /// <summary>
         /// ну типа инициализация<br />
@@ -68,11 +68,18 @@ namespace Entity
 
             CachedTransform = transform;
 
-            (Controller as IInitializeByEntity)?.Initialize();
-            if (Controller is IInitializeByEntity) (Controller as IInitializeByEntity).Initialized = true;
-            Controller?.OnInitializationComplete?.Invoke();
+            foreach (var ability in Abilities)
+            {
+                var abil = (IInitializeByEntity) ability;
+                abil.Initialize();
+                abil.Initialized = true;
+            }
 
-            foreach (var ability in Abilities) ability?.Initialize();
+            if (!Controller) return;
+            var contr = Controller as IInitializeByEntity;
+            contr.Initialize();
+            contr.Initialized = true;
+            Controller.OnInitializationComplete?.Invoke();
         }
 
         private void Update() => OnUpdate?.Invoke();
@@ -90,12 +97,40 @@ namespace Entity
         /// ищем значт все способности конкретного типа
         /// </summary>
         /// <typeparam name="T">тип способностей</typeparam>
-        /// <returns>массивчик способностей этого типа</returns>
+        /// <returns>способности этого типа</returns>
         public IEnumerable<T> FindAbilitiesByType<T>() where T : Ability
         {
             foreach (var ability in Abilities)
             {
                 if (ability.GetType() == typeof(T)) yield return (T) ability;
+            }
+        }
+
+        /// <summary>
+        /// ищем значт одну работающую способность по интерфейсу
+        /// использовать только ПОСЛЕ OnEnable
+        /// </summary>
+        /// <typeparam name="T">тип способности</typeparam>
+        /// <returns>способность этого типа</returns>
+        public T FindAvailableAbilityByInterface<T>() where T : IInitializeByEntity =>
+            FindAvailableAbilitiesByInterface<T>().FirstOrDefault();
+
+        /// <summary>
+        /// ищем значт все работающие способности по интерфейсу
+        /// использовать только ПОСЛЕ OnEnable
+        /// </summary>
+        /// <typeparam name="T">тип способностей</typeparam>
+        /// <returns>способности этого типа</returns>
+        public IEnumerable<T> FindAvailableAbilitiesByInterface<T>() where T : IInitializeByEntity
+        {
+            foreach (var ability in Abilities)
+            {
+                Debug.Log(ability);
+                Debug.Log(ability.Available());
+                Debug.Log(ability.enabled);
+                Debug.Log(ability.gameObject.activeSelf);
+                Debug.Log(ability is T);
+                if (ability.Available() && ability is T t) yield return t;
             }
         }
     }

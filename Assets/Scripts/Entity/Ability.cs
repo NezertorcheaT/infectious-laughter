@@ -13,7 +13,6 @@ namespace Entity
         /// </summary>
         public Entity Entity { get; private set; }
 
-
         public virtual void Initialize() => Entity = GetComponent<Entity>();
 
         /// <summary>
