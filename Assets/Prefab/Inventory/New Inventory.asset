@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCapacity: 6
   <_slots>k__BackingField:
-  - lastItem: {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
-    _count: 3
+  - lastItem: {fileID: 0}
+    _count: 0
   - lastItem: {fileID: 0}
     _count: 0
   - lastItem: {fileID: 0}

@@ -199,11 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f9e63100e445a9a5ce0193e0d58cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 12560a4b763d5994192ec8ced2401d29, type: 2}
-  player: {fileID: 1471444233}
   inventoryBase: {fileID: 24950072}
   imageSize: 57
-  _selection: 1
 --- !u!1 &77351422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,6 +1327,7 @@ GameObject:
   - component: {fileID: 539015063}
   - component: {fileID: 539015062}
   - component: {fileID: 539015061}
+  - component: {fileID: 539015065}
   - component: {fileID: 539015064}
   m_Layer: 0
   m_Name: SceneContext
@@ -1365,6 +1363,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 539015061}
+  - {fileID: 539015065}
   - {fileID: 539015064}
   _installerPrefabs: []
   _autoRun: 1
@@ -1411,6 +1410,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointTargetUIForAnim: {fileID: 1404030172}
+--- !u!114 &539015065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539015060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2be20a5ec445f78436b1d133ebab13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1471444233}
+  playerInventory: {fileID: 11400000, guid: 12560a4b763d5994192ec8ced2401d29, type: 2}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

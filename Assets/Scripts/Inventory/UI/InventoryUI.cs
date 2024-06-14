@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Installers;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Zenject;
@@ -9,12 +10,10 @@ namespace Inventory.UI
     public class InventoryUI : MonoBehaviour
     {
         [Inject] private Controls _actions;
-        [SerializeField] private Inventory inventory;
-        [SerializeField] private Entity.Entity player;
+        [Inject] private PlayerInstallation _player;
         [SerializeField] private HorizontalLayoutGroup inventoryBase;
         [SerializeField, Min(1)] private float imageSize;
         private int _selection;
-        private IInventory Inventory => inventory;
 
         private void Start()
         {
@@ -23,8 +22,8 @@ namespace Inventory.UI
 
         private void OnEnable()
         {
-            if (Inventory is null) return;
-            Inventory.OnChange += UpdateGUI;
+            if (_player.Inventory is null) return;
+            _player.Inventory.OnChange += UpdateGUI;
             _actions.Gameplay.PickGarbage.performed += UseItem;
             _actions.Gameplay.MouseWheel.performed += CheckWheelSelect;
             _actions.Gameplay.Inv_selectSlot1.performed += SelectSlotNum1;
@@ -37,8 +36,8 @@ namespace Inventory.UI
 
         private void OnDisable()
         {
-            if (Inventory is null) return;
-            Inventory.OnChange -= UpdateGUI;
+            if (_player.Inventory is null) return;
+            _player.Inventory.OnChange -= UpdateGUI;
             _actions.Gameplay.PickGarbage.performed -= UseItem;
             _actions.Gameplay.MouseWheel.performed -= CheckWheelSelect;
             _actions.Gameplay.Inv_selectSlot1.performed -= SelectSlotNum1;
@@ -49,7 +48,7 @@ namespace Inventory.UI
             _actions.Gameplay.Inv_selectSlot6.performed -= SelectSlotNum6;
         }
 
-        private void UseItem(InputAction.CallbackContext ctx) => Inventory.UseItemOnSlot(_selection, player);
+        private void UseItem(InputAction.CallbackContext ctx) => _player.Inventory.UseItemOnSlot(_selection, _player.Entity);
         private void SelectSlotNum1(InputAction.CallbackContext ctx) => SelectSlot(0);
         private void SelectSlotNum2(InputAction.CallbackContext ctx) => SelectSlot(1);
         private void SelectSlotNum3(InputAction.CallbackContext ctx) => SelectSlot(2);
@@ -66,7 +65,7 @@ namespace Inventory.UI
 
         private void SelectSlot(int slot)
         {
-            _selection = (int) Mathf.Repeat(slot, Inventory.MaxCapacity);
+            _selection = (int) Mathf.Repeat(slot, _player.Inventory.MaxCapacity);
             UpdateGUI();
         }
 
@@ -77,9 +76,9 @@ namespace Inventory.UI
                 Destroy(inventoryBase.transform.GetChild(i).gameObject);
             }
 
-            if (Inventory is null) return;
+            if (_player.Inventory is null) return;
 
-            foreach (var slot in Inventory.Slots)
+            foreach (var slot in _player.Inventory.Slots)
             {
                 var go = new GameObject();
                 go.transform.SetParent(inventoryBase.transform);

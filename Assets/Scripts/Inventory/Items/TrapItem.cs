@@ -1,14 +1,16 @@
 using Entity.Abilities;
+using Inventory.Input;
 using UnityEngine;
 
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Trap Item", menuName = "Inventory/Items/Trap", order = 0)]
-    public class TrapItem : ScriptableObject, IUsableItem
+    public class TrapItem : ScriptableObject, IUsableItem, ICanSpawn
     {
         public string Name => "Trap";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public ItemAdderVerifier Verifier { get; set; }
 
         [SerializeField] private float spawnRange = 1.2f;
         [SerializeField] private Sprite sprite;
@@ -17,15 +19,20 @@ namespace Inventory.Items
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
-            var trap = Instantiate(TrapWorld,
-                new Vector2(
-                    entity.gameObject.transform.position.x + spawnRange *
+            var position = entity.gameObject.transform.position;
+            var trap = Verifier.Container.InstantiatePrefab(TrapWorld,
+                new Vector3(
+                    position.x + spawnRange *
                     (entity.FindAbilityByType<EntityMovementHorizontalMove>().RightTurn ? 1 : -1),
-                    entity.gameObject.transform.position.y
+                    position.y
                 ),
-                Quaternion.identity
+                Quaternion.identity,
+                null
             );
             trap.transform.SetParent(null);
+            var adder = trap.GetComponent<IItemAdder>();
+            if (adder is not null)
+                adder.Input ??= entity.FindAvailableAbilityByInterface<IInventoryInput>();
             slot.Count--;
         }
     }

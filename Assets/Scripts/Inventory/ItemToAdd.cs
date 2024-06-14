@@ -6,9 +6,9 @@ using Zenject;
 namespace Inventory
 {
     [AddComponentMenu("Inventory/Item to add")]
-    public class ItemToAdd : MonoBehaviour
+    public class ItemToAdd : MonoBehaviour, IItemAdder
     {
-        [SerializeField] private InventoryInput input;
+        [SerializeField] private PlayerInventoryInput input;
         [SerializeField] private ScriptableObject item;
         [SerializeField] private LayerMask layer;
         [Inject] private Controls _actions;
@@ -33,6 +33,18 @@ namespace Inventory
         private void OnEnable()
         {
             _actions.Gameplay.PickItem.performed += OnPickItem;
+        }
+
+        IItem IItemAdder.Item
+        {
+            get => item as IItem;
+            set => item = value.SelfRef;
+        }
+
+        IInventoryInput IItemAdder.Input
+        {
+            get => input;
+            set => input = value as PlayerInventoryInput;
         }
     }
 }
