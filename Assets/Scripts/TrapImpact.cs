@@ -10,6 +10,7 @@ public class TrapImpact : MonoBehaviour
         var ability = other.collider.gameObject.GetComponent<EntityStunAbility>();
         if (ability is null) return;
         GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<Inventory.ItemToAdd>().enabled = false;
         await ability.Stun(stunTime);
         Destroy(gameObject);
     }
