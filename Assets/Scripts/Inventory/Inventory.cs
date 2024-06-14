@@ -82,7 +82,7 @@ namespace Inventory
             {
                 SelectSlot = 1;
             }
-            Debug.Log(SelectSlot " select slot");
+            Debug.Log(SelectSlot + " select slot"); // т.к визуала что типо слот выделен нет
         }
         
         public int getSelectSlot()
