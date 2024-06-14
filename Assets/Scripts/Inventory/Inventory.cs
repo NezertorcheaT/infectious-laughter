@@ -9,7 +9,7 @@ namespace Inventory
     public class Inventory : ScriptableObject, IInventory
     {
         [SerializeField] private int maxCapacity;
-        private int SelectSlot = 1;
+        public int SelectSlot = 1;
         public event Action OnChange;
 
         public int MaxCapacity => maxCapacity;
@@ -76,9 +76,19 @@ namespace Inventory
             Slots[SelectSlot].Use(entity, this);
             OnChange?.Invoke();
         }
-        public void SelectingSlot(int slotForSelectNum) =>
-            SelectSlot = slotForSelectNum - 1; //Типа чтобы не ебать потом InventoryUI если будут какие то анимации при переключении слота или такая хуйня да
-
+        public void SelectingSlot(int slotForSelectNum){
+            SelectSlot = slotForSelectNum - 1;
+            if(SelectSlot > maxCapacity || SelectSlot <= 0) 
+            {
+                SelectSlot = 1;
+            }
+            Debug.Log(SelectSlot " select slot");
+        }
+        
+        public int getSelectSlot()
+        {
+            return SelectSlot;
+        }
         private void Reset()
         {
             Slots = new List<ISlot>(MaxCapacity);

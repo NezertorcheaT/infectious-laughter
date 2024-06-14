@@ -18,6 +18,11 @@ namespace Inventory
         /// </summary>
         int Capacity { get; }
 
+        ///<summary>
+        /// Это вот выделенный слот
+        ///</summary>
+        int getSelectSlot();
+
         /// <summary>
         /// это вот слоты
         /// </summary>

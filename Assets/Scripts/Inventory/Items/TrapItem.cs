@@ -15,7 +15,17 @@ namespace Inventory.Items
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
-            var trap = Instantiate(TrapWorld, entity.CachedTransform.position, Quaternion.identity);
+            //тож база от липтона
+            float spawnRange = 1.2f;
+            if(entity.gameObject.GetComponent<Entity.Abilities.EntityMovementHorizontalMove>().RightTurn)
+            {
+                spawnRange = spawnRange;
+            }else
+            {
+                spawnRange = -spawnRange;
+            }
+            Debug.Log(spawnRange);
+            var trap = Instantiate(TrapWorld, new Vector2(entity.gameObject.transform.position.x + spawnRange, entity.gameObject.transform.position.y), Quaternion.identity);
             trap.transform.SetParent(null);
             slot.Count--;
         }

@@ -396,7 +396,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
+                    ""name"": ""MouseWheel"",
                     ""id"": ""06a02047-c0e8-4f79-962e-eebf1e089045"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
