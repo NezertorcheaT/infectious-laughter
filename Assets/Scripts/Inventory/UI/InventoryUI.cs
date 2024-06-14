@@ -13,7 +13,8 @@ namespace Inventory.UI
         [SerializeField] private Entity.Entity player;
         [SerializeField] private HorizontalLayoutGroup inventoryBase;
         [SerializeField, Min(1)] private float imageSize;
-        private IInventory _inventory => inventory as IInventory;
+        private int _selection;
+        private IInventory Inventory => inventory;
 
         private void Start()
         {
@@ -22,8 +23,8 @@ namespace Inventory.UI
 
         private void OnEnable()
         {
-            if (_inventory is null) return;
-            _inventory.OnChange += UpdateGUI;
+            if (Inventory is null) return;
+            Inventory.OnChange += UpdateGUI;
             _actions.Gameplay.PickGarbage.performed += UseItem;
             _actions.Gameplay.MouseWheel.performed += CheckWheelSelect;
             _actions.Gameplay.Inv_selectSlot1.performed += SelectSlotNum1;
@@ -36,8 +37,8 @@ namespace Inventory.UI
 
         private void OnDisable()
         {
-            if (_inventory is null) return;
-            _inventory.OnChange -= UpdateGUI;
+            if (Inventory is null) return;
+            Inventory.OnChange -= UpdateGUI;
             _actions.Gameplay.PickGarbage.performed -= UseItem;
             _actions.Gameplay.MouseWheel.performed -= CheckWheelSelect;
             _actions.Gameplay.Inv_selectSlot1.performed -= SelectSlotNum1;
@@ -48,27 +49,27 @@ namespace Inventory.UI
             _actions.Gameplay.Inv_selectSlot6.performed -= SelectSlotNum6;
         }
 
-        private void UseItem(InputAction.CallbackContext ctx) => _inventory.UseSelectItem(player);
-        private void SelectSlotNum1(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(2);
-        private void SelectSlotNum2(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(3);
-        private void SelectSlotNum3(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(4);
-        private void SelectSlotNum4(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(5);
-        private void SelectSlotNum5(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(6);
-        private void SelectSlotNum6(InputAction.CallbackContext ctx) => _inventory.SelectingSlot(7);
+        private void UseItem(InputAction.CallbackContext ctx) => Inventory.UseItemOnSlot(_selection, player);
+        private void SelectSlotNum1(InputAction.CallbackContext ctx) => SelectSlot(0);
+        private void SelectSlotNum2(InputAction.CallbackContext ctx) => SelectSlot(1);
+        private void SelectSlotNum3(InputAction.CallbackContext ctx) => SelectSlot(2);
+        private void SelectSlotNum4(InputAction.CallbackContext ctx) => SelectSlot(3);
+        private void SelectSlotNum5(InputAction.CallbackContext ctx) => SelectSlot(4);
+        private void SelectSlotNum6(InputAction.CallbackContext ctx) => SelectSlot(5);
 
         private void CheckWheelSelect(InputAction.CallbackContext ctx)
         {
-            if(_actions.Gameplay.MouseWheel.ReadValue<float>() > 0)
-            {
-                _inventory.SelectingSlot(_inventory.getSelectSlot() + 2);
-            }else if(_actions.Gameplay.MouseWheel.ReadValue<float>() < 0)
-            {
-                _inventory.SelectingSlot(_inventory.getSelectSlot());
-            }
+            var input = _actions.Gameplay.MouseWheel.ReadValue<float>();
+            if (input == 0) return;
+            SelectSlot(_selection + (input > 0 ? 1 : -1));
         }
 
+        private void SelectSlot(int slot)
+        {
+            _selection = (int) Mathf.Repeat(slot, Inventory.MaxCapacity);
+            UpdateGUI();
+        }
 
-    
         private void UpdateGUI()
         {
             for (var i = 0; i < inventoryBase.transform.childCount; i++)
@@ -76,9 +77,9 @@ namespace Inventory.UI
                 Destroy(inventoryBase.transform.GetChild(i).gameObject);
             }
 
-            if (_inventory is null) return;
+            if (Inventory is null) return;
 
-            foreach (var slot in _inventory.Slots)
+            foreach (var slot in Inventory.Slots)
             {
                 var go = new GameObject();
                 go.transform.SetParent(inventoryBase.transform);

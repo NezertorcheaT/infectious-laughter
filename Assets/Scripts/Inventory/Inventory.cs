@@ -9,7 +9,6 @@ namespace Inventory
     public class Inventory : ScriptableObject, IInventory
     {
         [SerializeField] private int maxCapacity;
-        public int SelectSlot = 1;
         public event Action OnChange;
 
         public int MaxCapacity => maxCapacity;
@@ -67,27 +66,6 @@ namespace Inventory
 
             Slots[i].Use(entity, this);
             OnChange?.Invoke();
-        }
-        public void UseSelectItem(Entity.Entity entity)
-        {
-            if (SelectSlot >= MaxCapacity) return;
-            if (Slots[SelectSlot].IsEmpty) return;
-
-            Slots[SelectSlot].Use(entity, this);
-            OnChange?.Invoke();
-        }
-        public void SelectingSlot(int slotForSelectNum){
-            SelectSlot = slotForSelectNum - 1;
-            if(SelectSlot > maxCapacity || SelectSlot <= 0) 
-            {
-                SelectSlot = 1;
-            }
-            Debug.Log(SelectSlot + " select slot"); // т.к визуала что типо слот выделен нет
-        }
-        
-        public int getSelectSlot()
-        {
-            return SelectSlot;
         }
         private void Reset()
         {

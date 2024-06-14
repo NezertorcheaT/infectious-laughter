@@ -1,3 +1,4 @@
+using Entity.Abilities;
 using UnityEngine;
 
 namespace Inventory.Items
@@ -9,23 +10,21 @@ namespace Inventory.Items
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
 
+        [SerializeField] private float spawnRange = 1.2f;
         [SerializeField] private Sprite sprite;
+        [field: SerializeField] private GameObject TrapWorld { get; set; }
         [field: SerializeField] public int MaxStackSize { get; private set; }
-        [field: SerializeField] public GameObject TrapWorld { get; private set; }
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
-            //тож база от липтона
-            float spawnRange = 1.2f;
-            if(entity.gameObject.GetComponent<Entity.Abilities.EntityMovementHorizontalMove>().RightTurn)
-            {
-                spawnRange = spawnRange;
-            }else
-            {
-                spawnRange = -spawnRange;
-            }
-            Debug.Log(spawnRange);
-            var trap = Instantiate(TrapWorld, new Vector2(entity.gameObject.transform.position.x + spawnRange, entity.gameObject.transform.position.y), Quaternion.identity);
+            var trap = Instantiate(TrapWorld,
+                new Vector2(
+                    entity.gameObject.transform.position.x + spawnRange *
+                    (entity.FindAbilityByType<EntityMovementHorizontalMove>().RightTurn ? 1 : -1),
+                    entity.gameObject.transform.position.y
+                ),
+                Quaternion.identity
+            );
             trap.transform.SetParent(null);
             slot.Count--;
         }

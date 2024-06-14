@@ -7,8 +7,8 @@ namespace Entity.Abilities
     public class EntityMovementHorizontalMove : Ability
     {
         [SerializeField] private float speed;
-        public bool RightTurn = true; // true - последнее направление это право, false соответственно лево
         private Rigidbody2D _rb;
+        public bool RightTurn { get; private set; }
 
         private void Start()
         {
@@ -18,14 +18,7 @@ namespace Entity.Abilities
         public void Move(float velocity)
         {
             if (!Available()) return;
-            // опять база от липтона?
-            if(velocity > 0)
-            {
-                RightTurn = true;
-            }else if(velocity < 0)
-            {
-                RightTurn = false;
-            }
+            RightTurn = velocity == 0 ? RightTurn : velocity > 0;
             _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
         }
     }

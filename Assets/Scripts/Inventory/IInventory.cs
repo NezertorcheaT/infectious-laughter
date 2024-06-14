@@ -18,11 +18,6 @@ namespace Inventory
         /// </summary>
         int Capacity { get; }
 
-        ///<summary>
-        /// Это вот выделенный слот
-        ///</summary>
-        int getSelectSlot();
-
         /// <summary>
         /// это вот слоты
         /// </summary>
@@ -52,15 +47,5 @@ namespace Inventory
         /// </summary>
         /// <param name="entity">сущность куда</param>
         void UseLast(Entity.Entity entity);
-
-        ///<summary>
-        /// ну вот выделить определенную ячейку
-        ///</summary>
-        void SelectingSlot(int slotForSelectNum);
-
-        ///<summary>
-        /// Использовать выделенный предмет
-        ///</summary>
-        void UseSelectItem(Entity.Entity entity);
     }
 }
