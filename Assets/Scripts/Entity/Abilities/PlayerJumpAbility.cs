@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Entity.Abilities
@@ -43,8 +44,9 @@ namespace Entity.Abilities
             _jumpCountActive -= 1;
         }
 
-        private void JumpFromWall()
+        private async void JumpFromWall()
         {
+            _movementDowning.enabled = false;
             _playerRb.AddForce(
                 new Vector2(
                     walljumpPush * (_collideCheck.IsTouchingLeft ? 1 : _collideCheck.IsTouchingRight ? 1 : 0),
@@ -52,6 +54,8 @@ namespace Entity.Abilities
                 ),
                 ForceMode2D.Impulse
             );
+            await Task.Delay((int) (jumpTime / 2f * 1000f));
+            _movementDowning.enabled = true;
         }
     }
 }
