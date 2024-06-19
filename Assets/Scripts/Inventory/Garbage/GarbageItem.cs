@@ -51,12 +51,14 @@ namespace Inventory.Garbage
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if(!other.GetComponent<Entity.Controllers.ControllerInput>()) return;
             keyCodeTablet.SetActive(other.gameObject.GetComponent<Entity.Abilities.EntityGarbage>() is not null);
             gameObject.GetComponent<SpriteRenderer>().material = outlineMaterial;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            if(!other.GetComponent<Entity.Controllers.ControllerInput>()) return;
             keyCodeTablet.SetActive(other.gameObject.GetComponent<Entity.Abilities.EntityGarbage>() is null);
             gameObject.GetComponent<SpriteRenderer>().material = defaultMaterial;
         }
