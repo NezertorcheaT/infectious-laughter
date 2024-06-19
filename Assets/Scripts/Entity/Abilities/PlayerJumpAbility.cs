@@ -49,7 +49,7 @@ namespace Entity.Abilities
             _movementDowning.enabled = false;
             _playerRb.AddForce(
                 new Vector2(
-                    walljumpPush * (_collideCheck.IsTouchingLeft ? 1 : _collideCheck.IsTouchingRight ? 1 : 0),
+                    walljumpPush * (_collideCheck.IsTouchingLeft ? 1 : _collideCheck.IsTouchingRight ? -1 : 0),
                     walljumpHeight
                 ),
                 ForceMode2D.Impulse
