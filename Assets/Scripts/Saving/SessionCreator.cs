@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Zenject;
 
 namespace Saving
 {
@@ -20,12 +19,20 @@ namespace Saving
             _saver.Save(Current);
         }
 
+        public Session NewSession()
+        {
+            var session = new Session();
+            Current = session;
+            SaveCurrentSession();
+            return session;
+        }
+
         public Session LoadSession(string ID)
         {
             var path = SessionFileSaver.CreatePath(ID);
             if (!GetAvailableSessionIDs().ToArray().Contains(path))
-                throw new AggregateException($"Session '{ID}' does not exist");
-            var session = new Session().Deconvert(_saver.Read(path)) as Session;
+                throw new ArgumentException($"Session '{ID}' does not exist");
+            var session = new Session().Deconvert(_saver.Read(path), _saver) as Session;
             Current = session;
             return session;
         }

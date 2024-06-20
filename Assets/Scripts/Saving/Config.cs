@@ -32,13 +32,15 @@ namespace Saving
             _saver = saver;
         }
 
-        string IFileSaver<string>.ISavable<string>.Convert() => JsonSerializer.Serialize(this);
+        string IFileSaver<string>.ISavable<string>.Convert() =>
+            JsonSerializer.Serialize(this, Session.SerializerOptions);
 
-        public IFileSaver<string>.ISavable<string> Deconvert(string converted)
+        public IFileSaver<string>.ISavable<string> Deconvert(string converted, IFileSaver<string> saver)
         {
-            var deserialized = JsonSerializer.Deserialize<Config>(converted);
+            var deserialized = JsonSerializer.Deserialize<Config>(converted, Session.SerializerOptions);
             if (deserialized is null)
                 throw new ArgumentException($"Converted string '{converted}' is not Config and can't be deserialized");
+            deserialized._saver = saver;
             return deserialized;
         }
     }

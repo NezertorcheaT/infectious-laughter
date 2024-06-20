@@ -3,68 +3,87 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Xml;
+using System.Text.Json.Serialization;
+using Saving.Converters;
+using UnityEngine;
 
 namespace Saving
 {
-    public class Session : IFileSaver<string>.ISavable<string>, IEnumerable<Tuple<string, Session.SessionContent>>
+    public class Session : IFileSaver<string>.ISavable<string>, IEnumerable<Tuple<string, Session.Content>>
     {
         public string ID { get; private set; }
 
         [Serializable]
-        private class SessionContent
+        [JsonConverter(typeof(SessionContentConverter))]
+        public class Content
         {
-            public object Content { get; private set; }
-            public Type Type { get; private set; }
+            [JsonConverter(typeof(SessionContentConverter))]
+            [field: SerializeField]
+            public object Value { get; set; }
 
-            [System.Text.Json.Serialization.JsonConstructor]
-            public SessionContent(object content, Type type)
+            [JsonConverter(typeof(SessionContentConverter))]
+            [field: SerializeField]
+            public Type Type { get; set; }
+
+            public Content(object value, Type type)
             {
-                Content = content;
+                Value = value;
                 Type = type;
             }
         }
 
-        private Dictionary<string, SessionContent> _container;
+        public static JsonSerializerOptions SerializerOptions => new JsonSerializerOptions
+        {
+            Converters =
+            {
+                new SessionContentConverter(),
+                new Vector2Converter(),
+                new Vector3Converter(),
+            }
+        };
+
+        private Dictionary<string, Content> _container;
 
         public Session()
         {
-            _container = new Dictionary<string, SessionContent>();
+            _container = new Dictionary<string, Content>();
             ID = Guid.NewGuid().ToString();
         }
 
         public Session(string id)
         {
-            _container = new Dictionary<string, SessionContent>();
+            _container = new Dictionary<string, Content>();
             ID = id;
         }
 
-        public object this[string key] => _container[key];
+        public Content this[string key] => _container[key];
 
-        private void Add(SessionContent content, string key)
+        private void Add(Content content, string key)
         {
             if (_container.ContainsKey(key)) throw new ArithmeticException("key already exists");
             _container.Add(key, content);
         }
 
-        public void Add<T>(T content, string key) => Add(new SessionContent(content, typeof(T)), key);
+        public void Add<T>(T content, string key) =>
+            Add(new Content(content, typeof(T)), key);
 
-        public void Add(object content, Type type, string key) => Add(new SessionContent(content, type), key);
+        public void Add(object content, Type type, string key) =>
+            Add(new Content(content, type), key);
 
         public void Forget(string key)
         {
             _container.Remove(key);
         }
 
-        private IEnumerator<Tuple<string, SessionContent>> Enumerate()
+        private IEnumerator<Tuple<string, Content>> Enumerate()
         {
             foreach (var (key, value) in _container)
             {
-                yield return new Tuple<string, SessionContent>(key, value);
+                yield return new Tuple<string, Content>(key, value);
             }
         }
 
-        IEnumerator<Tuple<string, SessionContent>> IEnumerable<Tuple<string, SessionContent>>.GetEnumerator() =>
+        IEnumerator<Tuple<string, Content>> IEnumerable<Tuple<string, Content>>.GetEnumerator() =>
             Enumerate();
 
         IEnumerator IEnumerable.GetEnumerator() => Enumerate();
@@ -77,13 +96,23 @@ namespace Saving
             dict.Add(JsonSessionIdKey, ID);
             foreach (var (key, value) in this)
             {
-                dict.Add(key, JsonSerializer.Serialize(value));
+                JsonNode node;
+                try
+                {
+                    node = JsonSerializer.SerializeToNode(value, SerializerOptions);
+                }
+                catch (JsonException)
+                {
+                    node = JsonNode.Parse(JsonUtility.ToJson(value));
+                }
+
+                dict.Add(key, node);
             }
 
-            return dict.ToJsonString();
+            return dict.ToJsonString(SerializerOptions);
         }
 
-        public IFileSaver<string>.ISavable<string> Deconvert(string converted)
+        public IFileSaver<string>.ISavable<string> Deconvert(string converted, IFileSaver<string> saver)
         {
             var dict = JsonNode.Parse(converted)?.AsObject();
 
@@ -92,16 +121,26 @@ namespace Saving
                 throw new ArgumentException(
                     $"Dictionary from converted string '{converted}' does not have '{JsonSessionIdKey}' key");
 
-            var session = new Session(dict[JsonSessionIdKey].Deserialize<string>());
+            var session = new Session(dict[JsonSessionIdKey].Deserialize<string>(SerializerOptions));
 
-            foreach (var node in dict)
+            foreach (var (key, value) in dict)
             {
-                if (node.Key == JsonSessionIdKey) continue;
-                var content = node.Value.Deserialize<SessionContent>();
+                if (key == JsonSessionIdKey) continue;
+                Content content;
+                /*try
+                {
+                    content = value.Deserialize<Content>(SerializerOptions);
+                }
+                catch (JsonException)
+                {
+                    content = JsonUtility.FromJson<Content>(value.ToJsonString(SerializerOptions));
+                }*/
+                content = value.Deserialize<Content>(SerializerOptions);
+
                 if (content is null)
                     throw new ArgumentException(
-                        $"Content at key '{node.Key}' in dictionary from converted string '{converted}' is not SessionContent and can't be deserialized");
-                session.Add(content, node.Key);
+                        $"Content at key '{key}' in dictionary from converted string '{converted}' is not SessionContent and can't be deserialized");
+                session.Add(content, key);
             }
 
             return session;

@@ -5,7 +5,7 @@
         public interface ISavable<TCovert>
         {
             TCovert Convert();
-            ISavable<TCovert> Deconvert(TCovert converted);
+            ISavable<TCovert> Deconvert(TCovert converted, IFileSaver<T> saver);
         }
 
         void Save(ISavable<T> savable);
