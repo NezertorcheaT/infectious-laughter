@@ -7,8 +7,6 @@ namespace Saving
     [Serializable]
     public class Config : IFileSaver<string>.ISavable<string>
     {
-        public string Convert => JsonSerializer.Serialize(this);
-
         public float Volume
         {
             get => _volume;
@@ -32,6 +30,16 @@ namespace Saving
         public Config(ConfigFileSaver saver)
         {
             _saver = saver;
+        }
+
+        string IFileSaver<string>.ISavable<string>.Convert() => JsonSerializer.Serialize(this);
+
+        public IFileSaver<string>.ISavable<string> Deconvert(string converted)
+        {
+            var deserialized = JsonSerializer.Deserialize<Config>(converted);
+            if (deserialized is null)
+                throw new ArgumentException($"Converted string '{converted}' is not Config and can't be deserialized");
+            return deserialized;
         }
     }
 }
