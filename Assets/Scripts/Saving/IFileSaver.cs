@@ -2,9 +2,10 @@
 {
     public interface IFileSaver<T>
     {
-        public interface ISavable<TSavable>
+        public interface ISavable<TCovert>
         {
-            TSavable Convert { get; }
+            TCovert Convert();
+            ISavable<TCovert> Deconvert(TCovert converted);
         }
 
         void Save(ISavable<T> savable);

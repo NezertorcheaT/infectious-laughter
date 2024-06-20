@@ -5,7 +5,7 @@
         private static string Path => $"{GlobalFileSaver.Path}\\config.json";
 
         public void Save(IFileSaver<string>.ISavable<string> savable) =>
-            GlobalFileSaver.SaveToDrive(savable.Convert, Path);
+            GlobalFileSaver.SaveToDrive(savable.Convert(), Path);
 
         public string Read(string path) => GlobalFileSaver.ReadFromDrive(Path);
     }
