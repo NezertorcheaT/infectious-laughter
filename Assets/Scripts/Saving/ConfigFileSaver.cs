@@ -1,15 +1,12 @@
 ﻿namespace Saving
 {
-    public class ConfigFileSaver:IFileSaver<string>
+    public class ConfigFileSaver : IFileSaver<string>
     {
-        public void Save(IFileSaver<string>.ISavable<string> savable)
-        {
-            throw new System.NotImplementedException();
-        }
+        private static string Path => $"{GlobalFileSaver.Path}\\config.json";
 
-        public string Read(string path)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void Save(IFileSaver<string>.ISavable<string> savable) =>
+            GlobalFileSaver.SaveToDrive(savable.Convert, Path);
+
+        public string Read(string path) => GlobalFileSaver.ReadFromDrive(Path);
     }
 }

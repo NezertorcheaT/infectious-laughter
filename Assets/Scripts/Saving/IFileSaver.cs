@@ -4,7 +4,7 @@
     {
         public interface ISavable<TSavable>
         {
-            TSavable Convert { get; set; }
+            TSavable Convert { get; }
         }
 
         void Save(ISavable<T> savable);
