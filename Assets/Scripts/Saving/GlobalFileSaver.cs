@@ -6,31 +6,28 @@ namespace Saving
     public static class GlobalFileSaver
     {
         public static string Path => Application.persistentDataPath;
-        /*public static Configs ReadFromDrive()
+
+        public static string ReadFromDrive(string path)
         {
-            if (!File.Exists(Path))
-                new Configs().SaveToDrive();
-        
-            var fs = new FileStream(Path, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            if (!File.Exists(path)) throw new FileNotFoundException($"Path: '{path}'");
+
+            var fs = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
             var stream = new StreamReader(fs);
-            var str = JsonNode
-                .Parse(stream.ReadToEnd())
-                .Deserialize<Configs>()!;
+            var str = stream.ReadToEnd();
             stream.Close();
             fs.Close();
             return str;
         }
 
-        public void SaveToDrive()
+        public static void SaveToDrive(string content, string path)
         {
-            File.Delete(Path);
-            var fs = new FileStream(Path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
-            var file = JsonSerializer.Serialize(this);
+            if (File.Exists(path)) File.Delete(path);
+            var fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
             var stream = new StreamWriter(fs);
+            stream.WriteLine(content);
             stream.Flush();
-            stream.WriteLine(file);
             stream.Close();
             fs.Close();
-        }*/
+        }
     }
 }
