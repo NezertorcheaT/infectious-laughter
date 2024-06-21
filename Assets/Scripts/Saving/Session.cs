@@ -17,18 +17,20 @@ namespace Saving
         [JsonConverter(typeof(SessionContentConverter))]
         public class Content
         {
-            [JsonConverter(typeof(SessionContentConverter))]
-            [field: SerializeField]
-            public object Value { get; set; }
+            [field: SerializeField] public object Value { get; set; }
 
-            [JsonConverter(typeof(SessionContentConverter))]
-            [field: SerializeField]
-            public Type Type { get; set; }
+            [field: SerializeField] public Type Type { get; set; }
+
+            public Content(object value)
+            {
+                Value = value;
+                Type = value.GetType();
+            }
 
             public Content(object value, Type type)
             {
                 Value = value;
-                Type = type;
+                Type = type ?? value.GetType();
             }
         }
 
@@ -126,20 +128,14 @@ namespace Saving
             foreach (var (key, value) in dict)
             {
                 if (key == JsonSessionIdKey) continue;
-                Content content;
-                /*try
-                {
-                    content = value.Deserialize<Content>(SerializerOptions);
-                }
-                catch (JsonException)
-                {
-                    content = JsonUtility.FromJson<Content>(value.ToJsonString(SerializerOptions));
-                }*/
-                content = value.Deserialize<Content>(SerializerOptions);
+
+                Debug.Log((key, value));
+                var content = value.Deserialize<Content>(SerializerOptions);
 
                 if (content is null)
                     throw new ArgumentException(
                         $"Content at key '{key}' in dictionary from converted string '{converted}' is not SessionContent and can't be deserialized");
+                Debug.Log((content.Type, content.Value));
                 session.Add(content, key);
             }
 

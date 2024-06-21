@@ -19,12 +19,13 @@ namespace Installers
             Container.Bind<SessionCreator>().FromInstance(sessionCreator).AsSingle().NonLazy();
 
             Debug.Log(config.Volume);
+            Debug.Log(SessionFileSaver.CreatePath("poo"));
             var ses = sessionCreator.NewSession();
             ses.Add(new Vector2(0, 1), "asss");
             ses.Add("amogus", "random string");
-            sessionCreator.SaveCurrentSession();/*
+            sessionCreator.SaveCurrentSession();
 
-            sessionCreator.LoadSession("041cc82a-f80f-4b47-b239-8be7c6980113");
+            /*sessionCreator.LoadSession("0");
             foreach (var (key, content) in sessionCreator.Current)
             {
                 Debug.Log(key);
