@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e044f0dfe5bd9cf4e847e257cf247604
+guid: a2e38db62d93be143bf48a7098d12ac6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,11 +44,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20.48
-  spriteBorder: {x: 7, y: 2, z: 9, w: 6}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -67,9 +67,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -91,30 +91,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -149,390 +125,119 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ground_0
+      name: Asphalt_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
+        x: 0
+        y: 96
         width: 32
         height: 32
-      alignment: 9
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 6}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e0d7627f2b92e346a3a9e5777b16ec6
-      internalID: -1067918578
+      spriteID: 548c4a0765875f24ca0af6908996a562
+      internalID: -22129021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ground_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 6}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 10}
-        - {x: 16, y: 10}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd923fde27383104f98149497465fe3b
-      internalID: 2024151127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 6}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 10}
-        - {x: 16, y: 10}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: a30cca4527eb5344e8526e932e92de0a
-      internalID: 1281392724
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 128
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 6}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 10}
-        - {x: 16, y: 10}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c800db8755e95945b55e6097b7755d0
-      internalID: 1691387463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 0, w: 6}
-      outline: []
-      physicsShape:
-      - - {x: -14, y: -16}
-        - {x: -14, y: 7}
-        - {x: -11, y: 10}
-        - {x: 16, y: 10}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a2b95889021e40438ef5e5df01676f4
-      internalID: -163427881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_5
+      name: Asphalt_1
       rect:
         serializedVersion: 2
         x: 32
         y: 96
         width: 32
         height: 32
-      alignment: 9
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 0, w: 6}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -14, y: -16}
-        - {x: -14, y: 7}
-        - {x: -11, y: 10}
-        - {x: 16, y: 10}
-        - {x: 16, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e0da8aee379c5e47b40daa38bba6553
-      internalID: -1974628160
+      spriteID: b4385eb8bec9fd84a9b46a0c3644c239
+      internalID: -910430955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ground_6
+      name: Asphalt_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 128
         y: 96
         width: 32
         height: 32
-      alignment: 9
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 2, w: 6}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 10}
-        - {x: 11, y: 10}
-        - {x: 14, y: 7}
-        - {x: 14, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d59623857d0be814fa8315d0927b1a45
-      internalID: -104175668
+      spriteID: b58c1c5e0a733714a9ddcb82e4ca91dd
+      internalID: -1717127845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ground_7
+      name: Asphalt_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 160
         y: 96
         width: 32
         height: 32
-      alignment: 9
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 2, w: 6}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 10}
-        - {x: 11, y: 10}
-        - {x: 14, y: 7}
-        - {x: 14, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b644b92f1f8e45d45823c111f38028b1
-      internalID: 353927576
+      spriteID: 4df1f225b4cffe748827bd77b95f439e
+      internalID: -830872620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ground_9
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 1, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -15, y: -16}
-        - {x: -15, y: 16}
-        - {x: 16, y: 16}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 930c69997e32e384599ce4366c173232
-      internalID: 762271109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_10
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 1, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 16}
-        - {x: 15, y: 16}
-        - {x: 15, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95241a7d02f760342adc3642ecb2602f
-      internalID: -469847
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 1, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 16}
-        - {x: 15, y: 16}
-        - {x: 15, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ec79de8b150d4343b685f789741dc5e
-      internalID: -2107811058
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_12
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 8}
-      outline: []
-      physicsShape:
-      - - {x: 3, y: -16}
-        - {x: -10, y: -16}
-        - {x: 16, y: 10}
-        - {x: 16, y: 2.5}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 092c6b798660a7f48b01db6d4c7af220
-      internalID: 1743420964
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_13
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 8}
-      outline: []
-      physicsShape:
-      - - {x: -2, y: -16}
-        - {x: -10, y: -16}
-        - {x: 16, y: 10}
-        - {x: 16, y: 5.5}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: d75e21a86f1a5d6469f00077e023de52
-      internalID: -633378945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_14
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 8}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 0.5}
-        - {x: -16, y: 10}
-        - {x: 10, y: -16}
-        - {x: 6, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6d458cf4385bd540bd0a40d7c17f68b
-      internalID: -2002319617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_15
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 8}
-      outline: []
-      physicsShape:
-      - - {x: 4, y: -16}
-        - {x: -16, y: -16}
-        - {x: -16, y: 1.5}
-        - {x: -16, y: 10}
-        - {x: 10, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: d196e2911686eee4b9f884b342c9766b
-      internalID: -1129372317
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_16
+      name: Asphalt_4
       rect:
         serializedVersion: 2
         x: 0
@@ -543,21 +248,206 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -15, y: -16}
-        - {x: -15, y: 16}
-        - {x: 16, y: 16}
-        - {x: 16, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 403b408b9bf344948b994171a5d965a6
-      internalID: 1249992199
+      spriteID: 17789dbd7bc546641a53a53fac754e5c
+      internalID: 1601822221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ground_20
+      name: Asphalt_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33198304675f27f40a3b6c90905cf394
+      internalID: -1215561504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 678efa07768c2a34c979ca67e0a90eaf
+      internalID: -516929909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74742daf636aa1a4cb98a747b2eec2df
+      internalID: 831753306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abba0efd7f8a4a4459c8fdf033027628
+      internalID: 562997751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068cecbbb258374479bfd695c71745ed
+      internalID: 2067590404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8e29fbde7ecdd4c94b4039d0fab666
+      internalID: 230709937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07865123eb125e140b494264418b4553
+      internalID: -571028902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394507e29f73bc148bd0bd8ac47faa2c
+      internalID: -17028358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63517513c54e01648aa610d55c117beb
+      internalID: -1651902353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asphalt_14
       rect:
         serializedVersion: 2
         x: 0
@@ -568,22 +458,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 16}
-        - {x: 10, y: 16}
-        - {x: 16, y: 10}
-        - {x: 16, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4123923b67f10d45906fca1f61ca2eb
-      internalID: 1771007145
+      spriteID: 3829cd0238bd119469e6c50f39d06b60
+      internalID: 1873040201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ground_21
+      name: Asphalt_15
       rect:
         serializedVersion: 2
         x: 32
@@ -594,25 +479,20 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 16}
-        - {x: 10, y: 16}
-        - {x: 16, y: 10}
-        - {x: 16, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 651555665d30e6b48b8e71507b368cac
-      internalID: 1000616700
+      spriteID: c4f1ee4b700fc3b4585adbcbf87daa58
+      internalID: 904219101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ground_22
+      name: Asphalt_16
       rect:
         serializedVersion: 2
-        x: 64
+        x: 128
         y: 0
         width: 32
         height: 32
@@ -620,25 +500,20 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 10}
-        - {x: -10, y: 16}
-        - {x: 16, y: 16}
-        - {x: 16, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c5397e3bff20c0478af480571836968
-      internalID: -90824983
+      spriteID: e3311f10792b38c4ab60b21fcf0f046d
+      internalID: -993127065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ground_23
+      name: Asphalt_17
       rect:
         serializedVersion: 2
-        x: 96
+        x: 160
         y: 0
         width: 32
         height: 32
@@ -646,100 +521,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 10}
-        - {x: -10, y: 16}
-        - {x: 16, y: 16}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2061bbe69db6b54a932e440d94513ea
-      internalID: 316987890
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_19
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 160
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 6}
-      outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 962a1a46ec4b55b4c9d7baa1f4d5a90f
-      internalID: 665785049
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_8
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 160
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 6}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfd63b5e225981642ac9a639fabaa76a
-      internalID: 2000693672
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_17
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 160
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 6}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 810ad23c0842f2a459f72176ea9d741d
-      internalID: -368718885
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground_18
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67263205e0e0e044b89d2ef4467f6fdd
-      internalID: -1387503531
+      spriteID: 57f9e3394a0f36f4b8fa765e312dab1c
+      internalID: -1549358847
       vertices: []
       indices: 
       edges: []
@@ -748,37 +534,31 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ground_15: -1129372317
-      Ground_10: -469847
-      Ground_16: 1249992199
-      Ground_9: 762271109
-      Ground_13: -633378945
-      Ground_23: 316987890
-      Ground_12: 1743420964
-      Ground_18: -1387503531
-      Ground_11: -2107811058
-      Ground_5: -1974628160
-      Ground_3: 1691387463
-      Ground_0: -1067918578
-      Ground_4: -163427881
-      Ground_8: 2000693672
-      Ground_6: -104175668
-      Ground_17: -368718885
-      Ground_2: 1281392724
-      Ground_19: 665785049
-      Ground_14: -2002319617
-      Ground_22: -90824983
-      Ground_7: 353927576
-      Ground_21: 1000616700
-      Ground_20: 1771007145
-      Ground_1: 2024151127
+      Asphalt_9: 2067590404
+      Asphalt_5: -1215561504
+      Asphalt_11: -571028902
+      Asphalt_3: -830872620
+      Asphalt_8: 562997751
+      Asphalt_15: 904219101
+      Asphalt_13: -1651902353
+      Asphalt_6: -516929909
+      Asphalt_4: 1601822221
+      Asphalt_1: -910430955
+      Asphalt_7: 831753306
+      Asphalt_10: 230709937
+      Asphalt_14: 1873040201
+      Asphalt_0: -22129021
+      Asphalt_16: -993127065
+      Asphalt_2: -1717127845
+      Asphalt_12: -17028358
+      Asphalt_17: -1549358847
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
