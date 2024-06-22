@@ -16,7 +16,7 @@ namespace Saving
             ses.Add("amogus", "random string");
             _sessionCreator.SaveCurrentSession();
 
-            _sessionCreator.LoadSession("0");
+            /*_sessionCreator.LoadSession("0");
             foreach (var (key, content) in _sessionCreator.Current)
             {
                 Debug.Log(key);
@@ -25,7 +25,7 @@ namespace Saving
                 Debug.Log(content.Type);
             }
 
-            Debug.Log(_config.Volume);
+            Debug.Log(_config.Volume);*/
         }
     }
 }
