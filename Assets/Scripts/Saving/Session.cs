@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 using Saving.Converters;
 using UnityEngine;
 
@@ -14,7 +13,6 @@ namespace Saving
         public string ID { get; private set; }
 
         [Serializable]
-        [JsonConverter(typeof(SessionContentConverter))]
         public class Content
         {
             [field: SerializeField] public object Value { get; set; }
@@ -38,7 +36,6 @@ namespace Saving
         {
             Converters =
             {
-                new SessionContentConverter(),
                 new Vector2Converter(),
                 new Vector3Converter(),
             }
@@ -98,14 +95,15 @@ namespace Saving
             dict.Add(JsonSessionIdKey, ID);
             foreach (var (key, value) in this)
             {
-                JsonNode node;
+                var node = new JsonObject();
+                node.Add("type", JsonSerializer.SerializeToNode(value.Type.AssemblyQualifiedName, SerializerOptions));
                 try
                 {
-                    node = JsonSerializer.SerializeToNode(value, SerializerOptions);
+                    node.Add("content", JsonSerializer.SerializeToNode(value.Value, value.Type, SerializerOptions));
                 }
                 catch (JsonException)
                 {
-                    node = JsonNode.Parse(JsonUtility.ToJson(value));
+                    node.Add("content", JsonNode.Parse(JsonUtility.ToJson(value.Value)));
                 }
 
                 dict.Add(key, node);
@@ -129,14 +127,39 @@ namespace Saving
             {
                 if (key == JsonSessionIdKey) continue;
 
-                Debug.Log((key, value));
-                var content = value.Deserialize<Content>(SerializerOptions);
-
-                if (content is null)
+                var typeStr = value.AsObject()["type"]?.ToString();
+                if (typeStr is null)
                     throw new ArgumentException(
-                        $"Content at key '{key}' in dictionary from converted string '{converted}' is not SessionContent and can't be deserialized");
-                Debug.Log((content.Type, content.Value));
-                session.Add(content, key);
+                        $"Content at key '{key}' in dictionary from converted string '{converted}' not contains 'type' field and is not SessionContent and can't be deserialized");
+
+                var contStr = value.AsObject()["content"]?.ToString();
+                if (contStr is null)
+                    throw new ArgumentException(
+                        $"Content at key '{key}' in dictionary from converted string '{converted}' not contains 'content' field and is not SessionContent and can't be deserialized");
+
+                var type = Type.GetType(typeStr);
+                if (type is null)
+                    throw new ArgumentException(
+                        $"Field 'type' in content at key '{key}' in dictionary from converted string '{converted}' is not a valid Type");
+
+                object contentObj;
+                if (type.AssemblyQualifiedName != typeof(string).AssemblyQualifiedName)
+                {
+                    try
+                    {
+                        contentObj = JsonSerializer.Deserialize(contStr, type, SerializerOptions);
+                    }
+                    catch (JsonException)
+                    {
+                        contentObj = JsonUtility.FromJson(contStr, type);
+                    }
+                }
+                else
+                {
+                    contentObj = contStr;
+                }
+
+                session.Add(new Content(contentObj, type), key);
             }
 
             return session;
