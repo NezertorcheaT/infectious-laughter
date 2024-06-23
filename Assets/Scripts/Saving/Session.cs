@@ -78,6 +78,7 @@ namespace Saving
             _container = new Dictionary<string, Content>();
             ID = Guid.NewGuid().ToString();
         }
+
         /// <summary>
         /// пустая сессия с id
         /// </summary>
@@ -225,7 +226,7 @@ namespace Saving
                 }
                 else
                 {
-                    contentObj = contStr;
+                    contentObj = contStr.ToString();
                 }
 
                 session.Add(new Content(contentObj, type), key);
