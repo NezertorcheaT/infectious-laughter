@@ -19,6 +19,7 @@ namespace Entity.Controllers
         private EntityGarbage _entityGarbage;
         private EntityMovementDowning _movementDowning;
         private CollideCheck _collideCheck;
+        private DashAbility _dashAbility;
 
         public override void Initialize()
         {
@@ -28,7 +29,8 @@ namespace Entity.Controllers
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
             _movementDowning = Entity.FindAbilityByType<EntityMovementDowning>();
             _collideCheck = Entity.FindAbilityByType<CollideCheck>();
-
+            _dashAbility = Entity.FindAbilityByType<DashAbility>();
+            
             OnEnable();
         }
 
@@ -43,6 +45,7 @@ namespace Entity.Controllers
             _actions.Enable();
 
             Entity.OnFixedUpdate += Move;
+            _actions.Gameplay.Dash.performed += DashOnPerformed;
             _actions.Gameplay.Jump.performed += JumpOnPerformed;
             _actions.Gameplay.PickGarbage.performed += PickGarbagePerformed;
             _actions.Gameplay.Crouch.started += CrouchOnStarted;
@@ -55,6 +58,7 @@ namespace Entity.Controllers
             _actions.Disable();
 
             Entity.OnFixedUpdate -= Move;
+            _actions.Gameplay.Dash.performed -= DashOnPerformed;
             _actions.Gameplay.Jump.performed -= JumpOnPerformed;
             _actions.Gameplay.Crouch.started -= CrouchOnStarted;
             _actions.Gameplay.Crouch.canceled -= CrouchOnCanceled;
@@ -64,6 +68,7 @@ namespace Entity.Controllers
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
         private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Jump();
+        private void DashOnPerformed(InputAction.CallbackContext ctx) => _dashAbility.Dash();
 
         private bool _hangingRight;
         private bool _hangingLeft;

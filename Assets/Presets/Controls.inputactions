@@ -78,6 +78,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "cf8824c6-a4af-4a5c-8e9d-ccfa940d481a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MouseWheel",
                     "type": "Button",
                     "id": "28207a3a-f9af-48a9-be2a-d1a1da7acc41",
@@ -469,6 +478,17 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Inv_selectSlot6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e69e4d24-783b-42bd-91a5-10b99ecfdb6d",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
