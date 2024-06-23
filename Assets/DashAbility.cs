@@ -35,7 +35,6 @@ namespace Entity.Abilities
             }
 
             dashCountActive--;
-            Debug.Log(playerMovement.RightTurn);
             StartCoroutine(DashCooldownEnd());
         }
 
