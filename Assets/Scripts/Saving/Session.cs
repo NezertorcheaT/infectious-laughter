@@ -8,23 +8,47 @@ using UnityEngine;
 
 namespace Saving
 {
-    public class Session : IFileSaver<string>.ISavable<string>, IEnumerable<Tuple<string, Session.Content>>
+    /// <summary>
+    /// это типа объект сохранения, вы в него записываете и из него читаете
+    /// </summary>
+    public class Session : IFileSaver<string>.ISavable, IEnumerable<Tuple<string, Session.Content>>
     {
+        /// <summary>
+        /// id текущего сохранеия
+        /// </summary>
         public string ID { get; private set; }
 
+        /// <summary>
+        /// это типа запись в сохранении
+        /// </summary>
         [Serializable]
         public class Content
         {
-            [field: SerializeField] public object Value { get; set; }
+            /// <summary>
+            /// обязательно сериализуемый объект вашей записи
+            /// </summary>
+            public object Value;
 
-            [field: SerializeField] public Type Type { get; set; }
+            /// <summary>
+            /// тип объекта вашей записи
+            /// </summary>
+            public Type Type;
 
+            /// <summary>
+            /// это типа запись в сохранениии
+            /// </summary>
+            /// <param name="value">обязательно сериализуемый объект вашей записи</param>
             public Content(object value)
             {
                 Value = value;
                 Type = value.GetType();
             }
 
+            /// <summary>
+            /// это типа запись в сохранениии
+            /// </summary>
+            /// <param name="value">обязательно сериализуемый объект вашей записи</param>
+            /// <param name="type">тип объекта вашей записи</param>
             public Content(object value, Type type)
             {
                 Value = value;
@@ -32,6 +56,9 @@ namespace Saving
             }
         }
 
+        /// <summary>
+        /// опции преобразования в json. сюда нужно сувать кастомные конвертеры
+        /// </summary>
         public static JsonSerializerOptions SerializerOptions => new JsonSerializerOptions
         {
             Converters =
@@ -43,35 +70,72 @@ namespace Saving
 
         private Dictionary<string, Content> _container;
 
+        /// <summary>
+        /// пустая сессия
+        /// </summary>
         public Session()
         {
             _container = new Dictionary<string, Content>();
             ID = Guid.NewGuid().ToString();
         }
-
+        /// <summary>
+        /// пустая сессия с id
+        /// </summary>
+        /// <param name="id"></param>
         public Session(string id)
         {
             _container = new Dictionary<string, Content>();
             ID = id;
         }
 
+        /// <summary>
+        /// получите записанный контент по ключу
+        /// </summary>
+        /// <param name="key">ключ контента</param>
         public Content this[string key] => _container[key];
 
+        /// <summary>
+        /// добавить новую запись в сессию
+        /// </summary>
+        /// <param name="content">контент записи</param>
+        /// <param name="key">ключ записи</param>
+        /// <exception cref="ArithmeticException">ключ записи уже существует</exception>
         private void Add(Content content, string key)
         {
             if (_container.ContainsKey(key)) throw new ArithmeticException("key already exists");
             _container.Add(key, content);
         }
 
+        /// <summary>
+        /// добавить новую запись в сессию
+        /// </summary>
+        /// <param name="content">объект контента записи, не сам контент</param>
+        /// <param name="key">ключ записи</param>
+        /// <typeparam name="T">тип объекта записи</typeparam>
+        /// <exception cref="ArithmeticException">ключ записи уже существует</exception>
         public void Add<T>(T content, string key) =>
             Add(new Content(content, typeof(T)), key);
 
+        /// <summary>
+        /// добавить новую запись в сессию
+        /// </summary>
+        /// <param name="content">объект контента записи, не сам контент</param>
+        /// <param name="type">тип объекта записи</param>
+        /// <param name="key">ключ записи</param>
+        /// <exception cref="ArithmeticException">ключ записи уже существует</exception>
         public void Add(object content, Type type, string key) =>
             Add(new Content(content, type), key);
 
-        public void Forget(string key)
+        /// <summary>
+        /// забыть запись по ключу
+        /// </summary>
+        /// <param name="key">ключ записи</param>
+        /// <returns>забытый контент, его уже нет в сессии</returns>
+        public Content Forget(string key)
         {
+            var forget = this[key];
             _container.Remove(key);
+            return forget;
         }
 
         private IEnumerator<Tuple<string, Content>> Enumerate()
@@ -87,9 +151,12 @@ namespace Saving
 
         IEnumerator IEnumerable.GetEnumerator() => Enumerate();
 
+        /// <summary>
+        /// json ключ для id сессии
+        /// </summary>
         public static string JsonSessionIdKey => "SessionID";
 
-        string IFileSaver<string>.ISavable<string>.Convert()
+        string IFileSaver<string>.ISavable.Convert()
         {
             var dict = new JsonObject();
             dict.Add(JsonSessionIdKey, ID);
@@ -101,8 +168,9 @@ namespace Saving
                 {
                     node.Add("content", JsonSerializer.SerializeToNode(value.Value, value.Type, SerializerOptions));
                 }
-                catch (JsonException)
+                catch (JsonException e)
                 {
+                    Debug.LogException(e);
                     node.Add("content", JsonNode.Parse(JsonUtility.ToJson(value.Value)));
                 }
 
@@ -112,7 +180,7 @@ namespace Saving
             return dict.ToJsonString(SerializerOptions);
         }
 
-        public IFileSaver<string>.ISavable<string> Deconvert(string converted, IFileSaver<string> saver)
+        public IFileSaver<string>.ISavable Deconvert(string converted, IFileSaver<string> saver)
         {
             var dict = JsonNode.Parse(converted)?.AsObject();
 
@@ -132,7 +200,7 @@ namespace Saving
                     throw new ArgumentException(
                         $"Content at key '{key}' in dictionary from converted string '{converted}' not contains 'type' field and is not SessionContent and can't be deserialized");
 
-                var contStr = value.AsObject()["content"]?.ToString();
+                var contStr = value.AsObject()["content"];
                 if (contStr is null)
                     throw new ArgumentException(
                         $"Content at key '{key}' in dictionary from converted string '{converted}' not contains 'content' field and is not SessionContent and can't be deserialized");
@@ -149,9 +217,10 @@ namespace Saving
                     {
                         contentObj = JsonSerializer.Deserialize(contStr, type, SerializerOptions);
                     }
-                    catch (JsonException)
+                    catch (JsonException e)
                     {
-                        contentObj = JsonUtility.FromJson(contStr, type);
+                        Debug.LogException(e);
+                        contentObj = JsonUtility.FromJson(contStr.ToString(), type);
                     }
                 }
                 else

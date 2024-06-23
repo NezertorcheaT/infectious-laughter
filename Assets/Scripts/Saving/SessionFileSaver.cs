@@ -12,7 +12,7 @@ namespace Saving
 
         public static string CreatePath(string ID) => Path.Combine(path, ID + Ending);
 
-        public void Save(IFileSaver<string>.ISavable<string> savable)
+        public void Save(IFileSaver<string>.ISavable savable)
         {
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);

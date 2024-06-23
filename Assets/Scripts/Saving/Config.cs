@@ -4,9 +4,14 @@ using System.Text.Json.Serialization;
 
 namespace Saving
 {
+    /// <summary>
+    /// ну это типа настройки, они сделаны так, что если вы измените любое поле, оно автоматически сохранится на диске
+    /// </summary>
     [Serializable]
-    public class Config : IFileSaver<string>.ISavable<string>
+    public class Config : IFileSaver<string>.ISavable
     {
+        #region Поле Volume - образец по созданию полей конфига
+
         public float Volume
         {
             get => _volume;
@@ -18,6 +23,8 @@ namespace Saving
         }
 
         private float _volume = 1;
+
+        #endregion
 
         private IFileSaver<string> _saver;
 
@@ -32,10 +39,10 @@ namespace Saving
             _saver = saver;
         }
 
-        string IFileSaver<string>.ISavable<string>.Convert() =>
+        string IFileSaver<string>.ISavable.Convert() =>
             JsonSerializer.Serialize(this, Session.SerializerOptions);
 
-        public IFileSaver<string>.ISavable<string> Deconvert(string converted, IFileSaver<string> saver)
+        public IFileSaver<string>.ISavable Deconvert(string converted, IFileSaver<string> saver)
         {
             var deserialized = JsonSerializer.Deserialize<Config>(converted, Session.SerializerOptions);
             if (deserialized is null)
