@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Entity.Abilities
 {
+    [RequireComponent(typeof(EntityMovementHorizontalMove))]
     [AddComponentMenu("Entity/Abilities/Stun Ability")]
     public class EntityStunAbility : Ability
     {

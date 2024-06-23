@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Entity.Abilities
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(CollideCheck))]
+    [RequireComponent(typeof(EntityMovementDowning))]
     [AddComponentMenu("Entity/Abilities/Jump Ability")]
     public class PlayerJumpAbility : Ability, IJumpableAbility
     {

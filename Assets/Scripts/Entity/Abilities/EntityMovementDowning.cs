@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(CollideCheck))]
     [AddComponentMenu("Entity/Abilities/Downing Ability")]
     public class EntityMovementDowning : Ability
     {

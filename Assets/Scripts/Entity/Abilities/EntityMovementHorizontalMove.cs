@@ -8,6 +8,7 @@ namespace Entity.Abilities
     {
         [SerializeField] private float speed;
         private Rigidbody2D _rb;
+
         public bool RightTurn { get; private set; }
 
         private void Start()

@@ -1319,7 +1319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0000090004505, y: -0.24274999, z: -10}
+  m_LocalPosition: {x: 0.000009130227, y: -0.24274999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2548,14 +2548,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1471444232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7289901eb84045e4587de1d035f750f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 82df1fb4159ba8b4c9d7288f4b8f1a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 1471444236}
   dashForce: 7
   dashCooldown: 30
   dashCount: 1
-  canDash: 1
 --- !u!1 &1478113458
 GameObject:
   m_ObjectHideFlags: 0
