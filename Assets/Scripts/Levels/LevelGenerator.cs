@@ -7,23 +7,43 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private int levelLong;
-    [SerializeField, MinValue(0), MaxValue(8)] private int levelRoughness;
-    [SerializeField] PrefabData[] wayData;
+    [Space(10), SerializeField] private PrefabData levelStart;
+    [SerializeField] private PrefabData levelEnd;
+    [SerializeField] private PrefabData[] GeneratorData;
 
     float[] heights;
     int prefabNum;
+    Vector2Int generatorPosition;
 
     void Start()
     {
-        heights = GetHeights(1, 1);
-        prefabNum = wayData.Length;
+        prefabNum = GeneratorData.Length;
+
+        Instantiate(levelStart.groundPrefab, Vec2ToVec3(generatorPosition), Quaternion.Euler(0, 0, 0));
+        generatorPosition += new Vector2Int(levelStart.length, levelStart.UpDownTo);
+
+        for (int i = 0; i < levelLong; i++)
+        {
+            int prefabID = UnityEngine.Random.Range(0, prefabNum);
+            Instantiate(GeneratorData[prefabID].groundPrefab, Vec2ToVec3(generatorPosition), Quaternion.Euler(0, 0, 0));
+            generatorPosition += new Vector2Int(GeneratorData[prefabID].length, GeneratorData[prefabID].UpDownTo);
+        }
+
+        Instantiate(levelEnd.groundPrefab, Vec2ToVec3(generatorPosition), Quaternion.Euler(0, 0, 0));
     }
 
     void Update()
     {
-        int prefabID = UnityEngine.Random.Range(0, prefabNum);
     }
 
+    Vector3 Vec2ToVec3(Vector2 vec)
+    {
+        return new Vector3(vec.x, vec.y, 0);
+    }
+
+    /*
+     * На случай, если будет через шум перлина
+    
     private float[] GetHeights(int worldWidth, float steps)
     {
         var ints = new List<float>();
@@ -39,6 +59,7 @@ public class LevelGenerator : MonoBehaviour
 
         return ints.ToArray();
     }
+    */
 }
 
 [Serializable]
@@ -46,6 +67,6 @@ public class LevelGenerator : MonoBehaviour
 class PrefabData
 {
     public GameObject groundPrefab;
-    public int lenght;
-    public int wayGoTo;
+    public int length;
+    public int UpDownTo;
 }

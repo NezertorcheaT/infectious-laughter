@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 7, y: 2, z: 9, w: 6}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -332,7 +332,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Vines_13: 1567645806
-      Vines_16: 1207617420
+      Vines_2: -1620683572
       Vines_12: 384804520
       Vines_5: 818257108
       Vines_3: -1458078675
@@ -340,7 +340,7 @@ TextureImporter:
       Vines_17: 708206662
       Vines_8: 1710412
       Vines_19: 578609464
-      Vines_2: -1620683572
+      Vines_7: -1766469739
       Vines_1: -198657405
       Vines_18: -161209136
       Vines_9: 1086427656
@@ -351,7 +351,7 @@ TextureImporter:
       Vines_20: -816001004
       Vines_10: -447078008
       Vines_14: 431049182
-      Vines_7: -1766469739
+      Vines_16: 1207617420
       Vines_0: -766843696
   spritePackingTag: 
   pSDRemoveMatte: 0
