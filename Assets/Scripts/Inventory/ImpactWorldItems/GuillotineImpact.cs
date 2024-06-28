@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class GuillotineImpact : MonoBehaviour
 {
-    private bool used;
-    public float _maxYPosition;
-    public float _radius;
-    public Entity.Entity entity;
-    public float _levitationTime;
+    [SerializeField] private float _maxYPosition;
+    [SerializeField] private float _radius;
+    [SerializeField] private Entity.Entity entity;
+    [SerializeField] private float _levitationTime;
+
+    private bool _used;
 
     private void Update()
     {
-        if (gameObject.transform.position.y < _maxYPosition && !used) StartCoroutine(Impact());
+        if (gameObject.transform.position.y < _maxYPosition && !_used) StartCoroutine(Impact());
     }
 
     private IEnumerator Impact()
     {
-        used = true;
+        _used = true;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, _radius);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         
