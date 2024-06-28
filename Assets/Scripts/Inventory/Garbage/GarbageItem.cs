@@ -44,7 +44,7 @@ namespace Inventory.Garbage
                 Vector2.Lerp(
                     gameObject.transform.position,
                     _pointTargetUIForAnim.position,
-                    animSpeed * Time.deltaTime *
+                    animSpeed * Time.deltaTime /
                     Vector2.Distance(gameObject.transform.position, _pointTargetUIForAnim.position)
                 );
         }

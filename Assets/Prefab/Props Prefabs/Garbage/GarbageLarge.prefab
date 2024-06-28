@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 10
   keyCodeTablet: {fileID: 5522030339970731812}
-  animSpeed: 1
+  animSpeed: 8
   lifeTime: 2.5
   defaultMaterial: {fileID: 2100000, guid: 91ec8ceae5f73214096df83a8bbe1b63, type: 2}
   outlineMaterial: {fileID: 2100000, guid: ea95a2274a6dc3e40ae1e319e67c3040, type: 2}
