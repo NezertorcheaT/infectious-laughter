@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    private class PrefabData
+    {
+        public GameObject groundPrefab;
+        public int tilesLength;
+        public int changeHeight;
+    }
+
     [SerializeField] private int numberOfPrefabs;
 
     [Space(10), SerializeField] private PrefabData levelStartPrefab;
@@ -30,17 +37,8 @@ public class LevelGenerator : MonoBehaviour
         Instantiate(levelEndPrefab.groundPrefab, Vec2ToVec3(generatorPosition), Quaternion.Euler(0, 0, 0));
     }
 
-    Vector3 Vec2ToVec3(Vector2 vec)
+    static Vector3 Vec2ToVec3(Vector2 vec)
     {
         return new Vector3(vec.x, vec.y, 0);
     }
-}
-
-[Serializable]
-
-class PrefabData
-{
-    public GameObject groundPrefab;
-    public int tilesLength;
-    public int changeHeight;
 }

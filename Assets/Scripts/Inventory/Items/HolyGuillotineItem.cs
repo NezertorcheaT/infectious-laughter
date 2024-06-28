@@ -27,11 +27,13 @@ namespace Inventory.Items
             var guillotine = Verifier.Container.InstantiatePrefab(_worldGuillotinePrefab, SpawnPosition, Quaternion.identity, null);
             
             guillotine.transform.SetParent(null);
-            
-            guillotine.GetComponent<GuillotineImpact>()._maxYPosition = entity.transform.position.y - 1.5f;
-            guillotine.GetComponent<GuillotineImpact>().entity = entity;
-            guillotine.GetComponent<GuillotineImpact>()._levitationTime = _timeOfAction;
-            guillotine.GetComponent<GuillotineImpact>()._radius = _radius;
+
+            var guillotineComponent = guillotine.GetComponent<GuillotineImpact>();
+
+            guillotineComponent.maxYPosition = entity.transform.position.y - 1.5f;
+            guillotineComponent.entity = entity;
+            guillotineComponent.levitationTime = _timeOfAction;
+            guillotineComponent.radius = _radius;
             slot.Count--;
         }
     }

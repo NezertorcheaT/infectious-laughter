@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class GuillotineImpact : MonoBehaviour
 {
-    [SerializeField] private float _maxYPosition;
-    [SerializeField] private float _radius;
-    [SerializeField] private Entity.Entity entity;
-    [SerializeField] private float _levitationTime;
+    public float maxYPosition;
+    public float radius;
+    public Entity.Entity entity;
+    public float levitationTime;
 
     private bool _used;
 
     private void Update()
     {
-        if (gameObject.transform.position.y < _maxYPosition && !_used) StartCoroutine(Impact());
+        if (gameObject.transform.position.y < maxYPosition && !_used) StartCoroutine(Impact());
     }
 
     private IEnumerator Impact()
     {
         _used = true;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, _radius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, radius);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         
         for (int i = 0; i != colliders.Length; i++)
@@ -31,7 +31,7 @@ public class GuillotineImpact : MonoBehaviour
             }
         }
         
-        yield return new WaitForSeconds(_levitationTime);
+        yield return new WaitForSeconds(levitationTime);
         
         for (int i = 0; i != colliders.Length; i++)
         {
