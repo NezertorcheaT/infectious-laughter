@@ -47,5 +47,10 @@ namespace Inventory
         /// </summary>
         /// <param name="entity">сущность куда</param>
         void UseLast(Entity.Entity entity);
+
+        /// <summary>
+        /// пустой ли инвентарь полностью
+        /// </summary>
+        bool Empty { get; }
     }
 }

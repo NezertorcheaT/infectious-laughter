@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionRadius: 20
   explosionForce: 1000
-  sprite: {fileID: 21300000, guid: dd920107ecfd0f04495db9d74087f91e, type: 3}
+  sprite: {fileID: 21300000, guid: 174fd1aabd71b144ba96b71be34060fc, type: 3}
   <MaxStackSize>k__BackingField: 1

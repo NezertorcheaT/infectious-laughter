@@ -14,16 +14,16 @@ namespace Inventory.Items
 
         [SerializeField] private float spawnRange = 1.2f;
         [SerializeField] private Sprite sprite;
-        [field: SerializeField] private GameObject TrapWorld { get; set; }
+        [SerializeField] private GameObject trapWorld;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
             var position = entity.gameObject.transform.position;
-            var trap = Verifier.Container.InstantiatePrefab(TrapWorld,
+            var trap = Verifier.Container.InstantiatePrefab(trapWorld,
                 new Vector3(
                     position.x + spawnRange *
-                    (entity.FindAbilityByType<EntityMovementHorizontalMove>().RightTurn ? 1 : -1),
+                    (entity.FindAbilityByType<EntityMovementHorizontalMove>().Turn ? 1 : -1),
                     position.y
                 ),
                 Quaternion.identity,

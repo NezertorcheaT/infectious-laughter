@@ -1,45 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
+using Cysharp.Threading.Tasks;
+using Entity.Abilities;
 using UnityEngine;
 
-public class GuillotineImpact : MonoBehaviour
+namespace Inventory.ImpactWorldItems
 {
-    public float maxYPosition;
-    public float radius;
-    public Entity.Entity entity;
-    public float levitationTime;
-
-    private bool _used;
-
-    private void Update()
+    public class GuillotineImpact : MonoBehaviour
     {
-        if (gameObject.transform.position.y < maxYPosition && !_used) StartCoroutine(Impact());
-    }
+        private bool _used;
 
-    private IEnumerator Impact()
-    {
-        _used = true;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, radius);
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        
-        for (int i = 0; i != colliders.Length; i++)
+        public async void Impact(float maxYPosition, float radius, float levitationTime)
         {
-            if(colliders[i].gameObject.GetComponent<Rigidbody2D>() &&
-               !colliders[i].gameObject.GetComponent<Entity.Controllers.ControllerInput>())
+            await UniTask.WaitUntil(() => gameObject.transform.position.y < maxYPosition && !_used);
+            _used = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+            var responsives =
+                    Physics2D
+                        .OverlapCircleAll(gameObject.transform.position, radius)
+                        .Select(a => a.gameObject.GetComponent<EntityGuillotineResponsiveAbility>())
+                        .Where(a => a is not null && a.Available())
+                        .ToArray()
+                ;
+            foreach (var responsive in responsives)
             {
-                colliders[i].gameObject.GetComponent<Rigidbody2D>().gravityScale = -0.02f;
+                responsive.Rigidbody.gravityScale = responsive.NewGravityScale;
             }
-        }
-        
-        yield return new WaitForSeconds(levitationTime);
-        
-        for (int i = 0; i != colliders.Length; i++)
-        {
-            if (colliders[i].gameObject.GetComponent<Rigidbody2D>())
+
+            await UniTask.WaitForSeconds(levitationTime);
+
+            foreach (var responsive in responsives)
             {
-                colliders[i].gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
+                responsive.Rigidbody.gravityScale = 1f;
             }
+
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using System;
+using Entity;
 using Installers;
 using UnityEngine;
 using Zenject;
@@ -14,6 +15,16 @@ namespace Inventory.Input
 
         public IInventory Inventory => inventory as IInventory;
         public float MaxDistance => maxDistance;
+
+        private void Start()
+        {
+            if(Inventory.Empty) return;
+            foreach (var slot in Inventory.Slots)
+            {
+                if (!(slot.LastItem is ICanSpawn i)) continue;
+                i.Verifier = _player.ItemAdderVerifier;
+            }
+        }
 
         public void AddItem(ScriptableObject item)
         {

@@ -6,7 +6,6 @@ namespace Inventory
     [Serializable]
     public class Slot : ISlot
     {
-        [field: SerializeField]
         public int Count
         {
             get => Mathf.Clamp(_count, 0, LastItem.MaxStackSize);
@@ -27,9 +26,7 @@ namespace Inventory
 
         public void Use(Entity.Entity entity, IInventory inventory)
         {
-            var usableItem = (IUsableItem) LastItem;
-            if (usableItem == null) return;
-
+            if (!(LastItem is IUsableItem usableItem)) return;
             usableItem.Use(entity, inventory, this);
             if (Count > 0) return;
             Count = 0;

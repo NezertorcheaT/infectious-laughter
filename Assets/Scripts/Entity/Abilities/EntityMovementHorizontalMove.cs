@@ -6,10 +6,20 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/Horizontal Movement Ability")]
     public class EntityMovementHorizontalMove : Ability
     {
-        [SerializeField] public float Speed;
+        [SerializeField, Min(0.001f)] private float speed;
         private Rigidbody2D _rb;
 
-        public bool RightTurn { get; private set; }
+        public bool Turn { get; private set; }
+
+        public float Speed
+        {
+            get => speed;
+            set
+            {
+                enabled = value > 0;
+                speed = Mathf.Max(value, 0);
+            }
+        }
 
         private void Start()
         {
@@ -18,9 +28,9 @@ namespace Entity.Abilities
 
         public void Move(float velocity)
         {
-            if (!Available() || Mathf.Abs(_rb.velocity.x) > Speed) return;
-            RightTurn = velocity == 0 ? RightTurn : velocity > 0;
-            _rb.velocity = new Vector2(velocity * Speed, _rb.velocity.y);
+            if (!Available() || Mathf.Abs(_rb.velocity.x) > speed) return;
+            Turn = velocity == 0 ? Turn : velocity > 0;
+            _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
         }
     }
 }

@@ -13,11 +13,14 @@ namespace Inventory
 
         public int MaxCapacity => maxCapacity;
         public int Capacity => Slots.Count(slot => !slot.IsEmpty);
+
         public List<ISlot> Slots
         {
             get => _slots.Cast<ISlot>().ToList();
             private set => _slots = value.Cast<Slot>().ToList();
         }
+
+        public bool Empty => _slots.All(a => a.IsEmpty);
 
         [field: SerializeField] private List<Slot> _slots { get; set; }
 
@@ -67,6 +70,7 @@ namespace Inventory
             Slots[i].Use(entity, this);
             OnChange?.Invoke();
         }
+
         private void Reset()
         {
             Slots = new List<ISlot>(MaxCapacity);

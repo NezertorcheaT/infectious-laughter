@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e890039712d71e8408fcd5ce9de8b4e1, type: 3}
   m_Name: Guillotine Item
   m_EditorClassIdentifier: 
-  _spawnHeight: 20
-  _timeOfAction: 10
-  _radius: 50
-  _worldGuillotinePrefab: {fileID: 7965965516420540715, guid: e59ee27ac118f414198bacf6eb5c031f, type: 3}
+  spawnHeight: 20
+  timeOfAction: 10
+  radius: 50
+  worldGuillotinePrefab: {fileID: 7965965516420540715, guid: e59ee27ac118f414198bacf6eb5c031f, type: 3}
   sprite: {fileID: 21300000, guid: edf485d1b5bb7914693ff887e5359520, type: 3}
   <MaxStackSize>k__BackingField: 1

@@ -1,16 +1,13 @@
-using Entity.Abilities;
-using Inventory.Input;
 using UnityEngine;
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = "Attracktor", menuName = "Inventory/Items/Attracktor", order = 0)]
-    public class Attracktor : ScriptableObject, IUsableItem, ICanSpawn
+    [CreateAssetMenu(fileName = "New Attracktor Item", menuName = "Inventory/Items/Attracktor", order = 0)]
+    public class Attracktor : ScriptableObject, IUsableItem
     {
         public string Name => "Attracktor";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
-        public ItemAdderVerifier Verifier { get; set; }
 
         [SerializeField] private float explosionRadius;
         [SerializeField] private int explosionForce;
@@ -19,28 +16,16 @@ namespace Inventory.Items
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
-            Explosion2D(entity.transform.position, entity);
-            slot.Count--;
-        }
-
-
-
-        void Explosion2D(Vector3 position, Entity.Entity entity)
-        {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(position, explosionRadius);
-
-            foreach(Collider2D hit in colliders)
+            foreach (var hit in Physics2D.OverlapCircleAll(entity.transform.position, explosionRadius))
             {
-                if(hit.attachedRigidbody != null)
-                {
-                    Vector3 direction = hit.transform.position - position;
-                    direction.z = 0;
+                if (hit.attachedRigidbody == null) continue;
 
-                    
-                    hit.attachedRigidbody.AddForce(direction.normalized * explosionForce);	
-                }
+                var direction = hit.transform.position - entity.transform.position;
+                direction.z = 0;
+                hit.attachedRigidbody.AddForce(direction.normalized * explosionForce);
             }
-            //entity.GetComponent<Entity.Abilities.PlayerJumpAbility>().
+
+            slot.Count--;
         }
     }
 }

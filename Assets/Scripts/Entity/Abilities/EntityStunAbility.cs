@@ -22,6 +22,7 @@ namespace Entity.Abilities
 
         public async Task Stun(float time)
         {
+            if (!Available()) return;
             if (stunTime != 0)
             {
                 stunTime = Mathf.Max(time, stunTime);

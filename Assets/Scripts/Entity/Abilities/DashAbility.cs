@@ -1,4 +1,4 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Entity.Abilities
@@ -20,19 +20,14 @@ namespace Entity.Abilities
             _currentDashCount = dashCount;
         }
 
-        public void Dash()
+        public async void Dash()
         {
             if (!Available()) return;
             if (_currentDashCount <= 0) return;
 
-            _rb.velocity = new Vector2(dashForce * (playerMovement.RightTurn ? 1f : -1f), 0);
+            _rb.velocity = new Vector2(dashForce * (playerMovement.Turn ? 1f : -1f), 0);
             _currentDashCount--;
-            StartCoroutine(DashCooldownEnd());
-        }
-
-        private IEnumerator DashCooldownEnd()
-        {
-            yield return new WaitForSeconds(dashCooldown * dashCount);
+            await UniTask.WaitForSeconds(dashCooldown * dashCount);
             _currentDashCount = dashCount;
         }
     }
