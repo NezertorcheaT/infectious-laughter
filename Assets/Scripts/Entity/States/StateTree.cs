@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Entity.States
 {
-    [CreateAssetMenu(fileName = "New State Tree", menuName = "States/State Tree", order = 0)]
+    [CreateAssetMenu(fileName = "New State Tree", menuName = "AI Nodes/Tree", order = 0)]
     public class StateTree : ScriptableObject, IPositionableStateTree, IUpdatableAssetStateTree, IStateTreeWithEdits
     {
         [SerializeField] private List<StateForList> states;

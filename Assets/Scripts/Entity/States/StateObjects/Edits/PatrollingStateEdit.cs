@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Entity.States.StateObjects.Edits
 {
     [Serializable]
-    [CreateAssetMenu(fileName = "Patrolling Edit", menuName = "States/Edits/Patrolling Edit", order = 0)]
+    [CreateAssetMenu(fileName = "Patrolling Edit", menuName = "AI Nodes/Edits/Patrolling Edit", order = 0)]
     public class PatrollingStateEdit : EditableStateProperties
     {
         [Min(0.001f)] public float rayDistance;

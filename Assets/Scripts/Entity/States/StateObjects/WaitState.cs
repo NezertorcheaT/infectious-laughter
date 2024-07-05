@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Entity.States.StateObjects
 {
-    [CreateAssetMenu(fileName = "Wait State", menuName = "States/Wait State", order = 0)]
+    [CreateAssetMenu(fileName = "Wait State", menuName = "AI Nodes/States/Wait State", order = 0)]
     public class WaitState : State, IOneExitState, IEditableState
     {
         public override string Name => "Wait";

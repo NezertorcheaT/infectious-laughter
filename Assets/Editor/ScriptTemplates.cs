@@ -76,7 +76,7 @@ using UnityEngine;
 
 namespace Entity.States
 {
-    [CreateAssetMenu(fileName = ""#REJECTED_CLASS_NAME# State"", menuName = ""States/#REJECTED_CLASS_NAME# State"", order = 0)]
+    [CreateAssetMenu(fileName = ""#REJECTED_CLASS_NAME# State"", menuName = ""AI Nodes/States/#REJECTED_CLASS_NAME# State"", order = 0)]
     public class #CLASS_NAME# : State
     {
         public override string Name => ""#REJECTED_CLASS_NAME#"";

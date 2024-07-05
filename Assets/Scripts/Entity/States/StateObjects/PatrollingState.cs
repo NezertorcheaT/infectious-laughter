@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Entity.States.StateObjects
 {
-    [CreateAssetMenu(fileName = "Patrolling State", menuName = "States/Patrolling State", order = 0)]
+    [CreateAssetMenu(fileName = "Patrolling State", menuName = "AI Nodes/States/Patrolling State", order = 0)]
     public class PatrollingState : State, IEditableState
     {
         public override string Name => "Patrolling";

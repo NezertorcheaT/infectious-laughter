@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Entity.States.StateObjects.Edits
 {
     [Serializable]
-    [CreateAssetMenu(fileName = "Wait Edit", menuName = "States/Edits/Wait Edit", order = 0)]
+    [CreateAssetMenu(fileName = "Wait Edit", menuName = "AI Nodes/Edits/Wait Edit", order = 0)]
     public class WaitStateEdit : EditableStateProperties
     {
         [Min(0)] public float time = 2f;
