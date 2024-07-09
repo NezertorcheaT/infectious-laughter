@@ -7,7 +7,7 @@ namespace Saving
     /// <summary>
     /// штука, контролирующая сессии
     /// </summary>
-    public class SessionCreator
+    public class SessionFactory
     {
         private SessionFileSaver _saver;
         /// <summary>
@@ -15,7 +15,7 @@ namespace Saving
         /// </summary>
         public Session Current { get; private set; }
 
-        public SessionCreator(SessionFileSaver saver)
+        public SessionFactory(SessionFileSaver saver)
         {
             _saver = saver;
         }

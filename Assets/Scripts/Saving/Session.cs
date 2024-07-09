@@ -100,10 +100,10 @@ namespace Saving
         /// </summary>
         /// <param name="content">контент записи</param>
         /// <param name="key">ключ записи</param>
-        /// <exception cref="ArithmeticException">ключ записи уже существует</exception>
+        /// <exception cref="ArgumentException">ключ записи уже существует</exception>
         private void Add(Content content, string key)
         {
-            if (_container.ContainsKey(key)) throw new ArithmeticException("key already exists");
+            if (_container.ContainsKey(key)) throw new ArgumentException("key already exists");
             _container.Add(key, content);
         }
 
@@ -113,7 +113,7 @@ namespace Saving
         /// <param name="content">объект контента записи, не сам контент</param>
         /// <param name="key">ключ записи</param>
         /// <typeparam name="T">тип объекта записи</typeparam>
-        /// <exception cref="ArithmeticException">ключ записи уже существует</exception>
+        /// <exception cref="ArgumentException">ключ записи уже существует</exception>
         public void Add<T>(T content, string key) =>
             Add(new Content(content, typeof(T)), key);
 
@@ -123,7 +123,7 @@ namespace Saving
         /// <param name="content">объект контента записи, не сам контент</param>
         /// <param name="type">тип объекта записи</param>
         /// <param name="key">ключ записи</param>
-        /// <exception cref="ArithmeticException">ключ записи уже существует</exception>
+        /// <exception cref="ArgumentException">ключ записи уже существует</exception>
         public void Add(object content, Type type, string key) =>
             Add(new Content(content, type), key);
 

@@ -28,8 +28,8 @@ namespace Installers
             Container.Bind<Config>().FromInstance(config).AsSingle().NonLazy();
 
             var sessionSaver = new SessionFileSaver();
-            var sessionCreator = new SessionCreator(sessionSaver);
-            Container.Bind<SessionCreator>().FromInstance(sessionCreator).AsSingle().NonLazy();
+            var sessionCreator = new SessionFactory(sessionSaver);
+            Container.Bind<SessionFactory>().FromInstance(sessionCreator).AsSingle().NonLazy();
         }
     }
 }
