@@ -13,8 +13,7 @@ namespace Saving
         [Inject] private Config _config;
 
         private void Start()
-        {
-            /*
+        {/*
             //Читаем тестовое поле с конфига
             Debug.Log(_config.Volume);
             
@@ -40,8 +39,7 @@ namespace Saving
                 Debug.Log(content.Value);
                 Debug.Log(content.Value.GetType());
                 Debug.Log(content.Type);
-            }
-            */
+            }*/
         }
     }
 }

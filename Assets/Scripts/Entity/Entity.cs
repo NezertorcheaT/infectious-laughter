@@ -71,14 +71,14 @@ namespace Entity
             foreach (var ability in Abilities)
             {
                 var abil = (IInitializeByEntity) ability;
-                abil.Initialize();
                 abil.Initialized = true;
+                abil.Initialize();
             }
 
             if (!Controller) return;
             var contr = Controller as IInitializeByEntity;
-            contr.Initialize();
             contr.Initialized = true;
+            contr.Initialize();
             Controller.OnInitializationComplete?.Invoke();
         }
 

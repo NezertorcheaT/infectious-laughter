@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Saving
 {
@@ -48,10 +49,9 @@ namespace Saving
         /// <exception cref="ArgumentException">сессия по id не существует</exception>
         public Session LoadSession(string ID)
         {
-            var path = SessionFileSaver.CreatePath(ID);
-            if (!GetAvailableSessionIDs().ToArray().Contains(path))
+            if (!GetAvailableSessionIDs().ToArray().Contains(ID))
                 throw new ArgumentException($"Session '{ID}' does not exist");
-            var session = new Session().Deconvert(_saver.Read(path), _saver) as Session;
+            var session = new Session().Deconvert(_saver.Read(SessionFileSaver.CreatePath(ID)), _saver) as Session;
             Current = session;
             return session;
         }

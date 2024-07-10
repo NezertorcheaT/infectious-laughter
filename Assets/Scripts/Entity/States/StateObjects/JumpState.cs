@@ -9,7 +9,7 @@ namespace Entity.States.StateObjects
     {
         public override string Name => "Jump";
 
-        public override async Task<int> Activate(Entity entity, State previous, EditableStateProperties properties)
+        public override async Task<int> Activate(Entity entity, State previous)
         {
             var nextId = 0;
             var ability = entity.FindAvailableAbilityByInterface<IJumpableAbility>();

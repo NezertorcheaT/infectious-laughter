@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Entity.States;
@@ -26,9 +27,25 @@ namespace Entity.Controllers
         public string CurrentStateID { get; private set; }
         public event Action<State> OnStateActivating;
 
+        private FieldInfo GetStateEditField(Type type, Type editType)
+        {
+            foreach (var field in type.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (field.FieldType.AssemblyQualifiedName != editType.AssemblyQualifiedName) continue;
+                foreach (var attributeData in field.CustomAttributes)
+                {
+                    if (attributeData.AttributeType.AssemblyQualifiedName ==
+                        typeof(StateEditAttribute).AssemblyQualifiedName)
+                        return field;
+                }
+            }
+
+            return null;
+        }
+
         private async void StateCycle()
         {
-            State prew;
+            State previous;
             CurrentState = _stateTree.First();
             CurrentStateID = "0";
 
@@ -41,16 +58,24 @@ namespace Entity.Controllers
 
                 await UniTask.WaitUntil(() => IsInitialized && isActiveAndEnabled);
 
-                prew = CurrentState;
+                previous = CurrentState;
                 OnStateActivating?.Invoke(CurrentState);
+                if (
+                    CurrentState is IEditableState editableState &&
+                    _stateTree is IStateTreeWithEdits stateTreeWithEdits
+                )
+                {
+                    var edit = stateTreeWithEdits.GetEdit(CurrentStateID);
+                    GetStateEditField
+                    (
+                        CurrentState.GetType(),
+                        editableState.GetTypeOfEdit()
+                    )?.SetValue(CurrentState, edit);
+                }
 
                 var t = await CurrentState.Activate(
                     Entity,
-                    prew,
-                    CurrentState is IEditableState &&
-                    _stateTree is IStateTreeWithEdits stateTreeWithEdits
-                        ? stateTreeWithEdits.GetEdit(CurrentStateID)
-                        : null
+                    previous
                 );
 
                 if (!_stateTree.IsNextsTo(CurrentStateID)) return;

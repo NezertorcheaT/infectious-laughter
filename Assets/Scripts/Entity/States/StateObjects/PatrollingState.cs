@@ -9,11 +9,12 @@ namespace Entity.States.StateObjects
     [CreateAssetMenu(fileName = "Patrolling State", menuName = "AI Nodes/States/Patrolling State", order = 0)]
     public class PatrollingState : State, IEditableState
     {
+        [StateEdit] private PatrollingStateEdit properties;
         public override string Name => "Patrolling";
 
-        public override async Task<int> Activate(Entity entity, State previous, EditableStateProperties properties)
+        public override async Task<int> Activate(Entity entity, State previous)
         {
-            var edit = properties as PatrollingStateEdit;
+            var edit = properties;
             var nextId = edit.next;
             var coll = entity.GetComponent<Collider2D>();
             var moveAbility = entity.FindAbilityByType<EntityMovementHorizontalMove>();
@@ -41,6 +42,5 @@ namespace Entity.States.StateObjects
         }
 
         Type IEditableState.GetTypeOfEdit() => typeof(PatrollingStateEdit);
-
     }
 }

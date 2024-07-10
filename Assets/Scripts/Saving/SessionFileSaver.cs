@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace Saving
@@ -14,9 +15,7 @@ namespace Saving
 
         public void Save(IFileSaver<string>.ISavable savable)
         {
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-
+            CheckDirectory();
             if (!(savable is Session session))
                 throw new ArgumentException($"Provided savable '{savable}' is not a Session");
             GlobalFileSaver.SaveToDrive(savable.Convert(), CreatePath(session.ID));
@@ -24,13 +23,17 @@ namespace Saving
 
         public string Read(string path)
         {
-            if (!Directory.Exists(SessionFileSaver.path))
-                Directory.CreateDirectory(SessionFileSaver.path);
-
+            CheckDirectory();
             if (!path.Contains(Ending)) Debug.LogWarning($"File '{path}' probably not a Session, be careful");
             return GlobalFileSaver.ReadFromDrive(path);
         }
 
-        public IEnumerable<string> GetSessionIDs() => Directory.EnumerateFiles(path);
+        public IEnumerable<string> GetSessionIDs() => Directory.EnumerateFiles(path).Select(Path.GetFileNameWithoutExtension);
+
+        private void CheckDirectory()
+        {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+        }
     }
 }

@@ -23,14 +23,8 @@ namespace Entity.States
         /// </summary>
         /// <param name="entity">над кем будет действие произведено</param>
         /// <param name="previous">предыдущее состояние<br />хз может нужно кому</param>
-        /// <param name="properties">
-        /// эта кароч типа аргуметы дерева,<br />
-        /// если стейт не <c>IEditableState</c>, то оно будет <code>null</code>,<br />
-        /// если же стейт реализует <c>IEditableState</c>, то там будет объект спец типа,<br />
-        /// можно будет получить собственные настройки апкастом к спецтипу
-        /// </param>
         /// <returns>должен вернуть номер следующего в массиве следующих состояний, НЕ АЙДИ</returns>
-        public abstract Task<int> Activate(Entity entity, State previous, EditableStateProperties properties);
+        public abstract Task<int> Activate(Entity entity, State previous);
     }
 
     /// <summary>
