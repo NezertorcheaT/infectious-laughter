@@ -285,31 +285,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ed30632358ab444922a2861bca86fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLong: 10
-  levelStart:
+  numberOfPrefabs: 20
+  levelStartPrefab:
     groundPrefab: {fileID: 583764199117609832, guid: 962d744ca37e1464996d17deafe43c8b, type: 3}
-    length: 2
-    UpDownTo: 0
-  levelEnd:
+    tilesLength: 2
+    changeHeight: 0
+  levelEndPrefab:
     groundPrefab: {fileID: 583764199117609832, guid: 1af65380bdffa664bae028bddac0738a, type: 3}
-    length: 6
-    UpDownTo: 0
-  GeneratorData:
+    tilesLength: 0
+    changeHeight: 0
+  levelPrefabsData:
   - groundPrefab: {fileID: 3734244816727948135, guid: 0e3fa1901d7f6ec4fb602dfa24005553, type: 3}
-    length: 7
-    UpDownTo: 0
+    tilesLength: 7
+    changeHeight: 0
   - groundPrefab: {fileID: 5058281030222651738, guid: f20dfa94b7538fe4f861f7908c39ca92, type: 3}
-    length: 7
-    UpDownTo: 2
+    tilesLength: 7
+    changeHeight: 2
   - groundPrefab: {fileID: 3465542341154025928, guid: 6d351a1032a66544390b7ff63b177ac6, type: 3}
-    length: 7
-    UpDownTo: 2
+    tilesLength: 7
+    changeHeight: 2
   - groundPrefab: {fileID: 6672035186598603810, guid: 82a1477f87ee50443baa2b1967c40fef, type: 3}
-    length: 7
-    UpDownTo: -1
+    tilesLength: 7
+    changeHeight: -1
   - groundPrefab: {fileID: 6672035186598603810, guid: 848238dabd0c1b844b32f68fcce5c750, type: 3}
-    length: 7
-    UpDownTo: -1
+    tilesLength: 7
+    changeHeight: -1
   - groundPrefab: {fileID: 4469983733181013119, guid: be8878f4798e4be4eb662a0dec4af02f, type: 3}
-    length: 8
-    UpDownTo: 0
+    tilesLength: 8
+    changeHeight: 0
+  usePresets: 1
+  levelPresetsData:
+  - presetPrefab: {fileID: 6789490041581660503, guid: 028597a1460707945baca322b2cf7ed1, type: 3}
+    tilesLength: 4
+    changeHeight: -1
+  - presetPrefab: {fileID: 3727993634732249060, guid: 500cd1e9547f2e545bd67ee6f79199e7, type: 3}
+    tilesLength: 10
+    changeHeight: 0

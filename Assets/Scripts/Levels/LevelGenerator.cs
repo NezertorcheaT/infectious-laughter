@@ -6,9 +6,18 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Serializable]
     private class PrefabData
     {
         public GameObject groundPrefab;
+        public int tilesLength;
+        public int changeHeight;
+    }
+
+    [Serializable]
+    private class PresetsData
+    {
+        public GameObject presetPrefab;
         public int tilesLength;
         public int changeHeight;
     }
@@ -19,17 +28,38 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private PrefabData levelEndPrefab;
     [SerializeField] private PrefabData[] levelPrefabsData;
 
+    [Space(10), SerializeField] private bool usePresets;
+    [EnableIf("usePresets"), SerializeField] private PresetsData[] levelPresetsData;
+
     void Start()
     {
-        int prefabNum = levelPrefabsData.Length;
+        int prefabsNum = levelPrefabsData.Length;
+        int presetsNum = levelPresetsData.Length;
         Vector2Int generatorPosition = Vector2Int.zero;
+
+        int addedPrefabs = usePresets ? 1 : 0;
+
+        int presetID = 0;
 
         Instantiate(levelStartPrefab.groundPrefab, Vec2ToVec3(generatorPosition), Quaternion.Euler(0, 0, 0));
         generatorPosition += new Vector2Int(levelStartPrefab.tilesLength, levelStartPrefab.changeHeight);
 
         for (int i = 0; i < numberOfPrefabs; i++)
         {
-            int prefabID = UnityEngine.Random.Range(0, prefabNum);
+            int prefabID = UnityEngine.Random.Range(0, prefabsNum + addedPrefabs);
+            Debug.Log(prefabID);
+
+            if (prefabID > prefabsNum - 1)
+            {
+                Instantiate(levelPresetsData[presetID].presetPrefab, Vec2ToVec3(generatorPosition), Quaternion.Euler(0, 0, 0));
+                generatorPosition += new Vector2Int(levelPresetsData[presetID].tilesLength, levelPresetsData[presetID].changeHeight);
+
+                presetID++;
+                if (presetID > presetsNum - 1) addedPrefabs = 0;
+
+                prefabID = UnityEngine.Random.Range(0, prefabsNum);
+            }
+            
             Instantiate(levelPrefabsData[prefabID].groundPrefab, Vec2ToVec3(generatorPosition), Quaternion.Euler(0, 0, 0));
             generatorPosition += new Vector2Int(levelPrefabsData[prefabID].tilesLength, levelPrefabsData[prefabID].changeHeight);
         }
