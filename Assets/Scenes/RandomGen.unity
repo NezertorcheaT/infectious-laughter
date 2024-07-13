@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ed30632358ab444922a2861bca86fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: penis
   numberOfPrefabs: 20
   levelStartPrefab:
     groundPrefab: {fileID: 583764199117609832, guid: 962d744ca37e1464996d17deafe43c8b, type: 3}
@@ -315,9 +316,9 @@ MonoBehaviour:
     changeHeight: 0
   usePresets: 1
   levelPresetsData:
-  - presetPrefab: {fileID: 6789490041581660503, guid: 028597a1460707945baca322b2cf7ed1, type: 3}
+  - groundPrefab: {fileID: 6789490041581660503, guid: 028597a1460707945baca322b2cf7ed1, type: 3}
     tilesLength: 4
     changeHeight: -1
-  - presetPrefab: {fileID: 3727993634732249060, guid: 500cd1e9547f2e545bd67ee6f79199e7, type: 3}
+  - groundPrefab: {fileID: 3727993634732249060, guid: 500cd1e9547f2e545bd67ee6f79199e7, type: 3}
     tilesLength: 10
     changeHeight: 0

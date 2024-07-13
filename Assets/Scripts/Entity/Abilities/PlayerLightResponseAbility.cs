@@ -32,8 +32,7 @@ namespace Entity.Abilities
             _movement = Entity.FindAvailableAbilityByInterface<EntityMovementHorizontalMove>();
 
             _cinemachineVirtualCamera = _player.ViewCamera;
-            _cinemachineShaker =
-                _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            _cinemachineShaker = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
             OnEnable();
         }
