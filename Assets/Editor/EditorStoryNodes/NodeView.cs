@@ -1,28 +1,31 @@
-using System;
+﻿using System;
 using Entity.States;
+using Levels.StoryNodes;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Node = UnityEditor.Experimental.GraphView.Node;
 
-namespace Editor
+namespace Editor.EditorStoryNodes
 {
-    public class StateNodeView : Node
+    public class NodeView : Node
     {
-        public StateTree.StateForList State;
-        public IStateTree Tree;
+        public StoryTree.NodeForList Node;
+        public IStateTree<StoryTree.Node> Tree;
         public Port Input;
         public Port Output;
-        public event Action<StateNodeView> OnStateSelected;
-        public event Action<StateNodeView> OnStateUnselected;
+        public event Action<NodeView> OnStateSelected;
+        public event Action<NodeView> OnStateUnselected;
 
-        public StateNodeView(StateTree.StateForList state, IStateTree tree)
+        public NodeView(StoryTree.NodeForList node, IStateTree<StoryTree.Node> tree)
         {
-            State = state;
+            Node = node;
             Tree = tree;
-            title = state.state.Name;
-            viewDataKey = state.id;
+            title = node.visualName;
+            viewDataKey = node.id;
 
-            style.left = state.position.x;
-            style.top = state.position.y;
+            style.left = node.visualPosition.x;
+            style.top = node.visualPosition.y;
 
             CreateInputPorts();
             CreateOutputPorts();
@@ -44,7 +47,7 @@ namespace Editor
             Output = InstantiatePort(
                 Orientation.Horizontal,
                 Direction.Output,
-                State.state is IOneExitState ? Port.Capacity.Single : Port.Capacity.Multi,
+                Port.Capacity.Single,
                 typeof(bool)
             );
 
@@ -69,7 +72,15 @@ namespace Editor
         {
             base.SetPosition(newPos);
 
-            (Tree as IPositionableStateTree)?.TrySetPosition(State.id, new Vector2(newPos.xMin, newPos.yMin));
+            (Tree as IGlobalParameterNodeStateTree<State, Tuple<Vector2, Color, string, SceneAsset>>)?.TrySetParameters(
+                Node.id,
+                new Tuple<Vector2, Color, string, SceneAsset>(
+                    new Vector2(newPos.xMin, newPos.yMin),
+                    Node.visualColor,
+                    Node.visualName,
+                    Node.scene
+                )
+            );
         }
     }
 }

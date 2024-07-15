@@ -1,13 +1,15 @@
 using Entity.States;
 using UnityEditor;
-using UnityEngine;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Editor
+namespace Editor.EditorAI
 {
     public class StateMachine : EditorWindow
     {
+        public static readonly string USS = "Assets/Editor/EditorAI/StateMachine.uss";
+        public static readonly string UXML = "Assets/Editor/EditorAI/StateMachine.uxml";
         private VisualElement _root;
         private VisualElement _nodes;
         private StateTreeView _stateTreeView;
@@ -15,8 +17,8 @@ namespace Editor
         private ToolbarButton _saveButton;
         private ToolbarButton _regenButton;
         private Label _stateTreeLabel;
-        private IStateTree _tree;
-        private Controls _controls;
+        private IStateTree<State> _tree;
+        private string _treeLabelText;
 
         [MenuItem("Window/State Machine Window")]
         public static void ShowExample()
@@ -30,20 +32,18 @@ namespace Editor
             RegenerateVisualTreeAsset();
         }
 
-        private string _treeLabelText;
-
-        private void UpdateAsset() => (_tree as IUpdatableAssetStateTree)?.UpdateAsset();
+        private void UpdateAsset() => (_tree as IUpdatableAssetStateTree<State>)?.UpdateAsset();
 
         private void RegenerateVisualTreeAsset()
         {
             _root = rootVisualElement;
             
-            var ui = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/StateMachine.uxml");
+            var ui = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(UXML);
 
             _root.Clear();
             ui.CloneTree(_root);
 
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/StateMachine.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(USS);
             _root.styleSheets.Add(styleSheet);
 
             _stateTreeView = _root.Q<StateTreeView>();
@@ -61,7 +61,7 @@ namespace Editor
 
         private void OnSelectionChange()
         {
-            if (Selection.activeObject is IStateTree tree)
+            if (Selection.activeObject is IStateTree<State> tree)
             {
                 _tree = tree;
                 _treeLabelText = $"Nodes of \"{(_tree as ScriptableObject)?.name}\"";
@@ -81,7 +81,7 @@ namespace Editor
         
         private void OnInspectorUpdate()
         {
-            if (!(_tree is IUpdatableAssetStateTree updatableAssetStateTree)) return;
+            if (!(_tree is IUpdatableAssetStateTree<State> updatableAssetStateTree)) return;
             _stateTreeLabel.text = (updatableAssetStateTree.Unsaved ? "* " : "") + _treeLabelText;
         }
     }

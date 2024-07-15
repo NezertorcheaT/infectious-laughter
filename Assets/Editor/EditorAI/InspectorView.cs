@@ -4,11 +4,11 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Editor
+namespace Editor.EditorAI
 {
     public class InspectorView : VisualElement
     {
-        public IStateTree Tree;
+        public IStateTree<State> Tree;
         public IStateTreeWithEdits EditableTree;
         private InspectorElement _inspector;
         private UnityEditor.Editor _editor;
@@ -19,17 +19,17 @@ namespace Editor
 
         public InspectorView()
         {
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/StateMachine.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(StateMachine.USS);
             styleSheets.Add(styleSheet);
         }
 
-        public void DeinitializeState(StateTree.StateForList state, IStateTree tree)
+        public void DeinitializeState(StateTree.StateForList state, IStateTree<State> tree)
         {
             Clear();
             Object.DestroyImmediate(_editor);
         }
 
-        public void InitializeState(StateTree.StateForList state, IStateTree tree)
+        public void InitializeState(StateTree.StateForList state, IStateTree<State> tree)
         {
             Clear();
 
@@ -41,7 +41,7 @@ namespace Editor
             Object.DestroyImmediate(_editor);
             _editor = UnityEditor.Editor.CreateEditor(EditableTree.GetEdit(state.id));
             var container = new IMGUIContainer(() => _editor.OnInspectorGUI());
-            var sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/StateMachine.uss");
+            var sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(StateMachine.USS);
             container.styleSheets.Add(sheet);
             Add(container);
         }

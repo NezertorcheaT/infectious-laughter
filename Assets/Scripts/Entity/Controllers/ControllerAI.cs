@@ -12,7 +12,7 @@ namespace Entity.Controllers
     public class ControllerAI : Controller
     {
         [SerializeField] private StateTree stateTree;
-        private IStateTree _stateTree => stateTree;
+        private IStateTree<State> _stateTree => stateTree;
         private bool _stateCycleDestroy;
 
         public override void Initialize()

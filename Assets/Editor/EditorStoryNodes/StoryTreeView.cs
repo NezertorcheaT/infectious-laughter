@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Editor.EditorAI;
 using Entity.States;
+using Levels.StoryNodes;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.UIElements;
-using State = Entity.States.State;
 
-namespace Editor
+namespace Editor.EditorStoryNodes
 {
-    public class StateTreeView : GraphView
+    public class StoryTreeView : GraphView
     {
-        public event Action<StateNodeView> OnStateSelected;
-        public event Action<StateNodeView> OnStateUnselected;
+        public event Action<NodeView> OnStateSelected;
+        public event Action<NodeView> OnStateUnselected;
 
-        public new class UxmlFactory : UxmlFactory<StateTreeView, GraphView.UxmlTraits>
+        public new class UxmlFactory : UxmlFactory<StoryTreeView, GraphView.UxmlTraits>
         {
         }
 
-        private IStateTree _tree;
+        private IStateTree<StoryTree.Node> _tree;
 
-        public StateTreeView()
+        public StoryTreeView()
         {
             Insert(0, new GridBackground());
 
@@ -29,16 +31,16 @@ namespace Editor
             this.AddManipulator(new SelectionDragger());
             this.AddManipulator(new RectangleSelector());
 
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/StateMachine.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(StoryView.USS);
             styleSheets.Add(styleSheet);
         }
 
-        private StateNodeView FindStateView(string id)
+        private NodeView FindStateView(string id)
         {
-            return GetNodeByGuid(id) as StateNodeView;
+            return GetNodeByGuid(id) as NodeView;
         }
 
-        public void PopulateTree(IStateTree tree)
+        public void PopulateTree(IStateTree<StoryTree.Node> tree)
         {
             _tree = tree;
 
@@ -46,18 +48,12 @@ namespace Editor
             DeleteElements(graphElements);
             graphViewChanged += OnGraphViewChanged;
 
-            foreach (var id in _tree.States.Keys)
+            foreach (var id in _tree.Nodes.Keys)
             {
-                CreateNodeView(new StateTree.StateForList
-                {
-                    id = id,
-                    nexts = _tree.GetNextsTo(id).ToList(),
-                    state = _tree.GetState(id),
-                    position = ((IPositionableStateTree) _tree).GetPosition(id)
-                });
+                CreateNodeView(StoryTree.NodeToListed(_tree.GetState(id), _tree));
             }
 
-            foreach (var id in _tree.States.Keys)
+            foreach (var id in _tree.Nodes.Keys)
             {
                 var childrens = _tree.GetNextsTo(id);
 
@@ -87,16 +83,12 @@ namespace Editor
                 foreach (var element in graphViewChange.elementsToRemove)
                 {
                     if (element is StateNodeView nodeView)
-                    {
                         _tree.TryRemoveState(nodeView.State.id);
-                    }
 
-                    if (element is Edge edge)
-                    {
-                        var parentView = edge.output.node as StateNodeView;
-                        var childView = edge.input.node as StateNodeView;
-                        _tree.TryDisconnect(parentView.State.id, childView.State.id);
-                    }
+                    if (!(element is Edge edge)) continue;
+                    var parentView = edge.output.node as StateNodeView;
+                    var childView = edge.input.node as StateNodeView;
+                    _tree.TryDisconnect(parentView.State.id, childView.State.id);
                 }
             }
 
@@ -116,32 +108,18 @@ namespace Editor
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
             //base.BuildContextualMenu(evt);
-            var types = TypeCache.GetTypesDerivedFrom<State>();
-            foreach (var type in types)
-            {
-                evt.menu.AppendAction($"{type.Name}", a => CreateNode(type));
-            }
+            evt.menu.AppendAction($"New Level", a => CreateNode());
         }
 
-        void CreateNode(Type type)
+        private void CreateNode()
         {
-            if (AssetDatabase.FindAssets($"t:{type.Name}").Length == 0)
-                _tree.CreateMissingStateObject(type);
-
-            var newState = _tree.AddState(AssetDatabase.LoadAssetAtPath(AssetDatabase.FindAssets($"t:{type.Name}")
-                .Select(AssetDatabase.GUIDToAssetPath).First(), type) as State);
-            CreateNodeView(new StateTree.StateForList
-            {
-                id = newState,
-                nexts = _tree.GetNextsTo(newState).ToList(),
-                state = _tree.GetState(newState),
-                position = ((IPositionableStateTree) _tree).GetPosition(newState)
-            });
+            var id = _tree.AddState(new StoryTree.Node());
+            CreateNodeView(StoryTree.NodeToListed(_tree.GetState(id), _tree));
         }
 
-        void CreateNodeView(StateTree.StateForList state)
+        private void CreateNodeView(StoryTree.NodeForList node)
         {
-            var nodeView = new StateNodeView(state, _tree);
+            var nodeView = new NodeView(node, _tree);
             if (OnStateSelected != null) nodeView.OnStateSelected += OnStateSelected.Invoke;
             if (OnStateUnselected != null) nodeView.OnStateUnselected += OnStateUnselected.Invoke;
             AddElement(nodeView);

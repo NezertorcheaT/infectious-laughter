@@ -3,7 +3,7 @@
     /// <summary>
     /// эта кароч дерево, которе имеет редактируемые состояния
     /// </summary>
-    public interface IStateTreeWithEdits : IStateTree
+    public interface IStateTreeWithEdits : IStateTree<State>
     {
         /// <summary>
         /// попробовать получить параметры состояния по айдишнику

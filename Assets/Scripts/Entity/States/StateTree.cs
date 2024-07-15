@@ -8,7 +8,11 @@ using UnityEngine;
 namespace Entity.States
 {
     [CreateAssetMenu(fileName = "New State Tree", menuName = "AI Nodes/Tree", order = 0)]
-    public class StateTree : ScriptableObject, IPositionableStateTree, IUpdatableAssetStateTree, IStateTreeWithEdits
+    public class StateTree : 
+        ScriptableObject, 
+        IGlobalParameterNodeStateTree<State, Tuple<Vector2>>, 
+        IUpdatableAssetStateTree<State>,
+        IStateTreeWithEdits
     {
         [SerializeField] private List<StateForList> states;
         [SerializeField] private List<EditForList> edits;
@@ -38,9 +42,7 @@ namespace Entity.States
             if (AssetDatabase.FindAssets($"t:{nameof(InitialState)}").Length == 0)
                 CreateMissingStateObject(typeof(InitialState));
 
-            AddState(AssetDatabase.LoadAssetAtPath<InitialState>(AssetDatabase
-                .FindAssets($"t:{nameof(InitialState)}")
-                .Select(AssetDatabase.GUIDToAssetPath).First()));
+            AddState(typeof(InitialState));
             states[0] = new StateForList
             {
                 id = "0",
@@ -82,6 +84,16 @@ namespace Entity.States
 
         private static bool Contains<T>(T[] where, T that) => Contains(where.AsEnumerable(), that);
         private static bool Contains<T>(List<T> where, T that) => Contains(where.AsEnumerable(), that);
+
+        public string AddState(Type stateType) =>
+            AddState(
+                AssetDatabase.LoadAssetAtPath(AssetDatabase
+                        .FindAssets($"t:{stateType.Name}")
+                        .Select(AssetDatabase.GUIDToAssetPath)
+                        .First(),
+                    stateType
+                ) as State
+            );
 
         public string AddState(State state)
         {
@@ -208,13 +220,6 @@ namespace Entity.States
             return true;
         }
 
-        public bool TryGetPosition(string id, ref Vector2 position)
-        {
-            if (!IsIdValid(id)) return false;
-            position = GetPosition(id);
-            return true;
-        }
-
         public State GetState(string id)
         {
             var a = SflAtID(id)?.state;
@@ -222,14 +227,21 @@ namespace Entity.States
             return a;
         }
 
-        public Vector2 GetPosition(string id)
+        public bool TryGetParameters(string id, ref Tuple<Vector2> parameters)
         {
-            var a = SflAtID(id);
-            if (!a.HasValue) return Vector2.zero;
-            return a.Value.position;
+            if (!IsIdValid(id)) return false;
+            parameters = GetParameters(id);
+            return true;
         }
 
-        public bool TrySetPosition(string id, Vector2 position)
+        public Tuple<Vector2> GetParameters(string id)
+        {
+            var a = SflAtID(id);
+            if (!a.HasValue) return new Tuple<Vector2>(Vector2.zero);
+            return new Tuple<Vector2>(a.Value.position);
+        }
+
+        public bool TrySetParameters(string id, Tuple<Vector2> parameters)
         {
             if (!IsIdValid(id)) return false;
             for (var i = 0; i < states.Count; i++)
@@ -239,7 +251,7 @@ namespace Entity.States
                 {
                     id = states[i].id,
                     nexts = states[i].nexts,
-                    position = position,
+                    position = parameters.Item1,
                     state = states[i].state
                 };
                 Unsaved = true;
@@ -324,7 +336,7 @@ namespace Entity.States
             return null;
         }
 
-        public Dictionary<string, State> States => states.ToDictionary(item => item.id, item => item.state);
+        public Dictionary<string, State> Nodes => states.ToDictionary(item => item.id, item => item.state);
 
 
         public bool TryGetEdit(string id, ref EditableStateProperties edit)

@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <uie:Toolbar style="justify-content: space-between;">
+        <uie:ToolbarButton text="Save File" display-tooltip-when-elided="true" name="SaveButton" focusable="false" style="align-items: flex-start;" />
+        <ui:Label text="Graph View" display-tooltip-when-elided="true" name="GraphViewName" style="background-color: rgb(37, 37, 37); align-items: flex-end;" />
+    </uie:Toolbar>
+    <Editor.EditorStoryNodes.StoryTreeView focusable="true" style="flex-grow: 1; min-height: auto; height: 297px; flex-shrink: 0;" />
+    <ui:GroupBox>
+        <uie:ColorField label="Node Color" value="#808080FF" show-alpha="false" name="Color" />
+        <uie:ObjectField label="Scene" allow-scene-objects="true" type="UnityEditor.SceneAsset, UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Scene" />
+        <ui:TextField picking-mode="Ignore" label="Level name" value="Foo" name="Name" />
+    </ui:GroupBox>
+</ui:UXML>
