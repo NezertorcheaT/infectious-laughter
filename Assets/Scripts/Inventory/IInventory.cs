@@ -52,5 +52,10 @@ namespace Inventory
         /// пустой ли инвентарь полностью
         /// </summary>
         bool Empty { get; }
+
+        /// <summary>
+        /// Очищение инвентаря
+        /// </summary>
+        void ClearInventory();
     }
 }

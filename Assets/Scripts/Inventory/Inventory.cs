@@ -71,6 +71,18 @@ namespace Inventory
             OnChange?.Invoke();
         }
 
+        public void ClearInventory()
+        {
+            for (var i = 0; i < MaxCapacity; i++)
+            {
+                if (!Slots[i].IsEmpty)
+                {
+                    Slots[i].Count = 0;
+                    Slots[i].LastItem = null;
+                }
+            }
+        }
+
         private void Reset()
         {
             Slots = new List<ISlot>(MaxCapacity);
