@@ -99,6 +99,7 @@ namespace Levels.StoryNodes
                 id = Hash(node),
                 scene = node.Scene
             };
+            nodes.Add(n);
             Unsaved = true;
             return n.id;
 #else
@@ -116,7 +117,6 @@ namespace Levels.StoryNodes
         {
             if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
             var nodeA = GetListState(idA);
-            var nodeB = GetListState(idB);
 
             if (nodeA.nextID1 == idB) nodeA.nextID1 = null;
             if (nodeA.nextID2 == idB) nodeA.nextID2 = null;

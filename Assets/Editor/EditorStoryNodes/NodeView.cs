@@ -18,14 +18,14 @@ namespace Editor.EditorStoryNodes
         public Port Input;
         public Port Output1;
         public Port Output2;
-        
+
         public event Action<NodeView> OnStateSelected;
         public event Action<NodeView> OnStateUnselected;
 
         public static readonly string Output1Text = "end";
         public static readonly string Output2Text = "middle";
         public static readonly string AdvUXML = "Assets/Editor/EditorStoryNodes/NodeViewAdv.uxml";
-        
+
         public ColorField ColorField;
         public TextField NameField;
         public ObjectField SceneField;
@@ -35,54 +35,104 @@ namespace Editor.EditorStoryNodes
         private SerializedProperty _scene;
 
         private VisualElement _background;
+        private VisualElement _fieldsContainer;
 
 
         public new class UxmlFactory : UxmlFactory<NodeView, UxmlTraits>
         {
         }
+
         public NodeView()
         {
             CreateInputPorts();
             CreateOutputPorts();
         }
+
         public NodeView(StoryTree.NodeForList node, IStateTree<StoryTree.Node> tree)
         {
             Node = node;
             Tree = tree;
             ParameterTree =
                 Tree as IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, SceneAsset>>;
-            title = node.visualName;
+            /*foreach (var element in titleContainer.Children())
+            {
+                Debug.Log(element);
+            }*/
+
+
             viewDataKey = node.id;
 
             CreateInputPorts();
             CreateOutputPorts();
-            
+
             var ui = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(AdvUXML);
 
             ui.CloneTree(mainContainer);
 
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(StoryInspector.USS);
             styleSheets.Add(styleSheet);
-            
+
+            _fieldsContainer = this.Q<VisualElement>("FieldsContainer");
             ColorField = this.Q<ColorField>("Color");
-            NameField = this.Q<TextField>("Name");
             SceneField = this.Q<ObjectField>("Scene");
             _background = this.Q<VisualElement>("BG");
-            
+
+            NameField = new TextField {label = string.Empty};
+            NameField.style.marginRight = 26;
+            NameField[0].style.color = new StyleColor(new Color(
+                NameField[0].style.color.value.r,
+                NameField[0].style.color.value.g,
+                NameField[0].style.color.value.b, 0f
+            ));
+            NameField[0].style.borderRightColor = new StyleColor(new Color(
+                NameField[0].style.color.value.r,
+                NameField[0].style.color.value.g,
+                NameField[0].style.color.value.b, 0f
+            ));
+            NameField[0].style.borderTopColor = new StyleColor(new Color(
+                NameField[0].style.color.value.r,
+                NameField[0].style.color.value.g,
+                NameField[0].style.color.value.b, 0f
+            ));
+            NameField[0].style.borderLeftColor = new StyleColor(new Color(
+                NameField[0].style.color.value.r,
+                NameField[0].style.color.value.g,
+                NameField[0].style.color.value.b, 0f
+            ));
+            NameField[0].style.borderBottomColor = new StyleColor(new Color(
+                NameField[0].style.color.value.r,
+                NameField[0].style.color.value.g,
+                NameField[0].style.color.value.b, 0f
+            ));
+
+            titleContainer.hierarchy.Insert(0, NameField);
+            titleContainer.Remove(titleContainer.Q<Label>("title-label"));
+            titleContainer.style.flexDirection = new StyleEnum<FlexDirection>(FlexDirection.RowReverse);
+
+            title = node.visualName;
+
             UpdateParameters();
+        }
+
+        public override string title
+        {
+            get { return NameField.value; }
+            set { NameField.value = value; }
         }
 
         public void UpdateParameters()
         {
+            if (!Tree.IsIdValid(Node.id)) return;
             var (position, visualColor, visualName, scene) = ParameterTree.GetParameters(Node.id);
             ColorField.value = visualColor;
             NameField.value = visualName;
+            title = visualName;
             SceneField.value = scene;
             style.left = position.x;
             style.top = position.y;
             _background.style.backgroundColor = visualColor;
         }
-        
+
 
         private void CreateInputPorts()
         {
@@ -125,16 +175,38 @@ namespace Editor.EditorStoryNodes
 
         public override void OnSelected()
         {
+            SetParameters();
             OnStateSelected?.Invoke(this);
-            UpdateParameters();
         }
 
         public override void OnUnselected()
         {
+            SetParameters();
             OnStateUnselected?.Invoke(this);
+        }
+
+        protected override void ToggleCollapse()
+        {
+            base.ToggleCollapse();
+            _fieldsContainer.style.display = new StyleEnum<DisplayStyle>(
+                _fieldsContainer.style.display.value == DisplayStyle.None ? DisplayStyle.Flex : DisplayStyle.None
+            );
+        }
+
+        public void SetParameters()
+        {
+            ParameterTree?.TrySetParameters(
+                Node.id,
+                new Tuple<Vector2, Color, string, SceneAsset>(
+                    Node.visualPosition,
+                    ColorField.value,
+                    NameField.value,
+                    SceneField.value as SceneAsset
+                )
+            );
             UpdateParameters();
         }
-        
+
         public override void SetPosition(Rect newPos)
         {
             base.SetPosition(newPos);

@@ -5,6 +5,7 @@ using Entity.States;
 using Levels.StoryNodes;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.EditorStoryNodes
@@ -79,13 +80,13 @@ namespace Editor.EditorStoryNodes
                 var port2 = tpt.GetPort2(id);
                 var parentView = FindStateView(id);
 
-                if (port1 != string.Empty)
+                if (!string.IsNullOrEmpty(port1))
                 {
                     var edge1 = parentView.Output1.ConnectTo(FindStateView(port1).Input);
                     AddElement(edge1);
                 }
 
-                if (port2 != string.Empty)
+                if (!string.IsNullOrEmpty(port2))
                 {
                     var edge2 = parentView.Output2.ConnectTo(FindStateView(port2).Input);
                     AddElement(edge2);
@@ -94,7 +95,7 @@ namespace Editor.EditorStoryNodes
 
             Populated = true;
         }
-
+        
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) => ports.ToList()
             .Where(
                 endPort =>
