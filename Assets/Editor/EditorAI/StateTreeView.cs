@@ -64,7 +64,6 @@ namespace Editor.EditorAI
 
                 foreach (var childrenID in childrens)
                 {
-                    var children = _tree.GetState(childrenID);
                     var parentView = FindStateView(id);
                     var childView = FindStateView(childrenID);
 

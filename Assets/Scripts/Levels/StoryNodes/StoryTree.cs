@@ -13,21 +13,33 @@ namespace Levels.StoryNodes
         ScriptableObject,
         IUpdatableAssetStateTree<StoryTree.Node>,
         IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, SceneAsset>>,
-        ITwoPerConnectionStateTree<StoryTree.Node>
+        ITwoPerConnectionStateTree<StoryTree.Node>,
+        IZoomableStateTree<StoryTree.Node>
     {
         [SerializeField] private bool unsaved;
         [SerializeField] private List<NodeForList> nodes;
+
+        [field: SerializeField] public Vector3 Position { get; set; } = new Vector3(13, 221, 0);
+        [field: SerializeField] public Vector3 Scale { get; set; } = new Vector3(0.8695652f, 0.8695652f, 1);
+        [field: SerializeField] public Quaternion Rotation { get; set; }
 
         [Serializable]
         public class NodeForList
         {
             public string id;
             public string visualName;
-            public Color visualColor = Color.gray;
+            public Color visualColor = new Color(63f / 256f, 63f / 256f, 63f / 256f, 192f / 256f);
             public Vector2 visualPosition;
             public SceneAsset scene;
-            [CanBeNull] public string nextID1;
-            [CanBeNull] public string nextID2;
+            [CanBeNull] public string nextID1 = null;
+            [CanBeNull] public string nextID2 = null;
+
+            public override string ToString()
+            {
+                return $"({base.ToString()})" + '{' +
+                       $" id: ({id}), visualName: ({visualName}), visualColor: ({visualColor}), visualPosition: ({visualPosition}), scene: ({scene}), nextID1: ({nextID1}), nextID2: ({nextID2}) " +
+                       '}';
+            }
         }
 
         public class Node
@@ -108,9 +120,6 @@ namespace Levels.StoryNodes
 
             if (nodeA.nextID1 == idB) nodeA.nextID1 = null;
             if (nodeA.nextID2 == idB) nodeA.nextID2 = null;
-
-            if (nodeB.nextID1 == idA) nodeB.nextID1 = null;
-            if (nodeB.nextID2 == idA) nodeB.nextID2 = null;
             Unsaved = true;
 
             return true;
@@ -229,14 +238,51 @@ namespace Levels.StoryNodes
             return true;
         }
 
+        public bool TryDisconnectAPort1(string idA, string idB)
+        {
+            if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
+            var nodeA = GetListState(idA);
+
+            if (nodeA.nextID1 == string.Empty) return true;
+            if (nodeA.nextID1 != idB) return false;
+            nodeA.nextID1 = null;
+            Unsaved = true;
+            return true;
+        }
+
+        public bool TryDisconnectAPort2(string idA, string idB)
+        {
+            if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
+            var nodeA = GetListState(idA);
+
+            if (nodeA.nextID2 == string.Empty) return true;
+            if (nodeA.nextID2 != idB) return false;
+            nodeA.nextID2 = null;
+            Unsaved = true;
+            return true;
+        }
+
+        public string GetPort1(string id)
+        {
+            if (!IsIdValid(id)) throw new ArgumentException("id does not exist");
+            return GetListState(id).nextID1;
+        }
+
+        public string GetPort2(string id)
+        {
+            if (!IsIdValid(id)) throw new ArgumentException("id does not exist");
+            return GetListState(id).nextID2;
+        }
+
         public bool TrySetParameters(string id, Tuple<Vector2, Color, string, SceneAsset> parameters)
         {
             if (!IsIdValid(id)) return false;
             var node = GetListState(id);
-            node.visualPosition = parameters.Item1;
-            node.visualColor = parameters.Item2;
-            node.visualName = parameters.Item3;
-            node.scene = parameters.Item4;
+            var (position, visualColor, visualName, scene) = parameters;
+            node.visualPosition = position;
+            node.visualColor = visualColor;
+            node.visualName = visualName;
+            node.scene = scene;
             Unsaved = true;
             return true;
         }
@@ -260,12 +306,20 @@ namespace Levels.StoryNodes
             return true;
         }
 
-        public static NodeForList NodeToListed(Node node, IStateTree<Node> tree)
+        /// <summary>
+        /// poop, dont use
+        /// </summary>
+        public static NodeForList NodeToListed(Node node, IStateTree<StoryTree.Node> tree)
         {
-            var (position, color, visualName, sceneAsset) =
-                (tree as IGlobalParameterNodeStateTree<Node, Tuple<Vector2, Color, string, SceneAsset>>)
-                ?.GetParameters(node.ID);
-            return new StoryTree.NodeForList
+            if (tree is StoryTree storyTree) return storyTree.GetListState(node.ID);
+
+            if (!(tree is IGlobalParameterNodeStateTree<Node, Tuple<Vector2, Color, string, SceneAsset>>
+                globalParameterNodeStateTree))
+                throw new ArgumentException(
+                    "tree is not IGlobalParameterNodeStateTree<Node, Tuple<Vector2, Color, string, SceneAsset>>");
+
+            var (position, color, visualName, sceneAsset) = globalParameterNodeStateTree?.GetParameters(node.ID);
+            return new NodeForList
             {
                 id = node.ID,
                 nextID1 = tree.GetNextsTo(node.ID)[0],

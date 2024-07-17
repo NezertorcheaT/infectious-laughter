@@ -2,10 +2,6 @@
     <uie:Toolbar style="justify-content: space-between;">
         <uie:ToolbarButton text="Save File" display-tooltip-when-elided="true" name="SaveButton" focusable="false" style="align-items: flex-start;" />
     </uie:Toolbar>
-    <Editor.EditorStoryNodes.StoryTreeView focusable="true" style="flex-grow: 1; min-height: auto; height: 297px; flex-shrink: 0;" />
-    <ui:GroupBox>
-        <uie:ColorField label="Node Color" value="#808080FF" show-alpha="false" name="Color" />
-        <uie:ObjectField label="Scene" allow-scene-objects="true" type="UnityEditor.SceneAsset, UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Scene" />
-        <ui:TextField picking-mode="Ignore" label="Level name" value="Foo" name="Name" />
-    </ui:GroupBox>
+    <Editor.EditorStoryNodes.StoryTreeView focusable="true" name="Graph" style="flex-grow: 1; min-height: auto; height: 500px; flex-shrink: 0;" />
+    <ui:Foldout text="Default Inspector" name="DefaultInspector" value="false" view-data-key="DefaultInspector" style="justify-content: flex-start; align-items: stretch; flex-direction: column; flex-shrink: 0;" />
 </ui:UXML>
