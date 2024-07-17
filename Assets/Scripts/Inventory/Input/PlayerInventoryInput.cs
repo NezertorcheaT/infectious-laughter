@@ -11,10 +11,9 @@ namespace Inventory.Input
     {
         [Inject] private PlayerInstallation _player;
         [SerializeField] private ScriptableObject inventory;
-        [SerializeField] private float maxDistance = 5f;
+        public float MaxDistance = 5f; //Сделали его пабликом для того что бы можно было вызывать у боссов. Или у скилов.
 
         public IInventory Inventory => inventory as IInventory;
-        public float MaxDistance => maxDistance;
 
         private void Start()
         {
@@ -42,7 +41,8 @@ namespace Inventory.Input
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.DrawWireSphere(transform.position, maxDistance);
+            Gizmos.DrawWireSphere(transform.position, MaxDistance);
         }
+
     }
 }
