@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce0e79426990e34bb16c6de753b156d, type: 3}
   m_Name: Trap Item
   m_EditorClassIdentifier: 
+  itemCost: 1
   spawnRange: 1.2
   sprite: {fileID: 21300000, guid: 4176999bca1a1e743872b67571668b79, type: 3}
   trapWorld: {fileID: 3554906176412183794, guid: b874d04ecd84b1d45936d99e9fed6042, type: 3}

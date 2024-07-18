@@ -13,9 +13,11 @@ namespace Inventory.Items
         public string Name => "AnalysingDrone";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public int ItemCost => itemCost;
 
         [SerializeField] private Sprite sprite;
         [SerializeField] private float timerUseMax = 10f;
+        [SerializeField, Min(1)] private int itemCost;
         [SerializeField, Min(1)] private float cameraDistanse = 10;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 

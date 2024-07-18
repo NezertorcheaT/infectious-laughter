@@ -8,10 +8,12 @@ namespace Inventory.Items
         public string Name => "Attracktor";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public int ItemCost => itemCost;
 
         [SerializeField] private float explosionRadius;
         [SerializeField] private int explosionForce;
         [SerializeField] private Sprite sprite;
+        [SerializeField, Min(1)] private int itemCost;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)

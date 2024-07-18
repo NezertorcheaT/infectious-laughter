@@ -18,9 +18,11 @@ namespace Entity.Abilities
 
         public void PickGarbage()
         {
+            //Поменять Все ГОВНО
+
             if (_garbageHasDetected != true) return;
             GarbageBalance += _detectedGarbageLevel * defaultGarbagePerLevel;
-            OnBalanceChanged?.Invoke(_detectedGarbageLevel * defaultGarbagePerLevel);
+            GarbageManager.Instance.AddGarbageBalance(_detectedGarbageLevel * defaultGarbagePerLevel);
             _saveLastGarbage.GetComponent<GarbageItem>().Suicide();
         }
 

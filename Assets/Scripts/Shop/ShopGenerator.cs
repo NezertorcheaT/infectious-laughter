@@ -21,7 +21,7 @@ public class ShopGenerator : MonoBehaviour
 
         for (int i = 0; i <= itemsCountToGenerate; i++)
         {
-            shopInventory.TryAddItem((IItem)shopItemsPoolList[Random.Range(0, shopItemsPoolList.Count)]);
+            shopInventory.TryAddItem((IItem)shopItemsPoolList[Random.Range(0, shopItemsPoolList.Count)], false);
         }
 
         //Вызыв магазин

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace Inventory
 {
@@ -24,24 +25,30 @@ namespace Inventory
 
         [field: SerializeField] private List<Slot> _slots { get; set; }
 
-        public bool TryAddItem(IItem item)
+        public bool TryAddItem(IItem item, bool isStackable = true, bool addItem = true)
         {
-            for (var i = 0; i < Slots.Count; i++)
+            if(isStackable)// Добавлен способ проверять нужно ли стакать объекты или нет 
             {
-                if (_slots[i].IsEmpty) continue;
-                if (_slots[i].LastItem.GetType().Name != item.GetType().Name) continue;
-                if (_slots[i].LastItem.SelfRef != item.SelfRef) continue;
-                if (_slots[i].LastItem != item) continue;
-                if (_slots[i].Count >= Slots[i].LastItem.MaxStackSize) continue;
+                for (var i = 0; i < Slots.Count; i++)
+                {
+                    if (_slots[i].IsEmpty) continue;
+                    if (_slots[i].LastItem.GetType().Name != item.GetType().Name) continue;
+                    if (_slots[i].LastItem.SelfRef != item.SelfRef) continue;
+                    if (_slots[i].LastItem != item) continue;
+                    if (_slots[i].Count >= Slots[i].LastItem.MaxStackSize) continue;
 
-                _slots[i] = new Slot(item, _slots[i].Count + 1);
-                OnChange?.Invoke();
-                return true;
+                    if (!addItem) return true;
+
+                    _slots[i] = new Slot(item, _slots[i].Count + 1);
+                    OnChange?.Invoke();
+                    return true;
+                }
             }
 
             for (var i = 0; i < _slots.Count; i++)
             {
                 if (!_slots[i].IsEmpty) continue;
+                if (!addItem) return true;
 
                 _slots[i] = new Slot(item, 1);
                 OnChange?.Invoke();

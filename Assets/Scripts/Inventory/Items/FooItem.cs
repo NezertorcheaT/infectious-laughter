@@ -13,6 +13,10 @@ namespace Inventory.Items
 
         public Sprite Sprite => sprite;
 
+        public int ItemCost => itemCost;
+
+        [SerializeField, Min(1)] private int itemCost;
+
         [SerializeField] private Sprite sprite;
 
 

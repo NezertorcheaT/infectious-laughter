@@ -11,7 +11,9 @@ namespace Inventory.Items
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
         public ItemAdderVerifier Verifier { get; set; }
+        public int ItemCost => itemCost;
 
+        [SerializeField, Min(1)] private int itemCost;
         [SerializeField] private float spawnRange = 1.2f;
         [SerializeField] private Sprite sprite;
         [SerializeField] private GameObject trapWorld;

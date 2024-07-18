@@ -12,12 +12,16 @@ namespace Inventory.Items
         public string Name => "JawGrip";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public int ItemCost => itemCost;
 
+        [SerializeField, Min(1)] private int itemCost;
         [SerializeField] private Sprite sprite;
         [SerializeField] private float timerUseMax = 15f;
         [SerializeField] private int radius = 15;
 
         [field: SerializeField] public int MaxStackSize { get; private set; }
+
+        
 
         public async void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {

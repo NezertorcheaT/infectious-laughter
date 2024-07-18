@@ -9,11 +9,18 @@ namespace Inventory.Input
     [AddComponentMenu("Entity/Abilities/Inventory Picking Ability")]
     public class PlayerInventoryInput : Ability, IInventoryInput
     {
+        public static PlayerInventoryInput Instance { get; private set; }
+
         [Inject] private PlayerInstallation _player;
         [SerializeField] private ScriptableObject inventory;
         public float MaxDistance = 5f; //Сделали его пабликом для того что бы можно было вызывать у боссов. Или у скилов.
 
         public IInventory Inventory => inventory as IInventory;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
@@ -37,6 +44,11 @@ namespace Inventory.Input
 
             if (Available())
                 Inventory?.TryAddItem(inventoryItem);
+        }
+
+        public bool HasSpace(IItem item)
+        {
+            return ((IInventory)inventory).TryAddItem(item, true, false);
         }
 
         private void OnDrawGizmosSelected()
