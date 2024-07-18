@@ -32,14 +32,15 @@ namespace Entity.Abilities
             _movement = Entity.FindAvailableAbilityByInterface<EntityMovementHorizontalMove>();
 
             _cinemachineVirtualCamera = _player.ViewCamera;
-            _cinemachineShaker = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            _cinemachineShaker =
+                _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
             OnEnable();
         }
 
         private void OnEnable()
         {
-            if (!IsInitialized) return;
+            if (!IsInitialized || _responsive is null) return;
             _responsive.OnEnterLight += OnEnterLight;
             _responsive.OnExitLight += OnExitLight;
         }

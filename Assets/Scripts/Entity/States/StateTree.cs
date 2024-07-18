@@ -85,8 +85,10 @@ namespace Entity.States
         private static bool Contains<T>(T[] where, T that) => Contains(where.AsEnumerable(), that);
         private static bool Contains<T>(List<T> where, T that) => Contains(where.AsEnumerable(), that);
 
-        public string AddState(Type stateType) =>
-            AddState(
+        public string AddState(Type stateType)
+        {
+#if UNITY_EDITOR
+            return AddState(
                 AssetDatabase.LoadAssetAtPath(AssetDatabase
                         .FindAssets($"t:{stateType.Name}")
                         .Select(AssetDatabase.GUIDToAssetPath)
@@ -94,6 +96,10 @@ namespace Entity.States
                     stateType
                 ) as State
             );
+#else
+            return "-1";
+#endif
+        }
 
         public string AddState(State state)
         {

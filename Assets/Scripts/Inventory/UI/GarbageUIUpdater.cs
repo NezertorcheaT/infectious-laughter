@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using Entity.Abilities;
 using Shop;
 using TMPro;
 using UnityEngine;

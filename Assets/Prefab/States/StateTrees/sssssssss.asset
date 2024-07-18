@@ -19,12 +19,12 @@ MonoBehaviour:
     nexts:
     - 6ec46c2e616a75b42b765f078a3706f1
   - id: 6ec46c2e616a75b42b765f078a3706f1
-    position: {x: 134, y: 0}
+    position: {x: 135, y: 0}
     state: {fileID: 11400000, guid: 917d2f3ed691df44490f31a582fb314a, type: 2}
     nexts:
     - ed52e4bdf4a916b4baa1f3275497e559
   - id: ed52e4bdf4a916b4baa1f3275497e559
-    position: {x: 280.88, y: 0}
+    position: {x: 263, y: 0}
     state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
     nexts: []
   edits:

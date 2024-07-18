@@ -1,4 +1,5 @@
 ﻿using System;
+using Saving;
 using UnityEngine;
 
 namespace Entity.Abilities
@@ -28,7 +29,6 @@ namespace Entity.Abilities
                 OnAddictiveHpChanged?.Invoke(addictiveHealth, maxAddictiveHealth);
             }
         }
-
         public int Hp
         {
             get => health + AddictiveHp;
@@ -55,6 +55,9 @@ namespace Entity.Abilities
             }
         }
 
+        public int MaxAddictiveHp => maxAddictiveHealth;
+        public int MaxHp => maxHealth;
+
         public void AddDamage(int d)
         {
             Hp -= Mathf.Max(d, 0);
@@ -66,6 +69,19 @@ namespace Entity.Abilities
         {
             d = Mathf.Max(d, 0);
             Hp += d;
+        }
+
+        public void FromContent(
+            Session.Content hpContent,
+            Session.Content addictiveHpContent,
+            Session.Content maxAddictiveHealthContent,
+            Session.Content maxHealthContent
+        )
+        {
+            health = (int) hpContent.Value;
+            addictiveHealth = (int) addictiveHpContent.Value;
+            maxHealth = (int) maxHealthContent.Value;
+            maxAddictiveHealth = (int) maxAddictiveHealthContent.Value;
         }
     }
 }

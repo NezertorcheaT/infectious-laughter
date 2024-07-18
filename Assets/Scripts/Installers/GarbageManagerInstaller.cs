@@ -1,3 +1,5 @@
+using GameFlow;
+using Saving;
 using Shop;
 using UnityEngine;
 using Zenject;
@@ -7,12 +9,12 @@ namespace Installers
     [AddComponentMenu("Installers/Garbage Manager")]
     public class GarbageManagerInstaller : MonoInstaller
     {
-        [SerializeField] private int baseGarbageAmount = 50;
+        [Inject] private SessionFactory sessionFactory;
 
         public override void InstallBindings()
         {
-            var manage = new GarbageManager(baseGarbageAmount);
-            Container.Bind<GarbageManager>().FromInstance(manage).AsSingle();
+            var garbageManager = new GarbageManager((int)sessionFactory.Current[NewGameStarter.SavedPlayerGarbageKey].Value);
+            Container.Bind<GarbageManager>().FromInstance(garbageManager).AsSingle();
         }
     }
 }

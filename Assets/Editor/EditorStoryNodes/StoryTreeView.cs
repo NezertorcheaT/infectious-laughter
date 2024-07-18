@@ -5,7 +5,6 @@ using Entity.States;
 using Levels.StoryNodes;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.EditorStoryNodes

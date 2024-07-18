@@ -17,17 +17,35 @@ MonoBehaviour:
   - id: 0
     visualName: Initial
     visualColor: {r: 0.5882353, g: 0.24705882, b: 0.24705882, a: 0.7529412}
-    visualPosition: {x: -20, y: -14}
-    scene: {fileID: 102900000, guid: 8c9cfa26abfee488c85f1582747f6a02, type: 3}
-    nextID1: 741a2eb95face0e428193b3276c4303d
+    visualPosition: {x: 106, y: 199}
+    scene: 2
+    hasShop: 1
+    nextID1: 9648618916141df48bf3a8aa72deaddc
     nextID2: 
-  - id: 741a2eb95face0e428193b3276c4303d
-    visualName: good
-    visualColor: {r: 0.24609375, g: 0.24609375, b: 0.5882353, a: 0.75}
-    visualPosition: {x: 529, y: -14}
-    scene: {fileID: 0}
-    nextID1: 
+  - id: 9648618916141df48bf3a8aa72deaddc
+    visualName: init dupe 1
+    visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
+    visualPosition: {x: 620.64514, y: -18.000013}
+    scene: 2
+    hasShop: 1
+    nextID1: 167a4b1ec2649e8409e6d891b4cdbf9f
     nextID2: 
-  <Position>k__BackingField: {x: -246, y: 343, z: 0}
-  <Scale>k__BackingField: {x: 0.7561437, y: 0.7561437, z: 1}
+  - id: 167a4b1ec2649e8409e6d891b4cdbf9f
+    visualName: init dupe 2
+    visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
+    visualPosition: {x: 1164, y: -15}
+    scene: 2
+    hasShop: 0
+    nextID1: 8a759952316fe204897ac6de716f9b76
+    nextID2: 
+  - id: 8a759952316fe204897ac6de716f9b76
+    visualName: init dupe 3
+    visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
+    visualPosition: {x: 1743.5626, y: 130.97813}
+    scene: 2
+    hasShop: 1
+    nextID1: 0
+    nextID2: 
+  <Position>k__BackingField: {x: -1012, y: 204, z: 0}
+  <Scale>k__BackingField: {x: 1, y: 1, z: 1}
   <Rotation>k__BackingField: {x: 0, y: 0, z: 0, w: 1}

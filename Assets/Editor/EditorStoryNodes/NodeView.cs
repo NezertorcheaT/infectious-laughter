@@ -1,10 +1,13 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using Entity.States;
 using Levels.StoryNodes;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using Node = UnityEditor.Experimental.GraphView.Node;
 
@@ -16,27 +19,37 @@ namespace Editor.EditorStoryNodes
         {
             public Action<bool> OnClick;
 
-            protected override void ToggleValue()
+            public bool noEventValue
             {
-                base.ToggleValue();
-                OnClick?.Invoke(value);
+                get => base.value;
+                set => base.value = value;
             }
 
-/*
             public override bool value
             {
                 get => base.value;
                 set
                 {
-                    OnClick?.Invoke(value);
                     base.value = value;
+                    Debug.Log($"value {base.value}");
+                    OnClick?.Invoke(base.value);
                 }
-            }*/
+            }
+
+            protected override void ToggleValue()
+            {
+                base.ToggleValue();
+                //Debug.Log("ToggleValue");
+                //OnClick?.Invoke(noEventValue);
+            }
         }
 
         public StoryTree.NodeForList Node;
         public IStateTree<StoryTree.Node> Tree;
-        public IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, SceneAsset>> ParameterTree;
+
+        public IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, int, bool>>
+            ParameterTree;
+
         public Port Input;
         public Port Output1;
         public Port Output2;
@@ -76,12 +89,11 @@ namespace Editor.EditorStoryNodes
             Node = node;
             Tree = tree;
             ParameterTree =
-                Tree as IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, SceneAsset>>;
+                Tree as IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, int, bool>>;
             /*foreach (var element in titleContainer.Children())
             {
                 Debug.Log(element);
             }*/
-
 
             viewDataKey = node.id;
 
@@ -89,7 +101,6 @@ namespace Editor.EditorStoryNodes
             CreateOutputPorts();
 
             var ui = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(AdvUXML);
-
             ui.CloneTree(mainContainer);
 
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(StoryInspector.USS);
@@ -104,29 +115,29 @@ namespace Editor.EditorStoryNodes
             NameField = new TextField {label = string.Empty};
             NameField.style.marginRight = 26;
             NameField[0].style.backgroundColor = new StyleColor(new Color(
-                NameField[0].style.color.value.r,
-                NameField[0].style.color.value.g,
-                NameField[0].style.color.value.b, 0f
+                NameField[0].style.backgroundColor.value.r,
+                NameField[0].style.backgroundColor.value.g,
+                NameField[0].style.backgroundColor.value.b, 0f
             ));
             NameField[0].style.borderRightColor = new StyleColor(new Color(
-                NameField[0].style.color.value.r,
-                NameField[0].style.color.value.g,
-                NameField[0].style.color.value.b, 0f
+                NameField[0].style.borderRightColor.value.r,
+                NameField[0].style.borderRightColor.value.g,
+                NameField[0].style.borderRightColor.value.b, 0f
             ));
             NameField[0].style.borderTopColor = new StyleColor(new Color(
-                NameField[0].style.color.value.r,
-                NameField[0].style.color.value.g,
-                NameField[0].style.color.value.b, 0f
+                NameField[0].style.borderTopColor.value.r,
+                NameField[0].style.borderTopColor.value.g,
+                NameField[0].style.borderTopColor.value.b, 0f
             ));
             NameField[0].style.borderLeftColor = new StyleColor(new Color(
-                NameField[0].style.color.value.r,
-                NameField[0].style.color.value.g,
-                NameField[0].style.color.value.b, 0f
+                NameField[0].style.borderLeftColor.value.r,
+                NameField[0].style.borderLeftColor.value.g,
+                NameField[0].style.borderLeftColor.value.b, 0f
             ));
             NameField[0].style.borderBottomColor = new StyleColor(new Color(
-                NameField[0].style.color.value.r,
-                NameField[0].style.color.value.g,
-                NameField[0].style.color.value.b, 0f
+                NameField[0].style.borderBottomColor.value.r,
+                NameField[0].style.borderBottomColor.value.g,
+                NameField[0].style.borderBottomColor.value.b, 0f
             ));
 
             titleContainer.hierarchy.Insert(0, NameField);
@@ -137,6 +148,7 @@ namespace Editor.EditorStoryNodes
             titleContainer.style.flexDirection = new StyleEnum<FlexDirection>(FlexDirection.RowReverse);
 
             title = node.visualName;
+            _shopToggle.noEventValue = Node.hasShop;
             _shopToggle.OnClick += OnToggleClick;
 
             UpdateParameters();
@@ -144,25 +156,30 @@ namespace Editor.EditorStoryNodes
 
         private void OnToggleClick(bool b)
         {
-            
+            Debug.Log("OnToggleClick");
+            SetParameters();
         }
 
         public override string title
         {
-            get { return NameField.value; }
-            set { NameField.value = value; }
+            get => NameField.value;
+            set => NameField.value = value;
         }
 
         public void UpdateParameters()
         {
             if (!Tree.IsIdValid(Node.id)) return;
-            var (position, visualColor, visualName, scene) = ParameterTree.GetParameters(Node.id);
+            var (position, visualColor, visualName, scene, shop) = ParameterTree.GetParameters(Node.id);
             ColorField.value = visualColor;
             NameField.value = visualName;
             title = visualName;
-            SceneField.value = scene;
+            if (scene <= -1)
+                SceneField.value = null;
+            else
+                SceneField.value = AssetDatabase.LoadAssetAtPath<SceneAsset>(SceneUtility.GetScenePathByBuildIndex(scene));
             style.left = position.x;
             style.top = position.y;
+            _shopToggle.noEventValue = shop;
             _background.style.backgroundColor = visualColor;
         }
 
@@ -230,11 +247,14 @@ namespace Editor.EditorStoryNodes
         {
             ParameterTree?.TrySetParameters(
                 Node.id,
-                new Tuple<Vector2, Color, string, SceneAsset>(
+                new Tuple<Vector2, Color, string, int, bool>(
                     Node.visualPosition,
                     ColorField.value,
                     NameField.value,
-                    SceneField.value as SceneAsset
+                    SceneField.value is null
+                        ? -1
+                        : SceneUtility.GetBuildIndexByScenePath(AssetDatabase.GetAssetPath(SceneField.value)),
+                    _shopToggle.value
                 )
             );
             UpdateParameters();
@@ -243,14 +263,16 @@ namespace Editor.EditorStoryNodes
         public override void SetPosition(Rect newPos)
         {
             base.SetPosition(newPos);
+            SetParameters();
 
             ParameterTree?.TrySetParameters(
                 Node.id,
-                new Tuple<Vector2, Color, string, SceneAsset>(
+                new Tuple<Vector2, Color, string, int, bool>(
                     new Vector2(newPos.xMin, newPos.yMin),
-                    ColorField.value,
-                    NameField.value,
-                    SceneField.value as SceneAsset
+                    Node.visualColor,
+                    Node.visualName,
+                    Node.scene,
+                    Node.hasShop
                 )
             );
             UpdateParameters();

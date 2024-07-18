@@ -12,7 +12,7 @@ namespace Levels.StoryNodes
     public class StoryTree :
         ScriptableObject,
         IUpdatableAssetStateTree<StoryTree.Node>,
-        IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, SceneAsset>>,
+        IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, int, bool>>,
         ITwoPerConnectionStateTree<StoryTree.Node>,
         IZoomableStateTree<StoryTree.Node>
     {
@@ -30,7 +30,8 @@ namespace Levels.StoryNodes
             public string visualName;
             public Color visualColor = new Color(63f / 256f, 63f / 256f, 63f / 256f, 192f / 256f);
             public Vector2 visualPosition;
-            public SceneAsset scene;
+            public int scene;
+            public bool hasShop = true;
             [CanBeNull] public string nextID1 = null;
             [CanBeNull] public string nextID2 = null;
 
@@ -45,7 +46,8 @@ namespace Levels.StoryNodes
         public class Node
         {
             public string ID { get; private set; }
-            public SceneAsset Scene { get; private set; }
+            public int Scene { get; private set; }
+            public bool HasShop { get; private set; }
 
             public static implicit operator Node(NodeForList node)
             {
@@ -53,7 +55,8 @@ namespace Levels.StoryNodes
                 var newNode = new Node
                 {
                     ID = node.id,
-                    Scene = node.scene
+                    Scene = node.scene,
+                    HasShop = node.hasShop
                 };
                 return newNode;
             }
@@ -77,12 +80,15 @@ namespace Levels.StoryNodes
         {
 #if UNITY_EDITOR
             var h = GUID.Generate().ToString();
+
             while (IsIdValid(h))
             {
                 h = GUID.Generate().ToString();
             }
 #else
-            var h = (node.GetType().FullName + node.visualName + node.nextID1 + node.nextID2 + node.id).GetHashCode();
+            var listNode = GetListState(node.ID);
+            var h = (listNode.GetType().FullName + listNode.visualName + listNode.nextID1 + listNode.nextID2 + listNode.id).GetHashCode();
+
             while (IsIdValid(h.ToString()))
             {
                 h++;
@@ -274,11 +280,11 @@ namespace Levels.StoryNodes
             return GetListState(id).nextID2;
         }
 
-        public bool TrySetParameters(string id, Tuple<Vector2, Color, string, SceneAsset> parameters)
+        public bool TrySetParameters(string id, Tuple<Vector2, Color, string, int, bool> parameters)
         {
             if (!IsIdValid(id)) return false;
             var node = GetListState(id);
-            var (position, visualColor, visualName, scene) = parameters;
+            var (position, visualColor, visualName, scene, shop) = parameters;
             node.visualPosition = position;
             node.visualColor = visualColor;
             node.visualName = visualName;
@@ -287,19 +293,20 @@ namespace Levels.StoryNodes
             return true;
         }
 
-        public Tuple<Vector2, Color, string, SceneAsset> GetParameters(string id)
+        public Tuple<Vector2, Color, string, int, bool> GetParameters(string id)
         {
             if (!IsIdValid(id)) throw new ArgumentException("id does not exist");
             var node = GetListState(id);
-            return new Tuple<Vector2, Color, string, SceneAsset>(
+            return new Tuple<Vector2, Color, string, int, bool>(
                 node.visualPosition,
                 node.visualColor,
                 node.visualName,
-                node.scene
+                node.scene,
+                node.hasShop
             );
         }
 
-        public bool TryGetParameters(string id, ref Tuple<Vector2, Color, string, SceneAsset> parameters)
+        public bool TryGetParameters(string id, ref Tuple<Vector2, Color, string, int, bool> parameters)
         {
             if (!IsIdValid(id)) return false;
             parameters = GetParameters(id);
@@ -309,16 +316,16 @@ namespace Levels.StoryNodes
         /// <summary>
         /// poop, dont use
         /// </summary>
-        public static NodeForList NodeToListed(Node node, IStateTree<StoryTree.Node> tree)
+        public static NodeForList NodeToListed(Node node, IStateTree<Node> tree)
         {
             if (tree is StoryTree storyTree) return storyTree.GetListState(node.ID);
 
-            if (!(tree is IGlobalParameterNodeStateTree<Node, Tuple<Vector2, Color, string, SceneAsset>>
+            if (!(tree is IGlobalParameterNodeStateTree<Node, Tuple<Vector2, Color, string, int, bool>>
                 globalParameterNodeStateTree))
                 throw new ArgumentException(
-                    "tree is not IGlobalParameterNodeStateTree<Node, Tuple<Vector2, Color, string, SceneAsset>>");
+                    "tree is not IGlobalParameterNodeStateTree<Node, Tuple<Vector2, Color, string, int,bool>>");
 
-            var (position, color, visualName, sceneAsset) = globalParameterNodeStateTree?.GetParameters(node.ID);
+            var (position, color, visualName, sceneAsset, shop) = globalParameterNodeStateTree?.GetParameters(node.ID);
             return new NodeForList
             {
                 id = node.ID,
@@ -328,6 +335,7 @@ namespace Levels.StoryNodes
                 visualPosition = position,
                 visualColor = color,
                 visualName = visualName,
+                hasShop = shop,
             };
         }
     }

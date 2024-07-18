@@ -1,5 +1,8 @@
 using Cinemachine;
+using Entity.Abilities;
+using GameFlow;
 using Inventory;
+using Saving;
 using UnityEngine;
 using Zenject;
 
@@ -11,13 +14,22 @@ namespace Installers
         [SerializeField] private Entity.Entity player;
         [SerializeField] private Inventory.Inventory playerInventory;
         [SerializeField] private CinemachineVirtualCamera playerCinemachineCamera;
+        [Inject] private SessionFactory sessionFactory;
         private ItemAdderVerifier _adderVerifier;
 
         public override void InstallBindings()
         {
+            player.GetComponent<EntityHp>().FromContent(
+                sessionFactory.Current[NewGameStarter.SavedPlayerHpKey],
+                sessionFactory.Current[NewGameStarter.SavedPlayerAddictiveHpKey],
+                sessionFactory.Current[NewGameStarter.SavedPlayerMaxHpKey],
+                sessionFactory.Current[NewGameStarter.SavedPlayerMaxAddictiveHpKey]
+            );
+
+            JsonUtility.FromJsonOverwrite((string) sessionFactory.Current[NewGameStarter.SavedPlayerInventoryKey].Value, playerInventory);
+
             _adderVerifier = new ItemAdderVerifier(Container);
             var pl = new PlayerInstallation(player, playerInventory, _adderVerifier, playerCinemachineCamera);
-
             Container.Bind<PlayerInstallation>().FromInstance(pl).AsSingle().NonLazy();
         }
     }
