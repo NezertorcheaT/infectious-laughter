@@ -1,6 +1,7 @@
 using Inventory;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ShopGenerator : MonoBehaviour
@@ -9,22 +10,30 @@ public class ShopGenerator : MonoBehaviour
     [SerializeField] private ScriptableObject inventoryShop;
     [SerializeField] private Transform shopUi;
 
+    private IInventory _inventory;
+    private IItem[] _items;
+
     private void Awake()
     {
-        ((IInventory)inventoryShop).ClearInventory();
-        GenerateItemsInShop(((IInventory)inventoryShop).MaxCapacity);
+        _inventory = inventoryShop as IInventory;
+        if (_inventory is null) return;
+        _inventory.ClearInventory();
+
+        _items = shopItemsPoolList.Select(item => item as IItem).Where(item => item is not null).ToArray();
+
+        GenerateItemsInShop(_inventory.MaxCapacity);
     }
 
     private void GenerateItemsInShop(int itemsCountToGenerate)
     {
-        IInventory shopInventory = (IInventory)inventoryShop;
+        if (_inventory is null) return;
 
         for (int i = 0; i <= itemsCountToGenerate; i++)
         {
-            shopInventory.TryAddItem((IItem)shopItemsPoolList[Random.Range(0, shopItemsPoolList.Count)], false);
+            _inventory.TryAddItem(_items[Random.Range(0, _items.Length)], false);
         }
 
-        //Вызыв магазин
-        shopUi.GetComponent<ShopUI>().SetItemSO(shopInventory);
+        //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        shopUi.GetComponent<ShopUI>().SetItemSO(_inventory);
     }
 }

@@ -12,6 +12,28 @@ namespace Editor.EditorStoryNodes
 {
     public class NodeView : Node
     {
+        private class NodeToggle : Toggle
+        {
+            public Action<bool> OnClick;
+
+            protected override void ToggleValue()
+            {
+                base.ToggleValue();
+                OnClick?.Invoke(value);
+            }
+
+/*
+            public override bool value
+            {
+                get => base.value;
+                set
+                {
+                    OnClick?.Invoke(value);
+                    base.value = value;
+                }
+            }*/
+        }
+
         public StoryTree.NodeForList Node;
         public IStateTree<StoryTree.Node> Tree;
         public IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, SceneAsset>> ParameterTree;
@@ -36,6 +58,7 @@ namespace Editor.EditorStoryNodes
 
         private VisualElement _background;
         private VisualElement _fieldsContainer;
+        private NodeToggle _shopToggle;
 
 
         public new class UxmlFactory : UxmlFactory<NodeView, UxmlTraits>
@@ -77,9 +100,10 @@ namespace Editor.EditorStoryNodes
             SceneField = this.Q<ObjectField>("Scene");
             _background = this.Q<VisualElement>("BG");
 
+            _shopToggle = new NodeToggle {label = string.Empty};
             NameField = new TextField {label = string.Empty};
             NameField.style.marginRight = 26;
-            NameField[0].style.color = new StyleColor(new Color(
+            NameField[0].style.backgroundColor = new StyleColor(new Color(
                 NameField[0].style.color.value.r,
                 NameField[0].style.color.value.g,
                 NameField[0].style.color.value.b, 0f
@@ -106,12 +130,21 @@ namespace Editor.EditorStoryNodes
             ));
 
             titleContainer.hierarchy.Insert(0, NameField);
+
+            titleContainer.hierarchy.Insert(0, NameField);
             titleContainer.Remove(titleContainer.Q<Label>("title-label"));
+            titleContainer.hierarchy.Insert(0, _shopToggle);
             titleContainer.style.flexDirection = new StyleEnum<FlexDirection>(FlexDirection.RowReverse);
 
             title = node.visualName;
+            _shopToggle.OnClick += OnToggleClick;
 
             UpdateParameters();
+        }
+
+        private void OnToggleClick(bool b)
+        {
+            
         }
 
         public override string title

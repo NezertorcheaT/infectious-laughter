@@ -1,46 +1,27 @@
-using Entity.Abilities;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class GarbageManager : MonoBehaviour
+namespace Shop
 {
-    public static GarbageManager Instance;
-    public event EventHandler OnBalanceChanged;
-
-    private int _garbageBalance = 100;
-
-    private void Awake()
+    public class GarbageManager
     {
-        Instance = this;
-    }
+        public event EventHandler OnBalanceChanged;
 
-    private void Start()
-    {
-        OnBalanceChanged?.Invoke(this, EventArgs.Empty);
-    }
+        private int _garbageBalance = 100;
+        public int GarbageBalance
+        {
+            get => _garbageBalance;
+            set
+            {
+                _garbageBalance = value;
+                OnBalanceChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
 
-    public void AddGarbageBalance(int garbageAmount)
-    {
-        _garbageBalance += garbageAmount;
-        OnBalanceChanged?.Invoke(this, EventArgs.Empty);
-    }
+        public GarbageManager(int garbageBalance)
+        {
+            GarbageBalance = garbageBalance;
+        }
 
-    public void SpentGarbageBalance(int garbageAmount)
-    {
-        _garbageBalance -= garbageAmount;
-        OnBalanceChanged?.Invoke(this, EventArgs.Empty);
+        public bool IfCanAfford(int garbageAmount) => _garbageBalance >= garbageAmount;
     }
-
-    public bool IfCanAfford(int garbageAmount)
-    {
-        return _garbageBalance >= garbageAmount;
-    }
-
-    public int GetGarbageBalance()
-    {
-        return _garbageBalance;
-    }
-
 }

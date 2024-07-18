@@ -24,10 +24,10 @@ MonoBehaviour:
   - id: 741a2eb95face0e428193b3276c4303d
     visualName: good
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.5882353, a: 0.75}
-    visualPosition: {x: 531, y: -14}
+    visualPosition: {x: 529, y: -14}
     scene: {fileID: 0}
     nextID1: 
     nextID2: 
-  <Position>k__BackingField: {x: -434, y: 302, z: 0}
-  <Scale>k__BackingField: {x: 1, y: 1, z: 1}
+  <Position>k__BackingField: {x: -246, y: 343, z: 0}
+  <Scale>k__BackingField: {x: 0.7561437, y: 0.7561437, z: 1}
   <Rotation>k__BackingField: {x: 0, y: 0, z: 0, w: 1}

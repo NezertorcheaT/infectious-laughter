@@ -1,28 +1,31 @@
 using System;
 using System.Collections;
 using Entity.Abilities;
+using Shop;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Inventory.UI
 {
     public class GarbageUIUpdater : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI garbageText;
+        [Inject] private GarbageManager _garbageManager;
 
-        private void Start ()
+        private void Start()
         {
-            GarbageManager.Instance.OnBalanceChanged += GarbageBalance_OnBalanceChanged;
+            _garbageManager.OnBalanceChanged += GarbageBalance_OnBalanceChanged;
 
             UpdateGarbageUI();
         }
 
-        private void GarbageBalance_OnBalanceChanged(object sender, System.EventArgs e)
+        private void GarbageBalance_OnBalanceChanged(object sender, EventArgs e)
         {
             UpdateGarbageUI();
         }
 
-        //Ñäåëàòü ÷åðåç èâåíò îáíîâëåíèå
-        private void UpdateGarbageUI() => garbageText.text = GarbageManager.Instance.GetGarbageBalance().ToString();
+        //Ð¡Ð´ÐµÐ»Ð°Ñ‚ÑŒ Ñ‡ÐµÑ€ÐµÐ· Ð¸Ð²ÐµÐ½Ñ‚ Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ
+        private void UpdateGarbageUI() => garbageText.text = _garbageManager.GarbageBalance.ToString();
     }
 }

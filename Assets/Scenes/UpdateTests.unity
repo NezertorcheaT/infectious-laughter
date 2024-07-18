@@ -1028,50 +1028,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485883754}
   m_CullTransparentMesh: 1
---- !u!1 &491463451
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 491463453}
-  - component: {fileID: 491463452}
-  m_Layer: 0
-  m_Name: GarbageManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &491463452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491463451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85c01ebdb1d8ac4383b9b5118db2607, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &491463453
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491463451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 830.94476, y: 801.18396, z: -4.671113}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496489510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,7 +1312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.01999, y: -0.24274999, z: -10}
+  m_LocalPosition: {x: -27.019983, y: -0.24274999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1411,6 +1367,7 @@ GameObject:
   - component: {fileID: 539015061}
   - component: {fileID: 539015065}
   - component: {fileID: 539015064}
+  - component: {fileID: 539015066}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -1445,6 +1402,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 539015061}
+  - {fileID: 539015066}
   - {fileID: 539015065}
   - {fileID: 539015064}
   _installerPrefabs: []
@@ -1507,6 +1465,19 @@ MonoBehaviour:
   player: {fileID: 1471444233}
   playerInventory: {fileID: 11400000, guid: 12560a4b763d5994192ec8ced2401d29, type: 2}
   playerCinemachineCamera: {fileID: 1331546585}
+--- !u!114 &539015066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539015060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c1d72ddf2e2744dbc0c36d59c82ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseGarbageAmount: 50
 --- !u!1 &543804347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,9 +2472,9 @@ GameObject:
   - component: {fileID: 1471444244}
   - component: {fileID: 1471444246}
   - component: {fileID: 1471444245}
+  - component: {fileID: 1471444247}
   - component: {fileID: 1471444238}
   - component: {fileID: 1471444237}
-  - component: {fileID: 1471444247}
   m_Layer: 3
   m_Name: Entity
   m_TagString: Untagged
@@ -3105,7 +3076,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonTemplate: {fileID: 4182761}
   shopUITransform: {fileID: 1560900116}
-  garbage: {fileID: 0}
 --- !u!114 &1560900119
 MonoBehaviour:
   m_ObjectHideFlags: 0

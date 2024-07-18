@@ -1,6 +1,8 @@
 using System;
 using Inventory.Garbage;
+using Shop;
 using UnityEngine;
+using Zenject;
 
 namespace Entity.Abilities
 {
@@ -8,21 +10,16 @@ namespace Entity.Abilities
     public class EntityGarbage : Ability
     {
         [SerializeField, Min(1)] private int defaultGarbagePerLevel;
+        [Inject] private GarbageManager _garbageManager;
 
         private bool _garbageHasDetected;
         private int _detectedGarbageLevel;
         private GameObject _saveLastGarbage;
 
-        public int GarbageBalance { get; private set; }
-        public event Action<int> OnBalanceChanged;
-
         public void PickGarbage()
         {
-            //Поменять Все ГОВНО
-
             if (_garbageHasDetected != true) return;
-            GarbageBalance += _detectedGarbageLevel * defaultGarbagePerLevel;
-            GarbageManager.Instance.AddGarbageBalance(_detectedGarbageLevel * defaultGarbagePerLevel);
+            _garbageManager.GarbageBalance += _detectedGarbageLevel * defaultGarbagePerLevel;
             _saveLastGarbage.GetComponent<GarbageItem>().Suicide();
         }
 
