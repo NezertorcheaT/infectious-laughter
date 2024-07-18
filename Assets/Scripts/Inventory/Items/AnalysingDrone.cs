@@ -23,8 +23,11 @@ namespace Inventory.Items
 
         public async void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
+            slot.Count--;
+
             CinemachineVirtualCamera camera = entity.FindAbilityByType<PlayerGetCamera>().Camera;
 
+            
             float cameraDefaultVeiw = camera.m_Lens.OrthographicSize;
             float timerUse = 0;
 

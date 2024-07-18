@@ -21,10 +21,9 @@ namespace Inventory.Items
 
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
-        
-
         public async void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
+            slot.Count--;
             PlayerInventoryInput input = entity.FindAbilityByType<PlayerInventoryInput>();
             float timerUse = 0;
             float defaultInventoryRadius = input.MaxDistance;
@@ -37,6 +36,7 @@ namespace Inventory.Items
                 if (timerUse >= timerUseMax) { input.MaxDistance = defaultInventoryRadius; return; }
                 await UniTask.Yield();
             }
+            
         }
     }
 }
