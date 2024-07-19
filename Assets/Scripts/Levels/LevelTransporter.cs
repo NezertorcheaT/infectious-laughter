@@ -1,12 +1,8 @@
 using System;
 using CustomHelper;
-using Entity.Abilities;
 using GameFlow;
-using Installers;
 using Levels.StoryNodes;
 using Saving;
-using Shop;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
@@ -17,8 +13,7 @@ namespace Levels
         [Inject] private LevelManager levelManager;
         [Inject] private SessionFactory sessionFactory;
         [Inject] private MenuSaveLoader saveLoader;
-        [Inject] private PlayerInstallation player;
-        [Inject] private GarbageManager garbageManager;
+        [Inject] private LevelSessionUpdater sessionUpdater;
 
         public event Action OnLevelEndedAtEnd;
         public event Action OnLevelEndedAtMiddle;
@@ -28,6 +23,9 @@ namespace Levels
             if (!levelManager.HasNextLevelAtMiddle()) return;
 
             OnLevelEndedAtMiddle?.Invoke();
+            
+            sessionUpdater.UpdateCurrentSessionData();
+            
             levelManager.NextLevelAtMiddle();
             sessionFactory.Current[Helper.SavedLevelKey].Value = levelManager.CurrentLevel.ID;
             sessionFactory.SaveCurrentSession();
@@ -37,14 +35,8 @@ namespace Levels
         public void EndLevelAtEnd()
         {
             OnLevelEndedAtEnd?.Invoke();
-            var playerHp = player.Entity.FindAbilityByType<EntityHp>();
 
-            sessionFactory.Current[Helper.SavedPlayerInventoryKey].Value = JsonUtility.ToJson(player.Inventory);
-            sessionFactory.Current[Helper.SavedPlayerHpKey].Value = playerHp.Hp - playerHp.AddictiveHp;
-            sessionFactory.Current[Helper.SavedPlayerAddictiveHpKey].Value = playerHp.AddictiveHp;
-            sessionFactory.Current[Helper.SavedPlayerMaxHpKey].Value = playerHp.MaxHp;
-            sessionFactory.Current[Helper.SavedPlayerMaxAddictiveHpKey].Value = playerHp.MaxAddictiveHp;
-            sessionFactory.Current[Helper.SavedPlayerGarbageKey].Value = garbageManager.GarbageBalance;
+            sessionUpdater.UpdateCurrentSessionData();
 
             levelManager.NextLevelAtEnd();
             sessionFactory.Current[Helper.SavedLevelKey].Value = levelManager.CurrentLevel.ID;
