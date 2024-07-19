@@ -28,7 +28,11 @@ namespace Saving
             return GlobalFileSaver.ReadFromDrive(path);
         }
 
-        public IEnumerable<string> GetSessionIDs() => Directory.EnumerateFiles(path).Select(Path.GetFileNameWithoutExtension);
+        public IEnumerable<string> GetSessionIDs()
+        {
+            CheckDirectory();
+            return Directory.EnumerateFiles(path).Select(Path.GetFileNameWithoutExtension);
+        }
 
         private void CheckDirectory()
         {
