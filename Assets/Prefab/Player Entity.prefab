@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 3693047800681384998}
   - component: {fileID: 3693047800681384999}
   - component: {fileID: 3693047800681384993}
+  - component: {fileID: -3373324767650511719}
   - component: {fileID: 3693047800681384995}
   - component: {fileID: 3693047800681385004}
   - component: {fileID: 3693047800681384992}
@@ -109,6 +110,7 @@ GameObject:
   - component: {fileID: 3693047800681385005}
   - component: {fileID: 3693047800681385019}
   - component: {fileID: 3693047800681385016}
+  - component: {fileID: -1049219384964266344}
   m_Layer: 3
   m_Name: Player Entity
   m_TagString: Untagged
@@ -300,6 +302,18 @@ MonoBehaviour:
   jumpTime: 3
   walljumpHeight: 10
   walljumpPush: 20
+--- !u!114 &-3373324767650511719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693047800681385021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318df6ea5df551c489312ecb09c6b5b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3693047800681384995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,3 +430,15 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &-1049219384964266344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693047800681385021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c9b540f09b9334b83ddf0de7ea3cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
