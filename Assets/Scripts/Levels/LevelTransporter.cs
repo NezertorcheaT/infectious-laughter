@@ -1,4 +1,5 @@
 using System;
+using CustomHelper;
 using Entity.Abilities;
 using GameFlow;
 using Installers;
@@ -28,7 +29,7 @@ namespace Levels
 
             OnLevelEndedAtMiddle?.Invoke();
             levelManager.NextLevelAtMiddle();
-            sessionFactory.Current[NewGameStarter.SavedLevelKey].Value = levelManager.CurrentLevel.ID;
+            sessionFactory.Current[Helper.SavedLevelKey].Value = levelManager.CurrentLevel.ID;
             sessionFactory.SaveCurrentSession();
             saveLoader.LoadSave(sessionFactory.Current.ID);
         }
@@ -38,15 +39,15 @@ namespace Levels
             OnLevelEndedAtEnd?.Invoke();
             var playerHp = player.Entity.FindAbilityByType<EntityHp>();
 
-            sessionFactory.Current[NewGameStarter.SavedPlayerInventoryKey].Value = JsonUtility.ToJson(player.Inventory);
-            sessionFactory.Current[NewGameStarter.SavedPlayerHpKey].Value = playerHp.Hp - playerHp.AddictiveHp;
-            sessionFactory.Current[NewGameStarter.SavedPlayerAddictiveHpKey].Value = playerHp.AddictiveHp;
-            sessionFactory.Current[NewGameStarter.SavedPlayerMaxHpKey].Value = playerHp.MaxHp;
-            sessionFactory.Current[NewGameStarter.SavedPlayerMaxAddictiveHpKey].Value = playerHp.MaxAddictiveHp;
-            sessionFactory.Current[NewGameStarter.SavedPlayerGarbageKey].Value = garbageManager.GarbageBalance;
+            sessionFactory.Current[Helper.SavedPlayerInventoryKey].Value = JsonUtility.ToJson(player.Inventory);
+            sessionFactory.Current[Helper.SavedPlayerHpKey].Value = playerHp.Hp - playerHp.AddictiveHp;
+            sessionFactory.Current[Helper.SavedPlayerAddictiveHpKey].Value = playerHp.AddictiveHp;
+            sessionFactory.Current[Helper.SavedPlayerMaxHpKey].Value = playerHp.MaxHp;
+            sessionFactory.Current[Helper.SavedPlayerMaxAddictiveHpKey].Value = playerHp.MaxAddictiveHp;
+            sessionFactory.Current[Helper.SavedPlayerGarbageKey].Value = garbageManager.GarbageBalance;
 
             levelManager.NextLevelAtEnd();
-            sessionFactory.Current[NewGameStarter.SavedLevelKey].Value = levelManager.CurrentLevel.ID;
+            sessionFactory.Current[Helper.SavedLevelKey].Value = levelManager.CurrentLevel.ID;
 
             if (levelManager.CurrentLevel.HasShop)
             {

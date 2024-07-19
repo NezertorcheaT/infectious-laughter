@@ -1,4 +1,4 @@
-using GameFlow;
+using CustomHelper;
 using Saving;
 using Shop;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace Installers
 
         public override void InstallBindings()
         {
-            var garbageManager = new GarbageManager((int)sessionFactory.Current[NewGameStarter.SavedPlayerGarbageKey].Value);
+            var garbageManager = new GarbageManager((int)sessionFactory.Current[Helper.SavedPlayerGarbageKey].Value);
             Container.Bind<GarbageManager>().FromInstance(garbageManager).AsSingle();
         }
     }

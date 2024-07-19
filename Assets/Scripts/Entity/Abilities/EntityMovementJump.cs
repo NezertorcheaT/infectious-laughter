@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CustomHelper;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
@@ -200,23 +201,26 @@ namespace Entity.Abilities
     }
 }
 
-public static class Helper
+namespace CustomHelper
 {
-    public static Vector2 Multiply(this Vector2 a, Vector2 b) => new Vector2(a.x * b.x, a.y * b.y);
-    public static Vector3 Multiply(this Vector3 a, Vector3 b) => new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
-    public static Vector2 Divide(this Vector2 a, Vector2 b) => new Vector2(a.x / b.x, a.y / b.y);
-    public static Vector3 Divide(this Vector3 a, Vector3 b) => new Vector3(a.x / b.x, a.y / b.y, a.z / b.z);
-
-
-    public static void DrawBox(Vector2 point, Vector2 size)
+    public static partial class Helper
     {
-        Debug.DrawLine(point + new Vector2(size.x / 2f, size.y / 2f),
-            point + new Vector2(-size.x / 2f, size.y / 2f));
-        Debug.DrawLine(point + new Vector2(-size.x / 2f, size.y / 2f),
-            point + new Vector2(-size.x / 2f, -size.y / 2f));
-        Debug.DrawLine(point + new Vector2(-size.x / 2f, -size.y / 2f),
-            point + new Vector2(size.x / 2f, -size.y / 2f));
-        Debug.DrawLine(point + new Vector2(size.x / 2f, -size.y / 2f),
-            point + new Vector2(size.x / 2f, size.y / 2f));
+        public static Vector2 Multiply(this Vector2 a, Vector2 b) => new Vector2(a.x * b.x, a.y * b.y);
+        public static Vector3 Multiply(this Vector3 a, Vector3 b) => new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
+        public static Vector2 Divide(this Vector2 a, Vector2 b) => new Vector2(a.x / b.x, a.y / b.y);
+        public static Vector3 Divide(this Vector3 a, Vector3 b) => new Vector3(a.x / b.x, a.y / b.y, a.z / b.z);
+
+
+        public static void DrawBox(Vector2 point, Vector2 size)
+        {
+            Debug.DrawLine(point + new Vector2(size.x / 2f, size.y / 2f),
+                point + new Vector2(-size.x / 2f, size.y / 2f));
+            Debug.DrawLine(point + new Vector2(-size.x / 2f, size.y / 2f),
+                point + new Vector2(-size.x / 2f, -size.y / 2f));
+            Debug.DrawLine(point + new Vector2(-size.x / 2f, -size.y / 2f),
+                point + new Vector2(size.x / 2f, -size.y / 2f));
+            Debug.DrawLine(point + new Vector2(size.x / 2f, -size.y / 2f),
+                point + new Vector2(size.x / 2f, size.y / 2f));
+        }
     }
 }

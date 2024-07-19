@@ -1,6 +1,6 @@
 using Cinemachine;
+using CustomHelper;
 using Entity.Abilities;
-using GameFlow;
 using Inventory;
 using Saving;
 using UnityEngine;
@@ -20,13 +20,13 @@ namespace Installers
         public override void InstallBindings()
         {
             player.GetComponent<EntityHp>().FromContent(
-                sessionFactory.Current[NewGameStarter.SavedPlayerHpKey],
-                sessionFactory.Current[NewGameStarter.SavedPlayerAddictiveHpKey],
-                sessionFactory.Current[NewGameStarter.SavedPlayerMaxHpKey],
-                sessionFactory.Current[NewGameStarter.SavedPlayerMaxAddictiveHpKey]
+                sessionFactory.Current[Helper.SavedPlayerHpKey],
+                sessionFactory.Current[Helper.SavedPlayerAddictiveHpKey],
+                sessionFactory.Current[Helper.SavedPlayerMaxHpKey],
+                sessionFactory.Current[Helper.SavedPlayerMaxAddictiveHpKey]
             );
 
-            JsonUtility.FromJsonOverwrite((string) sessionFactory.Current[NewGameStarter.SavedPlayerInventoryKey].Value, playerInventory);
+            JsonUtility.FromJsonOverwrite((string) sessionFactory.Current[Helper.SavedPlayerInventoryKey].Value, playerInventory);
 
             _adderVerifier = new ItemAdderVerifier(Container);
             var pl = new PlayerInstallation(player, playerInventory, _adderVerifier, playerCinemachineCamera);
