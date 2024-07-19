@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using Saving;
 using UnityEngine;
 using Zenject;
@@ -13,7 +14,7 @@ namespace Installers
             var configSaver = new ConfigFileSaver();
             var config = new Config(configSaver);
             string configText;
-            
+
             try
             {
                 configText = configSaver.Read(null);
@@ -30,6 +31,16 @@ namespace Installers
             var sessionSaver = new SessionFileSaver();
             var sessionCreator = new SessionFactory(sessionSaver);
             Container.Bind<SessionFactory>().FromInstance(sessionCreator).AsSingle().NonLazy();
+#if UNITY_EDITOR
+            //для запуска любых сцен в инспекторе
+            if (sessionCreator.GetAvailableSessionIDs().Count() == 0)
+            {
+                Debug.LogError("Вам нужно иметь хотя бы одно сохранение, нажмите Играть в сцене NewGameTest один раз");
+                return;
+            }
+
+            sessionCreator.LoadSession(sessionCreator.GetAvailableSessionIDs().First());
+#endif
         }
     }
 }
