@@ -4,7 +4,7 @@ using UnityEngine;
 using CustomHelper;
 using Random = System.Random;
 
-namespace Levels
+namespace Levels.Generation
 {
     public class LevelGenerator : MonoBehaviour
     {

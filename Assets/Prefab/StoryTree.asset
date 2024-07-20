@@ -31,10 +31,10 @@ MonoBehaviour:
     nextID1: 167a4b1ec2649e8409e6d891b4cdbf9f
     nextID2: 
   - id: 167a4b1ec2649e8409e6d891b4cdbf9f
-    visualName: init dupe 2
+    visualName: random!!!!! 2
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 1164, y: -15}
-    scene: 2
+    visualPosition: {x: 1178, y: -18}
+    scene: 3
     hasShop: 0
     nextID1: 8a759952316fe204897ac6de716f9b76
     nextID2: 
@@ -44,8 +44,16 @@ MonoBehaviour:
     visualPosition: {x: 1743.5626, y: 130.97813}
     scene: 2
     hasShop: 1
+    nextID1: e0264682861c1ec4284b2a6c6a65eb12
+    nextID2: 
+  - id: e0264682861c1ec4284b2a6c6a65eb12
+    visualName: random!!!!!
+    visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
+    visualPosition: {x: 993, y: 436}
+    scene: 3
+    hasShop: 1
     nextID1: 0
     nextID2: 
-  <Position>k__BackingField: {x: -1012, y: 204, z: 0}
-  <Scale>k__BackingField: {x: 1, y: 1, z: 1}
+  <Position>k__BackingField: {x: -214, y: 164, z: 0}
+  <Scale>k__BackingField: {x: 0.65751624, y: 0.65751624, z: 1}
   <Rotation>k__BackingField: {x: 0, y: 0, z: 0, w: 1}

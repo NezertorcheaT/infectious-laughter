@@ -9,7 +9,7 @@ namespace Inventory.Input
     [AddComponentMenu("Entity/Abilities/Inventory Picking Ability")]
     public class PlayerInventoryInput : Ability, IInventoryInput
     {
-        [Inject] private PlayerInstallation _player;
+        [Inject] private ItemAdderVerifier _itemAdderVerifier;
         [SerializeField] private ScriptableObject inventory;
 
         //Сделали его пабликом для того что бы можно было вызывать у боссов. Или у скилов.
@@ -23,7 +23,7 @@ namespace Inventory.Input
             foreach (var slot in Inventory.Slots)
             {
                 if (!(slot.LastItem is ICanSpawn i)) continue;
-                i.Verifier = _player.ItemAdderVerifier;
+                i.Verifier = _itemAdderVerifier;
             }
         }
 
@@ -33,7 +33,7 @@ namespace Inventory.Input
 
             if (inventoryItem is ICanSpawn i)
             {
-                i.Verifier = _player.ItemAdderVerifier;
+                i.Verifier = _itemAdderVerifier;
                 inventoryItem = i;
             }
 

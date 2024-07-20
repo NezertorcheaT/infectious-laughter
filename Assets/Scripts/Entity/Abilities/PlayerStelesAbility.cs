@@ -12,11 +12,7 @@ namespace Entity.Abilities
             get
             {
                 if (entityMovementCrouch is null) entityMovementCrouch = Entity.FindAbilityByType<EntityMovementCrouch>();
-
-                // Выполняем физическую проверку на наличие объекта под игроком
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 6);
-
-                return entityMovementCrouch.IsCrouching && hit.collider != null;
+                return entityMovementCrouch.IsCrouching && Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 6).collider != null;
             }
         }
     }

@@ -1,5 +1,4 @@
 using Cinemachine;
-using Installers;
 using UnityEngine;
 using Zenject;
 
@@ -8,8 +7,8 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/PlayerGetCamera Ability")]
     public class PlayerGetCamera : Ability
     {
-        [Inject] private PlayerInstallation _playerInstallation;
+        [Inject] private CinemachineVirtualCamera _camera;
 
-        public CinemachineVirtualCamera Camera => _playerInstallation.ViewCamera;
+        public CinemachineVirtualCamera Camera => _camera;
     }
 }

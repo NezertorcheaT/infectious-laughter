@@ -16,7 +16,7 @@ namespace Entity.Abilities
         [SerializeField] private float shakingProgressionRate = 1;
         [SerializeField] private float speedMultiplier = 0.5f;
 
-        [Inject] private PlayerInstallation _player;
+        [Inject] private CinemachineVirtualCamera _camera;
         private EntityLightResponsiveAbility _responsive;
         private EntityMovementHorizontalMove _movement;
 
@@ -31,7 +31,7 @@ namespace Entity.Abilities
             _responsive = Entity.FindAvailableAbilityByInterface<EntityLightResponsiveAbility>();
             _movement = Entity.FindAvailableAbilityByInterface<EntityMovementHorizontalMove>();
 
-            _cinemachineVirtualCamera = _player.ViewCamera;
+            _cinemachineVirtualCamera = _camera;
             _cinemachineShaker =
                 _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
