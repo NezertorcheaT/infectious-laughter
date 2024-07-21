@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948b0d6de30b7ed46b790952696272fc, type: 3}
   m_Name: AnalysingDrone Item
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: b33feb0890cab724d8b7fc269c040f77, type: 3}
+  sprite: {fileID: 21300000, guid: 1099ab8b357e5bc449a2371b2379e6cf, type: 3}
   timerUseMax: 10
   itemCost: 10
   cameraDistanse: 10
