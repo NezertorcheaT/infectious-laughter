@@ -1,7 +1,7 @@
 using System;
-using System.Reflection;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using Entity.Abilities;
 using Entity.States;
 using UnityEngine;
 
@@ -12,7 +12,8 @@ namespace Entity.Controllers
     public class ControllerAI : Controller
     {
         [SerializeField] private StateTree stateTree;
-        private IStateTree<State> _stateTree => stateTree;
+        [SerializeField] private EntityHostileDetection hostileDetection;
+        private IStateTree<State> StateTree => stateTree;
         private bool _stateCycleDestroy;
 
         public override void Initialize()
@@ -27,26 +28,10 @@ namespace Entity.Controllers
         public string CurrentStateID { get; private set; }
         public event Action<State> OnStateActivating;
 
-        private FieldInfo GetStateEditField(Type type, Type editType)
-        {
-            foreach (var field in type.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
-            {
-                if (field.FieldType.AssemblyQualifiedName != editType.AssemblyQualifiedName) continue;
-                foreach (var attributeData in field.CustomAttributes)
-                {
-                    if (attributeData.AttributeType.AssemblyQualifiedName ==
-                        typeof(StateEditAttribute).AssemblyQualifiedName)
-                        return field;
-                }
-            }
-
-            return null;
-        }
-
         private async void StateCycle()
         {
             State previous;
-            CurrentState = _stateTree.First();
+            CurrentState = StateTree.First();
             CurrentStateID = "0";
 
             while (true)
@@ -62,26 +47,29 @@ namespace Entity.Controllers
                 OnStateActivating?.Invoke(CurrentState);
                 if (
                     CurrentState is IEditableState editableState &&
-                    _stateTree is IStateTreeWithEdits stateTreeWithEdits
+                    StateTree is IStateTreeWithEdits stateTreeWithEdits
                 )
                 {
                     var edit = stateTreeWithEdits.GetEdit(CurrentStateID);
-                    GetStateEditField
+                    StateEditAttribute.GetStateEditField
                     (
                         CurrentState.GetType(),
                         editableState.GetTypeOfEdit()
                     )?.SetValue(CurrentState, edit);
                 }
 
+                if (CurrentState is IRelationfullState relationfullState)
+                    relationfullState.HostileDetection = hostileDetection;
+
                 var t = await CurrentState.Activate(
                     Entity,
                     previous
                 );
 
-                if (!_stateTree.IsNextsTo(CurrentStateID)) return;
+                if (!StateTree.IsNextsTo(CurrentStateID)) return;
 
-                CurrentStateID = _stateTree.GetNextsTo(CurrentStateID)[t];
-                CurrentState = _stateTree.GetState(CurrentStateID);
+                CurrentStateID = StateTree.GetNextsTo(CurrentStateID)[t];
+                CurrentState = StateTree.GetState(CurrentStateID);
             }
         }
 

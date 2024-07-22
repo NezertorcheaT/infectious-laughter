@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3693047799365218579}
   - component: {fileID: 3693047799365218578}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,9 +109,10 @@ GameObject:
   - component: {fileID: 3693047800681384994}
   - component: {fileID: 3693047800681385005}
   - component: {fileID: -1049219384964266344}
+  - component: {fileID: 4591081283101944266}
   - component: {fileID: 3693047800681385019}
   - component: {fileID: 3693047800681385016}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Player Entity
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -395,6 +396,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c9b540f09b9334b83ddf0de7ea3cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4591081283101944266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693047800681385021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebf05c3e30e4e06b922a887c208d495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Entity.Relationships.Fractions.PlayerFraction, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
 --- !u!61 &3693047800681385019
 BoxCollider2D:
   m_ObjectHideFlags: 0

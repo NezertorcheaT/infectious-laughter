@@ -28,7 +28,7 @@ namespace Entity.Abilities
 
         public void Move(float velocity)
         {
-            if (!Available() || Mathf.Abs(_rb.velocity.x) > speed) return;
+            if (!Available()) return;
             Turn = velocity == 0 ? Turn : velocity > 0;
             _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
         }

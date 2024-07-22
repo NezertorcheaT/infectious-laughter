@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Entity.Abilities
 {
-    [AddComponentMenu("Entity/Abilities/PlayerGetCamera Ability")]
+    [AddComponentMenu("Entity/Abilities/Player Get Camera Ability")]
     public class PlayerGetCamera : Ability
     {
         [Inject] private CinemachineVirtualCamera _camera;

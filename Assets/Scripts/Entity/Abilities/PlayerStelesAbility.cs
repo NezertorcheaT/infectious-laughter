@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Entity.Abilities
 {
-    [AddComponentMenu("Entity/Abilities/PlayerSteles Ability")]
+    [AddComponentMenu("Entity/Abilities/Player Steles Ability")]
     public class PlayerStelesAbility : Ability
     {
         EntityMovementCrouch entityMovementCrouch;
@@ -11,7 +11,7 @@ namespace Entity.Abilities
         {
             get
             {
-                if (entityMovementCrouch is null) entityMovementCrouch = Entity.FindAbilityByType<EntityMovementCrouch>();
+                entityMovementCrouch ??= Entity.FindAbilityByType<EntityMovementCrouch>();
                 return entityMovementCrouch.IsCrouching && Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 6).collider != null;
             }
         }

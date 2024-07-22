@@ -1,4 +1,3 @@
-using CustomHelper;
 using Entity.Abilities;
 using Entity.States.StateObjects.Edits;
 using System;
@@ -8,57 +7,39 @@ using UnityEngine;
 namespace Entity.States.StateObjects
 {
     [CreateAssetMenu(fileName = "Chase State", menuName = "AI Nodes/States/Chase State", order = 0)]
-    public class ChaseState : State, IEditableState
+    public class ChaseState : State, IEditableState, IRelationfullState
     {
         [StateEdit] private ChaseStateEdit properties;
 
         public override string Name => "Chase";
 
+        public EntityHostileDetection HostileDetection { get; set; }
+
         public override async Task<int> Activate(Entity entity, State previous)
         {
             var edit = properties;
+            var hostileDetector = HostileDetection;
             var nextId = edit.next;
-            var collider2d = entity.GetComponent<Collider2D>();
             var moveAbility = entity.FindAbilityByType<EntityMovementHorizontalMove>();
             var direction = edit.initialDirection;
-            Vector3 lastSeenPosition = Vector3.zero;
-            bool playerInSight = false;
+            var playerInSight = false;
+            var lastSeenPosition = Vector3.zero;
 
             if (!moveAbility) return nextId;
 
-            for (; ; )
+            for (;;)
             {
                 if (!entity) break;
                 await Task.Yield();
 
-
-                // Проверка игрока в поле зрения
-                RaycastHit2D hit = Physics2D.Raycast(entity.transform.position, direction ? Vector2.right : Vector2.left, edit.visionDistance, edit.playerLayer);
-
-
-                var ray = new Ray(entity.transform.position + (Vector3)collider2d.offset + collider2d.bounds.size.Multiply(new Vector3(direction ? 1 : -1, -1f / 2f, 1)), Vector3.down);
-                Debug.DrawRay(ray.origin, ray.direction * edit.rayDistance);
-
-
-                // Отрисовка луча для отладки
-                Vector2 rayDirection = direction ? Vector2.right : Vector2.left;
-                Debug.DrawRay(entity.transform.position, rayDirection * edit.visionDistance, Color.red);
-
-                if (hit.collider != null && Physics2D.Raycast(ray.origin, ray.direction, edit.rayDistance, edit.groundLayer))
-                {
-                    playerInSight = true;
-                    lastSeenPosition = hit.point;
-                }
-                else
-                {
-                    playerInSight = false;
-                }
+                hostileDetector.direction = direction;
+                var (playerEntity, hostileLastSeenPosition) = hostileDetector.Hostile;
+                lastSeenPosition = hostileLastSeenPosition ?? lastSeenPosition;
 
                 // Если игрок в поле зрения
-                if (playerInSight)
+                if (playerEntity)
                 {
-                    if (!Physics2D.Raycast(ray.origin, ray.direction, edit.rayDistance, edit.groundLayer)) { break; }
-                    direction = (hit.point.x > entity.transform.position.x);
+                    direction = lastSeenPosition.x < entity.transform.position.x;
                     moveAbility.Move(direction ? 1 : -1);
                 }
                 else
@@ -66,8 +47,13 @@ namespace Entity.States.StateObjects
                     // Если игрок не в поле зрения, двигаться к последней видимой точке
                     if (Vector3.Distance(entity.transform.position, lastSeenPosition) > 0.1f)
                     {
-                        if(!Physics2D.Raycast(ray.origin, ray.direction, edit.rayDistance, edit.groundLayer)){ moveAbility.Move(0); break; }
-                        direction = entity.transform.position.x < lastSeenPosition.x;
+                        if (Math.Abs(entity.transform.position.x - lastSeenPosition.x) < 0.1f)
+                        {
+                            moveAbility.Move(0);
+                            break;
+                        }
+
+                        direction = lastSeenPosition.x > entity.transform.position.x;
                         moveAbility.Move(direction ? 1 : -1);
                     }
                     else

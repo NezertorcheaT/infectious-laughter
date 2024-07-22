@@ -1473,7 +1473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.309982, y: -0.24274999, z: -12.3}
+  m_LocalPosition: {x: -25.309996, y: -0.24274999, z: -12.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2178,7 +2178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383827548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.77, y: -1.29, z: 0}
+  m_LocalPosition: {x: -25.31, y: -1.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2233,6 +2233,8 @@ GameObject:
   - component: {fileID: 1458251036}
   - component: {fileID: 1458251035}
   - component: {fileID: 1458251037}
+  - component: {fileID: 1458251038}
+  - component: {fileID: 1458251039}
   - component: {fileID: 1458251028}
   - component: {fileID: 1458251027}
   m_Layer: 3
@@ -2383,7 +2385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f980b388d794d14692c12ef627b275c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateTree: {fileID: 11400000, guid: 869803a2b29dec244b094af343bd67bd, type: 2}
+  stateTree: {fileID: 11400000, guid: f205d270fd849a749828b60153bf5d34, type: 2}
+  hostileDetection: {fileID: 1458251038}
 --- !u!114 &1458251033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,6 +2458,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <NewGravityScale>k__BackingField: -0.02
+--- !u!114 &1458251038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458251026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679d9958b02b49a588347d1bc9138566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityMainCollider: {fileID: 1458251028}
+  range: 5
+  rangeIfHidden: 2.5
+  direction: 0
+--- !u!114 &1458251039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458251026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebf05c3e30e4e06b922a887c208d495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Entity.Relationships.Fractions.MutantsFraction, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
 --- !u!1 &1478113458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,6 +3623,8 @@ GameObject:
   - component: {fileID: 1974376991}
   - component: {fileID: 1974376990}
   - component: {fileID: 1974376992}
+  - component: {fileID: 1974376993}
+  - component: {fileID: 1974376994}
   - component: {fileID: 1974376983}
   - component: {fileID: 1974376982}
   m_Layer: 3
@@ -3725,6 +3760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateTree: {fileID: 11400000, guid: f205d270fd849a749828b60153bf5d34, type: 2}
+  hostileDetection: {fileID: 1974376993}
 --- !u!114 &1974376987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3812,6 +3848,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <NewGravityScale>k__BackingField: -0.02
+--- !u!114 &1974376993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974376981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679d9958b02b49a588347d1bc9138566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityMainCollider: {fileID: 1974376983}
+  range: 5
+  rangeIfHidden: 2.5
+  direction: 0
+--- !u!114 &1974376994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974376981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebf05c3e30e4e06b922a887c208d495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Entity.Relationships.Fractions.MutantsFraction, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
 --- !u!1 &1983229250
 GameObject:
   m_ObjectHideFlags: 0

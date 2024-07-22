@@ -87,22 +87,45 @@ namespace Entity
         private void LateUpdate() => OnLateUpdate?.Invoke();
 
         /// <summary>
+        /// ищем значт одну способность удовлетворяющую тип Т
+        /// </summary>
+        /// <typeparam name="T">тип способности</typeparam>
+        /// <returns>способность этого типа</returns>
+        public T FindAbilityByType<T>() where T : IInitializeByEntity => FindAbilitiesByType<T>().FirstOrDefault();
+
+        /// <summary>
         /// ищем значт одну способность конкретного типа
         /// </summary>
         /// <typeparam name="T">тип способности</typeparam>
         /// <returns>способность этого типа</returns>
-        public T FindAbilityByType<T>() where T : Ability => FindAbilitiesByType<T>().FirstOrDefault();
+        public T FindExactAbilityByType<T>() where T : IInitializeByEntity =>
+            FindExactAbilitiesByType<T>().FirstOrDefault();
+
+        /// <summary>
+        /// ищем значт все способности удовлетворяющие тип Т
+        /// </summary>
+        /// <typeparam name="T">тип способностей</typeparam>
+        /// <returns>способности этого типа</returns>
+        public IEnumerable<T> FindAbilitiesByType<T>() where T : IInitializeByEntity
+        {
+            foreach (var ability in Abilities)
+            {
+                if (ability is T t)
+                    yield return t;
+            }
+        }
 
         /// <summary>
         /// ищем значт все способности конкретного типа
         /// </summary>
         /// <typeparam name="T">тип способностей</typeparam>
         /// <returns>способности этого типа</returns>
-        public IEnumerable<T> FindAbilitiesByType<T>() where T : Ability
+        public IEnumerable<T> FindExactAbilitiesByType<T>() where T : IInitializeByEntity
         {
             foreach (var ability in Abilities)
             {
-                if (ability.GetType() == typeof(T)) yield return (T) ability;
+                if (ability is T t && typeof(T).AssemblyQualifiedName == ability.GetType().AssemblyQualifiedName)
+                    yield return t;
             }
         }
 

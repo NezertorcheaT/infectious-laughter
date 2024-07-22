@@ -24,12 +24,12 @@ namespace Entity.Controllers
         public override void Initialize()
         {
             base.Initialize();
-            _entityGarbage = Entity.FindAbilityByType<EntityGarbage>();
+            _entityGarbage = Entity.FindExactAbilityByType<EntityGarbage>();
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
-            _movementDowning = Entity.FindAbilityByType<EntityMovementDowning>();
-            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
-            _dashAbility = Entity.FindAbilityByType<DashAbility>();
+            _movementDowning = Entity.FindExactAbilityByType<EntityMovementDowning>();
+            _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
+            _dashAbility = Entity.FindExactAbilityByType<DashAbility>();
             
             OnEnable();
         }

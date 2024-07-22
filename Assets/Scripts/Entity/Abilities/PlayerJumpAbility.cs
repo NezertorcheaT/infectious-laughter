@@ -25,8 +25,8 @@ namespace Entity.Abilities
         private void Start()
         {
             _playerRb = GetComponent<Rigidbody2D>();
-            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
-            _movementDowning = Entity.FindAbilityByType<EntityMovementDowning>();
+            _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
+            _movementDowning = Entity.FindExactAbilityByType<EntityMovementDowning>();
             _jumpCountActive = jumpCount;
         }
 

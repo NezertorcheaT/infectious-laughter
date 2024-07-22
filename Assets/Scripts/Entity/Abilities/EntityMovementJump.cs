@@ -48,7 +48,7 @@ namespace Entity.Abilities
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<Collider2D>();
-            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
+            _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
 
             curJumpsCount = jumpsCount;
         }
@@ -213,6 +213,7 @@ namespace CustomHelper
 
         public static void DrawBox(Vector2 point, Vector2 size)
         {
+#if UNITY_EDITOR
             Debug.DrawLine(point + new Vector2(size.x / 2f, size.y / 2f),
                 point + new Vector2(-size.x / 2f, size.y / 2f));
             Debug.DrawLine(point + new Vector2(-size.x / 2f, size.y / 2f),
@@ -221,6 +222,7 @@ namespace CustomHelper
                 point + new Vector2(size.x / 2f, -size.y / 2f));
             Debug.DrawLine(point + new Vector2(size.x / 2f, -size.y / 2f),
                 point + new Vector2(size.x / 2f, size.y / 2f));
+#endif
         }
     }
 }
