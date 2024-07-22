@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5692480145727890999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b627d0a7c6633ca44b8d98e5c71a9c62, type: 3}
+  m_Name: Properies(Chase.ChaseStateEdit) of State(bfcdb2892e623084eac5852b12747f4a)
+    of Tree("New State Tree")
+  m_EditorClassIdentifier: 
+  rayDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  initialDirection: 0
+  next: 0
+  visionDistance: 10
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-1465087275680774659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,6 +42,10 @@ MonoBehaviour:
     m_Bits: 1
   initialDirection: 0
   next: 0
+  visionDistance: 3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,30 +60,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - id: 0
-    position: {x: 0, y: 0}
+    position: {x: -40.289646, y: -28.799973}
     state: {fileID: 11400000, guid: 4c0c8f86bb97e5a40afdf4c71f78e669, type: 2}
     nexts:
     - a9437c7993dea114d95c11dd56f68a72
   - id: a9437c7993dea114d95c11dd56f68a72
-    position: {x: 112, y: 0}
+    position: {x: 69.707664, y: -28.800003}
     state: {fileID: 11400000, guid: 917d2f3ed691df44490f31a582fb314a, type: 2}
-    nexts:
-    - aae96ee8444da0b45afd43c53a62252b
-  - id: aae96ee8444da0b45afd43c53a62252b
-    position: {x: 226, y: 0}
-    state: {fileID: 11400000, guid: 998f51bc49d7c35458b777e361133ef0, type: 2}
     nexts:
     - db44149061f7b884397ebc2356e11c7d
   - id: db44149061f7b884397ebc2356e11c7d
-    position: {x: 338.16, y: 0}
+    position: {x: 174.30916, y: -29.02958}
     state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
+    nexts: []
+  - id: 47e5ccf0544afff4f8e92fc249c13798
+    position: {x: 326.64438, y: 76.79995}
+    state: {fileID: 11400000, guid: 917d2f3ed691df44490f31a582fb314a, type: 2}
+    nexts:
+    - db44149061f7b884397ebc2356e11c7d
+  - id: bfcdb2892e623084eac5852b12747f4a
+    position: {x: 0, y: 0}
+    state: {fileID: 11400000, guid: 4262e719321da5e438c962b8400904be, type: 2}
     nexts: []
   edits:
   - id: a9437c7993dea114d95c11dd56f68a72
     edit: {fileID: 7222351087953771080}
   - id: db44149061f7b884397ebc2356e11c7d
     edit: {fileID: -1465087275680774659}
+  - id: 47e5ccf0544afff4f8e92fc249c13798
+    edit: {fileID: 610919633820237826}
+  - id: bfcdb2892e623084eac5852b12747f4a
+    edit: {fileID: -5692480145727890999}
   unsaved: 0
+--- !u!114 &610919633820237826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca9a3ec5c0140e49373e74866b9140f, type: 3}
+  m_Name: Properies(Wait.WaitStateEdit) of State(47e5ccf0544afff4f8e92fc249c13798)
+    of Tree("New State Tree")
+  m_EditorClassIdentifier: 
+  time: 2
 --- !u!114 &7222351087953771080
 MonoBehaviour:
   m_ObjectHideFlags: 0
