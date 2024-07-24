@@ -1,4 +1,5 @@
 ﻿using Installers;
+using Saving;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,12 +12,14 @@ namespace Inventory.UI
     {
         [Inject] private Controls _actions;
         [Inject] private PlayerInstallation _player;
+        [Inject] private SessionFactory _sessionFactory;
         [SerializeField] private HorizontalLayoutGroup inventoryBase;
         [SerializeField, Min(1)] private float imageSize;
         private int _selection;
 
         private void Start()
         {
+            _selection = (int)_sessionFactory.Current[SavedKeys.PlayerInventorySelection].Value;
             UpdateGUI();
         }
 
@@ -66,6 +69,7 @@ namespace Inventory.UI
         private void SelectSlot(int slot)
         {
             _selection = (int) Mathf.Repeat(slot, _player.Inventory.MaxCapacity);
+            _sessionFactory.Current[SavedKeys.PlayerInventorySelection].Value = _selection;
             UpdateGUI();
         }
 

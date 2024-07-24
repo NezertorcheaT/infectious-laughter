@@ -11,6 +11,7 @@ namespace Saving
     public class SessionFactory
     {
         private SessionFileSaver _saver;
+
         /// <summary>
         /// загруженная сейчас сессия
         /// </summary>
@@ -49,6 +50,9 @@ namespace Saving
         /// <exception cref="ArgumentException">сессия по id не существует</exception>
         public Session LoadSession(string ID)
         {
+#if UNITY_EDITOR
+            Debug.Log(SessionFileSaver.CreatePath(ID));
+#endif
             if (!GetAvailableSessionIDs().ToArray().Contains(ID))
                 throw new ArgumentException($"Session '{ID}' does not exist");
             var session = new Session().Deconvert(_saver.Read(SessionFileSaver.CreatePath(ID)), _saver) as Session;

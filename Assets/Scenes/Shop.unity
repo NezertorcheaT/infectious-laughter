@@ -833,6 +833,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 047a51507c32ccb47845b6c605952d26, type: 2}
   - {fileID: 11400000, guid: 4fea7f1710cd2544390c03ddf61927a7, type: 2}
   - {fileID: 11400000, guid: cdc8739b4c99c1e44bb0bd3c0591501c, type: 2}
+  - {fileID: 11400000, guid: 08074da7347d39e409477cde94809145, type: 2}
   - {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
   inventoryShop: {fileID: 11400000, guid: e30537309a1269849b1d4def2b5b80e1, type: 2}
   shopUi: {fileID: 1809675318}
@@ -2094,7 +2095,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653027182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.065826, y: -0.24274999, z: -10}
+  m_LocalPosition: {x: -27.065825, y: -0.24274999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

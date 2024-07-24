@@ -1,5 +1,4 @@
 using System;
-using CustomHelper;
 using GameFlow;
 using Levels.StoryNodes;
 using Saving;
@@ -27,7 +26,7 @@ namespace Levels
             sessionUpdater.UpdateCurrentSessionData();
             
             levelManager.NextLevelAtMiddle();
-            sessionFactory.Current[Helper.SavedLevelKey].Value = levelManager.CurrentLevel.ID;
+            sessionFactory.Current[SavedKeys.Level].Value = levelManager.CurrentLevel.ID;
             sessionFactory.SaveCurrentSession();
             saveLoader.LoadSave(sessionFactory.Current.ID);
         }
@@ -39,7 +38,7 @@ namespace Levels
             sessionUpdater.UpdateCurrentSessionData();
 
             levelManager.NextLevelAtEnd();
-            sessionFactory.Current[Helper.SavedLevelKey].Value = levelManager.CurrentLevel.ID;
+            sessionFactory.Current[SavedKeys.Level].Value = levelManager.CurrentLevel.ID;
 
             if (levelManager.CurrentLevel.HasShop)
             {

@@ -41,13 +41,13 @@ namespace Installers
                 _playerCinemachineCamera.ForceCameraPosition(player.CachedTransform.position, Quaternion.identity);
 
             player.GetComponent<EntityHp>().FromContent(
-                _sessionFactory.Current[Helper.SavedPlayerHpKey],
-                _sessionFactory.Current[Helper.SavedPlayerAddictiveHpKey],
-                _sessionFactory.Current[Helper.SavedPlayerMaxHpKey],
-                _sessionFactory.Current[Helper.SavedPlayerMaxAddictiveHpKey]
+                _sessionFactory.Current[SavedKeys.PlayerHp],
+                _sessionFactory.Current[SavedKeys.PlayerAddictiveHp],
+                _sessionFactory.Current[SavedKeys.PlayerMaxHp],
+                _sessionFactory.Current[SavedKeys.PlayerMaxAddictiveHp]
             );
 
-            JsonUtility.FromJsonOverwrite((string) _sessionFactory.Current[Helper.SavedPlayerInventoryKey].Value,
+            JsonUtility.FromJsonOverwrite((string) _sessionFactory.Current[SavedKeys.PlayerInventory].Value,
                 playerInventory);
 
             var pl = new PlayerInstallation(player, playerInventory);

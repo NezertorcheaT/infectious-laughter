@@ -1,5 +1,4 @@
-﻿using CustomHelper;
-using Entity.Abilities;
+﻿using Entity.Abilities;
 using Installers;
 using Saving;
 using Shop;
@@ -17,12 +16,12 @@ namespace Levels
         public void UpdateCurrentSessionData()
         {
             var playerHp = player.Entity.FindAbilityByType<EntityHp>();
-            sessionFactory.Current[Helper.SavedPlayerInventoryKey].Value = JsonUtility.ToJson(player.Inventory);
-            sessionFactory.Current[Helper.SavedPlayerHpKey].Value = playerHp.Hp - playerHp.AddictiveHp;
-            sessionFactory.Current[Helper.SavedPlayerAddictiveHpKey].Value = playerHp.AddictiveHp;
-            sessionFactory.Current[Helper.SavedPlayerMaxHpKey].Value = playerHp.MaxHp;
-            sessionFactory.Current[Helper.SavedPlayerMaxAddictiveHpKey].Value = playerHp.MaxAddictiveHp;
-            sessionFactory.Current[Helper.SavedPlayerGarbageKey].Value = garbageManager.GarbageBalance;
+            sessionFactory.Current[SavedKeys.PlayerInventory].Value = JsonUtility.ToJson(player.Inventory);
+            sessionFactory.Current[SavedKeys.PlayerHp].Value = playerHp.Hp - playerHp.AddictiveHp;
+            sessionFactory.Current[SavedKeys.PlayerAddictiveHp].Value = playerHp.AddictiveHp;
+            sessionFactory.Current[SavedKeys.PlayerMaxHp].Value = playerHp.MaxHp;
+            sessionFactory.Current[SavedKeys.PlayerMaxAddictiveHp].Value = playerHp.MaxAddictiveHp;
+            sessionFactory.Current[SavedKeys.PlayerGarbage].Value = garbageManager.GarbageBalance;
         }
     }
 }

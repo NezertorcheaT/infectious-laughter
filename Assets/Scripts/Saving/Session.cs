@@ -65,7 +65,10 @@ namespace Saving
             {
                 new Vector2Converter(),
                 new Vector3Converter(),
-            }
+            },
+#if UNITY_EDITOR
+            WriteIndented = true,
+#endif
         };
 
         private Dictionary<string, Content> _container;

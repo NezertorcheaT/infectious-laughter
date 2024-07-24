@@ -19,8 +19,8 @@ namespace Installers
         public override void InstallBindings()
         {
             ender.OnDone += InjectToSpawned;
-            generator.seed = (Helper.SaveCorruptCheck(_sessionFactory.Current)
-                                 ? (string) _sessionFactory.Current[Helper.SavedSeed].Value
+            generator.seed = (_sessionFactory.Current.SaveCorruptCheck()
+                                 ? (string) _sessionFactory.Current[SavedKeys.Seed].Value
                                  : "пени") +
                              _levelManager.LevelsPassCount +
                              _levelManager.CurrentLevel.ID;

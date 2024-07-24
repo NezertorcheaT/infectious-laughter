@@ -13,7 +13,7 @@ namespace Installers
 
         public override void InstallBindings()
         {
-            var garbageManager = new GarbageManager((int)sessionFactory.Current[Helper.SavedPlayerGarbageKey].Value);
+            var garbageManager = new GarbageManager((int)sessionFactory.Current[SavedKeys.PlayerGarbage].Value);
             Container.Bind<GarbageManager>().FromInstance(garbageManager).AsSingle();
         }
     }

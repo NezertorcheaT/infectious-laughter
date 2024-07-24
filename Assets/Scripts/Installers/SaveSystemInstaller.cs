@@ -33,7 +33,7 @@ namespace Installers
             Container.Bind<SessionFactory>().FromInstance(sessionCreator).AsSingle().NonLazy();
 #if UNITY_EDITOR
             //для запуска любых сцен в инспекторе
-            if (sessionCreator.GetAvailableSessionIDs().Count() == 0)
+            if (!sessionCreator.GetAvailableSessionIDs().Any())
             {
                 Debug.LogError("Вам нужно иметь хотя бы одно сохранение, нажмите Играть в сцене NewGameTest один раз");
                 return;
