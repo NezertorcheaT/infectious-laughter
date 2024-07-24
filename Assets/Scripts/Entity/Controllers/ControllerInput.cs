@@ -20,6 +20,7 @@ namespace Entity.Controllers
         private EntityMovementDowning _movementDowning;
         private CollideCheck _collideCheck;
         private DashAbility _dashAbility;
+        private MovementCameraFollowPointAbility _movementFollowPoint;
 
         public override void Initialize()
         {
@@ -30,6 +31,7 @@ namespace Entity.Controllers
             _movementDowning = Entity.FindExactAbilityByType<EntityMovementDowning>();
             _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
             _dashAbility = Entity.FindExactAbilityByType<DashAbility>();
+            _movementFollowPoint = Entity.FindAbilityByType<MovementCameraFollowPointAbility>();
             
             OnEnable();
         }
@@ -70,6 +72,7 @@ namespace Entity.Controllers
         private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Jump();
         private void DashOnPerformed(InputAction.CallbackContext ctx) => _dashAbility.Dash();
 
+
         private bool _hangingRight;
         private bool _hangingLeft;
         private float _input;
@@ -79,6 +82,8 @@ namespace Entity.Controllers
             _input = _actions.Gameplay.Move.ReadValue<float>();
             _moveAbility.Move(_input);
             _movementDowning.WallDowning(_input);
+            _movementFollowPoint.MovePoint(_input);
         }
+
     }
 }
