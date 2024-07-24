@@ -18,7 +18,6 @@ namespace Inventory.Items
         [SerializeField] private Sprite sprite;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
-        [Inject] private Camera _playerCamera;
 
         private Entity.Abilities.MovementCameraFollowPointAbility _movementFollowPointAbility = null;
 
