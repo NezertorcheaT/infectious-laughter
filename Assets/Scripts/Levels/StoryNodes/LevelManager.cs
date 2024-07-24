@@ -4,6 +4,8 @@ namespace Levels.StoryNodes
     {
         public int Shop { get; private set; }
 
+        public int LevelsPassCount { get; private set; }
+
         public StoryTree.Node CurrentLevel
         {
             get => _currentLevel;
@@ -24,16 +26,19 @@ namespace Levels.StoryNodes
 
         public void NextLevelAtMiddle()
         {
+            LevelsPassCount++;
             CurrentLevel = _tree.GetState(_tree.GetPort2(CurrentLevel.ID));
         }
 
         public void NextLevelAtEnd()
         {
+            LevelsPassCount++;
             CurrentLevel = _tree.GetState(_tree.GetPort1(CurrentLevel.ID));
         }
 
         public void SetLevel(string id)
         {
+            LevelsPassCount++;
             CurrentLevel = _tree.GetState(id);
         }
 
@@ -44,6 +49,7 @@ namespace Levels.StoryNodes
 
         public void Reset()
         {
+            LevelsPassCount = 0;
             CurrentLevel = _tree.First();
         }
     }

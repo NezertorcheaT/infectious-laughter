@@ -86,6 +86,8 @@ namespace CustomHelper
     public static partial class Helper
     {
         public static Vector3 ToVector3(this Vector2 vec) => new Vector3(vec.x, vec.y, 0);
-        public static Vector3Int ToVector3(this Vector2Int vec) => new Vector3Int(vec.x, vec.y, 0);
+        public static Vector3 ToVector3(this Vector2Int vec) => new Vector3(vec.x, vec.y, 0);
+        public static Vector3 ToVector3(this Vector3Int vec) => new Vector3(vec.x, vec.y, vec.z);
+        public static Vector2Int ToVector2(this Vector2Int vec) => new Vector2Int(vec.x, vec.y);
     }
 }

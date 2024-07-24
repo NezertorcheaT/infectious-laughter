@@ -96,6 +96,13 @@ namespace Saving
         public Content this[string key] => _container[key];
 
         /// <summary>
+        /// записан ли контент по ключу
+        /// </summary>
+        /// <param name="key">ключ контента</param>
+        /// <returns>существует ли записанный контент по ключу</returns>
+        public bool Has(string key) => _container.ContainsKey(key);
+
+        /// <summary>
         /// добавить новую запись в сессию
         /// </summary>
         /// <param name="content">контент записи</param>
