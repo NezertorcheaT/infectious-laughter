@@ -9,7 +9,7 @@ namespace Entity.Abilities
         [SerializeField] private Transform followPoint;
 
         [SerializeField] private float maxRange;
-        [SerializeField] private bool _locked = true;
+        private bool _locked = true;
         [SerializeField] private float speed;
 
         [SerializeField] private EntityMovementHorizontalMove MovementAbility;
