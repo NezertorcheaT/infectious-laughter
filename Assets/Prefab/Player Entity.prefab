@@ -470,10 +470,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followPoint: {fileID: 3188079459339664556}
   maxRange: 3
-  _locked: 1
   speed: 2
-  MovementAbility: {fileID: 3693047800681385017}
-  JumpAbility: {fileID: 3693047800681384993}
+  movementAbility: {fileID: 0}
+  jumpAbility: {fileID: 0}
 --- !u!61 &3693047800681385019
 BoxCollider2D:
   m_ObjectHideFlags: 0

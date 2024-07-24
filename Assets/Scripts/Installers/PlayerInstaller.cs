@@ -18,7 +18,6 @@ namespace Installers
         [SerializeField] private bool teleportCamera;
         [SerializeField] private PlayerSpawnPoint spawnPoint;
         [SerializeField] private ProceduralGenerationEnderInstaller proceduralGenerationEnder;
-        [SerializeField] private Transform cameraFollowPoint;
         [Inject] private SessionFactory _sessionFactory;
         [Inject] private CinemachineVirtualCamera _playerCinemachineCamera;
 
@@ -31,7 +30,6 @@ namespace Installers
                 Quaternion.identity, null
             ).GetComponent<Entity.Entity>();
 
-            cameraFollowPoint ??= FindObjectOfType<CameraFollowPoint>().transform;
             player.gameObject.SetActive(true);
 
             _playerCinemachineCamera.Follow = player.transform.GetChild(1);

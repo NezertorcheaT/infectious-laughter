@@ -538,7 +538,6 @@ GameObject:
   - component: {fileID: 198988561}
   - component: {fileID: 198988562}
   - component: {fileID: 198988563}
-  - component: {fileID: 198988565}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -622,7 +621,6 @@ MonoBehaviour:
   - {fileID: 198988556}
   - {fileID: 198988562}
   - {fileID: 198988561}
-  - {fileID: 198988565}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -704,19 +702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917d5f7880559334695103aabad91e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &198988565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198988554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a561023f3f1c696468ee35a002c0cf36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 519420031}
 --- !u!1 &223735065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.30999, y: -0.24274999, z: -12.3}
+  m_LocalPosition: {x: -25.309984, y: -0.24274999, z: -12.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2294,7 +2279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383827548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.31, y: -1.29, z: 0}
+  m_LocalPosition: {x: -10.26, y: -1.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
