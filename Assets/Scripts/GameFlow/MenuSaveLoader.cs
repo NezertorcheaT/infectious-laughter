@@ -18,7 +18,8 @@ namespace GameFlow
         public void LoadSave(string id)
         {
             sessionFactory.LoadSession(id);
-            sessionFactory.Current.SaveCorruptCheck();
+            if(!sessionFactory.Current.SaveCorruptCheck())
+                sessionFactory.Current.InitializeWithDefaultsIfNot();
             levelManager.SetLevel(sessionFactory.Current[SavedKeys.Level].Value as string);
             SceneManager.LoadScene(levelManager.CurrentLevel.Scene);
         }

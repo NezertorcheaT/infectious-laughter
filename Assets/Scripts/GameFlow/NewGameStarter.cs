@@ -63,6 +63,15 @@ namespace CustomHelper
             return true;
         }
 
+        public static void InitializeWithDefaultsIfNot(this Session session)
+        {
+            foreach (var field in typeof(SavedKeys).GetFields())
+            {
+                var savingKey = field.GetValue(null) as SavingKey;
+                if(savingKey is not null && !session.Has(savingKey))
+                    session.Add(savingKey.Default, savingKey.Type, savingKey.Key);
+            }
+        }
         public static void InitializeWithDefaults(this Session session)
         {
             foreach (var field in typeof(SavedKeys).GetFields())
