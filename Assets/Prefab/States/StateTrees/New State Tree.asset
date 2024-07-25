@@ -1,28 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5692480145727890999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b627d0a7c6633ca44b8d98e5c71a9c62, type: 3}
-  m_Name: Properies(Chase.ChaseStateEdit) of State(bfcdb2892e623084eac5852b12747f4a)
-    of Tree("New State Tree")
-  m_EditorClassIdentifier: 
-  rayDistance: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  initialDirection: 0
-  next: 0
-  visionDistance: 10
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &-1465087275680774659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +19,6 @@ MonoBehaviour:
     m_Bits: 1
   initialDirection: 0
   next: 0
-  visionDistance: 3
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,28 +46,21 @@ MonoBehaviour:
     position: {x: 251.99997, y: -77.500015}
     state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
     nexts:
-    - bfcdb2892e623084eac5852b12747f4a
-  - id: 47e5ccf0544afff4f8e92fc249c13798
-    position: {x: 251.75, y: 96.00003}
-    state: {fileID: 11400000, guid: 917d2f3ed691df44490f31a582fb314a, type: 2}
-    nexts:
-    - db44149061f7b884397ebc2356e11c7d
-  - id: bfcdb2892e623084eac5852b12747f4a
-    position: {x: 45.694016, y: 96.00003}
+    - bcffcc654eb3852438b638c8e8f03f5e
+  - id: bcffcc654eb3852438b638c8e8f03f5e
+    position: {x: 262, y: 67}
     state: {fileID: 11400000, guid: 4262e719321da5e438c962b8400904be, type: 2}
     nexts:
-    - 47e5ccf0544afff4f8e92fc249c13798
+    - db44149061f7b884397ebc2356e11c7d
   edits:
   - id: a9437c7993dea114d95c11dd56f68a72
     edit: {fileID: 7222351087953771080}
   - id: db44149061f7b884397ebc2356e11c7d
     edit: {fileID: -1465087275680774659}
-  - id: 47e5ccf0544afff4f8e92fc249c13798
-    edit: {fileID: 610919633820237826}
-  - id: bfcdb2892e623084eac5852b12747f4a
-    edit: {fileID: -5692480145727890999}
+  - id: bcffcc654eb3852438b638c8e8f03f5e
+    edit: {fileID: 5887806067528294769}
   unsaved: 0
---- !u!114 &610919633820237826
+--- !u!114 &5887806067528294769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,11 +69,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca9a3ec5c0140e49373e74866b9140f, type: 3}
-  m_Name: Properies(Wait.WaitStateEdit) of State(47e5ccf0544afff4f8e92fc249c13798)
+  m_Script: {fileID: 11500000, guid: 534dfa1b7ba74a31b04663ae9de181c6, type: 3}
+  m_Name: Properies(Chase.PatrollingStateEdit) of State(bcffcc654eb3852438b638c8e8f03f5e)
     of Tree("New State Tree")
   m_EditorClassIdentifier: 
-  time: 2
+  rayDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  initialDirection: 0
+  next: 0
 --- !u!114 &7222351087953771080
 MonoBehaviour:
   m_ObjectHideFlags: 0

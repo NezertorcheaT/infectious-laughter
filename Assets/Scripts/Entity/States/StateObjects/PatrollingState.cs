@@ -36,13 +36,23 @@ namespace Entity.States.StateObjects
                     return nextId;
 
                 // Патрулирование
-                var ray = new Ray(
-                    entity.transform.position + (Vector3) collider2d.offset +
-                    collider2d.bounds.size.Multiply(new Vector3(direction ? 1 : -1, -1f / 2f, 1)),
+                var bounds = collider2d.bounds;
+
+                var rayPit = new Ray(
+                    bounds.center +
+                    bounds.size.Multiply(new Vector3(direction ? 1 : -1, -1f / 2f, 1)),
                     Vector3.down);
-                if (!Physics2D.Raycast(ray.origin, ray.direction, edit.rayDistance, edit.groundLayer))
+                var rayWall = new Ray(
+                    bounds.center + (collider2d.bounds.extents +
+                                     new Vector3(edit.rayDistance, 0, 0)).Multiply(direction ? 1 : -1, 1, 0),
+                    Vector3.down);
+                if (
+                    !Physics2D.Raycast(rayPit.origin, rayPit.direction, edit.rayDistance, edit.groundLayer) ||
+                    Physics2D.Raycast(rayWall.origin, rayWall.direction, bounds.size.y, edit.groundLayer)
+                )
                     direction = !direction;
-                Debug.DrawRay(ray.origin, ray.direction * edit.rayDistance);
+                //Debug.DrawRay(rayPit.origin, rayPit.direction * edit.rayDistance);
+                //Debug.DrawRay(rayWall.origin, rayWall.direction, Color.blue, bounds.size.y);
 
                 moveAbility.Move(direction ? 1 : -1);
             }

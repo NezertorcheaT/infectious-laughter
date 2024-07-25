@@ -207,6 +207,8 @@ namespace CustomHelper
     {
         public static Vector2 Multiply(this Vector2 a, Vector2 b) => new Vector2(a.x * b.x, a.y * b.y);
         public static Vector3 Multiply(this Vector3 a, Vector3 b) => new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
+        public static Vector2 Multiply(this Vector2 a, float bx, float by) => new Vector2(a.x * bx, a.y * by);
+        public static Vector3 Multiply(this Vector3 a, float bx, float by, float bz) => new Vector3(a.x * bx, a.y * by, a.z * bz);
         public static Vector2 Divide(this Vector2 a, Vector2 b) => new Vector2(a.x / b.x, a.y / b.y);
         public static Vector3 Divide(this Vector3 a, Vector3 b) => new Vector3(a.x / b.x, a.y / b.y, a.z / b.z);
 

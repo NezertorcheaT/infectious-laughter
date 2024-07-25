@@ -11,14 +11,11 @@ namespace Entity.States.StateObjects.Edits
         public LayerMask groundLayer;
         public bool initialDirection;
         [Min(0)] public int next;
-        public float visionDistance; // Расстояние зрения
-        public LayerMask playerLayer; // Слой игрока
 
         private void Reset()
         {
             groundLayer = LayerMask.GetMask("Default");
             rayDistance = 0.1f;
-            visionDistance = 10f; // По умолчанию 10 единиц
         }
 
         public override T Get<T>(string name) => GetType().GetField(name).GetValue(this) is T

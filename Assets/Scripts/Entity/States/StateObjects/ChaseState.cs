@@ -9,7 +9,7 @@ namespace Entity.States.StateObjects
     [CreateAssetMenu(fileName = "Chase State", menuName = "AI Nodes/States/Chase State", order = 0)]
     public class ChaseState : State, IEditableState, IRelationfullState
     {
-        [StateEdit] private ChaseStateEdit properties;
+        [StateEdit] private PatrollingStateEdit properties;
 
         public override string Name => "Chase";
 
@@ -67,6 +67,6 @@ namespace Entity.States.StateObjects
             return nextId;
         }
 
-        Type IEditableState.GetTypeOfEdit() => typeof(ChaseStateEdit);
+        Type IEditableState.GetTypeOfEdit() => typeof(PatrollingStateEdit);
     }
 }
