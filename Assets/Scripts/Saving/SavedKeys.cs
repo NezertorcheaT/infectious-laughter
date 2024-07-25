@@ -50,7 +50,5 @@ namespace Saving
                 Default = value
             };
         }
-
-        public static implicit operator string(SavingKey savingKey) => savingKey.Key;
     }
 }

@@ -99,11 +99,44 @@ namespace Saving
         public Content this[string key] => _container[key];
 
         /// <summary>
+        /// получите записанный контент по ключу
+        /// </summary>
+        /// <param name="key">зарегестрированный ключ контента</param>
+        public Content this[SavingKey key]
+        {
+            get
+            {
+                var content = this[key.Key];
+                if (content.Type != key.Type)
+                    Debug.LogError(
+                        $"Content at key \"{key.Key}\" has invalid type: \nin content: {content.Type.AssemblyQualifiedName}\nin saving key: {key.Type.AssemblyQualifiedName}");
+                return content;
+            }
+        }
+
+        /// <summary>
         /// записан ли контент по ключу
         /// </summary>
         /// <param name="key">ключ контента</param>
         /// <returns>существует ли записанный контент по ключу</returns>
         public bool Has(string key) => _container.ContainsKey(key);
+
+        /// <summary>
+        /// записан ли контент по ключу
+        /// </summary>
+        /// <param name="key">зарегестрированный ключ контента</param>
+        /// <returns>существует ли записанный контент по ключу</returns>
+        public bool Has(SavingKey key)
+        {
+            var has = Has(key.Key);
+            if (!has) return false;
+
+            var content = this[key.Key];
+            if (content.Type != key.Type)
+                Debug.LogError(
+                    $"Content at key \"{key.Key}\" has invalid type: \nin content: {content.Type.AssemblyQualifiedName}\nin saving key: {key.Type.AssemblyQualifiedName}");
+            return true;
+        }
 
         /// <summary>
         /// добавить новую запись в сессию
