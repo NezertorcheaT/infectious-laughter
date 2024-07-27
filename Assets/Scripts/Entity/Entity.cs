@@ -12,6 +12,7 @@ namespace Entity
     /// коньтроллер (<c>Controller</c>) может быть только один, а вот способностей (<c>Ability</c>) сколько душе угодно
     /// </summary>
     [AddComponentMenu("Entity/Entity")]
+    [DisallowMultipleComponent]
     public class Entity : MonoBehaviour
     {
         [Header("Controller")] [SerializeField]
