@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parralaxMultiplier: {x: 0.95, y: 1}
+  parallaxMultiplier: {x: 0.95, y: 1}
 --- !u!1 &189264670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parralaxMultiplier: {x: 0.1, y: 0}
+  parallaxMultiplier: {x: 0.1, y: 0}
 --- !u!1 &405098119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parralaxMultiplier: {x: 0.15, y: 0}
+  parallaxMultiplier: {x: 0.15, y: 0}
 --- !u!212 &550036675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1795,6 +1798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parralaxMultiplier: {x: 0.8, y: 1}
+  parallaxMultiplier: {x: 0.8, y: 1}
 --- !u!1 &799585610
 GameObject:
   m_ObjectHideFlags: 0

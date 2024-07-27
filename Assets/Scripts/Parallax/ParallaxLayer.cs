@@ -1,12 +1,13 @@
 using GameFlow;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Parallax
 {
     public class ParallaxLayer : MonoBehaviour
     {
-        [SerializeField] private Vector2 parralaxMultiplier;
+        [FormerlySerializedAs("parralaxMultiplier")] [SerializeField] private Vector2 parallaxMultiplier;
         [Inject] private PlayerCamera _camera;
 
         private Transform _cameraTransform;
@@ -23,8 +24,8 @@ namespace Parallax
             var deltaMovement = _cameraTransform.position - _lastCameraPosition;
 
             gameObject.transform.position += new Vector3(
-                deltaMovement.x * parralaxMultiplier.x,
-                deltaMovement.y * parralaxMultiplier.y,
+                deltaMovement.x * parallaxMultiplier.x,
+                deltaMovement.y * parallaxMultiplier.y,
                 0f
             );
             _lastCameraPosition = _cameraTransform.position;
