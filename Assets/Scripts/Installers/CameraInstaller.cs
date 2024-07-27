@@ -1,5 +1,4 @@
-using Cinemachine;
-using Inventory;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -8,10 +7,11 @@ namespace Installers
     [AddComponentMenu("Installers/Camera")]
     public class CameraInstaller : MonoInstaller
     {
-        [SerializeField] private CinemachineVirtualCamera playerCinemachineCamera;
+        [SerializeField] private Camera playerCamera;
         public override void InstallBindings()
         {
-            Container.Bind<CinemachineVirtualCamera>().FromInstance(playerCinemachineCamera).AsSingle().NonLazy();
+            Container.Bind<Camera>().FromInstance(playerCamera).AsSingle().NonLazy();
         }
     }
+
 }
