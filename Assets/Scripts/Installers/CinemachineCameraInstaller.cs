@@ -9,10 +9,14 @@ namespace Installers
     public class CinemachineCameraInstaller : MonoInstaller
     {
         [SerializeField] private PlayerCamera playerCameraPrefab;
+        [SerializeField] private CompositeCollider2D bounds;
 
         public override void InstallBindings()
         {
             var cam = Container.InstantiatePrefab(playerCameraPrefab).GetComponent<PlayerCamera>();
+            if (bounds)
+                cam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = bounds;
+
             Container.Bind<PlayerCamera>().FromInstance(cam).AsSingle().NonLazy();
         }
     }

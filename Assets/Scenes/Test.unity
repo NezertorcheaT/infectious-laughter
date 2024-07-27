@@ -515,7 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09897ff5d4080b848b34d575f3f54779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parralaxMultiplier: {x: 0.95, y: 1}
   parallaxMultiplier: {x: 0.95, y: 1}
 --- !u!1 &189264670
 GameObject:
@@ -1026,7 +1025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09897ff5d4080b848b34d575f3f54779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parralaxMultiplier: {x: 0.1, y: 0}
   parallaxMultiplier: {x: 0.1, y: 0}
 --- !u!1 &405098119
 GameObject:
@@ -1458,7 +1456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09897ff5d4080b848b34d575f3f54779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parralaxMultiplier: {x: 0.15, y: 0}
   parallaxMultiplier: {x: 0.15, y: 0}
 --- !u!212 &550036675
 SpriteRenderer:
@@ -1797,7 +1794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09897ff5d4080b848b34d575f3f54779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parralaxMultiplier: {x: 0.8, y: 1}
   parallaxMultiplier: {x: 0.8, y: 1}
 --- !u!1 &799585610
 GameObject:
@@ -4190,6 +4186,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1235603849900061940, guid: 7b18444c38415804ba5f5bce0de9a76e, type: 3}
+      propertyPath: bounds
+      value: 
+      objectReference: {fileID: 1816029783}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b18444c38415804ba5f5bce0de9a76e, type: 3}
 --- !u!1001 &4301508455334729912
