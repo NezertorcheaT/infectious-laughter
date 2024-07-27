@@ -21,6 +21,8 @@ namespace Entity.Abilities
         private CollideCheck _collideCheck;
         private EntityMovementDowning _movementDowning;
 
+        public bool InJump;
+
 
         private void Start()
         {
@@ -44,6 +46,7 @@ namespace Entity.Abilities
             _jumpCountActive = jumpCount;
             if (_jumpCountActive == 0) return;
             _playerRb.AddForce(new Vector2(_playerRb.velocity.x, jumpHeight), ForceMode2D.Impulse);
+
             _jumpCountActive -= 1;
         }
 

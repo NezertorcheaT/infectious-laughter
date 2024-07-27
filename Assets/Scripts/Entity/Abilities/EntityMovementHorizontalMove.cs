@@ -11,6 +11,8 @@ namespace Entity.Abilities
 
         public bool Turn { get; private set; }
 
+        public float TurnInFloat { get; private set; }
+
         public float Speed
         {
             get => speed;
@@ -29,8 +31,10 @@ namespace Entity.Abilities
         public void Move(float velocity)
         {
             if (!Available()) return;
+            TurnInFloat = velocity;
             Turn = velocity == 0 ? Turn : velocity > 0;
             _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
+            _rb.gameObject.transform.localRotation = Quaternion.Euler(0, Turn ? 0 : 180, 0);;
         }
     }
 }
