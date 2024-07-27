@@ -1,6 +1,7 @@
 using Cinemachine;
 using CustomHelper;
 using Entity.Abilities;
+using GameFlow;
 using Inventory;
 using Inventory.Input;
 using Levels.Generation;
@@ -19,7 +20,7 @@ namespace Installers
         [SerializeField] private PlayerSpawnPoint spawnPoint;
         [SerializeField] private ProceduralGenerationEnderInstaller proceduralGenerationEnder;
         [Inject] private SessionFactory _sessionFactory;
-        [Inject] private CinemachineVirtualCamera _playerCinemachineCamera;
+        [Inject] private PlayerCamera _playerCamera;
 
         public override void InstallBindings()
         {
@@ -32,13 +33,13 @@ namespace Installers
 
             player.gameObject.SetActive(true);
 
-            _playerCinemachineCamera.Follow = player.transform.GetChild(1);
-            _playerCinemachineCamera.LookAt = player.transform;
+            _playerCamera.VirtualCamera.Follow = player.transform.GetChild(1);
+            _playerCamera.VirtualCamera.LookAt = player.transform;
 
             playerInventory ??= player.FindAbilityByType<PlayerInventoryInput>().Inventory as Inventory.Inventory;
 
             if (teleportCamera)
-                _playerCinemachineCamera.ForceCameraPosition(player.CachedTransform.position, Quaternion.identity);
+                _playerCamera.VirtualCamera.ForceCameraPosition(player.CachedTransform.position, Quaternion.identity);
 
             player.GetComponent<EntityHp>().FromContent(
                 _sessionFactory.Current[SavedKeys.PlayerHp],

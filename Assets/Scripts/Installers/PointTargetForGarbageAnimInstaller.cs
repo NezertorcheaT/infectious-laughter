@@ -1,3 +1,4 @@
+using GameFlow;
 using Inventory.Garbage;
 using UnityEngine;
 using Zenject;
@@ -7,11 +8,11 @@ namespace Installers
     [AddComponentMenu("Installers/Target for Garbage Animation")]
     public class PointTargetForGarbageAnimInstaller : MonoInstaller
     {
-        [SerializeField] private Transform pointTargetUIForAnim;
+        [Inject] private PlayerCamera cam;
 
         public override void InstallBindings()
         {
-            var target = new PointTargetForGarbageAnimation(pointTargetUIForAnim);
+            var target = new PointTargetForGarbageAnimation(cam.PointTargetForGarbageAnimation);
             Container.Bind<PointTargetForGarbageAnimation>().FromInstance(target).AsSingle().NonLazy();
         }
     }

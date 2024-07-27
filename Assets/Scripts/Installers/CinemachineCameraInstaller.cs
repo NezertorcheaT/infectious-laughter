@@ -1,17 +1,19 @@
 using Cinemachine;
-using Inventory;
+using GameFlow;
 using UnityEngine;
 using Zenject;
 
 namespace Installers
 {
-    [AddComponentMenu("Installers/Cinemachine Camera")]
+    [AddComponentMenu("Installers/Camera")]
     public class CinemachineCameraInstaller : MonoInstaller
     {
-        [SerializeField] private CinemachineVirtualCamera playerCinemachineCamera;
+        [SerializeField] private PlayerCamera playerCameraPrefab;
+
         public override void InstallBindings()
         {
-            Container.Bind<CinemachineVirtualCamera>().FromInstance(playerCinemachineCamera).AsSingle().NonLazy();
+            var cam = Container.InstantiatePrefab(playerCameraPrefab).GetComponent<PlayerCamera>();
+            Container.Bind<PlayerCamera>().FromInstance(cam).AsSingle().NonLazy();
         }
     }
 }

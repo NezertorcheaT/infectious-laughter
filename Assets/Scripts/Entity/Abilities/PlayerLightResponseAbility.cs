@@ -1,6 +1,6 @@
 using System.Collections;
 using Cinemachine;
-using Installers;
+using GameFlow;
 using PropsImpact;
 using UnityEngine;
 using Zenject;
@@ -16,7 +16,7 @@ namespace Entity.Abilities
         [SerializeField] private float shakingProgressionRate = 1;
         [SerializeField] private float speedMultiplier = 0.5f;
 
-        [Inject] private CinemachineVirtualCamera _camera;
+        [Inject] private PlayerCamera _camera;
         private EntityLightResponsiveAbility _responsive;
         private EntityMovementHorizontalMove _movement;
 
@@ -31,7 +31,7 @@ namespace Entity.Abilities
             _responsive = Entity.FindAvailableAbilityByInterface<EntityLightResponsiveAbility>();
             _movement = Entity.FindAvailableAbilityByInterface<EntityMovementHorizontalMove>();
 
-            _cinemachineVirtualCamera = _camera;
+            _cinemachineVirtualCamera = _camera.VirtualCamera;
             _cinemachineShaker =
                 _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
