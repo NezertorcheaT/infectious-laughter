@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AnimationController
+namespace AnimationControllers
 {
     [RequireComponent(typeof(Animator))]
     public class MainCharacterAnimationController : MonoBehaviour
