@@ -15,7 +15,7 @@ namespace Installers
         {
             var cam = Container.InstantiatePrefab(playerCameraPrefab).GetComponent<PlayerCamera>();
             if (bounds)
-                cam.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = bounds;
+                cam.gameObject.transform.GetChild(0).GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = bounds;
 
             Container.Bind<PlayerCamera>().FromInstance(cam).AsSingle().NonLazy();
         }
