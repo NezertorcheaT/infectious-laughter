@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CustomHelper;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
@@ -20,7 +21,10 @@ namespace Levels.Generation
         [SerializeField] private ChunkPrefab firstChunk;
         [SerializeField] private ChunkPrefab lastChunk;
         [SerializeField] private ChunkPrefab[] chunkBases;
-        [SerializeField] private List<ChunkPrefab> specialChunks;
+        [SerializeField] private ChunkPrefab[] specialChunks;
+
+        [Header("Изменяющие слои")] [SerializeField]
+        private OffsetLayer[] layers;
 
         [Header("Структуры")] [SerializeField] private Structure[] structures;
         [SerializeField, Min(1)] private int structuresSpawnMaxTry = 100;
@@ -39,11 +43,35 @@ namespace Levels.Generation
             [Min(1)] public int count;
         }
 
+        [Serializable]
+        private class OffsetLayer
+        {
+            public enum Behavior
+            {
+                Clamp,
+                Repeat,
+                Mirror
+            }
+
+            public enum Blending
+            {
+                Add,
+                Subtract
+            }
+
+            public GroundOffsetLayer layer;
+            public Blending blending;
+            public Behavior behavior;
+            public int offset;
+        }
+
         private List<PreSpawned> _preSpawned;
         private int _structureMinX;
         private int _structureMaxX;
         private List<BoundsInt> _filledWithStructure;
         private Random _random;
+        private int _layerMinX;
+        private int _layerMaxX;
 
         public void StartGeneration()
         {
@@ -53,8 +81,90 @@ namespace Levels.Generation
             GenerateStructures();
         }
 
+
+        private void ProcessLayer(IEnumerable<float> map, OffsetLayer layer, int from, int to)
+        {
+            map = map.Select(i => i * (layer.blending is OffsetLayer.Blending.Subtract ? -1f : 1f));
+            var enumerator = map.GetEnumerator();
+
+            try
+            {
+                for (var i = 0; i < layer.offset; i++)
+                {
+                    enumerator.MoveNext();
+                }
+
+                var x = from;
+                while (enumerator.MoveNext())
+                {
+                    if (x >= to) break;
+                    var current = enumerator.Current;
+                    if (current == 0) continue;
+
+                    var ray = GridRay(new Vector2Int(x, 50), Vector2.down);
+                    if (ray is null) continue;
+
+                    if (current > 0)
+                    {
+                        for (var i = 0; i < current+1; i++)
+                        {
+                            tilemap.SetTile(new Vector3Int(x, ray.Value.y + i), layer.layer.Tile);
+                        }
+                    }
+                    else
+                    {
+                        tilemap.SetTile(new Vector3Int(x, ray.Value.y), null);
+                        for (var i = 0; i < -current+1; i++)
+                        {
+                            tilemap.SetTile(new Vector3Int(x, ray.Value.y - i + 1), null);
+                        }
+                    }
+
+                    x++;
+                }
+            }
+            finally
+            {
+                enumerator?.Dispose();
+            }
+        }
+
         private void ApplyLayers()
         {
+            foreach (var offsetLayer in layers)
+            {
+                if (offsetLayer.layer.Infinite)
+                {
+                    ProcessLayer(offsetLayer.layer.GetMap(seed), offsetLayer, _layerMinX, _layerMaxX);
+                    return;
+                }
+
+                var map = offsetLayer.layer.GetMap(seed).ToArray();
+                offsetLayer.offset = (int) Mathf.Repeat(offsetLayer.offset, map.Length);
+                if (offsetLayer.behavior is OffsetLayer.Behavior.Clamp)
+                    ProcessLayer(map, offsetLayer, _layerMinX, Mathf.Clamp(map.Length - 1, _layerMinX, _layerMaxX));
+                else if (offsetLayer.behavior is OffsetLayer.Behavior.Repeat)
+                {
+                    for (var i = -1; i < _layerMaxX / map.Length; i++)
+                    {
+                        ProcessLayer(map, offsetLayer,
+                            Mathf.Clamp((map.Length - 1) * i, _layerMinX, _layerMaxX),
+                            Mathf.Clamp((map.Length - 1) * (i + 1), _layerMinX, _layerMaxX)
+                        );
+                    }
+                }
+                else if (offsetLayer.behavior is OffsetLayer.Behavior.Mirror)
+                {
+                    for (var i = -1; i < _layerMaxX / map.Length; i++)
+                    {
+                        map = map.Reverse().ToArray();
+                        ProcessLayer(map, offsetLayer,
+                            Mathf.Clamp((map.Length - 1) * i, _layerMinX, _layerMaxX),
+                            Mathf.Clamp((map.Length - 1) * (i + 1), _layerMinX, _layerMaxX)
+                        );
+                    }
+                }
+            }
         }
 
         private bool CheckStructureAtPos(StructurePrefab structure, Vector2Int gridPosition)
@@ -176,6 +286,9 @@ namespace Levels.Generation
                 portOffset += chunk.EndPort - chunk.StartPort;
                 _structureMaxX = portOffset.x - (chunk.EndPort - chunk.StartPort).x;
             }
+
+            _layerMinX = 0;
+            _layerMaxX = portOffset.x;
         }
 
         private IEnumerable<ChunkPrefab> SetupChunks()

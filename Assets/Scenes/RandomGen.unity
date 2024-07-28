@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09897ff5d4080b848b34d575f3f54779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parralaxMultiplier: {x: 0.15, y: 0}
+  parallaxMultiplier: {x: 0.15, y: 0}
 --- !u!212 &235138342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09897ff5d4080b848b34d575f3f54779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parralaxMultiplier: {x: 0.95, y: 1}
+  parallaxMultiplier: {x: 0.95, y: 1}
 --- !u!212 &345986206
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09897ff5d4080b848b34d575f3f54779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parralaxMultiplier: {x: 0.8, y: 1}
+  parallaxMultiplier: {x: 0.8, y: 1}
 --- !u!212 &597355475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2139,7 +2139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09897ff5d4080b848b34d575f3f54779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parralaxMultiplier: {x: 0.1, y: 0}
+  parallaxMultiplier: {x: 0.1, y: 0}
 --- !u!212 &1967024429
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2297,7 +2297,13 @@ MonoBehaviour:
   - {fileID: 4516917101330682262, guid: 3e785b396677fbe4286cbfeb9d85ea9b, type: 3}
   - {fileID: 4516917101330682262, guid: ca1497d2e2c0e3e43a172e401a7c5c25, type: 3}
   - {fileID: 4516917101330682262, guid: a72ae14f70984bb4f9c70879388be2f0, type: 3}
+  - {fileID: 4823586720191418435, guid: 85efce9d5aa56cb418c36469771bf08a, type: 3}
   specialChunks: []
+  layers:
+  - layer: {fileID: 11400000, guid: be7e940cc007afb44a608fc35a5520c1, type: 2}
+    blending: 0
+    behavior: 0
+    offset: 5
   structures:
   - structure: {fileID: 6106427781339804030, guid: a386455ae19c36542be7198efcb36c58, type: 3}
     count: 2
