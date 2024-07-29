@@ -8,6 +8,7 @@ namespace Entity.Abilities
     {
         [SerializeField, Min(0.001f)] private float speed;
         private Rigidbody2D _rb;
+        private SpriteRenderer _spriteRenderer;
 
         public bool Turn { get; private set; }
 
@@ -26,6 +27,7 @@ namespace Entity.Abilities
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void Move(float velocity)
@@ -34,7 +36,7 @@ namespace Entity.Abilities
             TurnInFloat = velocity;
             Turn = velocity == 0 ? Turn : velocity > 0;
             _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
-            _rb.gameObject.transform.localRotation = Quaternion.Euler(0, Turn ? 0 : 180, 0);;
+            _spriteRenderer.flipX = !Turn;
         }
     }
 }
