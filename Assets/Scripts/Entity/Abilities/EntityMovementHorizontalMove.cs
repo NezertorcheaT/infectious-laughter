@@ -1,4 +1,5 @@
 using UnityEngine;
+using Entity.Controllers;
 
 namespace Entity.Abilities
 {
@@ -28,6 +29,8 @@ namespace Entity.Abilities
         {
             _rb = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            if(gameObject.GetComponent<ControllerAI>()) spriteRenderer = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+
         }
 
         public void Move(float velocity)
