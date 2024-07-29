@@ -29,7 +29,7 @@ namespace Entity.Abilities
         {
             _rb = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            if(gameObject.GetComponent<ControllerAI>()) spriteRenderer = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+            if(gameObject.GetComponent<ControllerAI>()) _spriteRenderer = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         }
 
