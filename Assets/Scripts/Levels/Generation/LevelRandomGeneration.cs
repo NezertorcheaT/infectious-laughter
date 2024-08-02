@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CustomHelper;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
@@ -11,22 +10,35 @@ namespace Levels.Generation
 {
     public class LevelRandomGeneration : MonoBehaviour
     {
-        [Header("База")] [SerializeField] public string seed;
+        [Header("База")]
+        [Tooltip("Ну это как бы сид, задаётся в сохранениях")]
+        [SerializeField] public string seed;
+        [Tooltip("Этот тайлик будет заменён на нихуя при генерации структур")]
         [SerializeField] private TileBase voidTile;
+        [Tooltip("Это куда собственно тайлы записываться будут")]
         [SerializeField] private Tilemap tilemap;
 
-        [Header("Чанки")] [Tooltip("Это кароч колличество основных чанков, без специальных")] [SerializeField, Min(1)]
-        private int chunksCount;
+        [Header("Чанки")]
+        [Tooltip("Это кароч колличество основных чанков, без специальных")] 
+        [SerializeField, Min(1)] private int chunksCount;
 
+        [Tooltip("Самый первый чанк, обычно с точкой спавна игрока")]
         [SerializeField] private ChunkPrefab firstChunk;
+        [Tooltip("Самый последний чанк, обычно с точкой выхода с уровня")]
         [SerializeField] private ChunkPrefab lastChunk;
+        [Tooltip("Чанки, которые будут использоваться при построении уровня")]
         [SerializeField] private ChunkPrefab[] chunkBases;
+        [Tooltip("Чанки, которые будут использоваться при построении уровня, но без повторений и гарантировано один раз")]
         [SerializeField] private ChunkPrefab[] specialChunks;
 
-        [Header("Изменяющие слои")] [SerializeField]
-        private OffsetLayer[] layers;
+        [Header("Изменяющие слои")]
+        [Tooltip("Это кароч слои изменения террейна, они будут двигать террейн вверх и вниз, в зависимости от них самих")]
+        [SerializeField] private OffsetLayer[] layers;
 
-        [Header("Структуры")] [SerializeField] private Structure[] structures;
+        [Header("Структуры")]
+        [Tooltip("Это структуры для спавна")]
+        [SerializeField] private Structure[] structures;
+        [Tooltip("Максимальное колличество попыток впихнуть структуру в мир, перед тем как отвергнуть её")]
         [SerializeField, Min(1)] private int structuresSpawnMaxTry = 100;
 
         private struct PreSpawned
@@ -101,8 +113,12 @@ namespace Levels.Generation
         {
             for (var i = 0; i < _preSpawned.Count; i++)
             {
-                var hitDown = Physics2D.Raycast(new Vector2(_preSpawned[i].Position.x, _maxY), Vector2.down,
-                    _maxY * 5, 1 << 0);
+                var hitDown = Physics2D.Raycast(
+                    new Vector2(_preSpawned[i].Position.x, _maxY),
+                    Vector2.down,
+                    _maxY * 5,
+                    1 << 0
+                );
                 if (!hitDown.collider) continue;
                 _preSpawned[i] = new PreSpawned
                 {
@@ -113,7 +129,6 @@ namespace Levels.Generation
                         ? -(Mathf.Abs(_preSpawned[i].Position.y) - Mathf.Abs(hitDown.point.y))
                         : (Mathf.Abs(hitDown.point.y) - Mathf.Abs(_preSpawned[i].Position.y))
                 };
-                Debug.Log(_preSpawned[i].Offset);
             }
         }
 
@@ -139,20 +154,18 @@ namespace Levels.Generation
                     var ray = GridRay(new Vector2Int(x, _maxY), Vector2.down);
                     if (ray is null) continue;
 
-                    if (current > 0)
-                    {
-                        for (var i = 0; i < current + 1; i++)
-                        {
-                            tilemap.SetTile(new Vector3Int(x, ray.Value.y + i), layer.layer.Tile);
-                        }
-                    }
-                    else
-                    {
+                    if (current < 0)
                         tilemap.SetTile(new Vector3Int(x, ray.Value.y), null);
-                        for (var i = 0; i < -current + 1; i++)
-                        {
-                            tilemap.SetTile(new Vector3Int(x, ray.Value.y - i + 1), null);
-                        }
+
+                    for (var i = 0; i < Mathf.Abs(current) + 1; i++)
+                    {
+                        tilemap.SetTile(
+                            new Vector3Int(
+                                x,
+                                ray.Value.y + (current > 0 ? i : -i + 1)
+                            ),
+                            current > 0 ? layer.layer.Tile : null
+                        );
                     }
 
                     x++;
@@ -228,7 +241,9 @@ namespace Levels.Generation
             _filledWithStructure.Add(cb);
 
             var intersectingPreSpawns = _preSpawned
-                .Where(i => worldBounds.Contains2D(i.Position + new Vector3(0, i.Offset))).ToArray();
+                    .Where(i => worldBounds.Contains2D(i.Position + new Vector3(0, i.Offset)))
+                    .ToArray()
+                ;
             foreach (var toRemove in intersectingPreSpawns)
             {
                 _preSpawned.Remove(toRemove);
@@ -239,8 +254,9 @@ namespace Levels.Generation
                 _preSpawned.Add(new PreSpawned
                 {
                     Prefab = noneGrid.gameObject,
-                    Position = tilemap.layoutGrid.CellToWorld(gridPosition.ToVector3Int()) +
-                               noneGrid.transform.localPosition,
+                    Position =
+                        tilemap.layoutGrid.CellToWorld(gridPosition.ToVector3Int()) +
+                        noneGrid.transform.localPosition,
                     Rotation = noneGrid.gameObject.transform.rotation,
                     Offset = 0
                 });
@@ -252,8 +268,11 @@ namespace Levels.Generation
         private Vector2Int? GridRay(Vector2Int gridPosition, Vector2 direction)
         {
             BoundsInt cellBounds;
-            return GridRay(gridPosition, direction,
-                (int) ((cellBounds = tilemap.cellBounds).min - cellBounds.max).magnitude);
+            return GridRay(
+                gridPosition,
+                direction,
+                (int) ((cellBounds = tilemap.cellBounds).min - cellBounds.max).magnitude
+            );
         }
 
         private Vector2Int? GridRay(Vector2Int gridPosition, Vector2 direction, int distance)
