@@ -34,6 +34,7 @@ namespace Levels.Generation
             public GameObject Prefab;
             public Vector3 Position;
             public Quaternion Rotation;
+            public float Offset;
         }
 
         [Serializable]
@@ -72,15 +73,49 @@ namespace Levels.Generation
         private Random _random;
         private int _layerMinX;
         private int _layerMaxX;
+        private int _maxY = 10;
+        private CompositeCollider2D _composite;
+        private TilemapCollider2D _tilemapCollider;
 
         public void StartGeneration()
         {
+            _composite = tilemap.GetComponent<CompositeCollider2D>();
+            _tilemapCollider = tilemap.GetComponent<TilemapCollider2D>();
             _random = new Random(seed.GetHashCode());
+
             GenerateChunks();
+            ProcessColliders();
+            SetPreSpawnedOffsets();
             ApplyLayers();
             GenerateStructures();
+            ProcessColliders();
         }
 
+        private void ProcessColliders()
+        {
+            _tilemapCollider?.ProcessTilemapChanges();
+            _composite?.GenerateGeometry();
+        }
+
+        private void SetPreSpawnedOffsets()
+        {
+            for (var i = 0; i < _preSpawned.Count; i++)
+            {
+                var hitDown = Physics2D.Raycast(new Vector2(_preSpawned[i].Position.x, _maxY), Vector2.down,
+                    _maxY * 5, 1 << 0);
+                if (!hitDown.collider) continue;
+                _preSpawned[i] = new PreSpawned
+                {
+                    Prefab = _preSpawned[i].Prefab,
+                    Position = _preSpawned[i].Position,
+                    Rotation = _preSpawned[i].Rotation,
+                    Offset = _preSpawned[i].Position.y > hitDown.point.y
+                        ? -(Mathf.Abs(_preSpawned[i].Position.y) - Mathf.Abs(hitDown.point.y))
+                        : (Mathf.Abs(hitDown.point.y) - Mathf.Abs(_preSpawned[i].Position.y))
+                };
+                Debug.Log(_preSpawned[i].Offset);
+            }
+        }
 
         private void ProcessLayer(IEnumerable<float> map, OffsetLayer layer, int from, int to)
         {
@@ -101,12 +136,12 @@ namespace Levels.Generation
                     var current = enumerator.Current;
                     if (current == 0) continue;
 
-                    var ray = GridRay(new Vector2Int(x, 50), Vector2.down);
+                    var ray = GridRay(new Vector2Int(x, _maxY), Vector2.down);
                     if (ray is null) continue;
 
                     if (current > 0)
                     {
-                        for (var i = 0; i < current+1; i++)
+                        for (var i = 0; i < current + 1; i++)
                         {
                             tilemap.SetTile(new Vector3Int(x, ray.Value.y + i), layer.layer.Tile);
                         }
@@ -114,7 +149,7 @@ namespace Levels.Generation
                     else
                     {
                         tilemap.SetTile(new Vector3Int(x, ray.Value.y), null);
-                        for (var i = 0; i < -current+1; i++)
+                        for (var i = 0; i < -current + 1; i++)
                         {
                             tilemap.SetTile(new Vector3Int(x, ray.Value.y - i + 1), null);
                         }
@@ -192,7 +227,8 @@ namespace Levels.Generation
             cb.position += gridPosition.ToVector3Int();
             _filledWithStructure.Add(cb);
 
-            var intersectingPreSpawns = _preSpawned.Where(i => worldBounds.Contains2D(i.Position)).ToArray();
+            var intersectingPreSpawns = _preSpawned
+                .Where(i => worldBounds.Contains2D(i.Position + new Vector3(0, i.Offset))).ToArray();
             foreach (var toRemove in intersectingPreSpawns)
             {
                 _preSpawned.Remove(toRemove);
@@ -206,6 +242,7 @@ namespace Levels.Generation
                     Position = tilemap.layoutGrid.CellToWorld(gridPosition.ToVector3Int()) +
                                noneGrid.transform.localPosition,
                     Rotation = noneGrid.gameObject.transform.rotation,
+                    Offset = 0
                 });
             }
 
@@ -241,7 +278,8 @@ namespace Levels.Generation
 
                 for (var i = 0; i < Mathf.Max(structurePrefab.count, 1); i++)
                 {
-                    var pos = GridRay(new Vector2Int(_random.Next(_structureMinX, _structureMaxX), 20), Vector2.down);
+                    var pos = GridRay(new Vector2Int(_random.Next(_structureMinX, _structureMaxX), _maxY * 2),
+                        Vector2.down);
                     var spawnTry = 0;
 
                     while (
@@ -250,7 +288,8 @@ namespace Levels.Generation
                     )
                     {
                         spawnTry += 1;
-                        pos = GridRay(new Vector2Int(_random.Next(_structureMinX, _structureMaxX), 10), Vector2.down);
+                        pos = GridRay(new Vector2Int(_random.Next(_structureMinX, _structureMaxX), _maxY),
+                            Vector2.down);
                     }
 
                     if (spawnTry >= structuresSpawnMaxTry - 1)
@@ -278,7 +317,8 @@ namespace Levels.Generation
                         Position = tilemap.layoutGrid.CellToWorld(portOffset.ToVector3Int()) -
                                    chunk.Grid.CellToWorld(chunk.StartPort.ToVector3Int()) +
                                    noneGrid.transform.localPosition,
-                        Rotation = Quaternion.identity,
+                        Rotation = noneGrid.transform.localRotation,
+                        Offset = 0
                     });
                 }
 
@@ -327,6 +367,20 @@ namespace Levels.Generation
             foreach (var preSpawned in _preSpawned)
             {
                 var i = instantiate(preSpawned.Prefab, preSpawned.Position, preSpawned.Rotation, null);
+                if (preSpawned.Offset != 0)
+                {
+                    i.transform.position = new Vector3(
+                        preSpawned.Position.x,
+                        Physics2D.Raycast(
+                            new Vector2(preSpawned.Position.x, _maxY),
+                            Vector2.down,
+                            _maxY * 5,
+                            1 << 0
+                        ).point.y + preSpawned.Offset,
+                        preSpawned.Position.z
+                    );
+                }
+
                 i.SetActive(true);
             }
         }
