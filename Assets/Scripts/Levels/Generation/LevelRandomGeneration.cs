@@ -11,33 +11,43 @@ namespace Levels.Generation
     public class LevelRandomGeneration : MonoBehaviour
     {
         [Header("База")]
+        
         [Tooltip("Ну это как бы сид, задаётся в сохранениях")]
         [SerializeField] public string seed;
+        
         [Tooltip("Этот тайлик будет заменён на нихуя при генерации структур")]
         [SerializeField] private TileBase voidTile;
+        
         [Tooltip("Это куда собственно тайлы записываться будут")]
         [SerializeField] private Tilemap tilemap;
 
         [Header("Чанки")]
-        [Tooltip("Это кароч колличество основных чанков, без специальных")] 
+        
+        [Tooltip("Это кароч колличество основных чанков, без специальных")]
         [SerializeField, Min(1)] private int chunksCount;
 
         [Tooltip("Самый первый чанк, обычно с точкой спавна игрока")]
         [SerializeField] private ChunkPrefab firstChunk;
+
         [Tooltip("Самый последний чанк, обычно с точкой выхода с уровня")]
         [SerializeField] private ChunkPrefab lastChunk;
+
         [Tooltip("Чанки, которые будут использоваться при построении уровня")]
         [SerializeField] private ChunkPrefab[] chunkBases;
+
         [Tooltip("Чанки, которые будут использоваться при построении уровня, но без повторений и гарантировано один раз")]
         [SerializeField] private ChunkPrefab[] specialChunks;
 
         [Header("Изменяющие слои")]
+        
         [Tooltip("Это кароч слои изменения террейна, они будут двигать террейн вверх и вниз, в зависимости от них самих")]
         [SerializeField] private OffsetLayer[] layers;
 
         [Header("Структуры")]
+        
         [Tooltip("Это структуры для спавна")]
         [SerializeField] private Structure[] structures;
+
         [Tooltip("Максимальное колличество попыток впихнуть структуру в мир, перед тем как отвергнуть её")]
         [SerializeField, Min(1)] private int structuresSpawnMaxTry = 100;
 

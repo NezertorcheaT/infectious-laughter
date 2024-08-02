@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
+using CustomHelper;
 using Entity.Relationships;
+using NaughtyAttributes;
+using UnityEditor;
 using UnityEngine;
 
 namespace Entity.Abilities
@@ -8,7 +12,12 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/Fraction Ability")]
     public class EntityFraction : Ability
     {
-        [SerializeField, HideInInspector] private string type;
+        private DropdownList<string> GetFractionTypes() => TypeCache.GetTypesDerivedFrom<Fraction>()
+            .Select(i => (i.Name, i.AssemblyQualifiedName)).ToDropdownList();
+
+        [Dropdown("GetFractionTypes")] [SerializeField]
+        private string type;
+
         private Fraction _fraction;
 
         public Fraction Fraction
@@ -16,9 +25,10 @@ namespace Entity.Abilities
             get
             {
                 var t = Type.GetType(type);
-                if (t is null) _fraction = null;
-                GetType().GetField("_fraction", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                    ?.SetValue(this, Activator.CreateInstance(t));
+                if (t is null)
+                    _fraction = null;
+                else
+                    _fraction = Activator.CreateInstance(t) as Fraction;
                 return _fraction;
             }
         }
