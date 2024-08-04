@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using PropsImpact;
 using UnityEngine;
 
 namespace Entity.Abilities
@@ -7,24 +6,32 @@ namespace Entity.Abilities
     public class TreeOfWisdomUseAbility : Ability
     {
         private bool _detectedTree;
-        private TreeOfWisdomEntity _lastSavedTree;
+        private TreeOfWisdom _lastSavedTree;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(!other.GetComponent<TreeOfWisdomEntity>()) return;
-            _lastSavedTree = other.GetComponent<TreeOfWisdomEntity>();
+            var tree = other.GetComponent<TreeOfWisdom>();
+            if (!tree) return;
+            _lastSavedTree = tree;
             _detectedTree = true;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if(!other.GetComponent<TreeOfWisdomEntity>()) return;
+            if (!other.GetComponent<TreeOfWisdom>()) return;
             _detectedTree = false;
+        }
+
+        public bool TryUseTree()
+        {
+            if (!_detectedTree || !Available()) return false;
+            _lastSavedTree.UseTreeOfWisdom();
+            return true;
         }
 
         public void UseTree()
         {
-            if(!_detectedTree) return;
+            if (!_detectedTree || !Available()) return;
             _lastSavedTree.UseTreeOfWisdom();
         }
     }
