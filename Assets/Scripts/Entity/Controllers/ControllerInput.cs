@@ -13,6 +13,7 @@ namespace Entity.Controllers
         [Inject] private Controls _actions;
 
         // Cache
+        private TreeOfWisdomUseAbility _useTreeOfWisdom;
         private EntityMovementHorizontalMove _moveAbility;
         private IJumpableAbility _jumpAbility;
         private EntityMovementCrouch _crouchAbility;
@@ -25,6 +26,7 @@ namespace Entity.Controllers
         public override void Initialize()
         {
             base.Initialize();
+            _useTreeOfWisdom = Entity.FindAbilityByType<TreeOfWisdomUseAbility>();
             _entityGarbage = Entity.FindExactAbilityByType<EntityGarbage>();
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
@@ -49,6 +51,7 @@ namespace Entity.Controllers
             Entity.OnFixedUpdate += Move;
             _actions.Gameplay.Dash.performed += DashOnPerformed;
             _actions.Gameplay.Jump.performed += JumpOnPerformed;
+            _actions.Gameplay.PickGarbage.performed += UseTreeOfWisdomPerformed;
             _actions.Gameplay.PickGarbage.performed += PickGarbagePerformed;
             _actions.Gameplay.Crouch.started += CrouchOnStarted;
             _actions.Gameplay.Crouch.canceled += CrouchOnCanceled;
@@ -66,6 +69,7 @@ namespace Entity.Controllers
             _actions.Gameplay.Crouch.canceled -= CrouchOnCanceled;
         }
 
+        private void UseTreeOfWisdomPerformed(InputAction.CallbackContext ctx) => _useTreeOfWisdom.UseTree();
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UnCrouch();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
