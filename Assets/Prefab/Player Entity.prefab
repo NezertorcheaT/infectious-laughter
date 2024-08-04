@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 4591081283101944266}
   - component: {fileID: 3738668267681852663}
   - component: {fileID: 5696599926002409577}
+  - component: {fileID: 9103163849467859794}
   - component: {fileID: 1744210136793895504}
   - component: {fileID: 3693047800681385019}
   - component: {fileID: 3693047800681385016}
@@ -351,6 +352,7 @@ MonoBehaviour:
   jumpTime: 3
   walljumpHeight: 10
   walljumpPush: 20
+  InJump: 0
 --- !u!114 &3693047800681384995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +475,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62fe722c55fe02b4c8a3fc5c7ef59b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9103163849467859794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693047800681385021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4c7e3c45966ec41923519c2aa39e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!95 &1744210136793895504

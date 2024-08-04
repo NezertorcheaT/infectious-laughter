@@ -1,4 +1,3 @@
-using System;
 using Entity.Abilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,7 +25,7 @@ namespace Entity.Controllers
         public override void Initialize()
         {
             base.Initialize();
-            _useTreeOfWisdom = Entity.FindAbilityByType<TreeOfWisdomUseAbility>();
+            _useTreeOfWisdom = Entity.FindExactAbilityByType<TreeOfWisdomUseAbility>();
             _entityGarbage = Entity.FindExactAbilityByType<EntityGarbage>();
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
             _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();

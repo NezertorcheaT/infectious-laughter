@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Entity.Abilities
 {
+    [AddComponentMenu("Entity/Abilities/Tree of Wisdom Use Ability")]
     public class TreeOfWisdomUseAbility : Ability
     {
         private bool _detectedTree;

@@ -12,9 +12,11 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/Fraction Ability")]
     public class EntityFraction : Ability
     {
+#if UNITY_EDITOR
         private DropdownList<string> GetFractionTypes() => TypeCache.GetTypesDerivedFrom<Fraction>()
             .Select(i => (i.Name, i.AssemblyQualifiedName)).ToDropdownList();
-
+#endif
+        
         [Dropdown("GetFractionTypes")] [SerializeField]
         private string type;
 
