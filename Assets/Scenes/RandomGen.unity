@@ -417,6 +417,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
@@ -476,23 +478,23 @@ Tilemap:
     m_Data:
       e00: 0
       e01: 0
-      e02: -3.0700943e+29
-      e03: -3.0700943e+29
+      e02: -7.1481204e+19
+      e03: -7.1481204e+19
       e10: 0
       e11: 0
-      e12: 9.85e-43
-      e13: 9.85e-43
-      e20: -1.3464715e-12
+      e12: 7.41e-43
+      e13: 7.41e-43
+      e20: -3.2515813e+18
       e21: 1e-45
-      e22: 0.0000000016112311
-      e23: -3.818363e+19
+      e22: 2.95082e-19
+      e23: -1.1437612e-19
       e30: 4.5905e-41
       e31: 0
-      e32: 9.87e-43
-      e33: 9.9e-43
+      e32: 7.43e-43
+      e33: 7.45e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 4.784e-41, g: 4.784e-41, b: 4.784e-41, a: 4.784e-41}
+    m_Data: {r: 4.3838e-41, g: 4.3838e-41, b: 4.3838e-41, a: 4.3838e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1787,7 +1789,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2085324745}
-  - component: {fileID: 2085324746}
   - component: {fileID: 2085324747}
   m_Layer: 0
   m_Name: LevelGenerator
@@ -1811,55 +1812,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2085324746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085324744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43ed30632358ab444922a2861bca86fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  seed: penis
-  numberOfPrefabs: 20
-  levelStartPrefab:
-    groundPrefab: {fileID: 583764199117609832, guid: 962d744ca37e1464996d17deafe43c8b, type: 3}
-    tilesLength: 2
-    changeHeight: 0
-  levelEndPrefab:
-    groundPrefab: {fileID: 583764199117609832, guid: 1af65380bdffa664bae028bddac0738a, type: 3}
-    tilesLength: 0
-    changeHeight: 0
-  levelPrefabsData:
-  - groundPrefab: {fileID: 3734244816727948135, guid: 0e3fa1901d7f6ec4fb602dfa24005553, type: 3}
-    tilesLength: 7
-    changeHeight: 0
-  - groundPrefab: {fileID: 5058281030222651738, guid: f20dfa94b7538fe4f861f7908c39ca92, type: 3}
-    tilesLength: 7
-    changeHeight: 2
-  - groundPrefab: {fileID: 3465542341154025928, guid: 6d351a1032a66544390b7ff63b177ac6, type: 3}
-    tilesLength: 7
-    changeHeight: 2
-  - groundPrefab: {fileID: 6672035186598603810, guid: 82a1477f87ee50443baa2b1967c40fef, type: 3}
-    tilesLength: 7
-    changeHeight: -1
-  - groundPrefab: {fileID: 6672035186598603810, guid: 848238dabd0c1b844b32f68fcce5c750, type: 3}
-    tilesLength: 7
-    changeHeight: -1
-  - groundPrefab: {fileID: 4469983733181013119, guid: be8878f4798e4be4eb662a0dec4af02f, type: 3}
-    tilesLength: 8
-    changeHeight: 0
-  usePresets: 1
-  levelPresetsData:
-  - groundPrefab: {fileID: 6789490041581660503, guid: 028597a1460707945baca322b2cf7ed1, type: 3}
-    tilesLength: 4
-    changeHeight: -1
-  - groundPrefab: {fileID: 3727993634732249060, guid: 500cd1e9547f2e545bd67ee6f79199e7, type: 3}
-    tilesLength: 10
-    changeHeight: 0
 --- !u!114 &2085324747
 MonoBehaviour:
   m_ObjectHideFlags: 0

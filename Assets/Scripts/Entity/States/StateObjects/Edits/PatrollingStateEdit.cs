@@ -19,7 +19,7 @@ namespace Entity.States.StateObjects.Edits
         }
 
         public override T Get<T>(string name) => GetType().GetField(name).GetValue(this) is T
-            ? (T)GetType().GetField(name).GetValue(this)
+            ? (T) GetType().GetField(name).GetValue(this)
             : default;
 
         public override void Set<T>(string name, T value) => GetType().GetField(name).SetValue(this, value);

@@ -10,53 +10,52 @@ namespace Levels.Generation
 {
     public class LevelRandomGeneration : MonoBehaviour
     {
-        [Header("База")]
-        
-        [Tooltip("Ну это как бы сид, задаётся в сохранениях")]
-        [SerializeField] public string seed;
-        
-        [Tooltip("Этот тайлик будет заменён на нихуя при генерации структур")]
-        [SerializeField] private TileBase voidTile;
-        
-        [Tooltip("Это куда собственно тайлы записываться будут")]
-        [SerializeField] private Tilemap tilemap;
+        [Header("База")] [Tooltip("Ну это как бы сид, задаётся в сохранениях")] [SerializeField]
+        public string seed;
 
-        [Header("Чанки")]
-        
-        [Tooltip("Это кароч колличество основных чанков, без специальных")]
-        [SerializeField, Min(1)] private int chunksCount;
+        [Tooltip("Этот тайлик будет заменён на нихуя при генерации структур")] [SerializeField]
+        private TileBase voidTile;
 
-        [Tooltip("Самый первый чанк, обычно с точкой спавна игрока")]
-        [SerializeField] private ChunkPrefab firstChunk;
+        [Tooltip("Это куда собственно тайлы записываться будут")] [SerializeField]
+        private Tilemap tilemap;
 
-        [Tooltip("Самый последний чанк, обычно с точкой выхода с уровня")]
-        [SerializeField] private ChunkPrefab lastChunk;
+        [Header("Чанки")] [Tooltip("Это кароч колличество основных чанков, без специальных")] [SerializeField, Min(1)]
+        private int chunksCount;
 
-        [Tooltip("Чанки, которые будут использоваться при построении уровня")]
-        [SerializeField] private ChunkPrefab[] chunkBases;
+        [Tooltip("Самый первый чанк, обычно с точкой спавна игрока")] [SerializeField]
+        private ChunkPrefab firstChunk;
 
-        [Tooltip("Чанки, которые будут использоваться при построении уровня, но без повторений и гарантировано один раз")]
-        [SerializeField] private ChunkPrefab[] specialChunks;
+        [Tooltip("Самый последний чанк, обычно с точкой выхода с уровня")] [SerializeField]
+        private ChunkPrefab lastChunk;
+
+        [Tooltip("Чанки, которые будут использоваться при построении уровня")] [SerializeField]
+        private ChunkPrefab[] chunkBases;
+
+        [Tooltip(
+            "Чанки, которые будут использоваться при построении уровня, но без повторений и гарантировано один раз")]
+        [SerializeField]
+        private ChunkPrefab[] specialChunks;
 
         [Header("Изменяющие слои")]
-        
-        [Tooltip("Это кароч слои изменения террейна, они будут двигать террейн вверх и вниз, в зависимости от них самих")]
-        [SerializeField] private OffsetLayer[] layers;
+        [Tooltip(
+            "Это кароч слои изменения террейна, они будут двигать террейн вверх и вниз, в зависимости от них самих")]
+        [SerializeField]
+        private OffsetLayer[] layers;
 
-        [Header("Структуры")]
-        
-        [Tooltip("Это структуры для спавна")]
-        [SerializeField] private Structure[] structures;
+        [Header("Структуры")] [Tooltip("Это структуры для спавна")] [SerializeField]
+        private Structure[] structures;
 
         [Tooltip("Максимальное колличество попыток впихнуть структуру в мир, перед тем как отвергнуть её")]
-        [SerializeField, Min(1)] private int structuresSpawnMaxTry = 100;
+        [SerializeField, Min(1)]
+        private int structuresSpawnMaxTry = 100;
 
         private struct PreSpawned
         {
             public GameObject Prefab;
             public Vector3 Position;
             public Quaternion Rotation;
-            public float Offset;
+            public float OffsetY;
+            public float OffsetX;
         }
 
         [Serializable]
@@ -107,8 +106,10 @@ namespace Levels.Generation
 
             GenerateChunks();
             ProcessColliders();
-            SetPreSpawnedOffsets();
+            SetPreSpawnedOffsetsY();
             ApplyLayers();
+            ProcessColliders();
+            SetPreSpawnedOffsetsX();
             GenerateStructures();
             ProcessColliders();
         }
@@ -119,7 +120,62 @@ namespace Levels.Generation
             _composite?.GenerateGeometry();
         }
 
-        private void SetPreSpawnedOffsets()
+        private void SetPreSpawnedOffsetsX()
+        {
+            for (var i = 0; i < _preSpawned.Count; i++)
+            {
+                var preSpawned = _preSpawned[i];
+                var onFloor = preSpawned.Prefab.GetComponent<PreSpawnedOnFloor>();
+                if (onFloor is null) continue;
+
+                var offset = 0f;
+                var searchDirection = false;
+                var searchTickRange = onFloor.Size * onFloor.SearchPercentRadius;
+                for (var j = 0; j < onFloor.MaxSearchTry; j++)
+                {
+                    if (searchDirection) j -= 1;
+                    searchDirection = !searchDirection;
+                    var searchDirectionMultiplier = searchDirection ? 1f : -1f;
+                    var offsetX = searchDirectionMultiplier * searchTickRange * j;
+
+                    var hitMiddle = Physics2D.Raycast(
+                        new Vector2(preSpawned.Position.x + onFloor.Center.x + offsetX, _maxY),
+                        Vector2.down,
+                        _maxY * 5,
+                        1 << 0
+                    );
+                    var hitLeft = Physics2D.Raycast(
+                        new Vector2(preSpawned.Position.x + onFloor.Center.x - onFloor.Size / 2f + offsetX, _maxY),
+                        Vector2.down,
+                        _maxY * 5,
+                        1 << 0
+                    );
+                    var hitRight = Physics2D.Raycast(
+                        new Vector2(preSpawned.Position.x + onFloor.Center.x + onFloor.Size / 2f + offsetX, _maxY),
+                        Vector2.down,
+                        _maxY * 5,
+                        1 << 0
+                    );
+                    if (!hitLeft.collider && !hitRight.collider && !hitMiddle.collider) continue;
+                    if (Math.Abs(hitLeft.point.y - hitRight.point.y) > searchTickRange) continue;
+                    if (Math.Abs(hitMiddle.point.y - hitRight.point.y) > searchTickRange) continue;
+
+                    offset = offsetX;
+                    break;
+                }
+
+                _preSpawned[i] = new PreSpawned
+                {
+                    Prefab = preSpawned.Prefab,
+                    Position = preSpawned.Position,
+                    Rotation = preSpawned.Rotation,
+                    OffsetY = preSpawned.OffsetY,
+                    OffsetX = offset,
+                };
+            }
+        }
+
+        private void SetPreSpawnedOffsetsY()
         {
             for (var i = 0; i < _preSpawned.Count; i++)
             {
@@ -135,7 +191,7 @@ namespace Levels.Generation
                     Prefab = _preSpawned[i].Prefab,
                     Position = _preSpawned[i].Position,
                     Rotation = _preSpawned[i].Rotation,
-                    Offset = _preSpawned[i].Position.y > hitDown.point.y
+                    OffsetY = _preSpawned[i].Position.y > hitDown.point.y
                         ? -(Mathf.Abs(_preSpawned[i].Position.y) - Mathf.Abs(hitDown.point.y))
                         : (Mathf.Abs(hitDown.point.y) - Mathf.Abs(_preSpawned[i].Position.y))
                 };
@@ -199,6 +255,7 @@ namespace Levels.Generation
 
                 var map = offsetLayer.layer.GetMap(seed).ToArray();
                 offsetLayer.offset = (int) Mathf.Repeat(offsetLayer.offset, map.Length);
+
                 if (offsetLayer.behavior is OffsetLayer.Behavior.Clamp)
                     ProcessLayer(map, offsetLayer, _layerMinX, Mathf.Clamp(map.Length - 1, _layerMinX, _layerMaxX));
                 else if (offsetLayer.behavior is OffsetLayer.Behavior.Repeat)
@@ -251,7 +308,7 @@ namespace Levels.Generation
             _filledWithStructure.Add(cb);
 
             var intersectingPreSpawns = _preSpawned
-                    .Where(i => worldBounds.Contains2D(i.Position + new Vector3(0, i.Offset)))
+                    .Where(i => worldBounds.Contains2D(i.Position + new Vector3(0, i.OffsetY)))
                     .ToArray()
                 ;
             foreach (var toRemove in intersectingPreSpawns)
@@ -268,7 +325,7 @@ namespace Levels.Generation
                         tilemap.layoutGrid.CellToWorld(gridPosition.ToVector3Int()) +
                         noneGrid.transform.localPosition,
                     Rotation = noneGrid.gameObject.transform.rotation,
-                    Offset = 0
+                    OffsetY = 0
                 });
             }
 
@@ -347,7 +404,7 @@ namespace Levels.Generation
                                    chunk.Grid.CellToWorld(chunk.StartPort.ToVector3Int()) +
                                    noneGrid.transform.localPosition,
                         Rotation = noneGrid.transform.localRotation,
-                        Offset = 0
+                        OffsetY = 0
                     });
                 }
 
@@ -396,16 +453,16 @@ namespace Levels.Generation
             foreach (var preSpawned in _preSpawned)
             {
                 var i = instantiate(preSpawned.Prefab, preSpawned.Position, preSpawned.Rotation, null);
-                if (preSpawned.Offset != 0)
+                if (preSpawned.OffsetY != 0)
                 {
                     i.transform.position = new Vector3(
-                        preSpawned.Position.x,
+                        preSpawned.Position.x + preSpawned.OffsetX,
                         Physics2D.Raycast(
-                            new Vector2(preSpawned.Position.x, _maxY),
+                            new Vector2(preSpawned.Position.x + preSpawned.OffsetX, _maxY),
                             Vector2.down,
                             _maxY * 5,
                             1 << 0
-                        ).point.y + preSpawned.Offset,
+                        ).point.y + preSpawned.OffsetY,
                         preSpawned.Position.z
                     );
                 }

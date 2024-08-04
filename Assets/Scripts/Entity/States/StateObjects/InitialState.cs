@@ -8,6 +8,6 @@ namespace Entity.States.StateObjects
     {
         public override string Name => "Root";
 
-        public override async Task<int> Activate(Entity entity, State previous) => 0;
+        public override Task<int> Activate(Entity entity, State previous) => Task.FromResult(0);
     }
 }
