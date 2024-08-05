@@ -9,14 +9,13 @@ namespace Inventory.Items
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public int MaxStackSize { get; private set; }
+
         public ScriptableObject SelfRef => this;
-
         public Sprite Sprite => sprite;
-
+        public string Id => "il.foo";
         public int ItemCost => itemCost;
 
         [SerializeField, Min(1)] private int itemCost;
-
         [SerializeField] private Sprite sprite;
 
 
@@ -37,9 +36,6 @@ namespace Inventory.Items
             return Equals((IItem) obj);
         }
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Name, MaxStackSize);
-        }
+        public override int GetHashCode() => HashCode.Combine(Name, MaxStackSize);
     }
 }

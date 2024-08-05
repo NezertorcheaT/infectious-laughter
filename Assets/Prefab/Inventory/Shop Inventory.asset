@@ -12,29 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe5c93e2947435fb9ebcc38eb4e3083, type: 3}
   m_Name: Shop Inventory
   m_EditorClassIdentifier: 
+  itemsProvider: {fileID: 11400000, guid: 052c567c52895534480383f7066626fa, type: 2}
   maxCapacity: 12
   <_slots>k__BackingField:
-  - lastItem: {fileID: 11400000, guid: 047a51507c32ccb47845b6c605952d26, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: 047a51507c32ccb47845b6c605952d26, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: 047a51507c32ccb47845b6c605952d26, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: 2859134343c73f4478c9dfd72c0bbf56, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: 4fea7f1710cd2544390c03ddf61927a7, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: ff3a7ea0eb5dca2408070f7feae030ea, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: 047a51507c32ccb47845b6c605952d26, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: 2859134343c73f4478c9dfd72c0bbf56, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: 4fea7f1710cd2544390c03ddf61927a7, type: 2}
-    _count: 0
-  - lastItem: {fileID: 11400000, guid: cdc8739b4c99c1e44bb0bd3c0591501c, type: 2}
-    _count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0
+  - lastItemID: 
+    count: 0

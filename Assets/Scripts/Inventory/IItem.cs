@@ -18,6 +18,11 @@ namespace Inventory
         string Name { get; }
 
         /// <summary>
+        /// ID предмета для сохранения
+        /// </summary>
+        string Id { get; }
+
+        /// <summary>
         /// максимальное колличество в стаке
         /// </summary>
         int MaxStackSize { get; }
@@ -31,7 +36,5 @@ namespace Inventory
         /// спрайт для отрисовки
         /// </summary>
         Sprite Sprite { get; }
-
-
     }
 }

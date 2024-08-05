@@ -8,20 +8,19 @@ namespace Inventory
     {
         public int Count
         {
-            get => Mathf.Clamp(_count, 0, LastItem.MaxStackSize);
-            set => _count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
+            get => Mathf.Clamp(count, 0, LastItem.MaxStackSize);
+            set => count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
         }
 
-        [SerializeField] private ScriptableObject lastItem;
+        [SerializeField] private string lastItemId;
+        [SerializeField] private int count;
 
-        public int _count = 0;
-
-        public bool IsEmpty => LastItem == null || Count == 0;
+        public bool IsEmpty => lastItemId == string.Empty || LastItem == null || Count == 0;
 
         public IItem LastItem
         {
-            get => lastItem as IItem;
-            set => lastItem = value?.SelfRef;
+            get => ItemsProvider.Instance.IdToItem(lastItemId);
+            set => lastItemId = value is null ? string.Empty: value.Id;
         }
 
         public void Use(Entity.Entity entity, IInventory inventory)
@@ -34,8 +33,8 @@ namespace Inventory
 
         public Slot(IItem item, int count)
         {
-            LastItem = item;
-            Count = item != null ? count : 0;
+            lastItemId = item is null ? string.Empty: item.Id;
+            Count = item is not null ? count : 0;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Inventory.Items
     public class JawGrip : ScriptableObject, IItem, IUsableItem
     {
         public string Name => "JawGrip";
+        public string Id => "il.jaw_grip";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
         public int ItemCost => itemCost;

@@ -8,6 +8,7 @@ namespace Inventory.Items
     public class TrapItem : ScriptableObject, IUsableItem, ICanSpawn
     {
         public string Name => "Trap";
+        public string Id => "il.trap";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
         public ItemAdderVerifier Verifier { get; set; }

@@ -26,7 +26,7 @@ namespace Inventory
 
         public bool TryAddItem(IItem item, bool isStackable = true, bool addItem = true)
         {
-            if(isStackable)// Добавлен способ проверять нужно ли стакать объекты или нет 
+            if (isStackable) // Добавлен способ проверять нужно ли стакать объекты или нет 
             {
                 for (var i = 0; i < Slots.Count; i++)
                 {

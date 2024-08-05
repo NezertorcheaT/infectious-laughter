@@ -6,6 +6,7 @@ namespace Inventory.Items
     public class Attracktor : ScriptableObject, IUsableItem
     {
         public string Name => "Attracktor";
+        public string Id => "il.attracktor";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
         public int ItemCost => itemCost;

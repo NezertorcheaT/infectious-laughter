@@ -7,6 +7,7 @@ namespace Inventory.Items
     public class HolyGuillotineItem : ScriptableObject, IUsableItem, ICanSpawn
     {
         public string Name => "Holy Guillotine";
+        public string Id => "il.holy_guillotine";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
         public ItemAdderVerifier Verifier { get; set; }

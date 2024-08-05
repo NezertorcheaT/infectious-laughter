@@ -6,6 +6,7 @@ namespace Inventory.Items
     public class Spyglass : ScriptableObject, IUsableItem
     {
         public string Name => "Spyglass";
+        public string Id => "il.spyglass";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
         public int ItemCost => itemCost;

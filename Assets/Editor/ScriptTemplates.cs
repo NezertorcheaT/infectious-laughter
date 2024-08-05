@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using UnityEditor;
 using Zenject.Internal;
 
@@ -31,9 +32,31 @@ namespace Editor
                 rejClassName = rejClassName.Replace(rej, "");
             }
 
+            var rejClassNameCamel = new StringBuilder();
+            var i = 0;
+            foreach (var c in rejClassName)
+            {
+                if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".Contains(c) && i != 0)
+                    rejClassNameCamel.Append('_');
+                rejClassNameCamel.Append(c.ToString().ToLower());
+                i++;
+            }
+
+            var rejClassNameSpace = new StringBuilder();
+            i = 0;
+            foreach (var c in rejClassName)
+            {
+                if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".Contains(c) && i != 0)
+                    rejClassNameSpace.Append(' ');
+                rejClassNameSpace.Append(c.ToString());
+                i++;
+            }
+
             File.WriteAllText(absolutePath, templateStr
                 .Replace("#CLASS_NAME#", className)
                 .Replace("#REJECTED_CLASS_NAME#", rejClassName)
+                .Replace("#REJECTED_CLASS_NAME_CAMEL#", rejClassNameCamel.ToString())
+                .Replace("#REJECTED_CLASS_NAME_SPACE#", rejClassNameSpace.ToString())
             );
 
             AssetDatabase.Refresh();
@@ -54,15 +77,17 @@ namespace Editor
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = ""New #REJECTED_CLASS_NAME# Item"", menuName = ""Inventory/Items/#REJECTED_CLASS_NAME#"", order = 0)]
+    [CreateAssetMenu(fileName = ""New #REJECTED_CLASS_NAME_SPACE# Item"", menuName = ""Inventory/Items/#REJECTED_CLASS_NAME_SPACE#"", order = 0)]
     public class #CLASS_NAME# : ScriptableObject, IItem
     {
-        public string Name => ""#CLASS_NAME#"";
+        public string Name => ""#REJECTED_CLASS_NAME_SPACE#"";
+        public string Id => ""il.#REJECTED_CLASS_NAME_CAMEL#"";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
 
         [SerializeField] private Sprite sprite;
-        [field: SerializeField] public int MaxStackSize { get; private set; }
+        [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 1;
+        [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
     }
 }", "Item");
         }
@@ -76,10 +101,10 @@ using UnityEngine;
 
 namespace Entity.States
 {
-    [CreateAssetMenu(fileName = ""#REJECTED_CLASS_NAME# State"", menuName = ""AI Nodes/States/#REJECTED_CLASS_NAME# State"", order = 0)]
+    [CreateAssetMenu(fileName = ""#REJECTED_CLASS_NAME_SPACE# State"", menuName = ""AI Nodes/States/#REJECTED_CLASS_NAME_SPACE# State"", order = 0)]
     public class #CLASS_NAME# : State
     {
-        public override string Name => ""#REJECTED_CLASS_NAME#"";
+        public override string Name => ""#REJECTED_CLASS_NAME_SPACE#"";
 
         public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties)
         {
@@ -99,7 +124,7 @@ namespace Entity.States
 
 namespace Entity.Abilities
 {
-    [AddComponentMenu(""Entity/Abilities/#REJECTED_CLASS_NAME# Ability"")]
+    [AddComponentMenu(""Entity/Abilities/#REJECTED_CLASS_NAME_SPACE# Ability"")]
     public class #CLASS_NAME# : Ability
     {
         public override void Initialize()
@@ -118,7 +143,7 @@ namespace Entity.Abilities
 
 namespace Entity.Controllers
 {
-    [AddComponentMenu(""Entity/Controllers/#REJECTED_CLASS_NAME# Controller"")]
+    [AddComponentMenu(""Entity/Controllers/#REJECTED_CLASS_NAME_SPACE# Controller"")]
     public class #CLASS_NAME# : Controller
     {
         public override void Initialize()
