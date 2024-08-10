@@ -11,17 +11,18 @@ using System;
 namespace TranslateManagement
 {
     [BurstCompile]
-    [CreateAssetMenu(fileName = "GoogleAutoTranslater", menuName = "TranslateManagement/Auto Translaters/Google AutoTranslater")]
+    [CreateAssetMenu(fileName = "GoogleAutoTranslater",
+        menuName = "TranslateManagement/Auto Translaters/Google AutoTranslater")]
     public class GoogleAutoTranslater : AutoTranslater
     {
-        enum LoggingMode
+        private enum LoggingMode
         {
             None,
             ErrorsOnly,
             Full,
         }
 
-        enum TranslateMode
+        private enum TranslateMode
         {
             Consistently,
             Bruteforce,
@@ -29,13 +30,18 @@ namespace TranslateManagement
 
 
         [Min(1)]
-        [Tooltip("Number of translation attempts if the translation get error. If translation still ends in errors, increase this value")]
-        [SerializeField] private int attemptsCount = 10;
-        [Space]
-        [Tooltip("Debug.Log mode")]
-        [SerializeField] private LoggingMode logging = LoggingMode.Full;
-        [Tooltip("Messages sending mode. Consistently - send all messages one by one. Bruteforce - sending all messages at once (may lead to errors due to Google DOS protection)")]
-        [SerializeField] private TranslateMode sendMessagesMode;
+        [Tooltip(
+            "Number of translation attempts if the translation get error. If translation still ends in errors, increase this value")]
+        [SerializeField]
+        private int attemptsCount = 10;
+
+        [Space] [Tooltip("Debug.Log mode")] [SerializeField]
+        private LoggingMode logging = LoggingMode.Full;
+
+        [Tooltip(
+            "Messages sending mode. Consistently - send all messages one by one. Bruteforce - sending all messages at once (may lead to errors due to Google DOS protection)")]
+        [SerializeField]
+        private TranslateMode sendMessagesMode;
 
 
         public bool BruteforceMode => sendMessagesMode == TranslateMode.Bruteforce;
@@ -52,18 +58,15 @@ namespace TranslateManagement
         {
             // Cancel if wrong language
             if (!ValidForTranslate(to))
-            {
                 throw new Exception($"{to} currently is not supported by Google Translate.");
-            }
-
-
 
             // Creates url
-            var url = string.Format("https://translate.google.com" + "/translate_a/single?client=gtx&dt=t&sl={0}&tl={1}&q={2}",
+            var url = string.Format(
+                "https://translate.google.com" + "/translate_a/single?client=gtx&dt=t&sl={0}&tl={1}&q={2}",
                 "auto", to.ToHLCode(), WebUtility.UrlEncode(from));
 
             // Creates Web Request with url
-            UnityWebRequest www = UnityWebRequest.Get(url);
+            var www = UnityWebRequest.Get(url);
 
 
             // Send request and wait for it
@@ -71,16 +74,17 @@ namespace TranslateManagement
 
 
             // Get text
-            string response = www.downloadHandler.text;
+            var response = www.downloadHandler.text;
 
             try
             {
-                JArray jsonArray = JArray.Parse(response);
+                var jsonArray = JArray.Parse(response);
                 response = jsonArray[0][0][0].ToString();
             }
             catch
             {
-                throw new Exception("The process is not completed! Most likely, you made too many requests. In this case, the Google Translate API blocks access to the translation for a while.  Please try again later. Do not translate the text too often, so that Google does not consider your actions as spam");
+                throw new Exception(
+                    "The process is not completed! Most likely, you made too many requests. In this case, the Google Translate API blocks access to the translation for a while.  Please try again later. Do not translate the text too often, so that Google does not consider your actions as spam");
             }
 
             return response;
@@ -94,36 +98,30 @@ namespace TranslateManagement
         {
             // Cancel if wrong language
             if (!ValidForTranslate(to))
-            {
                 throw new Exception($"{to} currently is not supported by Google Translate.");
-            }
-
-
 
             // Gets all fields
-            FieldInfo[] fields = typeof(Translation).GetFields();
+            var fields = typeof(Translation).GetFields();
 
 
             // Creates async handlers
-            GoogleTranslateAsyncHandler[] handlers = new GoogleTranslateAsyncHandler[fields.Length];
+            var handlers = new GoogleTranslateAsyncHandler[fields.Length];
 
 
             // Creates tasks collection for bruteforce
             UniTask[] handlersTasks = null;
 
             if (BruteforceMode)
-            {
                 handlersTasks = new UniTask[handlers.Length];
-            }
 
 
             // Creates own translation
-            Translation ownTranslation = new();
+            var ownTranslation = new Translation();
 
-            for (int i = 0; i < fields.Length; i++)
+            for (var i = 0; i < fields.Length; i++)
             {
                 // Current field
-                FieldInfo field = fields[i];
+                var field = fields[i];
 
                 // Skip all non string fields
                 if (field.FieldType != typeof(string))
@@ -131,10 +129,10 @@ namespace TranslateManagement
 
                 // Initialize handler
                 handlers[i] = new GoogleTranslateAsyncHandler(language: to,
-                                                              translationFrom: from,
-                                                              translationTo: ownTranslation, 
-                                                              field: field, 
-                                                              googleAutoTranslater: this);
+                    translationFrom: from,
+                    translationTo: ownTranslation,
+                    field: field,
+                    googleAutoTranslater: this);
 
                 // If bruteforce mode, fire translation and add to tasks collection
                 if (BruteforceMode)
@@ -154,9 +152,8 @@ namespace TranslateManagement
 
             // Wait when all bruteforce tasks end
             if (BruteforceMode)
-            {
                 await UniTask.WhenAll(handlersTasks);
-            }
+
 
             // Return own translation
             return ownTranslation;
@@ -166,6 +163,7 @@ namespace TranslateManagement
 
 
         #region AsyncHandler
+
         /// <summary>
         /// Class for deferred translation
         /// </summary>
@@ -177,7 +175,8 @@ namespace TranslateManagement
             private readonly object translationTo;
             private readonly GoogleAutoTranslater googleAutoTranslater;
 
-            public GoogleTranslateAsyncHandler(ApplicationLanguage language, FieldInfo field, object translationFrom, object translationTo, GoogleAutoTranslater googleAutoTranslater)
+            public GoogleTranslateAsyncHandler(ApplicationLanguage language, FieldInfo field, object translationFrom,
+                object translationTo, GoogleAutoTranslater googleAutoTranslater)
             {
                 this.language = language;
                 this.field = field;
@@ -189,10 +188,10 @@ namespace TranslateManagement
             public async UniTask Start()
             {
                 // Cache current value
-                string currentTranslationValue = (string)field.GetValue(translationFrom);
+                var currentTranslationValue = (string) field.GetValue(translationFrom);
 
                 string value;
-                for (int a = 0; a < googleAutoTranslater.attemptsCount; a++)
+                for (var a = 0; a < googleAutoTranslater.attemptsCount; a++)
                 {
                     try
                     {
@@ -210,12 +209,12 @@ namespace TranslateManagement
                             if (a + 1 < googleAutoTranslater.attemptsCount)
                             {
                                 Debug.Log($"<color={googleAutoTranslater.retryColor}> " +
-                                      $"The {field.Name} was not successfully translated. Attempt: {a} {Environment.NewLine} Error: </color> {exp}");
+                                          $"The {field.Name} was not successfully translated. Attempt: {a} {Environment.NewLine} Error: </color> {exp}");
                             }
                             else
                             {
                                 Debug.Log($"<color={googleAutoTranslater.errorColor}> " +
-                                      $"The {field.Name} was skipped due to an error: </color> {exp}");
+                                          $"The {field.Name} was skipped due to an error: </color> {exp}");
                             }
                         }
 
@@ -230,16 +229,18 @@ namespace TranslateManagement
 
                     // Log warning if logging is not None
                     if (googleAutoTranslater.logging == LoggingMode.Full)
-                        Debug.Log($"<color={googleAutoTranslater.successColor}> " + $"Successfully translated: {field.Name} </color>");
+                        Debug.Log($"<color={googleAutoTranslater.successColor}> " +
+                                  $"Successfully translated: {field.Name} </color>");
 
                     // Break the cycle if translate is success
                     break;
                 }
             }
         }
-#endregion
 
-        public override bool ValidForTranslate(ApplicationLanguage language) 
+        #endregion
+
+        public override bool ValidForTranslate(ApplicationLanguage language)
             => !language.CheckForGoogleTranslateException();
     }
 }

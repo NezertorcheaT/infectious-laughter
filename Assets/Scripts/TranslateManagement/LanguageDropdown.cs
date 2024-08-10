@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using Unity.Burst;
 using System.Linq;
@@ -16,8 +15,8 @@ namespace TranslateManagement.UI
             dropdown = GetComponent<TMP_Dropdown>();
 
             // Select all languages as list of strings
-            List<string> languagesNames = new(from t in TranslationConfig.Instance.GetTranslations()
-                                              select t.Language.ToString());
+            var languagesNames = TranslationConfig.Instance.GetTranslations().Select(i => i.Language.ToString())
+                .ToList();
 
             dropdown.ClearOptions();
             dropdown.AddOptions(languagesNames);
@@ -25,11 +24,9 @@ namespace TranslateManagement.UI
 
         protected void Start()
         {
-            dropdown.value = dropdown.options
-                                        .Select(o => dropdown.options.IndexOf(o)) // Select indexes
-                                        .Where(s => dropdown.options[s].text.Equals(TranslateManager.GameLanguage.ToString())) // Find option with game language
-                                        .FirstOrDefault(); // Return index
+            dropdown.value = dropdown.options // Select indexes
+                .Select(o => dropdown.options.IndexOf(o)) // Find option with game language
+                .FirstOrDefault(s => dropdown.options[s].text.Equals(TranslateManager.GameLanguage.ToString())); // Return index
         }
     }
 }
-

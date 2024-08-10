@@ -13,7 +13,7 @@ namespace TranslateManagement
         public virtual string Translate(string from, ApplicationLanguage to)
         {
             // Get Task
-            UniTask<string> task = TranslateAsync(from, to);
+            var task = TranslateAsync(from, to);
 
             while (task.Status == UniTaskStatus.Pending)
             {
@@ -30,7 +30,7 @@ namespace TranslateManagement
         public virtual Translation TranslateAll(Translation from, ApplicationLanguage to)
         {
             // Get Task
-            UniTask<Translation> task = TranslateAllAsync(from, to);
+            var task = TranslateAllAsync(from, to);
 
             while (task.Status == UniTaskStatus.Pending)
             {
@@ -42,7 +42,6 @@ namespace TranslateManagement
         }
 
 
-
         /// <summary>
         /// Performs translation of one string asynchronously. You must add the <seealso href="async"/> keyword in the implementation
         /// </summary>
@@ -52,7 +51,6 @@ namespace TranslateManagement
         /// Performs translation asynchronously. You must add the <seealso href="async"/> keyword in the implementation
         /// </summary>
         public abstract UniTask<Translation> TranslateAllAsync(Translation from, ApplicationLanguage to);
-
 
 
         /// <summary>

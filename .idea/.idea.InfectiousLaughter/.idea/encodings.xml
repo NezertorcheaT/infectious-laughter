@@ -8,5 +8,6 @@
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Inventory/Items/JawGrip.cs" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/NPC/Dialogue.cs" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Shop/ShopUI.cs" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/TranslateManagement/ExampleStarter.cs" charset="windows-1251" />
   </component>
 </project>

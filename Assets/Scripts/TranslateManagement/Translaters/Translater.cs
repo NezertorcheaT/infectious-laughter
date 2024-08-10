@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Unity.Burst;
+﻿using Unity.Burst;
 using UnityEngine;
 
 namespace TranslateManagement
@@ -22,6 +21,7 @@ namespace TranslateManagement
             if (Valid)
                 ChangeElement();
         }
+
         protected virtual void OnDisable()
         {
             TranslateManager.GameLanguageChanged -= ChangeElement;

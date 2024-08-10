@@ -16,9 +16,11 @@ namespace TranslateManagement
 
             base.Awake();
         }
+
         public override void ChangeElement()
         {
-            text.SetText(TranslationString); print($"Text translated: {TranslationString}");
+            text.SetText(TranslationString);
+            print($"Text translated: {TranslationString}");
         }
     }
 }

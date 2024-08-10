@@ -14,16 +14,15 @@ public class ExampleStarter : MonoBehaviour
 
     [SerializeField] private LanguageSetMode setMode;
 
-    [ShowIf(nameof(setMode), LanguageSetMode.Manual)]
-    [Dropdown(nameof(AvailableLanguages))]
-    [SerializeField] private string languageManual;
-    [Space]
-    [SerializeField] private TMP_Dropdown languagesDropdown;
+    [ShowIf(nameof(setMode), LanguageSetMode.Manual)] [Dropdown(nameof(AvailableLanguages))] [SerializeField]
+    private string languageManual;
+
+    [Space] [SerializeField] private TMP_Dropdown languagesDropdown;
 
 
     private string[] AvailableLanguages => TranslationConfig.Instance.GetTranslations()
-                                              .Select(t => t.Language.ToString())
-                                              .ToArray();
+        .Select(t => t.Language.ToString())
+        .ToArray();
 
     private int lastLanguagesDropdownValue;
 
@@ -41,17 +40,17 @@ public class ExampleStarter : MonoBehaviour
 
         ApplicationLanguage language;
 
-        if (setMode == LanguageSetMode.System)
-            language = Application.systemLanguage.ToApplicationLanguage();
-        else
-            language = languageManual.ToApplicationLanguage();
+        language = setMode == LanguageSetMode.System
+            ? Application.systemLanguage.ToApplicationLanguage()
+            : languageManual.ToApplicationLanguage();
 
 
         // Для запуска системы перевода нам нужна только одна строчка
         TranslateManager.ChangeLanguage(language);
     }
 
-    bool first = true;
+    private bool first = true;
+
     public void ChangeLanguage(int languageIndex)
     {
         if (first)
@@ -61,9 +60,9 @@ public class ExampleStarter : MonoBehaviour
         }
 
         // Parse option to ApplicationLanguage
-        ApplicationLanguage language = languagesDropdown.options[languageIndex].text.ToApplicationLanguage();
+        var language = languagesDropdown.options[languageIndex].text.ToApplicationLanguage();
 
-        bool success = TranslateManager.ChangeLanguage(language);
+        var success = TranslateManager.ChangeLanguage(language);
 
         if (success)
             lastLanguagesDropdownValue = languagesDropdown.value;

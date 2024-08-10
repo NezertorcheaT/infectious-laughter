@@ -19,16 +19,13 @@ namespace TranslateManagement
         public static Translation LoadTranslation(ApplicationLanguage language)
         {
             if (TranslationConfig.Instance.TryGetTranslation(language, out var result))
-            {
                 return result.Translation;
-            }
-            else
-            {
-                throw new Exception($"{language} not founded");
-            }
+
+            throw new Exception($"{language} not founded");
         }
 
         #endregion
+
         /// <summary>
         /// Returns the system language
         /// </summary>
@@ -39,8 +36,8 @@ namespace TranslateManagement
 #else
             return Application.systemLanguage.ToApplicationLanguage();
 #endif
-
         }
+
         /// <summary>
         /// Sets new language
         /// </summary>
@@ -55,15 +52,11 @@ namespace TranslateManagement
             if (Translation == null)
                 return false;
 
-
-
             Initialized = true;
 
             GameLanguage = newLanguage;
 
             TranslateCacher.RebuildData();
-
-
 
             if (withInvoke) GameLanguageChanged?.Invoke();
 
@@ -71,7 +64,6 @@ namespace TranslateManagement
         }
 
 
-        public static string GetTranslationString(string name)
-            => TranslateCacher.Get(name);
+        public static string GetTranslationString(string name) => TranslateCacher.Get(name);
     }
 }

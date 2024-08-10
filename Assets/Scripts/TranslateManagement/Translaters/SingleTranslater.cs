@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Unity.Burst;
+﻿using Unity.Burst;
 using UnityEngine;
 
 namespace TranslateManagement
@@ -7,8 +6,7 @@ namespace TranslateManagement
     [BurstCompile]
     public abstract class SingleTranslater : Translater
     {
-        [field: SerializeField]
-        public string Name { get; private set; }
+        [field: SerializeField] public string Name { get; private set; }
         public string TranslationString => TranslateManager.GetTranslationString(Name);
 
 

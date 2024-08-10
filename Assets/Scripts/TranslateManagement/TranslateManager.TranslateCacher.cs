@@ -12,9 +12,8 @@ namespace TranslateManagement
 
             static TranslateCacher()
             {
-                Cache = new(196);
+                Cache = new Dictionary<string, FieldCache>(196);
             }
-
 
 
             public static void RebuildData()
@@ -33,40 +32,24 @@ namespace TranslateManagement
             {
                 // Validate
                 if (string.IsNullOrWhiteSpace(name))
-                {
                     return null;
-                }
 
-
-
-                // Try get cache
-                if (Cache.TryGetValue(name, out FieldCache cache))
-                {
-                    // Return cached value
+                // Try get cache and return cached value
+                if (Cache.TryGetValue(name, out var cache))
                     return cache.GetValue();
-                }
 
-
-                // Try to cache
+                // Try to cache and repeat the method to take the cached field
                 if (CacheField(name))
-                {
-                    // Repeat the method to take the cached field
                     return Get(name);
-                }
 
-                else // Throw Exception if caching failed
-                    throw new ArgumentException($"Translation string with {name} name not founded");
+                // Throw Exception if caching failed
+                throw new ArgumentException($"Translation string with {name} name not founded");
             }
-
 
             /// <summary>
             /// Tries to cache a field and returns false if the field is already cached
             /// </summary>
-            public static bool CacheField(string name)
-            {
-                return Cache.TryAdd(name, new FieldCache(name));
-            }
-
+            public static bool CacheField(string name) => Cache.TryAdd(name, new FieldCache(name));
 
             /// <summary>
             /// Class for optimized caching of translation strings
@@ -75,8 +58,8 @@ namespace TranslateManagement
             {
                 public readonly FieldInfo Field;
 
-                private string Value;
-                private bool IsDirty;
+                private string _value;
+                private bool _isDirty;
 
 
                 public FieldCache(string name)
@@ -88,32 +71,30 @@ namespace TranslateManagement
                 /// <summary>
                 /// Marks an object as dirty so that it will be rebuilt the next <seealso cref="GetValue"/> is called
                 /// </summary>
-                public void SetDirtyData() => IsDirty = true;
+                public void SetDirtyData() => _isDirty = true;
 
                 /// <summary>
                 /// Clears value
                 /// </summary>
-                public void ClearData() => Value = null;
+                public void ClearData() => _value = null;
 
                 /// <summary>
                 /// Re-searches for value using <seealso cref="Field"/>
                 /// </summary>
                 public void RebuildData()
                 {
-                    Value = Field.GetValue(TranslateManager.Translation) as string;
-                    IsDirty = false;
+                    _value = Field.GetValue(TranslateManager.Translation) as string;
+                    _isDirty = false;
                 }
-
 
 
                 public string GetValue()
                 {
-                    if (IsDirty)
+                    if (_isDirty)
                         RebuildData();
 
-                    return Value;
+                    return _value;
                 }
-                    
             }
         }
     }

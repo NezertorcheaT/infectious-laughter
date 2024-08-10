@@ -22,13 +22,14 @@ namespace TranslateManagement
             if (Names == null || Names.Length == 0)
                 return;
 
-            for (int i = 0; i < Names.Length && i < dropdown.options.Count; i++)
+            for (var i = 0; i < Names.Length && i < dropdown.options.Count; i++)
             {
                 if (string.IsNullOrWhiteSpace(Names[i]))
                     continue;
 
                 dropdown.options[i].text = GetTranslationString(i);
             }
+
             dropdown.captionText.SetText(dropdown.options[dropdown.value].text);
         }
     }
