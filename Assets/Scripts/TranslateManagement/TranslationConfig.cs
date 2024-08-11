@@ -31,6 +31,7 @@ namespace TranslateManagement
 
                 return assetPath != null ? AssetDatabase.LoadAssetAtPath<TranslationConfig>(assetPath) : null;
 #endif
+                return Resources.LoadAll<TranslationConfig>("")[0];
             }
         }
 
@@ -38,16 +39,18 @@ namespace TranslateManagement
         // Sets only one Instance (Singletone)
         private void Awake()
         {
+#if UNITY_EDITOR
             if (AssetDatabase.FindAssets($"t:{nameof(TranslationConfig)}").Length <= 1)
                 return;
 
-            var assetPath = AssetDatabase.GetAssetPath(this.GetInstanceID());
+            var assetPath = AssetDatabase.GetAssetPath(GetInstanceID());
 
             AssetDatabase.MoveAssetToTrash(assetPath);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
             Debug.Log($"Can be maximum 1 {nameof(TranslationConfig)}");
+#endif
         }
 
         /// <summary>

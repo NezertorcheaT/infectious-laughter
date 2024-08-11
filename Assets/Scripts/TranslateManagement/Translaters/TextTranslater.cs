@@ -20,7 +20,7 @@ namespace TranslateManagement
         public override void ChangeElement()
         {
             text.SetText(TranslationString);
-            print($"Text translated: {TranslationString}");
+            //Debug.Log($"Text translated: {TranslationString}");
         }
     }
 }
