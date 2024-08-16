@@ -12,6 +12,7 @@ namespace Entity.Controllers
         [Inject] private Controls _actions;
 
         // Cache
+        private TombOfRealityUseAbility _useTombOfReality;
         private TreeOfWisdomUseAbility _useTreeOfWisdom;
         private EntityMovementHorizontalMove _moveAbility;
         private IJumpableAbility _jumpAbility;
@@ -25,6 +26,7 @@ namespace Entity.Controllers
         public override void Initialize()
         {
             base.Initialize();
+            _useTombOfReality = Entity.FindExactAbilityByType<TombOfRealityUseAbility>();
             _useTreeOfWisdom = Entity.FindExactAbilityByType<TreeOfWisdomUseAbility>();
             _entityGarbage = Entity.FindExactAbilityByType<EntityGarbage>();
             _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
@@ -52,6 +54,7 @@ namespace Entity.Controllers
             _actions.Gameplay.Jump.performed += JumpOnPerformed;
             _actions.Gameplay.PickGarbage.performed += UseTreeOfWisdomPerformed;
             _actions.Gameplay.PickGarbage.performed += PickGarbagePerformed;
+            _actions.Gameplay.PickGarbage.performed += UseTombOfRealityPerformed;
             _actions.Gameplay.Crouch.started += CrouchOnStarted;
             _actions.Gameplay.Crouch.canceled += CrouchOnCanceled;
         }
@@ -68,6 +71,7 @@ namespace Entity.Controllers
             _actions.Gameplay.Crouch.canceled -= CrouchOnCanceled;
         }
 
+        private void UseTombOfRealityPerformed(InputAction.CallbackContext ctx) => _useTombOfReality.UseTombOfReality();
         private void UseTreeOfWisdomPerformed(InputAction.CallbackContext ctx) => _useTreeOfWisdom.UseTree();
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UnCrouch();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();

@@ -31,7 +31,7 @@ namespace Inventory.Items
             var cameraDefaultVeiw = camera.m_Lens.OrthographicSize;
             float timerUse = 0;
 
-            //Увеличить камеру на 100 
+            //РЈРІРµР»РёС‡РёС‚СЊ РєР°РјРµСЂСѓ РЅР° 100 
             camera.m_Lens.OrthographicSize = cameraDistance;
 
             for (var i = 0;; i++)

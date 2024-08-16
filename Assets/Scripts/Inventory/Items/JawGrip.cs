@@ -29,7 +29,7 @@ namespace Inventory.Items
             float timerUse = 0;
             float defaultInventoryRadius = input.MaxDistance;
 
-            //Хватает предметы на расстоянии
+            //РҐРІР°С‚Р°РµС‚ РїСЂРµРґРјРµС‚С‹ РЅР° СЂР°СЃСЃС‚РѕСЏРЅРёРё
             input.MaxDistance = radius;
 
             for (int i = 0; ; i++) {
