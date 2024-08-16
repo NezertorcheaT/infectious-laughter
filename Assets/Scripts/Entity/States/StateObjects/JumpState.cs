@@ -16,7 +16,7 @@ namespace Entity.States.StateObjects
 
             if (ability is null) return nextId;
 
-            ability.Jump();
+            ability.Perform();
             await Task.Delay((int) (ability.JumpTime * 1000f));
 
             return nextId;

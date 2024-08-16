@@ -7,6 +7,9 @@ namespace Levels.Generation
     {
         [field: SerializeField] public Vector2Int MinPosition { get; private set; }
         [field: SerializeField] public Vector2Int MaxPosition { get; private set; }
+        
+        [field: Tooltip("уровень земли")]
+        [field: SerializeField] public int Ground { get; private set; }
         [field: SerializeField] public float IntersectingRemoveExpand { get; private set; } = 1.5f;
         public Grid Grid => grid;
 
@@ -38,7 +41,15 @@ namespace Levels.Generation
             grid ??= GetComponentInChildren<Grid>();
             Gizmos.DrawSphere(Grid.CellToWorld(MinPosition.ToVector3Int()), 0.2f);
             Gizmos.DrawSphere(Grid.CellToWorld(MaxPosition.ToVector3Int()), 0.2f);
+            Gizmos.DrawLine(
+                Grid.CellToWorld(new Vector3Int(MinPosition.x - 1, Ground)),
+                Grid.CellToWorld(new Vector3Int(MaxPosition.x + 1, Ground))
+            );
+            var expanded = WorldBounds;
+            expanded.Expand(IntersectingRemoveExpand);
             Gizmos.DrawWireCube(WorldBounds.center, WorldBounds.size);
+            Gizmos.color = new Color(1f, 0.5f, 0.5f, 1f);
+            Gizmos.DrawWireCube(expanded.center, expanded.size);
         }
     }
 }

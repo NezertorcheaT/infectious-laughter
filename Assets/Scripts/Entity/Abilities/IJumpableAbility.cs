@@ -3,6 +3,6 @@
     public interface IJumpableAbility : IInitializeByEntity
     {
         float JumpTime { get; }
-        void Jump();
+        void Perform();
     }
 }

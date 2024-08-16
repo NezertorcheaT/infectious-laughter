@@ -5,7 +5,8 @@ namespace Entity
 {
     /// <summary>
     /// ну значт контроллер<br />
-    /// вешается рядом с ентити и только один
+    /// вешается рядом с ентити и только один<br />
+    /// нужен чтоб контролировать поведение сущности
     /// </summary>
     public abstract class Controller : MonoBehaviour, IInitializeByEntity
     {
@@ -37,16 +38,19 @@ namespace Entity
     }
 
     /// <summary>
-    /// чтука, которая может быть инициализирована от сущности<br />
+    /// штука, которая может быть инициализирована от сущности<br />
     /// обычно это контроллеры и способности
     /// </summary>
     public interface IInitializeByEntity
     {
+        /// <summary>
+        /// сущность, к которой относится компонент
+        /// </summary>
         Entity Entity { get; }
 
         /// <summary>
         /// это нужно для инициализации типа вместо старта<br />
-        /// всегда юзать <code>base.Initialize()</code> вначале, иначе пидр ты
+        /// всегда юзать <code>base.Initialize()</code> вначале, иначе ты пидр
         /// </summary>
         void Initialize();
 

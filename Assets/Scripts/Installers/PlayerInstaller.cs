@@ -1,5 +1,3 @@
-using Cinemachine;
-using CustomHelper;
 using Entity.Abilities;
 using GameFlow;
 using Inventory;
@@ -41,7 +39,7 @@ namespace Installers
             if (teleportCamera)
                 _playerCamera.VirtualCamera.ForceCameraPosition(player.CachedTransform.position, Quaternion.identity);
 
-            player.GetComponent<EntityHp>().FromContent(
+            player.GetComponent<Hp>().FromContent(
                 _sessionFactory.Current[SavedKeys.PlayerHp],
                 _sessionFactory.Current[SavedKeys.PlayerAddictiveHp],
                 _sessionFactory.Current[SavedKeys.PlayerMaxHp],

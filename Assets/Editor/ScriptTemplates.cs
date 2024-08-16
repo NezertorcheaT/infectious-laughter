@@ -106,7 +106,7 @@ namespace Entity.States
     {
         public override string Name => ""#REJECTED_CLASS_NAME_SPACE#"";
 
-        public override async Task<int> Activate(Entity entity, State previous, IEditableState.Properties properties)
+        public override async Task<int> Activate(Entity entity, State previous)
         {
             var nextId = 0;
 
@@ -124,7 +124,7 @@ namespace Entity.States
 
 namespace Entity.Abilities
 {
-    [AddComponentMenu(""Entity/Abilities/#REJECTED_CLASS_NAME_SPACE# Ability"")]
+    [AddComponentMenu(""Entity/Abilities/#REJECTED_CLASS_NAME_SPACE#"")]
     public class #CLASS_NAME# : Ability
     {
         public override void Initialize()

@@ -26,7 +26,7 @@ namespace Inventory.Items
             var trap = Verifier.Container.InstantiatePrefab(trapWorld,
                 new Vector3(
                     position.x + spawnRange *
-                    (entity.FindAbilityByType<EntityMovementHorizontalMove>().Turn ? 1 : -1),
+                    (entity.FindAbilityByType<HorizontalMovement>().Turn ? 1 : -1),
                     position.y
                 ),
                 Quaternion.identity,

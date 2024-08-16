@@ -18,7 +18,7 @@ namespace Inventory.ImpactWorldItems
             var responsives =
                     Physics2D
                         .OverlapCircleAll(gameObject.transform.position, radius)
-                        .Select(a => a.gameObject.GetComponent<EntityGuillotineResponsiveAbility>())
+                        .Select(a => a.gameObject.GetComponent<GuillotineResponsive>())
                         .Where(a => a is not null && a.Available())
                         .ToArray()
                 ;

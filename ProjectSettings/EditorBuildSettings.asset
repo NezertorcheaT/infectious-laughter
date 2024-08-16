@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RandomGen.unity
     guid: fe385d4c9ec7abe47a1a1cf5b9221b48
+  - enabled: 1
+    path: Assets/Scenes/Showcase/Enemy.unity
+    guid: 74ced904f0c3ff049b5520148f876c95
+  - enabled: 1
+    path: Assets/Scenes/Showcase/First.unity
+    guid: fe3068bf8105b36489908db79690ad7d
+  - enabled: 1
+    path: Assets/Scenes/Showcase/Light.unity
+    guid: 887131ddeffa31844af4c4c6e4b32195
+  - enabled: 1
+    path: Assets/Scenes/Showcase/Trash.unity
+    guid: a0d7d076cf35dd8439e0ab3f86b42ac6
   m_configObjects: {}

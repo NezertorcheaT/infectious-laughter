@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Entity.Abilities
 {
-    [RequireComponent(typeof(EntityMovementHorizontalMove))]
+    [RequireComponent(typeof(HorizontalMovement))]
     [AddComponentMenu("Entity/Abilities/Stun Ability")]
     public class EntityStunAbility : Ability
     {
@@ -17,7 +17,7 @@ namespace Entity.Abilities
         private void Start()
         {
             _jumpAbility = Entity.FindAvailableAbilityByInterface<IJumpableAbility>() as Ability;
-            _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
+            _moveAbility = Entity.FindAbilityByType<HorizontalMovement>();
         }
 
         public async Task Stun(float time)

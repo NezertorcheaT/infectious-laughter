@@ -4,6 +4,6 @@ namespace Entity.States
 {
     public interface IRelationfullState
     {
-        EntityHostileDetection HostileDetection { get; set; }
+        HostileDetection HostileDetection { get; set; }
     }
 }

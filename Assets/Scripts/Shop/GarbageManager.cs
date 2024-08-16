@@ -7,6 +7,7 @@ namespace Shop
         public event EventHandler OnBalanceChanged;
 
         private int _garbageBalance = 100;
+        
         public int GarbageBalance
         {
             get => _garbageBalance;

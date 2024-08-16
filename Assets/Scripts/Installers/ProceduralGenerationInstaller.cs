@@ -10,7 +10,7 @@ namespace Installers
     [AddComponentMenu("Installers/Procedural Generation")]
     public class ProceduralGenerationInstaller : MonoInstaller
     {
-        [SerializeField] private LevelRandomGeneration generator;
+        [SerializeField] private LevelGeneration generator;
         [SerializeField] private ProceduralGenerationEnderInstaller ender;
 
         [Inject] private LevelManager _levelManager;

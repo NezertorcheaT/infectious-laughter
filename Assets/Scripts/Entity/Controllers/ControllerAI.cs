@@ -12,7 +12,7 @@ namespace Entity.Controllers
     public class ControllerAI : Controller
     {
         [SerializeField] private StateTree stateTree;
-        [SerializeField] private EntityHostileDetection hostileDetection;
+        [SerializeField] private HostileDetection hostileDetection;
         private IStateTree<State> StateTree => stateTree;
         private bool _stateCycleDestroy;
 

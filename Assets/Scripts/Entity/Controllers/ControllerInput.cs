@@ -12,29 +12,29 @@ namespace Entity.Controllers
         [Inject] private Controls _actions;
 
         // Cache
-        private TombOfRealityUseAbility _useTombOfReality;
-        private TreeOfWisdomUseAbility _useTreeOfWisdom;
-        private EntityMovementHorizontalMove _moveAbility;
+        private TombOfRealityUsing _useTombOfReality;
+        private TreeOfWisdomUsing _useTreeOfWisdom;
+        private HorizontalMovement _moveAbility;
         private IJumpableAbility _jumpAbility;
-        private EntityMovementCrouch _crouchAbility;
-        private EntityGarbage _entityGarbage;
-        private EntityMovementDowning _movementDowning;
+        private Crouching _crouchAbility;
+        private Garbage _entityGarbage;
+        private Downing _movementDowning;
         private CollideCheck _collideCheck;
-        private DashAbility _dashAbility;
-        private PlayerCameraFollowPointAbility _playerFollowPoint;
+        private Dash _dashAbility;
+        private CameraFollowPoint _followPoint;
 
         public override void Initialize()
         {
             base.Initialize();
-            _useTombOfReality = Entity.FindExactAbilityByType<TombOfRealityUseAbility>();
-            _useTreeOfWisdom = Entity.FindExactAbilityByType<TreeOfWisdomUseAbility>();
-            _entityGarbage = Entity.FindExactAbilityByType<EntityGarbage>();
-            _moveAbility = Entity.FindAbilityByType<EntityMovementHorizontalMove>();
-            _crouchAbility = Entity.FindAbilityByType<EntityMovementCrouch>();
-            _movementDowning = Entity.FindExactAbilityByType<EntityMovementDowning>();
+            _useTombOfReality = Entity.FindExactAbilityByType<TombOfRealityUsing>();
+            _useTreeOfWisdom = Entity.FindExactAbilityByType<TreeOfWisdomUsing>();
+            _entityGarbage = Entity.FindExactAbilityByType<Garbage>();
+            _moveAbility = Entity.FindAbilityByType<HorizontalMovement>();
+            _crouchAbility = Entity.FindAbilityByType<Crouching>();
+            _movementDowning = Entity.FindExactAbilityByType<Downing>();
             _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
-            _dashAbility = Entity.FindExactAbilityByType<DashAbility>();
-            _playerFollowPoint = Entity.FindAbilityByType<PlayerCameraFollowPointAbility>();
+            _dashAbility = Entity.FindExactAbilityByType<Dash>();
+            _followPoint = Entity.FindAbilityByType<CameraFollowPoint>();
             
             OnEnable();
         }
@@ -73,11 +73,11 @@ namespace Entity.Controllers
 
         private void UseTombOfRealityPerformed(InputAction.CallbackContext ctx) => _useTombOfReality.UseTombOfReality();
         private void UseTreeOfWisdomPerformed(InputAction.CallbackContext ctx) => _useTreeOfWisdom.UseTree();
-        private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UnCrouch();
-        private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Crouch();
+        private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UndoPerform();
+        private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Perform();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
-        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Jump();
-        private void DashOnPerformed(InputAction.CallbackContext ctx) => _dashAbility.Dash();
+        private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Perform();
+        private void DashOnPerformed(InputAction.CallbackContext ctx) => _dashAbility.Perform();
 
 
         private bool _hangingRight;
@@ -89,7 +89,7 @@ namespace Entity.Controllers
             _input = _actions.Gameplay.Move.ReadValue<float>();
             _moveAbility.Move(_input);
             _movementDowning.WallDowning(_input);
-            _playerFollowPoint.MovePoint(_input);
+            _followPoint.MovePoint(_input);
         }
 
     }

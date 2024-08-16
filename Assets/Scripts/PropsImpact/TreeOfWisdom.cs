@@ -8,11 +8,11 @@ namespace PropsImpact
     {
         [Inject] private PlayerInstallation _playerInstallation;
         private bool _used;
-        private Entity.Abilities.EntityHp _hpAbility;
+        private Entity.Abilities.Hp _hpAbility;
 
         private void Start()
         {
-            _hpAbility = _playerInstallation.Entity.FindAbilityByType<Entity.Abilities.EntityHp>();
+            _hpAbility = _playerInstallation.Entity.FindAbilityByType<Entity.Abilities.Hp>();
         }
 
         public bool TryUseTreeOfWisdom()
@@ -25,7 +25,7 @@ namespace PropsImpact
         public void UseTreeOfWisdom()
         {
             if (_used || !isActiveAndEnabled) return;
-            _hpAbility.Heal(_hpAbility.MaxHp - _hpAbility.Hp);
+            _hpAbility.Heal(_hpAbility.MaxHealth - _hpAbility.Health);
             _used = true;
         }
     }

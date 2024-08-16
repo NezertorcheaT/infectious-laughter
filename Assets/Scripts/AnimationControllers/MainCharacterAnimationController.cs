@@ -5,7 +5,7 @@ namespace AnimationControllers
     [RequireComponent(typeof(Animator))]
     public class MainCharacterAnimationController : MonoBehaviour
     {
-        private Entity.Abilities.EntityMovementHorizontalMove _movementController;
+        private Entity.Abilities.HorizontalMovement _movementController;
         private Entity.Abilities.CollideCheck _collideChecker;
 
 
@@ -15,7 +15,7 @@ namespace AnimationControllers
 
         private void Start()
         {
-            _movementController = gameObject.GetComponent<Entity.Abilities.EntityMovementHorizontalMove>();
+            _movementController = gameObject.GetComponent<Entity.Abilities.HorizontalMovement>();
             _collideChecker = gameObject.GetComponent<Entity.Abilities.CollideCheck>();
 
             _animator = gameObject.GetComponent<Animator>();

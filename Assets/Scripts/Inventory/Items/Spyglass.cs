@@ -17,7 +17,7 @@ namespace Inventory.Items
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
-            entity.FindExactAbilityByType<Entity.Abilities.PlayerCameraFollowPointAbility>()?.ChangeLock();
+            entity.FindExactAbilityByType<Entity.Abilities.CameraFollowPoint>()?.ChangeLock();
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Entity.Abilities
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [AddComponentMenu("Entity/Abilities/Collide Check Ability")]
+    [AddComponentMenu("Entity/Abilities/Collide Check")]
     public class CollideCheck : Ability
     {
         [SerializeField] private int maxSlopeAngle;

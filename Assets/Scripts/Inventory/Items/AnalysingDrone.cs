@@ -27,7 +27,7 @@ namespace Inventory.Items
         {
             slot.Count--;
 
-            var camera = entity.FindAbilityByType<PlayerGetCamera>().Camera;
+            var camera = entity.FindAbilityByType<CameraToItemsProvider>().Camera;
             var cameraDefaultVeiw = camera.m_Lens.OrthographicSize;
             float timerUse = 0;
 

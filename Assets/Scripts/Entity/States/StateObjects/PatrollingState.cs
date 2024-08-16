@@ -12,7 +12,7 @@ namespace Entity.States.StateObjects
     {
         [StateEdit] private PatrollingStateEdit properties;
         public override string Name => "Patrolling";
-        public EntityHostileDetection HostileDetection { get; set; }
+        public HostileDetection HostileDetection { get; set; }
 
         public override async Task<int> Activate(Entity entity, State previous)
         {
@@ -20,7 +20,7 @@ namespace Entity.States.StateObjects
             var hostileDetector = HostileDetection;
             var nextId = edit.next;
             var collider2d = entity.GetComponent<Collider2D>();
-            var moveAbility = entity.FindAbilityByType<EntityMovementHorizontalMove>();
+            var moveAbility = entity.FindAbilityByType<HorizontalMovement>();
             var direction = edit.initialDirection;
 
             if (!moveAbility) return nextId;

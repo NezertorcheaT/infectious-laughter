@@ -13,14 +13,14 @@ namespace Entity.States.StateObjects
 
         public override string Name => "Chase";
 
-        public EntityHostileDetection HostileDetection { get; set; }
+        public HostileDetection HostileDetection { get; set; }
 
         public override async Task<int> Activate(Entity entity, State previous)
         {
             var edit = properties;
             var hostileDetector = HostileDetection;
             var nextId = edit.next;
-            var moveAbility = entity.FindAbilityByType<EntityMovementHorizontalMove>();
+            var moveAbility = entity.FindAbilityByType<HorizontalMovement>();
             var direction = edit.initialDirection;
             var playerInSight = false;
             var lastSeenPosition = Vector3.zero;
