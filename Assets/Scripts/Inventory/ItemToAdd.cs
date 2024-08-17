@@ -1,5 +1,4 @@
-﻿using System;
-using Installers;
+﻿using Installers;
 using Inventory.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;

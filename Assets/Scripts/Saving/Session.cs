@@ -128,6 +128,8 @@ namespace Saving
         /// <returns>существует ли записанный контент по ключу</returns>
         public bool Has(SavingKey key)
         {
+            if (key is null) return false;
+            
             var has = Has(key.Key);
             if (!has) return false;
 
