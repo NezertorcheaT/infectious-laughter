@@ -8,7 +8,6 @@ namespace AnimationControllers
         private Entity.Abilities.HorizontalMovement _movementController;
         private Entity.Abilities.CollideCheck _collideChecker;
 
-
         private Animator _animator;
         private static readonly int AnimatorIsWalk = Animator.StringToHash("isWalk");
         private static readonly int AnimatorJumpNow = Animator.StringToHash("jumpNow");

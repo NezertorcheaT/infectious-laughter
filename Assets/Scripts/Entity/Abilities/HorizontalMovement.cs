@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Entity.Controllers;
 
@@ -9,11 +10,21 @@ namespace Entity.Abilities
     {
         [SerializeField, Min(0.001f)] private float speed;
         private Rigidbody2D _rb;
-        private SpriteRenderer _spriteRenderer;
+        private bool _turn;
 
-        public bool Turn { get; private set; }
+        public bool Turn
+        {
+            get => _turn;
+            private set
+            {
+                _turn = value;
+                if (TurnInFloat != 0f)
+                    OnTurn?.Invoke(_turn);
+            }
+        }
 
         public float TurnInFloat { get; private set; }
+        public event Action<bool> OnTurn;
 
         public float Speed
         {
@@ -28,18 +39,14 @@ namespace Entity.Abilities
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-            if(gameObject.GetComponent<ControllerAI>()) _spriteRenderer = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
-
         }
 
         public void Move(float velocity)
         {
-            if (!Available()) return;
+            if (!Available() || Mathf.Abs(_rb.velocity.x) > speed) return;
             TurnInFloat = velocity;
             Turn = velocity == 0 ? Turn : velocity > 0;
             _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
-            _spriteRenderer.flipX = !Turn;
         }
     }
 }
