@@ -1,4 +1,4 @@
-using Inventory.ImpactWorldItems;
+using PropsImpact;
 using UnityEngine;
 
 namespace Inventory.Items

@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using Entity.Abilities;
 using UnityEngine;
 
-namespace Inventory.ImpactWorldItems
+namespace PropsImpact
 {
     public class GuillotineImpact : MonoBehaviour
     {

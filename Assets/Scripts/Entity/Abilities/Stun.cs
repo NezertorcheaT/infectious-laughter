@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -5,12 +6,15 @@ using UnityEngine;
 namespace Entity.Abilities
 {
     [RequireComponent(typeof(HorizontalMovement))]
-    [AddComponentMenu("Entity/Abilities/Stun Ability")]
-    public class EntityStunAbility : Ability
+    [AddComponentMenu("Entity/Abilities/Stun")]
+    public class Stun : Ability
     {
         [SerializeField, Min(0)] private float stunTime;
         private Ability _moveAbility;
         private Ability _jumpAbility;
+
+        public event Action OnStunned;
+        public event Action OnUnstunned;
 
         public bool IsStunned { get; private set; }
 
@@ -20,7 +24,7 @@ namespace Entity.Abilities
             _moveAbility = Entity.FindAbilityByType<HorizontalMovement>();
         }
 
-        public async Task Stun(float time)
+        public async Task Perform(float time)
         {
             if (!Available()) return;
             if (stunTime != 0)
@@ -31,6 +35,7 @@ namespace Entity.Abilities
             }
 
             IsStunned = true;
+            OnStunned?.Invoke();
             _jumpAbility.enabled = false;
             _moveAbility.enabled = false;
 
@@ -45,6 +50,7 @@ namespace Entity.Abilities
             _jumpAbility.enabled = true;
             _moveAbility.enabled = true;
             IsStunned = false;
+            OnUnstunned?.Invoke();
         }
     }
 }

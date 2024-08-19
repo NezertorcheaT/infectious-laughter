@@ -68,9 +68,8 @@ namespace Entity.Abilities
                 );
                 Debug.DrawRay(
                     bounds.center + new Vector3(bounds.extents.x, 0) * (direction ? 1f : -1f),
-                    (playerPosition - transform.position).normalized,
-                    Color.green,
-                    currentRange
+                    (playerPosition - transform.position).normalized*currentRange,
+                    Color.green
                 );
                 if (hit.collider is not null)
                     return (null, hit.point);

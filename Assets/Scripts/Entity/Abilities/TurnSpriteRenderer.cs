@@ -54,8 +54,8 @@ namespace Entity.Abilities
             {
                 if (delay == 0) return;
                 await Task.Delay(delay);
-                if (!isActiveAndEnabled) continue;
                 if (_destroyed) return;
+                if (!isActiveAndEnabled) continue;
                 _smoothTurn = (prevTurn + _movement.TurnInFloat) / 2f;
                 prevTurn = _smoothTurn;
             }

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Entity.Controllers;
 
 namespace Entity.Abilities
 {
