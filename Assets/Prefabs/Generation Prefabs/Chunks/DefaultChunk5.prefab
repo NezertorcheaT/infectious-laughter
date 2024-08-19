@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370540678163946455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.875, y: 7.07, z: 0}
+  m_LocalPosition: {x: 2.1875, y: 8.8125, z: 0}
   m_LocalScale: {x: 3.3295236, y: 2.0375898, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -155,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4823586719905894139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.52, y: 6.026, z: 0}
+  m_LocalPosition: {x: -3.875, y: 7.6875, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -357,7 +357,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4823586720261560749}
   m_Enabled: 1
-  m_CellSize: {x: 1.5625, y: 1.5625, z: 0}
+  m_CellSize: {x: 2, y: 2, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -2163,7 +2163,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.28125, y: 0.28125, z: 0}
+  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2206,20 +2206,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 4823586720474696775}
     m_ColliderPaths:
-    - - X: 124511720
-        Y: 59570312
-      - X: -62011720
-        Y: 59570312
-      - X: -62011720
-        Y: -140624992
-      - X: 124511720
-        Y: -140624992
+    - - X: 159375008
+        Y: 76250000
+      - X: -79375000
+        Y: 76250000
+      - X: -79375000
+        Y: -180000000
+      - X: 159375008
+        Y: -180000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 12.451142, y: -14.062499}
-      - {x: 12.451142, y: 5.9570312}
-      - {x: -6.201172, y: 5.957002}
-      - {x: -6.201143, y: -14.062499}
+    - - {x: 15.937472, y: -18}
+      - {x: 15.937472, y: 7.625}
+      - {x: -7.9375, y: 7.6249704}
+      - {x: -7.9374704, y: -18}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &4823586720474696781
@@ -2256,11 +2256,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 550471343915965495, guid: a25f82304800601438ca3600b0aa2e25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.625
+      value: -0.875
       objectReference: {fileID: 0}
     - target: {fileID: 550471343915965495, guid: a25f82304800601438ca3600b0aa2e25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.1875
+      value: 7.8125
       objectReference: {fileID: 0}
     - target: {fileID: 550471343915965495, guid: a25f82304800601438ca3600b0aa2e25, type: 3}
       propertyPath: m_LocalPosition.z

@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -153,106 +153,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 0
+      name: Idle Ears_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 1
-        width: 16
-        height: 42
+        x: 0
+        y: 0
+        width: 48
+        height: 49
       alignment: 9
-      pivot: {x: 0.5625, y: 0.54761904}
+      pivot: {x: 0.4791667, y: 0.040816326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 065ebf32441212143b6441511b9c4b98
-      internalID: 155358090
+      spriteID: 3b932405990a2b3468fa7215836c4256
+      internalID: 508556360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1
+      name: Idle Ears_1
       rect:
         serializedVersion: 2
-        x: 62
-        y: 1
-        width: 16
-        height: 42
+        x: 48
+        y: 0
+        width: 48
+        height: 49
       alignment: 9
-      pivot: {x: 0.625, y: 0.54761904}
+      pivot: {x: 0.4791667, y: 0.040816326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab7d60b4cc1eff64a91a22155bec540c
-      internalID: 565198009
+      spriteID: a4a28f82799fcc845879f7e861c9f206
+      internalID: -301662894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: Idle Ears_2
       rect:
         serializedVersion: 2
-        x: 110
-        y: 1
-        width: 16
-        height: 42
+        x: 96
+        y: 0
+        width: 48
+        height: 49
       alignment: 9
-      pivot: {x: 0.625, y: 0.54761904}
+      pivot: {x: 0.4791667, y: 0.040816326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b6e948ff3a8c1a47bdd2038c2682a64
-      internalID: 221028830
+      spriteID: 180029e62c782364ba20d60fc1fe8888
+      internalID: 884145556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: Idle Ears_3
       rect:
         serializedVersion: 2
-        x: 158
-        y: 1
-        width: 16
-        height: 42
+        x: 144
+        y: 0
+        width: 48
+        height: 49
       alignment: 9
-      pivot: {x: 0.625, y: 0.54761904}
+      pivot: {x: 0.4791667, y: 0.040816326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f47ac76e92191e45af6aebb743da3c8
-      internalID: 669728469
+      spriteID: ab0da1945747be546a206f43dfa3cb43
+      internalID: -223168732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4
+      name: Idle Ears_4
       rect:
         serializedVersion: 2
-        x: 207
-        y: 1
-        width: 16
-        height: 42
+        x: 192
+        y: 0
+        width: 48
+        height: 49
       alignment: 9
-      pivot: {x: 0.5625, y: 0.54761904}
+      pivot: {x: 0.4791667, y: 0.040816326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83fd136ebbc0a8c4a8572fa8d9c3647a
-      internalID: -2003047500
+      spriteID: 2f07b20644689a64595bef866115315b
+      internalID: 209293393
       vertices: []
       indices: 
       edges: []
@@ -268,11 +268,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      3: 669728469
-      0: 155358090
-      2: 221028830
-      4: -2003047500
-      1: 565198009
+      Idle Ears_4: 209293393
+      Idle Ears_1: -301662894
+      Idle Ears_3: -223168732
+      Idle Ears_2: 884145556
+      Idle Ears_0: 508556360
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Tile>k__BackingField: {fileID: 11400000, guid: bd4fc515da5f0c243a2f0d7fd64bb92e, type: 2}
   precision: 0.05
-  size: 5
+  size: 2
   layers: 1

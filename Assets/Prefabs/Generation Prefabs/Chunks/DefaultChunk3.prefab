@@ -124,7 +124,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4516917101394761848}
   m_Enabled: 1
-  m_CellSize: {x: 1.5625, y: 1.5625, z: 0}
+  m_CellSize: {x: 2, y: 2, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -1126,7 +1126,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.28125, y: 0.28125, z: 0}
+  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1169,26 +1169,26 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 4516917101617827218}
     m_ColliderPaths:
-    - - X: 108886720
-        Y: 59570312
-      - X: 31250000
-        Y: 59570312
-      - X: 15625000
-        Y: 75195312
-      - X: -46386720
-        Y: 75195312
-      - X: -46386720
-        Y: -46875000
-      - X: 108886720
-        Y: -46875000
+    - - X: 139375008
+        Y: 76250000
+      - X: 40000000
+        Y: 76250000
+      - X: 20000000
+        Y: 96250000
+      - X: -59375000
+        Y: 96250000
+      - X: -59375000
+        Y: -60000000
+      - X: 139375008
+        Y: -60000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 10.888642, y: -4.6875}
-      - {x: 10.888642, y: 5.9570312}
-      - {x: 3.1249928, y: 5.957039}
-      - {x: 1.5624893, y: 7.5195312}
-      - {x: -4.638672, y: 7.5195017}
-      - {x: -4.638643, y: -4.6875}
+    - - {x: 13.937472, y: -6}
+      - {x: 13.937472, y: 7.625}
+      - {x: 3.9999928, y: 7.625007}
+      - {x: 1.9999893, y: 9.625}
+      - {x: -5.9375, y: 9.62497}
+      - {x: -5.937471, y: -6}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &4516917101617827224
@@ -1238,7 +1238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4516917103193132846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.56, y: 7.58, z: 0}
+  m_LocalPosition: {x: -1.75, y: 9.6875, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

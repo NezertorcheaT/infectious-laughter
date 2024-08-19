@@ -32,10 +32,10 @@ namespace Entity.Abilities
             var localScale = _col.gameObject.transform.localScale;
             _origCrouchSizer = localScale.y;
 
-            _col.gameObject.transform.localScale = new Vector3(
+            /*_col.gameObject.transform.localScale = new Vector3(
                 localScale.x,
                 _origCrouchSizer * crouchSizeMultiplier,
-                localScale.z);
+                localScale.z);*/
             IsCrouching = true;
         }
     }
