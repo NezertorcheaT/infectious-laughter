@@ -14,12 +14,15 @@ namespace Inventory.UI
         [Inject] private PlayerInstallation _player;
         [Inject] private SessionFactory _sessionFactory;
         [SerializeField] private HorizontalLayoutGroup inventoryBase;
-        [SerializeField, Min(1)] private float imageSize;
+        [SerializeField] private ItemFrame frameFirst;
+        [SerializeField] private ItemFrame frameMiddle;
+        [SerializeField] private ItemFrame frameSelect;
+        [SerializeField] private ItemFrame frameLast;
         private int _selection;
 
         private void Start()
         {
-            _selection = (int)_sessionFactory.Current[SavedKeys.PlayerInventorySelection].Value;
+            _selection = (int) _sessionFactory.Current[SavedKeys.PlayerInventorySelection].Value;
             UpdateGUI();
         }
 
@@ -51,7 +54,9 @@ namespace Inventory.UI
             _actions.Gameplay.Inv_selectSlot6.performed -= SelectSlotNum6;
         }
 
-        private void UseItem(InputAction.CallbackContext ctx) => _player.Inventory.UseItemOnSlot(_selection, _player.Entity);
+        private void UseItem(InputAction.CallbackContext ctx) =>
+            _player.Inventory.UseItemOnSlot(_selection, _player.Entity);
+
         private void SelectSlotNum1(InputAction.CallbackContext ctx) => SelectSlot(0);
         private void SelectSlotNum2(InputAction.CallbackContext ctx) => SelectSlot(1);
         private void SelectSlotNum3(InputAction.CallbackContext ctx) => SelectSlot(2);
@@ -73,6 +78,18 @@ namespace Inventory.UI
             UpdateGUI();
         }
 
+        private ItemFrame FrameFromPosition(int i)
+        {
+            if (_selection == i)
+                return frameSelect;
+            if (i == 0)
+                return frameFirst;
+            if (i == _player.Inventory.MaxCapacity - 1)
+                return frameLast;
+
+            return frameMiddle;
+        }
+
         private void UpdateGUI()
         {
             for (var i = 0; i < inventoryBase.transform.childCount; i++)
@@ -82,22 +99,23 @@ namespace Inventory.UI
 
             if (_player.Inventory is null) return;
 
+            var j = 0;
             foreach (var slot in _player.Inventory.Slots)
             {
-                var go = new GameObject();
-                go.transform.SetParent(inventoryBase.transform);
-                var image = go.AddComponent<Image>();
-                var rect = go.GetComponent<RectTransform>();
-                rect.sizeDelta = new Vector2(imageSize, imageSize);
+                var frame = Instantiate(FrameFromPosition(j), inventoryBase.transform);
+                if (frame is null) continue;
+                j++;
 
                 if (slot.IsEmpty)
                 {
-                    go.name = "Nothing";
+                    frame.Item.sprite = null;
+                    frame.Item.color = new Color(0, 0, 0, 0);
+                    frame.name = "Nothing";
                     continue;
                 }
 
-                go.name = $"{slot.LastItem.Name} by {slot.Count}";
-                image.sprite = slot.LastItem.Sprite;
+                frame.name = $"{slot.LastItem.Name} by {slot.Count}";
+                frame.Item.sprite = slot.LastItem.Sprite;
             }
         }
     }

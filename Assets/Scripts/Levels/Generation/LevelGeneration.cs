@@ -388,7 +388,8 @@ namespace Levels.Generation
                     if (spawnTry >= structuresSpawnMaxTry - 1)
                         continue;
 
-                    AddStructureAtPos(structurePrefab.structure, pos.Value);
+                    AddStructureAtPos(structurePrefab.structure,
+                        pos.Value + new Vector2Int(0, structurePrefab.structure.Ground));
                 }
             }
         }
