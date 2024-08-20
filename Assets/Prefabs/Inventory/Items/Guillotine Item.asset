@@ -17,5 +17,5 @@ MonoBehaviour:
   timeOfAction: 10
   radius: 50
   worldGuillotinePrefab: {fileID: 7965965516420540715, guid: e59ee27ac118f414198bacf6eb5c031f, type: 3}
-  sprite: {fileID: 21300000, guid: edf485d1b5bb7914693ff887e5359520, type: 3}
+  sprite: {fileID: 645480808, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
   <MaxStackSize>k__BackingField: 1

@@ -1,8 +1,6 @@
-using CustomHelper;
 using Installers;
 using Inventory;
 using Inventory.Input;
-using Saving;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +14,6 @@ namespace Shop
         [SerializeField] private Transform shopUITransform;
         [Inject] private PlayerInstallation _playerInstallation;
         [Inject] private GarbageManager _garbageManager;
-        [Inject] private SessionFactory sessionFactory;
         private PlayerInventoryInput _playerInventoryInput;
 
         private void Awake()

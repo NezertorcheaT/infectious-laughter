@@ -3102,6 +3102,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9084249695132675815, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -312.57764
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084249695132675815, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 432.59473
+      objectReference: {fileID: 0}
     - target: {fileID: 9084249695208848409, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
       propertyPath: m_Name
       value: MainCanvas
