@@ -117,13 +117,13 @@ namespace Levels.Generation
             SetPreSpawnedOffsetsY();
             
             ApplyLayers();
+            //удалить, когда появятся спрайты для одиночных тайлов
+            CleanChunks();
             ProcessColliders();
             
             SetPreSpawnedOffsetsX();
             
             GenerateStructures();
-            //удалить, когда появятся спрайты для одиночных тайлов
-            CleanChunks();
             ProcessColliders();
         }
 
@@ -490,27 +490,37 @@ namespace Levels.Generation
 
         public void InstantiatePreSpawned(Func<GameObject, Vector3, Quaternion, Transform, GameObject> instantiate)
         {
+            var positions = new List<Vector3>(_preSpawned.Count);
+            foreach (var preSpawned in _preSpawned)
+            {
+                var position = preSpawned.OffsetY == 0
+                    ? preSpawned.Position
+                    : new Vector3(
+                        preSpawned.Position.x + preSpawned.OffsetX,
+                        Physics2D.Raycast(
+                            new Vector2(preSpawned.Position.x + preSpawned.OffsetX, _maxY),
+                            Vector2.down,
+                            _maxY * 5,
+                            1 << 0
+                        ).point.y + preSpawned.OffsetY,
+                        preSpawned.Position.z
+                    );
+
+                positions.Add(position);
+            }
+
+            var j = 0;
             foreach (var preSpawned in _preSpawned)
             {
                 var i = instantiate(
                     preSpawned.Prefab,
-                    preSpawned.OffsetY == 0
-                        ? preSpawned.Position
-                        : new Vector3(
-                            preSpawned.Position.x + preSpawned.OffsetX,
-                            Physics2D.Raycast(
-                                new Vector2(preSpawned.Position.x + preSpawned.OffsetX, _maxY),
-                                Vector2.down,
-                                _maxY * 5,
-                                1 << 0
-                            ).point.y + preSpawned.OffsetY,
-                            preSpawned.Position.z
-                        ),
+                    positions[j],
                     preSpawned.Rotation,
                     null
                 );
 
                 i.SetActive(true);
+                j++;
             }
         }
 
