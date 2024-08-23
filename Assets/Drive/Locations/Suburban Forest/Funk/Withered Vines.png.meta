@@ -181,8 +181,8 @@ TextureImporter:
         y: 107
         width: 25
         height: 52
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.48, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -203,7 +203,7 @@ TextureImporter:
         width: 4
         height: 52
       alignment: 9
-      pivot: {x: 0.45454547, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -266,7 +266,7 @@ TextureImporter:
         width: 13
         height: 51
       alignment: 9
-      pivot: {x: 0.46666667, y: 0}
+      pivot: {x: 0.46153846, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -286,8 +286,8 @@ TextureImporter:
         y: 12
         width: 17
         height: 51
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.47058824, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,8 +307,8 @@ TextureImporter:
         y: 12
         width: 53
         height: 81
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.49056605, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,7 +331,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Vines_13: 1567645806
+      Vines_0: -766843696
       Vines_2: -1620683572
       Vines_12: 384804520
       Vines_5: 818257108
@@ -352,7 +352,7 @@ TextureImporter:
       Vines_10: -447078008
       Vines_14: 431049182
       Vines_16: 1207617420
-      Vines_0: -766843696
+      Vines_13: 1567645806
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1122,9 +1122,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingLayerID: 1806883311
+  m_SortingLayer: -1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
@@ -1238,7 +1238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4516917103193132846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.625, y: 7.75, z: 0}
+  m_LocalPosition: {x: -0.625, y: 8.0625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1283,10 +1283,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1084606867
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1951089968, guid: 8a0336e0b0a31204ea2040a9feb63806, type: 3}
+  m_Sprite: {fileID: 426035333, guid: 8a0336e0b0a31204ea2040a9feb63806, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1296,7 +1296,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &3031373983755503567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,8 +1309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9c03806c9c4a068a0d0f5bd9f1a44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Center>k__BackingField: {x: 0.18, y: 0.1}
-  <Size>k__BackingField: 2.38
-  <MaxSearchTry>k__BackingField: 100
-  <SearchPercentRadius>k__BackingField: 0.05
-  visualSizeY: 3.94
+  <Center>k__BackingField: {x: -0.15625, y: -0.0625}
+  <Size>k__BackingField: 2.9375
+  <MaxSearchTry>k__BackingField: 180
+  <SearchUnit>k__BackingField: 0.0625
+  visualSizeY: 3.3

@@ -18,6 +18,7 @@ namespace Inventory.UI
         [SerializeField] private ItemFrame frameMiddle;
         [SerializeField] private ItemFrame frameSelect;
         [SerializeField] private ItemFrame frameLast;
+        [SerializeField] private RectTransform foregroundSelector;
         private int _selection;
 
         private void Start()
@@ -103,20 +104,27 @@ namespace Inventory.UI
             foreach (var slot in _player.Inventory.Slots)
             {
                 var frame = Instantiate(FrameFromPosition(j), inventoryBase.transform);
+                inventoryBase.CalculateLayoutInputVertical();
+                inventoryBase.CalculateLayoutInputHorizontal();
                 if (frame is null) continue;
-                j++;
 
                 if (slot.IsEmpty)
                 {
                     frame.Item.sprite = null;
                     frame.Item.color = new Color(0, 0, 0, 0);
                     frame.name = "Nothing";
-                    continue;
+                }
+                else
+                {
+                    frame.name = $"{slot.LastItem.Name} by {slot.Count}";
+                    frame.Item.sprite = slot.LastItem.Sprite;
                 }
 
-                frame.name = $"{slot.LastItem.Name} by {slot.Count}";
-                frame.Item.sprite = slot.LastItem.Sprite;
+                j++;
             }
+
+            foregroundSelector.anchoredPosition = new Vector2(_selection * inventoryBase.spacing,
+                foregroundSelector.anchoredPosition.y);
         }
     }
 }

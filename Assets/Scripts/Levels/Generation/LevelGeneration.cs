@@ -113,11 +113,17 @@ namespace Levels.Generation
 
             GenerateChunks();
             ProcessColliders();
+            
             SetPreSpawnedOffsetsY();
+            
             ApplyLayers();
             ProcessColliders();
+            
             SetPreSpawnedOffsetsX();
+            
             GenerateStructures();
+            //удалить, когда появятся спрайты для одиночных тайлов
+            CleanChunks();
             ProcessColliders();
         }
 
@@ -137,7 +143,7 @@ namespace Levels.Generation
 
                 var offset = 0f;
                 var searchDirection = false;
-                var searchTickRange = onFloor.Size * onFloor.SearchPercentRadius;
+                var searchTickRange = onFloor.SearchUnit;
                 for (var j = 0; j < onFloor.MaxSearchTry; j++)
                 {
                     if (searchDirection) j -= 1;
@@ -394,6 +400,32 @@ namespace Levels.Generation
             }
         }
 
+        private void CleanChunks()
+        {
+            foreach (var position in tilemap.cellBounds.allPositionsWithin)
+            {
+                if (tilemap.GetTile(position) is not null && (
+                        (
+                            tilemap.GetTile(position + new Vector3Int(1, 0)) is null &&
+                            tilemap.GetTile(position + new Vector3Int(0, 1)) is null &&
+                            tilemap.GetTile(position + new Vector3Int(-1, 0)) is null
+                        ) || (
+                            tilemap.GetTile(position + new Vector3Int(1, 0)) is null &&
+                            tilemap.GetTile(position + new Vector3Int(0, 1)) is null &&
+                            tilemap.GetTile(position + new Vector3Int(0, -1)) is null
+                        ) || (
+                            tilemap.GetTile(position + new Vector3Int(-1, 0)) is null &&
+                            tilemap.GetTile(position + new Vector3Int(0, 1)) is null &&
+                            tilemap.GetTile(position + new Vector3Int(0, -1)) is null
+                        )
+                    )
+                )
+                {
+                    tilemap.SetTile(position, null);
+                }
+            }
+        }
+
         private void GenerateChunks()
         {
             var chunks = SetupChunks().ToArray();
@@ -460,20 +492,23 @@ namespace Levels.Generation
         {
             foreach (var preSpawned in _preSpawned)
             {
-                var i = instantiate(preSpawned.Prefab, preSpawned.Position, preSpawned.Rotation, null);
-                if (preSpawned.OffsetY != 0)
-                {
-                    i.transform.position = new Vector3(
-                        preSpawned.Position.x + preSpawned.OffsetX,
-                        Physics2D.Raycast(
-                            new Vector2(preSpawned.Position.x + preSpawned.OffsetX, _maxY),
-                            Vector2.down,
-                            _maxY * 5,
-                            1 << 0
-                        ).point.y + preSpawned.OffsetY,
-                        preSpawned.Position.z
-                    );
-                }
+                var i = instantiate(
+                    preSpawned.Prefab,
+                    preSpawned.OffsetY == 0
+                        ? preSpawned.Position
+                        : new Vector3(
+                            preSpawned.Position.x + preSpawned.OffsetX,
+                            Physics2D.Raycast(
+                                new Vector2(preSpawned.Position.x + preSpawned.OffsetX, _maxY),
+                                Vector2.down,
+                                _maxY * 5,
+                                1 << 0
+                            ).point.y + preSpawned.OffsetY,
+                            preSpawned.Position.z
+                        ),
+                    preSpawned.Rotation,
+                    null
+                );
 
                 i.SetActive(true);
             }

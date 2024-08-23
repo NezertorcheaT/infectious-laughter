@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20.48
+  spritePixelsToUnits: 16
   spriteBorder: {x: 7, y: 2, z: 9, w: 6}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -156,9 +156,9 @@ TextureImporter:
       name: Grasses_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 8
-        width: 3
+        x: 3
+        y: 2
+        width: 1
         height: 4
       alignment: 9
       pivot: {x: 0.33333334, y: 0}
@@ -177,12 +177,12 @@ TextureImporter:
       name: Grasses_1
       rect:
         serializedVersion: 2
-        x: 9
-        y: 8
-        width: 3
+        x: 7
+        y: 2
+        width: 2
         height: 4
       alignment: 9
-      pivot: {x: 0.33333334, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,9 +198,9 @@ TextureImporter:
       name: Grasses_2
       rect:
         serializedVersion: 2
-        x: 14
-        y: 8
-        width: 7
+        x: 12
+        y: 2
+        width: 5
         height: 4
       alignment: 9
       pivot: {x: 0.42857143, y: 0}
@@ -219,8 +219,8 @@ TextureImporter:
       name: Grasses_3
       rect:
         serializedVersion: 2
-        x: 23
-        y: 8
+        x: 20
+        y: 2
         width: 4
         height: 4
       alignment: 7
@@ -240,8 +240,8 @@ TextureImporter:
       name: Grasses_4
       rect:
         serializedVersion: 2
-        x: 29
-        y: 8
+        x: 26
+        y: 2
         width: 3
         height: 4
       alignment: 9
@@ -261,9 +261,9 @@ TextureImporter:
       name: Grasses_5
       rect:
         serializedVersion: 2
-        x: 34
-        y: 8
-        width: 3
+        x: 32
+        y: 2
+        width: 1
         height: 4
       alignment: 9
       pivot: {x: 0.33333334, y: 0}
@@ -282,9 +282,9 @@ TextureImporter:
       name: Grasses_6
       rect:
         serializedVersion: 2
-        x: 37
-        y: 8
-        width: 3
+        x: 35
+        y: 2
+        width: 1
         height: 4
       alignment: 9
       pivot: {x: 0.33333334, y: 0}
@@ -303,9 +303,9 @@ TextureImporter:
       name: Grasses_7
       rect:
         serializedVersion: 2
-        x: 41
-        y: 8
-        width: 4
+        x: 39
+        y: 2
+        width: 2
         height: 4
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -324,9 +324,9 @@ TextureImporter:
       name: Grasses_8
       rect:
         serializedVersion: 2
-        x: 46
-        y: 8
-        width: 4
+        x: 43
+        y: 2
+        width: 2
         height: 4
       alignment: 7
       pivot: {x: 0.5, y: 0}

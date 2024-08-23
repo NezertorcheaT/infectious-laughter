@@ -14,8 +14,8 @@ namespace Levels.Generation
         [field: Tooltip("колличество попыток поиска")]
         [field: SerializeField, Min(1)] public int MaxSearchTry { get; private set; } = 100;
         
-        [field: Tooltip("процент ширины (0-1), служащий минимальной единицей поиска")]
-        [field: SerializeField, Min(0.01f)] public float SearchPercentRadius { get; private set; } = 0.01f;
+        [field: Tooltip("минимальная единица поиска")]
+        [field: SerializeField, Min(0.000001f)] public float SearchUnit { get; private set; } = 0.0625f;
         
         [Tooltip("размер коробок вниз, не влияет на конечный результат")]
         [SerializeField, Min(0)] private float visualSizeY = 4f;
@@ -28,7 +28,7 @@ namespace Levels.Generation
             );
             Gizmos.DrawWireCube(
                 Center.ToVector3() + transform.position + new Vector3(0, -visualSizeY / 2f),
-                new Vector3(Size + MaxSearchTry * SearchPercentRadius * Size, visualSizeY)
+                new Vector3(Size + MaxSearchTry * SearchUnit, visualSizeY)
             );
         }
     }
