@@ -10,7 +10,7 @@ namespace Entity.Abilities
     public class Jump : Ability, IJumpableAbility
     {
         [SerializeField, Min(1)] private int jumpCount = 1;
-        [SerializeField, Min(0)] private float jumpHeight = 3;
+        [SerializeField, Min(0)] public float jumpHeight = 3; // Не решился изменять название, может отъебнет что-нибудь
         [SerializeField, Min(0)] private float jumpTime = 3;
         [Space(10)] [SerializeField, Min(0)] private float walljumpHeight;
         [SerializeField, Min(0)] private float walljumpPush;
