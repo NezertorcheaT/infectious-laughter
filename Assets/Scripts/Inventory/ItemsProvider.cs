@@ -18,12 +18,20 @@ namespace Inventory
         {
             Instance = this;
 #if UNITY_EDITOR
-            foreach (var type in TypeCache.GetTypesDerivedFrom<IItem>())
+            foreach (var type in
+                TypeCache.GetTypesDerivedFrom<IItem>()
+                    .Concat(TypeCache.GetTypesDerivedFrom<IUsableItem>())
+                    .Concat(TypeCache.GetTypesDerivedFrom<ICanSpawn>())
+            )
             {
                 if (type.IsInterface) continue;
-                _items.Add(AssetDatabase.LoadAssetAtPath(
-                        AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets($"t:{type.Name}").First()), type) as
-                    ScriptableObject);
+                var asset = AssetDatabase.FindAssets($"t:{type.Name}").FirstOrDefault();
+                if (asset is null) continue;
+                var item = AssetDatabase.LoadAssetAtPath(
+                        AssetDatabase.GUIDToAssetPath(asset), type) as
+                    ScriptableObject;
+                if (!_items.Contains(item))
+                    _items.Add(item);
             }
 #endif
         }
@@ -33,7 +41,8 @@ namespace Inventory
             if (id == string.Empty || id == " " || id is null) return null;
             var a = _items.Find(i => (i as IItem)?.Id == id);
             if (a is null)
-                Debug.LogError($"Item Provider не смог найти предмет по айди {id}, попробуйте ресетнуть провайдер из редактора, перед тем как тестировать новые предметы");
+                Debug.LogError(
+                    $"Item Provider не смог найти предмет по айди {id}, попробуйте ресетнуть провайдер из редактора, перед тем как тестировать новые предметы");
             return a as IItem;
         }
 

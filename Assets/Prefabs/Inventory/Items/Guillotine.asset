@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e890039712d71e8408fcd5ce9de8b4e1, type: 3}
-  m_Name: Guillotine Item
+  m_Name: Guillotine
   m_EditorClassIdentifier: 
   itemCost: 14
   spawnHeight: 20

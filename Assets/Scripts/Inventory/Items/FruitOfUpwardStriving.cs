@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = "New The Fruit Of Upward Striving Item", menuName = "Inventory/Items/The Fruit Of Upward Striving", order = 0)]
-    public class TheFruitOfUpwardStriving : ScriptableObject, IItem, IUsableItem
+    [CreateAssetMenu(fileName = "New Fruit Of Upward Striving", menuName = "Inventory/Items/Fruit Of Upward Striving", order = 0)]
+    public class FruitOfUpwardStriving : ScriptableObject, IUsableItem
     {
-        public string Name => "The Fruit Of Upward Striving";
-        public string Id => "il.the_fruit_of_upward_striving";
+        public string Name => "Fruit Of Upward Striving";
+        public string Id => "il.fruit_of_upward_striving";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
 

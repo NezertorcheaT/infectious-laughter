@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = "New Holy Guillotine Item", menuName = "Inventory/Items/Holy Guillotine", order = 0)]
-    public class HolyGuillotineItem : ScriptableObject, IUsableItem, ICanSpawn
+    [CreateAssetMenu(fileName = "New Holy Guillotine", menuName = "Inventory/Items/Holy Guillotine", order = 0)]
+    public class HolyGuillotine : ScriptableObject, IUsableItem, ICanSpawn
     {
         public string Name => "Holy Guillotine";
         public string Id => "il.holy_guillotine";

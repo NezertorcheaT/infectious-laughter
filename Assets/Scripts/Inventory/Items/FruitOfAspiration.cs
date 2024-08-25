@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = "New Fruit Of Aspiration Item", menuName = "Inventory/Items/Fruit Of Aspiration", order = 0)]
-    public class FruitOfAspiration : ScriptableObject, IItem, IUsableItem
+    [CreateAssetMenu(fileName = "New Fruit Of Aspiration", menuName = "Inventory/Items/Fruit Of Aspiration", order = 0)]
+    public class FruitOfAspiration : ScriptableObject, IUsableItem
     {
         public string Name => "Fruit Of Aspiration";
         public string Id => "il.fruit_of_aspiration";

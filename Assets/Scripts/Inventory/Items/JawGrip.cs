@@ -5,8 +5,8 @@ using UnityEngine.Windows;
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = "New JawGrip Item", menuName = "Inventory/Items/JawGrip", order = 0)]
-    public class JawGrip : ScriptableObject, IItem, IUsableItem
+    [CreateAssetMenu(fileName = "New JawGrip", menuName = "Inventory/Items/JawGrip", order = 0)]
+    public class JawGrip : ScriptableObject, IUsableItem
     {
         public string Name => "JawGrip";
         public string Id => "il.jaw_grip";

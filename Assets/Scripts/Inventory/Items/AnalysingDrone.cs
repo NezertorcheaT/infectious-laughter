@@ -5,10 +5,10 @@ using UnityEngine.Serialization;
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = "New AnalysingDrone Item", menuName = "Inventory/Items/AnalysingDrone", order = 0)]
+    [CreateAssetMenu(fileName = "New Analysing Drone", menuName = "Inventory/Items/Analysing Drone", order = 0)]
     public class AnalysingDrone : ScriptableObject, IUsableItem
     {
-        public string Name => "AnalysingDrone";
+        public string Name => "Analysing Drone";
         public string Id => "il.analysing_drone";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = "New Trap Item", menuName = "Inventory/Items/Trap", order = 0)]
+    [CreateAssetMenu(fileName = "New Trap", menuName = "Inventory/Items/Trap", order = 0)]
     public class TrapItem : ScriptableObject, IUsableItem, ICanSpawn
     {
         public string Name => "Trap";

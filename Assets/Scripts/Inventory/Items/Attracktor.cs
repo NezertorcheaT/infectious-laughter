@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = "New Attracktor Item", menuName = "Inventory/Items/Attracktor", order = 0)]
+    [CreateAssetMenu(fileName = "New Attracktor", menuName = "Inventory/Items/Attracktor", order = 0)]
     public class Attracktor : ScriptableObject, IUsableItem
     {
         public string Name => "Attracktor";
