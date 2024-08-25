@@ -77,7 +77,7 @@ namespace Editor
 
 namespace Inventory.Items
 {
-    [CreateAssetMenu(fileName = ""New #REJECTED_CLASS_NAME_SPACE# Item"", menuName = ""Inventory/Items/#REJECTED_CLASS_NAME_SPACE#"", order = 0)]
+    [CreateAssetMenu(fileName = ""New #REJECTED_CLASS_NAME_SPACE#"", menuName = ""Inventory/Items/#REJECTED_CLASS_NAME_SPACE#"", order = 0)]
     public class #CLASS_NAME# : ScriptableObject, IItem
     {
         public string Name => ""#REJECTED_CLASS_NAME_SPACE#"";
