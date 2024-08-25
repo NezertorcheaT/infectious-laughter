@@ -395,7 +395,7 @@ namespace Levels.Generation
                         continue;
 
                     AddStructureAtPos(structurePrefab.structure,
-                        pos.Value + new Vector2Int(0, structurePrefab.structure.Ground));
+                        pos.Value + new Vector2Int(0, 1-structurePrefab.structure.Ground));
                 }
             }
         }

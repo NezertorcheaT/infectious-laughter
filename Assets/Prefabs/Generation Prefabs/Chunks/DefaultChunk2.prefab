@@ -3641,6 +3641,7 @@ Transform:
   - {fileID: 2080799370451962698}
   - {fileID: 3101845604907138288}
   - {fileID: 6715469489987286168}
+  - {fileID: 2044889652055588554}
   m_Father: {fileID: 4516917101330682265}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9551,6 +9552,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 117114633180509468, guid: b09d4a2d6b16c454a9cb8048c569bc76, type: 3}
   m_PrefabInstance: {fileID: 8732044438078141341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8867552164557177124
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4516917101215265857}
+    m_Modifications:
+    - target: {fileID: 1132115498484572588, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Size.x
+      value: 37.121323
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132115498484572588, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Size.y
+      value: 35.683067
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132115498484572588, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Offset.x
+      value: 4.444092
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132115498484572588, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.8045888
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477243549145607572, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Name
+      value: Camera Box Bound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_RootOrder
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+--- !u!4 &2044889652055588554 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+  m_PrefabInstance: {fileID: 8867552164557177124}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9138641417131582886
 PrefabInstance:

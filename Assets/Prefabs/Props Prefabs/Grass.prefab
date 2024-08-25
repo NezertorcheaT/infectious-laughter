@@ -99,6 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Center>k__BackingField: {x: 0, y: 0}
   <Size>k__BackingField: 2
-  <MaxSearchTry>k__BackingField: 180
+  <MaxSearchTry>k__BackingField: 300
   <SearchUnit>k__BackingField: 0.0625
   visualSizeY: 3.3

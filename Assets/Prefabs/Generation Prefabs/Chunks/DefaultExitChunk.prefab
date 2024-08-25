@@ -2191,6 +2191,7 @@ Transform:
   - {fileID: 6855611736374365283}
   - {fileID: 3122503276968558163}
   - {fileID: 8866020751913467598}
+  - {fileID: 8687474305206531708}
   m_Father: {fileID: 2355915235132976170}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3786,6 +3787,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8673682302441817770, guid: a275cc32ffd82de458066a1fbb0f8840, type: 3}
   m_PrefabInstance: {fileID: 1653121510515984080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2305610057924168082
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2355915235256781298}
+    m_Modifications:
+    - target: {fileID: 1132115498484572588, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Size.x
+      value: 26.263348
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132115498484572588, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Size.y
+      value: 29.15953
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132115498484572588, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.6926117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132115498484572588, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Offset.y
+      value: -2.7194824
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477243549145607572, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_Name
+      value: Camera Box Bound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+--- !u!4 &8687474305206531708 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7453237463659085806, guid: 757bebb1a8bb7774bbb2ff4c3b633a8a, type: 3}
+  m_PrefabInstance: {fileID: 2305610057924168082}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2884145703371159746
 PrefabInstance:

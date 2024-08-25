@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20.48
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -127,7 +127,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Logs_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 41
+        width: 27
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.071428575}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b39793b3fa2dc46b6674a0bf9139fe
+      internalID: -1682075018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logs_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 41
+        width: 26
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 382801bd7f1700c44b7289b4c74507f4
+      internalID: 646508712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logs_2
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 41
+        width: 24
+        height: 16
+      alignment: 9
+      pivot: {x: 0.45833334, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b77498b0962ad042baeceb73d1ac9ec
+      internalID: 1364505677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logs_3
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 41
+        width: 27
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e3864ec9824544fb53740eabd4acef
+      internalID: 1984887849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logs_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 7
+        width: 26
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c633f647cbba35449de2607ca8a573d
+      internalID: -1898522318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logs_5
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 7
+        width: 30
+        height: 10
+      alignment: 9
+      pivot: {x: 0.4666667, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56953d8f7c1f0844c96e7a13fb418033
+      internalID: 1368303797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logs_6
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 7
+        width: 17
+        height: 25
+      alignment: 9
+      pivot: {x: 0.47058824, y: 0.04}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5387dee14452044a3bd31fd9ca2724
+      internalID: 1242223659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logs_7
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 7
+        width: 11
+        height: 13
+      alignment: 9
+      pivot: {x: 0.6363636, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0655adf082d0ab74a8423bbc22c625d9
+      internalID: -1748508392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logs_8
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 7
+        width: 10
+        height: 11
+      alignment: 9
+      pivot: {x: 0.3, y: 0.18181819}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc327b49c567ba041951d77dcd2a2842
+      internalID: 1805650438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +327,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Logs_3: 1984887849
+      Logs_0: -1682075018
+      Logs_8: 1805650438
+      Logs_2: 1364505677
+      Logs_6: 1242223659
+      Logs_7: -1748508392
+      Logs_1: 646508712
+      Logs_4: -1898522318
+      Logs_5: 1368303797
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

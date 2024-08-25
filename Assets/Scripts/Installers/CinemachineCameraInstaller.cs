@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using GameFlow;
 using UnityEngine;
@@ -9,15 +10,30 @@ namespace Installers
     public class CinemachineCameraInstaller : MonoInstaller
     {
         [SerializeField] private PlayerCamera playerCameraPrefab;
-        [SerializeField] private CompositeCollider2D bounds;
+        [Inject] private CameraBoundsComposer _boundsComposer;
+        private CinemachineConfiner2D confiner;
 
         public override void InstallBindings()
         {
             var cam = Container.InstantiatePrefab(playerCameraPrefab).GetComponent<PlayerCamera>();
-            if (bounds)
-                cam.VirtualCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = bounds;
+            if (_boundsComposer is not null)
+            {
+                confiner = cam.VirtualCamera.GetComponent<CinemachineConfiner2D>();
+                confiner.m_BoundingShape2D = _boundsComposer.Collider;
+                _boundsComposer.OnAdded += Confine;
+            }
 
             Container.Bind<PlayerCamera>().FromInstance(cam).AsSingle().NonLazy();
+        }
+
+        private void Confine()
+        {
+            confiner.InvalidateCache();
+        }
+
+        private void OnDestroy()
+        {
+            _boundsComposer.OnAdded -= Confine;
         }
     }
 }

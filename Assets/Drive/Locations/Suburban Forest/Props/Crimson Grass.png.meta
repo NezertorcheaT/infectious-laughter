@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20.48
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,7 +139,301 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Crimson Grass_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 35
+        width: 10
+        height: 7
+      alignment: 9
+      pivot: {x: 0.5, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f5682a1e39b22419103ffbe1a9ecc2
+      internalID: -1041499492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 34
+        width: 14
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a28e5c0c4f2944a9a2beb903e558e6
+      internalID: 412383357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 34
+        width: 13
+        height: 8
+      alignment: 9
+      pivot: {x: 0.4615385, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541b0f26c3f5aef43b35717d1d3ca22f
+      internalID: 310292723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_3
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 32
+        width: 23
+        height: 15
+      alignment: 9
+      pivot: {x: 0.47826087, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8bab72aee921db408cdfa41992d3d34
+      internalID: -233551674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_4
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 33
+        width: 26
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8eabd1401fc99345b406487bdccb802
+      internalID: -181972427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 11
+        height: 15
+      alignment: 9
+      pivot: {x: 0.54545456, y: 0.06666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0e215bf7a4434b48830469cc0c54950
+      internalID: -765689942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_6
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 2
+        width: 13
+        height: 18
+      alignment: 9
+      pivot: {x: 0.53846157, y: 0.11111111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf88ba50c6d8204682ed4857ad9c061
+      internalID: 1789962139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_7
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 2
+        width: 13
+        height: 19
+      alignment: 9
+      pivot: {x: 0.4615385, y: 0.10526316}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17e943a283a8c6d40a745bfc8708f805
+      internalID: 541880085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_8
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1
+        width: 8
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11111111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96debe2e78c263c40a1c961dae3ee720
+      internalID: 1100535528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2
+        width: 7
+        height: 6
+      alignment: 9
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab09d12b1ef37bb4c9edbfefc3c5ac2d
+      internalID: -1305108013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_10
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 2
+        width: 8
+        height: 6
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b11bd515f3061247a2ec2d2055e22f0
+      internalID: -1197116290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 2
+        width: 5
+        height: 13
+      alignment: 9
+      pivot: {x: 0.6, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 952fa85cc2d0a3e4caa0b8e334b9d769
+      internalID: -1615440602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_12
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 2
+        width: 5
+        height: 12
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd6652c92a99aeb48939d6663a2d5e84
+      internalID: -475283646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson Grass_13
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 2
+        width: 14
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7757d623a3e3ff40988dfe15c41b21c
+      internalID: -446863700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +444,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Crimson Grass_5: -765689942
+      Crimson Grass_0: -1041499492
+      Crimson Grass_7: 541880085
+      Crimson Grass_1: 412383357
+      Crimson Grass_11: -1615440602
+      Crimson Grass_6: 1789962139
+      Crimson Grass_3: -233551674
+      Crimson Grass_2: 310292723
+      Crimson Grass_12: -475283646
+      Crimson Grass_8: 1100535528
+      Crimson Grass_10: -1197116290
+      Crimson Grass_4: -181972427
+      Crimson Grass_13: -446863700
+      Crimson Grass_9: -1305108013
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
