@@ -7,13 +7,18 @@ namespace Levels
     {
         [Inject] private LevelTransporter levelTransporter;
 
+        public void End()
+        {
+            levelTransporter.EndLevelAtEnd();
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (
                 other.GetComponent<Entity.Entity>() is null ||
                 !other.gameObject.CompareTag("Player")
             ) return;
-            levelTransporter.EndLevelAtEnd();
+            End();
         }
     }
 }

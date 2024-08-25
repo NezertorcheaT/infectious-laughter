@@ -864,11 +864,7 @@ MonoBehaviour:
   - {fileID: 4516917101330682262, guid: a72ae14f70984bb4f9c70879388be2f0, type: 3}
   - {fileID: 4823586720191418435, guid: 85efce9d5aa56cb418c36469771bf08a, type: 3}
   specialChunks: []
-  layers:
-  - layer: {fileID: 11400000, guid: be7e940cc007afb44a608fc35a5520c1, type: 2}
-    blending: 0
-    behavior: 0
-    offset: 5
+  layers: []
   structures:
   - structure: {fileID: 6106427781339804030, guid: a386455ae19c36542be7198efcb36c58, type: 3}
     count: 2
