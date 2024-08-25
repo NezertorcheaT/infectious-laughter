@@ -1,7 +1,8 @@
+using System;
+using System.Threading.Tasks;
 using Installers;
 using Inventory;
 using Inventory.Input;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -10,48 +11,70 @@ namespace Shop
 {
     public class ShopUI : MonoBehaviour
     {
-        [SerializeField] private Transform buttonTemplate;
-        [SerializeField] private Transform shopUITransform;
+        [SerializeField] private ShopItemFrame[] itemFrames;
+        [SerializeField, Min(0), Tooltip("в секундах")] private float frameShowDelay;
+        [SerializeField] private Image background;
         [Inject] private PlayerInstallation _playerInstallation;
         [Inject] private GarbageManager _garbageManager;
         private PlayerInventoryInput _playerInventoryInput;
 
-        private void Awake()
+        private void Start()
         {
-            buttonTemplate.gameObject.SetActive(false);
             _playerInventoryInput = _playerInstallation.Entity.FindAbilityByType<PlayerInventoryInput>();
         }
 
-        public void SetItemSO(IInventory shopInventory)
+        public async void CloseShop()
         {
-            foreach (ISlot slotInventory in shopInventory.Slots)
+            foreach (var frame in itemFrames)
             {
-                Transform slot = Instantiate(buttonTemplate, shopUITransform);
-                slot.gameObject.GetComponentInChildren<Image>().sprite = slotInventory.LastItem.Sprite;
-                slot.gameObject.GetComponentInChildren<TextMeshProUGUI>()
-                    .SetText(slotInventory.LastItem.ItemCost.ToString());
+                await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
+                frame.Stop();
+                frame.gameObject.SetActive(false);
+            }
 
-                slot.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() =>
-                {
-                    OnButtonClick(slot, slotInventory);
-                });
+            await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
+            background.enabled = false;
+        }
 
-                buttonTemplate.gameObject.SetActive(true);
+        public async void OpenShop()
+        {
+            await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
+            background.enabled = true;
+
+            foreach (var frame in itemFrames)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
+                frame.gameObject.SetActive(true);
+                frame.Animate();
             }
         }
 
-        private void OnButtonClick(Transform slot, ISlot slotInventory)
+        public void SetShopwindow(IInventory shopInventory)
+        {
+            var i = 0;
+            foreach (var slot in shopInventory.Slots)
+            {
+                var frame = itemFrames[i];
+                i++;
+
+                frame.Item.sprite = slot.LastItem.Sprite;
+                frame.Text.SetText($"{slot.LastItem.Name}\nЗа {slot.LastItem.ItemCost} мусора");
+                frame.Button.onClick.AddListener(() => OnButtonClick(frame, slot));
+            }
+        }
+
+        private void OnButtonClick(ShopItemFrame frame, ISlot slot)
         {
             //Реализация покупки предмета
-            if (!_garbageManager.IfCanAfford(slotInventory.LastItem.ItemCost) || slotInventory.IsEmpty) return;
-            if (!_playerInventoryInput.HasSpace(slotInventory.LastItem)) return;
+            if (!_garbageManager.IfCanAfford(slot.LastItem.ItemCost) || slot.IsEmpty) return;
+            if (!_playerInventoryInput.HasSpace(slot.LastItem)) return;
 
-            _garbageManager.GarbageBalance -= slotInventory.LastItem.ItemCost;
-            slotInventory.Count = 0;
+            _garbageManager.GarbageBalance -= slot.LastItem.ItemCost;
+            slot.Count = 0;
 
-            _playerInventoryInput.AddItem(slotInventory.LastItem.SelfRef);
+            _playerInventoryInput.AddItem(slot.LastItem.SelfRef);
 
-            slot.gameObject.GetComponentInChildren<TextMeshProUGUI>().SetText("SOLD");
+            frame.Text.SetText($"{slot.LastItem.Name}\nПродано");
         }
     }
 }

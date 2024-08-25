@@ -9,7 +9,7 @@ namespace Shop
     {
         [SerializeField] private List<ScriptableObject> shopItemsPoolList;
         [SerializeField] private ScriptableObject inventoryShop;
-        [SerializeField] private Transform shopUi;
+        [SerializeField] private ShopUI shopUi;
 
         private IInventory _inventory;
         private IItem[] _items;
@@ -29,13 +29,12 @@ namespace Shop
         {
             if (_inventory is null) return;
 
-            for (int i = 0; i <= itemsCountToGenerate; i++)
+            for (var i = 0; i <= itemsCountToGenerate; i++)
             {
                 _inventory.TryAddItem(_items[Random.Range(0, _items.Length)], false);
             }
 
-            //����� �������
-            shopUi.GetComponent<ShopUI>().SetItemSO(_inventory);
+            shopUi.SetShopwindow(_inventory);
         }
     }
 }

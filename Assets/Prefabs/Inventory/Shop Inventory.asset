@@ -12,30 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe5c93e2947435fb9ebcc38eb4e3083, type: 3}
   m_Name: Shop Inventory
   m_EditorClassIdentifier: 
-  itemsProvider: {fileID: 11400000, guid: 052c567c52895534480383f7066626fa, type: 2}
-  maxCapacity: 12
+  maxCapacity: 8
   <_slots>k__BackingField:
-  - lastItemID: 
+  - lastItemId: 
     count: 0
-  - lastItemID: 
+  - lastItemId: 
     count: 0
-  - lastItemID: 
+  - lastItemId: 
     count: 0
-  - lastItemID: 
+  - lastItemId: 
     count: 0
-  - lastItemID: 
+  - lastItemId: 
     count: 0
-  - lastItemID: 
+  - lastItemId: 
     count: 0
-  - lastItemID: 
+  - lastItemId: 
     count: 0
-  - lastItemID: 
-    count: 0
-  - lastItemID: 
-    count: 0
-  - lastItemID: 
-    count: 0
-  - lastItemID: 
-    count: 0
-  - lastItemID: 
+  - lastItemId: 
     count: 0
