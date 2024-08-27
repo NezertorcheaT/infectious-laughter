@@ -8,7 +8,7 @@ using NaughtyAttributes;
 namespace TranslateManagement
 {
     [BurstCompile]
-    [CreateAssetMenu(fileName = "TranslationConfig", menuName = "Scripts/Translation Config", order = 2)]
+    [CreateAssetMenu(fileName = "TranslationConfig", menuName = "TranslateManagement/Translation Config", order = 2)]
     public class TranslationConfig : ScriptableObject
     {
         [SerializeField] private List<TranslationScriptableObject> translations;
