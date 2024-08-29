@@ -817,6 +817,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2085324745}
   - component: {fileID: 2085324747}
+  - component: {fileID: 2085324753}
+  - component: {fileID: 2085324752}
+  - component: {fileID: 2085324751}
+  - component: {fileID: 2085324750}
+  - component: {fileID: 2085324749}
+  - component: {fileID: 2085324748}
   m_Layer: 0
   m_Name: LevelGenerator
   m_TagString: Untagged
@@ -851,9 +857,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd35ce6fcd4b17438acd2639d322f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: initial
-  voidTile: {fileID: 11400000, guid: 83e9431c96a231542a12d50adabe1bd3, type: 2}
-  tilemap: {fileID: 84374612}
+  steps:
+  - {fileID: 2085324753}
+  - {fileID: 2085324752}
+  - {fileID: 2085324751}
+  - {fileID: 2085324750}
+  - {fileID: 2085324749}
+  - {fileID: 2085324748}
+  properties:
+    Seed: initial
+    VoidTile: {fileID: 11400000, guid: 83e9431c96a231542a12d50adabe1bd3, type: 2}
+    Tilemap: {fileID: 84374612}
+    LayerMinX: 0
+    LayerMaxX: 0
+    MaxY: 10
+    StructureMinX: 0
+    StructureMaxX: 0
+--- !u!114 &2085324748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085324744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93787ce504584eb1ad0d5493f1f649a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  structures:
+  - structure: {fileID: 6106427781339804030, guid: a386455ae19c36542be7198efcb36c58, type: 3}
+    count: 3
+  structuresSpawnMaxTry: 100
+--- !u!114 &2085324749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085324744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b4f4aecbb54b22a465036a55932ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2085324750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085324744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5ddcec0ce44e57ac62d5d81e27a77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2085324751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085324744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1267c7274e640d5a8861310ab029518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layers: []
+--- !u!114 &2085324752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085324744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6651e7e2ad86495181b82f30c162678b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2085324753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085324744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42566d3fce324aab8d27c471a2e0ef3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   chunksCount: 10
   firstChunk: {fileID: 3069874750179476996, guid: d5081cf6e749d3e478d1f8c152a43d82, type: 3}
   lastChunk: {fileID: 2355915235132976165, guid: ab88464a0aac9fa4baab91e25b8a3c26, type: 3}
@@ -864,11 +960,6 @@ MonoBehaviour:
   - {fileID: 4516917101330682262, guid: a72ae14f70984bb4f9c70879388be2f0, type: 3}
   - {fileID: 4823586720191418435, guid: 85efce9d5aa56cb418c36469771bf08a, type: 3}
   specialChunks: []
-  layers: []
-  structures:
-  - structure: {fileID: 6106427781339804030, guid: a386455ae19c36542be7198efcb36c58, type: 3}
-    count: 2
-  structuresSpawnMaxTry: 20
 --- !u!1001 &7197755082122394182
 PrefabInstance:
   m_ObjectHideFlags: 0

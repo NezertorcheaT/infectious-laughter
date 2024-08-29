@@ -19,9 +19,9 @@ namespace Installers
         public override void InstallBindings()
         {
             ender.OnDone += InjectToSpawned;
-            generator.seed = (string) _sessionFactory.Current[SavedKeys.Seed].Value +
-                             _levelManager.LevelsPassCount +
-                             _levelManager.CurrentLevel.ID;
+            generator.SetSeed((string) _sessionFactory.Current[SavedKeys.Seed].Value +
+                              _levelManager.LevelsPassCount +
+                              _levelManager.CurrentLevel.ID);
             generator.StartGeneration();
         }
 
