@@ -15,6 +15,7 @@ namespace Entity.Abilities
     {
         [Inject] private PlayerInstallation _playerInstallation;
         [SerializeField] private Collider2D entityMainCollider;
+        [SerializeField, Range(0, 1)] private float rayOffset;
         public float range = 5f;
         public float rangeIfHidden = 2.5f;
         public bool direction = false;
@@ -66,6 +67,7 @@ namespace Entity.Abilities
                     currentRange,
                     1 << 0
                 );
+
                 Debug.DrawRay(
                     bounds.center + new Vector3(bounds.extents.x, 0) * (direction ? 1f : -1f),
                     (playerPosition - transform.position).normalized*currentRange,
@@ -73,6 +75,23 @@ namespace Entity.Abilities
                 );
                 if (hit.collider is not null)
                     return (null, hit.point);
+
+                // рейкаст для детекта пола и потолка
+
+                var ground = Physics2D.Raycast(
+                    bounds.center - new Vector3(0, bounds.extents.y * rayOffset),
+                    (playerPosition - transform.position).normalized*currentRange,
+                    1 << 0
+                );
+                
+                Debug.DrawRay(
+                    bounds.center - new Vector3(0, bounds.extents.y * rayOffset),
+                    (playerPosition - transform.position).normalized * currentRange,
+                    Color.blue
+                );
+                if (ground.collider is not null)
+                    return (null, ground.point);
+
 
                 return (
                     _fraction.GetRelation(playerFraction) is Relationships.Fraction.Relation.Hostile

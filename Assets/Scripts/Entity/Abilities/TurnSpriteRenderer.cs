@@ -64,6 +64,7 @@ namespace Entity.Abilities
         private void OnDestroy()
         {
             _destroyed = true;
+
         }
     }
 }
