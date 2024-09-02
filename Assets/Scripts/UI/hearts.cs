@@ -84,9 +84,8 @@ public class hearts : MonoBehaviour
             }
 
             heartImage.sprite = heartFull;
-            heartImage.enabled = true; // Включаем компонент Image
+            heartImage.enabled = true;
 
-            // Задаем позицию иконки
             RectTransform rectTransform = newHeart.GetComponent<RectTransform>();
             rectTransform.anchoredPosition = new Vector2(i * spacing, 0);
 
@@ -94,6 +93,15 @@ public class hearts : MonoBehaviour
         }
 
         Debug.Log($"Lives list updated. Total lives: {lives.Count}");
+    }
+
+    public void OnTakeDamageButton() {
+        AddDamage(3);
+    }
+
+    public void AddDamage(int d)
+    {
+        currentHealth -= Mathf.Max(d, 0);
     }
 
 }
