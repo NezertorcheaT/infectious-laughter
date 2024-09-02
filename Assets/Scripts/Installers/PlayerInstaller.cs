@@ -42,8 +42,8 @@ namespace Installers
             player.GetComponent<Hp>().FromContent(
                 _sessionFactory.Current[SavedKeys.PlayerHp],
                 _sessionFactory.Current[SavedKeys.PlayerAddictiveHp],
-                _sessionFactory.Current[SavedKeys.PlayerMaxHp],
-                _sessionFactory.Current[SavedKeys.PlayerMaxAddictiveHp]
+                _sessionFactory.Current[SavedKeys.PlayerMaxAddictiveHp],
+                _sessionFactory.Current[SavedKeys.PlayerMaxHp]
             );
 
             JsonUtility.FromJsonOverwrite((string) _sessionFactory.Current[SavedKeys.PlayerInventory].Value,
