@@ -213,10 +213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169a6f498cfa4a3d8e14fc7194683e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   addictiveHealth: 0
   maxAddictiveHealth: 0
-  maxHealth: 5
+  maxHealth: 3
 --- !u!114 &3693047800681385017
 MonoBehaviour:
   m_ObjectHideFlags: 0

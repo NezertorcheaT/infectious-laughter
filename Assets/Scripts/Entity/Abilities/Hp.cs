@@ -7,16 +7,18 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/HP")]
     public class Hp : Ability
     {
-        [SerializeField] private int health = 5;
+        [SerializeField] private int health = 3;
         [SerializeField] private int addictiveHealth;
         [SerializeField] private int maxAddictiveHealth;
-        [SerializeField] private int maxHealth = 5;
+        [SerializeField] private int maxHealth = 3;
 
         public Action<int, int, int, int> OnDamaged;
         public Action<int, int, int, int> OnHealed;
         public Action<int, int, int, int> OnHpStarted;
         public Action<int, int> OnAddictiveHpChanged;
         public Action OnDie;
+
+        
 
         public int AddictiveHealth
         {
@@ -83,5 +85,6 @@ namespace Entity.Abilities
             maxHealth = (int) maxHealthContent.Value;
             maxAddictiveHealth = (int) maxAddictiveHealthContent.Value;
         }
+
     }
 }

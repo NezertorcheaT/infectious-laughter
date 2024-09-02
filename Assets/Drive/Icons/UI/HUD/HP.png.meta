@@ -194,6 +194,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: HP_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e388ddd6e8dfde940b6ef4e22c5541c0
+      internalID: 1579309082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HP_3
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 2
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e19fc319eb5ee48b98574049dcba5c
+      internalID: 84210350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -209,6 +251,8 @@ TextureImporter:
       "\u0418\u043A\u043E\u043D\u043A\u0430 \u0438\u043D\u0432\u0435\u043D\u0442\u043E\u0440\u044F_3": -634011902
       HP_1: 1120971530
       HP_0: -1522308004
+      HP_2: 1579309082
+      HP_3: 84210350
       "\u0418\u043A\u043E\u043D\u043A\u0430 \u0438\u043D\u0432\u0435\u043D\u0442\u043E\u0440\u044F_0": 780274141
       "\u0418\u043A\u043E\u043D\u043A\u0430 \u0438\u043D\u0432\u0435\u043D\u0442\u043E\u0440\u044F_2": 1784657347
   spritePackingTag: 

@@ -101,6 +101,8 @@ SpriteAtlas:
   - {fileID: 1226319234, guid: c619f0a5878bc54408954bccb04db833, type: 3}
   - {fileID: -1309896677, guid: c619f0a5878bc54408954bccb04db833, type: 3}
   - {fileID: 513682671, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+  - {fileID: -1522308004, guid: 8bec63e53b2cf0047aa8ee1976860831, type: 3}
+  - {fileID: 1120971530, guid: 8bec63e53b2cf0047aa8ee1976860831, type: 3}
   - {fileID: -408845793, guid: 9e9c1776f1f0eb646ab71cef12d33f7e, type: 3}
   - {fileID: 1127371103, guid: 9e9c1776f1f0eb646ab71cef12d33f7e, type: 3}
   - {fileID: 21300000, guid: ec39c5c8fff1b594d869d5dbb4165fec, type: 3}
@@ -161,6 +163,8 @@ SpriteAtlas:
   - spawn_0
   - spawn_3
   - spawn_2
+  - HP_2
+  - HP_3
   - Button_pull
   - Button_push
   - Game Name
