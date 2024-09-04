@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b4f1d19c805554aa8749a85a48df2b, type: 3}
   m_Name: Broken Radio
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 33567660bb7967d4386c2f6f64be80cd, type: 3}
   <ItemCost>k__BackingField: 35
   <MaxStackSize>k__BackingField: 1
