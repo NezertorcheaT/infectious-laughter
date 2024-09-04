@@ -11,8 +11,8 @@ namespace Inventory
     {
         [SerializeField] private ScriptableObject item;
         [SerializeField] private LayerMask layer;
-        [Inject] private Controls _actions;
-        [Inject] private PlayerInstallation player;
+        [Inject] public Controls _actions;
+        [Inject] public PlayerInstallation player;
         private PlayerInventoryInput input;
 
         private void OnPickItem(InputAction.CallbackContext ctx)
@@ -37,7 +37,7 @@ namespace Inventory
             _actions.Gameplay.PickItem.performed -= OnPickItem;
         }
 
-        private void OnEnable()
+        public void OnEnable()
         {
             _actions.Gameplay.PickItem.performed += OnPickItem;
         }

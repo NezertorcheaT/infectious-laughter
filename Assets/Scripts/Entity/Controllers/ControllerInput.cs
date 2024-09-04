@@ -12,6 +12,7 @@ namespace Entity.Controllers
         [Inject] private Controls _actions;
 
         // Cache
+        private BlessingPlaceUsing _useBlessingPlace;
         private TombOfRealityUsing _useTombOfReality;
         private TreeOfWisdomUsing _useTreeOfWisdom;
         private HorizontalMovement _moveAbility;
@@ -26,6 +27,7 @@ namespace Entity.Controllers
         public override void Initialize()
         {
             base.Initialize();
+            _useBlessingPlace = Entity.FindExactAbilityByType<BlessingPlaceUsing>();
             _useTombOfReality = Entity.FindExactAbilityByType<TombOfRealityUsing>();
             _useTreeOfWisdom = Entity.FindExactAbilityByType<TreeOfWisdomUsing>();
             _entityGarbage = Entity.FindExactAbilityByType<Garbage>();
@@ -53,8 +55,9 @@ namespace Entity.Controllers
             _actions.Gameplay.Dash.performed += DashOnPerformed;
             _actions.Gameplay.Jump.performed += JumpOnPerformed;
             _actions.Gameplay.PickGarbage.performed += UseTreeOfWisdomPerformed;
-            _actions.Gameplay.PickGarbage.performed += PickGarbagePerformed;
             _actions.Gameplay.PickGarbage.performed += UseTombOfRealityPerformed;
+            _actions.Gameplay.PickGarbage.performed += UseBlessingPlacePerformed;
+            _actions.Gameplay.PickGarbage.performed += PickGarbagePerformed;
             _actions.Gameplay.Crouch.started += CrouchOnStarted;
             _actions.Gameplay.Crouch.canceled += CrouchOnCanceled;
         }
@@ -71,6 +74,7 @@ namespace Entity.Controllers
             _actions.Gameplay.Crouch.canceled -= CrouchOnCanceled;
         }
 
+        private void UseBlessingPlacePerformed(InputAction.CallbackContext ctx) => _useBlessingPlace.TryUseBlessingPlace();
         private void UseTombOfRealityPerformed(InputAction.CallbackContext ctx) => _useTombOfReality.UseTombOfReality();
         private void UseTreeOfWisdomPerformed(InputAction.CallbackContext ctx) => _useTreeOfWisdom.UseTree();
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UndoPerform();
