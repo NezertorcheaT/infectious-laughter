@@ -155,9 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSpawnItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7886380806431345129, guid: 3991847e6e3779b499dcd1f461768c47, type: 3}
+  - {fileID: 5070948113830790293, guid: 44840f11ecfed6d49863d8acfc4be8e2, type: 3}
+  - {fileID: 1470428010961879496, guid: 92fcc3245fdb5a4469bfee13dd47b0a4, type: 3}
+  - {fileID: 5419593130681260411, guid: e55962c1df77329448764cce43040afd, type: 3}
 --- !u!61 &4764917
 BoxCollider2D:
   m_ObjectHideFlags: 0
