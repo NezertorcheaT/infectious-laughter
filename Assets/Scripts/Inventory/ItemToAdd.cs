@@ -11,8 +11,8 @@ namespace Inventory
     {
         [SerializeField] private ScriptableObject item;
         [SerializeField] private LayerMask layer;
-        [Inject] public Controls _actions;
-        [Inject] public PlayerInstallation player;
+        [Inject] private Controls _actions;
+        [Inject] private PlayerInstallation player;
         private PlayerInventoryInput input;
 
         private void OnPickItem(InputAction.CallbackContext ctx)

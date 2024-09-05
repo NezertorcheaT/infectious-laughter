@@ -8,25 +8,37 @@ namespace PropsImpact
 {
     public class BlessingPlace : MonoBehaviour
     {
-        [SerializeField] private GameObject[] canSpawnItems;
+        [SerializeField] private ScriptableObject[] canSpawnItems;
         [Inject] private PlayerInstallation _player;
-        [Inject] private Controls _actions;
-        private GameObject _spawnedItem;
-        private Inventory.ItemToAdd _spawnedItemToAdd;
+        private Inventory.Input.PlayerInventoryInput _input;
+        private List<Inventory.ISlot> _slots;
 
         private void Start()
         {
-            _spawnedItem = Instantiate(canSpawnItems[Random.Range(0, canSpawnItems.Length)], gameObject.transform.position, Quaternion.identity);
-            _spawnedItem.SetActive(false);
-            Inventory.ItemToAdd SpawnedItemToAdd = _spawnedItem.GetComponent<Inventory.ItemToAdd>();
-            SpawnedItemToAdd.player = _player;
-            SpawnedItemToAdd._actions = _actions;
+            _input = _player.Entity.FindAbilityByType<Inventory.Input.PlayerInventoryInput>();
+            _slots = _player.Inventory.Slots;
+        }
+
+        private bool CheckInventoryOnSpace()
+        {
+            for(int i = 0; i != _slots.Count; i++)
+            {
+                if(_slots[i].IsEmpty)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void UseBlessingPlace()
         {
-            _spawnedItem.SetActive(true);
+            int i = Random.Range(0, canSpawnItems.Length);
+            if(!CheckInventoryOnSpace()) return;
+            _input.AddItem(canSpawnItems[i]);
             Destroy(gameObject);
         }
+
+
     }
 }
