@@ -40,7 +40,7 @@ namespace Entity.States.StateObjects
                 if (playerEntity)
                 {
                     direction = lastSeenPosition.x < entity.transform.position.x;
-                    moveAbility.Move(direction ? 1 : -1);
+                    moveAbility.Move(direction ? 1 : -1, Vector3.Distance(entity.transform.position, lastSeenPosition));
                 }
                 else
                 {
@@ -49,12 +49,12 @@ namespace Entity.States.StateObjects
                     {
                         if (Math.Abs(entity.transform.position.x - lastSeenPosition.x) < 0.1f)
                         {
-                            moveAbility.Move(0);
+                            moveAbility.Move(0, 0);
                             break;
                         }
 
                         direction = lastSeenPosition.x > entity.transform.position.x;
-                        moveAbility.Move(direction ? 1 : -1);
+                        moveAbility.Move(direction ? 1 : -1, Vector3.Distance(entity.transform.position, lastSeenPosition));
                     }
                     else
                     {

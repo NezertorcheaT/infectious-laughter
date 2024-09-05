@@ -54,7 +54,7 @@ namespace Entity.States.StateObjects
                 //Debug.DrawRay(rayPit.origin, rayPit.direction * edit.rayDistance);
                 //Debug.DrawRay(rayWall.origin, rayWall.direction, Color.blue, bounds.size.y);
 
-                moveAbility.Move(direction ? 1 : -1);
+                moveAbility.Move(direction ? 1 : -1, 0);
             }
 
             return nextId;

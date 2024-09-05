@@ -83,7 +83,7 @@ namespace Entity.Controllers
         private void Move()
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
-            _moveAbility.Move(_input);
+            _moveAbility.Move(_input, 0);
             _movementDowning.WallDowning(_input);
             _followPoint.MovePoint(_input);
         }
