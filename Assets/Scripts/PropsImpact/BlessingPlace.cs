@@ -6,7 +6,7 @@ using Zenject;
 
 namespace PropsImpact
 {
-    public class BlessingPlace : MonoBehaviour
+    public class BlessingPlace : MonoBehaviour, IUsableProp
     {
         [SerializeField] private ScriptableObject[] canSpawnItems;
         [Inject] private PlayerInstallation _player;
@@ -31,7 +31,7 @@ namespace PropsImpact
             return false;
         }
 
-        public void UseBlessingPlace()
+        public void Use()
         {
             int i = Random.Range(0, canSpawnItems.Length);
             if(!CheckInventoryOnSpace()) return;

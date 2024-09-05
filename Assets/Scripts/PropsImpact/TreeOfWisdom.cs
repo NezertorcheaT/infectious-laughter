@@ -4,7 +4,7 @@ using Zenject;
 
 namespace PropsImpact
 {
-    public class TreeOfWisdom : MonoBehaviour
+    public class TreeOfWisdom : MonoBehaviour, IUsableProp
     {
         [Inject] private PlayerInstallation _playerInstallation;
         private bool _used;
@@ -15,14 +15,14 @@ namespace PropsImpact
             _hpAbility = _playerInstallation.Entity.FindAbilityByType<Entity.Abilities.Hp>();
         }
 
-        public bool TryUseTreeOfWisdom()
+        public bool TryUse()
         {
             if (_used || !isActiveAndEnabled) return false;
-            UseTreeOfWisdom();
+            Use();
             return true;
         }
 
-        public void UseTreeOfWisdom()
+        public void Use()
         {
             if (_used || !isActiveAndEnabled) return;
             _hpAbility.Heal(_hpAbility.MaxHealth - _hpAbility.Health);
