@@ -932,6 +932,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cdc8739b4c99c1e44bb0bd3c0591501c, type: 2}
   - {fileID: 11400000, guid: 08074da7347d39e409477cde94809145, type: 2}
   - {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
+  - {fileID: 11400000, guid: c8fc82275ef55b044b7868db1122c052, type: 2}
   inventoryShop: {fileID: 11400000, guid: e30537309a1269849b1d4def2b5b80e1, type: 2}
   shopUi: {fileID: 79291011}
 --- !u!4 &643609544
@@ -2050,6 +2051,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 974459638992868243, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580225005791609479, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9084249695208848409, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
       propertyPath: m_Name
       value: MainCanvas
@@ -2296,7 +2305,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
+  m_ChunkCullingBounds: {x: 0.5, y: 0.6875, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
