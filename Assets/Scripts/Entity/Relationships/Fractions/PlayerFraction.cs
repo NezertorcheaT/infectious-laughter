@@ -12,5 +12,9 @@ namespace Entity.Relationships.Fractions
                 _ => Relation.Natural
             };
         }
+        public override Relation GetInfluence(Fraction fraction)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
