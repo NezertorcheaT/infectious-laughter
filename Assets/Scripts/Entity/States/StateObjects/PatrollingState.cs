@@ -51,8 +51,6 @@ namespace Entity.States.StateObjects
                     Physics2D.Raycast(rayWall.origin, rayWall.direction, bounds.size.y, edit.groundLayer)
                 )
                     direction = !direction;
-                //Debug.DrawRay(rayPit.origin, rayPit.direction * edit.rayDistance);
-                //Debug.DrawRay(rayWall.origin, rayWall.direction, Color.blue, bounds.size.y);
 
                 moveAbility.Move(direction ? 1 : -1);
             }

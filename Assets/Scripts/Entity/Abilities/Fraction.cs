@@ -16,9 +16,11 @@ namespace Entity.Abilities
         private DropdownList<string> GetFractionTypes() => TypeCache.GetTypesDerivedFrom<Relationships.Fraction>()
             .Select(i => (i.Name, i.AssemblyQualifiedName)).ToDropdownList();
 #endif
-        
+
         [Dropdown("GetFractionTypes")] [SerializeField]
         private string type;
+
+        [SerializeField] private int influence;
 
         private Relationships.Fraction _fraction;
 
@@ -31,6 +33,8 @@ namespace Entity.Abilities
                     _fraction = null;
                 else
                     _fraction = Activator.CreateInstance(t) as Relationships.Fraction;
+                if (_fraction != null)
+                    _fraction.Influence = influence;
                 return _fraction;
             }
         }
