@@ -93,7 +93,7 @@ namespace Entity.Abilities
                     Color.green
                 );
                 if (hit.collider is not null)
-                    return (null, hit.point);
+                    return (hostile, hit.point);
 
                 // рейкаст для детекта пола и потолка
 
@@ -109,7 +109,7 @@ namespace Entity.Abilities
                     Color.blue
                 );
                 if (ground.collider is not null)
-                    return (null, ground.point);
+                    return (hostile, ground.point);
 
                 return (hostile, hostilePosition);
             }

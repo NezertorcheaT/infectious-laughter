@@ -22,7 +22,6 @@ namespace Entity.States.StateObjects
             var nextId = edit.next;
             var moveAbility = entity.FindAbilityByType<HorizontalMovement>();
             var direction = edit.initialDirection;
-            var playerInSight = false;
             var lastSeenPosition = Vector3.zero;
 
             if (!moveAbility) return nextId;
@@ -39,28 +38,21 @@ namespace Entity.States.StateObjects
                 // ≈сли игрок в поле зрени€
                 if (playerEntity)
                 {
-                    direction = lastSeenPosition.x < entity.transform.position.x;
+                    direction = lastSeenPosition.x > entity.transform.position.x;
                     moveAbility.Move(direction ? 1 : -1);
                 }
                 else
                 {
                     // ≈сли игрок не в поле зрени€, двигатьс€ к последней видимой точке
-                    if (Vector3.Distance(entity.transform.position, lastSeenPosition) > 0.1f)
+                    if (Vector3.Distance(entity.transform.position, lastSeenPosition) > 1f)
                     {
-                        if (Math.Abs(entity.transform.position.x - lastSeenPosition.x) < 0.1f)
-                        {
-                            moveAbility.Move(0);
-                            break;
-                        }
-
                         direction = lastSeenPosition.x > entity.transform.position.x;
                         moveAbility.Move(direction ? 1 : -1);
+                        continue;
                     }
-                    else
-                    {
-                        // ¬ернутьс€ к патрулированию, если игрок не найден
-                        break;
-                    }
+
+                    moveAbility.Move(0);
+                    break;
                 }
             }
 
