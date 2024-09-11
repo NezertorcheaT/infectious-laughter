@@ -18,7 +18,7 @@ namespace Entity.Abilities
 #endif
         
         [Dropdown("GetFractionTypes")] [SerializeField]
-        private string type;
+        public string type;
 
         private Relationships.Fraction _fraction;
 
