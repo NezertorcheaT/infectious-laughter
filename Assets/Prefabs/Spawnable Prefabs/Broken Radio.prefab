@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7547571258585056369}
   - component: {fileID: 902463416628115144}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Broken radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1525292737730940782}
   - component: {fileID: 9198556392796828704}
   - component: {fileID: 3451001806430331558}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Broken Radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.040664673, y: 0}
@@ -214,4 +214,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
