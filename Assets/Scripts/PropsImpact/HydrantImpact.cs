@@ -10,7 +10,7 @@ namespace PropsImpact
         [SerializeField] private Sprite defaultHydrant;
         [SerializeField] private Sprite activatedHydrant;
         [SerializeField] private Sprite deactivatedHydrant;
-        [SerializeField] private float lifeTimeInSeconds = 2.5f;
+        [SerializeField] private float elevateTimeInSeconds = 2.5f;
         [SerializeField] private Material defaultMaterial;
         [SerializeField] private Material outlineMaterial;
         private SpriteRenderer _spriteRenderer;
@@ -25,20 +25,14 @@ namespace PropsImpact
             _wasActivated = false;
         }
 
-        void Update()
-        {
-
-        }
-
         public void StartElevating()
         {
             if (!_wasActivated)
             {
                 _wasActivated = true;
                 _spriteRenderer.sprite = activatedHydrant;
-                var elevateTimeInMiliseconds = (int)(lifeTimeInSeconds * 1000);
+                var elevateTimeInMiliseconds = (int)(elevateTimeInSeconds * 1000);
                 Elevate(elevateTimeInMiliseconds);
-                //
                 _effector.enabled = true;
             }
         }
@@ -47,19 +41,18 @@ namespace PropsImpact
         {
             await Task.Delay(time);
             _spriteRenderer.sprite = deactivatedHydrant;
-            //
             _effector.enabled = false;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.GetComponent<Entity.Controllers.ControllerInput>()) return;
+            if (!other.GetComponent<Entity.Controllers.ControllerInput>() || _wasActivated) return;
             gameObject.GetComponent<SpriteRenderer>().material = outlineMaterial;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (!other.GetComponent<Entity.Controllers.ControllerInput>()) return;
+            if (!other.GetComponent<Entity.Controllers.ControllerInput>() || !_wasActivated) return;
             gameObject.GetComponent<SpriteRenderer>().material = defaultMaterial;
         }
     }
