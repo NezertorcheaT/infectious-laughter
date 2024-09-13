@@ -10,5 +10,6 @@
         }
 
         public abstract Relation GetRelation(Fraction fraction);
+        public abstract int Influence { get; set; }
     }
 }

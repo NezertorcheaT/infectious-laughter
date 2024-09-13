@@ -22,7 +22,6 @@ namespace Entity.States.StateObjects
             var nextId = edit.next;
             var moveAbility = entity.FindAbilityByType<HorizontalMovement>();
             var direction = edit.initialDirection;
-            var playerInSight = false;
             var lastSeenPosition = Vector3.zero;
 
             if (!moveAbility) return nextId;
@@ -36,31 +35,24 @@ namespace Entity.States.StateObjects
                 var (playerEntity, hostileLastSeenPosition) = hostileDetector.Hostile;
                 lastSeenPosition = hostileLastSeenPosition ?? lastSeenPosition;
 
-                // Если игрок в поле зрения
+                // Г…Г±Г«ГЁ ГЁГЈГ°Г®ГЄ Гў ГЇГ®Г«ГҐ Г§Г°ГҐГ­ГЁГї
                 if (playerEntity)
                 {
-                    direction = lastSeenPosition.x < entity.transform.position.x;
+                    direction = lastSeenPosition.x > entity.transform.position.x;
                     moveAbility.Move(direction ? 1 : -1, Vector3.Distance(entity.transform.position, lastSeenPosition));
                 }
                 else
                 {
-                    // Если игрок не в поле зрения, двигаться к последней видимой точке
-                    if (Vector3.Distance(entity.transform.position, lastSeenPosition) > 0.1f)
+                    // Г…Г±Г«ГЁ ГЁГЈГ°Г®ГЄ Г­ГҐ Гў ГЇГ®Г«ГҐ Г§Г°ГҐГ­ГЁГї, Г¤ГўГЁГЈГ ГІГјГ±Гї ГЄ ГЇГ®Г±Г«ГҐГ¤Г­ГҐГ© ГўГЁГ¤ГЁГ¬Г®Г© ГІГ®Г·ГЄГҐ
+                    if (Vector3.Distance(entity.transform.position, lastSeenPosition) > 1f)
                     {
-                        if (Math.Abs(entity.transform.position.x - lastSeenPosition.x) < 0.1f)
-                        {
-                            moveAbility.Move(0, 0);
-                            break;
-                        }
-
                         direction = lastSeenPosition.x > entity.transform.position.x;
                         moveAbility.Move(direction ? 1 : -1, Vector3.Distance(entity.transform.position, lastSeenPosition));
+                        continue;
                     }
-                    else
-                    {
-                        // Вернуться к патрулированию, если игрок не найден
-                        break;
-                    }
+
+                    moveAbility.Move(0);
+                    break;
                 }
             }
 

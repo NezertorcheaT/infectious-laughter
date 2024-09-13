@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CustomHelper;
-using Entity.Relationships;
-using Installers;
 using UnityEngine;
-using Zenject;
 
 namespace Entity.Abilities
 {
@@ -13,16 +10,41 @@ namespace Entity.Abilities
     [RequireComponent(typeof(Collider2D))]
     public class HostileDetection : Ability
     {
-        [Inject] private PlayerInstallation _playerInstallation;
         [SerializeField] private Collider2D entityMainCollider;
         [SerializeField, Range(0, 1)] private float rayOffset;
         public float range = 5f;
         public float rangeIfHidden = 2.5f;
-        public bool direction = false;
+        public bool direction;
         private Relationships.Fraction _fraction;
-        private Crouching _playerMovementCrouch;
-        private Fraction _playerEntityFraction;
 
+        private List<Entity> BoxHostiles(Vector2 checkPosition, Vector2 checkSize)
+        {
+            return Physics2D.OverlapBoxAll(
+                        checkPosition,
+                        checkSize,
+                        0,
+                        1 << 3)
+                    .Select(i => i.gameObject.GetComponent<Entity>().GetComponent<Fraction>())
+                    .Where(i => i is not null &&
+                                _fraction.GetRelation(i.CurrentFraction) is Relationships.Fraction.Relation.Hostile)
+                    .OrderBy(i => i.CurrentFraction.Influence)
+                    .ThenByDescending(i => Vector2.Distance(
+                        i.Entity.CachedTransform.position,
+                        Entity.CachedTransform.position
+                    ))
+                    .Where(i => !(
+                        i.Entity.FindExactAbilityByType<Crouching>().IsCrouching &&
+                        Vector2.Distance(
+                            i.Entity.CachedTransform.position,
+                            Entity.CachedTransform.position
+                        ) > rangeIfHidden &&
+                        Physics2D.Raycast(i.Entity.CachedTransform.position, Vector2.down, 1f, 1 << 6).collider !=
+                        null
+                    ))
+                    .Select(i => i.Entity)
+                    .ToList()
+                ;
+        }
 
         /// <summary>
         /// эта кароч враг для конкретной сущности <br/>
@@ -34,14 +56,7 @@ namespace Entity.Abilities
             {
                 entityMainCollider ??= gameObject.GetComponent<Collider2D>();
                 _fraction ??= Entity.FindAbilityByType<Fraction>().CurrentFraction;
-                _playerMovementCrouch ??= _playerInstallation.Entity.FindAbilityByType<Crouching>();
-                _playerEntityFraction ??= _playerInstallation.Entity.FindAbilityByType<Fraction>();
-
-                var playerPosition = _playerInstallation.Entity.CachedTransform.position;
-                var playerFraction = _playerEntityFraction.CurrentFraction;
-                var playerIsHidden = _playerMovementCrouch.IsCrouching &&
-                                     Physics2D.Raycast(playerPosition, Vector2.down, 1f, 1 << 6).collider != null;
-                var currentRange = playerIsHidden ? rangeIfHidden : range;
+                var currentRange = range;
 
                 // коробка
                 var bounds = entityMainCollider.bounds;
@@ -50,72 +65,54 @@ namespace Entity.Abilities
                 var checkSize = new Vector2(currentRange, bounds.size.y);
 
                 Helper.DrawBox(checkPosition, checkSize);
-                var overlaps = Physics2D.OverlapBoxAll(
-                    checkPosition,
-                    checkSize,
-                    0,
-                    1 << 3).Select(i => i.gameObject.GetComponent<Entity>());
+                var overlaps = BoxHostiles(checkPosition, checkSize);
+                if (overlaps.Count == 0)
+                    return (null, null);
+                var hostile = overlaps.Last();
+                var hostilePosition = hostile.CachedTransform.position;
 
-                // типа если в коробке пусто, значт он игрока рейкастом не увидит никак
-                if (!overlaps.Contains(_playerInstallation.Entity, new EntityEqualityComparer()))
-                    return (null, playerPosition);
+                var crouching = hostile.FindAbilityByType<Crouching>();
+                if (crouching)
+                {
+                    var isHidden = crouching.IsCrouching &&
+                                   Physics2D.Raycast(hostilePosition, Vector2.down, 1f, 1 << 6).collider != null;
+                    currentRange = isHidden ? rangeIfHidden : currentRange;
+                }
 
                 // рейкаст для детекта стен всяких
                 var hit = Physics2D.Raycast(
                     bounds.center + new Vector3(bounds.extents.x, 0) * (direction ? 1f : -1f),
-                    (playerPosition - transform.position).normalized,
+                    (hostilePosition - transform.position).normalized,
                     currentRange,
                     1 << 0
                 );
 
                 Debug.DrawRay(
                     bounds.center + new Vector3(bounds.extents.x, 0) * (direction ? 1f : -1f),
-                    (playerPosition - transform.position).normalized*currentRange,
+                    (hostilePosition - transform.position).normalized * currentRange,
                     Color.green
                 );
                 if (hit.collider is not null)
-                    return (null, hit.point);
+                    return (hostile, hit.point);
 
                 // рейкаст для детекта пола и потолка
 
                 var ground = Physics2D.Raycast(
                     bounds.center - new Vector3(0, bounds.extents.y * rayOffset),
-                    (playerPosition - transform.position).normalized*currentRange,
+                    (hostilePosition - transform.position).normalized * currentRange,
                     1 << 0
                 );
-                
+
                 Debug.DrawRay(
                     bounds.center - new Vector3(0, bounds.extents.y * rayOffset),
-                    (playerPosition - transform.position).normalized * currentRange,
+                    (hostilePosition - transform.position).normalized * currentRange,
                     Color.blue
                 );
                 if (ground.collider is not null)
-                    return (null, ground.point);
+                    return (hostile, ground.point);
 
-
-                return (
-                    _fraction.GetRelation(playerFraction) is Relationships.Fraction.Relation.Hostile
-                        ? _playerInstallation.Entity
-                        : null,
-                    null
-                );
+                return (hostile, hostilePosition);
             }
-        }
-
-        private class EntityEqualityComparer : IEqualityComparer<Entity>
-        {
-            public bool Equals(Entity b1, Entity b2)
-            {
-                if (ReferenceEquals(b1, b2))
-                    return true;
-
-                if (b2 is null || b1 is null)
-                    return false;
-
-                return b1.gameObject == b2.gameObject;
-            }
-
-            public int GetHashCode(Entity entity) => entity.GetHashCode();
         }
     }
 }
