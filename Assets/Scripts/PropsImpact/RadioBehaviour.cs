@@ -9,14 +9,8 @@ namespace PropsImpact
 
         private async void Start()
         {
-            StartCooldown(lifeTimeInSeconds * 1000);
-        }
-
-        private async void StartCooldown(float lifeTimeInMiliseconds)
-        {
-            await Task.Delay((int)lifeTimeInMiliseconds);
+            await Task.Delay((int)(lifeTimeInSeconds * 1000));
             Destroy(gameObject);
         }
     }
 }
-
