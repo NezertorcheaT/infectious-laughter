@@ -18,7 +18,7 @@ namespace Entity.Abilities
 #endif
 
         [Dropdown("GetFractionTypes")] [SerializeField]
-        private string type;
+        public string type;
 
         [SerializeField] private int influence;
 

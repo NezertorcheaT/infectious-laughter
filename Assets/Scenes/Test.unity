@@ -155,10 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSpawnItems:
-  - {fileID: 7886380806431345129, guid: 3991847e6e3779b499dcd1f461768c47, type: 3}
-  - {fileID: 5070948113830790293, guid: 44840f11ecfed6d49863d8acfc4be8e2, type: 3}
-  - {fileID: 1470428010961879496, guid: 92fcc3245fdb5a4469bfee13dd47b0a4, type: 3}
-  - {fileID: 5419593130681260411, guid: e55962c1df77329448764cce43040afd, type: 3}
+  - {fileID: 11400000, guid: 047a51507c32ccb47845b6c605952d26, type: 2}
+  - {fileID: 11400000, guid: 08074da7347d39e409477cde94809145, type: 2}
+  - {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
+  - {fileID: 11400000, guid: ff3a7ea0eb5dca2408070f7feae030ea, type: 2}
 --- !u!61 &4764917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3161,6 +3161,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d41cc6f1ab11774498053970e93a228d, type: 3}
+--- !u!1001 &5364325081504373036
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678469, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653790264597678476, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
+      propertyPath: m_Name
+      value: ForestReaper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2624967f95a782042a4027e340ce92a6, type: 3}
 --- !u!1001 &5419593129196199982
 PrefabInstance:
   m_ObjectHideFlags: 0

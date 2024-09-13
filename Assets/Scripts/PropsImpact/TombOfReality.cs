@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace PropsImpact
 {
-    public class TombOfReality : MonoBehaviour
+    public class TombOfReality : MonoBehaviour, IUsableProp
     {
         private string _searchFruitID = "il.fruit_of_the_tree";
         private byte _usedFruitsCount = 0;

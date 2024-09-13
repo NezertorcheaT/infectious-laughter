@@ -12,9 +12,7 @@ namespace Entity.Controllers
         [Inject] private Controls _actions;
 
         // Cache
-        private BlessingPlaceUsing _useBlessingPlace;
-        private TombOfRealityUsing _useTombOfReality;
-        private TreeOfWisdomUsing _useTreeOfWisdom;
+        private InteractivePropsUsing _useInteractiveProps;
         private HorizontalMovement _moveAbility;
         private IJumpableAbility _jumpAbility;
         private Crouching _crouchAbility;
@@ -27,9 +25,7 @@ namespace Entity.Controllers
         public override void Initialize()
         {
             base.Initialize();
-            _useBlessingPlace = Entity.FindExactAbilityByType<BlessingPlaceUsing>();
-            _useTombOfReality = Entity.FindExactAbilityByType<TombOfRealityUsing>();
-            _useTreeOfWisdom = Entity.FindExactAbilityByType<TreeOfWisdomUsing>();
+            _useInteractiveProps = Entity.FindExactAbilityByType<InteractivePropsUsing>();
             _entityGarbage = Entity.FindExactAbilityByType<Garbage>();
             _moveAbility = Entity.FindAbilityByType<HorizontalMovement>();
             _crouchAbility = Entity.FindAbilityByType<Crouching>();
@@ -54,9 +50,7 @@ namespace Entity.Controllers
             Entity.OnFixedUpdate += Move;
             _actions.Gameplay.Dash.performed += DashOnPerformed;
             _actions.Gameplay.Jump.performed += JumpOnPerformed;
-            _actions.Gameplay.PickGarbage.performed += UseTreeOfWisdomPerformed;
-            _actions.Gameplay.PickGarbage.performed += UseTombOfRealityPerformed;
-            _actions.Gameplay.PickGarbage.performed += UseBlessingPlacePerformed;
+            _actions.Gameplay.PickGarbage.performed += UseInteractivePropsPerformed;
             _actions.Gameplay.PickGarbage.performed += PickGarbagePerformed;
             _actions.Gameplay.Crouch.started += CrouchOnStarted;
             _actions.Gameplay.Crouch.canceled += CrouchOnCanceled;
@@ -74,9 +68,7 @@ namespace Entity.Controllers
             _actions.Gameplay.Crouch.canceled -= CrouchOnCanceled;
         }
 
-        private void UseBlessingPlacePerformed(InputAction.CallbackContext ctx) => _useBlessingPlace.TryUseBlessingPlace();
-        private void UseTombOfRealityPerformed(InputAction.CallbackContext ctx) => _useTombOfReality.UseTombOfReality();
-        private void UseTreeOfWisdomPerformed(InputAction.CallbackContext ctx) => _useTreeOfWisdom.UseTree();
+        private void UseInteractivePropsPerformed(InputAction.CallbackContext ctx) => _useInteractiveProps.UseInteractiveProps();
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UndoPerform();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Perform();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
@@ -91,7 +83,7 @@ namespace Entity.Controllers
         private void Move()
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
-            _moveAbility.Move(_input);
+            _moveAbility.Move(_input, 0);
             _movementDowning.WallDowning(_input);
             _followPoint.MovePoint(_input);
         }

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using UnityEngine;
 
@@ -8,6 +9,11 @@ namespace Entity.Abilities
     public class HorizontalMovement : Ability
     {
         [SerializeField, Min(0.001f)] private float speed;
+
+        [SerializeField] private bool canUseDash;
+        [SerializeField, EnableIf("canUseDash"), Min(0.001f)] private float dashSpeed;
+        [SerializeField, EnableIf("canUseDash")] private float maxDashDistance;
+
         private Rigidbody2D _rb;
         private bool _turn;
 
@@ -40,12 +46,15 @@ namespace Entity.Abilities
             _rb = GetComponent<Rigidbody2D>();
         }
 
-        public void Move(float velocity)
+        public void Move(float velocity, float distance)
         {
             if (!Available() || Mathf.Abs(_rb.velocity.x) > speed) return;
+
             TurnInFloat = velocity;
             Turn = velocity == 0 ? Turn : velocity > 0;
-            _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
+
+            if (distance < maxDashDistance && canUseDash) _rb.velocity = new Vector2(velocity * dashSpeed, _rb.velocity.y);
+            else _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
         }
     }
 }

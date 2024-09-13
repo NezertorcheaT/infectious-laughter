@@ -6,27 +6,25 @@ using Zenject;
 
 namespace PropsImpact
 {
-    public class BlessingPlace : MonoBehaviour
+    public class BlessingPlace : MonoBehaviour, IUsableProp
     {
-        [SerializeField] private GameObject[] canSpawnItems;
+        [SerializeField] private ScriptableObject[] canSpawnItems;
         [Inject] private PlayerInstallation _player;
-        [Inject] private Controls _actions;
-        private GameObject _spawnedItem;
-        private Inventory.ItemToAdd _spawnedItemToAdd;
+        private Inventory.Input.PlayerInventoryInput _input;
 
         private void Start()
         {
-            _spawnedItem = Instantiate(canSpawnItems[Random.Range(0, canSpawnItems.Length)], gameObject.transform.position, Quaternion.identity);
-            _spawnedItem.SetActive(false);
-            Inventory.ItemToAdd SpawnedItemToAdd = _spawnedItem.GetComponent<Inventory.ItemToAdd>();
-            SpawnedItemToAdd.player = _player;
-            SpawnedItemToAdd._actions = _actions;
+            _input = _player.Entity.FindAbilityByType<Inventory.Input.PlayerInventoryInput>();
         }
 
-        public void UseBlessingPlace()
+        public void Use()
         {
-            _spawnedItem.SetActive(true);
+            int i = Random.Range(0, canSpawnItems.Length);
+            if(!_input.HasSpace((Inventory.IItem)canSpawnItems[i])) return;
+            _input.AddItem(canSpawnItems[i]);
             Destroy(gameObject);
         }
+
+
     }
 }

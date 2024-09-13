@@ -52,7 +52,7 @@ namespace Entity.States.StateObjects
                 )
                     direction = !direction;
 
-                moveAbility.Move(direction ? 1 : -1);
+                moveAbility.Move(direction ? 1 : -1, 0);
             }
 
             return nextId;

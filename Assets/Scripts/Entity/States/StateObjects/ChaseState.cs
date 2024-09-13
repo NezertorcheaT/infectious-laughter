@@ -35,19 +35,19 @@ namespace Entity.States.StateObjects
                 var (playerEntity, hostileLastSeenPosition) = hostileDetector.Hostile;
                 lastSeenPosition = hostileLastSeenPosition ?? lastSeenPosition;
 
-                // Åñëè èãðîê â ïîëå çðåíèÿ
+                // Ã…Ã±Ã«Ã¨ Ã¨Ã£Ã°Ã®Ãª Ã¢ Ã¯Ã®Ã«Ã¥ Ã§Ã°Ã¥Ã­Ã¨Ã¿
                 if (playerEntity)
                 {
                     direction = lastSeenPosition.x > entity.transform.position.x;
-                    moveAbility.Move(direction ? 1 : -1);
+                    moveAbility.Move(direction ? 1 : -1, Vector3.Distance(entity.transform.position, lastSeenPosition));
                 }
                 else
                 {
-                    // Åñëè èãðîê íå â ïîëå çðåíèÿ, äâèãàòüñÿ ê ïîñëåäíåé âèäèìîé òî÷êå
+                    // Ã…Ã±Ã«Ã¨ Ã¨Ã£Ã°Ã®Ãª Ã­Ã¥ Ã¢ Ã¯Ã®Ã«Ã¥ Ã§Ã°Ã¥Ã­Ã¨Ã¿, Ã¤Ã¢Ã¨Ã£Ã Ã²Ã¼Ã±Ã¿ Ãª Ã¯Ã®Ã±Ã«Ã¥Ã¤Ã­Ã¥Ã© Ã¢Ã¨Ã¤Ã¨Ã¬Ã®Ã© Ã²Ã®Ã·ÃªÃ¥
                     if (Vector3.Distance(entity.transform.position, lastSeenPosition) > 1f)
                     {
                         direction = lastSeenPosition.x > entity.transform.position.x;
-                        moveAbility.Move(direction ? 1 : -1);
+                        moveAbility.Move(direction ? 1 : -1, Vector3.Distance(entity.transform.position, lastSeenPosition));
                         continue;
                     }
 
