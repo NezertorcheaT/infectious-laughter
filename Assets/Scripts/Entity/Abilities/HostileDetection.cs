@@ -24,7 +24,7 @@ namespace Entity.Abilities
                         checkSize,
                         0,
                         1 << 3)
-                    .Select(i => i.gameObject.GetComponent<Entity>().GetComponent<Fraction>())
+                    .Select(i => i.gameObject.GetComponent<Fraction>())
                     .Where(i => i is not null &&
                                 _fraction.GetRelation(i.CurrentFraction) is Relationships.Fraction.Relation.Hostile)
                     .OrderBy(i => i.CurrentFraction.Influence)
