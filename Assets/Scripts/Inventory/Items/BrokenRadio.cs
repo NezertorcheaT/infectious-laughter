@@ -19,7 +19,8 @@ namespace Inventory.Items
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
-            var position = entity.gameObject.transform.position;
+            var offset = new Vector3(0, 1);
+            var position = entity.gameObject.transform.position + offset;
             var radio = Verifier.Container.InstantiatePrefab(radioWorld, position, Quaternion.identity, null);
             radio.transform.SetParent(null);
             var adder = radio.GetComponent<IItemAdder>();

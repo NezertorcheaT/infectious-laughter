@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Broken Radio
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 33567660bb7967d4386c2f6f64be80cd, type: 3}
+  radioWorld: {fileID: 4730564667460016062, guid: 0a15ed4c277f65a418ec7473aef17db1, type: 3}
   <ItemCost>k__BackingField: 35
   <MaxStackSize>k__BackingField: 1
