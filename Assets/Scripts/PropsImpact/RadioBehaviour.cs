@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -8,7 +6,8 @@ namespace PropsImpact
     public class RadioBehaviour : MonoBehaviour
     {
         [SerializeField] private float lifeTimeInSeconds;
-        void Start()
+
+        private async void Start()
         {
             StartCooldown(lifeTimeInSeconds * 1000);
         }
