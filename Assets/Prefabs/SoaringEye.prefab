@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 7416127046778914521}
   - component: {fileID: 4644492785821663815}
   - component: {fileID: 8359695533774312497}
+  - component: {fileID: -2719420548893718818}
   - component: {fileID: 7416127046778914540}
   - component: {fileID: 7416127046778914541}
   m_Layer: 3
@@ -104,6 +105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  canUseDash: 0
+  dashSpeed: 0
+  maxDashDistance: 0
 --- !u!114 &7416127046778914531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: Entity.Relationships.Fractions.MutantsFraction, Assembly-CSharp, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
+  influence: 0
 --- !u!114 &4644492785821663815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +247,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7416127047065370631}
   delay: 100
+--- !u!114 &-2719420548893718818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416127046778914542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54304a382c1631d4eb658e8df9b91c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideBox: 1
+  scale: {x: 1, y: 1.5}
+  offset: {x: 0, y: 0.1}
 --- !u!61 &7416127046778914540
 BoxCollider2D:
   m_ObjectHideFlags: 0

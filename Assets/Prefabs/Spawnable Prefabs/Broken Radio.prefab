@@ -96,9 +96,10 @@ GameObject:
   - component: {fileID: -1742398785172385515}
   - component: {fileID: 371807985212665815}
   - component: {fileID: 1525292737730940782}
+  - component: {fileID: 2497064497444451305}
+  - component: {fileID: 7211069986480621141}
   - component: {fileID: 9198556392796828704}
   - component: {fileID: 3451001806430331558}
-  - component: {fileID: 2497064497444451305}
   m_Layer: 3
   m_Name: Broken Radio
   m_TagString: Untagged
@@ -169,6 +170,31 @@ MonoBehaviour:
   type: Entity.Relationships.Fractions.PlayerFraction, Assembly-CSharp, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
   influence: 100
+--- !u!114 &2497064497444451305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730564667460016062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203fb6a0489c2a7428728a9600a12104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTimeInSeconds: 3
+--- !u!114 &7211069986480621141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730564667460016062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54304a382c1631d4eb658e8df9b91c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &9198556392796828704
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,16 +242,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &2497064497444451305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4730564667460016062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 203fb6a0489c2a7428728a9600a12104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTimeInSeconds: 3

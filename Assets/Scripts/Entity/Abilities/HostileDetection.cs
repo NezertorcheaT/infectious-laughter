@@ -2,6 +2,7 @@
 using System.Linq;
 using CustomHelper;
 using UnityEngine;
+using Zenject;
 
 namespace Entity.Abilities
 {
@@ -10,6 +11,7 @@ namespace Entity.Abilities
     [RequireComponent(typeof(Collider2D))]
     public class HostileDetection : Ability
     {
+        [Inject] private EntityPool _pool;
         [SerializeField] private Collider2D entityMainCollider;
         [SerializeField, Range(0, 1)] private float rayOffset;
         public float range = 5f;
@@ -19,12 +21,10 @@ namespace Entity.Abilities
 
         private List<Entity> BoxHostiles(Vector2 checkPosition, Vector2 checkSize)
         {
-            return Physics2D.OverlapBoxAll(
-                        checkPosition,
-                        checkSize,
-                        0,
-                        1 << 3)
-                    .Select(i => i.gameObject.GetComponent<Fraction>())
+            var bounds = new Bounds(checkPosition, checkSize);
+            return _pool.Where(e => bounds.Intersects2D(e.Bounds) && e.gameObject != Entity.gameObject)
+                    .Select(i => i.Entity)
+                    .Select(i => i.FindExactAbilityByType<Fraction>())
                     .Where(i => i is not null &&
                                 _fraction.GetRelation(i.CurrentFraction) is Relationships.Fraction.Relation.Hostile)
                     .OrderBy(i => i.CurrentFraction.Influence)

@@ -4488,7 +4488,7 @@ PrefabInstance:
       objectReference: {fileID: 769618665}
     - target: {fileID: 1235603849900061934, guid: 7b18444c38415804ba5f5bce0de9a76e, type: 3}
       propertyPath: _monoInstallers.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1235603849900061937, guid: 7b18444c38415804ba5f5bce0de9a76e, type: 3}
       propertyPath: m_RootOrder
