@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7453237463659085806}
   - component: {fileID: 1132115498484572588}
   - component: {fileID: 3167532345324264486}
+  - component: {fileID: -5704659665832732206}
   m_Layer: 2
   m_Name: Camera Box Bound
   m_TagString: Untagged
@@ -69,5 +70,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc37a63ea78145e89a75d7dee7925e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5704659665832732206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477243549145607572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bdd1bcaffbc1f4191c96ecf7171bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
