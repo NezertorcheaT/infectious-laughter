@@ -33,6 +33,14 @@ namespace UI
             _currentHealth.OnDamaged += UpdateLivesList;
         }
 
+        private void OnDestroy()
+        {
+            _currentHealth ??= _player.Entity.GetComponent<Hp>();
+            _currentHealth.OnHpStarted -= UpdateLivesList;
+            _currentHealth.OnHealed -= UpdateLivesList;
+            _currentHealth.OnDamaged -= UpdateLivesList;
+        }
+
 #if UNITY_EDITOR
         [Button("Test Damage Update")]
         private void DamageTest()
