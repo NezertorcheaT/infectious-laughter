@@ -1,9 +1,8 @@
-using System.Collections.Generic;
+using CustomHelper;
 using Entity.Abilities;
 using Installers;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace UI
@@ -11,11 +10,8 @@ namespace UI
     public class Hearts : MonoBehaviour
     {
         [Inject] private PlayerInstallation _player;
-        [SerializeField] private List<Image> lives = new();
-        [SerializeField] private Sprite heartFull;
         [SerializeField] private GameObject heartPrefab;
         [SerializeField] private Transform heartsContainer;
-        [SerializeField] private float spacing = 30f;
         private Hp _currentHealth;
 
         private void Start()
@@ -36,7 +32,7 @@ namespace UI
             _currentHealth.OnHealed += UpdateLivesList;
             _currentHealth.OnDamaged += UpdateLivesList;
         }
-        
+
 #if UNITY_EDITOR
         [Button("Test Damage Update")]
         private void DamageTest()
@@ -47,29 +43,28 @@ namespace UI
 
         private void UpdateLivesList(int health, int maxHealth, int armor, int maxArmor)
         {
-            foreach (var life in lives)
-            {
-                Destroy(life.gameObject);
-            }
-
-            lives.Clear();
+            heartsContainer.ClearKids();
 
             for (var i = 0; i < _currentHealth.Health; i++)
             {
-                if (heartPrefab is null || heartsContainer is null) return;
+                if (heartPrefab is null) return;
+                Instantiate(heartPrefab, heartsContainer);
+            }
+        }
+    }
+}
 
-                var newHeart = Instantiate(heartPrefab, heartsContainer);
-                var heartImage = newHeart.GetComponent<Image>();
+namespace CustomHelper
+{
+    public static partial class Helper
+    {
+        public static void ClearKids(this GameObject gameObject) => gameObject.transform.ClearKids();
 
-                if (heartImage is null) return;
-
-                heartImage.sprite = heartFull;
-                heartImage.enabled = true;
-
-                var rectTransform = newHeart.GetComponent<RectTransform>();
-                rectTransform.anchoredPosition = new Vector2(i * spacing, 0);
-
-                lives.Add(heartImage);
+        public static void ClearKids(this Transform transform)
+        {
+            for (var i = 0; i < transform.childCount; i++)
+            {
+                Object.Destroy(transform.GetChild(i).gameObject);
             }
         }
     }
