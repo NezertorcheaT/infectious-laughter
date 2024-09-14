@@ -1206,17 +1206,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6104092202204609054, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
-      propertyPath: spacing
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 6104092202204609054, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
-      propertyPath: heartPrefab
-      value: 
-      objectReference: {fileID: 2054316350918447292, guid: 59de0dfcb8c98774c94b9b6b66f95941, type: 3}
     - target: {fileID: 6580225005791609479, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9084249695208848409, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
       propertyPath: m_Name

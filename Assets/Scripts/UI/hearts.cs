@@ -1,107 +1,76 @@
-using UnityEngine;
-using System.Collections;
-using Zenject;       
-using Installers;  
-using Entity.Abilities;       
-using UnityEngine.UI;
 using System.Collections.Generic;
+using Entity.Abilities;
+using Installers;
+using NaughtyAttributes;
+using UnityEngine;
+using UnityEngine.UI;
+using Zenject;
 
-public class hearts : MonoBehaviour
+namespace UI
 {
-    /*public Image[] lives;
-
-    [Inject] private PlayerInstallation player;
-
-    public Sprite[] a;
-    public Sprite[] b;
-
-    public Image test;
-
-    void Start() {
-        if(player.Entity.GetComponent<Hp>().Health == 5) {
-            Debug.Log("TEST");
-        }
-    }*/
-
-
-    public List<Image> lives = new List<Image>(); // Список иконок здоровья
-    [Inject] private PlayerInstallation player; // Ссылка на объект игрока
-
-    public Sprite heartFull; // Спрайт полной жизни
-    public GameObject heartPrefab; // Префаб иконки жизни
-    public Transform heartsContainer; // Контейнер для иконок жизни
-    public float spacing = 30f; // Расстояние между иконками
-
-    private int currentHealth; // Текущее здоровье игрока
-
-    void Start()
+    public class Hearts : MonoBehaviour
     {
+        [Inject] private PlayerInstallation _player;
+        [SerializeField] private List<Image> lives = new();
+        [SerializeField] private Sprite heartFull;
+        [SerializeField] private GameObject heartPrefab;
+        [SerializeField] private Transform heartsContainer;
+        [SerializeField] private float spacing = 30f;
+        private Hp _currentHealth;
 
-        currentHealth = player.Entity.GetComponent<Hp>().Health;
-        Debug.Log($"Start method called. Initial Health: {currentHealth}");
-        UpdateLivesList(); // Обновляем список жизней при старте
-    }
-
-    void Update()
-    {
-        int newHealth = player.Entity.GetComponent<Hp>().Health;
-
-        if (newHealth != currentHealth)
+        private void Start()
         {
-            currentHealth = newHealth;
-            Debug.Log($"Health changed. New Health: {currentHealth}");
-            UpdateLivesList(); // Обновляем список жизней, если здоровье изменилось
+            OnEnable();
+            UpdateLivesList(
+                _currentHealth.Health,
+                _currentHealth.MaxHealth,
+                _currentHealth.AddictiveHealth,
+                _currentHealth.MaxAddictiveHealth
+            );
         }
-    }
 
-    private void UpdateLivesList()
-    {
-        Debug.Log($"Updating lives list. Current health: {currentHealth}, Lives count: {lives.Count}");
-
-        // Удаляем все иконки перед обновлением списка
-        foreach (var life in lives)
+        private void OnEnable()
         {
-            Destroy(life.gameObject);
+            _currentHealth ??= _player.Entity.GetComponent<Hp>();
+            _currentHealth.OnHpStarted += UpdateLivesList;
+            _currentHealth.OnHealed += UpdateLivesList;
+            _currentHealth.OnDamaged += UpdateLivesList;
         }
-        lives.Clear();
-
-        // Добавляем иконки заново в зависимости от текущего здоровья
-        for (int i = 0; i < currentHealth; i++)
+        
+#if UNITY_EDITOR
+        [Button("Test Damage Update")]
+        private void DamageTest()
         {
-            if (heartPrefab == null || heartsContainer == null)
+            _currentHealth.AddDamage(2);
+        }
+#endif
+
+        private void UpdateLivesList(int health, int maxHealth, int armor, int maxArmor)
+        {
+            foreach (var life in lives)
             {
-                Debug.LogError("Heart Prefab or Hearts Container is not assigned.");
-                return;
+                Destroy(life.gameObject);
             }
 
-            GameObject newHeart = Instantiate(heartPrefab, heartsContainer);
-            Image heartImage = newHeart.GetComponent<Image>();
+            lives.Clear();
 
-            if (heartImage == null)
+            for (var i = 0; i < _currentHealth.Health; i++)
             {
-                Debug.LogError("Heart Prefab does not have an Image component.");
-                return;
+                if (heartPrefab is null || heartsContainer is null) return;
+
+                var newHeart = Instantiate(heartPrefab, heartsContainer);
+                var heartImage = newHeart.GetComponent<Image>();
+
+                if (heartImage is null) return;
+
+                heartImage.sprite = heartFull;
+                heartImage.enabled = true;
+
+                var rectTransform = newHeart.GetComponent<RectTransform>();
+                rectTransform.anchoredPosition = new Vector2(i * spacing, 0);
+
+                lives.Add(heartImage);
             }
-
-            heartImage.sprite = heartFull;
-            heartImage.enabled = true;
-
-            RectTransform rectTransform = newHeart.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(i * spacing, 0);
-
-            lives.Add(heartImage);
         }
-
-        Debug.Log($"Lives list updated. Total lives: {lives.Count}");
     }
-
-    public void OnTakeDamageButton() {
-        AddDamage(3);
-    }
-
-    public void AddDamage(int d)
-    {
-        currentHealth -= Mathf.Max(d, 0);
-    }
-
 }

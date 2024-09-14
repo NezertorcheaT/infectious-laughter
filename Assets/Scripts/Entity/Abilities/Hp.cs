@@ -12,13 +12,11 @@ namespace Entity.Abilities
         [SerializeField] private int maxAddictiveHealth;
         [SerializeField] private int maxHealth = 3;
 
-        public Action<int, int, int, int> OnDamaged;
-        public Action<int, int, int, int> OnHealed;
-        public Action<int, int, int, int> OnHpStarted;
-        public Action<int, int> OnAddictiveHpChanged;
-        public Action OnDie;
-
-        
+        public event Action<int, int, int, int> OnDamaged;
+        public event Action<int, int, int, int> OnHealed;
+        public event Action<int, int, int, int> OnHpStarted;
+        public event Action<int, int> OnAddictiveHpChanged;
+        public event Action OnDie;
 
         public int AddictiveHealth
         {
