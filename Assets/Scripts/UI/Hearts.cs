@@ -33,7 +33,7 @@ namespace UI
             _currentHealth.OnDamaged += UpdateLivesList;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _currentHealth ??= _player.Entity.GetComponent<Hp>();
             _currentHealth.OnHpStarted -= UpdateLivesList;
