@@ -21,7 +21,7 @@ namespace Levels.Generation
             [Tooltip("Это куда собственно тайлы записываться будут")]
             [SerializeField] public Tilemap Tilemap;
 
-            public List<PreSpawned> PreSpawns = new List<PreSpawned>();
+            public List<PreSpawned> PreSpawns = new();
             public Random Random;
             [HideInInspector] public int LayerMinX;
             [HideInInspector] public int LayerMaxX;

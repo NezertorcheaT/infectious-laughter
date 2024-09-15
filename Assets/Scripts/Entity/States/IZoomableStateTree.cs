@@ -1,7 +1,6 @@
-﻿using Entity.States;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Levels.StoryNodes
+namespace Entity.States
 {
     public interface IZoomableStateTree<T> : IStateTree<T>
     {

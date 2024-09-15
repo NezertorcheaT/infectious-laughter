@@ -8,15 +8,20 @@ using UnityEngine;
 namespace Entity.States
 {
     [CreateAssetMenu(fileName = "New State Tree", menuName = "AI Nodes/Tree", order = 0)]
-    public class StateTree : 
-        ScriptableObject, 
-        IGlobalParameterNodeStateTree<State, Tuple<Vector2>>, 
+    public class StateTree :
+        ScriptableObject,
+        IGlobalParameterNodeStateTree<State, Tuple<Vector2>>,
         IUpdatableAssetStateTree<State>,
-        IStateTreeWithEdits
+        IStateTreeWithEdits,
+        IZoomableStateTree<State>
     {
         [SerializeField] private List<StateForList> states;
         [SerializeField] private List<EditForList> edits;
         [SerializeField] private bool unsaved;
+
+        [field: SerializeField] public Vector3 Position { get; set; } = new(13, 221, 0);
+        [field: SerializeField] public Vector3 Scale { get; set; } = new(0.8695652f, 0.8695652f, 1);
+        [field: SerializeField] public Quaternion Rotation { get; set; }
 
         [Serializable]
         public struct StateForList
@@ -104,10 +109,10 @@ namespace Entity.States
         public string AddState(State state)
         {
             var h = Hash(state);
-            states.Add(new StateForList {id = h, state = state, nexts = new List<string>(0)});
+            states.Add(new StateForList { id = h, state = state, nexts = new List<string>(0) });
             if (state is IEditableState editableState)
             {
-                edits.Add(new EditForList {id = h, edit = CreateEdit(editableState.GetTypeOfEdit(), h, state)});
+                edits.Add(new EditForList { id = h, edit = CreateEdit(editableState.GetTypeOfEdit(), h, state) });
             }
 
             Unsaved = true;
@@ -144,6 +149,7 @@ namespace Entity.States
         public bool TryConnect(string idA, string idB)
         {
             if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
+            if (SflAtID(idA).Value.nexts.Contains(idB)) return false;
 
             SflAtID(idA).Value.nexts.Add(idB);
 

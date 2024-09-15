@@ -33,22 +33,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - id: 0
-    position: {x: -113, y: -39}
+    position: {x: -532.8529, y: -106.99999}
     state: {fileID: 11400000, guid: 4c0c8f86bb97e5a40afdf4c71f78e669, type: 2}
     nexts:
     - a9437c7993dea114d95c11dd56f68a72
   - id: a9437c7993dea114d95c11dd56f68a72
-    position: {x: 54.999985, y: -77}
+    position: {x: -90.60435, y: -106.811165}
     state: {fileID: 11400000, guid: 917d2f3ed691df44490f31a582fb314a, type: 2}
     nexts:
     - db44149061f7b884397ebc2356e11c7d
   - id: db44149061f7b884397ebc2356e11c7d
-    position: {x: 251.99997, y: -77.500015}
+    position: {x: 345.15002, y: -132.2}
     state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
     nexts:
     - bcffcc654eb3852438b638c8e8f03f5e
   - id: bcffcc654eb3852438b638c8e8f03f5e
-    position: {x: 252, y: 82}
+    position: {x: 345.00006, y: 132.0289}
     state: {fileID: 11400000, guid: 4262e719321da5e438c962b8400904be, type: 2}
     nexts:
     - db44149061f7b884397ebc2356e11c7d
@@ -60,6 +60,9 @@ MonoBehaviour:
   - id: bcffcc654eb3852438b638c8e8f03f5e
     edit: {fileID: 5887806067528294769}
   unsaved: 0
+  <Position>k__BackingField: {x: -101, y: 201, z: 0}
+  <Scale>k__BackingField: {x: 1, y: 1, z: 1}
+  <Rotation>k__BackingField: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &5887806067528294769
 MonoBehaviour:
   m_ObjectHideFlags: 0
