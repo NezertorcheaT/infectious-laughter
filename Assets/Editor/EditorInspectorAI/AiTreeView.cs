@@ -87,12 +87,12 @@ namespace Editor.EditorInspectorAI
                     var parentView = FindStateView(id);
                     var childView = FindStateView(childrenID);
 
-                    var edge = parentView.Outputs.FirstOrDefault(c => c.portName == childrenID)
+                    var edge = parentView.Outputs.FirstOrDefault(c => c.tooltip == childrenID)
                         ?.ConnectTo(childView.Input);
                     if (edge is null)
                     {
                         Debug.Log(childrenID);
-                        Debug.Log(parentView.Outputs.Select(a => a.portName).ToLog());
+                        Debug.Log(parentView.Outputs.Select(a => a.tooltip).ToLog());
                         continue;
                     }
 
@@ -103,12 +103,13 @@ namespace Editor.EditorInspectorAI
             Populated = true;
         }
 
-        public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) => ports.ToList()
+        public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) => ports
             .Where(
                 endPort =>
                     endPort.direction != startPort.direction &&
                     endPort.node != startPort.node
-            ).ToList();
+            )
+            .ToList();
 
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
         {
@@ -120,18 +121,22 @@ namespace Editor.EditorInspectorAI
                     {
                         nodeView.DeinitializeEditor();
                         _tree.TryRemoveState(nodeView.State.id);
+                        continue;
                     }
 
-                    if (element is Edge edge)
-                    {
-                        var parentView = edge.output.node as StateView;
-                        var childView = edge.input.node as StateView;
-                        var port = parentView.outputContainer.Children()
-                            .First(i => (i as Port)?.portName == childView.State.id) as Port;
-                        parentView.outputContainer.Remove(port);
-                        parentView.Outputs.Remove(port);
-                        _tree.TryDisconnect(parentView.State.id, childView.State.id);
-                    }
+                    if (element is not Edge edge) continue;
+
+                    var parentView = edge.output.node as StateView;
+                    var childView = edge.input.node as StateView;
+
+                    if (!_tree.TryDisconnect(parentView.State.id, childView.State.id)) continue;
+                    if (graphViewChange.edgesToCreate.Select(e => e.output.tooltip).Contains(edge.output.tooltip))
+                        continue;
+
+                    var port = parentView.outputContainer.Children()
+                        .First(i => (i as Port)?.portName == childView.State.id) as Port;
+                    parentView.outputContainer.Remove(port);
+                    parentView.Outputs.Remove(port);
                 }
             }
 

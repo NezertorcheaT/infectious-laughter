@@ -160,6 +160,7 @@ namespace Entity.States
         public bool TryDisconnect(string idA, string idB)
         {
             if (!IsIdValid(idA) && !IsIdValid(idB)) return false;
+            if (!SflAtID(idA).Value.nexts.Contains(idB)) return false;
 
             SflAtID(idA).Value.nexts.Remove(idB);
 

@@ -23,7 +23,8 @@ namespace Editor.EditorInspectorAI
         public event Action<StateView> OnStateSelected;
         public event Action<StateView> OnStateUnselected;
 
-        public static readonly string NewOutputText = "newOutput";
+        public static readonly string NewOutputText = "New";
+        public static readonly string OldOutputText = "Old";
         public static readonly string AdvUXML = "Assets/Editor/EditorInspectorAI/NodeViewAdv.uxml";
 
         private SerializedProperty _name;
@@ -131,12 +132,11 @@ namespace Editor.EditorInspectorAI
                     Port.Capacity.Single,
                     typeof(bool)
                 );
-                if (output is not null)
-                {
-                    output.portName = next;
-                    outputContainer.Add(output);
-                    Outputs.Add(output);
-                }
+                if (output is null) continue;
+                output.tooltip = next;
+                output.portName = OldOutputText;
+                outputContainer.Add(output);
+                Outputs.Add(output);
             }
 
             NewNext = InstantiatePort(
