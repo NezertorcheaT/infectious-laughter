@@ -131,7 +131,6 @@ namespace Editor.EditorInspectorAI
                     Port.Capacity.Single,
                     typeof(bool)
                 );
-                Debug.Log(output);
                 if (output is not null)
                 {
                     output.portName = next;
