@@ -17,33 +17,37 @@ MonoBehaviour:
   - id: 0
     visualName: Initial
     visualColor: {r: 0.5882353, g: 0.24705882, b: 0.24705882, a: 0.7529412}
-    visualPosition: {x: 106, y: 199}
+    visualPosition: {x: 142.19931, y: 196.75693}
     scene: 2
     hasShop: 1
+    levelNumber: 25
     nextID1: 9648618916141df48bf3a8aa72deaddc
     nextID2: 
   - id: 9648618916141df48bf3a8aa72deaddc
     visualName: init dupe 1
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 620.64514, y: -18.000013}
+    visualPosition: {x: 654.62616, y: -18.000004}
     scene: 2
     hasShop: 1
+    levelNumber: 11
     nextID1: 167a4b1ec2649e8409e6d891b4cdbf9f
     nextID2: 
   - id: 167a4b1ec2649e8409e6d891b4cdbf9f
     visualName: random!!!!! 2
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 1178, y: -18}
+    visualPosition: {x: 1180.3004, y: -15.700004}
     scene: 3
     hasShop: 0
+    levelNumber: -10
     nextID1: 8a759952316fe204897ac6de716f9b76
     nextID2: 
   - id: 8a759952316fe204897ac6de716f9b76
     visualName: init dupe 3
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 1743.5626, y: 130.97813}
+    visualPosition: {x: 1735.9542, y: 164}
     scene: 2
     hasShop: 1
+    levelNumber: 1
     nextID1: e0264682861c1ec4284b2a6c6a65eb12
     nextID2: 
   - id: e0264682861c1ec4284b2a6c6a65eb12
@@ -52,8 +56,9 @@ MonoBehaviour:
     visualPosition: {x: 993, y: 436}
     scene: 3
     hasShop: 1
+    levelNumber: 0
     nextID1: 0
     nextID2: 
-  <Position>k__BackingField: {x: -214, y: 164, z: 0}
-  <Scale>k__BackingField: {x: 0.65751624, y: 0.65751624, z: 1}
+  <Position>k__BackingField: {x: -495, y: 87, z: 0}
+  <Scale>k__BackingField: {x: 1, y: 1, z: 1}
   <Rotation>k__BackingField: {x: 0, y: 0, z: 0, w: 1}

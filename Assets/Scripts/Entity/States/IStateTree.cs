@@ -75,7 +75,7 @@ namespace Entity.States
         /// <param name="id">айди</param>
         /// <param name="state">ссылка на выходное значение состояния</param>
         /// <returns>получилось или нет</returns>
-        bool TryGetState(string id, ref T state);
+        bool TryGetState(string id, out T state);
 
         /// <summary>
         /// получить состояние по айди на прямую

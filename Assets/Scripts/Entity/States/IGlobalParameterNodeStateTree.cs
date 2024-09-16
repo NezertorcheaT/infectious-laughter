@@ -29,6 +29,6 @@ namespace Entity.States
         /// <param name="id">айдишник</param>
         /// <param name="parameters">параметры</param>
         /// <returns>получилось или нет</returns>
-        bool TryGetParameters(string id, ref T2 parameters);
+        bool TryGetParameters(string id, out T2 parameters);
     }
 }

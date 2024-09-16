@@ -44,7 +44,7 @@ namespace Levels.StoryNodes
 
         public bool TrySetLevel(string id)
         {
-            return _tree.TryGetState(id, ref _currentLevel);
+            return _tree.TryGetState(id, out _currentLevel);
         }
 
         public void Reset()

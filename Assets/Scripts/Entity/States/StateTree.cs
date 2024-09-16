@@ -226,8 +226,9 @@ namespace Entity.States
 
         public bool IsIdValid(string id) => Contains(Ids, id);
 
-        public bool TryGetState(string id, ref State state)
+        public bool TryGetState(string id, out State state)
         {
+            state = null;
             if (!IsIdValid(id)) return false;
             state = GetState(id);
             return true;
@@ -240,8 +241,9 @@ namespace Entity.States
             return a;
         }
 
-        public bool TryGetParameters(string id, ref Tuple<Vector2> parameters)
+        public bool TryGetParameters(string id, out Tuple<Vector2> parameters)
         {
+            parameters = null;
             if (!IsIdValid(id)) return false;
             parameters = GetParameters(id);
             return true;
@@ -354,8 +356,7 @@ namespace Entity.States
 
         public bool TryGetEdit(string id, ref EditableStateProperties edit)
         {
-            State state = null;
-            if (!TryGetState(id, ref state)) return false;
+            if (!TryGetState(id, out var state)) return false;
             if (state is not IEditableState) return false;
             edit = GetEdit(id);
             return true;

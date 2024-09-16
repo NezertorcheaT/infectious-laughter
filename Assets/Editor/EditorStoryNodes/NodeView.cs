@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using Entity.States;
 using Levels.StoryNodes;
 using UnityEditor;
@@ -47,7 +45,7 @@ namespace Editor.EditorStoryNodes
         public StoryTree.NodeForList Node;
         public IStateTree<StoryTree.Node> Tree;
 
-        public IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, int, bool>>
+        public IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, int, bool, int>>
             ParameterTree;
 
         public Port Input;
@@ -64,10 +62,12 @@ namespace Editor.EditorStoryNodes
         public ColorField ColorField;
         public TextField NameField;
         public ObjectField SceneField;
+        public IntegerField LevelField;
 
         private SerializedProperty _color;
         private SerializedProperty _name;
         private SerializedProperty _scene;
+        private SerializedProperty _level;
 
         private VisualElement _background;
         private VisualElement _fieldsContainer;
@@ -89,11 +89,7 @@ namespace Editor.EditorStoryNodes
             Node = node;
             Tree = tree;
             ParameterTree =
-                Tree as IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, int, bool>>;
-            /*foreach (var element in titleContainer.Children())
-            {
-                Debug.Log(element);
-            }*/
+                Tree as IGlobalParameterNodeStateTree<StoryTree.Node, Tuple<Vector2, Color, string, int, bool, int>>;
 
             viewDataKey = node.id;
 
@@ -109,10 +105,11 @@ namespace Editor.EditorStoryNodes
             _fieldsContainer = this.Q<VisualElement>("FieldsContainer");
             ColorField = this.Q<ColorField>("Color");
             SceneField = this.Q<ObjectField>("Scene");
+            LevelField = this.Q<IntegerField>("LevelNumber");
             _background = this.Q<VisualElement>("BG");
 
-            _shopToggle = new NodeToggle {label = string.Empty};
-            NameField = new TextField {label = string.Empty};
+            _shopToggle = new NodeToggle { label = string.Empty };
+            NameField = new TextField { label = string.Empty };
             NameField.style.marginRight = 26;
             NameField[0].style.backgroundColor = new StyleColor(new Color(
                 NameField[0].style.backgroundColor.value.r,
@@ -169,14 +166,16 @@ namespace Editor.EditorStoryNodes
         public void UpdateParameters()
         {
             if (!Tree.IsIdValid(Node.id)) return;
-            var (position, visualColor, visualName, scene, shop) = ParameterTree.GetParameters(Node.id);
+            var (position, visualColor, visualName, scene, shop, level) = ParameterTree.GetParameters(Node.id);
             ColorField.value = visualColor;
             NameField.value = visualName;
+            LevelField.value = level;
             title = visualName;
             if (scene <= -1)
                 SceneField.value = null;
             else
-                SceneField.value = AssetDatabase.LoadAssetAtPath<SceneAsset>(SceneUtility.GetScenePathByBuildIndex(scene));
+                SceneField.value =
+                    AssetDatabase.LoadAssetAtPath<SceneAsset>(SceneUtility.GetScenePathByBuildIndex(scene));
             style.left = position.x;
             style.top = position.y;
             _shopToggle.noEventValue = shop;
@@ -247,14 +246,15 @@ namespace Editor.EditorStoryNodes
         {
             ParameterTree?.TrySetParameters(
                 Node.id,
-                new Tuple<Vector2, Color, string, int, bool>(
+                new Tuple<Vector2, Color, string, int, bool, int>(
                     Node.visualPosition,
                     ColorField.value,
                     NameField.value,
                     SceneField.value is null
                         ? -1
                         : SceneUtility.GetBuildIndexByScenePath(AssetDatabase.GetAssetPath(SceneField.value)),
-                    _shopToggle.value
+                    _shopToggle.value,
+                    LevelField.value
                 )
             );
             UpdateParameters();
@@ -267,12 +267,13 @@ namespace Editor.EditorStoryNodes
 
             ParameterTree?.TrySetParameters(
                 Node.id,
-                new Tuple<Vector2, Color, string, int, bool>(
+                new System.Tuple<Vector2, Color, string, int, bool, int>(
                     new Vector2(newPos.xMin, newPos.yMin),
                     Node.visualColor,
                     Node.visualName,
                     Node.scene,
-                    Node.hasShop
+                    Node.hasShop,
+                    Node.levelNumber
                 )
             );
             UpdateParameters();

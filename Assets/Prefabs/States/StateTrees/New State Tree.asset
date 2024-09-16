@@ -43,12 +43,12 @@ MonoBehaviour:
     nexts:
     - db44149061f7b884397ebc2356e11c7d
   - id: db44149061f7b884397ebc2356e11c7d
-    position: {x: -13.379547, y: -132.00002}
+    position: {x: 156.00003, y: -132.00002}
     state: {fileID: 11400000, guid: 4c08d6ddb2efdf947bb1be579376b5c5, type: 2}
     nexts:
     - bcffcc654eb3852438b638c8e8f03f5e
   - id: bcffcc654eb3852438b638c8e8f03f5e
-    position: {x: -13.000092, y: 166.58026}
+    position: {x: 156, y: 147.1625}
     state: {fileID: 11400000, guid: 4262e719321da5e438c962b8400904be, type: 2}
     nexts:
     - db44149061f7b884397ebc2356e11c7d
@@ -60,8 +60,8 @@ MonoBehaviour:
   - id: bcffcc654eb3852438b638c8e8f03f5e
     edit: {fileID: 5887806067528294769}
   unsaved: 0
-  <Position>k__BackingField: {x: 279, y: 180, z: 0}
-  <Scale>k__BackingField: {x: 0.49717674, y: 0.49717674, z: 1}
+  <Position>k__BackingField: {x: 277, y: 203, z: 0}
+  <Scale>k__BackingField: {x: 0.57175326, y: 0.57175326, z: 1}
   <Rotation>k__BackingField: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &5887806067528294769
 MonoBehaviour:
