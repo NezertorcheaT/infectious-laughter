@@ -22,9 +22,9 @@ namespace Levels
             if (!levelManager.HasNextLevelAtMiddle()) return;
 
             OnLevelEndedAtMiddle?.Invoke();
-            
+
             sessionUpdater.UpdateCurrentSessionData();
-            
+
             levelManager.NextLevelAtMiddle();
             sessionFactory.Current[SavedKeys.Level].Value = levelManager.CurrentLevel.ID;
             sessionFactory.SaveCurrentSession();
@@ -39,14 +39,15 @@ namespace Levels
 
             levelManager.NextLevelAtEnd();
             sessionFactory.Current[SavedKeys.Level].Value = levelManager.CurrentLevel.ID;
+            sessionFactory.SaveCurrentSession();
 
             if (levelManager.CurrentLevel.HasShop)
             {
+                levelManager.SetLevel(sessionFactory.Current[SavedKeys.Level].Value as string);
                 SceneManager.LoadScene(levelManager.Shop);
                 return;
             }
 
-            sessionFactory.SaveCurrentSession();
             saveLoader.LoadSave(sessionFactory.Current.ID);
         }
     }

@@ -21,7 +21,7 @@ namespace Shop
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.GetComponent<Entity.Entity>() is null) return;
+            if (other.GetComponent<Entity.Controllers.ControllerInput>() is null) return;
             End();
         }
     }

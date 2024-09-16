@@ -49,6 +49,7 @@ namespace Levels.StoryNodes
             public string ID { get; private set; }
             public int Scene { get; private set; }
             public bool HasShop { get; private set; }
+            public int LevelNumber { get; private set; }
 
             public static implicit operator Node(NodeForList node)
             {
@@ -57,6 +58,7 @@ namespace Levels.StoryNodes
                 {
                     ID = node.id,
                     Scene = node.scene,
+                    LevelNumber = node.levelNumber,
                     HasShop = node.hasShop
                 };
                 return newNode;

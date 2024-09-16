@@ -17,9 +17,10 @@ MonoBehaviour:
   - id: 0
     visualName: Initial
     visualColor: {r: 0.5882353, g: 0.24705882, b: 0.24705882, a: 0.7529412}
-    visualPosition: {x: 1348.1893, y: 567.3829}
+    visualPosition: {x: 1333.5, y: 591}
     scene: 5
     hasShop: 1
+    levelNumber: 0
     nextID1: cb46558d9aa4f7744a99bd5b73a247ad
     nextID2: 
   - id: cb46558d9aa4f7744a99bd5b73a247ad
@@ -28,32 +29,36 @@ MonoBehaviour:
     visualPosition: {x: 542.0325, y: 187.00003}
     scene: 4
     hasShop: 1
+    levelNumber: 1
     nextID1: ca4ccfc2694e6b04ab351350112c1dd0
     nextID2: 
   - id: ca4ccfc2694e6b04ab351350112c1dd0
     visualName: Light
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 1007, y: 187}
+    visualPosition: {x: 1025.87, y: 187}
     scene: 6
     hasShop: 1
+    levelNumber: 2
     nextID1: 210784b30b8603241b5a73dd73cb8d32
     nextID2: 
   - id: 210784b30b8603241b5a73dd73cb8d32
     visualName: Trash
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 1484.7954, y: 187}
+    visualPosition: {x: 1521.4482, y: 187}
     scene: 7
     hasShop: 1
+    levelNumber: 3
     nextID1: f6a54ad90443f924f8af531504c3040f
     nextID2: 
   - id: f6a54ad90443f924f8af531504c3040f
     visualName: Random
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 1953, y: 187}
+    visualPosition: {x: 1980.0004, y: 186.99997}
     scene: 3
     hasShop: 1
+    levelNumber: 4
     nextID1: 0
     nextID2: 
-  <Position>k__BackingField: {x: -124, y: 97, z: 0}
-  <Scale>k__BackingField: {x: 0.375937, y: 0.375937, z: 1}
+  <Position>k__BackingField: {x: -166, y: 45, z: 0}
+  <Scale>k__BackingField: {x: 0.25, y: 0.25, z: 1}
   <Rotation>k__BackingField: {x: 0, y: 0, z: 0, w: 1}
