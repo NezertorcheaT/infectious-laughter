@@ -35,12 +35,11 @@ namespace UI
         {
             _selfImage = gameObject.GetComponent<Image>();
             Cursor.visible = false;
-            Visible = false;
+            Visible = true;
         }
 
         private void Update()
         {
-            Debug.Log(Mouse.current.leftButton.isPressed ? "Pressed" : "Not Pressed");
             _selfImage.sprite = Mouse.current.leftButton.isPressed ? mouseDowned : mouseUpped;
             gameObject.transform.position = Mouse.current.position.ReadValue();
         }
