@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -9,21 +6,14 @@ namespace UI
 {
     public class MouseImage : MonoBehaviour
     {
-
         [SerializeField] private Sprite mouseDowned;
         [SerializeField] private Sprite mouseUpped;
-
         private Image _selfImage;
+        private bool _visible;
 
-        private bool _visible ;
-
-        public bool Visible 
+        public bool Visible
         {
-            get
-            {
-                return _visible;
-            }
-
+            get => _visible;
             set
             {
                 _selfImage.enabled = value;
