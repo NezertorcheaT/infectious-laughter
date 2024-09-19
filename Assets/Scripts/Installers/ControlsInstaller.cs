@@ -8,6 +8,7 @@ namespace Installers
     {
         public override void InstallBindings()
         {
+            SignalBusInstaller.Install(Container);
             var controls = new Controls();
             controls.Enable();
             Container.Bind<Controls>().FromInstance(controls).AsSingle().NonLazy();

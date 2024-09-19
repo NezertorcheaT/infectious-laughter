@@ -9,16 +9,21 @@ namespace Installers
     [AddComponentMenu("Installers/Procedural Generation")]
     public class ProceduralGenerationInstaller : MonoInstaller
     {
+        public class GenerationEndSignal
+        {
+        }
+
         [SerializeField] private LevelGeneration generator;
-        [SerializeField] private ProceduralGenerationEnderInstaller ender;
 
         [Inject] private LevelManager _levelManager;
         [Inject] private SessionFactory _sessionFactory;
+        [Inject] private SignalBus _signalBus;
 
         public override void InstallBindings()
         {
-            ender.OnDone += InjectToSpawned;
-            generator.SetSeed((string) _sessionFactory.Current[SavedKeys.Seed].Value +
+            _signalBus.DeclareSignal<GenerationEndSignal>();
+            _signalBus.Subscribe<GenerationEndSignal>(InjectToSpawned);
+            generator.SetSeed((string)_sessionFactory.Current[SavedKeys.Seed].Value +
                               _levelManager.LevelsPassCount +
                               _levelManager.CurrentLevel.ID);
             generator.StartGeneration();

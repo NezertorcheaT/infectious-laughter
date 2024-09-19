@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
@@ -72,37 +73,36 @@ namespace Levels.Generation
 
         public void InstantiatePreSpawned(Func<GameObject, Vector3, Quaternion, Transform, GameObject> instantiate)
         {
-            var positions = new List<Vector3>(properties.PreSpawns.Count);
-            foreach (var preSpawned in properties.PreSpawns)
-            {
-                var position = preSpawned.OffsetY == 0
-                    ? preSpawned.Position
-                    : new Vector3(
-                        preSpawned.Position.x + preSpawned.OffsetX,
-                        Physics2D.Raycast(
-                            new Vector2(preSpawned.Position.x + preSpawned.OffsetX, properties.MaxY),
-                            Vector2.down,
-                            properties.MaxY * 5,
-                            1 << 0
-                        ).point.y + preSpawned.OffsetY,
-                        preSpawned.Position.z
-                    );
+            (Vector3 pos, Properties.PreSpawned preSpawned)[] positions = properties.PreSpawns
+                .Select(preSpawned =>
+                    (
+                        preSpawned.OffsetY == 0
+                            ? preSpawned.Position
+                            : new Vector3(
+                                preSpawned.Position.x + preSpawned.OffsetX,
+                                Physics2D.Raycast(
+                                    new Vector2(preSpawned.Position.x + preSpawned.OffsetX, properties.MaxY),
+                                    Vector2.down,
+                                    properties.MaxY * 5,
+                                    1 << 0
+                                ).point.y + preSpawned.OffsetY,
+                                preSpawned.Position.z
+                            ),
+                        preSpawned
+                    )
+                )
+                .ToArray();
 
-                positions.Add(position);
-            }
-
-            var j = 0;
-            foreach (var preSpawned in properties.PreSpawns)
+            foreach (var (pos, preSpawned) in positions)
             {
                 var i = instantiate(
                     preSpawned.Prefab,
-                    positions[j],
+                    pos,
                     preSpawned.Rotation,
                     null
                 );
 
                 i.SetActive(true);
-                j++;
             }
         }
     }
