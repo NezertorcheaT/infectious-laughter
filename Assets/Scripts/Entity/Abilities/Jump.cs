@@ -15,8 +15,6 @@ namespace Entity.Abilities
         [Space(10)] [SerializeField, Min(0)] private float walljumpHeight;
         [SerializeField, Min(0)] private float walljumpPush;
 
-        private int _jumpCountActive;
-
         private Rigidbody2D _playerRb;
         private CollideCheck _collideCheck;
         private Downing _movementDowning;
@@ -29,7 +27,6 @@ namespace Entity.Abilities
             _playerRb = GetComponent<Rigidbody2D>();
             _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
             _movementDowning = Entity.FindExactAbilityByType<Downing>();
-            _jumpCountActive = jumpCount;
         }
 
         private void TryJump()
@@ -43,11 +40,7 @@ namespace Entity.Abilities
 
         private void Perform()
         {
-            _jumpCountActive = jumpCount;
-            if (_jumpCountActive == 0) return;
             _playerRb.AddForce(new Vector2(_playerRb.velocity.x, jumpHeight), ForceMode2D.Impulse);
-
-            _jumpCountActive -= 1;
         }
 
         private async void JumpFromWall()
