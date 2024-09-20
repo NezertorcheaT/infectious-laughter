@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &722758541629701273
+--- !u!1 &40066060216580683
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5958150419298348020}
-  - component: {fileID: 474883580315556583}
-  - component: {fileID: 3079553728001971813}
+  - component: {fileID: 6351778566537669926}
+  - component: {fileID: 873336413509803061}
+  - component: {fileID: 2320852452288237751}
   m_Layer: 0
   m_Name: Dust Particle
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5958150419298348020
+--- !u!4 &6351778566537669926
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722758541629701273}
+  m_GameObject: {fileID: 40066060216580683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &474883580315556583
+--- !u!198 &873336413509803061
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722758541629701273}
+  m_GameObject: {fileID: 40066060216580683}
   serializedVersion: 8
   lengthInSec: 0.1
   simulationSpeed: 0.3
@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.17
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.72
+      scalar: 0.28
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1421,8 +1421,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1480,8 +1480,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.9
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1540,7 +1540,16 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 637953364, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: 508295717, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: -1540636388, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: 700053477, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: 1154900175, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: 1584468666, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: -36050668, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: 748120705, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: 1231181309, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    - sprite: {fileID: -286499612, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4798,14 +4807,14 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &3079553728001971813
+--- !u!199 &2320852452288237751
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722758541629701273}
+  m_GameObject: {fileID: 40066060216580683}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
