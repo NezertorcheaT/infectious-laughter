@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -129,8 +128,10 @@ namespace Editor.EditorInspectorAI
                     var parentView = edge.output.node as StateView;
                     var childView = edge.input.node as StateView;
 
+                    if (!_tree.TryGetState(parentView.State.id, out _)) continue;
+                    if (!_tree.TryGetState(childView.State.id, out _)) continue;
                     if (!_tree.TryDisconnect(parentView.State.id, childView.State.id)) continue;
-                    if (graphViewChange.edgesToCreate.Select(e => e.output.tooltip).Contains(edge.output.tooltip))
+                    if (graphViewChange.edgesToCreate?.Select(e => e.input.tooltip).Contains(edge.input.tooltip) is not null)
                         continue;
 
                     var port = parentView.outputContainer.Children()
