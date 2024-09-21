@@ -8,12 +8,25 @@ namespace Outline
     public class OutlinesContainer : ScriptableObject
     {
         [Serializable]
-        private struct OutlineType
+        public struct OutlineType
         {
             public string Path;
             public Sprite Sprite;
         }
 
-        [SerializeField] private List<OutlineType> cache;
+        [field: SerializeField] public List<OutlineType> Cache { get; private set; }
+
+        public OutlinesContainer Instance { get; set; }
+
+        public void Initialize()
+        {
+            Instance ??= this;
+        }
+
+        public void Reset()
+        {
+            Cache = new List<OutlineType>();
+            Initialize();
+        }
     }
 }

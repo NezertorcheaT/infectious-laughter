@@ -810,7 +810,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 2085324747}
-  ender: {fileID: 1203217204}
 --- !u!114 &1203217207 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1235603849900061930, guid: 7b18444c38415804ba5f5bce0de9a76e, type: 3}
