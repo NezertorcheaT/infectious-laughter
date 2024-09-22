@@ -144,12 +144,12 @@ TextureImporter:
       name: Fire hydrants_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 4
-        width: 12
-        height: 23
+        x: 9
+        y: 3
+        width: 14
+        height: 25
       alignment: 9
-      pivot: {x: 0.4166667, y: 0.08695652}
+      pivot: {x: 0.42857146, y: 0.12}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: Fire hydrants_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 4
-        width: 11
-        height: 22
+        x: 33
+        y: 3
+        width: 13
+        height: 24
       alignment: 9
-      pivot: {x: 0.54545456, y: 0.09090909}
+      pivot: {x: 0.53846157, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,12 +186,12 @@ TextureImporter:
       name: Fire hydrants_2
       rect:
         serializedVersion: 2
-        x: 57
-        y: 4
-        width: 13
-        height: 18
+        x: 56
+        y: 3
+        width: 15
+        height: 20
       alignment: 9
-      pivot: {x: 0.53846157, y: 0.11111111}
+      pivot: {x: 0.53333336, y: 0.15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

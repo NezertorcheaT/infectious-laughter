@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,9 +67,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Dream Vault Upgrades_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 68
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d72e743a02a964e99233bd3f4c3001
+      internalID: 1813129628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dream Vault Upgrades_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 68
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d44ab2a4cbfdf046b78fa1ff03f1e3d
+      internalID: -367405324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dream Vault Upgrades_2
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 35
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2298b108afd361b4881efafd4a89674e
+      internalID: -928441204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dream Vault Upgrades_3
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f92a0c0edc3654081a987938431bd2
+      internalID: -35719009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dream Vault Upgrades_4
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 3
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47352f12ea80651459e5f3a8b66268d6
+      internalID: -1222494592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dream Vault Upgrades_5
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 3
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5033e7af82200fb4fa8bee913185f0fc
+      internalID: -669068127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +276,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dream Vault Upgrades_3: -35719009
+      Dream Vault Upgrades_0: 1813129628
+      Dream Vault Upgrades_5: -669068127
+      Dream Vault Upgrades_4: -1222494592
+      Dream Vault Upgrades_1: -367405324
+      Dream Vault Upgrades_2: -928441204
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

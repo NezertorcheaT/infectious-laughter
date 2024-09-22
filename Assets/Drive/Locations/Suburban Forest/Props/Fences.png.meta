@@ -144,12 +144,12 @@ TextureImporter:
       name: Fences_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 2
-        width: 18
-        height: 27
+        x: 2
+        y: 1
+        width: 20
+        height: 29
       alignment: 9
-      pivot: {x: 0.5, y: 0.037037037}
+      pivot: {x: 0.5, y: 0.03448276}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: Fences_1
       rect:
         serializedVersion: 2
-        x: 26
-        y: 2
-        width: 28
-        height: 28
+        x: 25
+        y: 1
+        width: 30
+        height: 30
       alignment: 9
-      pivot: {x: 0.5, y: 0.035714287}
+      pivot: {x: 0.5, y: 0.033333335}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,12 +186,12 @@ TextureImporter:
       name: Fences_2
       rect:
         serializedVersion: 2
-        x: 60
-        y: 2
-        width: 19
-        height: 29
+        x: 59
+        y: 1
+        width: 21
+        height: 31
       alignment: 9
-      pivot: {x: 0.42105263, y: 0.03448276}
+      pivot: {x: 0.42857143, y: 0.06451613}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,12 +207,12 @@ TextureImporter:
       name: Fences_3
       rect:
         serializedVersion: 2
-        x: 83
-        y: 2
-        width: 30
-        height: 27
+        x: 82
+        y: 1
+        width: 32
+        height: 29
       alignment: 9
-      pivot: {x: 0.5, y: 0.037037037}
+      pivot: {x: 0.5, y: 0.03448276}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,12 +228,12 @@ TextureImporter:
       name: Fences_4
       rect:
         serializedVersion: 2
-        x: 119
-        y: 2
-        width: 13
-        height: 26
+        x: 118
+        y: 1
+        width: 15
+        height: 28
       alignment: 9
-      pivot: {x: 0.4615385, y: 0.03846154}
+      pivot: {x: 0.53333336, y: 0.035714287}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,12 +249,12 @@ TextureImporter:
       name: Fences_5
       rect:
         serializedVersion: 2
-        x: 133
-        y: 2
-        width: 11
-        height: 25
+        x: 132
+        y: 1
+        width: 13
+        height: 27
       alignment: 9
-      pivot: {x: 0.36363637, y: 0.04}
+      pivot: {x: 0.3846154, y: 0.037037037}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,12 +270,12 @@ TextureImporter:
       name: Fences_7
       rect:
         serializedVersion: 2
-        x: 150
-        y: 2
-        width: 35
-        height: 29
+        x: 149
+        y: 1
+        width: 37
+        height: 31
       alignment: 9
-      pivot: {x: 0.4857143, y: 0.03448276}
+      pivot: {x: 0.4864865, y: 0.06451613}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,12 +291,12 @@ TextureImporter:
       name: Fences_8
       rect:
         serializedVersion: 2
-        x: 193
-        y: 2
-        width: 6
-        height: 25
+        x: 192
+        y: 1
+        width: 8
+        height: 27
       alignment: 9
-      pivot: {x: 0.5, y: 0.04}
+      pivot: {x: 0.375, y: 0.037037037}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,12 +312,12 @@ TextureImporter:
       name: Fences_9
       rect:
         serializedVersion: 2
-        x: 208
-        y: 2
-        width: 13
-        height: 26
+        x: 207
+        y: 1
+        width: 15
+        height: 28
       alignment: 9
-      pivot: {x: 0.4615385, y: 0.03846154}
+      pivot: {x: 0.4666667, y: 0.035714287}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Heaps of trash_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 132
+        width: 92
+        height: 53
+      alignment: 9
+      pivot: {x: 0.51086956, y: 0.11320755}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378cba2581e87004a8f842050c64c7ca
+      internalID: 1756908597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaps of trash_1
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 133
+        width: 125
+        height: 69
+      alignment: 9
+      pivot: {x: 0.52000004, y: 0.04347826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d37b86b69bf636d498256913518cf7ba
+      internalID: 955449472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaps of trash_2
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 73
+        width: 109
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5045871, y: 0.08510638}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac38a39a10dac9b4ea026e13b3c1aa7a
+      internalID: -1600242418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaps of trash_3
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 72
+        width: 110
+        height: 47
+      alignment: 9
+      pivot: {x: 0.48181817, y: 0.08510638}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1580d311cd82c17478554985fd128830
+      internalID: 1014532893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaps of trash_4
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 4
+        width: 131
+        height: 48
+      alignment: 9
+      pivot: {x: 0.48091602, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc0aae76d172004eb6e905768e5a0b0
+      internalID: -565114872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heaps of trash_5
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 4
+        width: 124
+        height: 50
+      alignment: 9
+      pivot: {x: 0.49193546, y: 0.06}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b03b7c40c66fee54f9d0052df5baa715
+      internalID: 698213479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +276,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Heaps of trash_1: 955449472
+      Heaps of trash_3: 1014532893
+      Heaps of trash_2: -1600242418
+      Heaps of trash_5: 698213479
+      Heaps of trash_0: 1756908597
+      Heaps of trash_4: -565114872
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

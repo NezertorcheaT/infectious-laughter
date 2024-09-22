@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,9 +67,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Wooden plaques with level numbers_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 4
+        width: 31
+        height: 39
+      alignment: 9
+      pivot: {x: 0.4516129, y: 0.025641026}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0711e2b207d5b1749953cdacd6928410
+      internalID: -1011245464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden plaques with level numbers_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 4
+        width: 31
+        height: 39
+      alignment: 9
+      pivot: {x: 0.4516129, y: 0.025641026}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dca35b79e5df1b4fa051e039f348877
+      internalID: -1272590130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden plaques with level numbers_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 4
+        width: 23
+        height: 39
+      alignment: 9
+      pivot: {x: 0.47826087, y: 0.025641026}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7459edfd989645c48b3b5be734892ec8
+      internalID: 1863140585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden plaques with level numbers_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 3
+        width: 19
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5263158, y: 0.06666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9084d20c6ac82c4d9f214906421710b
+      internalID: -733007563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden plaques with level numbers_4
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 4
+        width: 34
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5882353, y: 0.083333336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8142f1ce1dad3d94fbfd175ccec13e0a
+      internalID: -1019899634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +255,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wooden plaques with level numbers_3: -733007563
+      Wooden plaques with level numbers_0: -1011245464
+      Wooden plaques with level numbers_4: -1019899634
+      Wooden plaques with level numbers_2: 1863140585
+      Wooden plaques with level numbers_1: -1272590130
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

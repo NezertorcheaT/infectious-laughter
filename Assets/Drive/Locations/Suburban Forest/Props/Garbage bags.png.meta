@@ -156,12 +156,12 @@ TextureImporter:
       name: Garbage bags_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 7
-        width: 8
-        height: 8
+        x: 2
+        y: 6
+        width: 10
+        height: 10
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Garbage bags_1
       rect:
         serializedVersion: 2
-        x: 15
-        y: 7
-        width: 8
-        height: 7
+        x: 14
+        y: 6
+        width: 10
+        height: 9
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.11111111}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,12 +198,12 @@ TextureImporter:
       name: Garbage bags_2
       rect:
         serializedVersion: 2
-        x: 27
-        y: 7
-        width: 8
-        height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 26
+        y: 6
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: Garbage bags_3
       rect:
         serializedVersion: 2
-        x: 39
-        y: 7
-        width: 8
-        height: 9
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 38
+        y: 6
+        width: 10
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0.09090909}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

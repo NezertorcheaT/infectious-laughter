@@ -42,11 +42,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 0
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.48076925, y: 0.10526316}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -156,12 +156,12 @@ TextureImporter:
       name: Closed Garbage bins_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 6
-        width: 34
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 8
+        y: 5
+        width: 36
+        height: 31
+      alignment: 9
+      pivot: {x: 0.47222224, y: 0.032258064}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,7 +177,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []

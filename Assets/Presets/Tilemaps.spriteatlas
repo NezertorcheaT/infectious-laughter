@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Sprite Atlas
+  m_Name: Tilemaps
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -25,7 +25,7 @@ SpriteAtlas:
       m_BuildTarget: DefaultTexturePlatform
       m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
-      m_TextureFormat: -1
+      m_TextureFormat: 4
       m_TextureCompression: 0
       m_CompressionQuality: 50
       m_CrunchedCompression: 0
@@ -45,11 +45,49 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: e044f0dfe5bd9cf4e847e257cf247604, type: 3}
+    - {fileID: 2800000, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 307385435, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 1243881527, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1302972122, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1167802697, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -886544076, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -321986471, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -22009935, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 1284166050, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -2062525883, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 1273469662, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -19318145, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1580347393, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -599323689, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 568078709, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 793401635, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1693472731, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -333419143, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 2017252549, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -600776067, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1399464514, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -117382073, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1378961229, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 845832574, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 2110916111, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 142544705, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -756741101, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -797492053, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 1139634294, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -350359110, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 672889306, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -662056199, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1437159108, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1552177850, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -57466834, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 277851237, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: 1482438111, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+  - {fileID: -1196586415, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
   - {fileID: 1691387463, guid: e044f0dfe5bd9cf4e847e257cf247604, type: 3}
   - {fileID: 1281392724, guid: e044f0dfe5bd9cf4e847e257cf247604, type: 3}
   - {fileID: 2024151127, guid: e044f0dfe5bd9cf4e847e257cf247604, type: 3}
@@ -75,6 +113,43 @@ SpriteAtlas:
   - {fileID: -1387503531, guid: e044f0dfe5bd9cf4e847e257cf247604, type: 3}
   - {fileID: 665785049, guid: e044f0dfe5bd9cf4e847e257cf247604, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Flowers_13
+  - Flowers_12
+  - Flowers_11
+  - Flowers_26
+  - Flowers_17
+  - Flowers_27
+  - Flowers_16
+  - Flowers_24
+  - Flowers_15
+  - Flowers_25
+  - Flowers_39
+  - Flowers_14
+  - Flowers_22
+  - Flowers_38
+  - Flowers_23
+  - Flowers_19
+  - Flowers_21
+  - Flowers_18
+  - Flowers_31
+  - Flowers_30
+  - Flowers_33
+  - Flowers_32
+  - Flowers_29
+  - Flowers_34
+  - Flowers_37
+  - Flowers_36
+  - Flowers_0
+  - Flowers_1
+  - Flowers_2
+  - Flowers_3
+  - Flowers_4
+  - Flowers_5
+  - Flowers_6
+  - Flowers_7
+  - Flowers_8
+  - Flowers_9
+  - Flowers_40
   - Ground_3
   - Ground_2
   - Ground_1
@@ -100,5 +175,5 @@ SpriteAtlas:
   - Ground_18
   - Ground_19
   m_RenderDataMap: {}
-  m_Tag: New Sprite Atlas
+  m_Tag: Tilemaps
   m_IsVariant: 0

@@ -156,12 +156,12 @@ TextureImporter:
       name: Dialogs_0
       rect:
         serializedVersion: 2
-        x: 67
-        y: 346
-        width: 466
-        height: 203
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 66
+        y: 345
+        width: 468
+        height: 205
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49268293}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Dialogs_1
       rect:
         serializedVersion: 2
-        x: 67
-        y: 52
-        width: 466
-        height: 203
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 66
+        y: 51
+        width: 468
+        height: 205
+      alignment: 9
+      pivot: {x: 0.5, y: 0.49268293}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
