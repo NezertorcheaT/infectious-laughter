@@ -1,0 +1,556 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5998b4ff4f4c7ea1ae785f42084b1d, type: 3}
+  m_Name: OutlinesContainer
+  m_EditorClassIdentifier: 
+  <Cache>k__BackingField:
+  - Original: {fileID: 1887164148, guid: cdd573fa5380a924bacd1bc146bdf4d8, type: 3}
+    Path: Outlines\Effects\Blessed Fire Trail Animation
+  - Original: {fileID: -1764113044, guid: b70705014d56dc742b3c4f6412e63acd, type: 3}
+    Path: Outlines\Effects\Blessed Fire
+  - Original: {fileID: 898403805, guid: 463a465aaafd2474fb1159c49e7967f2, type: 3}
+    Path: Outlines\Effects\Bush foliage
+  - Original: {fileID: -242500636, guid: a5c229531c3bae6428667847c7d25e4e, type: 3}
+    Path: Outlines\Effects\Character punch
+  - Original: {fileID: -1224503020, guid: 0cb390230ca72914d8c57d3d6ef4b6c6, type: 3}
+    Path: Outlines\Effects\Double Jump
+  - Original: {fileID: -2116267906, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+    Path: Outlines\Effects\Dust
+  - Original: {fileID: -1000835157, guid: 427ea26071ee1e94e9685964c7204464, type: 3}
+    Path: Outlines\Effects\Fate Decision Ray
+  - Original: {fileID: -1809052454, guid: 36d9edbb4d3a7ab4c80e462db755ec8f, type: 3}
+    Path: Outlines\Effects\Fire
+  - Original: {fileID: 1709747466, guid: 7e627e184a404f14e85ad5e306f8c455, type: 3}
+    Path: Outlines\Effects\Foliage of the Tree of Wisdom of the Universe
+  - Original: {fileID: 21300000, guid: 0b8b1209c05aa9d4990c5d213254099d, type: 3}
+    Path: Outlines\Effects\MC Blood
+  - Original: {fileID: 21300000, guid: 7cb88d64216d6ae4faded7eb1cb7826e, type: 3}
+    Path: Outlines\Effects\Mutants Blood
+  - Original: {fileID: 21300000, guid: 17480dfe56e6e58449ab39d2c0b2b88f, type: 3}
+    Path: Outlines\Effects\Mutants Flesh
+  - Original: {fileID: 21300000, guid: e559869dd1bbe2945b78ecb4f847ac7c, type: 3}
+    Path: Outlines\Effects\Pieces of land
+  - Original: {fileID: 21300000, guid: f349e5382c5a8324e916aa1bebca170b, type: 3}
+    Path: Outlines\Effects\Robot pieces
+  - Original: {fileID: 21300000, guid: 6018c0a6f3c662446bc6dfdda534d77e, type: 3}
+    Path: Outlines\Characters\Main character\Main character Spyglass
+  - Original: {fileID: 21300000, guid: a9a78456bb9afa04f9982fb90bd651e5, type: 3}
+    Path: Outlines\Characters\Main character\Main character
+  - Original: {fileID: -2116720023, guid: de303b37043191840a10f1c4a34e10d6, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Decrepit umbrella
+  - Original: {fileID: 21300000, guid: bc799c1584ea7fc4a8bbd598b5e8a3ae, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Growed Immortal Seed
+  - Original: {fileID: 21300000, guid: 9c1d25a208198104f94cd58739b98891, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Homing dart
+  - Original: {fileID: 21300000, guid: bc6385bf044e1ff4085ea59d446cfb9d, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Immortal Seed Protection
+  - Original: {fileID: 21300000, guid: bdc9893b9bf594c4caa132e8d80d3a6d, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Poisoned meat
+  - Original: {fileID: 21300000, guid: f0d61e92e593f9f4f9c9d0b58a7fc115, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Radio
+  - Original: {fileID: 21300000, guid: 71207ac915c95674c903ffcb9eb5a4c1, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Sky Dome Base
+  - Original: {fileID: 21300000, guid: 509622fdb694a5a40aeb3f05fbc1cb99, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Sky Dome Spawn Animation
+  - Original: {fileID: 21300000, guid: 8496159b647f6e64f8b2626015ea7236, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Sky Dome
+  - Original: {fileID: 1174637182, guid: 3b06248178d28c14482453127829d2e5, type: 3}
+    Path: Outlines\Help Equipment\Equipment\Trap
+  - Original: {fileID: 21300000, guid: d61e8250a3d7eb04890f0a017f11ee75, type: 3}
+    Path: Outlines\Icons\UI\icon
+  - Original: {fileID: 21300000, guid: 599095188c2c51a41ba37824dbe89765, type: 3}
+    Path: Outlines\Icons\UI\new year icon
+  - Original: {fileID: 21300000, guid: 9a245eabe79491f4ab1b62215cdccca3, type: 3}
+    Path: Outlines\Screamers\Bosses\Master of Genesis
+  - Original: {fileID: 21300000, guid: c019a94f23f1c074c9853f71dba14623, type: 3}
+    Path: Outlines\Screamers\Enemies\Blood Monster
+  - Original: {fileID: 21300000, guid: 9c8cfceba79b2d847889de562796e35a, type: 3}
+    Path: Outlines\Screamers\Enemies\Forest Reaper
+  - Original: {fileID: 21300000, guid: be10c266357e9d2418422bcc0636ce6a, type: 3}
+    Path: Outlines\Screamers\Enemies\Jumper
+  - Original: {fileID: 21300000, guid: ce3ab3a5901e8fb47b460ddeb2d4ba7c, type: 3}
+    Path: Outlines\Screamers\Enemies\Soaring Eye
+  - Original: {fileID: 21300000, guid: 2866ac6e78985104586371e0fe162a1b, type: 3}
+    Path: Outlines\Screamers\Enemies\Void Cyborg
+  - Original: {fileID: 21300000, guid: b769b7df12cf0f249a061ec640f89b72, type: 3}
+    Path: Outlines\Characters\Bosses\Master of Genesis\Master of Genesis
+  - Original: {fileID: 21300000, guid: 799fbdc28adab444f8650a821b1103ee, type: 3}
+    Path: Outlines\Characters\Bosses\Skinny\Skinny's Tentacles
+  - Original: {fileID: 21300000, guid: cb3428ef91ee0c348bf565c189e250b4, type: 3}
+    Path: Outlines\Characters\Bosses\Skinny\Skinny
+  - Original: {fileID: 21300000, guid: 104de4ff19c52fa4a816dfcadfa508b0, type: 3}
+    Path: Outlines\Characters\Enemies\Blood Monster\Blood Monster
+  - Original: {fileID: 21300000, guid: 107ded716b293f94d8b0ba55828a1e06, type: 3}
+    Path: Outlines\Characters\Enemies\Butterfly Suicide\Butterfly Suicide
+  - Original: {fileID: 21300000, guid: fcd6677d66fceae4ba7fbe2ea488cb44, type: 3}
+    Path: Outlines\Characters\Enemies\Collector\Collector
+  - Original: {fileID: 21300000, guid: db4be85e4c9ef3a4cafda415d663ebb0, type: 3}
+    Path: Outlines\Characters\Enemies\Coward\Coward
+  - Original: {fileID: 21300000, guid: 7779a3b9e5439dd4f9384a407cfd8534, type: 3}
+    Path: Outlines\Characters\Enemies\Creation of the All-Seeing One\Creation of
+      the All-Seeing One
+  - Original: {fileID: 21300000, guid: 07967fff7c6a2b647b9baf0bb537458e, type: 3}
+    Path: Outlines\Characters\Enemies\Eater\Eater
+  - Original: {fileID: 21300000, guid: d493627432e600f4e9773cec514dc5fe, type: 3}
+    Path: Outlines\Characters\Enemies\Electric Bug\Electric Bug
+  - Original: {fileID: 21300000, guid: cba82413e980d234aa90fbeb2981ef21, type: 3}
+    Path: Outlines\Characters\Enemies\Flesh\Flesh
+  - Original: {fileID: 21300000, guid: 0bf1701c330796840823cd4ddd1a8404, type: 3}
+    Path: Outlines\Characters\Enemies\Flesh\Hidden Flesh
+  - Original: {fileID: 21300000, guid: ffa0b1c4d7bc13248a80d8dbce59040a, type: 3}
+    Path: Outlines\Characters\Enemies\Flower Blade\Flower Blade
+  - Original: {fileID: 21300000, guid: 969e6eed08d92be42975c07a654cc79d, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Forest Reaper
+  - Original: {fileID: 21300000, guid: d855c0f028dcab64d80c47800771277d, type: 3}
+    Path: Outlines\Characters\Enemies\Harvest Larva\Harvest Larva Spawn
+  - Original: {fileID: 21300000, guid: 104090bcf95af8a4fbe1f1382983115a, type: 3}
+    Path: Outlines\Characters\Enemies\Harvest Larva\Harvest Larva
+  - Original: {fileID: 21300000, guid: a7a13348d3089b6419ea8a2466c0d1f5, type: 3}
+    Path: Outlines\Characters\Enemies\Insulted\Insulted
+  - Original: {fileID: 21300000, guid: d8fa07a407b071e4299677634259043c, type: 3}
+    Path: Outlines\Characters\Enemies\Jumper\Jumper
+  - Original: {fileID: 21300000, guid: 24b8e384c85155e448d1a071bb74edff, type: 3}
+    Path: Outlines\Characters\Enemies\Many-pawed\Many-pawed
+  - Original: {fileID: 21300000, guid: 1de649bcd62d7fc4c8367e52f2c84c27, type: 3}
+    Path: Outlines\Characters\Enemies\Meat Shield\Meat Shield
+  - Original: {fileID: 21300000, guid: c81e01fe9a3659b4c8981b48c72d3276, type: 3}
+    Path: Outlines\Characters\Enemies\Monk of the Dead\Monk of the Dead
+  - Original: {fileID: 21300000, guid: 84afa2efe35fdb045aa25d24bb8b5135, type: 3}
+    Path: Outlines\Characters\Enemies\Old Carrier\Old Carrier
+  - Original: {fileID: 21300000, guid: 09b593c183ba89341a405a8654f7c8f1, type: 3}
+    Path: Outlines\Characters\Enemies\Soaring Eye\Soaring Eye
+  - Original: {fileID: 21300000, guid: ae6694fac46d89946aa326b84f9b40e4, type: 3}
+    Path: Outlines\Characters\Enemies\Spirit of the Past\Spirit of the Past
+  - Original: {fileID: 21300000, guid: e1aef160e6a6abb4eae169d7b32e8a08, type: 3}
+    Path: Outlines\Characters\Enemies\The eyes of the Master of Enlightenment\The
+      eyes of the Master of Enlightenment
+  - Original: {fileID: 21300000, guid: 8f2154d8df1ccf84cb16e354ac46379e, type: 3}
+    Path: Outlines\Characters\Enemies\Tree Parasite\Tree Parasite
+  - Original: {fileID: 21300000, guid: 00288c0d62e33d34b99f81c17525248a, type: 3}
+    Path: Outlines\Characters\Enemies\Void Cyborg\Void Cyborg
+  - Original: {fileID: 21300000, guid: 0641121eb404a2a4caf2d0082d0c8579, type: 3}
+    Path: Outlines\Characters\Mini-bosses\Aldous\Aldous
+  - Original: {fileID: 21300000, guid: beb08ad60a3452144885b2035289479c, type: 3}
+    Path: Outlines\Characters\NPC\Designer Laughter\Designer Laughter
+  - Original: {fileID: 21300000, guid: b3401e311ba6ae6478df525de28657f1, type: 3}
+    Path: Outlines\Characters\NPC\Enganeer Laughter\Enganeer Laughter
+  - Original: {fileID: 21300000, guid: c91f4bf8d2e4fd546a35dee1bd2c17ec, type: 3}
+    Path: Outlines\Characters\NPC\Eyeless Laughter\Eyeless Laughter
+  - Original: {fileID: 21300000, guid: 121c5873c1744fc41b3642f97b73f44b, type: 3}
+    Path: Outlines\Characters\NPC\Fashionista Laughter\Fashionista Laughter
+  - Original: {fileID: 21300000, guid: ce183c65c7281cd44a19819e4576b8d2, type: 3}
+    Path: Outlines\Characters\NPC\Fat Laughter\Fat Laughter
+  - Original: {fileID: 21300000, guid: 040bbf98dd7dfe94fb88c5c3ef04c655, type: 3}
+    Path: Outlines\Characters\NPC\Handless Laughter\Handless Laughter
+  - Original: {fileID: 21300000, guid: ea2f10c118ad9e74eab0586bc90dbce6, type: 3}
+    Path: Outlines\Characters\NPC\Hoarder\Hoarder
+  - Original: {fileID: 21300000, guid: de91daca0c05c304187e195d5c1da742, type: 3}
+    Path: Outlines\Characters\NPC\Store Dweller\Store Dweller
+  - Original: {fileID: 21300000, guid: 03d8ff0a7ea9177438282cbf4a38acb9, type: 3}
+    Path: Outlines\Icons\Characters\Armless Laughter\1
+  - Original: {fileID: 21300000, guid: 17f96e64f535d4b46a2f64cc0baa28b7, type: 3}
+    Path: Outlines\Icons\Characters\Armless Laughter\2
+  - Original: {fileID: 21300000, guid: 252b5ddd04ef24049ac917a9d57aa50e, type: 3}
+    Path: Outlines\Icons\Characters\Armless Laughter\3
+  - Original: {fileID: 21300000, guid: 431b53e488007044e956ab876fcf4957, type: 3}
+    Path: Outlines\Icons\Characters\Armless Laughter\4
+  - Original: {fileID: 21300000, guid: ee6830fa1b7773e4da609c7f3044cc73, type: 3}
+    Path: Outlines\Icons\Characters\Armless Laughter\5
+  - Original: {fileID: 21300000, guid: 2d094b05a81fd6c448804245b67ead73, type: 3}
+    Path: Outlines\Icons\Characters\Eyeless Laughter\1
+  - Original: {fileID: 21300000, guid: 42166895c33ed2b499b6d4a4c6ed637c, type: 3}
+    Path: Outlines\Icons\Characters\Eyeless Laughter\2
+  - Original: {fileID: 21300000, guid: 8966d71c1b7ccb64eba21eb2887dd22c, type: 3}
+    Path: Outlines\Icons\Characters\Eyeless Laughter\3
+  - Original: {fileID: 21300000, guid: c5481bef9411fbf4f91e1911436d0925, type: 3}
+    Path: Outlines\Icons\Characters\Eyeless Laughter\4
+  - Original: {fileID: 21300000, guid: 9615c52c3f23d9241acedae2d75effdc, type: 3}
+    Path: Outlines\Icons\Characters\Eyeless Laughter\5
+  - Original: {fileID: 21300000, guid: f13f631481d64604fbc1bee89d5575c4, type: 3}
+    Path: Outlines\Icons\Characters\Main character\1
+  - Original: {fileID: 21300000, guid: 60584eb63f05e6d48b8bad3e11296c19, type: 3}
+    Path: Outlines\Icons\Characters\Main character\2
+  - Original: {fileID: 21300000, guid: 2efed078d6f7ed043b725326a436fa2b, type: 3}
+    Path: Outlines\Icons\Characters\Main character\3
+  - Original: {fileID: 21300000, guid: cc98515436fbc024eb29e6f6a2bea872, type: 3}
+    Path: Outlines\Icons\Characters\Main character\4
+  - Original: {fileID: 21300000, guid: c88fd60ca9755d34f8f1d3f00bdd23bd, type: 3}
+    Path: Outlines\Icons\Characters\Main character\5
+  - Original: {fileID: 21300000, guid: 70523ce4efd6f6a4294bcab419005a63, type: 3}
+    Path: Outlines\Icons\Characters\Main character\6
+  - Original: {fileID: 21300000, guid: 00027f3f2cf76bf4b94151183fd4d490, type: 3}
+    Path: Outlines\Icons\Characters\Store Dweller\1
+  - Original: {fileID: 21300000, guid: 1bdf14ed4054f0c4eab72c0272b37447, type: 3}
+    Path: Outlines\Icons\Characters\Store Dweller\2
+  - Original: {fileID: 21300000, guid: 2664798adb06aa846ba63bec9bfcaf20, type: 3}
+    Path: Outlines\Icons\Characters\Store Dweller\3
+  - Original: {fileID: 21300000, guid: 0a87640a58f8a0f49a44642b13c68610, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Bell of Fear
+  - Original: {fileID: 21300000, guid: b28d8542746fa1241a2c2c169cad84d8, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Blessed Fire
+  - Original: {fileID: 21300000, guid: 03d1bed8bf4e3c344998ea20ee0c8bf6, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Bracer UP
+  - Original: {fileID: 21300000, guid: 33567660bb7967d4386c2f6f64be80cd, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Broken radio
+  - Original: {fileID: -2106659913, guid: 1766fa913dd03c742921c43d65ba9902, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Detector LAM-PO 4 KA
+  - Original: {fileID: 21300000, guid: 174fd1aabd71b144ba96b71be34060fc, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Great Attractor Shard
+  - Original: {fileID: 21300000, guid: 81deeed6b747a314ca0cc414fcb8dd76, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Heart pendant
+  - Original: {fileID: 21300000, guid: 0313cadde1261364d842ae33f36bc5f3, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Homing Dart
+  - Original: {fileID: 21300000, guid: 4d7dce683caa1fa44a56fd2bc940d704, type: 3}
+    Path: Outlines\Icons\Stuff\Items\HP Up
+  - Original: {fileID: 21300000, guid: d91a428cdaee4a54b812ef13ef9da477, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Immortal Seed
+  - Original: {fileID: 21300000, guid: 591279e38e701f6489d19f2051e58e46, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Infected phone
+  - Original: {fileID: -1295201316, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Inventory
+  - Original: {fileID: 21300000, guid: 8162915e8e63bb1498ee03f56397329d, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Old Spyglass
+  - Original: {fileID: 21300000, guid: 8548c1af67730e7429d6eedd2cb2b460, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Old Umbrella
+  - Original: {fileID: 21300000, guid: 655f72ad4ffd470459fead2a251010dc, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Outcast Wings
+  - Original: {fileID: 21300000, guid: 1fcf2523cd496434d95163cc868bdd78, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Poisoned Meat
+  - Original: {fileID: 21300000, guid: 8f2357208087aa04f9f6eb1ef22deb6a, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Regulator Up
+  - Original: {fileID: 21300000, guid: dd920107ecfd0f04495db9d74087f91e, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Sky Dome
+  - Original: {fileID: 21300000, guid: edf485d1b5bb7914693ff887e5359520, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Slingshot
+  - Original: {fileID: 21300000, guid: eb92968698832bf408bc2f59b230bdbf, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Suit UP
+  - Original: {fileID: 21300000, guid: 4176999bca1a1e743872b67571668b79, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Trap
+  - Original: {fileID: 21300000, guid: 273fa4ed19f6539469194674690b05e5, type: 3}
+    Path: Outlines\Icons\Stuff\Items\Worn Backpack
+  - Original: {fileID: 21300000, guid: 76da939e0b63ef14fbb9e07d1310f121, type: 3}
+    Path: Outlines\Icons\Stuff\Spells\Dash
+  - Original: {fileID: 21300000, guid: e1edf026d062a8547a65d5575ad4052b, type: 3}
+    Path: Outlines\Icons\Stuff\Spells\Fire trail
+  - Original: {fileID: 21300000, guid: 60b63b7a12cad88479f753431531c839, type: 3}
+    Path: Outlines\Icons\Stuff\Spells\Hover
+  - Original: {fileID: 21300000, guid: 473548d612ccb74448a783a08ca95108, type: 3}
+    Path: Outlines\Icons\Stuff\Spells\Inventory
+  - Original: {fileID: 21300000, guid: 607a99f7ea1371940a1690aa6a386c80, type: 3}
+    Path: Outlines\Icons\Stuff\Spells\Invisibility
+  - Original: {fileID: 21300000, guid: 47165f272c91d514db3f042d1af2b5b2, type: 3}
+    Path: Outlines\Icons\Stuff\Spells\Primordial Fear
+  - Original: {fileID: 21300000, guid: 5f547a769099e284aa6f8b6ca6c65dc6, type: 3}
+    Path: Outlines\Icons\Stuff\Tree\The fruit of forgetfulness
+  - Original: {fileID: 21300000, guid: f75173f62198e70438fa71bc97f61413, type: 3}
+    Path: Outlines\Icons\Stuff\Tree\The fruit of recovery
+  - Original: {fileID: 21300000, guid: 25ee3e2161f916b46b48091947a45fc3, type: 3}
+    Path: Outlines\Icons\Stuff\Tree\The fruit of regeneration
+  - Original: {fileID: 21300000, guid: d1b653f8c60726141956f206bbeb09e8, type: 3}
+    Path: Outlines\Icons\Stuff\Tree\The fruit of Saving
+  - Original: {fileID: 21300000, guid: d58dff25685d2ea44b37ece0b87e7341, type: 3}
+    Path: Outlines\Icons\Stuff\Tree\The fruit of secrecy
+  - Original: {fileID: 21300000, guid: 0cc1e19a20385c24a9dcbb22b3fcb855, type: 3}
+    Path: Outlines\Icons\Stuff\Tree\The fruit of striving forward
+  - Original: {fileID: 21300000, guid: 158ef2980829b6a448f0eb44e61e9972, type: 3}
+    Path: Outlines\Icons\Stuff\Tree\The fruit of Wealth
+  - Original: {fileID: 21300000, guid: f521397199ffb924981a208584cab50d, type: 3}
+    Path: Outlines\Icons\UI\Detector\Detector
+  - Original: {fileID: 539013552, guid: 5b13f7018ead9be4e82b591dc0067264, type: 3}
+    Path: Outlines\Icons\UI\Dream Vault\Dream Vault Cells
+  - Original: {fileID: 21300000, guid: c65745bfbbce4634c9f601f7b76491e1, type: 3}
+    Path: Outlines\Icons\UI\Dream Vault\Dream Vault Roots
+  - Original: {fileID: 1813129628, guid: 910cb031044453e42a4388b7de2b2abc, type: 3}
+    Path: Outlines\Icons\UI\Dream Vault\Dream Vault Upgrades
+  - Original: {fileID: 21300000, guid: 70f057fa6380b0d4382ea3c4ce0c2285, type: 3}
+    Path: Outlines\Icons\UI\Fate's Decisions\Fog
+  - Original: {fileID: 21300000, guid: cbd47b12a83da8449a59e4ed0b67cc46, type: 3}
+    Path: Outlines\Icons\UI\Fate's Decisions\Shopkeeper Sign Button
+  - Original: {fileID: 21300000, guid: 9abbdfd426e161b4a8897ac51e37b72c, type: 3}
+    Path: Outlines\Icons\UI\Fate's Decisions\Shopkeeper Sign
+  - Original: {fileID: 1389012048, guid: 572a94e89cdfe364ba8d59fdb758ce97, type: 3}
+    Path: Outlines\Icons\UI\HUD\Cursor 2
+  - Original: {fileID: 309898680, guid: 36c293653258c474e80c8fcdc1b7b9de, type: 3}
+    Path: Outlines\Icons\UI\HUD\Dialogs
+  - Original: {fileID: -347914672, guid: 16d1538fadb443b418de564b17eb0bca, type: 3}
+    Path: Outlines\Icons\UI\HUD\HP Roots
+  - Original: {fileID: 1579309082, guid: 8bec63e53b2cf0047aa8ee1976860831, type: 3}
+    Path: Outlines\Icons\UI\HUD\HP
+  - Original: {fileID: 21300000, guid: 056445cea17e6a94abc2508cd36b96e6, type: 3}
+    Path: Outlines\Icons\UI\HUD\Info
+  - Original: {fileID: 21300000, guid: 34b6537038bbd5249bd6d2ae61bf6887, type: 3}
+    Path: Outlines\Icons\UI\HUD\Inventory selector mask
+  - Original: {fileID: 689251213, guid: 78f9575f9f70c34478165bf0a08579f1, type: 3}
+    Path: Outlines\Icons\UI\HUD\Inventory
+  - Original: {fileID: -894496510, guid: dcafec6506ab2bc4aa50784a8ea721e8, type: 3}
+    Path: Outlines\Icons\UI\HUD\SelectorWheel
+  - Original: {fileID: 21300000, guid: 4bb335d3173f245419579ea6e23a8856, type: 3}
+    Path: Outlines\Icons\UI\HUD\Stealth
+  - Original: {fileID: 21300000, guid: 975b84cd3a687504989c80938aed59b8, type: 3}
+    Path: Outlines\Icons\UI\HUD\Trash Bag
+  - Original: {fileID: 21300000, guid: d8451892259b2264b8a0109b299617b0, type: 3}
+    Path: Outlines\Icons\UI\HUD\Trash Count
+  - Original: {fileID: 837062663, guid: 4e0b4ac32dcbd86418da74331831974d, type: 3}
+    Path: Outlines\Icons\UI\HUD\Using
+  - Original: {fileID: 21300000, guid: 1099ab8b357e5bc449a2371b2379e6cf, type: 3}
+    Path: Outlines\Icons\UI\Menu\Amogus
+  - Original: {fileID: -408845793, guid: 9e9c1776f1f0eb646ab71cef12d33f7e, type: 3}
+    Path: Outlines\Icons\UI\Menu\Button
+  - Original: {fileID: 1489015148, guid: aadd35395e0028644a36a2a8bf08a286, type: 3}
+    Path: Outlines\Icons\UI\Menu\Buttons On Off Animation
+  - Original: {fileID: 556035685, guid: 29ab535492dac1c49a28cd99b759cded, type: 3}
+    Path: Outlines\Icons\UI\Menu\Buttons On Off
+  - Original: {fileID: 21300000, guid: 74c514638fb97294eaf85e8bd5a036e8, type: 3}
+    Path: Outlines\Icons\UI\Menu\Cursor 1
+  - Original: {fileID: 21300000, guid: ec39c5c8fff1b594d869d5dbb4165fec, type: 3}
+    Path: Outlines\Icons\UI\Menu\Game Name
+  - Original: {fileID: -1178247746, guid: c38b4d75032f58744b519337494b470e, type: 3}
+    Path: Outlines\Icons\UI\Menu\Keyboard
+  - Original: {fileID: 1743425261, guid: 80ab1dd8479350547b03c91694261938, type: 3}
+    Path: Outlines\Icons\UI\Menu\Slider
+  - Original: {fileID: 21300000, guid: 98c29760b8016a04580b7098f376b2b1, type: 3}
+    Path: Outlines\Icons\UI\Store\Store 1
+  - Original: {fileID: 21300000, guid: 7f503a446629d504dab4495625dbb824, type: 3}
+    Path: Outlines\Icons\UI\Store\Store 2
+  - Original: {fileID: 21300000, guid: cceb9f1e54185974483bbb1a796edc7b, type: 3}
+    Path: Outlines\Icons\UI\Store\Store Stuff
+  - Original: {fileID: 21300000, guid: 3a04aff24bf71df498ce9bb727b2b3b6, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Background\back
+  - Original: {fileID: 21300000, guid: daf9ef80b9ffc05488f27c54183cfcab, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Background\bg
+  - Original: {fileID: 21300000, guid: 006e52a80c3cef5449c78dc4a3ed1af9, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Background\front
+  - Original: {fileID: 21300000, guid: 83a63f88a416b8943b3e6165ba72e425, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Background\moon
+  - Original: {fileID: 21300000, guid: 2cde47007fe9489408dac935abec3c73, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Background\sky
+  - Original: {fileID: -1083353849, guid: de9557c216da1b644a0d3d12def70b27, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Func\Big bushes
+  - Original: {fileID: 549891956, guid: d3cb25d21719a6446ba3bd207a895424, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Func\Blind Seeker
+  - Original: {fileID: 21300000, guid: 0039334d83b964f4c99e2adc9c49e105, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Func\Memory Crystals
+  - Original: {fileID: 21300000, guid: af42e0f01e5aa484abde88e61ef57f10, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Func\Shards of the moon
+  - Original: {fileID: 21300000, guid: 403cbefb16cfae240b998923c66303ec, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Props\Ash grass
+  - Original: {fileID: -486438021, guid: 38c0a69847496e54d81145be22863861, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Props\Flying crystals
+  - Original: {fileID: 21300000, guid: 3c6683027b0c8e04e9476924c89b5e77, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Props\Tall wooden poles
+  - Original: {fileID: 21300000, guid: 46fb657c23b7be846a20c00e5536f619, type: 3}
+    Path: Outlines\Locations\Dusky thicket\Props\Wooden huts
+  - Original: {fileID: 21300000, guid: af11f45f86e51574a827effef7da6ea7, type: 3}
+    Path: Outlines\Locations\General\Characters\Butcher shop
+  - Original: {fileID: 21300000, guid: 6f4e8294b9935ed4fbfb9f8756e2018b, type: 3}
+    Path: Outlines\Locations\General\Props\Dream Vault
+  - Original: {fileID: 21300000, guid: af25ed3fc5db8eb4daa582d3478f10cf, type: 3}
+    Path: Outlines\Locations\General\Props\Dweller's Store
+  - Original: {fileID: 21300000, guid: 5e49455e0f7226745ac6e80cd878659f, type: 3}
+    Path: Outlines\Locations\General\Props\Engineer's machine
+  - Original: {fileID: 21300000, guid: 2cdefcdfaf9a1f8478462502359f1620, type: 3}
+    Path: Outlines\Locations\General\Props\Fate's decision
+  - Original: {fileID: 21300000, guid: 0ea84e1a5a6b5574895158adc301abd7, type: 3}
+    Path: Outlines\Locations\General\Props\Roots of the fruits of the Tree
+  - Original: {fileID: 1907432712, guid: 0ef2bae9e345de643b2af11cee532a10, type: 3}
+    Path: Outlines\Locations\General\Props\Store Dweller Obelisks
+  - Original: {fileID: 21300000, guid: 015b12571e9dcc5439ac2610e8139443, type: 3}
+    Path: Outlines\Locations\General\Props\Tombs of Reality
+  - Original: {fileID: -1025604548, guid: 675a283fbe8c864438ac8757c4097abc, type: 3}
+    Path: Outlines\Locations\General\Props\Trash bags
+  - Original: {fileID: 21300000, guid: a7c927b67f17502439c88ad854b65dbf, type: 3}
+    Path: Outlines\Locations\General\Props\Tree of Wisdom of the Universe
+  - Original: {fileID: -1011245464, guid: 285ee296786b8c944b05d299eae8ed47, type: 3}
+    Path: Outlines\Locations\General\Props\Wooden plaques with level numbers
+  - Original: {fileID: 21300000, guid: 1bdf033a6040ecf47a70afa2d678f02a, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Background\1loc1
+  - Original: {fileID: 21300000, guid: c719872a80317a54c899aed5c84ba5a4, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Background\1loc2
+  - Original: {fileID: 21300000, guid: d4a4466f741ac2b4b8f3dc08406d8ae2, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Background\1loc3
+  - Original: {fileID: 21300000, guid: deda9bb1d0e17e748b0b1a66c2157401, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Background\1locSky
+  - Original: {fileID: 1485792798, guid: 553997f9c46475748b940c3d9f3e8a9d, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Bloody Vines
+  - Original: {fileID: -112307527, guid: 4469d63d04a077f40aa45e8e8a2db91c, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Bushes
+  - Original: {fileID: 703718559, guid: 10a6007646813504695123aa94a1813e, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Light Poles
+  - Original: {fileID: 21300000, guid: 7c01ac9d9a05a2e4bb770b757805dcc3, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Place of gratitude to the Master
+      of Existence
+  - Original: {fileID: -766843696, guid: f568b876eb4d4f8459aab6aa480091a3, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Withered Vines
+  - Original: {fileID: -2101889772, guid: 326a0496011aeaf44a2fdbc1f9ce94ad, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Armatures
+  - Original: {fileID: 1425112123, guid: 53bdb00848a7dc840ad53a4804b0108e, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Broken houses
+  - Original: {fileID: 996656397, guid: 871def50e74592643867b28090e4df6b, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Cars
+  - Original: {fileID: -1041499492, guid: 219a04c9b92d36b45bd217b6348c277c, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Crimson Grass
+  - Original: {fileID: -1600455115, guid: 71c09035ea7526a42a2e1259cf601829, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Fences
+  - Original: {fileID: 2084799149, guid: bdd8f281db5055d43a7a6bb122050d65, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\FG Bushes
+  - Original: {fileID: -797492053, guid: c0b63813094e3df4382549cb92ac3c4d, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Flowers
+  - Original: {fileID: 2070219809, guid: a0ee94ff567f0034abe5ba305e11cdba, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Garbage bags
+  - Original: {fileID: -1287772338, guid: bc4f9a07008a7fc49a1713a6d705a964, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Garbage bins
+  - Original: {fileID: -586149834, guid: 9b5876ed0494b9746b97213c5730da4c, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Grass
+  - Original: {fileID: 269664066, guid: 16459844e61a77d4a8544b7b76c61c95, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Jails
+  - Original: {fileID: -1682075018, guid: 328212ce6927cf649b63196fccdd7c60, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Logs
+  - Original: {fileID: -426252028, guid: 582c6380e194ec0428a10316a672be3b, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Master of Genesis's signs
+  - Original: {fileID: -1002954367, guid: c9d45f8a02a6257479fdc30354005f45, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Mushrooms
+  - Original: {fileID: 174262611, guid: 47d2882c5af883242a13aca1156e5b44, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Road signs
+  - Original: {fileID: -778476089, guid: ac4903b458408d84a9694f93bf6a2d15, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Stumps
+  - Original: {fileID: -1951089968, guid: 8a0336e0b0a31204ea2040a9feb63806, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Trees
+  - Original: {fileID: 182236276, guid: 6c9ad160daf3f7a4884dc427a9ee805e, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Wheel tires
+  - Original: {fileID: 21300000, guid: 0eef5f2071c62e54f9d2d14f037861ff, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Tiles\Grass
+  - Original: {fileID: -1067918578, guid: e044f0dfe5bd9cf4e847e257cf247604, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Tiles\Ground
+  - Original: {fileID: 1079120068, guid: bc960141344232245845704f6a074d9f, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Tiles\Iron platforms
+  - Original: {fileID: -766843696, guid: 83fad344d8f857a4bbdc3bfea8766a0d, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Tiles\Vines
+  - Original: {fileID: 1748420900, guid: fe715918995028e44bff1b9dbd2f9041, type: 3}
+    Path: Outlines\Locations\Town\Func\Fire hydrants
+  - Original: {fileID: 1756908597, guid: 8961db04fcd948445b487f606e15643a, type: 3}
+    Path: Outlines\Locations\Town\Func\Heaps of trash
+  - Original: {fileID: 21300000, guid: c453f6b6ddaab90438e4cdb354572b75, type: 3}
+    Path: Outlines\Locations\Town\Func\Lantern poles
+  - Original: {fileID: 21300000, guid: 288274070ddbc6c4093f750e9549f9bc, type: 3}
+    Path: Outlines\Locations\Town\Func\Places of gratitude to the Master of Epiphany
+  - Original: {fileID: 21300000, guid: 7f81486225f61e8419fad731f57847e1, type: 3}
+    Path: Outlines\Locations\Town\Func\The Forgotten Lantern
+  - Original: {fileID: 1414789995, guid: 8eeb04fc9a70c6141820b71f41caa36d, type: 3}
+    Path: Outlines\Locations\Town\Props\Cans of paint
+  - Original: {fileID: -1514669029, guid: cb178699cf23a9846bfd5e054fec53dc, type: 3}
+    Path: Outlines\Locations\Town\Props\Cardboard boxes
+  - Original: {fileID: -289797502, guid: 95d0fd0befda4644f83f0c5f5eafac38, type: 3}
+    Path: Outlines\Locations\Town\Props\Cones
+  - Original: {fileID: 1976253833, guid: 7dfeeaf91fe6c1944ae96bf88039e04e, type: 3}
+    Path: Outlines\Locations\Town\Props\Electric poles
+  - Original: {fileID: 21300000, guid: 56bc8986b0ff3c646bb53e56bf14969c, type: 3}
+    Path: Outlines\Locations\Town\Props\Mannequins
+  - Original: {fileID: 21300000, guid: c8a52243e1bf907439544a89db2739c6, type: 3}
+    Path: Outlines\Locations\Town\Props\Stacks of tires
+  - Original: {fileID: 21300000, guid: 8d59414045429d94f81a9d507ddfed13, type: 3}
+    Path: Outlines\Locations\Town\Props\Town grass
+  - Original: {fileID: 21300000, guid: c597ad3e10675ef46b390beeb5de2a6c, type: 3}
+    Path: Outlines\Locations\Town\Props\Traffic lights
+  - Original: {fileID: 21300000, guid: 08bb855986e1ec045b9e63093549ff83, type: 3}
+    Path: Outlines\Locations\Town\Props\Traffic signs
+  - Original: {fileID: -789385076, guid: 57b6d5cf7803fbd40af9e426da6032c4, type: 3}
+    Path: Outlines\Locations\Town\Tiles\Asphalt
+  - Original: {fileID: -1793683890, guid: 2d39219f1582e0741b0deb6415e8c478, type: 3}
+    Path: Outlines\Characters\Enemies\Butterfly Suicide\Animations\fly
+  - Original: {fileID: 177019778, guid: 8c1bb703e242afa4786ffbfc18cc302f, type: 3}
+    Path: Outlines\Characters\Enemies\Flower Blade\Animations\attack
+  - Original: {fileID: -786344299, guid: 70487ada2fa19d54ba517980f660ca5a, type: 3}
+    Path: Outlines\Characters\Enemies\Flower Blade\Animations\idle
+  - Original: {fileID: -2059779966, guid: e71a73d6046a6ee478b5d17c38f97796, type: 3}
+    Path: Outlines\Characters\Enemies\Flower Blade\Animations\walk
+  - Original: {fileID: 1145571540, guid: a58d48085ce94e14782fb8fd52129d03, type: 3}
+    Path: Outlines\Characters\Enemies\Tree Parasite\Animations\idle
+  - Original: {fileID: 334869074, guid: 46063950a13ca9643a1f7f67900fedfc, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Crouch
+  - Original: {fileID: -934954606, guid: 77eed3acefdf697428c03cef720b24f7, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Eating berries
+  - Original: {fileID: 508556360, guid: be3b291de9fb6f444a193d95b942c8c3, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Idle Ears
+  - Original: {fileID: -1618641813, guid: 5a70e2f229ed50c459d7a93e0467a00b, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Idle
+  - Original: {fileID: -689627722, guid: 90d5e3bbd21dc954993812dc3a246397, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Jump
+  - Original: {fileID: -543437623, guid: 1fe2d41d9693c96408890fd35e6851df, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Pulling Slingshot
+  - Original: {fileID: 899386188, guid: a50caa0cbd44ed6419d42f691389fb5c, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Respawn
+  - Original: {fileID: -1966981055, guid: 4a6a1def3c34db244ad531f6c7238f1c, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Run
+  - Original: {fileID: 1731904010, guid: 922968b20cdd8834095bbbbbb532205e, type: 3}
+    Path: Outlines\Characters\Main character\Animations\General\Sleep
+  - Original: {fileID: 1972877745, guid: 48a9baf36c61e4d46899eca8f7420080, type: 3}
+    Path: Outlines\Characters\Main character\Animations\Reflex Skills\leg attack
+  - Original: {fileID: 862982644, guid: bbd52bfedd1fbfe439531640c986565f, type: 3}
+    Path: Outlines\Characters\NPC\Eyeless Laughter\Animations\idle
+  - Original: {fileID: 1320485228, guid: f0aefe50e53b7c245b6c472cb6414d58, type: 3}
+    Path: Outlines\Characters\NPC\Handless Laughter\Animations\idle
+  - Original: {fileID: 21300000, guid: b851d5f9bfe53f84bb7218766c5d1059, type: 3}
+    Path: Outlines\Icons\UI\Fate's Decisions\Background\Stars
+  - Original: {fileID: 1226319234, guid: c619f0a5878bc54408954bccb04db833, type: 3}
+    Path: Outlines\Icons\UI\Store\Store Animations\spawn
+  - Original: {fileID: 21300000, guid: 148dfcea55f96ce43b991325c82e5cfd, type: 3}
+    Path: Outlines\Locations\General\Props\Animations\Tree of Wisdom of the Universe
+      1
+  - Original: {fileID: 21300000, guid: db1c9b0172836e34090dfa60334fb0a7, type: 3}
+    Path: Outlines\Locations\General\Props\Animations\Tree of Wisdom of the Universe
+      2
+  - Original: {fileID: 21300000, guid: d50f5e2b9fb90dc44935fc6370a0e3d2, type: 3}
+    Path: Outlines\Locations\General\Props\Animations\Tree of Wisdom of the Universe
+      3
+  - Original: {fileID: 21300000, guid: dc2d677ad288c22459da28454c2bb968, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Garbage bin\Closed Garbage bin
+  - Original: {fileID: 21300000, guid: 35a9dcff3658a664bb817f0003982d63, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Garbage bin\E co bin
+  - Original: {fileID: -799060605, guid: bd9b951fef485f84b841372d03245d7a, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Garbage bin\Garbage bins Closing
+      Animation
+  - Original: {fileID: 21300000, guid: cd79e87e9e24a66439a7a111bc0a413e, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Masks\Blood Monster
+  - Original: {fileID: 21300000, guid: e68a28875e69ac847bdb1e4d21edd2fb, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Masks\Collector
+  - Original: {fileID: 21300000, guid: dcb2318fdd01f9242b8fe4a2fb012ee9, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Masks\Forest Reaper
+  - Original: {fileID: 21300000, guid: 48055e0b5fbf07442bf8dbfcf86cca16, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Masks\Many-pawed
+  - Original: {fileID: 21300000, guid: f20a24fcc13110142ae1b7a1665aa8b9, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Funk\Masks\Soaring Eye
+  - Original: {fileID: -1471851417, guid: 392be92faebc4314588ec6cb9cf1a7c3, type: 3}
+    Path: Outlines\Characters\Enemies\Blood Monster\Animations\General\attack
+  - Original: {fileID: -316813259, guid: b8041b898904fd34bb069165e907f647, type: 3}
+    Path: Outlines\Characters\Enemies\Blood Monster\Animations\General\idle
+  - Original: {fileID: 639514373, guid: 40133e4736f39944d9423569d6d850fc, type: 3}
+    Path: Outlines\Characters\Enemies\Blood Monster\Animations\General\walk
+  - Original: {fileID: -1953519720, guid: 3ee6aa0004fb0d94d827cf6b5cdebea7, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\General\attack
+  - Original: {fileID: -782142220, guid: abda5211ace05754f96708416fac2242, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\General\dash
+  - Original: {fileID: -470238981, guid: 72ff8b52ce9ad7d40a3aadf1b0d1c465, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\General\idle
+  - Original: {fileID: -1142827656, guid: a18d17345e02f5c42bd171649ad54fb2, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\General\walk
+  - Original: {fileID: 1608511214, guid: d881e44ef17ee1e41a19b712e0323103, type: 3}
+    Path: Outlines\Characters\Enemies\Soaring Eye\Animations\General\attack
+  - Original: {fileID: -1171161543, guid: 7f640509b61600047ba8b4847692048e, type: 3}
+    Path: Outlines\Characters\Enemies\Soaring Eye\Animations\General\flight
+  - Original: {fileID: 11439920, guid: 235b71b89ab9c794d8a1e8391784bcb2, type: 3}
+    Path: Outlines\Characters\Enemies\Soaring Eye\Animations\General\idle
+  - Original: {fileID: -1576905718, guid: de2adb9997e64b64bb3f2f04444af9f7, type: 3}
+    Path: Outlines\Characters\Enemies\Spirit of the Past\Animations\General\flight
+  - Original: {fileID: -1352351563, guid: 986325ca2e3ccae40833d11c1c744ae0, type: 3}
+    Path: Outlines\Characters\Enemies\Spirit of the Past\Animations\General\idle
+  - Original: {fileID: -1346282487, guid: 629ed49c1b45f3141bb5b1fa7d9f06d9, type: 3}
+    Path: Outlines\Characters\NPC\Store Dweller\Animations\General\idle

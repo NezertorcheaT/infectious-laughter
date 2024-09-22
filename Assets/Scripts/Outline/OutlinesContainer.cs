@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Outline
@@ -10,13 +11,17 @@ namespace Outline
         [Serializable]
         public struct OutlineType
         {
+            public Sprite Original;
             public string Path;
-            public Sprite Sprite;
         }
+
+        public Sprite this[Sprite i] =>
+            Outliner.GetOutlined(Cache.FirstOrDefault(t => t.Original.texture == i.texture).Path)
+                .FirstOrDefault(t => t.name == i.name);
 
         [field: SerializeField] public List<OutlineType> Cache { get; private set; }
 
-        public OutlinesContainer Instance { get; set; }
+        public static OutlinesContainer Instance { get; set; }
 
         public void Initialize()
         {

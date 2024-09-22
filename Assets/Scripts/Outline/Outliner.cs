@@ -1,5 +1,5 @@
-using System;
 using System.IO;
+using Unity.Burst;
 using UnityEditor;
 using UnityEngine;
 using Texture2D = UnityEngine.Texture2D;
@@ -11,12 +11,18 @@ namespace Outline
         public static readonly Color OutlineColor = new(1, 1, 1, 1);
 #if UNITY_EDITOR
         [MenuItem("File/Regenerate outline", false, 3)]
+        [BurstCompile]
         private static void Regenerate()
         {
             var mainPath = $"{Application.dataPath}/Drive".Replace('/', '\\');
             var newMainPath = $"{Application.dataPath}/Resources/Outlines".Replace('/', '\\');
-            foreach (var path in Directory.EnumerateFiles(mainPath, "*.*",
-                         new EnumerationOptions { RecurseSubdirectories = true }))
+            var container = Resources.Load<OutlinesContainer>("OutlinesContainer");
+            container.Reset();
+            foreach (var path in Directory.EnumerateFiles(
+                         mainPath,
+                         "*.*",
+                         new EnumerationOptions { RecurseSubdirectories = true }
+                     ))
             {
                 if (path.Contains("Concepts"))
                     continue;
@@ -47,7 +53,13 @@ namespace Outline
                     path.Replace(mainPath, "Assets/Resources/Outlines"),
                     ImportAssetOptions.ForceUpdate
                 );
+                container.Cache.Add(new OutlinesContainer.OutlineType
+                    { Original = asset, Path = path.Replace(mainPath, "Outlines").Replace(".png", "") });
             }
+
+            AssetDatabase.Refresh();
+            EditorUtility.SetDirty(container);
+            AssetDatabase.SaveAssetIfDirty(container);
         }
 
         private static Texture2D GenerateNewOutline(Texture2D original)
@@ -79,14 +91,14 @@ namespace Outline
         private static bool CheckPosition(Texture texture, Vector2Int pos) =>
             pos.x >= 0 && pos.y >= 0 && pos.x < texture.width && pos.y < texture.height;
 
-        public static Sprite GetOutlined(string path)
+        public static Sprite[] GetOutlined(string path)
         {
             path = path
                 .Replace('/', '\\')
                 .Replace($"{Application.dataPath}\\Drive".Replace('/', '\\'), "Outlines")
                 .Replace("Assets\\Drive", "Outlines")
                 .Replace("Drive", "Outlines");
-            return Resources.Load<Sprite>(path);
+            return Resources.LoadAll<Sprite>(path);
         }
     }
 }
