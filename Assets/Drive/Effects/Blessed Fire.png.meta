@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,9 +67,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 64
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Blessed Fire_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 29
+        width: 5
+        height: 9
+      alignment: 9
+      pivot: {x: 0.4, y: 0.11111111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d24337422393b42820006b1d26d007
+      internalID: -1764113044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 29
+        width: 5
+        height: 8
+      alignment: 9
+      pivot: {x: 0.4, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f5505dbe73b6c4399ec67c6639199e
+      internalID: 1748524285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 20
+        width: 5
+        height: 7
+      alignment: 9
+      pivot: {x: 0.6, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bacc99f9713e844b3b2590d9ad76e4
+      internalID: 620881154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire_3
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 20
+        width: 6
+        height: 8
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c7dd2c76cb603a4f9850a8b95e6cbf8
+      internalID: 962646839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 13
+        width: 5
+        height: 6
+      alignment: 9
+      pivot: {x: 0.6, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a33c9cb5e37bb694fadbe82238b44847
+      internalID: 2082857300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire_5
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 12
+        width: 4
+        height: 7
+      alignment: 9
+      pivot: {x: 0.5, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f1aa894a967cf409fc4c43829ad54b
+      internalID: 2050083424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 2
+        width: 5
+        height: 9
+      alignment: 9
+      pivot: {x: 0.6, y: 0.11111111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374e6182a3516be44b6ae35c66cec012
+      internalID: 1406001023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire_7
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 3
+        width: 5
+        height: 7
+      alignment: 9
+      pivot: {x: 0.6, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 629cd2b4a58aa334384377556dc0d81e
+      internalID: -375038931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +318,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Blessed Fire_5: 2050083424
+      Blessed Fire_2: 620881154
+      Blessed Fire_3: 962646839
+      Blessed Fire_1: 1748524285
+      Blessed Fire_6: 1406001023
+      Blessed Fire_0: -1764113044
+      Blessed Fire_7: -375038931
+      Blessed Fire_4: 2082857300
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

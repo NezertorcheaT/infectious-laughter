@@ -156,10 +156,10 @@ TextureImporter:
       name: Button_pull
       rect:
         serializedVersion: 2
-        x: 14
-        y: 16
-        width: 74
-        height: 36
+        x: 13
+        y: 15
+        width: 76
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,10 +177,10 @@ TextureImporter:
       name: Button_push
       rect:
         serializedVersion: 2
-        x: 112
-        y: 16
-        width: 74
-        height: 36
+        x: 111
+        y: 15
+        width: 76
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

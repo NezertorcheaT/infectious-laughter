@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,9 +67,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,301 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 33
+        width: 27
+        height: 13
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.4615385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8550fc0b9e04df2468c9810dbe41e896
+      internalID: 1887164148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 33
+        width: 27
+        height: 13
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.4615385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a548b6b9f2f348e4fb5c8d5e6d53453e
+      internalID: -1581427528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_2
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 33
+        width: 27
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3544dab0f5e22cf409ccdb337b98d861
+      internalID: -248336177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 33
+        width: 27
+        height: 13
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.4615385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3473dd0fe470af541849477037295b3f
+      internalID: -879116553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_4
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 33
+        width: 27
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6be3b09174f3e341a1eb07f12c2950c
+      internalID: -11544119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_5
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 32
+        width: 27
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d07d629ff8f854d990796cf18380ec
+      internalID: -2130367874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_6
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 32
+        width: 27
+        height: 13
+      alignment: 9
+      pivot: {x: 0.5185185, y: 0.4615385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 125b9a932a56e944c85d4481afe3d34b
+      internalID: -864283783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 29
+        height: 32
+      alignment: 9
+      pivot: {x: 0.51724136, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2f3b288581d5794b8041fe9249413da
+      internalID: 614279374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_8
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.51724136, y: 0.516129}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8676131a63fb8940854c6f133b6add2
+      internalID: 333060367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_9
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.51724136, y: 0.48387095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a1fa43bc5da5864390ac2a3f2b222ed
+      internalID: 1391056705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_10
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 0
+        width: 29
+        height: 32
+      alignment: 9
+      pivot: {x: 0.51724136, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9413ee16ea7013d4180baee7505375ba
+      internalID: -185467837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_11
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 2
+        width: 29
+        height: 29
+      alignment: 9
+      pivot: {x: 0.51724136, y: 0.4827586}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251890492665d9c43a8df5d8fcd9c7ce
+      internalID: 296717248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_12
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.51724136, y: 0.48387095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c1919f3eb3389c4081176fa3bba82b3
+      internalID: 1395535389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blessed Fire Trail Animation_13
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.51724136, y: 0.48387095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d658da91ecac644c8d75c81e9bf543a
+      internalID: 285574679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +444,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Blessed Fire Trail Animation_1: -1581427528
+      Blessed Fire Trail Animation_4: -11544119
+      Blessed Fire Trail Animation_5: -2130367874
+      Blessed Fire Trail Animation_10: -185467837
+      Blessed Fire Trail Animation_7: 614279374
+      Blessed Fire Trail Animation_6: -864283783
+      Blessed Fire Trail Animation_11: 296717248
+      Blessed Fire Trail Animation_12: 1395535389
+      Blessed Fire Trail Animation_0: 1887164148
+      Blessed Fire Trail Animation_2: -248336177
+      Blessed Fire Trail Animation_13: 285574679
+      Blessed Fire Trail Animation_3: -879116553
+      Blessed Fire Trail Animation_9: 1391056705
+      Blessed Fire Trail Animation_8: 333060367
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

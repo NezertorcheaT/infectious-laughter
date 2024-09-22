@@ -156,12 +156,12 @@ TextureImporter:
       name: Cars_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 197
-        width: 104
-        height: 45
+        x: 18
+        y: 196
+        width: 106
+        height: 47
       alignment: 9
-      pivot: {x: 0.52884614, y: 0}
+      pivot: {x: 0.5283019, y: 0.021276595}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Cars_1
       rect:
         serializedVersion: 2
-        x: 154
-        y: 197
-        width: 128
-        height: 57
+        x: 153
+        y: 196
+        width: 130
+        height: 59
       alignment: 9
-      pivot: {x: 0.546875, y: 0.03508772}
+      pivot: {x: 0.54615384, y: 0.033898305}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,12 +198,12 @@ TextureImporter:
       name: Cars_2
       rect:
         serializedVersion: 2
-        x: 315
-        y: 197
-        width: 120
-        height: 66
+        x: 314
+        y: 196
+        width: 122
+        height: 68
       alignment: 9
-      pivot: {x: 0.5416667, y: 0.015151516}
+      pivot: {x: 0.54098356, y: 0.029411765}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: Cars_3
       rect:
         serializedVersion: 2
-        x: 467
-        y: 197
-        width: 106
-        height: 47
+        x: 466
+        y: 196
+        width: 108
+        height: 49
       alignment: 9
-      pivot: {x: 0.5283019, y: 0.021276595}
+      pivot: {x: 0.5277778, y: 0.040816326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: Cars_4
       rect:
         serializedVersion: 2
-        x: 17
-        y: 112
-        width: 104
-        height: 45
+        x: 16
+        y: 111
+        width: 106
+        height: 47
       alignment: 9
-      pivot: {x: 0.5192308, y: 0.022222223}
+      pivot: {x: 0.5188679, y: 0.04255319}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,12 +261,12 @@ TextureImporter:
       name: Cars_5
       rect:
         serializedVersion: 2
-        x: 152
-        y: 112
-        width: 128
-        height: 58
+        x: 151
+        y: 111
+        width: 130
+        height: 60
       alignment: 9
-      pivot: {x: 0.5078125, y: 0.03448276}
+      pivot: {x: 0.5, y: 0.033333335}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,12 +282,12 @@ TextureImporter:
       name: Cars_6
       rect:
         serializedVersion: 2
-        x: 316
-        y: 112
-        width: 118
-        height: 68
+        x: 315
+        y: 111
+        width: 120
+        height: 70
       alignment: 9
-      pivot: {x: 0.5508475, y: 0.029411765}
+      pivot: {x: 0.5416667, y: 0.028571429}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -303,12 +303,12 @@ TextureImporter:
       name: Cars_7
       rect:
         serializedVersion: 2
-        x: 466
-        y: 112
-        width: 104
-        height: 47
+        x: 465
+        y: 111
+        width: 106
+        height: 49
       alignment: 9
-      pivot: {x: 0.53846157, y: 0.04255319}
+      pivot: {x: 0.5377359, y: 0.040816326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -324,12 +324,12 @@ TextureImporter:
       name: Cars_8
       rect:
         serializedVersion: 2
-        x: 17
-        y: 29
-        width: 103
-        height: 29
+        x: 16
+        y: 28
+        width: 105
+        height: 31
       alignment: 9
-      pivot: {x: 0.60194176, y: 0}
+      pivot: {x: 0.60952383, y: 0.032258064}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -345,12 +345,12 @@ TextureImporter:
       name: Cars_9
       rect:
         serializedVersion: 2
-        x: 151
-        y: 27
-        width: 127
-        height: 73
+        x: 150
+        y: 26
+        width: 129
+        height: 76
       alignment: 9
-      pivot: {x: 0.54330707, y: 0.02739726}
+      pivot: {x: 0.5426357, y: 0.02631579}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,12 +366,12 @@ TextureImporter:
       name: Cars_10
       rect:
         serializedVersion: 2
-        x: 313
-        y: 27
-        width: 120
-        height: 66
+        x: 312
+        y: 26
+        width: 122
+        height: 68
       alignment: 9
-      pivot: {x: 0.5416667, y: 0.030303031}
+      pivot: {x: 0.54098356, y: 0.029411765}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -387,12 +387,12 @@ TextureImporter:
       name: Cars_11
       rect:
         serializedVersion: 2
-        x: 460
-        y: 27
-        width: 106
-        height: 46
+        x: 459
+        y: 26
+        width: 108
+        height: 48
       alignment: 9
-      pivot: {x: 0.5566038, y: 0.04347826}
+      pivot: {x: 0.5462963, y: 0.041666668}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

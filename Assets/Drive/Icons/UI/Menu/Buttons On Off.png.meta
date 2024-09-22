@@ -156,12 +156,12 @@ TextureImporter:
       name: Buttons On Off_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 14
-        width: 36
-        height: 22
+        x: 9
+        y: 13
+        width: 38
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Buttons On Off_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 14
-        width: 36
-        height: 22
+        x: 53
+        y: 13
+        width: 38
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

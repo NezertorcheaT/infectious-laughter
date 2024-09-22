@@ -144,12 +144,12 @@ TextureImporter:
       name: Cans of paint_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 75
-        width: 20
-        height: 18
+        x: 3
+        y: 74
+        width: 22
+        height: 20
       alignment: 9
-      pivot: {x: 0.55, y: 0.16666667}
+      pivot: {x: 0.54545456, y: 0.15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: Cans of paint_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 75
-        width: 22
-        height: 17
+        x: 31
+        y: 74
+        width: 24
+        height: 19
       alignment: 9
-      pivot: {x: 0.5, y: 0.1764706}
+      pivot: {x: 0.5, y: 0.15789473}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,12 +186,12 @@ TextureImporter:
       name: Cans of paint_2
       rect:
         serializedVersion: 2
-        x: 60
-        y: 76
-        width: 33
-        height: 20
+        x: 59
+        y: 75
+        width: 35
+        height: 22
       alignment: 9
-      pivot: {x: 0.5151515, y: 0.1}
+      pivot: {x: 0.51428574, y: 0.13636364}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,12 +207,12 @@ TextureImporter:
       name: Cans of paint_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 45
-        width: 14
-        height: 16
+        x: 0
+        y: 44
+        width: 16
+        height: 18
       alignment: 9
-      pivot: {x: 0.5, y: 0.125}
+      pivot: {x: 0.5, y: 0.16666667}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,12 +228,12 @@ TextureImporter:
       name: Cans of paint_4
       rect:
         serializedVersion: 2
-        x: 17
-        y: 45
-        width: 14
-        height: 16
+        x: 16
+        y: 44
+        width: 16
+        height: 18
       alignment: 9
-      pivot: {x: 0.5, y: 0.0625}
+      pivot: {x: 0.5, y: 0.11111111}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,12 +249,12 @@ TextureImporter:
       name: Cans of paint_5
       rect:
         serializedVersion: 2
-        x: 33
-        y: 43
-        width: 14
-        height: 18
+        x: 32
+        y: 42
+        width: 16
+        height: 20
       alignment: 9
-      pivot: {x: 0.5, y: 0.11111111}
+      pivot: {x: 0.5, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,12 +270,12 @@ TextureImporter:
       name: Cans of paint_6
       rect:
         serializedVersion: 2
-        x: 49
-        y: 45
-        width: 14
-        height: 16
+        x: 48
+        y: 44
+        width: 16
+        height: 18
       alignment: 9
-      pivot: {x: 0.5, y: 0.0625}
+      pivot: {x: 0.5, y: 0.11111111}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,12 +291,12 @@ TextureImporter:
       name: Cans of paint_7
       rect:
         serializedVersion: 2
-        x: 65
-        y: 45
-        width: 14
-        height: 11
+        x: 64
+        y: 44
+        width: 16
+        height: 13
       alignment: 9
-      pivot: {x: 0.5, y: 0.09090909}
+      pivot: {x: 0.5, y: 0.15384616}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,12 +312,12 @@ TextureImporter:
       name: Cans of paint_8
       rect:
         serializedVersion: 2
-        x: 81
-        y: 45
-        width: 14
-        height: 21
+        x: 80
+        y: 44
+        width: 16
+        height: 23
       alignment: 9
-      pivot: {x: 0.5, y: 0.0952381}
+      pivot: {x: 0.5, y: 0.08695652}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,12 +333,12 @@ TextureImporter:
       name: Cans of paint_9
       rect:
         serializedVersion: 2
-        x: 3
-        y: 5
-        width: 24
-        height: 29
+        x: 2
+        y: 4
+        width: 26
+        height: 31
       alignment: 9
-      pivot: {x: 0.45833334, y: 0.06896552}
+      pivot: {x: 0.4615385, y: 0.09677419}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -354,12 +354,12 @@ TextureImporter:
       name: Cans of paint_10
       rect:
         serializedVersion: 2
-        x: 33
-        y: 5
-        width: 24
-        height: 29
+        x: 32
+        y: 4
+        width: 26
+        height: 31
       alignment: 9
-      pivot: {x: 0.5416667, y: 0.06896552}
+      pivot: {x: 0.53846157, y: 0.06451613}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -375,12 +375,12 @@ TextureImporter:
       name: Cans of paint_11
       rect:
         serializedVersion: 2
-        x: 61
-        y: 6
-        width: 32
-        height: 29
+        x: 60
+        y: 5
+        width: 34
+        height: 31
       alignment: 9
-      pivot: {x: 0.5, y: 0.06896552}
+      pivot: {x: 0.5, y: 0.06451613}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

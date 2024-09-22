@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 using Texture2D = UnityEngine.Texture2D;
 
 namespace Outline
@@ -26,21 +25,28 @@ namespace Outline
                 var asset = AssetDatabase.LoadAssetAtPath<Sprite>(path.Replace(mainPath, "Assets/Drive"));
                 if (asset?.texture is null)
                     continue;
-                byte[] texture = null;
-                try
-                {
-                    texture = GenerateNewOutline(asset.texture).EncodeToPNG();
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(e);
-                }
+                byte[] texture = GenerateNewOutline(asset.texture).EncodeToPNG();
 
                 var newPath = path.Replace(mainPath, newMainPath);
                 if (!Directory.Exists(newPath.Replace(Path.GetFileName(newPath), "")))
                     Directory.CreateDirectory(newPath.Replace(Path.GetFileName(newPath), ""));
                 if (texture is not null)
                     File.WriteAllBytes(newPath, texture);
+
+                AssetDatabase.ImportAsset(
+                    path.Replace(mainPath, "Assets/Resources/Outlines"),
+                    ImportAssetOptions.ForceUpdate
+                );
+
+                EditorUtility.CopySerialized(
+                    AssetImporter.GetAtPath(path.Replace(mainPath, "Assets/Drive")) as TextureImporter,
+                    AssetImporter.GetAtPath(path.Replace(mainPath, "Assets/Resources/Outlines")) as TextureImporter
+                );
+
+                AssetDatabase.ImportAsset(
+                    path.Replace(mainPath, "Assets/Resources/Outlines"),
+                    ImportAssetOptions.ForceUpdate
+                );
             }
         }
 
@@ -66,16 +72,21 @@ namespace Outline
             newTexture.Apply(false);
             return newTexture;
         }
-
+#endif
         private static bool CheckPosition(Texture texture, int x, int y) =>
             CheckPosition(texture, new Vector2Int(x, y));
 
         private static bool CheckPosition(Texture texture, Vector2Int pos) =>
             pos.x >= 0 && pos.y >= 0 && pos.x < texture.width && pos.y < texture.height;
-#endif
 
-        public static void GetOutlined(Sprite sprite)
+        public static Sprite GetOutlined(string path)
         {
+            path = path
+                .Replace('/', '\\')
+                .Replace($"{Application.dataPath}\\Drive".Replace('/', '\\'), "Outlines")
+                .Replace("Assets\\Drive", "Outlines")
+                .Replace("Drive", "Outlines");
+            return Resources.Load<Sprite>(path);
         }
     }
 }
