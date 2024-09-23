@@ -146,17 +146,17 @@ TextureImporter:
         serializedVersion: 2
         x: 2
         y: 9
-        width: 4
-        height: 3
-      alignment: 9
-      pivot: {x: 0.5, y: 0.33333334}
+        width: 3
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4232b5cbda74d3341a4ccef0a4ac6150
-      internalID: -2116267906
+      spriteID: ffe2fd83e8f78284d9e069630aac0233
+      internalID: 637953364
       vertices: []
       indices: 
       edges: []
@@ -167,17 +167,17 @@ TextureImporter:
         serializedVersion: 2
         x: 7
         y: 9
-        width: 4
-        height: 3
-      alignment: 9
-      pivot: {x: 0.5, y: 0.33333334}
+        width: 3
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 410e4567ee028d446af3d9fa1df4f84b
-      internalID: 987450533
+      spriteID: a8eae17dc075592408ac0e37b93a47e7
+      internalID: 508295717
       vertices: []
       indices: 
       edges: []
@@ -188,17 +188,17 @@ TextureImporter:
         serializedVersion: 2
         x: 12
         y: 9
-        width: 4
+        width: 3
         height: 3
-      alignment: 9
-      pivot: {x: 0.25, y: 0.33333334}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58d4e836cefd0ce41b6ab2cf6a1d3bc4
-      internalID: 2142280510
+      spriteID: 46d3213267942d54cbc86410299f9634
+      internalID: -1540636388
       vertices: []
       indices: 
       edges: []
@@ -207,19 +207,19 @@ TextureImporter:
       name: Dust_3
       rect:
         serializedVersion: 2
-        x: 16
+        x: 17
         y: 9
-        width: 4
-        height: 3
-      alignment: 9
-      pivot: {x: 0.5, y: 0.33333334}
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4181df0538712dc418e6d4cc9f2ac0c1
-      internalID: 1287907307
+      spriteID: 951bf63efe78f944c81d064937ed1547
+      internalID: 700053477
       vertices: []
       indices: 
       edges: []
@@ -232,15 +232,15 @@ TextureImporter:
         y: 9
         width: 4
         height: 3
-      alignment: 9
-      pivot: {x: 0.5, y: 0.6666667}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1667abdfc60ff8541836cf0fb8985f3e
-      internalID: -1638033129
+      spriteID: b24e15f344b24f74891a080a4c3fdff7
+      internalID: 1154900175
       vertices: []
       indices: 
       edges: []
@@ -249,19 +249,19 @@ TextureImporter:
       name: Dust_5
       rect:
         serializedVersion: 2
-        x: 21
+        x: 2
         y: 4
-        width: 4
+        width: 3
         height: 3
-      alignment: 9
-      pivot: {x: 0.5, y: 0.33333334}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b0aa7892250dce459fd111d7be361cb
-      internalID: -1760229513
+      spriteID: 5b2e29312ea2034499b92fa8cec39266
+      internalID: 1584468666
       vertices: []
       indices: 
       edges: []
@@ -270,19 +270,19 @@ TextureImporter:
       name: Dust_6
       rect:
         serializedVersion: 2
-        x: 16
+        x: 7
         y: 4
-        width: 4
+        width: 3
         height: 3
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a0406ba33d907c4685e97c36e43000a
-      internalID: 671816149
+      spriteID: ad716133ed4a1654892e20560ef14538
+      internalID: -36050668
       vertices: []
       indices: 
       edges: []
@@ -291,19 +291,19 @@ TextureImporter:
       name: Dust_7
       rect:
         serializedVersion: 2
-        x: 11
+        x: 12
         y: 4
-        width: 4
+        width: 3
         height: 3
-      alignment: 9
-      pivot: {x: 0.75, y: 0.6666667}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 002d3cd3657444b4d9842ad49c8ccb00
-      internalID: -1467779922
+      spriteID: d324dfaa5ca9ff941859d739844992e9
+      internalID: 748120705
       vertices: []
       indices: 
       edges: []
@@ -312,19 +312,19 @@ TextureImporter:
       name: Dust_8
       rect:
         serializedVersion: 2
-        x: 6
+        x: 17
         y: 4
-        width: 4
-        height: 3
-      alignment: 9
-      pivot: {x: 0.75, y: 0.33333334}
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f291fba3b7d730c49b6d08f1af4aa382
-      internalID: 1924451959
+      spriteID: b86b5b159ed916e43ba4cc6048a1fa34
+      internalID: 1231181309
       vertices: []
       indices: 
       edges: []
@@ -333,19 +333,19 @@ TextureImporter:
       name: Dust_9
       rect:
         serializedVersion: 2
-        x: 2
+        x: 21
         y: 4
         width: 4
         height: 3
-      alignment: 9
-      pivot: {x: 0.25, y: 0.33333334}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ae2cc0326b579e428dd9299840521bf
-      internalID: -602489094
+      spriteID: 46baa9c858ebbbc40bdc615ede2c4447
+      internalID: -286499612
       vertices: []
       indices: 
       edges: []
@@ -361,16 +361,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dust_8: 1924451959
-      Dust_4: -1638033129
-      Dust_7: -1467779922
-      Dust_1: 987450533
-      Dust_6: 671816149
-      Dust_3: 1287907307
-      Dust_9: -602489094
-      Dust_0: -2116267906
-      Dust_2: 2142280510
-      Dust_5: -1760229513
+      Dust_8: 1231181309
+      Dust_4: 1154900175
+      Dust_7: 748120705
+      Dust_1: 508295717
+      Dust_6: -36050668
+      Dust_3: 700053477
+      Dust_9: -286499612
+      Dust_0: 637953364
+      Dust_2: -1540636388
+      Dust_5: 1584468666
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
