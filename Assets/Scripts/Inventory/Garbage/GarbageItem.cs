@@ -14,7 +14,6 @@ namespace Inventory.Garbage
         [SerializeField] private SpriteRenderer outlineRenderer;
 
         [Inject] private PointTargetForGarbageAnimation _pointTargetForGarbageAnimation;
-        [Inject] private OutlinesContainer _container;
 
         public int Level => level;
 
@@ -31,7 +30,7 @@ namespace Inventory.Garbage
         private void Start()
         {
             _pointTargetUIForAnim = _pointTargetForGarbageAnimation.Target;
-            outlineRenderer.sprite = _container[originalRenderer.sprite];
+            outlineRenderer.sprite = OutlinesContainer.Instance[originalRenderer.sprite];
             outlineRenderer.enabled = false;
         }
 

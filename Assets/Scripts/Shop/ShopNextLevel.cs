@@ -1,5 +1,5 @@
 using Levels.StoryNodes;
-using TMPro;
+using Outline;
 using UnityEngine;
 using Zenject;
 
@@ -7,12 +7,15 @@ namespace Shop
 {
     public class ShopNextLevel : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer renderer;
+        [SerializeField] private OutlineAutoGetter outline;
+        [SerializeField] private Sprite[] numbers;
         [Inject] private LevelManager levelManager;
-        [SerializeField] private TextMeshProUGUI textGui;
 
         private void Start()
         {
-            textGui.SetText($"Следующий уровень: {levelManager.CurrentLevel.LevelNumber}");
+            renderer.sprite = numbers[Mathf.Clamp(levelManager.CurrentLevel.LevelNumber, 0, 4)];
+            outline.UpdateOutline();
         }
     }
 }

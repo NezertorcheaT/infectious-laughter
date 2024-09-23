@@ -17,48 +17,48 @@ MonoBehaviour:
   - id: 0
     visualName: Initial
     visualColor: {r: 0.5882353, g: 0.24705882, b: 0.24705882, a: 0.7529412}
-    visualPosition: {x: 142.19931, y: 196.75693}
+    visualPosition: {x: 138.0325, y: 186.42001}
     scene: 2
     hasShop: 1
-    levelNumber: 25
+    levelNumber: 0
     nextID1: 9648618916141df48bf3a8aa72deaddc
     nextID2: 
   - id: 9648618916141df48bf3a8aa72deaddc
     visualName: init dupe 1
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 654.62616, y: -18.000004}
+    visualPosition: {x: 655, y: -16.000002}
     scene: 2
     hasShop: 1
-    levelNumber: 11
+    levelNumber: 1
     nextID1: 167a4b1ec2649e8409e6d891b4cdbf9f
     nextID2: 
   - id: 167a4b1ec2649e8409e6d891b4cdbf9f
     visualName: random!!!!! 2
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 1180.3004, y: -15.700004}
+    visualPosition: {x: 1180.5, y: -15.999999}
     scene: 3
     hasShop: 0
-    levelNumber: -10
+    levelNumber: 2
     nextID1: 8a759952316fe204897ac6de716f9b76
     nextID2: 
   - id: 8a759952316fe204897ac6de716f9b76
     visualName: init dupe 3
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 1735.9542, y: 164}
+    visualPosition: {x: 1737.3225, y: 164.00002}
     scene: 2
     hasShop: 1
-    levelNumber: 1
+    levelNumber: 3
     nextID1: e0264682861c1ec4284b2a6c6a65eb12
     nextID2: 
   - id: e0264682861c1ec4284b2a6c6a65eb12
     visualName: random!!!!!
     visualColor: {r: 0.24609375, g: 0.24609375, b: 0.24609375, a: 0.75}
-    visualPosition: {x: 993, y: 436}
+    visualPosition: {x: 994.3225, y: 434.67752}
     scene: 3
     hasShop: 1
-    levelNumber: 0
+    levelNumber: 4
     nextID1: 0
     nextID2: 
-  <Position>k__BackingField: {x: -495, y: 87, z: 0}
-  <Scale>k__BackingField: {x: 1, y: 1, z: 1}
+  <Position>k__BackingField: {x: -507, y: -173, z: 0}
+  <Scale>k__BackingField: {x: 0.8695652, y: 0.8695652, z: 1}
   <Rotation>k__BackingField: {x: 0, y: 0, z: 0, w: 1}

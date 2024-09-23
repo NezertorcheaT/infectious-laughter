@@ -1,6 +1,9 @@
 using System.IO;
-using Unity.Burst;
 using UnityEditor;
+#if UNITY_EDITOR
+using UnityEditor.Build;
+using UnityEditor.Build.Reporting;
+#endif
 using UnityEngine;
 using Texture2D = UnityEngine.Texture2D;
 
@@ -11,11 +14,11 @@ namespace Outline
         public static readonly Color OutlineColor = new(1, 1, 1, 1);
 #if UNITY_EDITOR
         [MenuItem("File/Regenerate outline", false, 3)]
-        [BurstCompile]
-        private static void Regenerate()
+        public static void Regenerate()
         {
             var mainPath = $"{Application.dataPath}/Drive".Replace('/', '\\');
             var newMainPath = $"{Application.dataPath}/Resources/Outlines".Replace('/', '\\');
+            Directory.Delete(newMainPath, true);
             var container = Resources.Load<OutlinesContainer>("OutlinesContainer");
             container.Reset();
             foreach (var path in Directory.EnumerateFiles(
@@ -44,10 +47,16 @@ namespace Outline
                     ImportAssetOptions.ForceUpdate
                 );
 
+                var destinationImporter =
+                    AssetImporter.GetAtPath(path.Replace(mainPath, "Assets/Resources/Outlines")) as TextureImporter;
                 EditorUtility.CopySerialized(
                     AssetImporter.GetAtPath(path.Replace(mainPath, "Assets/Drive")) as TextureImporter,
-                    AssetImporter.GetAtPath(path.Replace(mainPath, "Assets/Resources/Outlines")) as TextureImporter
+                    destinationImporter
                 );
+                destinationImporter.textureCompression = TextureImporterCompression.CompressedLQ;
+                destinationImporter.crunchedCompression = true;
+                destinationImporter.compressionQuality = 50;
+                destinationImporter.SaveAndReimport();
 
                 AssetDatabase.ImportAsset(
                     path.Replace(mainPath, "Assets/Resources/Outlines"),
@@ -101,4 +110,15 @@ namespace Outline
             return Resources.LoadAll<Sprite>(path);
         }
     }
+#if UNITY_EDITOR
+    public class OutlineBeforeBuild : IPreprocessBuildWithReport
+    {
+        public int callbackOrder => 0;
+
+        public void OnPreprocessBuild(BuildReport report)
+        {
+            Outliner.Regenerate();
+        }
+    }
+#endif
 }

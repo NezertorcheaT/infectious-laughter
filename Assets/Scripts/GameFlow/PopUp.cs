@@ -10,8 +10,13 @@ namespace GameFlow
     public class PopUp : MonoBehaviour
     {
         public event Action OnUsed;
+        public event Action OnEntered;
+        public event Action OnExited;
+        
         [SerializeField] private GameObject popUp;
         [SerializeField] private UnityEvent onUsed;
+        [SerializeField] private UnityEvent onEntered;
+        [SerializeField] private UnityEvent onExited;
         [Inject] private PlayerInstallation _player;
         [Inject] private Controls _controls;
         private bool _inTrigger;
@@ -47,6 +52,8 @@ namespace GameFlow
             if (entity is null || entity != _player.Entity) return;
             _inTrigger = true;
             popUp.SetActive(_inTrigger);
+            onEntered.Invoke();
+            OnEntered?.Invoke();
         }
 
         private void OnTriggerExit2D(Collider2D other)
@@ -55,6 +62,8 @@ namespace GameFlow
             if (entity is null || entity != _player.Entity) return;
             _inTrigger = false;
             popUp.SetActive(_inTrigger);
+            onExited.Invoke();
+            OnExited?.Invoke();
         }
     }
 }

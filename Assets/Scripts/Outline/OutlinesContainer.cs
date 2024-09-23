@@ -18,8 +18,23 @@ namespace Outline
         public Sprite this[Sprite i] =>
             Outliner.GetOutlined(Cache.FirstOrDefault(t => t.Original.texture == i.texture).Path)
                 .FirstOrDefault(t => t.name == i.name);
-
-        [field: SerializeField] public List<OutlineType> Cache { get; private set; }
+/// <summary>
+/// НЕ ПЫТАЙТЕСЬ обращаться к этому свойству, оно защищено магической силой, и выдаст ошибку если запущено из билда
+/// </summary>
+        [field: SerializeField]
+        
+#if UNITY_EDITOR
+        public
+#endif
+            
+            List<OutlineType> Cache
+        {
+            get;
+#if UNITY_EDITOR
+            private
+#endif
+            set;
+        }
 
         public static OutlinesContainer Instance { get; set; }
 

@@ -11,7 +11,6 @@ namespace Installers
         {
             var outlines = Resources.Load<OutlinesContainer>("OutlinesContainer");
             outlines.Initialize();
-            Container.Bind<OutlinesContainer>().FromInstance(outlines).AsSingle().NonLazy();
         }
     }
 }

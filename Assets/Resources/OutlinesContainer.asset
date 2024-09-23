@@ -23,7 +23,7 @@ MonoBehaviour:
     Path: Outlines\Effects\Character punch
   - Original: {fileID: -1224503020, guid: 0cb390230ca72914d8c57d3d6ef4b6c6, type: 3}
     Path: Outlines\Effects\Double Jump
-  - Original: {fileID: -2116267906, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
+  - Original: {fileID: 637953364, guid: 47b46d82a59ebc24698dd7c3bdb658aa, type: 3}
     Path: Outlines\Effects\Dust
   - Original: {fileID: -1000835157, guid: 427ea26071ee1e94e9685964c7204464, type: 3}
     Path: Outlines\Effects\Fate Decision Ray
@@ -493,7 +493,7 @@ MonoBehaviour:
   - Original: {fileID: 1731904010, guid: 922968b20cdd8834095bbbbbb532205e, type: 3}
     Path: Outlines\Characters\Main character\Animations\General\Sleep
   - Original: {fileID: 1972877745, guid: 48a9baf36c61e4d46899eca8f7420080, type: 3}
-    Path: Outlines\Characters\Main character\Animations\Reflex Skills\leg attack
+    Path: Outlines\Characters\Main character\Animations\Reflex skills\leg attack
   - Original: {fileID: 862982644, guid: bbd52bfedd1fbfe439531640c986565f, type: 3}
     Path: Outlines\Characters\NPC\Eyeless Laughter\Animations\idle
   - Original: {fileID: 1320485228, guid: f0aefe50e53b7c245b6c472cb6414d58, type: 3}
