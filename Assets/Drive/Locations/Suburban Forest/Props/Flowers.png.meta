@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -125,6 +125,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 64
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -132,12 +144,12 @@ TextureImporter:
       name: Flowers_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 2
         y: 46
-        width: 7
+        width: 9
         height: 9
       alignment: 9
-      pivot: {x: 0.42857146, y: -0}
+      pivot: {x: 0.44444445, y: -0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -174,12 +186,12 @@ TextureImporter:
       name: Flowers_2
       rect:
         serializedVersion: 2
-        x: 19
+        x: 18
         y: 46
-        width: 7
+        width: 8
         height: 9
       alignment: 9
-      pivot: {x: 0.42857146, y: 0}
+      pivot: {x: 0.5, y: -0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -489,12 +501,12 @@ TextureImporter:
       name: Flowers_18
       rect:
         serializedVersion: 2
-        x: 4
+        x: 3
         y: 28
-        width: 7
+        width: 8
         height: 9
       alignment: 9
-      pivot: {x: 0.42857146, y: 0}
+      pivot: {x: 0.5, y: -0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -531,12 +543,12 @@ TextureImporter:
       name: Flowers_21
       rect:
         serializedVersion: 2
-        x: 19
+        x: 18
         y: 28
-        width: 7
+        width: 9
         height: 9
       alignment: 9
-      pivot: {x: 0.42857146, y: -0}
+      pivot: {x: 0.44444445, y: -0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -783,12 +795,12 @@ TextureImporter:
       name: Flowers_34
       rect:
         serializedVersion: 2
-        x: 10
+        x: 11
         y: 8
-        width: 7
+        width: 8
         height: 9
       alignment: 9
-      pivot: {x: 0.5714286, y: 0}
+      pivot: {x: 0.375, y: -0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -846,12 +858,12 @@ TextureImporter:
       name: Flowers_38
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 8
-        width: 7
+        width: 8
         height: 9
       alignment: 9
-      pivot: {x: 0.42857146, y: 0}
+      pivot: {x: 0.5, y: -0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

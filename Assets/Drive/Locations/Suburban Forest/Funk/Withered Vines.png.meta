@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -331,7 +331,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Vines_0: -766843696
+      Vines_13: 1567645806
       Vines_2: -1620683572
       Vines_12: 384804520
       Vines_5: 818257108
@@ -352,7 +352,7 @@ TextureImporter:
       Vines_10: -447078008
       Vines_14: 431049182
       Vines_16: 1207617420
-      Vines_13: 1567645806
+      Vines_0: -766843696
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

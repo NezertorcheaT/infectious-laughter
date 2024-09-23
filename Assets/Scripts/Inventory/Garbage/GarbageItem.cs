@@ -1,3 +1,4 @@
+using Outline;
 using UnityEngine;
 using Zenject;
 
@@ -9,10 +10,11 @@ namespace Inventory.Garbage
         [SerializeField] private GameObject keyCodeTablet;
         [SerializeField] [Min(1)] private float animSpeed = 1f;
         [SerializeField] private float lifeTime = 2.5f;
-        [SerializeField] private Material defaultMaterial;
-        [SerializeField] private Material outlineMaterial;
+        [SerializeField] private SpriteRenderer originalRenderer;
+        [SerializeField] private SpriteRenderer outlineRenderer;
 
         [Inject] private PointTargetForGarbageAnimation _pointTargetForGarbageAnimation;
+        [Inject] private OutlinesContainer _container;
 
         public int Level => level;
 
@@ -29,6 +31,8 @@ namespace Inventory.Garbage
         private void Start()
         {
             _pointTargetUIForAnim = _pointTargetForGarbageAnimation.Target;
+            outlineRenderer.sprite = _container[originalRenderer.sprite];
+            outlineRenderer.enabled = false;
         }
 
         private void StartAnim()
@@ -51,16 +55,16 @@ namespace Inventory.Garbage
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(!other.GetComponent<Entity.Controllers.ControllerInput>()) return;
+            if (!other.GetComponent<Entity.Controllers.ControllerInput>()) return;
             keyCodeTablet.SetActive(other.gameObject.GetComponent<Entity.Abilities.Garbage>() is not null);
-            gameObject.GetComponent<SpriteRenderer>().material = outlineMaterial;
+            outlineRenderer.enabled = true;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if(!other.GetComponent<Entity.Controllers.ControllerInput>()) return;
+            if (!other.GetComponent<Entity.Controllers.ControllerInput>()) return;
             keyCodeTablet.SetActive(other.gameObject.GetComponent<Entity.Abilities.Garbage>() is null);
-            gameObject.GetComponent<SpriteRenderer>().material = defaultMaterial;
+            outlineRenderer.enabled = false;
         }
     }
 }

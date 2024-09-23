@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -156,12 +156,12 @@ TextureImporter:
       name: HP Roots_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 17
-        width: 32
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 1
+        width: 16
+        height: 14
+      alignment: 9
+      pivot: {x: 0.4375, y: 0.42857146}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: HP Roots_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 17
-        width: 32
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 17
+        y: 1
+        width: 15
+        height: 15
+      alignment: 9
+      pivot: {x: 0.4666667, y: 0.40000004}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

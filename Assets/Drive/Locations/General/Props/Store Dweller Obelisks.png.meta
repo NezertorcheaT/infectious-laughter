@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -156,12 +156,12 @@ TextureImporter:
       name: Store Dweller Obelisks_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 6
-        width: 33
-        height: 50
+        x: 6
+        y: 5
+        width: 35
+        height: 52
       alignment: 9
-      pivot: {x: 0.4848485, y: -0}
+      pivot: {x: 0.4857143, y: 0.01923077}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Store Dweller Obelisks_1
       rect:
         serializedVersion: 2
-        x: 59
-        y: 6
-        width: 33
-        height: 50
+        x: 58
+        y: 5
+        width: 35
+        height: 52
       alignment: 9
-      pivot: {x: 0.4848485, y: 0}
+      pivot: {x: 0.4857143, y: 0.01923077}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -156,12 +156,12 @@ TextureImporter:
       name: Broken houses_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 310
-        width: 210
-        height: 72
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 13
+        y: 309
+        width: 212
+        height: 74
+      alignment: 9
+      pivot: {x: 0.5, y: 0.013513514}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Broken houses_1
       rect:
         serializedVersion: 2
-        x: 317
-        y: 310
-        width: 319
-        height: 123
+        x: 316
+        y: 309
+        width: 321
+        height: 125
       alignment: 9
-      pivot: {x: 0.4984326, y: 0}
+      pivot: {x: 0.49844235, y: 0.008}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,12 +198,12 @@ TextureImporter:
       name: Broken houses_2
       rect:
         serializedVersion: 2
-        x: 705
-        y: 310
-        width: 282
-        height: 85
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 704
+        y: 309
+        width: 284
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5, y: 0.011494253}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: Broken houses_3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 54
-        width: 309
-        height: 132
+        x: 15
+        y: 53
+        width: 311
+        height: 134
       alignment: 9
-      pivot: {x: 0.49838188, y: 0}
+      pivot: {x: 0.49839228, y: 0.0074626864}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: Broken houses_4
       rect:
         serializedVersion: 2
-        x: 370
-        y: 54
-        width: 322
-        height: 109
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 369
+        y: 53
+        width: 324
+        height: 111
+      alignment: 9
+      pivot: {x: 0.5, y: 0.009009009}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,12 +261,12 @@ TextureImporter:
       name: Broken houses_5
       rect:
         serializedVersion: 2
-        x: 725
-        y: 54
-        width: 282
-        height: 119
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 724
+        y: 53
+        width: 284
+        height: 121
+      alignment: 9
+      pivot: {x: 0.5, y: 0.008264462}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
