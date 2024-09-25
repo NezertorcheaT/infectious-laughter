@@ -16,9 +16,11 @@ namespace Entity.Abilities
         [SerializeField] private Jump jumpAbility;
 
         private bool _locked = true;
+        private Vector3 _chachedPosition;
 
         private void Start()
         {
+            _chachedPosition = followPoint.localPosition;
             movementAbility ??= Entity.FindAbilityByType<HorizontalMovement>();
             jumpAbility ??= Entity.FindAbilityByType<Jump>();
         }
@@ -36,7 +38,7 @@ namespace Entity.Abilities
         public void ChangeLock()
         {
             _locked = !_locked;
-            followPoint.position = gameObject.transform.position;
+            followPoint.localPosition = _chachedPosition;
 
             jumpAbility.enabled = _locked;
             movementAbility.enabled = _locked;
