@@ -52,6 +52,7 @@ namespace Editor.EditorInspectorAI
 
         public void PopulateTree(IStateTree<State> tree)
         {
+            Clear();
             _tree = tree;
             _zoomableTree = tree as IZoomableStateTree<State>;
 
@@ -120,6 +121,7 @@ namespace Editor.EditorInspectorAI
                     {
                         nodeView.DeinitializeEditor();
                         _tree.TryRemoveState(nodeView.State.id);
+                        PopulateTree(_tree);
                         continue;
                     }
 
@@ -131,7 +133,8 @@ namespace Editor.EditorInspectorAI
                     if (!_tree.TryGetState(parentView.State.id, out _)) continue;
                     if (!_tree.TryGetState(childView.State.id, out _)) continue;
                     if (!_tree.TryDisconnect(parentView.State.id, childView.State.id)) continue;
-                    if (graphViewChange.edgesToCreate?.Select(e => e.input.tooltip).Contains(edge.input.tooltip) is not null)
+                    if (graphViewChange.edgesToCreate?.Select(e => e.input.tooltip)
+                            .Contains(edge.input.tooltip) is not null)
                         continue;
 
                     var port = parentView.outputContainer.Children()
@@ -143,7 +146,7 @@ namespace Editor.EditorInspectorAI
 
             if (graphViewChange.edgesToCreate is not null)
             {
-                var l = new List<Edge>();
+                var l = new System.Collections.Generic.List<Edge>();
                 foreach (var edge in graphViewChange.edgesToCreate)
                 {
                     var parentView = edge.output.node as StateView;

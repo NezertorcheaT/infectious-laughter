@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5985750123676441739}
   - component: {fileID: 5985750123676441737}
   - component: {fileID: 5985750123676441738}
+  - component: {fileID: 7590581344216504774}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5deb07cc0fdcf48803dc2db529180b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7590581344216504774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985750123676441741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e45582679b0c04439d25d3293fb5e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pixelSize: 0.0625
 --- !u!1 &5985750125537860194
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,8 +391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideBox: 1
-  scale: {x: 1, y: 2.427744}
   offset: {x: 0, y: -0.2138721}
+  scale: {x: 1, y: 2.427744}
 --- !u!61 &5985750125537860192
 BoxCollider2D:
   m_ObjectHideFlags: 0

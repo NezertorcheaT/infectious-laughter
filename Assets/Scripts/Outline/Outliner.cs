@@ -18,7 +18,8 @@ namespace Outline
         {
             var mainPath = $"{Application.dataPath}/Drive".Replace('/', '\\');
             var newMainPath = $"{Application.dataPath}/Resources/Outlines".Replace('/', '\\');
-            Directory.Delete(newMainPath, true);
+            if (Directory.Exists(newMainPath))
+                Directory.Delete(newMainPath, true);
             var container = Resources.Load<OutlinesContainer>("OutlinesContainer");
             container.Reset();
             foreach (var path in Directory.EnumerateFiles(
