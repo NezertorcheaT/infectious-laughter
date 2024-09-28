@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Robot pieces_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 14
+        width: 5
+        height: 5
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c76f645b3cb0d9140a3a0094ec4fe14a
+      internalID: -983427511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot pieces_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 14
+        width: 6
+        height: 4
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c49124add693740938aced0e4a1404
+      internalID: -175736579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot pieces_2
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 12
+        width: 6
+        height: 7
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5714286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22bf33e8ff53fdd44a635341c3ef5141
+      internalID: -228197155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot pieces_3
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 14
+        width: 4
+        height: 5
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b4e61a9e608dae4d96cfa20e787e03b
+      internalID: -1890276295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot pieces_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2
+        width: 4
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5555556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04c1788a22d722a48879471a9f28ba91
+      internalID: -1888752589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot pieces_5
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 4
+        width: 6
+        height: 7
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42857146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05c671a18dbf3324e886e89e5c068f67
+      internalID: -937569621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot pieces_6
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 4
+        width: 5
+        height: 6
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa31d039b730ad748b2f558555d82a70
+      internalID: -1953861428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot pieces_7
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 6
+        width: 5
+        height: 4
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd939725b040f8d43842a09ab5eaaa15
+      internalID: -725813970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +318,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Robot pieces_4: -1888752589
+      Robot pieces_2: -228197155
+      Robot pieces_3: -1890276295
+      Robot pieces_7: -725813970
+      Robot pieces_0: -983427511
+      Robot pieces_1: -175736579
+      Robot pieces_6: -1953861428
+      Robot pieces_5: -937569621
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

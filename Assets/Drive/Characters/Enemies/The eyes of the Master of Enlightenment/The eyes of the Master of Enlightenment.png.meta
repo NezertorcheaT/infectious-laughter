@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: The eyes of the Master of Enlightenment_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 39
+        width: 26
+        height: 20
+      alignment: 9
+      pivot: {x: 0.34615386, y: 0.45000002}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae15f2fc9e374248b743b487d6464bb
+      internalID: -205400808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The eyes of the Master of Enlightenment_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 38
+        width: 26
+        height: 21
+      alignment: 9
+      pivot: {x: 0.30769232, y: 0.47619048}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e719bdabecec974ab380cfa63029b66
+      internalID: 1421239303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The eyes of the Master of Enlightenment_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 39
+        width: 26
+        height: 20
+      alignment: 9
+      pivot: {x: 0.30769232, y: 0.45000002}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1563a6167455eb242ab90f61f6ad7321
+      internalID: 411942303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The eyes of the Master of Enlightenment_3
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 10
+        width: 17
+        height: 13
+      alignment: 9
+      pivot: {x: 0.3529412, y: 0.4615385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a490de97e920de54db9481db6e9ece7a
+      internalID: 786801083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The eyes of the Master of Enlightenment_4
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 10
+        width: 17
+        height: 13
+      alignment: 9
+      pivot: {x: 0.3529412, y: 0.4615385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c2988ccd327614eb392b6d4dc28020
+      internalID: -795215470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The eyes of the Master of Enlightenment_5
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 10
+        width: 17
+        height: 13
+      alignment: 9
+      pivot: {x: 0.3529412, y: 0.53846157}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1729b1afd345e1b4f99bf64ed1e07ef8
+      internalID: -562526066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +276,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      The eyes of the Master of Enlightenment_4: -795215470
+      The eyes of the Master of Enlightenment_5: -562526066
+      The eyes of the Master of Enlightenment_0: -205400808
+      The eyes of the Master of Enlightenment_3: 786801083
+      The eyes of the Master of Enlightenment_1: 1421239303
+      The eyes of the Master of Enlightenment_2: 411942303
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

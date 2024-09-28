@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MC Blood_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 22
+        width: 4
+        height: 3
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b585bb6a835b0ab42b993de92d98dd33
+      internalID: 1233543527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC Blood_1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 21
+        width: 2
+        height: 3
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b25ce55331e1cef4da3c7532f09a3ff7
+      internalID: -714150110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC Blood_2
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 13
+        width: 4
+        height: 3
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0040719c4ec2d1b4f9a18bb975d69002
+      internalID: 2119456088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC Blood_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 6
+        width: 4
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c69a659e5a4a4f46a8688a0a57772d2
+      internalID: 653457223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC Blood_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 6
+        width: 3
+        height: 2
+      alignment: 9
+      pivot: {x: 0.6666667, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1c6a735d05d774db205fe62f77dfb1
+      internalID: -937007597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MC Blood_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 13
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 0.6666667, y: 0.6666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b2f1b0838f71344cb65fd8bf49de377
+      internalID: -1313997830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +276,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MC Blood_0: 1233543527
+      MC Blood_2: 2119456088
+      MC Blood_3: 653457223
+      MC Blood_5: -1313997830
+      MC Blood_4: -937007597
+      MC Blood_1: -714150110
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

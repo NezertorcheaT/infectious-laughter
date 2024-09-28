@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Mutants Flesh_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 22
+        width: 6
+        height: 5
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be63956c8d05a14a8f93f618f82b891
+      internalID: 1884137765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mutants Flesh_1
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 22
+        width: 6
+        height: 6
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a886a7015dead4f4e900afdb94034726
+      internalID: 534586552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mutants Flesh_2
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 22
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a33babfa81d114f8cd7c66c5c4e24d
+      internalID: -959086235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mutants Flesh_3
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 22
+        width: 5
+        height: 6
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0f14c044203b2940aa12509a6ef9db9
+      internalID: -866531544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mutants Flesh_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 4
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2715c8171f43d942a19488168378ee4
+      internalID: -1749313361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mutants Flesh_5
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 4
+        width: 5
+        height: 5
+      alignment: 9
+      pivot: {x: 0.6, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4debe37d578e2741a1f6f4534cf5f8d
+      internalID: -704309047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mutants Flesh_6
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 4
+        width: 6
+        height: 5
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0643202afb658dc46819b08aeebaea20
+      internalID: -1275262529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mutants Flesh_7
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 4
+        width: 7
+        height: 5
+      alignment: 9
+      pivot: {x: 0.42857146, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d42b34b08901afc4d915df61b706c658
+      internalID: -2013087525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +318,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mutants Flesh_3: -866531544
+      Mutants Flesh_5: -704309047
+      Mutants Flesh_4: -1749313361
+      Mutants Flesh_7: -2013087525
+      Mutants Flesh_2: -959086235
+      Mutants Flesh_6: -1275262529
+      Mutants Flesh_0: 1884137765
+      Mutants Flesh_1: 534586552
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

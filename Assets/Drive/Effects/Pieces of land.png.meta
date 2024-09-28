@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -139,7 +139,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Pieces of land_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 28
+        width: 21
+        height: 19
+      alignment: 9
+      pivot: {x: 0.47619048, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46aa3b412644bcb4b982b96a64f685c1
+      internalID: -1555456793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pieces of land_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 13
+        width: 8
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 0.44444445}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062d01779ac1cf445961134bb7b98b52
+      internalID: 318048859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pieces of land_3
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 13
+        width: 9
+        height: 8
+      alignment: 9
+      pivot: {x: 0.5555556, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911659ff12d68bd46acf25aaf0f12245
+      internalID: 1868321669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pieces of land_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 14
+        width: 8
+        height: 7
+      alignment: 9
+      pivot: {x: 0.5, y: 0.42857146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e18b00941d9d94fb2a763fc95c03e4
+      internalID: -967553457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pieces of land_4
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 3
+        width: 4
+        height: 3
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4ffd088cc23c84ab1a8f980190a832
+      internalID: -1772291955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pieces of land_5
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 3
+        width: 3
+        height: 4
+      alignment: 9
+      pivot: {x: 0.6666667, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3142fb78a1ff6242b37e110b69452ac
+      internalID: 509623243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pieces of land_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 3
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0.6666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e4c196ab9b4bd24caa87b80773ade41
+      internalID: 1485975738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pieces of land_7
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 3
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2774977f5b19e479680f5e282273c2
+      internalID: 867887212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pieces of land_8
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 3
+        width: 3
+        height: 4
+      alignment: 9
+      pivot: {x: 0.6666667, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8843144d3d2a8ea4ebccd452b63d0cc8
+      internalID: -74796762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +339,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pieces of land_1: 318048859
+      Pieces of land_4: -1772291955
+      Pieces of land_3: 1868321669
+      Pieces of land_5: 509623243
+      Pieces of land_6: 1485975738
+      Pieces of land_2: -967553457
+      Pieces of land_0: -1555456793
+      Pieces of land_8: -74796762
+      Pieces of land_7: 867887212
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
