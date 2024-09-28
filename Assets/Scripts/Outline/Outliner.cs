@@ -1,10 +1,12 @@
 using System.IO;
+using CustomHelper;
 using UnityEditor;
 #if UNITY_EDITOR
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 #endif
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using Texture2D = UnityEngine.Texture2D;
 
 namespace Outline
@@ -12,6 +14,9 @@ namespace Outline
     public class Outliner
     {
         public static readonly Color OutlineColor = new(1, 1, 1, 1);
+        private static int _kernel;
+        private static int _threadGroupSize = 3;
+        private static ComputeShader _shader;
 #if UNITY_EDITOR
         [MenuItem("File/Regenerate outline", false, 3)]
         public static void Regenerate()
@@ -22,6 +27,9 @@ namespace Outline
                 Directory.Delete(newMainPath, true);
             var container = Resources.Load<OutlinesContainer>("OutlinesContainer");
             container.Reset();
+            _shader = Resources.Load<ComputeShader>("OutlineShader");
+            _kernel = _shader.FindKernel("cs_main");
+            //_shader.GetKernelThreadGroupSizes(_kernel, out _threadGroupSize, out _, out _);
             foreach (var path in Directory.EnumerateFiles(
                          mainPath,
                          "*.*",
@@ -74,25 +82,16 @@ namespace Outline
 
         private static Texture2D GenerateNewOutline(Texture2D original)
         {
-            var newTexture = new Texture2D(original.width, original.height, TextureFormat.RGBA32, false);
-            for (var x = 0; x < original.width; x++)
-            {
-                for (var y = 0; y < original.height; y++)
-                {
-                    var pixel = original.GetPixel(x, y);
-                    newTexture.SetPixel(x, y, new Color(0, 0, 0, 0));
-                    if (pixel.a != 0) continue;
-                    var r = CheckPosition(newTexture, x + 1, y) && original.GetPixel(x + 1, y).a != 0;
-                    var l = CheckPosition(newTexture, x - 1, y) && original.GetPixel(x - 1, y).a != 0;
-                    var u = CheckPosition(newTexture, x, y + 1) && original.GetPixel(x, y + 1).a != 0;
-                    var d = CheckPosition(newTexture, x, y - 1) && original.GetPixel(x, y - 1).a != 0;
-                    if (r || l || u || d)
-                        newTexture.SetPixel(x, y, OutlineColor);
-                }
-            }
-
-            newTexture.Apply(false);
-            return newTexture;
+            var newTexture = new RenderTexture(original.width, original.height, 16);
+            newTexture.enableRandomWrite = true;
+            _shader.SetTexture(_kernel, "original", original);
+            _shader.SetTexture(_kernel, "result", newTexture);
+            _shader.Dispatch(_kernel,
+                original.width,
+                original.height,
+                1
+            );
+            return newTexture.ToTexture2D();
         }
 #endif
         private static bool CheckPosition(Texture texture, int x, int y) =>
@@ -122,4 +121,19 @@ namespace Outline
         }
     }
 #endif
+}
+
+namespace CustomHelper
+{
+    public static partial class Helper
+    {
+        public static Texture2D ToTexture2D(this RenderTexture rTex)
+        {
+            var tex = new Texture2D(rTex.width, rTex.height);
+            RenderTexture.active = rTex;
+            tex.ReadPixels(new Rect(0, 0, rTex.width, rTex.height), 0, 0);
+            tex.Apply();
+            return tex;
+        }
+    }
 }

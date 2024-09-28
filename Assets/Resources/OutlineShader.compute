@@ -1,0 +1,16 @@
+#pragma kernel cs_main
+
+RWTexture2D<float4> result;
+Texture2D<float4> original;
+
+[numthreads(32,32,1)]
+void cs_main(uint3 id : SV_DispatchThreadID)
+{
+    result[id.xy] = original[id.xy].a == 0 &&
+    (
+        original[int2(id.x + 1, id.y)].a != 0 ||
+        original[int2(id.x - 1, id.y)].a != 0 ||
+        original[int2(id.x, id.y + 1)].a != 0 ||
+        original[int2(id.x, id.y - 1)].a != 0
+    );
+}
