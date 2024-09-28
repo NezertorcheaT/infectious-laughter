@@ -31,15 +31,15 @@ MonoBehaviour:
     Path: Outlines\Effects\Fire
   - Original: {fileID: 1709747466, guid: 7e627e184a404f14e85ad5e306f8c455, type: 3}
     Path: Outlines\Effects\Foliage of the Tree of Wisdom of the Universe
-  - Original: {fileID: 21300000, guid: 0b8b1209c05aa9d4990c5d213254099d, type: 3}
+  - Original: {fileID: 1233543527, guid: 0b8b1209c05aa9d4990c5d213254099d, type: 3}
     Path: Outlines\Effects\MC Blood
-  - Original: {fileID: 21300000, guid: 7cb88d64216d6ae4faded7eb1cb7826e, type: 3}
+  - Original: {fileID: -1010187072, guid: 7cb88d64216d6ae4faded7eb1cb7826e, type: 3}
     Path: Outlines\Effects\Mutants Blood
-  - Original: {fileID: 21300000, guid: 17480dfe56e6e58449ab39d2c0b2b88f, type: 3}
+  - Original: {fileID: 1884137765, guid: 17480dfe56e6e58449ab39d2c0b2b88f, type: 3}
     Path: Outlines\Effects\Mutants Flesh
-  - Original: {fileID: 21300000, guid: e559869dd1bbe2945b78ecb4f847ac7c, type: 3}
+  - Original: {fileID: -1555456793, guid: e559869dd1bbe2945b78ecb4f847ac7c, type: 3}
     Path: Outlines\Effects\Pieces of land
-  - Original: {fileID: 21300000, guid: f349e5382c5a8324e916aa1bebca170b, type: 3}
+  - Original: {fileID: -983427511, guid: f349e5382c5a8324e916aa1bebca170b, type: 3}
     Path: Outlines\Effects\Robot pieces
   - Original: {fileID: 21300000, guid: 6018c0a6f3c662446bc6dfdda534d77e, type: 3}
     Path: Outlines\Characters\Main character\Main character Spyglass
@@ -130,7 +130,7 @@ MonoBehaviour:
     Path: Outlines\Characters\Enemies\Soaring Eye\Soaring Eye
   - Original: {fileID: 21300000, guid: ae6694fac46d89946aa326b84f9b40e4, type: 3}
     Path: Outlines\Characters\Enemies\Spirit of the Past\Spirit of the Past
-  - Original: {fileID: 21300000, guid: e1aef160e6a6abb4eae169d7b32e8a08, type: 3}
+  - Original: {fileID: -205400808, guid: e1aef160e6a6abb4eae169d7b32e8a08, type: 3}
     Path: Outlines\Characters\Enemies\The eyes of the Master of Enlightenment\The
       eyes of the Master of Enlightenment
   - Original: {fileID: 21300000, guid: 8f2154d8df1ccf84cb16e354ac46379e, type: 3}
@@ -243,7 +243,7 @@ MonoBehaviour:
     Path: Outlines\Icons\Stuff\Spells\Fire trail
   - Original: {fileID: 21300000, guid: 60b63b7a12cad88479f753431531c839, type: 3}
     Path: Outlines\Icons\Stuff\Spells\Hover
-  - Original: {fileID: 21300000, guid: 473548d612ccb74448a783a08ca95108, type: 3}
+  - Original: {fileID: -298355822, guid: 473548d612ccb74448a783a08ca95108, type: 3}
     Path: Outlines\Icons\Stuff\Spells\Inventory
   - Original: {fileID: 21300000, guid: 607a99f7ea1371940a1690aa6a386c80, type: 3}
     Path: Outlines\Icons\Stuff\Spells\Invisibility
@@ -293,9 +293,9 @@ MonoBehaviour:
     Path: Outlines\Icons\UI\HUD\Inventory
   - Original: {fileID: -894496510, guid: dcafec6506ab2bc4aa50784a8ea721e8, type: 3}
     Path: Outlines\Icons\UI\HUD\SelectorWheel
-  - Original: {fileID: 21300000, guid: 4bb335d3173f245419579ea6e23a8856, type: 3}
+  - Original: {fileID: -49910374, guid: 4bb335d3173f245419579ea6e23a8856, type: 3}
     Path: Outlines\Icons\UI\HUD\Stealth
-  - Original: {fileID: 21300000, guid: 975b84cd3a687504989c80938aed59b8, type: 3}
+  - Original: {fileID: -433074514, guid: 975b84cd3a687504989c80938aed59b8, type: 3}
     Path: Outlines\Icons\UI\HUD\Trash Bag
   - Original: {fileID: 21300000, guid: d8451892259b2264b8a0109b299617b0, type: 3}
     Path: Outlines\Icons\UI\HUD\Trash Count
@@ -472,6 +472,18 @@ MonoBehaviour:
     Path: Outlines\Characters\Enemies\Flower Blade\Animations\idle
   - Original: {fileID: -2059779966, guid: e71a73d6046a6ee478b5d17c38f97796, type: 3}
     Path: Outlines\Characters\Enemies\Flower Blade\Animations\walk
+  - Original: {fileID: -1953519720, guid: 3ee6aa0004fb0d94d827cf6b5cdebea7, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\attack
+  - Original: {fileID: -782142220, guid: abda5211ace05754f96708416fac2242, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\dash
+  - Original: {fileID: -470238981, guid: 72ff8b52ce9ad7d40a3aadf1b0d1c465, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\idle
+  - Original: {fileID: -1142827656, guid: a18d17345e02f5c42bd171649ad54fb2, type: 3}
+    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\walk
+  - Original: {fileID: -1576905718, guid: de2adb9997e64b64bb3f2f04444af9f7, type: 3}
+    Path: Outlines\Characters\Enemies\Spirit of the Past\Animations\flight
+  - Original: {fileID: -1352351563, guid: 986325ca2e3ccae40833d11c1c744ae0, type: 3}
+    Path: Outlines\Characters\Enemies\Spirit of the Past\Animations\idle
   - Original: {fileID: 1145571540, guid: a58d48085ce94e14782fb8fd52129d03, type: 3}
     Path: Outlines\Characters\Enemies\Tree Parasite\Animations\idle
   - Original: {fileID: 334869074, guid: 46063950a13ca9643a1f7f67900fedfc, type: 3}
@@ -534,23 +546,11 @@ MonoBehaviour:
     Path: Outlines\Characters\Enemies\Blood Monster\Animations\General\idle
   - Original: {fileID: 639514373, guid: 40133e4736f39944d9423569d6d850fc, type: 3}
     Path: Outlines\Characters\Enemies\Blood Monster\Animations\General\walk
-  - Original: {fileID: -1953519720, guid: 3ee6aa0004fb0d94d827cf6b5cdebea7, type: 3}
-    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\General\attack
-  - Original: {fileID: -782142220, guid: abda5211ace05754f96708416fac2242, type: 3}
-    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\General\dash
-  - Original: {fileID: -470238981, guid: 72ff8b52ce9ad7d40a3aadf1b0d1c465, type: 3}
-    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\General\idle
-  - Original: {fileID: -1142827656, guid: a18d17345e02f5c42bd171649ad54fb2, type: 3}
-    Path: Outlines\Characters\Enemies\Forest Reaper\Animations\General\walk
   - Original: {fileID: 1608511214, guid: d881e44ef17ee1e41a19b712e0323103, type: 3}
     Path: Outlines\Characters\Enemies\Soaring Eye\Animations\General\attack
   - Original: {fileID: -1171161543, guid: 7f640509b61600047ba8b4847692048e, type: 3}
     Path: Outlines\Characters\Enemies\Soaring Eye\Animations\General\flight
   - Original: {fileID: 11439920, guid: 235b71b89ab9c794d8a1e8391784bcb2, type: 3}
     Path: Outlines\Characters\Enemies\Soaring Eye\Animations\General\idle
-  - Original: {fileID: -1576905718, guid: de2adb9997e64b64bb3f2f04444af9f7, type: 3}
-    Path: Outlines\Characters\Enemies\Spirit of the Past\Animations\General\flight
-  - Original: {fileID: -1352351563, guid: 986325ca2e3ccae40833d11c1c744ae0, type: 3}
-    Path: Outlines\Characters\Enemies\Spirit of the Past\Animations\General\idle
   - Original: {fileID: -1346282487, guid: 629ed49c1b45f3141bb5b1fa7d9f06d9, type: 3}
     Path: Outlines\Characters\NPC\Store Dweller\Animations\General\idle
