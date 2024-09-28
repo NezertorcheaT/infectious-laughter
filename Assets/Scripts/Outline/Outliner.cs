@@ -18,7 +18,7 @@ namespace Outline
         private static int _threadGroupSize = 3;
         private static ComputeShader _shader;
 #if UNITY_EDITOR
-        [MenuItem("File/Regenerate outline", false, 3)]
+        [MenuItem("File/Regenerate outlines", false, 3)]
         public static void Regenerate()
         {
             var mainPath = $"{Application.dataPath}/Drive".Replace('/', '\\');
@@ -29,7 +29,6 @@ namespace Outline
             container.Reset();
             _shader = Resources.Load<ComputeShader>("OutlineShader");
             _kernel = _shader.FindKernel("cs_main");
-            //_shader.GetKernelThreadGroupSizes(_kernel, out _threadGroupSize, out _, out _);
             foreach (var path in Directory.EnumerateFiles(
                          mainPath,
                          "*.*",

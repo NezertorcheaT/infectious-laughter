@@ -1,5 +1,5 @@
 using GameFlow;
-using Inventory.Garbage;
+using Shop.Garbage;
 using UnityEngine;
 using Zenject;
 

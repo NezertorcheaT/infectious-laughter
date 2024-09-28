@@ -15,9 +15,18 @@ namespace Outline
             public string Path;
         }
 
-        public Sprite this[Sprite i] =>
-            Outliner.GetOutlined(Cache.FirstOrDefault(t => t.Original.texture == i.texture).Path)
-                .FirstOrDefault(t => t.name == i.name);
+        public Sprite this[Sprite original] =>
+            Outliner.GetOutlined(Cache.FirstOrDefault(t => t.Original.texture == original.texture).Path)
+                .FirstOrDefault(t => t.name == original.name);
+
+        /// <summary>
+        /// превращает спрайт в обводку
+        /// </summary>
+        /// <param name="original">оригинал спрайта</param>
+        /// <returns>обводка без оригинала</returns>
+        public static Sprite ToOutline(Sprite original) =>
+            Outliner.GetOutlined(Instance.Cache.FirstOrDefault(t => t.Original.texture == original.texture).Path)
+                .FirstOrDefault(t => t.name == original.name);
 
         /// <summary>
         /// НЕ ПЫТАЙТЕСЬ обращаться к этому свойству, оно защищено магической силой, и выдаст ошибку если запущено из билда
@@ -26,7 +35,7 @@ namespace Outline
 #if UNITY_EDITOR
         public
 #endif
-        List<OutlineType> Cache
+            List<OutlineType> Cache
         {
             get;
 #if UNITY_EDITOR

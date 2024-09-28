@@ -2,7 +2,7 @@ using Outline;
 using UnityEngine;
 using Zenject;
 
-namespace Inventory.Garbage
+namespace Shop.Garbage
 {
     public class GarbageItem : MonoBehaviour
     {
@@ -30,7 +30,7 @@ namespace Inventory.Garbage
         private void Start()
         {
             _pointTargetUIForAnim = _pointTargetForGarbageAnimation.Target;
-            outlineRenderer.sprite = OutlinesContainer.Instance[originalRenderer.sprite];
+            outlineRenderer.sprite = OutlinesContainer.ToOutline(originalRenderer.sprite);
             outlineRenderer.enabled = false;
         }
 

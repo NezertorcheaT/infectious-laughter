@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Inventory.Garbage
+namespace Shop.Garbage
 {
     public class PointTargetForGarbageAnimation
     {
