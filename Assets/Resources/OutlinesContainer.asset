@@ -295,7 +295,7 @@ MonoBehaviour:
     Path: Outlines\Icons\UI\HUD\SelectorWheel
   - Original: {fileID: -49910374, guid: 4bb335d3173f245419579ea6e23a8856, type: 3}
     Path: Outlines\Icons\UI\HUD\Stealth
-  - Original: {fileID: -433074514, guid: 975b84cd3a687504989c80938aed59b8, type: 3}
+  - Original: {fileID: 21300000, guid: 975b84cd3a687504989c80938aed59b8, type: 3}
     Path: Outlines\Icons\UI\HUD\Trash Bag
   - Original: {fileID: 21300000, guid: d8451892259b2264b8a0109b299617b0, type: 3}
     Path: Outlines\Icons\UI\HUD\Trash Count
@@ -505,7 +505,7 @@ MonoBehaviour:
   - Original: {fileID: 1731904010, guid: 922968b20cdd8834095bbbbbb532205e, type: 3}
     Path: Outlines\Characters\Main character\Animations\General\Sleep
   - Original: {fileID: 1972877745, guid: 48a9baf36c61e4d46899eca8f7420080, type: 3}
-    Path: Outlines\Characters\Main character\Animations\Reflex Skills\leg attack
+    Path: Outlines\Characters\Main character\Animations\Reflex skills\leg attack
   - Original: {fileID: 862982644, guid: bbd52bfedd1fbfe439531640c986565f, type: 3}
     Path: Outlines\Characters\NPC\Eyeless Laughter\Animations\idle
   - Original: {fileID: 1320485228, guid: f0aefe50e53b7c245b6c472cb6414d58, type: 3}
