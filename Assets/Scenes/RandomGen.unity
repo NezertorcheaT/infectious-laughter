@@ -970,10 +970,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6201384605926234846, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
-      propertyPath: disappearanceSpeed
-      value: 0.005
-      objectReference: {fileID: 0}
     - target: {fileID: 7819289059998684453, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

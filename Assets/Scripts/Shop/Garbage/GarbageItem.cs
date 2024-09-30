@@ -51,6 +51,8 @@ namespace Shop.Garbage
                     Vector3.Slerp(transform.position, _pointTargetUIForAnim.position, i / animSpeed);
             }
 
+            await UniTask.WaitForFixedUpdate();
+
             Destroy(trail);
             Destroy(transform.parent.gameObject);
         }
