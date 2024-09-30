@@ -11,7 +11,7 @@ namespace Shop.Garbage
         [SerializeField] [Min(1)] private int level;
         [SerializeField] private GameObject keyCodeTablet;
         [SerializeField] private GameObject trailPrefab;
-        [SerializeField] [Min(1)] private float animSpeed = 1f;
+        [SerializeField] [Min(0)] private float animSpeed = 1f;
         [SerializeField] private SpriteRenderer originalRenderer;
         [SerializeField] private SpriteRenderer outlineRenderer;
 

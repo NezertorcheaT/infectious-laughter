@@ -1038,6 +1038,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   garbageText: {fileID: 9084249694911255485}
+  initialDelay: 0.48
+  updateDelay: 0.05
 --- !u!1 &9084249696687593105
 GameObject:
   m_ObjectHideFlags: 0
