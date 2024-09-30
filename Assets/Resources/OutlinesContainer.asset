@@ -295,7 +295,7 @@ MonoBehaviour:
     Path: Outlines\Icons\UI\HUD\SelectorWheel
   - Original: {fileID: -49910374, guid: 4bb335d3173f245419579ea6e23a8856, type: 3}
     Path: Outlines\Icons\UI\HUD\Stealth
-  - Original: {fileID: 21300000, guid: 975b84cd3a687504989c80938aed59b8, type: 3}
+  - Original: {fileID: -2071680084, guid: 975b84cd3a687504989c80938aed59b8, type: 3}
     Path: Outlines\Icons\UI\HUD\Trash Bag
   - Original: {fileID: 21300000, guid: d8451892259b2264b8a0109b299617b0, type: 3}
     Path: Outlines\Icons\UI\HUD\Trash Count
