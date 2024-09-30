@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Outline;
 using UnityEngine;
 using Zenject;
@@ -8,8 +10,8 @@ namespace Shop.Garbage
     {
         [SerializeField] [Min(1)] private int level;
         [SerializeField] private GameObject keyCodeTablet;
+        [SerializeField] private GameObject trailPrefab;
         [SerializeField] [Min(1)] private float animSpeed = 1f;
-        [SerializeField] private float lifeTime = 2.5f;
         [SerializeField] private SpriteRenderer originalRenderer;
         [SerializeField] private SpriteRenderer outlineRenderer;
 
@@ -23,8 +25,10 @@ namespace Shop.Garbage
         public void Suicide()
         {
             gameObject.GetComponent<Collider2D>().enabled = false;
-            StartAnim();
             keyCodeTablet.SetActive(false);
+            originalRenderer.enabled = false;
+            outlineRenderer.enabled = false;
+            StartAnim();
         }
 
         private void Start()
@@ -34,22 +38,21 @@ namespace Shop.Garbage
             outlineRenderer.enabled = false;
         }
 
-        private void StartAnim()
+        private async Task StartAnim()
         {
+            if (_iamPicked) return;
             _iamPicked = true;
-            Destroy(gameObject, lifeTime);
-        }
 
-        private void Update()
-        {
-            if (!_iamPicked) return;
-            gameObject.transform.position =
-                Vector2.Lerp(
-                    gameObject.transform.position,
-                    _pointTargetUIForAnim.position,
-                    animSpeed * Time.deltaTime /
-                    Vector2.Distance(gameObject.transform.position, _pointTargetUIForAnim.position)
-                );
+            var trail = Instantiate(trailPrefab, transform.position, Quaternion.identity, null);
+            for (var i = 0f; i < animSpeed; i += Time.fixedDeltaTime)
+            {
+                await UniTask.WaitForFixedUpdate();
+                trail.transform.position =
+                    Vector3.Slerp(transform.position, _pointTargetUIForAnim.position, i / animSpeed);
+            }
+
+            Destroy(trail);
+            Destroy(transform.parent.gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D other)

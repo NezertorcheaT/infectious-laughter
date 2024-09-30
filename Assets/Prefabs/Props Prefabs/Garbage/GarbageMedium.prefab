@@ -126,8 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 5
   keyCodeTablet: {fileID: 1978456977873000200}
-  animSpeed: 8
-  lifeTime: 2.5
+  trailPrefab: {fileID: 7842872203035624696, guid: 9b10661b5d80e6a4fba6a29154258d75, type: 3}
+  animSpeed: 1
   originalRenderer: {fileID: 9215372457135054844}
   outlineRenderer: {fileID: 530144901253040509}
 --- !u!1 &1915039935906369916
