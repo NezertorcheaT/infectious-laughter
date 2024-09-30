@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Threading;
+using CustomHelper;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -15,6 +17,7 @@ namespace UI
         [Inject] private PlayerInstallation _player;
         [Inject] private Controls _actions;
         private Vector3 _chachedHudPosition;
+        private Vector3 _newHudPosition;
         private bool _disappearanceNow = false;
         private float _timer;
 
@@ -66,6 +69,7 @@ namespace UI
         private void Start()
         {
             _chachedHudPosition = disappearingHUD.position;
+            _newHudPosition = _chachedHudPosition + offsetHUD.ToVector3();
         }
 
         private void Disappearance()
@@ -81,36 +85,22 @@ namespace UI
         private IEnumerator DisappearanceCycle()
         {
             _disappearanceNow = true;
-            while (true)
+            for (var i = 0f; i < disappearanceSpeed; i += Time.fixedDeltaTime)
             {
                 if (!_disappearanceNow) yield break;
-                if (offsetHUD.x != 0)
-                    if (disappearingHUD.position.x > _chachedHudPosition.x + offsetHUD.x - 1)
-                        yield break;
-                if (offsetHUD.y != 0)
-                    if (disappearingHUD.position.y > _chachedHudPosition.y + offsetHUD.y - 1)
-                        yield break;
-                disappearingHUD.position = Vector3.Lerp(disappearingHUD.position,
-                    _chachedHudPosition + new Vector3(offsetHUD.x, offsetHUD.y, 0), disappearanceSpeed);
-                yield return null;
+                yield return new WaitForFixedUpdate();
+                disappearingHUD.position = Vector3.Lerp(_chachedHudPosition, _newHudPosition, i / disappearanceSpeed);
             }
         }
 
         private IEnumerator UnDisappearanceCycle()
         {
             _disappearanceNow = false;
-            while (true)
+            for (var i = 0f; i < disappearanceSpeed; i += Time.fixedDeltaTime)
             {
                 if (_disappearanceNow) yield break;
-                if (offsetHUD.x != 0)
-                    if (disappearingHUD.position.x < _chachedHudPosition.x + offsetHUD.x - 1)
-                        yield break;
-                if (offsetHUD.y != 0)
-                    if (disappearingHUD.position.y < _chachedHudPosition.y + 1)
-                        yield break;
-                disappearingHUD.position =
-                    Vector3.Lerp(disappearingHUD.position, _chachedHudPosition, disappearanceSpeed);
-                yield return null;
+                yield return new WaitForFixedUpdate();
+                disappearingHUD.position = Vector3.Lerp(_newHudPosition, _chachedHudPosition, i / disappearanceSpeed);
             }
         }
     }

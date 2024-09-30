@@ -895,7 +895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bce81ed193a564fbaacba99c2b5fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearanceSpeed: 0.01
+  disappearanceSpeed: 0.3
   timeToDisappearance: 8
   offsetHUD: {x: 0, y: 300}
   disappearingHUD: {fileID: 913287774755791840}
