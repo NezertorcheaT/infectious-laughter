@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Entity.Abilities.DowningHelper;
 using UnityEngine;
 
 namespace Entity.Abilities
@@ -46,8 +47,21 @@ namespace Entity.Abilities
 
         private async void WaitDowningDelay(float seconds)
         {
-            await Task.Delay((int) (seconds * 1000f));
+            await Task.Delay((int)(seconds * 1000f));
             _isDowning = true;
+        }
+    }
+
+    namespace DowningHelper
+    {
+        public static class DowningExtensions
+        {
+            public static int GetTrajectory(this CollideCheck collideCheck, float inputVelocity) =>
+                collideCheck.IsTouchingLeft && inputVelocity < 0
+                    ? -1
+                    : collideCheck.IsTouchingRight && inputVelocity > 0
+                        ? 1
+                        : 0;
         }
     }
 }

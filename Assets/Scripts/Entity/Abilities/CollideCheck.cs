@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CustomHelper;
 using UnityEngine;
 
 namespace Entity.Abilities
@@ -8,30 +9,93 @@ namespace Entity.Abilities
     public class CollideCheck : Ability
     {
         [SerializeField] private int maxSlopeAngle;
+        [SerializeField] private LayerMask groundLayer;
+        [SerializeField, Min(0.01f)] private float groundDistance = 0.1f;
+        [SerializeField] Collider2D collider;
+        private float _colliderOffset = 0;
 
-        public bool IsTouchingGround { get; private set; }
-        public bool IsTouchingTop { get; private set; }
-        public bool IsTouchingRight { get; private set; }
-        public bool IsTouchingLeft { get; private set; }
+        public bool IsTouchingGround
+        {
+            get
+            {
+                collider ??= GetComponent<Collider2D>();
+                var checkSize = new Vector3(collider.bounds.size.x - 2f * _colliderOffset, groundDistance);
+                var size = transform.lossyScale;
+                var checkPosition =
+                    transform.position +
+                    new Vector3(0, -collider.bounds.size.y / 2f) +
+                    (Vector3)collider.offset.Multiply(size) -
+                    new Vector3(0, groundDistance / 2f / size.y + _colliderOffset);
+
+                return Overlap(checkPosition, checkSize);
+            }
+        }
+
+        public bool IsTouchingTop
+        {
+            get
+            {
+                collider ??= GetComponent<Collider2D>();
+                var checkSize = new Vector3(collider.bounds.size.x - 2f * _colliderOffset, groundDistance);
+                var size = transform.lossyScale;
+                var checkPosition =
+                    transform.position +
+                    new Vector3(0, collider.bounds.size.y / 2f) +
+                    (Vector3)collider.offset.Multiply(size) +
+                    new Vector3(0, groundDistance / 2f / size.y + _colliderOffset);
+
+                return Overlap(checkPosition, checkSize);
+            }
+        }
+
+        public bool IsTouchingRight
+        {
+            get
+            {
+                collider ??= GetComponent<Collider2D>();
+                var checkSize = new Vector3(groundDistance, collider.bounds.size.y - 2f * _colliderOffset);
+                var size = transform.lossyScale;
+                var checkPosition =
+                    transform.position +
+                    new Vector3(collider.bounds.size.x / 2f, 0) +
+                    (Vector3)collider.offset.Multiply(size) +
+                    new Vector3(groundDistance / 2f / size.x + _colliderOffset, 0);
+
+                return Overlap(checkPosition, checkSize);
+            }
+        }
+
+        public bool IsTouchingLeft
+        {
+            get
+            {
+                collider ??= GetComponent<Collider2D>();
+                var checkSize = new Vector3(groundDistance, collider.bounds.size.y - 2f * _colliderOffset);
+                var size = transform.lossyScale;
+                var checkPosition =
+                    transform.position -
+                    new Vector3(collider.bounds.size.x / 2f, 0) +
+                    (Vector3)collider.offset.Multiply(size) -
+                    new Vector3(groundDistance / 2f / size.x + _colliderOffset, 0);
+
+                return Overlap(checkPosition, checkSize);
+            }
+        }
+
         public bool IsOnWall => IsTouchingLeft || IsTouchingRight;
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private bool Overlap(Vector2 position, Vector2 size)
         {
-            IsTouchingGround = IsTouchingGround != IsTouching(collision.contacts, Vector2.up);
-            IsTouchingTop = IsTouchingTop != IsTouching(collision.contacts, Vector2.down);
-            IsTouchingRight = IsTouchingRight != IsTouching(collision.contacts, Vector2.left);
-            IsTouchingLeft = IsTouchingLeft != IsTouching(collision.contacts, Vector2.right);
+            Helper.DrawBox(position, size);
+            return Physics2D.OverlapBoxAll(
+                    position,
+                    size,
+                    0,
+                    groundLayer.value)
+                .Length > 0;
         }
 
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            IsTouchingGround = IsTouching(collision.contacts, Vector2.up);
-            IsTouchingTop = IsTouching(collision.contacts, Vector2.down);
-            IsTouchingRight = IsTouching(collision.contacts, Vector2.left);
-            IsTouchingLeft = IsTouching(collision.contacts, Vector2.right);
-        }
-
-        private bool IsTouching(IEnumerable<ContactPoint2D> points, Vector2 direction)
+        public bool IsTouching(IEnumerable<ContactPoint2D> points, Vector2 direction)
         {
             foreach (var contact in points)
             {
@@ -41,12 +105,5 @@ namespace Entity.Abilities
 
             return false;
         }
-
-        public int GetTrajectory(float inputVelocity) =>
-            IsTouchingLeft && inputVelocity < 0
-                ? -1
-                : IsTouchingRight && inputVelocity > 0
-                    ? 1
-                    : 0;
     }
 }

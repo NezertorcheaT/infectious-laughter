@@ -305,6 +305,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlopeAngle: 80
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  groundDistance: 0.1
+  collider: {fileID: 5985750125537860192}
+  <IsTouchingRight>k__BackingField: 0
+  <IsTouchingLeft>k__BackingField: 0
 --- !u!114 &5985750125537860183
 MonoBehaviour:
   m_ObjectHideFlags: 0

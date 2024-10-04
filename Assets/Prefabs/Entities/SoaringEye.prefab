@@ -188,6 +188,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlopeAngle: 80
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  groundDistance: 0.1
+  collider: {fileID: 7416127046778914540}
+  <IsTouchingRight>k__BackingField: 0
+  <IsTouchingLeft>k__BackingField: 0
 --- !u!114 &7416127046778914523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,8 +267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideBox: 1
-  scale: {x: 1, y: 1.5}
   offset: {x: 0, y: 0.1}
+  scale: {x: 1, y: 1.5}
 --- !u!61 &7416127046778914540
 BoxCollider2D:
   m_ObjectHideFlags: 0

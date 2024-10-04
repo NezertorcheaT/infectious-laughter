@@ -28,16 +28,11 @@ namespace Entity.Abilities
         ]
         private float whenMax = 0.5f;
 
-        [Space(10.0f), SerializeField, Min(0.01f)]
-        private float groundDistance = 0.1f;
-
-        [SerializeField] private LayerMask groundLayer;
         [Space(10.0f), SerializeField, Min(1)] private int jumpsCount = 1;
 
         private int curJumpsCount;
 
         private Rigidbody2D _rb;
-        private Collider2D _col;
         private CollideCheck _collideCheck;
 
         public float CurrentJumpTime { get; private set; }
@@ -47,7 +42,6 @@ namespace Entity.Abilities
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _col = GetComponent<Collider2D>();
             _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
 
             curJumpsCount = jumpsCount;
@@ -150,54 +144,6 @@ namespace Entity.Abilities
             _rb.gravityScale = 1f;
             _jumping = false;
         }
-
-        private static bool CheckGround(
-            Vector3 worldPosition,
-            Vector2 size,
-            Collider2D collider,
-            LayerMask groundLayer,
-            float groundDistance,
-            float colliderOffset = 0.1f)
-        {
-            var checkSize = new Vector3(collider.bounds.size.x - 2f * colliderOffset, groundDistance);
-            var checkPosition =
-                worldPosition +
-                new Vector3(0, -collider.bounds.size.y / 2f) +
-                (Vector3) collider.offset.Multiply(size) -
-                new Vector3(0, groundDistance / 2f / size.y + colliderOffset);
-
-            Helper.DrawBox(checkPosition, checkSize);
-            return Physics2D.OverlapBoxAll(
-                    checkPosition,
-                    checkSize,
-                    0,
-                    groundLayer)
-                .Length > 0;
-        }
-
-        private static bool CheckTop(
-            Vector3 worldPosition,
-            Vector2 size,
-            Collider2D collider,
-            LayerMask groundLayer,
-            float groundDistance,
-            float colliderOffset = 0.1f)
-        {
-            var checkSize = new Vector3(collider.bounds.size.x - 2f * colliderOffset, groundDistance);
-            var checkPosition =
-                worldPosition +
-                new Vector3(0, collider.bounds.size.y / 2f) +
-                (Vector3) collider.offset.Multiply(size) +
-                new Vector3(0, groundDistance / 2f / size.y + colliderOffset);
-
-            Helper.DrawBox(checkPosition, checkSize);
-            return Physics2D.OverlapBoxAll(
-                    checkPosition,
-                    checkSize,
-                    0,
-                    groundLayer)
-                .Length > 0;
-        }
     }
 }
 
@@ -208,7 +154,10 @@ namespace CustomHelper
         public static Vector2 Multiply(this Vector2 a, Vector2 b) => new Vector2(a.x * b.x, a.y * b.y);
         public static Vector3 Multiply(this Vector3 a, Vector3 b) => new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
         public static Vector2 Multiply(this Vector2 a, float bx, float by) => new Vector2(a.x * bx, a.y * by);
-        public static Vector3 Multiply(this Vector3 a, float bx, float by, float bz) => new Vector3(a.x * bx, a.y * by, a.z * bz);
+
+        public static Vector3 Multiply(this Vector3 a, float bx, float by, float bz) =>
+            new Vector3(a.x * bx, a.y * by, a.z * bz);
+
         public static Vector2 Divide(this Vector2 a, Vector2 b) => new Vector2(a.x / b.x, a.y / b.y);
         public static Vector3 Divide(this Vector3 a, Vector3 b) => new Vector3(a.x / b.x, a.y / b.y, a.z / b.z);
 
