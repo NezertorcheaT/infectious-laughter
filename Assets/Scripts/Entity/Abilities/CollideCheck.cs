@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using CustomHelper;
 using UnityEngine;
 
@@ -92,7 +93,7 @@ namespace Entity.Abilities
                     size,
                     0,
                     groundLayer.value)
-                .Length > 0;
+                .Count(i => !i.isTrigger && !i.usedByEffector) > 0;
         }
 
         public bool IsTouching(IEnumerable<ContactPoint2D> points, Vector2 direction)
