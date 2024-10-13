@@ -24,6 +24,11 @@ namespace UI
         private void OnEnable()
         {
             if (_player.Inventory is null) return;
+            _actions.Gameplay.Dash.performed += TimerToZero;
+            _actions.Gameplay.AltClick.performed += TimerToZero;
+            _actions.Gameplay.Move.performed += TimerToZero;
+            _actions.Gameplay.Jump.performed += TimerToZero;
+            _actions.Gameplay.Run.performed += TimerToZero;
             _actions.Gameplay.PickGarbage.performed += TimerToZero;
             _actions.Gameplay.MouseWheel.performed += TimerToZero;
             _actions.Gameplay.Inv_selectSlot1.performed += TimerToZero;
@@ -37,6 +42,12 @@ namespace UI
         private void OnDisable()
         {
             if (_player.Inventory is null) return;
+            _actions.Gameplay.Dash.performed -= TimerToZero;
+            _actions.Gameplay.AltClick.performed -= TimerToZero;
+            _actions.Gameplay.Move.performed -= TimerToZero;
+            _actions.Gameplay.Jump.performed -= TimerToZero;
+            _actions.Gameplay.Run.performed -= TimerToZero;
+            _actions.Gameplay.PickItem.performed -= TimerToZero;
             _actions.Gameplay.PickGarbage.performed -= TimerToZero;
             _actions.Gameplay.MouseWheel.performed -= TimerToZero;
             _actions.Gameplay.Inv_selectSlot1.performed -= TimerToZero;
