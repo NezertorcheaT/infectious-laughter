@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using GameFlow;
 using Installers;
 using Inventory;
 using Inventory.Input;
@@ -19,24 +20,22 @@ namespace Shop
 
         [SerializeField] private Image background;
         [SerializeField] private GameObject backPanel;
+        [SerializeField] private PopUp openPanel;
         [Inject] private PlayerInstallation _playerInstallation;
         [Inject] private GarbageManager _garbageManager;
         [Inject] private Controls _controls;
         private PlayerInventoryInput _playerInventoryInput;
-        private InputAction _shopClosingAction;
-        private bool _isShopClosed { get; set; }
+        private bool _isShopClosed;
 
         private void Start()
         {
             _playerInventoryInput = _playerInstallation.Entity.FindAbilityByType<PlayerInventoryInput>();
-            _shopClosingAction = _controls.FindAction("CloseShop");
-            backPanel.SetActive(false);
+            backPanel?.SetActive(false);
         }
 
-        private void Update()
-        {
-              if ((!_isShopClosed) && _shopClosingAction.WasPerformedThisFrame()) CloseShop();
-        }
+        private void OnEnable() => _controls.Gameplay.CloseShop.performed += KeyCloseShop;
+        private void OnDisable() => _controls.Gameplay.CloseShop.performed -= KeyCloseShop;
+        private void KeyCloseShop(InputAction.CallbackContext callbackContext) => CloseShop();
 
         public async void CloseShop()
         {
@@ -49,14 +48,15 @@ namespace Shop
 
             await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
             background.enabled = false;
+            backPanel?.SetActive(false);
+            openPanel.enabled = true;
             _isShopClosed = true;
-            backPanel.SetActive(false);
         }
 
-        public async void OpenShop()
+        public void OpenShop()
         {
+            _isShopClosed = false;
             backPanel.SetActive(true);
-            await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
             background.enabled = true;
 
             foreach (var frame in itemFrames)
@@ -64,7 +64,6 @@ namespace Shop
                 frame.gameObject.SetActive(true);
                 frame.Animate();
             }
-            _isShopClosed = false;
         }
 
         public void SetShopwindow(IInventory shopInventory)
