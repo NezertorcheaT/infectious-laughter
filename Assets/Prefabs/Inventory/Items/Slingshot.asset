@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Slingshot
   m_EditorClassIdentifier: 
   rockSpawnerPrefab: {fileID: 3045253309047710279, guid: 33c59eb64eec71f44aa4f8142b9a5907, type: 3}
-  sprite: {fileID: 21300000, guid: edf485d1b5bb7914693ff887e5359520, type: 3}
+  sprite: {fileID: 645480808, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+  spriteForShop: {fileID: 21300000, guid: edf485d1b5bb7914693ff887e5359520, type: 3}
   <ItemCost>k__BackingField: 25
   <MaxStackSize>k__BackingField: 1
   useCount: 10

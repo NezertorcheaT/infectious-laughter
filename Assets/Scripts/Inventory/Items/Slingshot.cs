@@ -1,21 +1,22 @@
 using AnimationControllers;
 using PropsImpact;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Slingshot", menuName = "Inventory/Items/Slingshot", order = 0)]
-    public class Slingshot : ScriptableObject, IUsableItem, ICanSpawn
+    public class Slingshot : ScriptableObject, IUsableItem, ICanSpawn, IShopItem
     {
         public string Name => "Slingshot";
         public string Id => "il.slingshot";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
         public ItemAdderVerifier Verifier { get; set; }
 
         [SerializeField] private GameObject rockSpawnerPrefab;
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 1;
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
 
