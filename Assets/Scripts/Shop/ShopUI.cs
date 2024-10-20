@@ -56,8 +56,8 @@ namespace Shop
                 var frame = itemFrames[i];
                 i++;
 
-                frame.Item.sprite = slot.LastItem.Sprite;
-                frame.Text.SetText($"{slot.LastItem.Name}\nЗа {slot.LastItem.ItemCost} мусора");
+                frame.Item.sprite = slot.ShopItem.SpriteForShop;
+                frame.Text.SetText($"{slot.LastItem.Name}\nЗа {slot.ShopItem.ItemCost} мусора");
                 frame.Button.onClick.AddListener(() => OnButtonClick(frame, slot));
             }
         }
@@ -65,10 +65,10 @@ namespace Shop
         private void OnButtonClick(ShopItemFrame frame, ISlot slot)
         {
             //Реализация покупки предмета
-            if (!_garbageManager.IfCanAfford(slot.LastItem.ItemCost) || slot.IsEmpty) return;
+            if (!_garbageManager.IfCanAfford(slot.ShopItem.ItemCost) || slot.IsEmpty) return;
             if (!_playerInventoryInput.HasSpace(slot.LastItem)) return;
 
-            _garbageManager.GarbageBalance -= slot.LastItem.ItemCost;
+            _garbageManager.GarbageBalance -= slot.ShopItem.ItemCost;
             slot.Count = 0;
 
             _playerInventoryInput.AddItem(slot.LastItem.SelfRef);

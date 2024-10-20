@@ -3,14 +3,16 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Umbrella", menuName = "Inventory/Items/Umbrella", order = 0)]
-    public class Umbrella : ScriptableObject, IItem, IUsableItem
+    public class Umbrella : ScriptableObject, IItem, IUsableItem, IShopItem
     {
         public string Name => "Umbrella";
         public string Id => "il.umbrella";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
 
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 1;
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
 

@@ -3,14 +3,16 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Fruit Of Upward Striving", menuName = "Inventory/Items/Fruit Of Upward Striving", order = 0)]
-    public class FruitOfUpwardStriving : ScriptableObject, IUsableItem
+    public class FruitOfUpwardStriving : ScriptableObject, IUsableItem, IShopItem
     {
         public string Name => "Fruit Of Upward Striving";
         public string Id => "il.fruit_of_upward_striving";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
 
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 1;
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
 

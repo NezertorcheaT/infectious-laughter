@@ -6,16 +6,18 @@ using UnityEngine.Windows;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New JawGrip", menuName = "Inventory/Items/JawGrip", order = 0)]
-    public class JawGrip : ScriptableObject, IUsableItem
+    public class JawGrip : ScriptableObject, IUsableItem, IShopItem
     {
         public string Name => "JawGrip";
         public string Id => "il.jaw_grip";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
         public int ItemCost => itemCost;
 
         [SerializeField, Min(1)] private int itemCost;
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [SerializeField] private float timerUseMax = 15f;
         [SerializeField] private int radius = 15;
 

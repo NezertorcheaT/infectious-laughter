@@ -3,17 +3,19 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Attracktor", menuName = "Inventory/Items/Attracktor", order = 0)]
-    public class Attracktor : ScriptableObject, IUsableItem
+    public class Attracktor : ScriptableObject, IUsableItem, IShopItem
     {
         public string Name => "Attracktor";
         public string Id => "il.attracktor";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
         public int ItemCost => itemCost;
 
         [SerializeField] private float explosionRadius;
         [SerializeField] private int explosionForce;
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [SerializeField, Min(1)] private int itemCost;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 

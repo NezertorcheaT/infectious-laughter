@@ -6,15 +6,17 @@ using UnityEngine.Serialization;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Analysing Drone", menuName = "Inventory/Items/Analysing Drone", order = 0)]
-    public class AnalysingDrone : ScriptableObject, IUsableItem
+    public class AnalysingDrone : ScriptableObject, IUsableItem, IShopItem
     {
         public string Name => "Analysing Drone";
         public string Id => "il.analysing_drone";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
         public int ItemCost => itemCost;
 
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [SerializeField] private float timerUseMax = 10f;
         [SerializeField, Min(1)] private int itemCost;
 

@@ -45,7 +45,16 @@ namespace Inventory
                     $"Item Provider не смог найти предмет по айди {id}, попробуйте ресетнуть провайдер из редактора, перед тем как тестировать новые предметы");
             return a as IItem;
         }
-
+        
+        public IShopItem IdToShopItem(string id)
+        {
+            if (id == string.Empty || id == " " || id is null) return null;
+            var a = _items.Find(i => (i as IShopItem)?.Id == id);
+            if (a is null)
+                Debug.LogError(
+                    $"Item Provider не смог найти предмет по айди {id}, попробуйте ресетнуть провайдер из редактора, перед тем как тестировать новые предметы");
+            return a as IShopItem;
+        }
         public void Initialize()
         {
             Instance = this;
