@@ -16,10 +16,6 @@
         IItem LastItem { get; set; }
 
         /// <summary>
-        /// версия из магазина
-        /// </summary>
-        IShopItem ShopItem { get; }
-        /// <summary>
         /// пуст ли слот
         /// </summary>
         bool IsEmpty { get; }

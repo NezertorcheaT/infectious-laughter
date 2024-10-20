@@ -19,10 +19,10 @@ namespace Inventory
             Instance = this;
 #if UNITY_EDITOR
             foreach (var type in
-                TypeCache.GetTypesDerivedFrom<IItem>()
-                    .Concat(TypeCache.GetTypesDerivedFrom<IUsableItem>())
-                    .Concat(TypeCache.GetTypesDerivedFrom<ICanSpawn>())
-            )
+                     TypeCache.GetTypesDerivedFrom<IItem>()
+                         .Concat(TypeCache.GetTypesDerivedFrom<IUsableItem>())
+                         .Concat(TypeCache.GetTypesDerivedFrom<ICanSpawn>())
+                    )
             {
                 if (type.IsInterface) continue;
                 var asset = AssetDatabase.FindAssets($"t:{type.Name}").FirstOrDefault();
@@ -45,16 +45,7 @@ namespace Inventory
                     $"Item Provider не смог найти предмет по айди {id}, попробуйте ресетнуть провайдер из редактора, перед тем как тестировать новые предметы");
             return a as IItem;
         }
-        
-        public IShopItem IdToShopItem(string id)
-        {
-            if (id == string.Empty || id == " " || id is null) return null;
-            var a = _items.Find(i => (i as IShopItem)?.Id == id);
-            if (a is null)
-                Debug.LogError(
-                    $"Item Provider не смог найти предмет по айди {id}, попробуйте ресетнуть провайдер из редактора, перед тем как тестировать новые предметы");
-            return a as IShopItem;
-        }
+
         public void Initialize()
         {
             Instance = this;

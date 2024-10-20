@@ -11,6 +11,7 @@ namespace Inventory
         /// как предмет выглядит в магазине
         /// </summary>
         Sprite SpriteForShop { get; }
+
         /// <summary>
         /// цена предмета
         /// </summary>

@@ -12,7 +12,10 @@ namespace Shop
     public class ShopUI : MonoBehaviour
     {
         [SerializeField] private ShopItemFrame[] itemFrames;
-        [SerializeField, Min(0), Tooltip("в секундах")] private float frameShowDelay;
+
+        [SerializeField, Min(0), Tooltip("в секундах")]
+        private float frameShowDelay;
+
         [SerializeField] private Image background;
         [Inject] private PlayerInstallation _playerInstallation;
         [Inject] private GarbageManager _garbageManager;
@@ -55,9 +58,11 @@ namespace Shop
             {
                 var frame = itemFrames[i];
                 i++;
+                if (slot.LastItem is not IShopItem shopItem)
+                    continue;
 
-                frame.Item.sprite = slot.ShopItem.SpriteForShop;
-                frame.Text.SetText($"{slot.LastItem.Name}\nЗа {slot.ShopItem.ItemCost} мусора");
+                frame.Item.sprite = shopItem.SpriteForShop;
+                frame.Text.SetText($"{shopItem.Name}\nЗа {shopItem.ItemCost} мусора");
                 frame.Button.onClick.AddListener(() => OnButtonClick(frame, slot));
             }
         }
@@ -65,15 +70,16 @@ namespace Shop
         private void OnButtonClick(ShopItemFrame frame, ISlot slot)
         {
             //Реализация покупки предмета
-            if (!_garbageManager.IfCanAfford(slot.ShopItem.ItemCost) || slot.IsEmpty) return;
-            if (!_playerInventoryInput.HasSpace(slot.LastItem)) return;
+            if (slot.LastItem is not IShopItem shopItem) return;
+            if (!_garbageManager.IfCanAfford(shopItem.ItemCost) || slot.IsEmpty) return;
+            if (!_playerInventoryInput.HasSpace(shopItem)) return;
 
-            _garbageManager.GarbageBalance -= slot.ShopItem.ItemCost;
+            _garbageManager.GarbageBalance -= shopItem.ItemCost;
             slot.Count = 0;
 
-            _playerInventoryInput.AddItem(slot.LastItem.SelfRef);
+            _playerInventoryInput.AddItem(shopItem.SelfRef);
 
-            frame.Text.SetText($"{slot.LastItem.Name}\nПродано");
+            frame.Text.SetText($"{shopItem.Name}\nПродано");
         }
     }
 }

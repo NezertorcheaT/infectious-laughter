@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Fruit Of Upward Striving", menuName = "Inventory/Items/Fruit Of Upward Striving", order = 0)]
-    public class FruitOfUpwardStriving : ScriptableObject, IUsableItem, IShopItem
+    public class FruitOfUpwardStriving : ScriptableObject, IUsableItem
     {
         public string Name => "Fruit Of Upward Striving";
         public string Id => "il.fruit_of_upward_striving";

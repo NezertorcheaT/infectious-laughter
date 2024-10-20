@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCost: 10
   sprite: {fileID: 861095282, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+  spriteForShop: {fileID: 21300000, guid: 8162915e8e63bb1498ee03f56397329d, type: 3}
   <MaxStackSize>k__BackingField: 1

@@ -23,11 +23,6 @@ namespace Inventory
             set => lastItemId = value is null ? string.Empty: value.Id;
         }
 
-        public IShopItem ShopItem
-        {
-            get => ItemsProvider.Instance.IdToShopItem(lastItemId);
-        }
-
         public void Use(Entity.Entity entity, IInventory inventory)
         {
             if (!(LastItem is IUsableItem usableItem)) return;

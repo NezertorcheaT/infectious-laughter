@@ -31,7 +31,13 @@ namespace Shop
 
             for (var i = 0; i <= itemsCountToGenerate; i++)
             {
-                _inventory.TryAddItem(_items[Random.Range(0, _items.Length)], false);
+                if (_items[Random.Range(0, _items.Length)] is not IShopItem item)
+                {
+                    i--;
+                    continue;
+                }
+
+                _inventory.TryAddItem(item, false);
             }
 
             shopUi.SetShopwindow(_inventory);
