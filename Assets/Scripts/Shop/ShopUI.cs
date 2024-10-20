@@ -43,7 +43,6 @@ namespace Shop
 
             foreach (var frame in itemFrames)
             {
-                await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
                 frame.gameObject.SetActive(true);
                 frame.Animate();
             }
