@@ -25,7 +25,7 @@ namespace Shop
         [Inject] private GarbageManager _garbageManager;
         [Inject] private Controls _controls;
         private PlayerInventoryInput _playerInventoryInput;
-        private bool _isShopClosed;
+        private bool _isShopClosed = true;
 
         private void Start()
         {
@@ -39,6 +39,7 @@ namespace Shop
 
         public async void CloseShop()
         {
+            if (_isShopClosed) return;
             foreach (var frame in itemFrames)
             {
                 await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
@@ -55,6 +56,7 @@ namespace Shop
 
         public void OpenShop()
         {
+            if (!_isShopClosed) return;
             _isShopClosed = false;
             backPanel.SetActive(true);
             background.enabled = true;
