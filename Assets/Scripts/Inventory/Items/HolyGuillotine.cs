@@ -4,12 +4,13 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Holy Guillotine", menuName = "Inventory/Items/Holy Guillotine", order = 0)]
-    public class HolyGuillotine : ScriptableObject, IUsableItem, ICanSpawn
+    public class HolyGuillotine : ScriptableObject, IUsableItem, ICanSpawn, IShopItem
     {
         public string Name => "Holy Guillotine";
         public string Id => "il.holy_guillotine";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
         public ItemAdderVerifier Verifier { get; set; }
         public int ItemCost => itemCost;
 
@@ -19,6 +20,7 @@ namespace Inventory.Items
         [SerializeField] private float radius;
         [SerializeField] private GameObject worldGuillotinePrefab;
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)

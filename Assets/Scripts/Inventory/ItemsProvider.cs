@@ -19,10 +19,10 @@ namespace Inventory
             Instance = this;
 #if UNITY_EDITOR
             foreach (var type in
-                TypeCache.GetTypesDerivedFrom<IItem>()
-                    .Concat(TypeCache.GetTypesDerivedFrom<IUsableItem>())
-                    .Concat(TypeCache.GetTypesDerivedFrom<ICanSpawn>())
-            )
+                     TypeCache.GetTypesDerivedFrom<IItem>()
+                         .Concat(TypeCache.GetTypesDerivedFrom<IUsableItem>())
+                         .Concat(TypeCache.GetTypesDerivedFrom<ICanSpawn>())
+                    )
             {
                 if (type.IsInterface) continue;
                 var asset = AssetDatabase.FindAssets($"t:{type.Name}").FirstOrDefault();

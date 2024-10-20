@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Analysing Drone
   m_EditorClassIdentifier: 
   sprite: {fileID: -1736971641, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+  spriteForShop: {fileID: 21300000, guid: 4d7dce683caa1fa44a56fd2bc940d704, type: 3}
   timerUseMax: 10
   itemCost: 10
   cameraDistance: 10

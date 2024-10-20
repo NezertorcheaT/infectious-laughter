@@ -15,5 +15,6 @@ MonoBehaviour:
   explosionRadius: 20
   explosionForce: 1000
   sprite: {fileID: -103898908, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+  spriteForShop: {fileID: 21300000, guid: 174fd1aabd71b144ba96b71be34060fc, type: 3}
   itemCost: 13
   <MaxStackSize>k__BackingField: 1

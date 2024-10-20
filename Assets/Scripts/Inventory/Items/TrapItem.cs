@@ -5,18 +5,20 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Trap", menuName = "Inventory/Items/Trap", order = 0)]
-    public class TrapItem : ScriptableObject, IUsableItem, ICanSpawn
+    public class TrapItem : ScriptableObject, IUsableItem, ICanSpawn, IShopItem
     {
         public string Name => "Trap";
         public string Id => "il.trap";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
         public ItemAdderVerifier Verifier { get; set; }
         public int ItemCost => itemCost;
 
         [SerializeField, Min(1)] private int itemCost;
         [SerializeField] private float spawnRange = 1.2f;
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [SerializeField] private GameObject trapWorld;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 

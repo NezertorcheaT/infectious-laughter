@@ -16,3 +16,4 @@ MonoBehaviour:
   <MaxStackSize>k__BackingField: 5
   itemCost: 16
   sprite: {fileID: -136883402, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+  spriteForShop: {fileID: 21300000, guid: dd920107ecfd0f04495db9d74087f91e, type: 3}

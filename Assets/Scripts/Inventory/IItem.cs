@@ -28,11 +28,6 @@ namespace Inventory
         int MaxStackSize { get; }
 
         /// <summary>
-        /// максимальное колличество в стаке
-        /// </summary>
-        int ItemCost { get; }
-
-        /// <summary>
         /// спрайт для отрисовки
         /// </summary>
         Sprite Sprite { get; }
