@@ -2229,7 +2229,7 @@ GameObject:
   - component: {fileID: 983386784}
   - component: {fileID: 983386783}
   m_Layer: 0
-  m_Name: BakPanel
+  m_Name: BackPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
