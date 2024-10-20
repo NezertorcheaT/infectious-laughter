@@ -9,10 +9,8 @@ namespace Inventory.Items
         public string Id => "il.fruit_of_aspiration";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
-        public Sprite SpriteForShop => spriteForShop;
 
         [SerializeField] private Sprite sprite;
-        [SerializeField] private Sprite spriteForShop;
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 1;
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
 

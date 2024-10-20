@@ -4,6 +4,7 @@ using Installers;
 using Inventory;
 using Inventory.Input;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Zenject;
 
@@ -17,13 +18,24 @@ namespace Shop
         private float frameShowDelay;
 
         [SerializeField] private Image background;
+        [SerializeField] private GameObject backPanel;
         [Inject] private PlayerInstallation _playerInstallation;
         [Inject] private GarbageManager _garbageManager;
+        [Inject] private Controls _controls;
         private PlayerInventoryInput _playerInventoryInput;
+        private InputAction _shopClosingAction;
+        private bool _isShopClosed { get; set; }
 
         private void Start()
         {
             _playerInventoryInput = _playerInstallation.Entity.FindAbilityByType<PlayerInventoryInput>();
+            _shopClosingAction = _controls.FindAction("CloseShop");
+            backPanel.SetActive(false);
+        }
+
+        private void Update()
+        {
+              if ((!_isShopClosed) && _shopClosingAction.WasPerformedThisFrame()) CloseShop();
         }
 
         public async void CloseShop()
@@ -37,10 +49,13 @@ namespace Shop
 
             await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
             background.enabled = false;
+            _isShopClosed = true;
+            backPanel.SetActive(false);
         }
 
         public async void OpenShop()
         {
+            backPanel.SetActive(true);
             await Task.Delay(TimeSpan.FromSeconds(frameShowDelay));
             background.enabled = true;
 
@@ -49,6 +64,7 @@ namespace Shop
                 frame.gameObject.SetActive(true);
                 frame.Animate();
             }
+            _isShopClosed = false;
         }
 
         public void SetShopwindow(IInventory shopInventory)

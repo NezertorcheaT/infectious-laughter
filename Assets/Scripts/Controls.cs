@@ -170,6 +170,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseShop"",
+                    ""type"": ""Button"",
+                    ""id"": ""8dab584d-98f3-4bc3-b106-ee3160e8b987"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -513,6 +522,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf5708f0-5b50-4124-b3bf-86b061e42c57"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""CloseShop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -571,6 +591,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Inv_selectSlot4 = m_Gameplay.FindAction("Inv_selectSlot4", throwIfNotFound: true);
         m_Gameplay_Inv_selectSlot5 = m_Gameplay.FindAction("Inv_selectSlot5", throwIfNotFound: true);
         m_Gameplay_Inv_selectSlot6 = m_Gameplay.FindAction("Inv_selectSlot6", throwIfNotFound: true);
+        m_Gameplay_CloseShop = m_Gameplay.FindAction("CloseShop", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
     }
@@ -648,6 +669,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Inv_selectSlot4;
     private readonly InputAction m_Gameplay_Inv_selectSlot5;
     private readonly InputAction m_Gameplay_Inv_selectSlot6;
+    private readonly InputAction m_Gameplay_CloseShop;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -668,6 +690,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Inv_selectSlot4 => m_Wrapper.m_Gameplay_Inv_selectSlot4;
         public InputAction @Inv_selectSlot5 => m_Wrapper.m_Gameplay_Inv_selectSlot5;
         public InputAction @Inv_selectSlot6 => m_Wrapper.m_Gameplay_Inv_selectSlot6;
+        public InputAction @CloseShop => m_Wrapper.m_Gameplay_CloseShop;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -725,6 +748,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Inv_selectSlot6.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot6;
                 @Inv_selectSlot6.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot6;
                 @Inv_selectSlot6.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInv_selectSlot6;
+                @CloseShop.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCloseShop;
+                @CloseShop.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCloseShop;
+                @CloseShop.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCloseShop;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -777,6 +803,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Inv_selectSlot6.started += instance.OnInv_selectSlot6;
                 @Inv_selectSlot6.performed += instance.OnInv_selectSlot6;
                 @Inv_selectSlot6.canceled += instance.OnInv_selectSlot6;
+                @CloseShop.started += instance.OnCloseShop;
+                @CloseShop.performed += instance.OnCloseShop;
+                @CloseShop.canceled += instance.OnCloseShop;
             }
         }
     }
@@ -842,6 +871,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnInv_selectSlot4(InputAction.CallbackContext context);
         void OnInv_selectSlot5(InputAction.CallbackContext context);
         void OnInv_selectSlot6(InputAction.CallbackContext context);
+        void OnCloseShop(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
