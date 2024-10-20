@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Threading;
 using CustomHelper;
 using UnityEngine;
 using UnityEngine.InputSystem;

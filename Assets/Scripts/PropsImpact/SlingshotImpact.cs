@@ -1,88 +1,90 @@
 using Entity.Abilities;
-using Entity;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 using Inventory;
-using static UnityEngine.EventSystems.EventTrigger;
 using System;
-
 
 namespace PropsImpact
 {
     public class SlingshotImpact : MonoBehaviour
     {
         [Inject] private Controls _actions;
-        [Inject] public ItemAdderVerifier Verifier { get; set; }
-        [SerializeField] private GameObject RockPrefab;
+        [Inject] private ItemAdderVerifier _verifier;
+        [SerializeField] private GameObject rockPrefab;
 
-        private float startTime;
-        private float endTime;
-        private Vector2 spawnOffset = new Vector2(1f, 1.6f);
+        private float _startTime;
+        private float _endTime;
+        private readonly Vector2 _spawnOffset = new(1f, 1.6f);
 
-        private Entity.Entity entity;       
-        private float minForce;
-        private float maxForce;
-        private float upForce;
-        private float chargeTime;
-        private int damage;
-        private int stunTime;
+        private Entity.Entity _entity;
+        private float _minForce;
+        private float _maxForce;
+        private float _upForce;
+        private float _chargeTime;
+        private int _damage;
+        private int _stunTime;
+        private bool _initialized;
 
         public event Action StartCharge;
         public event Action Shot;
 
         public void Impact()
         {
-            if (entity == null) return;
+            if (_entity == null) return;
 
             _actions.Gameplay.PickGarbage.canceled += EndHold;
-            startTime = Time.time;
+            _startTime = Time.time;
             StartCharge?.Invoke();
         }
 
-        public void Initialize(Entity.Entity _entity, float _upForce, float _chargeTime, float _minForce, float _maxForce, int _damage, int _stunTime)
+        public void Initialize(Entity.Entity entity, float upForce, float chargeTime, float minForce,
+            float maxForce, int damage, int stunTime)
         {
-            entity = _entity;
-            upForce = _upForce;
-            chargeTime = _chargeTime;
-            minForce = _minForce;
-            maxForce = _maxForce;
-            damage = _damage;
-            stunTime = _stunTime;
+            if(_initialized) return;
+            _initialized = true;
+            _entity = entity;
+            _upForce = upForce;
+            _chargeTime = chargeTime;
+            _minForce = minForce;
+            _maxForce = maxForce;
+            _damage = damage;
+            _stunTime = stunTime;
         }
 
         private void EndHold(InputAction.CallbackContext ctx)
         {
-            endTime = Time.time;
-            float holdTime = endTime - startTime;
-            //Debug.Log(holdTime);
+            _endTime = Time.time;
             _actions.Gameplay.PickGarbage.canceled -= EndHold;
             Shot?.Invoke();
 
-            Fire(holdTime);
-
+            Fire(_endTime - _startTime);
             Destroy(gameObject);
         }
 
         private void Fire(float holdTime)
         {
-            if (entity == null) return;
+            if (_entity == null) return;
 
-            var movment = entity.GetComponent<HorizontalMovement>();
-            var position = entity.transform.position;
-            var direction = BoolToInt(movment.Turn);
+            var movement = _entity.GetComponent<HorizontalMovement>();
+            var position = _entity.CachedTransform.position;
+            var direction = BoolToInt(movement.Turn);
 
-            float lerpValue = Mathf.Clamp01(holdTime / chargeTime);
-            var forcePower = new Vector2(Mathf.Lerp(minForce, maxForce, lerpValue), 300f);
+            var lerpValue = Mathf.Clamp01(holdTime / _chargeTime);
+            var forcePower = new Vector2(Mathf.Lerp(_minForce, _maxForce, lerpValue), 300f);
 
-            var spawnPosition =
-                new Vector2(position.x + spawnOffset.x * direction, position.y + spawnOffset.y);
-            var rock =
-                Verifier.Container.InstantiatePrefab(RockPrefab, spawnPosition, Quaternion.identity, null);
+            var spawnPosition = new Vector2(
+                position.x + _spawnOffset.x * direction,
+                position.y + _spawnOffset.y
+            );
+            var rock = _verifier.Container.InstantiatePrefab(
+                rockPrefab,
+                spawnPosition,
+                Quaternion.identity,
+                null
+            );
 
-            rock.GetComponent<RockBehaviour>().Initialize(damage, stunTime);
+            rock.GetComponent<RockBehaviour>().Initialize(_damage, _stunTime);
             rock.GetComponent<Rigidbody2D>().AddForce(new Vector2(forcePower.x * direction, forcePower.y));
 
             int BoolToInt(bool value) => value ? 1 : -1;

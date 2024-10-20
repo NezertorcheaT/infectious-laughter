@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536d0f1f962e41640a30ce74ac2887ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RockPrefab: {fileID: 710048827980817720, guid: 8cb287223d857864488b026ce19f3db4, type: 3}
-  chargeTime: 2
+  rockPrefab: {fileID: 710048827980817720, guid: 8cb287223d857864488b026ce19f3db4, type: 3}
 --- !u!114 &-81015627767418088
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -75,8 +75,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1597443149
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Time: 0.14
   m_Parameters:
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactParticle: {fileID: 4539771517873820737}
-  Collider2D: {fileID: 710048827980817669}
+  collider: {fileID: 710048827980817669}
   trailRenderer: {fileID: 710048827980817671}
   destroyDelay: 5
 --- !u!1001 &6131170019029623963
@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6351778566537669926, guid: 8af9083273d340c49887c675366238c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.15
+      value: 0.155
       objectReference: {fileID: 0}
     - target: {fileID: 6351778566537669926, guid: 8af9083273d340c49887c675366238c1, type: 3}
       propertyPath: m_LocalPosition.y

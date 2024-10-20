@@ -1,44 +1,34 @@
 using Entity.Abilities;
 using UnityEngine;
-using System.Threading.Tasks;
 
 namespace PropsImpact
 {
     public class RockBehaviour : MonoBehaviour
     {
         [SerializeField] private ParticleSystem impactParticle;
-        [SerializeField] private Collider2D Collider2D;
+        [SerializeField] private Collider2D collider;
         [SerializeField] private TrailRenderer trailRenderer;
-
         [SerializeField] private float destroyDelay;
 
-        private int damage;
-        private int stunTime;
-        
+        private int _damage;
+        private int _stunTime;
+        private bool _initialized;
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             impactParticle.Play();
 
-            if (collision.transform.tag == "Player") return;
+            if (collision.transform.CompareTag("Player")) return;
 
-            if (collision.transform.TryGetComponent<Stun>(out Stun stunAbility))
-            {
-                PerformStunAsync(stunAbility);
-            }
-            if (collision.transform.TryGetComponent<Hp>(out Hp enemyHp))
-            {
-                enemyHp.AddDamage(damage);
-                DestroyIvent();
-            }
-        }
+            if (collision.transform.TryGetComponent<Stun>(out var stunAbility))
+                stunAbility.Perform(_stunTime);
 
-        private async Task PerformStunAsync(Stun stunAbility)
-        {
-            await stunAbility.Perform(stunTime);
-        }
+            if (!collision.transform.TryGetComponent<Hp>(out var enemyHp)) return;
 
-        private void DestroyIvent()
-        {
+            collision.rigidbody.velocity = Vector2.zero;
+            collision.otherRigidbody.velocity = Vector2.zero;
+
+            enemyHp.AddDamage(_damage);
             SetEnabled(false);
 
             impactParticle.startSize = 0.9f;
@@ -49,17 +39,18 @@ namespace PropsImpact
 
         private void SetEnabled(bool enabled)
         {
-            Collider2D.enabled = enabled;
+            collider.enabled = enabled;
             trailRenderer.enabled = enabled;
         }
 
-        public void Initialize(int _damage, int _stunTime)
+        public void Initialize(int damage, int stunTime)
         {
+            if (_initialized) return;
+            _initialized = true;
             Destroy(gameObject, destroyDelay);
 
-            damage = _damage;
-            stunTime = _stunTime;
+            _damage = damage;
+            _stunTime = stunTime;
         }
-
     }
 }
