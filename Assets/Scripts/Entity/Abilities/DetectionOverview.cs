@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CustomHelper;
@@ -16,86 +17,72 @@ namespace Entity.Abilities
         [SerializeField, Range(0, 1)] private float rayOffset;
         public float radius = 5f;
         public bool direction;
-        private Relationships.Fraction _fraction;
+        private Fraction _fraction;
 
-        public List<Entity> FriendlyEntities { get; private set; } = new List<Entity>();
-        public List<Entity> HostileEntities { get; private set; } = new List<Entity>();
+        public List<Entity> FriendlyEntities  = new List<Entity>();
+        public List<Entity> HostileEntities  = new List<Entity>();
+        private HashSet<Entity> _insideEntities = new HashSet<Entity>();
 
-        private void DetectEntitiesInCircle(Vector2 center, float radius)
+        public event Action<Entity> FriendlyEntitieDetected;
+        public event Action<Entity> HostileEntitieDetected;
+      
+        private void OnEnable()
         {
-            FriendlyEntities.Clear();
-            HostileEntities.Clear();
+            entityMainCollider ??= GetComponent<Collider2D>();
 
+            _fraction = GetComponent<Fraction>();           
+        }
+        private void FixedUpdate()
+        {
+            DetectEntitiesInCircle();
+        }
+
+        private void DetectEntitiesInCircle()
+        {
+            var center = (Vector2)entityMainCollider.bounds.center;
             var hits = Physics2D.OverlapCircleAll(center, radius);
 
-            foreach (var hit in hits)
+            var currentEntities = hits
+                .Select(hit => hit.GetComponent<Entity>())
+                .Where(entity => entity != null && entity.gameObject != Entity.gameObject)
+                .ToHashSet();
+
+            // Обработка входа новых сущностей в круг
+            foreach (var entity in currentEntities.Except(_insideEntities))
             {
-                if (hit.gameObject == Entity.gameObject) continue;
+                _insideEntities.Add(entity);
+                AddEntityToList(entity);
+            }
 
-                var entity = hit.GetComponent<Entity>();
-                if (entity == null) continue;
-
-                var entityFraction = entity.FindExactAbilityByType<Fraction>();
-                if (entityFraction == null) continue;
-
-                if (_fraction.GetRelation(entityFraction.CurrentFraction) == Relationships.Fraction.Relation.Hostile)
-                {
-                    HostileEntities.Add(entity);
-                }
-                else
-                {
-                    FriendlyEntities.Add(entity);
-                }
+            // Обработка выхода сущностей из круга
+            foreach (var entity in _insideEntities.Except(currentEntities).ToList())
+            {
+                _insideEntities.Remove(entity);
+                RemoveEntityFromList(entity);
             }
         }
 
-        /// <summary>
-        /// Возвращает ближайшего враждебного существа и его последнюю известную позицию.
-        /// </summary>
-        public (Entity, Vector3?) Hostile
+        private void AddEntityToList(Entity entity)
         {
-            get
+            var entityFraction = entity.FindExactAbilityByType<Fraction>();
+            if (entityFraction == null) return;
+
+            if (_fraction.type != entityFraction.type)
             {
-                entityMainCollider ??= gameObject.GetComponent<Collider2D>();
-                _fraction ??= Entity.FindAbilityByType<Fraction>().CurrentFraction;
-
-                var center = (Vector2)entityMainCollider.bounds.center;
-                DetectEntitiesInCircle(center, radius);
-
-                if (HostileEntities.Count == 0) return (null, null);
-
-                var hostile = HostileEntities.OrderByDescending(h =>
-                    Vector2.Distance(h.CachedTransform.position, Entity.CachedTransform.position)).First();
-
-                var hostilePosition = hostile.CachedTransform.position;
-
-                // Проверка, не скрыта ли цель.
-                var crouching = hostile.FindAbilityByType<Crouching>();
-                if (crouching && crouching.IsCrouching)
-                {
-                    var hidden = Physics2D.Raycast(
-                        hostilePosition, Vector2.down, 1f, 1 << 6).collider != null;
-                    if (hidden) return (hostile, null);
-                }
-
-                // Проверка наличия стены между объектами.
-                var hit = Physics2D.Raycast(
-                    center,
-                    (hostilePosition - transform.position).normalized,
-                    radius,
-                    1 << 0
-                );
-
-                Debug.DrawRay(
-                    center,
-                    (hostilePosition - transform.position).normalized * radius,
-                    Color.green
-                );
-
-                if (hit.collider != null) return (hostile, hit.point);
-
-                return (hostile, hostilePosition);
+                HostileEntities.Add(entity);
+                HostileEntitieDetected?.Invoke(entity);
             }
+            else
+            {
+                FriendlyEntities.Add(entity);
+                FriendlyEntitieDetected?.Invoke(entity);
+            }
+        }
+
+        private void RemoveEntityFromList(Entity entity)
+        {
+            FriendlyEntities.Remove(entity);
+            HostileEntities.Remove(entity);
         }
 
         private void OnDrawGizmos()

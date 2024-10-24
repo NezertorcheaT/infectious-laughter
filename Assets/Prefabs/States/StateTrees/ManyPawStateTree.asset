@@ -17,10 +17,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  initialDirection: 1
+  initialDirection: 0
   maxFlightDistance: 35.8
   flightFrequency: 1
   flightAmplitude: 0.39
+  flightSpeed: 3
+  findingEnemySpeed: 9
   next: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -41,17 +43,16 @@ MonoBehaviour:
     nexts:
     - 58a466b7acc4b99479a124e3289dd6cf
   - id: 661dda9ee905276498b10a81b2871130
-    position: {x: -18.400024, y: 41}
+    position: {x: 40.549988, y: 38.000008}
     state: {fileID: 11400000, guid: 09bab26b22df7e045ad96af5315b856c, type: 2}
     nexts:
     - 21973ac7a8cc8274787cde98eaf5dc62
   - id: 21973ac7a8cc8274787cde98eaf5dc62
-    position: {x: -12, y: 228.32004}
+    position: {x: 232.32, y: 37}
     state: {fileID: 11400000, guid: 65387c158f436284aa5edde87ccb510e, type: 2}
-    nexts:
-    - 661dda9ee905276498b10a81b2871130
+    nexts: []
   - id: 58a466b7acc4b99479a124e3289dd6cf
-    position: {x: -168, y: 40}
+    position: {x: -162.91998, y: 39}
     state: {fileID: 11400000, guid: 17448df45d5aa004ba1643bd41a13163, type: 2}
     nexts:
     - 661dda9ee905276498b10a81b2871130

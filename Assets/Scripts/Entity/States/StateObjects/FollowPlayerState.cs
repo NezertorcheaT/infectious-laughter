@@ -17,6 +17,7 @@ namespace Entity.States.StateObjects
 
         public override async Task<int> Activate(Entity entity, State previous)
         {
+            Debug.Log("преследывание игрока");
             var edit = properties;
             var hostileDetector = HostileDetection;
             var nextId = edit.next;
