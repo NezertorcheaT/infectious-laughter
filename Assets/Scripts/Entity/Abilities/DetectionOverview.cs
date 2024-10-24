@@ -1,49 +1,108 @@
 using System.Collections.Generic;
+using System.Linq;
+using CustomHelper;
 using UnityEngine;
+using Zenject;
 
 namespace Entity.Abilities
 {
-    //[RequireComponent(typeof(Collider2D))]
-    [RequireComponent(typeof(Fraction))]
     [AddComponentMenu("Entity/Abilities/Detection Overview")]
+    [RequireComponent(typeof(Fraction))]
+    [RequireComponent(typeof(Collider2D))]
     public class DetectionOverview : Ability
     {
-        [SerializeField] private CircleCollider2D overLookColider;
-        [SerializeField] private float viewRadius;
+        [Inject] private EntityPool _pool;
+        [SerializeField] private Collider2D entityMainCollider;
+        [SerializeField, Range(0, 1)] private float rayOffset;
+        public float radius = 5f;
+        public bool direction;
+        private Relationships.Fraction _fraction;
 
-        private Fraction _fraction;
-        private Entity _entity;
-        public List<Entity> _enemies = new List<Entity>();
+        public List<Entity> FriendlyEntities { get; private set; } = new List<Entity>();
+        public List<Entity> HostileEntities { get; private set; } = new List<Entity>();
 
-        private void OnEnable()
+        private void DetectEntitiesInCircle(Vector2 center, float radius)
         {
-            _fraction = GetComponent<Fraction>();
-            _entity = GetComponent<Entity>();
+            FriendlyEntities.Clear();
+            HostileEntities.Clear();
 
-            overLookColider = gameObject.AddComponent<CircleCollider2D>();
-            overLookColider.isTrigger = true;
-            overLookColider.radius = viewRadius;
-        }
+            var hits = Physics2D.OverlapCircleAll(center, radius);
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if(TryGetComponent<Entity>(out Entity entity) 
-                && _entity != entity 
-                )//&& TryGetComponent<Fraction>(out Fraction fraction))
+            foreach (var hit in hits)
             {
-                //if (_fraction.type == fraction.type && !_enemies.Contains(entity))
+                if (hit.gameObject == Entity.gameObject) continue;
+
+                var entity = hit.GetComponent<Entity>();
+                if (entity == null) continue;
+
+                var entityFraction = entity.FindExactAbilityByType<Fraction>();
+                if (entityFraction == null) continue;
+
+                if (_fraction.GetRelation(entityFraction.CurrentFraction) == Relationships.Fraction.Relation.Hostile)
                 {
-                    _enemies.Add(entity);
+                    HostileEntities.Add(entity);
+                }
+                else
+                {
+                    FriendlyEntities.Add(entity);
                 }
             }
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        /// <summary>
+        /// Возвращает ближайшего враждебного существа и его последнюю известную позицию.
+        /// </summary>
+        public (Entity, Vector3?) Hostile
         {
-            if (TryGetComponent<Entity>(out Entity entity))
+            get
             {
-                if (_enemies.Contains(entity)) _enemies.Remove(entity);
+                entityMainCollider ??= gameObject.GetComponent<Collider2D>();
+                _fraction ??= Entity.FindAbilityByType<Fraction>().CurrentFraction;
+
+                var center = (Vector2)entityMainCollider.bounds.center;
+                DetectEntitiesInCircle(center, radius);
+
+                if (HostileEntities.Count == 0) return (null, null);
+
+                var hostile = HostileEntities.OrderByDescending(h =>
+                    Vector2.Distance(h.CachedTransform.position, Entity.CachedTransform.position)).First();
+
+                var hostilePosition = hostile.CachedTransform.position;
+
+                // Проверка, не скрыта ли цель.
+                var crouching = hostile.FindAbilityByType<Crouching>();
+                if (crouching && crouching.IsCrouching)
+                {
+                    var hidden = Physics2D.Raycast(
+                        hostilePosition, Vector2.down, 1f, 1 << 6).collider != null;
+                    if (hidden) return (hostile, null);
+                }
+
+                // Проверка наличия стены между объектами.
+                var hit = Physics2D.Raycast(
+                    center,
+                    (hostilePosition - transform.position).normalized,
+                    radius,
+                    1 << 0
+                );
+
+                Debug.DrawRay(
+                    center,
+                    (hostilePosition - transform.position).normalized * radius,
+                    Color.green
+                );
+
+                if (hit.collider != null) return (hostile, hit.point);
+
+                return (hostile, hostilePosition);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (!Application.isPlaying) return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(entityMainCollider.bounds.center, radius);
         }
     }
 }

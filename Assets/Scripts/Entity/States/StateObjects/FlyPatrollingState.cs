@@ -18,7 +18,7 @@ namespace Entity.States.StateObjects
         public override async Task<int> Activate(Entity entity, State previous)
         {
             var edit = properties;
-            var hostileDetector = HostileDetection;
+            var hostileDetector = entity.GetComponent<DetectionOverview>();
             var nextId = edit.next;
             var collider2d = entity.GetComponent<Collider2D>();
             var flyMoveAbility = entity.FindAbilityByType<Flying>();
@@ -32,7 +32,7 @@ namespace Entity.States.StateObjects
                 await Task.Yield();
 
                 hostileDetector.direction = direction;
-                if (hostileDetector.Hostile.Item1 is not null)
+                if (hostileDetector.Hostile.Item1 is not null) ;
                     return nextId;
 
                 var bounds = collider2d.bounds;

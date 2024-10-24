@@ -14,7 +14,7 @@ namespace Entity.States.StateObjects.Edits
         public bool initialDirection;
         public float maxFlightDistance;
         public float flightFrequency;
-        public float flightAmplitude;
+        public float flightAmplitude;        
         [Min(0)] public int next;
 
         public override T Get<T>(string name) => GetType().GetField(name).GetValue(this) is T
