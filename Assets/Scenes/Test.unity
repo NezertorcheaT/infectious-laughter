@@ -1611,8 +1611,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3592c0d8fe9d5b841b214c7d6a9634fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartPosition: {x: 0, y: 0}
   LastPlayerPosition: {x: 0, y: 0}
   FollowEnemy: {fileID: 0}
+--- !u!4 &1247456078 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9201231243830001448, guid: 12b4bf477be5a1849b283659f1c61c9b, type: 3}
+  m_PrefabInstance: {fileID: 9201231244214553285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1247456079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247456034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e43cb9b62b0c84fb8e46b1befad372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PinPoint: {fileID: 1635796080}
 --- !u!1 &1303842865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,6 +2123,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8ff44475cb4ee4a9bb5293932d46ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1635796079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1635796080}
+  m_Layer: 3
+  m_Name: PinPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1635796080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635796079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.01, y: -0.58, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1247456078}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1740619489
 GameObject:
   m_ObjectHideFlags: 0

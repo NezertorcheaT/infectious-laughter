@@ -16,13 +16,13 @@ MonoBehaviour:
   rayDistance: 0.3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   initialDirection: 0
   maxFlightDistance: 35.8
   flightFrequency: 1
   flightAmplitude: 0.39
   flightSpeed: 3
-  findingEnemySpeed: 9
+  findingEnemySpeed: 6
   next: 0
 --- !u!114 &11400000
 MonoBehaviour:

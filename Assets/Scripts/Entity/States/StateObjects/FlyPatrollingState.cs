@@ -37,6 +37,7 @@ namespace Entity.States.StateObjects
             _goToNext = false;
             _horizontalmoveAbility.Speed = edit.flightSpeed;
             _hostileDetector.enabled = true;
+            _enemyMemory.StartPosition = entity.transform.position;
 
             _hostileDetector.HostileEntitieDetected += StartFindingEnemy;
 
@@ -51,8 +52,8 @@ namespace Entity.States.StateObjects
                 var bounds = collider2d.bounds;
                 var horizontalRay = new Ray(
                     bounds.center + new Vector3(direction ? bounds.extents.x : -bounds.extents.x, 0, 0),
-                    Vector3.right * (direction ? 1 : -1));
-
+                    Vector3.right * 5 * (direction ? 1 : -1));
+                
                 bool hitWall = Physics2D.Raycast(horizontalRay.origin, horizontalRay.direction, edit.rayDistance, edit.groundLayer);
 
                 if (hitWall)

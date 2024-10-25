@@ -17,7 +17,7 @@ namespace Entity.States.StateObjects
         private Flying _flyMoveAbility;
         private HorizontalMovement _horizontalmoveAbility;
         private EnemyMemory _enemyMemory;
-        float stopDistance = 1.0f;
+        float stopDistance = 5.0f;
 
         public override async Task<int> Activate(Entity entity, State previous)
         {
@@ -29,6 +29,7 @@ namespace Entity.States.StateObjects
             _horizontalmoveAbility = entity.FindAbilityByType<HorizontalMovement>();
             _flyMoveAbility = entity.FindAbilityByType<Flying>();
             _enemyMemory = entity.GetComponent<EnemyMemory>();
+            var pinAbility = entity.GetComponent<PinAbility>();
             var direction = edit.initialDirection;
             var followEntity = _enemyMemory.FollowEnemy;
 
@@ -44,7 +45,10 @@ namespace Entity.States.StateObjects
 
                 if (Mathf.Abs(horizontalDiff) < stopDistance && Mathf.Abs(verticalDiff) < stopDistance)
                 {
-                    followEntity.transform.SetParent(_enemyMemory.Entity.transform);
+                    pinAbility.Initialize(followEntity.gameObject);
+                    followEntity.transform.GetComponent<HorizontalMovement>().enabled = false;
+                    followEntity.transform.GetComponent<Rigidbody2D>().simulated = false;
+                    await followEntity.GetComponent<Stun>().Perform(5);
                     break;
                 }
 
