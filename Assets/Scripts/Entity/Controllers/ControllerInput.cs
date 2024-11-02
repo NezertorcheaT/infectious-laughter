@@ -79,13 +79,15 @@ namespace Entity.Controllers
         private bool _hangingRight;
         private bool _hangingLeft;
         private float _input;
+        private float _inputY;
 
         private void Move()
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
+            _inputY = _actions.Gameplay.VerticalMove.ReadValue<float>();
             _moveAbility.Move(_input, 0);
             _movementDowning.WallDowning(_input);
-            _followPoint.MovePoint(_input);
+            _followPoint.MovePoint(_input, _inputY);
         }
 
     }
