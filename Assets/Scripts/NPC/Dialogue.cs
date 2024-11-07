@@ -39,6 +39,11 @@ namespace NPC
         private int _dialogueID;
         private int _phraseNum;
 
+        public void Start()
+        {
+            StartDialogue(false, 1);
+        }
+
         /// <summary>
         /// Это метод для начала диалога с персонажем. Переменная importance означает его важность: false - пропускаемый, true - соответственно, не пропускаемый
         /// </summary>
@@ -51,8 +56,13 @@ namespace NPC
             window.SetActive(true);
 
             dialogueWindow.sprite = dialogueWindowTexture;
-            if (talks[_dialogueID].monologue) 
+            nameText.enabled = true;
+            if (talks[_dialogueID].monologue)
+            {
                 dialogueWindow.sprite = monologueWindowTexture;
+
+                nameText.enabled = false;
+            }
             nameText.text = "N";
 
             NextPhrase();
@@ -63,8 +73,12 @@ namespace NPC
             var talk = talks[_dialogueID];
 
             if (_phraseNum + 1 > talk.phrases.Length)
-
-                if (!talks[_dialogueID].monologue) nameText.text = talk.phrases[_phraseNum].character;
+            {
+                EndDialogue();
+                return;
+            }
+            
+            if (!talks[_dialogueID].monologue) nameText.text = talk.phrases[_phraseNum].character;
             dialogueText.text = talk.phrases[_phraseNum].text;
             nameText.text = talk.phrases[_phraseNum].character;
             _phraseNum++;
