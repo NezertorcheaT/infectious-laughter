@@ -15,18 +15,33 @@ namespace Outline
             public string Path;
         }
 
-        public Sprite this[Sprite original] =>
-            Outliner.GetOutlined(Cache.FirstOrDefault(t => t.Original.texture == original.texture).Path)
-                .FirstOrDefault(t => t.name == original.name);
+        public Sprite this[Sprite original]
+        {
+            get
+            {
+                var sprite = Outliner
+                    .GetOutlined(Cache.FirstOrDefault(t => t.Original.texture == original.texture).Path)
+                    .FirstOrDefault(t => t.name == original.name);
+                if (sprite is null)
+                    Debug.LogError($"Outliner не нашёл обводку для спрайта \"{original}\". Попробуйте обновить обводку с помощью \"File/Regenerate Outlines\"");
+                return sprite;
+            }
+        }
 
         /// <summary>
         /// превращает спрайт в обводку
         /// </summary>
         /// <param name="original">оригинал спрайта</param>
         /// <returns>обводка без оригинала</returns>
-        public static Sprite ToOutline(Sprite original) =>
-            Outliner.GetOutlined(Instance.Cache.FirstOrDefault(t => t.Original.texture == original.texture).Path)
+        public static Sprite ToOutline(Sprite original)
+        {
+            var sprite = Outliner
+                .GetOutlined(Instance.Cache.FirstOrDefault(t => t.Original.texture == original.texture).Path)
                 .FirstOrDefault(t => t.name == original.name);
+            if (sprite is null)
+                Debug.LogError($"Outliner не нашёл обводку для спрайта \"{original}\". Попробуйте обновить обводку с помощью \"File/Regenerate Outlines\"");
+            return sprite;
+        }
 
         /// <summary>
         /// НЕ ПЫТАЙТЕСЬ обращаться к этому свойству, оно защищено магической силой, и выдаст ошибку если запущено из билда
@@ -51,10 +66,12 @@ namespace Outline
             Instance ??= this;
         }
 
+#if UNITY_EDITOR
         public void Reset()
         {
             Cache = new List<OutlineType>();
             Initialize();
         }
+#endif
     }
 }

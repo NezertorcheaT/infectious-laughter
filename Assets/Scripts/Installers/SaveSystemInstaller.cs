@@ -1,5 +1,9 @@
 using System.IO;
 using System.Linq;
+#if UNITY_EDITOR
+using GameFlow;
+using Levels.StoryNodes;
+#endif
 using Saving;
 using UnityEngine;
 using Zenject;
@@ -9,6 +13,9 @@ namespace Installers
     [AddComponentMenu("Installers/Save System")]
     public class SaveSystemInstaller : MonoInstaller
     {
+#if UNITY_EDITOR
+        [Inject] private LevelManager _levelManager;
+#endif
         public override void InstallBindings()
         {
             var configSaver = new ConfigFileSaver();
@@ -36,7 +43,7 @@ namespace Installers
             if (!sessionCreator.GetAvailableSessionIDs().Any())
             {
                 Debug.LogError("Вам нужно иметь хотя бы одно сохранение, нажмите Играть в сцене NewGameTest один раз");
-                return;
+                NewGameStarter.EditorNewGame(_levelManager, sessionCreator);
             }
 
             sessionCreator.LoadSession(sessionCreator.GetAvailableSessionIDs().First());

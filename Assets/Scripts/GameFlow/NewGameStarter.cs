@@ -38,5 +38,18 @@ namespace GameFlow
 
             saveLoader.LoadSave(sessionFactory.Current.ID);
         }
+
+#if UNITY_EDITOR
+        public static void EditorNewGame(
+            LevelManager levelManager,
+            SessionFactory sessionFactory
+        )
+        {
+            levelManager.Reset();
+            sessionFactory.NewSession();
+            sessionFactory.Current.InitializeWithDefaults();
+            sessionFactory.SaveCurrentSession();
+        }
+#endif
     }
 }

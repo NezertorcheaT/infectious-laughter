@@ -505,7 +505,7 @@ MonoBehaviour:
   - Original: {fileID: 1731904010, guid: 922968b20cdd8834095bbbbbb532205e, type: 3}
     Path: Outlines\Characters\Main character\Animations\General\Sleep
   - Original: {fileID: 1972877745, guid: 48a9baf36c61e4d46899eca8f7420080, type: 3}
-    Path: Outlines\Characters\Main character\Animations\Reflex skills\leg attack
+    Path: Outlines\Characters\Main character\Animations\Reflex Skills\leg attack
   - Original: {fileID: 862982644, guid: bbd52bfedd1fbfe439531640c986565f, type: 3}
     Path: Outlines\Characters\NPC\Eyeless Laughter\Animations\idle
   - Original: {fileID: 1320485228, guid: f0aefe50e53b7c245b6c472cb6414d58, type: 3}
