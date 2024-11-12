@@ -1,4 +1,6 @@
-﻿using Installers;
+﻿using System;
+using System.Collections.Generic;
+using Installers;
 using Saving;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,7 +21,9 @@ namespace Inventory.UI
         [SerializeField] private ItemFrame frameSelect;
         [SerializeField] private ItemFrame frameLast;
         [SerializeField] private RectTransform foregroundSelector;
-        private int _selection;
+        public int _selection { get; private set; }
+
+        public event Action<int> OnSelect;
 
         private void Start()
         {
@@ -76,6 +80,7 @@ namespace Inventory.UI
         {
             _selection = (int) Mathf.Repeat(slot, _player.Inventory.MaxCapacity);
             _sessionFactory.Current[SavedKeys.PlayerInventorySelection].Value = _selection;
+            OnSelect?.Invoke(slot);
             UpdateGUI();
         }
 
