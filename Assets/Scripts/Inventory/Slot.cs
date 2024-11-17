@@ -8,8 +8,13 @@ namespace Inventory
     {
         public int Count
         {
-            get => Mathf.Clamp(count, 0, LastItem.MaxStackSize);
-            set => count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
+            get => LastItem is null ? 0 : Mathf.Clamp(count, 0, LastItem.MaxStackSize);
+            set
+            {
+                if (LastItem is null)
+                    return;
+                count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
+            }
         }
 
         [SerializeField] private string lastItemId;

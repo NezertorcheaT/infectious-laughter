@@ -21,13 +21,14 @@ namespace Inventory.UI
         [SerializeField] private ItemFrame frameSelect;
         [SerializeField] private ItemFrame frameLast;
         [SerializeField] private RectTransform foregroundSelector;
-        public int _selection { get; private set; }
+        private int _selection;
 
         public event Action<int> OnSelect;
 
         private void Start()
         {
-            _selection = (int) _sessionFactory.Current[SavedKeys.PlayerInventorySelection].Value;
+            _selection = (int)_sessionFactory.Current[SavedKeys.PlayerInventorySelection].Value;
+            OnSelect?.Invoke(_selection);
             UpdateGUI();
         }
 
@@ -78,9 +79,9 @@ namespace Inventory.UI
 
         private void SelectSlot(int slot)
         {
-            _selection = (int) Mathf.Repeat(slot, _player.Inventory.MaxCapacity);
+            _selection = (int)Mathf.Repeat(slot, _player.Inventory.MaxCapacity);
             _sessionFactory.Current[SavedKeys.PlayerInventorySelection].Value = _selection;
-            OnSelect?.Invoke(slot);
+            OnSelect?.Invoke(_selection);
             UpdateGUI();
         }
 
