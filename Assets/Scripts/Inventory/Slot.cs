@@ -15,17 +15,17 @@ namespace Inventory
         [SerializeField] private string lastItemId;
         [SerializeField] private int count;
 
-        public bool IsEmpty => lastItemId == string.Empty || LastItem == null || Count == 0;
+        public bool IsEmpty => LastItem == null || Count == 0;
 
         public IItem LastItem
         {
             get => ItemsProvider.Instance.IdToItem(lastItemId);
-            set => lastItemId = value is null ? string.Empty: value.Id;
+            set => lastItemId = value is null ? string.Empty : value.Id;
         }
 
         public void Use(Entity.Entity entity, IInventory inventory)
         {
-            if (!(LastItem is IUsableItem usableItem)) return;
+            if (LastItem is not IUsableItem usableItem) return;
             usableItem.Use(entity, inventory, this);
             if (Count > 0) return;
             Count = 0;
@@ -33,8 +33,10 @@ namespace Inventory
 
         public Slot(IItem item, int count)
         {
-            lastItemId = item is null ? string.Empty: item.Id;
+            lastItemId = item is null ? string.Empty : item.Id;
             Count = item is not null ? count : 0;
         }
+
+        public static Slot Empty => new(null, 0);
     }
 }

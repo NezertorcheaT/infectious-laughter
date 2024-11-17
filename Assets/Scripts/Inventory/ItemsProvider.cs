@@ -38,7 +38,7 @@ namespace Inventory
 
         public IItem IdToItem(string id)
         {
-            if (id == string.Empty || id == " " || id is null) return null;
+            if (string.IsNullOrWhiteSpace(id)) return null;
             var a = _items.Find(i => (i as IItem)?.Id == id);
             if (a is null)
                 Debug.LogError(

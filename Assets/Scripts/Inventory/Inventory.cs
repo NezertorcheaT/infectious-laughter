@@ -24,8 +24,12 @@ namespace Inventory
 
         [field: SerializeField] private List<Slot> _slots { get; set; }
 
-        public bool TryAddItem(IItem item, bool isStackable = true, bool addItem = true)
+        public bool TryAddItem(IItem item, bool isStackable = true, bool addItem = true) =>
+            TryAddItem(item, out _, isStackable, addItem);
+
+        public bool TryAddItem(IItem item, out ISlot slot, bool isStackable = true, bool addItem = true)
         {
+            slot = Slot.Empty;
             if (isStackable) // Добавлен способ проверять нужно ли стакать объекты или нет 
             {
                 for (var i = 0; i < Slots.Count; i++)
@@ -39,6 +43,7 @@ namespace Inventory
                     if (!addItem) return true;
 
                     _slots[i] = new Slot(item, _slots[i].Count + 1);
+                    slot = _slots[i];
                     OnChange?.Invoke();
                     return true;
                 }
@@ -50,6 +55,7 @@ namespace Inventory
                 if (!addItem) return true;
 
                 _slots[i] = new Slot(item, 1);
+                slot = _slots[i];
                 OnChange?.Invoke();
                 return true;
             }
@@ -81,12 +87,12 @@ namespace Inventory
         {
             for (var i = 0; i < MaxCapacity; i++)
             {
-                if (!Slots[i].IsEmpty)
-                {
-                    Slots[i].Count = 0;
-                    Slots[i].LastItem = null;
-                }
+                if (Slots[i].IsEmpty) continue;
+                Slots[i].Count = 0;
+                Slots[i].LastItem = null;
             }
+
+            OnChange?.Invoke();
         }
 
         private void Reset()

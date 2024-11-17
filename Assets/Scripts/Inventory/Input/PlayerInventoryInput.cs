@@ -1,6 +1,4 @@
-﻿using System;
-using Entity;
-using Installers;
+﻿using Entity;
 using UnityEngine;
 using Zenject;
 
@@ -37,14 +35,16 @@ namespace Inventory.Input
                 inventoryItem = i;
             }
 
-            if (Available())
-                Inventory?.TryAddItem(inventoryItem);
+            if (!Available()) return;
+            if (
+                Inventory is not null &&
+                Inventory.TryAddItem(inventoryItem, out var slot) &&
+                inventoryItem is IStartableItem startableItem
+            )
+                startableItem.OnStart(Entity, Inventory, slot);
         }
 
-        public bool HasSpace(IItem item)
-        {
-            return ((IInventory) inventory).TryAddItem(item, true, false);
-        }
+        public bool HasSpace(IItem item) => Inventory.TryAddItem(item, true, false);
 
         private void OnDrawGizmosSelected()
         {
