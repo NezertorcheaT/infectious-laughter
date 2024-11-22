@@ -380,6 +380,28 @@
                 },
                 {
                     "name": "",
+                    "id": "190d542a-7076-4705-a4af-9acc941cf985",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "264dc96b-7e3c-4a40-a119-060aa3891b93",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b02aa857-25e5-4cc7-b3e8-6f2eefca3f8c",
                     "path": "<Keyboard>/f",
                     "interactions": "",

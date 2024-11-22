@@ -9,9 +9,9 @@ namespace PropsImpact
         [SerializeField] private float stunTime = 5;
         public event Action OnTrapClosed;
 
-        private async void OnCollisionEnter2D(Collision2D other)
+        private async void OnTriggerEnter2D(Collider2D other)
         {
-            var ability = other.collider.gameObject.GetComponent<Stun>();
+            var ability = other.gameObject.GetComponent<Stun>();
             if (ability is null) return;
             GetComponent<Rigidbody2D>().simulated = false;
             GetComponent<Inventory.ItemToAdd>().enabled = false;
