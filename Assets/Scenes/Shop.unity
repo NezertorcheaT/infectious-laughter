@@ -1010,6 +1010,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
   - {fileID: 11400000, guid: c8fc82275ef55b044b7868db1122c052, type: 2}
   - {fileID: 11400000, guid: ef3d620f1fb4c7f4ba4bc76ea2c52903, type: 2}
+  - {fileID: 11400000, guid: ca186346973ddb24e870bf998e5b880c, type: 2}
   inventoryShop: {fileID: 11400000, guid: e30537309a1269849b1d4def2b5b80e1, type: 2}
   shopUi: {fileID: 79291011}
 --- !u!4 &643609544

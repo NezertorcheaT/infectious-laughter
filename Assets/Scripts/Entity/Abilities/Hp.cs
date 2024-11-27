@@ -62,7 +62,11 @@ namespace Entity.Abilities
         {
             Health -= Mathf.Max(d, 0);
 
-            if (Health <= 0) OnDie?.Invoke();
+            if (Health <= 0)
+            {
+                Debug.Log("Died");
+                OnDie?.Invoke();
+            }
         }
 
         public void Heal(int d)
