@@ -29,38 +29,6 @@ namespace Inventory.Items
 
         private ISlot _slot;
 
-        private void Awake()
-        {
-
-        }
-
-        private void OnEnable()
-        {
-        }
-
-        private void OnDisable()
-        {
-            _currentHealth.OnDamaged -= CheckForHealth;
-        }
-
-        private void CheckForHealth(int health, int addictiveHealth, int maxAddictiveHealth, int maxHealth)
-        {
-            if (_currentHealth.Health < CriticalHealth)
-                Trigger(_playerEntity, _inventory, _slot);
-        }
-
-        public void Trigger(Entity.Entity entity, IInventory inventory, ISlot slot)
-        {
-            Debug.Log("Death test");
-            _currentHealth.Heal(HealAmount);
-            foreach(var _slot in inventory.Slots)
-            {
-                int i = 0;
-                if (_slot == slot) inventory.UseItemOnSlot(i, entity);
-                i++;
-            }
-            slot.Count--;
-        }
 
         public void OnStart(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
@@ -69,6 +37,29 @@ namespace Inventory.Items
             _slot = slot;
             _currentHealth = entity.GetComponent<Hp>();
             _currentHealth.OnDamaged += CheckForHealth;
+        } 
+        private void CheckForHealth(int health, int addictiveHealth, int maxAddictiveHealth, int maxHealth)
+        {
+            if (_currentHealth.Health < CriticalHealth)
+            {
+                _currentHealth.OnDamaged -= CheckForHealth;
+                Trigger(_playerEntity, _inventory, _slot);
+            }
+        }
+
+        public void Trigger(Entity.Entity entity, IInventory inventory, ISlot slot)
+        {
+        //_currentHealth.Heal(HealAmount);
+        /* проблемна€ строка, оставл€€ еЄ получаем 
+        StackOverflowException: The requested operation caused a stack overflow.
+        Inventory.ItemsProvider.IdToItem(System.String id)(at Assets / Scripts / Inventory / ItemsProvider.cs:0)
+        Inventory.Slot.get_LastItem()(at Assets / Scripts / Inventory / Slot.cs:27)
+        Inventory.Slot.Trigger(Entity.Entity entity, Inventory.IInventory inventory)(at Assets / Scripts / Inventory / Slot.cs:41)
+        Inventory.Inventory.TriggerItemOnSlot(System.Int32 i, Entity.Entity entity)(at Assets / Scripts / Inventory / Inventory.cs:91)
+        */
+            var i = inventory.Slots.IndexOf(slot);
+            inventory.TriggerItemOnSlot(i, entity);
+            slot.Count--;
         }
     }
 }

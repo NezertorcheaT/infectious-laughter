@@ -36,6 +36,14 @@ namespace Inventory
             Count = 0;
         }
 
+        public void Trigger(Entity.Entity entity, IInventory inventory)
+        {
+            if (LastItem is not ITriggeredItem triggeredItem) return;
+            triggeredItem.Trigger(entity, inventory, this);
+            if (Count > 0) return;
+            Count = 0;
+        }
+
         public Slot(IItem item, int count)
         {
             lastItemId = item is null ? string.Empty : item.Id;

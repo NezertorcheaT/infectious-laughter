@@ -55,6 +55,13 @@ namespace Inventory
         void UseItemOnSlot(int i, Entity.Entity entity);
 
         /// <summary>
+        /// вызвать использование предмета на слоте
+        /// </summary>
+        /// <param name="i">номер слота</param>
+        /// <param name="entity">сущность куда</param>
+        void TriggerItemOnSlot(int i, Entity.Entity entity);
+
+        /// <summary>
         /// использовать последний предмет
         /// </summary>
         /// <param name="entity">сущность куда</param>

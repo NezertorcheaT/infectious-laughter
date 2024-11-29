@@ -83,6 +83,15 @@ namespace Inventory
             OnChange?.Invoke();
         }
 
+        public void TriggerItemOnSlot(int i, Entity.Entity entity)
+        {
+            if (i >= MaxCapacity) return;
+            if (Slots[i].IsEmpty) return;
+
+            Slots[i].Trigger(entity, this);
+            OnChange?.Invoke();
+        }
+
         public void ClearInventory()
         {
             for (var i = 0; i < MaxCapacity; i++)

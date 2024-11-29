@@ -26,5 +26,12 @@
         /// <param name="entity">сущность куда</param>
         /// <param name="inventory">слоте, где</param>
         void Use(Entity.Entity entity, IInventory inventory);
+
+        /// <summary>
+        /// вызвать использование предмета в слоте
+        /// </summary>
+        /// <param name="entity">сущность куда</param>
+        /// <param name="inventory">слоте, где</param>
+        void Trigger(Entity.Entity entity, IInventory inventory);
     }
 }
