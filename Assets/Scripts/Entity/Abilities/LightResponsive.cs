@@ -11,7 +11,20 @@ namespace Entity.Abilities
         public event Action<LightImpact> OnEnterLight;
         public event Action<LightImpact> OnExitLight;
 
-        public bool Resistance;
+        public event Action<bool> OnChangeResistance;
+
+        private bool _resistance;
+
+        public bool Resistance 
+        {
+            get { return _resistance; }
+            set
+            {
+                OnChangeResistance?.Invoke(value);
+                _resistance = value;
+            }
+        }
+
 
         private void OnTriggerEnter2D(Collider2D other)
         {

@@ -30,7 +30,11 @@ namespace Inventory.Items
             {
                 _lightResponse.Resistance = true;
                 _useCount--;
-                if(_useCount <= 0) slot.Count--;
+                if(_useCount <= 0) 
+                {
+                    _useCount = useCount;
+                    slot.Count--;
+                }
             }
         }
     }
