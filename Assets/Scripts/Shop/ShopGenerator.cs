@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using CustomHelper;
 using Inventory;
 using UnityEngine;
 
@@ -7,40 +8,21 @@ namespace Shop
 {
     public class ShopGenerator : MonoBehaviour
     {
-        [SerializeField] private List<ScriptableObject> shopItemsPoolList;
-        [SerializeField] private ScriptableObject inventoryShop;
+        [SerializeField, Min(1)] private int maxCapacity;
+        [SerializeField] private ScriptableObject[] shopItemsPoolList;
         [SerializeField] private ShopUI shopUi;
-
-        private IInventory _inventory;
-        private IItem[] _items;
 
         private void Awake()
         {
-            _inventory = inventoryShop as IInventory;
-            if (_inventory is null) return;
-            _inventory.ClearInventory();
+            var items = shopItemsPoolList.AsType<IShopItem>().ToArray();
+            var gallery = new List<IShopItem>(maxCapacity);
 
-            _items = shopItemsPoolList.Select(item => item as IItem).Where(item => item is not null).ToArray();
-
-            GenerateItemsInShop(_inventory.MaxCapacity);
-        }
-
-        private void GenerateItemsInShop(int itemsCountToGenerate)
-        {
-            if (_inventory is null) return;
-
-            for (var i = 0; i <= itemsCountToGenerate; i++)
+            for (var i = 0; i < maxCapacity; i++)
             {
-                if (_items[Random.Range(0, _items.Length)] is not IShopItem item)
-                {
-                    i--;
-                    continue;
-                }
-
-                _inventory.TryAddItem(item, false);
+                gallery.Add(items[Random.Range(0, items.Length)]);
             }
 
-            shopUi.SetShopwindow(_inventory);
+            shopUi.SetShopWindow(gallery);
         }
     }
 }

@@ -17,24 +17,27 @@ namespace Entity.Abilities
         public event Action<int, int, int, int> OnHpStarted;
         public event Action<int, int> OnAddictiveHpChanged;
         public event Action OnDie;
+        public event Action BeforeDie;
 
         public int AddictiveHealth
         {
             get => addictiveHealth;
             set
             {
+                value = Mathf.Max(value, 0);
                 if (addictiveHealth == value) return;
 
                 addictiveHealth = Mathf.Clamp(value, 0, maxAddictiveHealth);
                 OnAddictiveHpChanged?.Invoke(addictiveHealth, maxAddictiveHealth);
             }
         }
+
         public int Health
         {
             get => health + AddictiveHealth;
-
-            private set
+            set
             {
+                value = Mathf.Max(value, 0);
                 if (Health < value)
                 {
                     health = Mathf.Min(maxHealth, value);
@@ -51,26 +54,16 @@ namespace Entity.Abilities
                     else
                         AddictiveHealth = Mathf.Max(0, addictiveHpNow);
                     OnDamaged?.Invoke(health, AddictiveHealth, maxAddictiveHealth, maxHealth);
+                    if (Health > 0) return;
+                    BeforeDie?.Invoke();
+                    if (Health > 0) return;
+                    OnDie?.Invoke();
                 }
             }
         }
 
         public int MaxAddictiveHealth => maxAddictiveHealth;
         public int MaxHealth => maxHealth;
-
-        public void AddDamage(int d)
-        {
-            Health -= Mathf.Max(d, 0);
-
-            if (Health <= 0) OnDie?.Invoke();
-            
-        }
-
-        public void Heal(int d)
-        {
-            d = Mathf.Max(d, 0);
-            Health += d;
-        }
 
         public void FromContent(
             Session.Content hpContent,
@@ -79,11 +72,10 @@ namespace Entity.Abilities
             Session.Content maxHealthContent
         )
         {
-            health = (int) hpContent.Value;
-            addictiveHealth = (int) addictiveHpContent.Value;
-            maxHealth = (int) maxHealthContent.Value;
-            maxAddictiveHealth = (int) maxAddictiveHealthContent.Value;
+            health = (int)hpContent.Value;
+            addictiveHealth = (int)addictiveHpContent.Value;
+            maxHealth = (int)maxHealthContent.Value;
+            maxAddictiveHealth = (int)maxAddictiveHealthContent.Value;
         }
-
     }
 }

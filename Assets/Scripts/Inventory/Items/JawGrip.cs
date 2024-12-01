@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Inventory.Input;
 using UnityEngine;
-using UnityEngine.Windows;
 
 namespace Inventory.Items
 {

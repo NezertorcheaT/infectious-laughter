@@ -4,25 +4,33 @@ using System.Collections.Generic;
 namespace Inventory
 {
     /// <summary>
-    /// эээ нууу инвентарь
+    /// инвентарь, строго привязанный к сущности
     /// </summary>
-    public interface IInventory
+    public interface IEntityBasedInventory : IInventory
     {
         /// <summary>
-        /// максимальное колличество слотов
+        /// сущность, к которой привязан инвентарь
         /// </summary>
-        int MaxCapacity { get; }
+        Entity.Entity Holder { get; }
 
         /// <summary>
-        /// колличество занятых слотов
+        /// при изменении сущности привязки
         /// </summary>
-        int Capacity { get; }
+        event Action<Entity.Entity> OnHolderChanged;
 
         /// <summary>
-        /// это вот слоты
+        /// привязать инвентарь к сущности
         /// </summary>
-        List<ISlot> Slots { get; }
+        /// <param name="entity">сущность для привязки</param>
+        /// <returns>успешность привязки</returns>
+        bool Bind(Entity.Entity entity);
+    }
 
+    /// <summary>
+    /// инвентарь, поддерживающий добавление в него предметов
+    /// </summary>
+    public interface IChangableInventory : IInventory
+    {
         /// <summary>
         /// при изменении инвентаря
         /// </summary>
@@ -46,7 +54,13 @@ namespace Inventory
         /// /// <param addItem="bool">переменная, надо ли добавлять обект, или надо вернуть переменную которая показывает можем добавить или нет</param>
         /// <returns>вошло ли</returns>
         bool TryAddItem(IItem item, bool isStackable = true, bool addItem = true);
+    }
 
+    /// <summary>
+    /// инвентарь, поддерживающий использование предметов в нём
+    /// </summary>
+    public interface IUsableInventory
+    {
         /// <summary>
         /// использовать предмет на слоте
         /// </summary>
@@ -55,17 +69,31 @@ namespace Inventory
         void UseItemOnSlot(int i, Entity.Entity entity);
 
         /// <summary>
-        /// вызвать использование предмета на слоте
-        /// </summary>
-        /// <param name="i">номер слота</param>
-        /// <param name="entity">сущность куда</param>
-        void TriggerItemOnSlot(int i, Entity.Entity entity);
-
-        /// <summary>
         /// использовать последний предмет
         /// </summary>
         /// <param name="entity">сущность куда</param>
         void UseLast(Entity.Entity entity);
+    }
+
+    /// <summary>
+    /// эээ нууу инвентарь
+    /// </summary>
+    public interface IInventory
+    {
+        /// <summary>
+        /// максимальное количество слотов
+        /// </summary>
+        int MaxCapacity { get; }
+
+        /// <summary>
+        /// количество занятых слотов
+        /// </summary>
+        int Capacity { get; }
+
+        /// <summary>
+        /// это вот слоты
+        /// </summary>
+        IList<ISlot> Slots { get; }
 
         /// <summary>
         /// пустой ли инвентарь полностью

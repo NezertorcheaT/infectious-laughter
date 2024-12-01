@@ -26,7 +26,7 @@ namespace Inventory.Items
             var radio = Verifier.Container.InstantiatePrefab(radioWorld, position, Quaternion.identity, null);
             radio.transform.SetParent(null);
             var adder = radio.GetComponent<IItemAdder>();
-            adder.Input ??= entity.FindAvailableAbilityByInterface<IInventoryInput>();
+            adder.Input ??= entity.FindAvailableAbilityByInterface<IInventoryInput<PlayerInventory>>();
             slot.Count--;
         }
     }

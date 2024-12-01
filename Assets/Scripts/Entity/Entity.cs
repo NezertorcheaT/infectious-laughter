@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CustomHelper;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace Entity
     /// </summary>
     [AddComponentMenu("Entity/Entity")]
     [DisallowMultipleComponent]
-    public class Entity : MonoBehaviour
+    public class Entity : MonoBehaviour, IEquatable<Entity>
     {
         [Header("Controller")] [SerializeField]
         protected bool AutoFindController = true;
@@ -64,16 +65,15 @@ namespace Entity
         /// </summary>
         protected virtual void Initialize()
         {
-            if (Controller == null || AutoFindController) Controller = GetComponent<Controller>();
+            if (Controller || AutoFindController) Controller = GetComponent<Controller>();
             if (Abilities == null || AutoFindAbilities) Abilities = GetComponents<Ability>();
 
             CachedTransform = transform;
 
-            foreach (var ability in Abilities)
+            foreach (var ability in Abilities.AsType<IInitializeByEntity>())
             {
-                var abil = (IInitializeByEntity) ability;
-                abil.Initialized = true;
-                abil.Initialize();
+                ability.Initialized = true;
+                ability.Initialize();
             }
 
             if (!Controller) return;
@@ -152,5 +152,23 @@ namespace Entity
                 if (ability.Available() && ability is T t) yield return t;
             }
         }
+
+        public bool Equals(Entity other)
+        {
+            if (other is null) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return base.Equals(other) && Equals(gameObject, other.gameObject);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj.GetType() == GetType() && Equals((Entity)obj);
+        }
+
+        public override int GetHashCode() => HashCode.Combine(base.GetHashCode(), gameObject);
+        public static bool operator ==(Entity left, Entity right) => Equals(left, right);
+        public static bool operator !=(Entity left, Entity right) => !Equals(left, right);
     }
 }

@@ -37,7 +37,7 @@ namespace Inventory.Items
             trap.transform.SetParent(null);
             var adder = trap.GetComponent<IItemAdder>();
             if (adder is not null)
-                adder.Input ??= entity.FindAvailableAbilityByInterface<IInventoryInput>();
+                adder.Input ??= entity.FindAvailableAbilityByInterface<IInventoryInput<PlayerInventory>>();
             slot.Count--;
         }
     }

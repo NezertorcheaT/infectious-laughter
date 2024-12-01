@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Inventory.Input
 {
-    public interface IInventoryInput : IInitializeByEntity
+    public interface IInventoryInput<out T> : IInitializeByEntity where T : IInventory
     {
-        IInventory Inventory { get; }
+        T Inventory { get; }
         public void AddItem(ScriptableObject item);
     }
 }

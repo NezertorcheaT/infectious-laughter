@@ -5,7 +5,7 @@ using Zenject;
 namespace Inventory.Input
 {
     [AddComponentMenu("Entity/Abilities/Inventory Picking Ability")]
-    public class PlayerInventoryInput : Ability, IInventoryInput
+    public class PlayerInventoryInput : Ability, IInventoryInput<PlayerInventory>
     {
         [Inject] private ItemAdderVerifier _itemAdderVerifier;
         [SerializeField] private ScriptableObject inventory;
@@ -13,21 +13,21 @@ namespace Inventory.Input
         //Сделали его пабликом для того что бы можно было вызывать у боссов. Или у скилов.
         public float MaxDistance = 5f;
 
-        public IInventory Inventory => inventory as IInventory;
+        public PlayerInventory Inventory => inventory as PlayerInventory;
 
         private void Start()
         {
             if (Inventory.Empty) return;
             foreach (var slot in Inventory.Slots)
             {
-                if (!(slot.LastItem is ICanSpawn i)) continue;
+                if (slot.LastItem is not ICanSpawn i) continue;
                 i.Verifier = _itemAdderVerifier;
             }
         }
 
         public void AddItem(ScriptableObject item)
         {
-            if (!(item is IItem inventoryItem)) return;
+            if (item is not IItem inventoryItem) return;
 
             if (inventoryItem is ICanSpawn i)
             {
@@ -41,7 +41,7 @@ namespace Inventory.Input
                 Inventory.TryAddItem(inventoryItem, out var slot) &&
                 inventoryItem is IStartableItem startableItem
             )
-                startableItem.OnStart(Entity, Inventory, slot);
+                startableItem.OnStart(Inventory.Holder, Inventory, slot);
         }
 
         public bool HasSpace(IItem item) => Inventory.TryAddItem(item, true, false);

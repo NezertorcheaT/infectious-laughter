@@ -25,7 +25,7 @@ namespace PropsImpact
         public void Use()
         {
             if (_used || !isActiveAndEnabled) return;
-            _hpAbility.Heal(_hpAbility.MaxHealth - _hpAbility.Health);
+            _hpAbility.Health += _hpAbility.MaxHealth - _hpAbility.Health;
             _used = true;
         }
     }

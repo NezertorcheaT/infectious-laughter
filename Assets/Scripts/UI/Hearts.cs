@@ -45,7 +45,7 @@ namespace UI
         [Button("Test Damage Update")]
         private void DamageTest()
         {
-            _currentHealth.AddDamage(2);
+            _currentHealth.Health -= 2;
         }
 #endif
 

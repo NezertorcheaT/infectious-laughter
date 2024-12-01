@@ -13,7 +13,7 @@ namespace Installers
     public class PlayerInstaller : MonoInstaller
     {
         [SerializeField] private Entity.Entity playerPrefab;
-        [SerializeField] private Inventory.Inventory playerInventory;
+        [SerializeField] private PlayerInventory playerInventory;
         [SerializeField] private bool teleportCamera;
         [SerializeField] private PlayerSpawnPoint spawnPoint;
         [Inject] private SessionFactory _sessionFactory;
@@ -35,7 +35,8 @@ namespace Installers
             _playerCamera.VirtualCamera.Follow = _player.transform.GetChild(1);
             _playerCamera.VirtualCamera.LookAt = _player.transform;
 
-            playerInventory ??= _player.FindAbilityByType<PlayerInventoryInput>().Inventory as Inventory.Inventory;
+            playerInventory ??=
+                _player.FindAbilityByType<PlayerInventoryInput>().Inventory;
 
             if (teleportCamera)
                 _playerCamera.VirtualCamera.ForceCameraPosition(_player.CachedTransform.position, Quaternion.identity);
@@ -57,6 +58,9 @@ namespace Installers
 
             if (spawnPoint is null && _signalBus.IsSignalDeclared<ProceduralGenerationInstaller.GenerationEndSignal>())
                 _signalBus.Subscribe<ProceduralGenerationInstaller.GenerationEndSignal>(OnGenerationEnded);
+
+            playerInventory.Bind(_player);
+            playerInventory.OnDeserialized();
         }
 
         private void OnGenerationEnded()
@@ -69,12 +73,12 @@ namespace Installers
     public readonly struct PlayerInstallation
     {
         public Entity.Entity Entity { get; }
-        public IInventory Inventory { get; }
+        public PlayerInventory Inventory { get; }
 
-        public PlayerInstallation(Entity.Entity player, IInventory inventory)
+        public PlayerInstallation(Entity.Entity player, PlayerInventory playerInventory)
         {
             Entity = player;
-            Inventory = inventory;
+            Inventory = playerInventory;
         }
     }
 }

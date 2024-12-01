@@ -120,10 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 3693047800681385020, guid: d66e960fa8d249b44b84d5e9b45ce91b, type: 3}
-  playerInventory: {fileID: 11400000, guid: 12560a4b763d5994192ec8ced2401d29, type: 2}
+  playerPlayerInventory: {fileID: 11400000, guid: 12560a4b763d5994192ec8ced2401d29, type: 2}
   teleportCamera: 0
   spawnPoint: {fileID: 0}
-  proceduralGenerationEnder: {fileID: 0}
 --- !u!114 &1235603849900061933
 MonoBehaviour:
   m_ObjectHideFlags: 0

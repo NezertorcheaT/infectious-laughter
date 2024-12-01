@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GameFlow;
 using Installers;
@@ -37,7 +39,7 @@ namespace Shop
         private void OnDisable() => _controls.Gameplay.CloseShop.performed -= KeyCloseShop;
         private void KeyCloseShop(InputAction.CallbackContext callbackContext) => CloseShop();
 
-        public async void CloseShop()
+        private async void CloseShop()
         {
             if (_isShopClosed) return;
             foreach (var frame in itemFrames)
@@ -68,35 +70,31 @@ namespace Shop
             }
         }
 
-        public void SetShopwindow(IInventory shopInventory)
+        public void SetShopWindow(ICollection<IShopItem> gallery)
         {
             var i = 0;
-            foreach (var slot in shopInventory.Slots)
+            foreach (var item in gallery)
             {
                 var frame = itemFrames[i];
                 i++;
-                if (slot.LastItem is not IShopItem shopItem)
-                    continue;
-
-                frame.Item.sprite = shopItem.SpriteForShop;
-                frame.Text.SetText($"{shopItem.Name}\nЗа {shopItem.ItemCost} мусора");
-                frame.Button.onClick.AddListener(() => OnButtonClick(frame, slot));
+                frame.Item.sprite = item.SpriteForShop;
+                frame.Text.SetText($"{item.Name}\nЗа {item.ItemCost} мусора");
+                frame.Button.onClick.AddListener(() => OnButtonClick(frame, item));
             }
         }
 
-        private void OnButtonClick(ShopItemFrame frame, ISlot slot)
+        private void OnButtonClick(ShopItemFrame frame, IShopItem item)
         {
             //Реализация покупки предмета
-            if (slot.LastItem is not IShopItem shopItem) return;
-            if (!_garbageManager.IfCanAfford(shopItem.ItemCost) || slot.IsEmpty) return;
-            if (!_playerInventoryInput.HasSpace(shopItem)) return;
+            if (frame.Brought || !_garbageManager.IfCanAfford(item.ItemCost)) return;
+            if (!_playerInventoryInput.HasSpace(item)) return;
 
-            _garbageManager.GarbageBalance -= shopItem.ItemCost;
-            slot.Count = 0;
+            _garbageManager.GarbageBalance -= item.ItemCost;
+            frame.OnBye();
 
-            _playerInventoryInput.AddItem(shopItem.SelfRef);
+            _playerInventoryInput.AddItem(item.SelfRef);
 
-            frame.Text.SetText($"{shopItem.Name}\nПродано");
+            frame.Text.SetText($"{item.Name}\nПродано");
         }
     }
 }

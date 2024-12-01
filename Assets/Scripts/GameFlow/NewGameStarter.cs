@@ -2,6 +2,7 @@
 using Levels.StoryNodes;
 using Saving;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace GameFlow
@@ -11,7 +12,7 @@ namespace GameFlow
         [Inject] private LevelManager levelManager;
         [Inject] private SessionFactory sessionFactory;
         [Inject] private MenuSaveLoader saveLoader;
-        [SerializeField] private Inventory.Inventory playerInventory;
+        [SerializeField] private Inventory.PlayerInventory playerInventory;
         [SerializeField] private int playerInitialHp = 5;
         [SerializeField] private int playerInitialAddictiveHp = 0;
         [SerializeField] private int playerInitialMaxHp = 5;

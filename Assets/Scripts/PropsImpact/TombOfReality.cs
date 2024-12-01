@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -11,7 +10,7 @@ namespace PropsImpact
     {
         private string _searchFruitID = "il.fruit_of_the_tree";
         private byte _usedFruitsCount = 0;
-        private List<Inventory.ISlot> _slots;
+        private IList<Inventory.ISlot> _slots;
         
         [Inject] private PlayerInstallation _playerInstallation;
         [SerializeField] private int sceneId;

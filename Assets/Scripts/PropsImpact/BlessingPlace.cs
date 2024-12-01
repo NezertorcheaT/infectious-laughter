@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using CustomHelper;
 using UnityEngine;
 using Installers;
+using Inventory;
 using Zenject;
 
 namespace PropsImpact
@@ -19,12 +19,10 @@ namespace PropsImpact
 
         public void Use()
         {
-            int i = Random.Range(0, canSpawnItems.Length);
-            if(!_input.HasSpace((Inventory.IItem)canSpawnItems[i])) return;
-            _input.AddItem(canSpawnItems[i]);
+            var item = canSpawnItems.AsType<IItem>().TakeRandom();
+            if (!_input.HasSpace(item)) return;
+            _input.AddItem(item.SelfRef);
             Destroy(gameObject);
         }
-
-
     }
 }

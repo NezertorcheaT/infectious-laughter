@@ -9,7 +9,6 @@ namespace PropsImpact
         [SerializeField] private Collider2D collider;
         [SerializeField] private TrailRenderer trailRenderer;
         [SerializeField] private float destroyDelay;
-
         private int _damage;
         private int _stunTime;
         private bool _initialized;
@@ -28,7 +27,7 @@ namespace PropsImpact
             collision.rigidbody.velocity = Vector2.zero;
             collision.otherRigidbody.velocity = Vector2.zero;
 
-            enemyHp.AddDamage(_damage);
+            enemyHp.Health -= _damage;
             SetEnabled(false);
 
             impactParticle.startSize = 0.9f;

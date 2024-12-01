@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Foo", menuName = "Inventory/Items/Foo", order = 0)]
-    public class FooItem : ScriptableObject, IItem, IShopItem
+    public class FooItem : ScriptableObject, IShopItem
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public int MaxStackSize { get; private set; }
@@ -35,7 +35,7 @@ namespace Inventory.Items
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((IItem) obj);
+            return Equals((IItem)obj);
         }
 
         public override int GetHashCode() => HashCode.Combine(Name, MaxStackSize);

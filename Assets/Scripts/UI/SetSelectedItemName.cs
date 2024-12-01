@@ -12,10 +12,13 @@ namespace UI
         [SerializeField] private TMP_Text selfText;
         [SerializeField] private Inventory.UI.InventoryUI playerInventoryUI;
 
-        private void SetItemName(int selectionId) =>
-            selfText.text = _playerInstallation.Inventory.Slots[selectionId].IsEmpty
+        private void SetItemName(int selectionId)
+        {
+            var slot = _playerInstallation.Inventory.Slots[selectionId];
+            selfText.text = slot.IsEmpty
                 ? "Empty"
-                : _playerInstallation.Inventory.Slots[selectionId].LastItem.Name;
+                : slot.LastItem.Name;
+        }
 
         private void OnEnable()
         {
