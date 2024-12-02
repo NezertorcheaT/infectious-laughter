@@ -148,7 +148,7 @@ namespace Inventory
                     if (LastItem is null) return;
                     count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
                     if (count == 0 && LastItem is IEndableItem e) e.OnEnded(Inventory.Holder, Inventory, this);
-                    Inventory?.OnChange?.Invoke();
+                    Inventory.OnChange?.Invoke();
                 }
             }
 
@@ -159,7 +159,7 @@ namespace Inventory
                 {
                     if (LastItem is IEndableItem e) e.OnEnded(Inventory.Holder, Inventory, this);
                     lastItemId = value is null ? string.Empty : value.Id;
-                    Inventory?.OnChange?.Invoke();
+                    Inventory.OnChange?.Invoke();
                 }
             }
 
@@ -173,9 +173,9 @@ namespace Inventory
 
             public Slot(IInventory inventory, IItem item, int count)
             {
+                Inventory = inventory as PlayerInventory;
                 lastItemId = item is null ? string.Empty : item.Id;
                 Count = item is not null ? count : 0;
-                Inventory = inventory as PlayerInventory;
             }
 
             public static Slot Empty(IInventory inventory) => new(inventory, null, 0);
