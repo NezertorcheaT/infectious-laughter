@@ -41,7 +41,7 @@ namespace Inventory
                     if (_slots[i].IsEmpty) continue;
                     if (_slots[i].LastItem.GetType().Name != item.GetType().Name) continue;
                     if (_slots[i].LastItem.SelfRef != item.SelfRef) continue;
-                    if (_slots[i].LastItem != item) continue;
+                    if (_slots[i].LastItem.Id != item.Id) continue;
                     if (_slots[i].Count >= Slots[i].LastItem.MaxStackSize) continue;
 
                     if (!addItem) return true;
@@ -148,7 +148,7 @@ namespace Inventory
                     if (LastItem is null) return;
                     count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
                     if (count == 0 && LastItem is IEndableItem e) e.OnEnded(Inventory.Holder, Inventory, this);
-                    Inventory.OnChange?.Invoke();
+                    Inventory?.OnChange?.Invoke();
                 }
             }
 
@@ -159,7 +159,7 @@ namespace Inventory
                 {
                     if (LastItem is IEndableItem e) e.OnEnded(Inventory.Holder, Inventory, this);
                     lastItemId = value is null ? string.Empty : value.Id;
-                    Inventory.OnChange?.Invoke();
+                    Inventory?.OnChange?.Invoke();
                 }
             }
 
