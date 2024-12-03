@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Debug = UnityEngine.Debug;
 
 namespace Commands
 {
-    public class History : IEnumerable<ICommand>, IDisposable
+    public class History : ICommand, IEnumerable<ICommand>, IDisposable
     {
         private List<(TimeSpan delay, ICommand command)> _history;
         private Stopwatch _timer;
@@ -36,7 +35,7 @@ namespace Commands
             return this;
         }
 
-        public History Register<T>(T command) where T : ICommand
+        public History Register(ICommand command)
         {
             if (Stopped) return this;
             if (!_timer.IsRunning)
@@ -50,33 +49,17 @@ namespace Commands
         {
             foreach (var (delay, command) in _history)
             {
-                if (command is IRevertableCommand) continue;
-                Debug.LogError($"Cannot revert unrevertable command {command}, consider using RevertForced()");
-                return;
+                await Task.Delay(delay);
+                await command.Revert();
             }
-
-            await RevertForced();
         }
 
-        public async Task Reapply()
+        public async Task Repeat()
         {
             foreach (var (delay, command) in _history)
             {
                 await Task.Delay(delay);
-                if (command is not IRepeatableCommand) continue;
-                if (command is ISyncRepeatableCommand rev) rev.Repeat();
-                if (command is IAsyncRepeatableCommand arev) await arev.Repeat;
-            }
-        }
-
-        public async Task RevertForced()
-        {
-            foreach (var (delay, command) in _history)
-            {
-                await Task.Delay(delay);
-                if (command is not IRevertableCommand) continue;
-                if (command is ISyncRevertableCommand rev) rev.Revert();
-                if (command is IAsyncRevertableCommand arev) await arev.Revert;
+                await command.Repeat();
             }
         }
 

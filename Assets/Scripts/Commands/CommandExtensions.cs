@@ -7,136 +7,105 @@ namespace Commands
     {
         private class GeneralCommand : ICommand
         {
-        }
+            public Action Action;
+            public Action ActionRevert;
+            public Task Task;
+            public Task TaskRevert;
 
-        private class AsyncRepeatableGeneralCommand : IAsyncRepeatableCommand
-        {
-            public Task Repeat { get; set; }
-        }
-
-        private class AsyncRevertableGeneralCommand : IAsyncRevertableCommand
-        {
-            public Task Revert { get; set; }
-        }
-
-        private class AsyncBothGeneralCommand : IAsyncRevertableCommand, IAsyncRepeatableCommand
-        {
-            public Task Revert { get; set; }
-            public Task Repeat { get; set; }
-        }
-
-        private class SyncBothGeneralCommand : ISyncRevertableCommand, ISyncRepeatableCommand
-        {
-            public Action Revert { get; set; }
-            public Action Repeat { get; set; }
-        }
-
-
-        private class AsyncSyncGeneralCommand : IAsyncRevertableCommand, ISyncRepeatableCommand
-        {
-            public Task Revert { get; set; }
-            public Action Repeat { get; set; }
-        }
-
-        private class SyncAsyncGeneralCommand : ISyncRevertableCommand, IAsyncRepeatableCommand
-        {
-            public Action Revert { get; set; }
-            public Task Repeat { get; set; }
-        }
-
-
-        private class SyncRepeatableGeneralCommand : ISyncRepeatableCommand
-        {
-            public Action Repeat { get; set; }
-        }
-
-        private class SyncRevertableGeneralCommand : ISyncRevertableCommand
-        {
-            public Action Revert { get; set; }
-        }
-
-        public static IRepeatableCommand FromAction(Action action)
-        {
-            var com = new SyncRepeatableGeneralCommand();
-            com.Repeat = action;
-            return com;
-        }
-
-        public static IRepeatableCommand FromTask(Task task)
-        {
-            var com = new AsyncRepeatableGeneralCommand();
-            com.Repeat = task;
-            return com;
-        }
-
-
-        public static IRevertableCommand RevertingBy(Action action)
-        {
-            var com = new SyncRevertableGeneralCommand();
-            com.Revert = action;
-            return com;
-        }
-
-        public static IRevertableCommand RevertingBy(Task task)
-        {
-            var com = new AsyncRevertableGeneralCommand();
-            com.Revert = task;
-            return com;
-        }
-
-        public static ICommand RevertingBy(this ICommand command, Task task)
-        {
-            if (command is IAsyncRepeatableCommand rep1)
+            public GeneralCommand(Action action, Action revert)
             {
-                var com1 = new AsyncBothGeneralCommand();
-                com1.Repeat = rep1.Repeat;
-                if (command is IAsyncRevertableCommand rev1)
-                    com1.Revert = Task.WhenAll(rev1.Revert, task);
-                else
-                    com1.Revert = task;
-                return com1;
+                Action = action;
+                ActionRevert = revert;
             }
 
-            if (command is ISyncRepeatableCommand rep2)
+            public GeneralCommand(Task task, Task revert)
             {
-                var com2 = new AsyncSyncGeneralCommand();
-                com2.Repeat = rep2.Repeat;
-                if (command is IAsyncRevertableCommand rev2)
-                    com2.Revert = Task.WhenAll(rev2.Revert, task);
-                else
-                    com2.Revert = task;
-                return com2;
+                Task = task;
+                TaskRevert = revert;
             }
 
-            var com = new AsyncRevertableGeneralCommand();
-            if (command is IAsyncRevertableCommand rev)
-                com.Revert = Task.WhenAll(rev.Revert, task);
-            else
-                com.Revert = task;
-            return com;
+            public GeneralCommand(Task task, Action revert)
+            {
+                Task = task;
+                ActionRevert = revert;
+            }
+
+            public GeneralCommand(Action action, Task revert)
+            {
+                Action = action;
+                TaskRevert = revert;
+            }
+
+            public async Task Repeat()
+            {
+                await Task;
+                Action?.Invoke();
+            }
+
+            public async Task Revert()
+            {
+                await TaskRevert;
+                ActionRevert?.Invoke();
+            }
         }
 
-        public static ICommand RevertingBy(this ICommand command, Action action)
+        public static ICommand FromAction(Action action) => new GeneralCommand(action, delegate { });
+        public static ICommand FromTask(Task task) => new GeneralCommand(task, delegate { });
+
+        public static ICommand RepeatsWith(this ICommand command, Action action)
         {
-            if (command is IAsyncRepeatableCommand rep1)
-            {
-                var com1 = new SyncAsyncGeneralCommand();
-                com1.Repeat = rep1.Repeat;
-                com1.Revert = action;
-                return com1;
-            }
+            return new GeneralCommand(
+                Action(),
+                command.Revert()
+            );
 
-            if (command is ISyncRepeatableCommand rep2)
+            async Task Action()
             {
-                var com2 = new SyncBothGeneralCommand();
-                com2.Repeat = rep2.Repeat;
-                com2.Revert = action;
-                return com2;
+                await command.Repeat();
+                action?.Invoke();
             }
+        }
 
-            var com = new SyncRevertableGeneralCommand();
-            com.Revert = action;
-            return com;
+        public static ICommand RepeatsWith(this ICommand command, Task task)
+        {
+            return new GeneralCommand(
+                Action(),
+                command.Revert()
+            );
+
+            async Task Action()
+            {
+                await command.Repeat();
+                await task;
+            }
+        }
+
+        public static ICommand RevertsWith(this ICommand command, Task task)
+        {
+            return new GeneralCommand(
+                command.Repeat(),
+                Revert()
+            );
+
+            async Task Revert()
+            {
+                await command.Revert();
+                await task;
+            }
+        }
+
+        public static ICommand RevertsWith(this ICommand command, Action action)
+        {
+            return new GeneralCommand(
+                command.Repeat(),
+                Revert()
+            );
+
+            async Task Revert()
+            {
+                await command.Revert();
+                action?.Invoke();
+            }
         }
     }
 }
