@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e1bb42fe61d2374983e4e7dc75d38a0
+guid: 9e6f45b157f554342a29e936b7268800
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -153,85 +153,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bushes_0
+      name: Master of Genesis meat heaps_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 34
-        width: 40
-        height: 24
+        x: 36
+        y: 97
+        width: 171
+        height: 58
       alignment: 9
-      pivot: {x: 0.5, y: 0.083333336}
+      pivot: {x: 0.49707603, y: 0.0862069}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 888d0174abe56744c93a05e970948377
-      internalID: -1538231495
+      spriteID: 050409829b4188b42b9c3ce682764848
+      internalID: -401704237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_1
+      name: Master of Genesis meat heaps_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 35
-        width: 38
-        height: 23
+        x: 7
+        y: 47
+        width: 101
+        height: 35
       alignment: 9
-      pivot: {x: 0.5, y: 0.08695652}
+      pivot: {x: 0.4950495, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dba888793c210fa449b1f2d62e7a64d5
-      internalID: 123150380
+      spriteID: c5be2c8e5e1531242a59e90963e8c5ab
+      internalID: -2061186019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_2
+      name: Master of Genesis meat heaps_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 2
-        width: 42
-        height: 26
+        x: 118
+        y: 47
+        width: 125
+        height: 47
       alignment: 9
-      pivot: {x: 0.5, y: 0.07692308}
+      pivot: {x: 0.49600002, y: 0.10638297}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35b937ef7e9c9e7449b01ee2ce8a71f1
-      internalID: 531693912
+      spriteID: 3afae09a3dc3b124eb8dd0d44ba02bb8
+      internalID: -1968862010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_3
+      name: Master of Genesis meat heaps_3
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 6
+        width: 30
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 684e5d40accac8f4a82b2fc58b653a94
+      internalID: 164786974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Master of Genesis meat heaps_4
       rect:
         serializedVersion: 2
         x: 55
-        y: 2
-        width: 37
-        height: 23
+        y: 6
+        width: 35
+        height: 20
       alignment: 9
-      pivot: {x: 0.5135135, y: 0.08695652}
+      pivot: {x: 0.4857143, y: 0.15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35dc49ae80b2e31429687ee5a40be9f8
-      internalID: 223714791
+      spriteID: 3d61afd27a368854ab79aa33158616db
+      internalID: 353875123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Master of Genesis meat heaps_5
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 5
+        width: 57
+        height: 28
+      alignment: 9
+      pivot: {x: 0.49122807, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d547c7f710f815947896d249882f8004
+      internalID: -1262309925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Master of Genesis meat heaps_6
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 5
+        width: 78
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.10810811}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6200bddb021e99140a17ddde1e50e5b6
+      internalID: -2023904449
       vertices: []
       indices: 
       edges: []
@@ -247,10 +310,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bushes_1: 123150380
-      Bushes_3: 223714791
-      Bushes_2: 531693912
-      Bushes_0: -1538231495
+      Master of Genesis meat heaps_1: -2061186019
+      Master of Genesis meat heaps_3: 164786974
+      Master of Genesis meat heaps_4: 353875123
+      Master of Genesis meat heaps_6: -2023904449
+      Master of Genesis meat heaps_0: -401704237
+      Master of Genesis meat heaps_5: -1262309925
+      Master of Genesis meat heaps_2: -1968862010
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

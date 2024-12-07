@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e1bb42fe61d2374983e4e7dc75d38a0
+guid: 7fea1dc7b31cfb649beb56b073d58545
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,11 +42,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 0
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.52500004, y: 0.05}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -151,91 +151,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Bushes_0
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 34
-        width: 40
-        height: 24
-      alignment: 9
-      pivot: {x: 0.5, y: 0.083333336}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 888d0174abe56744c93a05e970948377
-      internalID: -1538231495
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bushes_1
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 35
-        width: 38
-        height: 23
-      alignment: 9
-      pivot: {x: 0.5, y: 0.08695652}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dba888793c210fa449b1f2d62e7a64d5
-      internalID: 123150380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bushes_2
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 2
-        width: 42
-        height: 26
-      alignment: 9
-      pivot: {x: 0.5, y: 0.07692308}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 35b937ef7e9c9e7449b01ee2ce8a71f1
-      internalID: 531693912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bushes_3
-      rect:
-        serializedVersion: 2
-        x: 55
-        y: 2
-        width: 37
-        height: 23
-      alignment: 9
-      pivot: {x: 0.5135135, y: 0.08695652}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 35dc49ae80b2e31429687ee5a40be9f8
-      internalID: 223714791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -246,11 +162,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Bushes_1: 123150380
-      Bushes_3: 223714791
-      Bushes_2: 531693912
-      Bushes_0: -1538231495
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

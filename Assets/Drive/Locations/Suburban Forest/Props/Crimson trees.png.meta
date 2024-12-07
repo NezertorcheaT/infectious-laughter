@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e1bb42fe61d2374983e4e7dc75d38a0
+guid: 7d58ef0d58694d042881118129dde258
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -153,85 +153,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bushes_0
+      name: Crimson trees_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 34
-        width: 40
-        height: 24
+        x: 15
+        y: 160
+        width: 67
+        height: 120
       alignment: 9
-      pivot: {x: 0.5, y: 0.083333336}
+      pivot: {x: 0.5373134, y: 0.041666668}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 888d0174abe56744c93a05e970948377
-      internalID: -1538231495
+      spriteID: 6f327d5bc9421fe4e8ac092af564b56a
+      internalID: -41478085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_1
+      name: Crimson trees_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 35
-        width: 38
-        height: 23
+        x: 102
+        y: 160
+        width: 92
+        height: 134
       alignment: 9
-      pivot: {x: 0.5, y: 0.08695652}
+      pivot: {x: 0.48913044, y: 0.04477612}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dba888793c210fa449b1f2d62e7a64d5
-      internalID: 123150380
+      spriteID: 7adfedfb2690f704db5c2fe05c2f088a
+      internalID: -111028131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_2
+      name: Crimson trees_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 2
-        width: 42
-        height: 26
+        x: 212
+        y: 160
+        width: 73
+        height: 120
       alignment: 9
-      pivot: {x: 0.5, y: 0.07692308}
+      pivot: {x: 0.49315068, y: 0.033333335}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35b937ef7e9c9e7449b01ee2ce8a71f1
-      internalID: 531693912
+      spriteID: 0893919593779c1438d34f1632465321
+      internalID: 1879100685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_3
+      name: Crimson trees_3
       rect:
         serializedVersion: 2
-        x: 55
-        y: 2
-        width: 37
-        height: 23
+        x: 17
+        y: 13
+        width: 67
+        height: 101
       alignment: 9
-      pivot: {x: 0.5135135, y: 0.08695652}
+      pivot: {x: 0.4925373, y: 0.03960396}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35dc49ae80b2e31429687ee5a40be9f8
-      internalID: 223714791
+      spriteID: 4ab531ff1897ab94fae2f8101397d060
+      internalID: -1763557161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson trees_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 10
+        width: 83
+        height: 135
+      alignment: 9
+      pivot: {x: 0.4698795, y: 0.04444444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7228c3e55f8a20f4989ac244a0b3bfb4
+      internalID: 2012195897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crimson trees_5
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 13
+        width: 91
+        height: 110
+      alignment: 9
+      pivot: {x: 0.45054945, y: 0.036363635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e42b4f8943eb73f40a4e3b7f43da5ee5
+      internalID: 597312518
       vertices: []
       indices: 
       edges: []
@@ -247,10 +289,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bushes_1: 123150380
-      Bushes_3: 223714791
-      Bushes_2: 531693912
-      Bushes_0: -1538231495
+      Crimson trees_0: -41478085
+      Crimson trees_5: 597312518
+      Crimson trees_1: -111028131
+      Crimson trees_2: 1879100685
+      Crimson trees_4: 2012195897
+      Crimson trees_3: -1763557161
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
