@@ -2,17 +2,18 @@ using UnityEngine;
 
 namespace AnimationControllers
 {
-    [RequireComponent(typeof(Animator))]
     public class MainCharacterAnimationController : MonoBehaviour
     {
+        [SerializeField] private Animator animator;
+
         private Entity.Abilities.Crouching _crouching;
         private Entity.Abilities.HorizontalMovement _movementController;
         private Entity.Abilities.CollideCheck _collideChecker;
 
-        private Animator _animator;
         private static readonly int AnimatorIsWalk = Animator.StringToHash("isWalk");
         private static readonly int AnimatorJumpNow = Animator.StringToHash("jumpNow");
         private static readonly int AnimatorCrouching = Animator.StringToHash("crouching");
+        private static readonly int AnimatorSpeed = Animator.StringToHash("speed");
 
         private void Start()
         {
@@ -20,14 +21,15 @@ namespace AnimationControllers
             _collideChecker = gameObject.GetComponent<Entity.Abilities.CollideCheck>();
             _crouching = gameObject.GetComponent<Entity.Abilities.Crouching>();
 
-            _animator = gameObject.GetComponent<Animator>();
+            animator ??= gameObject.GetComponent<Animator>();
         }
 
         private void Update()
         {
-            _animator.SetBool(AnimatorIsWalk, _movementController.TurnInFloat != 0f);
-            _animator.SetBool(AnimatorJumpNow, !_collideChecker.IsTouchingGround);
-            _animator.SetBool(AnimatorCrouching, _crouching.IsCrouching);
+            animator.SetFloat(AnimatorSpeed, _movementController.TurnInFloat);
+            animator.SetBool(AnimatorIsWalk, _movementController.TurnInFloat != 0f);
+            animator.SetBool(AnimatorJumpNow, !_collideChecker.IsTouchingGround);
+            animator.SetBool(AnimatorCrouching, _crouching.IsCrouching);
         }
     }
 }
