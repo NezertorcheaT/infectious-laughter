@@ -26,6 +26,7 @@ namespace AnimationControllers
 
         private void Update()
         {
+            if (animator is null) return;
             animator.SetFloat(AnimatorSpeed, _movementController.TurnInFloat);
             animator.SetBool(AnimatorIsWalk, _movementController.TurnInFloat != 0f);
             animator.SetBool(AnimatorJumpNow, !_collideChecker.IsTouchingGround);
