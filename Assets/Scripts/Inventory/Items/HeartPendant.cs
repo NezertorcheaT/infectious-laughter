@@ -1,54 +1,53 @@
 using System;
-using System.Collections.Generic;
 using Entity.Abilities;
 using UnityEngine;
 
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Heart Pendant", menuName = "Inventory/Items/Heart Pendant", order = 0)]
-    public class HeartPendant : ScriptableObject, IShopItem, IStartableItem, IEndableItem, ICanSpawn
+    public class HeartPendant : StashingItem<HeartPendant.Eventer>, IShopItem
     {
-        public string Name => "Heart Pendant";
-        public string Id => "il.heart_pendant";
-        public ScriptableObject SelfRef => this;
-        public Sprite Sprite => sprite;
+        public override string Name => "Heart Pendant";
+        public override string Id => "il.heart_pendant";
+        public override ScriptableObject SelfRef => this;
+        public override Sprite Sprite => sprite;
         public Sprite SpriteForShop => spriteForShop;
         public ItemAdderVerifier Verifier { get; set; }
+        public override int MaxStackSize => maxStackSize;
 
+        [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 2;
         [SerializeField] private Sprite spriteForShop;
         [SerializeField] private Sprite sprite;
         [SerializeField] private GameObject transportPrefab;
-        [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 2;
-        [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
-        [field: SerializeField, Min(1)] private int healAmount = 1;
+        [SerializeField, Min(1)] private int healAmount = 1;
+        [SerializeField, Min(1)] private int maxStackSize = 1;
 
-        private Dictionary<ISlot, Currency> _currents;
         private static int _healAmount;
         private Currency test;
 
-        public void OnStart(Entity.Entity entity, IInventory inventory, ISlot slot)
+        protected override Eventer Initiate(Entity.Entity entity, IInventory inventory, ISlot slot) =>
+            new(entity, slot);
+
+        protected override void Started(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
             _healAmount = healAmount;
-            _currents ??= new Dictionary<ISlot, Currency>();
-            _currents.Add(slot, new Currency(entity, slot));
         }
 
-        public void OnEnded(Entity.Entity entity, IInventory inventory, ISlot slot)
+        protected override void End(Entity.Entity entity, IInventory inventory, ISlot slot, Eventer current)
         {
             var position = entity.transform.position;
             var transport = Verifier.Container.InstantiatePrefab(transportPrefab, position, Quaternion.identity, null);
-            _currents.Remove(slot, out var c);
-            c.Dispose();
+            current.Dispose();
         }
 
-        private class Currency : IDisposable
+        public class Eventer : IDisposable
         {
             private readonly Hp _hp;
             private readonly ISlot _slot;
 
-            public Currency(Entity.Entity entity, ISlot slot)
+            public Eventer(Entity.Entity entity, ISlot slot)
             {
-                _hp = entity.GetComponent<Hp>();
+                _hp = entity.FindAbilityByType<Hp>();
                 _slot = slot;
                 _hp.BeforeDie += CheckForHealth;
             }

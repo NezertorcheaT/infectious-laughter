@@ -4,7 +4,7 @@ namespace Inventory
 {
     public class ItemAdderVerifier
     {
-        public DiContainer Container { get; private set; }
+        public DiContainer Container { get; }
 
         public ItemAdderVerifier(DiContainer container)
         {
