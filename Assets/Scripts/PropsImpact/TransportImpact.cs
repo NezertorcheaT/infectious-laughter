@@ -1,21 +1,28 @@
+using Entity.Abilities;
+using Installers;
+using Levels.Generation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace PropsImpact
 {
     public class TransportImpact : MonoBehaviour
     {
-        // Start is called before the first frame update
+        [SerializeField] private float lifeTime = 3.0f;
+        private PlayerSpawnPoint _spawnPoint;
+        [Inject] private PlayerInstallation _player;
         void Start()
         {
-
+            TransportPlayer();
+            Destroy(gameObject, lifeTime);
         }
 
-        // Update is called once per frame
-        void Update()
+        private void TransportPlayer()
         {
-
+            _spawnPoint ??= FindObjectOfType<PlayerSpawnPoint>();
+            _player.Entity.FindExactAbilityByType<TransportAbility>().SetToPosition(_spawnPoint.transform.position);
         }
     }
 }
