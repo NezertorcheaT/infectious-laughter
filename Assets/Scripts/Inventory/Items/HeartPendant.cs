@@ -22,21 +22,22 @@ namespace Inventory.Items
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
         [field: SerializeField, Min(1)] private int healAmount = 1;
 
-        private Dictionary<Entity.Entity, Currency> _currents;
+        private Dictionary<ISlot, Currency> _currents;
         private static int _healAmount;
+        private Currency test;
 
         public void OnStart(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
             _healAmount = healAmount;
-            _currents ??= new Dictionary<Entity.Entity, Currency>();
-            _currents.Add(entity, new Currency(entity, slot));
+            _currents ??= new Dictionary<ISlot, Currency>();
+            _currents.Add(slot, new Currency(entity, slot));
         }
 
         public void OnEnded(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
             var position = entity.transform.position;
             var transport = Verifier.Container.InstantiatePrefab(transportPrefab, position, Quaternion.identity, null);
-            _currents.Remove(entity, out var c);
+            _currents.Remove(slot, out var c);
             c.Dispose();
         }
 
