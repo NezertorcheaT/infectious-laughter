@@ -22,15 +22,23 @@ namespace Inventory.Items
 
         private static int _healAmount;
 
-        protected override Eventer Initiate(Entity.Entity entity, IInventory inventory, ISlot slot) =>
-            new(entity, slot);
+        protected override Eventer Initiate(
+            Entity.Entity entity,
+            IInventory inventory,
+            ISlot.Slotable slotable
+        ) => new(entity, slotable);
 
-        protected override void Started(Entity.Entity entity, IInventory inventory, ISlot slot)
+        protected override void Started(Entity.Entity entity, IInventory inventory, ISlot.Slotable slotable)
         {
             _healAmount = healAmount;
         }
 
-        protected override void End(Entity.Entity entity, IInventory inventory, ISlot slot, Eventer current)
+        protected override void End(
+            Entity.Entity entity,
+            IInventory inventory,
+            ISlot.Slotable slotable,
+            Eventer current
+        )
         {
             current.Dispose();
         }
@@ -38,12 +46,12 @@ namespace Inventory.Items
         public class Eventer : IDisposable
         {
             private readonly Hp _hp;
-            private readonly ISlot _slot;
+            private readonly ISlot.Slotable _slotable;
 
-            public Eventer(Entity.Entity entity, ISlot slot)
+            public Eventer(Entity.Entity entity, ISlot.Slotable slotable)
             {
                 _hp = entity.FindAbilityByType<Hp>();
-                _slot = slot;
+                _slotable = slotable;
                 _hp.BeforeDie += CheckForHealth;
             }
 
@@ -51,7 +59,7 @@ namespace Inventory.Items
             {
                 if (_hp.Health > 0) return;
                 _hp.Health += _healAmount;
-                _slot.Count -= 1;
+                _slotable.Slot.Count -= 1;
             }
 
             public void Dispose() => _hp.BeforeDie -= CheckForHealth;

@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &68874904701830369
 Transform:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2169bbe2b3542224fb6b3244fdebb5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.808787
+  speed: 5
   canUseDash: 0
   dashSpeed: 0
   maxDashDistance: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fe722c55fe02b4c8a3fc5c7ef59b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 4281550083586215174}
 --- !u!114 &-4374769955693573577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,6 +1150,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bda7e8aa2f815a44a94e1f19087bc46, type: 3}
+--- !u!1 &5107357553665417182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9bda7e8aa2f815a44a94e1f19087bc46, type: 3}
+  m_PrefabInstance: {fileID: 5341712757101142671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4281550083586215174
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107357553665417182}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dfb89c66e1c5f0d44be58de9cdf4b810, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &5596613201783604580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9bda7e8aa2f815a44a94e1f19087bc46, type: 3}

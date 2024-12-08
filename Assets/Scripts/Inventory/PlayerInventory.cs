@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Entity.Controllers;
+using Inventory.Items;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Inventory
@@ -46,7 +49,7 @@ namespace Inventory
 
                     if (!addItem) return true;
 
-                    _slots[i] = new Slot(this, item, _slots[i].Count + 1);
+                    _slots[i].Count++;
                     slot = _slots[i];
                     OnChange?.Invoke();
                     return true;
@@ -58,7 +61,8 @@ namespace Inventory
                 if (!_slots[i].IsEmpty) continue;
                 if (!addItem) return true;
 
-                _slots[i] = new Slot(this, item, 1);
+                _slots[i].LastItem = item;
+                _slots[i].Count = 1;
                 slot = _slots[i];
                 OnChange?.Invoke();
                 return true;
@@ -92,6 +96,7 @@ namespace Inventory
             for (var i = 0; i < MaxCapacity; i++)
             {
                 if (Slots[i].IsEmpty) continue;
+                _slots[i].InitializeInventory(this);
                 Slots[i].Count = 0;
                 Slots[i].LastItem = null;
             }
@@ -123,16 +128,18 @@ namespace Inventory
             foreach (var slot in _slots)
             {
                 if (slot.IsEmpty) continue;
+                slot.InitializeInventory(this);
                 if (slot.LastItem is not IStartableItem item) continue;
-                for (var i = 0; i < slot.Count; i++)
-                {
-                    item.OnStart(Holder, this, slot);
-                }
+                Debug.Log((item as StashingItem<HeartPendant.Eventer>)?.Data?.Select(a => a.Key.ToString())
+                    .Append("penis")
+                    .Aggregate((a, b) => $"{a}, {b}"));
+                foreach (var slotable in slot)
+                    item.OnStart(Holder, this, slotable);
             }
         }
 
         [Serializable]
-        private class Slot : ISlot
+        private class Slot : ISlot, IEquatable<Slot>
         {
             [SerializeField] private string lastItemId;
             [SerializeField] private int count;
@@ -146,8 +153,17 @@ namespace Inventory
                 set
                 {
                     if (LastItem is null) return;
-                    count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
-                    if (count == 0 && LastItem is IEndableItem e) e.OnEnded(Inventory.Holder, Inventory, this);
+                    value = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
+                    if (count == value) return;
+
+                    if (count < value && LastItem is IStartableItem e)
+                        for (var i = 0; i < value - count; i++)
+                            e.OnStart(Inventory.Holder, Inventory, new ISlot.Slotable(e, this, i + count));
+                    if (count > value && LastItem is IEndableItem s)
+                        for (var i = 0; i < value - count; i++)
+                            s.OnEnded(Inventory.Holder, Inventory, new ISlot.Slotable(s, this, i + value));
+
+                    count = value;
                     Inventory.OnChange?.Invoke();
                 }
             }
@@ -157,8 +173,26 @@ namespace Inventory
                 get => ItemsProvider.Instance.IdToItem(lastItemId);
                 set
                 {
-                    if (LastItem is IEndableItem e) e.OnEnded(Inventory.Holder, Inventory, this);
-                    lastItemId = value is null ? string.Empty : value.Id;
+                    if (value is null)
+                    {
+                        Count = 0;
+                        lastItemId = string.Empty;
+                        Inventory.OnChange?.Invoke();
+                        return;
+                    }
+
+                    if (lastItemId == value.Id)
+                        return;
+
+                    if (LastItem is IEndableItem e && lastItemId != value.Id)
+                    {
+                        var c = Count;
+                        Count = 0;
+                        lastItemId = value.Id;
+                        Count = c;
+                    }
+
+                    lastItemId = value.Id;
                     Inventory.OnChange?.Invoke();
                 }
             }
@@ -171,14 +205,44 @@ namespace Inventory
                 Count = 0;
             }
 
-            public Slot(IInventory inventory, IItem item, int count)
+            public Slot([NotNull] IInventory inventory, IItem item, int count)
             {
                 Inventory = inventory as PlayerInventory;
                 lastItemId = item is null ? string.Empty : item.Id;
                 Count = item is not null ? count : 0;
             }
 
+            public void InitializeInventory([NotNull] PlayerInventory inventory) => Inventory ??= inventory;
+
             public static Slot Empty(IInventory inventory) => new(inventory, null, 0);
+
+            public IEnumerator<ISlot.Slotable> GetEnumerator()
+            {
+                var lastItem = LastItem;
+                for (var i = 0; i < Count; i++)
+                    yield return new ISlot.Slotable(lastItem, this, i);
+            }
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+            public bool Equals(Slot other)
+            {
+                if (other is null) return false;
+                if (ReferenceEquals(this, other)) return true;
+                return lastItemId == other.lastItemId && count == other.count && Equals(Inventory, other.Inventory);
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (obj is null) return false;
+                if (ReferenceEquals(this, obj)) return true;
+                if (obj.GetType() != GetType()) return false;
+                return Equals((Slot)obj);
+            }
+
+            public override int GetHashCode() => HashCode.Combine(lastItemId, count, Inventory);
+            public static bool operator ==(Slot left, Slot right) => Equals(left, right);
+            public static bool operator !=(Slot left, Slot right) => !Equals(left, right);
         }
     }
 }
