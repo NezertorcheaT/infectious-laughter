@@ -11,7 +11,7 @@
         /// <param name="entity">сущность привязки инвентаря</param>
         /// <param name="inventory">инвентарь, в котором находится предмет</param>
         /// <param name="slotable">репрезентация предмета</param>
-        void OnStart(Entity.Entity entity, IInventory inventory, ISlot.Slotable slotable);
+        void OnStart(Entity.Entity entity, IInventory inventory, Slotable slotable);
     }
 
     /// <summary>
@@ -25,6 +25,6 @@
         /// <param name="entity">сущность привязки инвентаря</param>
         /// <param name="inventory">инвентарь, в котором находится предмет</param>
         /// <param name="slotable">репрезентация предмета</param>
-        void OnEnded(Entity.Entity entity, IInventory inventory, ISlot.Slotable slotable);
+        void OnEnded(Entity.Entity entity, IInventory inventory, Slotable slotable);
     }
 }

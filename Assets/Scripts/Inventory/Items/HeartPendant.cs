@@ -5,38 +5,38 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Heart Pendant", menuName = "Inventory/Items/Heart Pendant", order = 0)]
-    public class HeartPendant : StashingItem<HeartPendant.Eventer>, IShopItem
+    public class HeartPendant : ScriptableObject, IStashingItem<HeartPendant.Eventer>, IShopItem
     {
-        public override string Name => "Heart Pendant";
-        public override string Id => "il.heart_pendant";
-        public override ScriptableObject SelfRef => this;
-        public override Sprite Sprite => sprite;
-        public Sprite SpriteForShop => spriteForShop;
+        public string Name => "Heart Pendant";
+        public string Id => "il.heart_pendant";
+        public ScriptableObject SelfRef => this;
+        public IStashingItem<Eventer>.Stash Data { get; private set; }
 
-        [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 2;
-        [SerializeField] private Sprite spriteForShop;
-        [SerializeField] private Sprite sprite;
         [SerializeField, Min(1)] private int healAmount = 1;
-        [SerializeField, Min(1)] private int maxStackSize = 1;
-        public override int MaxStackSize => maxStackSize;
+        [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 2;
+        [field: SerializeField] public Sprite SpriteForShop { get; private set; }
+        [field: SerializeField] public Sprite Sprite { get; private set; }
+        [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
 
         private static int _healAmount;
 
-        protected override Eventer Initiate(
+        public void InitializeStash() => Data ??= new IStashingItem<Eventer>.Stash();
+
+        public Eventer Initiate(
             Entity.Entity entity,
             IInventory inventory,
-            ISlot.Slotable slotable
+            Slotable slotable
         ) => new(entity, slotable);
 
-        protected override void Started(Entity.Entity entity, IInventory inventory, ISlot.Slotable slotable)
+        public void Started(Entity.Entity entity, IInventory inventory, Slotable slotable)
         {
             _healAmount = healAmount;
         }
 
-        protected override void End(
+        public void End(
             Entity.Entity entity,
             IInventory inventory,
-            ISlot.Slotable slotable,
+            Slotable slotable,
             Eventer current
         )
         {
@@ -46,9 +46,9 @@ namespace Inventory.Items
         public class Eventer : IDisposable
         {
             private readonly Hp _hp;
-            private readonly ISlot.Slotable _slotable;
+            private readonly Slotable _slotable;
 
-            public Eventer(Entity.Entity entity, ISlot.Slotable slotable)
+            public Eventer(Entity.Entity entity, Slotable slotable)
             {
                 _hp = entity.FindAbilityByType<Hp>();
                 _slotable = slotable;

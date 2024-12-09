@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Entity.Controllers;
-using Inventory.Items;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -99,6 +97,7 @@ namespace Inventory
                 _slots[i].InitializeInventory(this);
                 Slots[i].Count = 0;
                 Slots[i].LastItem = null;
+                _slots[i] = Slot.Empty(this);
             }
 
             OnChange?.Invoke();
@@ -125,14 +124,12 @@ namespace Inventory
 
         public void OnDeserialized()
         {
+            Debug.Log("des");
             foreach (var slot in _slots)
             {
                 if (slot.IsEmpty) continue;
                 slot.InitializeInventory(this);
                 if (slot.LastItem is not IStartableItem item) continue;
-                Debug.Log((item as StashingItem<HeartPendant.Eventer>)?.Data?.Select(a => a.Key.ToString())
-                    .Append("penis")
-                    .Aggregate((a, b) => $"{a}, {b}"));
                 foreach (var slotable in slot)
                     item.OnStart(Holder, this, slotable);
             }
@@ -157,11 +154,11 @@ namespace Inventory
                     if (count == value) return;
 
                     if (count < value && LastItem is IStartableItem e)
-                        for (var i = 0; i < value - count; i++)
-                            e.OnStart(Inventory.Holder, Inventory, new ISlot.Slotable(e, this, i + count));
+                        for (var i = 1; i <= value - count; i++)
+                            e.OnStart(Inventory.Holder, Inventory, new Slotable(e, this, i + count));
                     if (count > value && LastItem is IEndableItem s)
-                        for (var i = 0; i < value - count; i++)
-                            s.OnEnded(Inventory.Holder, Inventory, new ISlot.Slotable(s, this, i + value));
+                        for (var i = 1; i <= value - count; i++)
+                            s.OnEnded(Inventory.Holder, Inventory, new Slotable(s, this, i + value));
 
                     count = value;
                     Inventory.OnChange?.Invoke();
@@ -216,20 +213,12 @@ namespace Inventory
 
             public static Slot Empty(IInventory inventory) => new(inventory, null, 0);
 
-            public IEnumerator<ISlot.Slotable> GetEnumerator()
-            {
-                var lastItem = LastItem;
-                for (var i = 0; i < Count; i++)
-                    yield return new ISlot.Slotable(lastItem, this, i);
-            }
-
-            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
             public bool Equals(Slot other)
             {
                 if (other is null) return false;
-                if (ReferenceEquals(this, other)) return true;
-                return lastItemId == other.lastItemId && count == other.count && Equals(Inventory, other.Inventory);
+                if (lastItemId == other.lastItemId && count == other.count && Equals(Inventory, other.Inventory))
+                    return true;
+                return ReferenceEquals(this, other);
             }
 
             public override bool Equals(object obj)

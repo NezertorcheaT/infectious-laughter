@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7abefe632d7f24fb493956b20b6643, type: 3}
   m_Name: HeartPendant
   m_EditorClassIdentifier: 
-  spriteForShop: {fileID: 21300000, guid: 81deeed6b747a314ca0cc414fcb8dd76, type: 3}
-  sprite: {fileID: -1695832666, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+  healAmount: 1
   <ItemCost>k__BackingField: 16
+  <SpriteForShop>k__BackingField: {fileID: 21300000, guid: 81deeed6b747a314ca0cc414fcb8dd76, type: 3}
+  <Sprite>k__BackingField: {fileID: -1695832666, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
   <MaxStackSize>k__BackingField: 1
