@@ -12,15 +12,18 @@ namespace Inventory.Items
         public override ScriptableObject SelfRef => this;
         public override Sprite Sprite => sprite;
         public Sprite SpriteForShop => spriteForShop;
+        public ItemAdderVerifier Verifier { get; set; }
+        public override int MaxStackSize => maxStackSize;
 
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 2;
         [SerializeField] private Sprite spriteForShop;
         [SerializeField] private Sprite sprite;
+        [SerializeField] private GameObject transportPrefab;
         [SerializeField, Min(1)] private int healAmount = 1;
         [SerializeField, Min(1)] private int maxStackSize = 1;
-        public override int MaxStackSize => maxStackSize;
 
         private static int _healAmount;
+        private Currency test;
 
         protected override Eventer Initiate(Entity.Entity entity, IInventory inventory, ISlot slot) =>
             new(entity, slot);
@@ -32,6 +35,8 @@ namespace Inventory.Items
 
         protected override void End(Entity.Entity entity, IInventory inventory, ISlot slot, Eventer current)
         {
+            var position = entity.transform.position;
+            var transport = Verifier.Container.InstantiatePrefab(transportPrefab, position, Quaternion.identity, null);
             current.Dispose();
         }
 

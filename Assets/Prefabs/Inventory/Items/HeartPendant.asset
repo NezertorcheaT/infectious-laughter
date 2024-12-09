@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteForShop: {fileID: 21300000, guid: 81deeed6b747a314ca0cc414fcb8dd76, type: 3}
   sprite: {fileID: -1695832666, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+  transportPrefab: {fileID: 2550698939444098757, guid: b751a2ed30ad50349b2da0c37f634ce4, type: 3}
   <ItemCost>k__BackingField: 16
   <MaxStackSize>k__BackingField: 1
+  healAmount: 1
