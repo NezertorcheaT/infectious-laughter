@@ -59,6 +59,7 @@ namespace Inventory
                 if (!_slots[i].IsEmpty) continue;
                 if (!addItem) return true;
 
+                _slots[i].InitializeInventory(this);
                 _slots[i].LastItem = item;
                 _slots[i].Count = 1;
                 slot = _slots[i];
@@ -93,10 +94,12 @@ namespace Inventory
         {
             for (var i = 0; i < MaxCapacity; i++)
             {
-                if (Slots[i].IsEmpty) continue;
-                _slots[i].InitializeInventory(this);
-                Slots[i].Count = 0;
-                Slots[i].LastItem = null;
+                var slot = _slots[i];
+                if (slot.IsEmpty) continue;
+                slot.InitializeInventory(this);
+                if (slot.LastItem is IStashingItem stashingItem)
+                    foreach (var slotable in slot.Where(i => stashingItem.HasStored(i)))
+                        stashingItem.OnEnded(Holder, this, slotable);
                 _slots[i] = Slot.Empty(this);
             }
 
@@ -124,7 +127,6 @@ namespace Inventory
 
         public void OnDeserialized()
         {
-            Debug.Log("des");
             foreach (var slot in _slots)
             {
                 if (slot.IsEmpty) continue;
@@ -136,12 +138,13 @@ namespace Inventory
         }
 
         [Serializable]
-        private class Slot : ISlot, IEquatable<Slot>
+        private class Slot : ISlot
         {
             [SerializeField] private string lastItemId;
             [SerializeField] private int count;
 
             public bool IsEmpty => LastItem == null || Count == 0;
+            public IInventory HolderInventory => Inventory;
             public PlayerInventory Inventory { get; private set; }
 
             public int Count
@@ -157,7 +160,7 @@ namespace Inventory
                         for (var i = 1; i <= value - count; i++)
                             e.OnStart(Inventory.Holder, Inventory, new Slotable(e, this, i + count));
                     if (count > value && LastItem is IEndableItem s)
-                        for (var i = 1; i <= value - count; i++)
+                        for (var i = 1; i <= count - value; i++)
                             s.OnEnded(Inventory.Holder, Inventory, new Slotable(s, this, i + value));
 
                     count = value;
@@ -213,25 +216,8 @@ namespace Inventory
 
             public static Slot Empty(IInventory inventory) => new(inventory, null, 0);
 
-            public bool Equals(Slot other)
-            {
-                if (other is null) return false;
-                if (lastItemId == other.lastItemId && count == other.count && Equals(Inventory, other.Inventory))
-                    return true;
-                return ReferenceEquals(this, other);
-            }
-
-            public override bool Equals(object obj)
-            {
-                if (obj is null) return false;
-                if (ReferenceEquals(this, obj)) return true;
-                if (obj.GetType() != GetType()) return false;
-                return Equals((Slot)obj);
-            }
-
-            public override int GetHashCode() => HashCode.Combine(lastItemId, count, Inventory);
-            public static bool operator ==(Slot left, Slot right) => Equals(left, right);
-            public static bool operator !=(Slot left, Slot right) => !Equals(left, right);
+            public static bool operator ==(ISlot left, Slot right) => left != null && left.Equals(right);
+            public static bool operator !=(ISlot left, Slot right) => !(left != null && left.Equals(right));
         }
     }
 }

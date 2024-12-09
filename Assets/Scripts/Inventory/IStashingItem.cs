@@ -15,6 +15,13 @@ namespace Inventory
         /// внутренний метод для начального создания хранилища
         /// </summary>
         void InitializeStash();
+
+        /// <summary>
+        /// имеет ли данные для предмета
+        /// </summary>
+        /// <param name="slotable"></param>
+        /// <returns></returns>
+        bool HasStored(Slotable slotable);
     }
 
     /// <summary>
@@ -27,6 +34,8 @@ namespace Inventory
         /// это данные каждого предмета
         /// </summary>
         Stash Data { get; }
+
+        bool IStashingItem.HasStored(Slotable slotable) => Data.Has(slotable);
 
         void IStartableItem.OnStart(Entity.Entity entity, IInventory inventory, Slotable slotable)
         {
@@ -50,10 +59,7 @@ namespace Inventory
         /// </summary>
         public class Stash : IEnumerable<KeyValuePair<Slotable, T>>
         {
-            private readonly ConcurrentDictionary<Slotable, T> _dictionary;
-
-            public Stash(Slotable slotable, T initial) : this() => Add(slotable, initial);
-            public Stash() => _dictionary = new ConcurrentDictionary<Slotable, T>();
+            private readonly ConcurrentDictionary<Slotable, T> _dictionary = new();
 
             /// <summary>
             /// получить данные для предмета
@@ -67,7 +73,6 @@ namespace Inventory
             /// <param name="slotable">именно слот используется как ключ к данным предмета</param>
             /// <returns>данные о предмете</returns>
             /// <exception cref="ArgumentException">если данные к этому слоту отсутствуют</exception>
-            /// <exception cref="NullReferenceException">если слот нулёвый</exception>
             public T Get(Slotable slotable)
             {
                 if (_dictionary.TryGetValue(slotable, out T value)) return value;
@@ -75,11 +80,17 @@ namespace Inventory
             }
 
             /// <summary>
+            /// имеет ли данные для предмета
+            /// </summary>
+            /// <param name="slotable"></param>
+            /// <returns></returns>
+            public bool Has(Slotable slotable) => _dictionary.ContainsKey(slotable);
+
+            /// <summary>
             /// позволяет убрать данные о предмете
             /// </summary>
             /// <param name="slotable">именно слот используется как ключ к данным предмета</param>
             /// <exception cref="ArgumentException">если данные к этому слоту отсутствуют</exception>
-            /// <exception cref="NullReferenceException">если слот нулёвый</exception>
             public void Pop(Slotable slotable)
             {
                 if (_dictionary.TryRemove(slotable, out _)) return;
@@ -92,10 +103,8 @@ namespace Inventory
             /// <param name="slotable">используется как ключ к данным предмета</param>
             /// <param name="current">данные, которые следует записать</param>
             /// <exception cref="ArgumentException">если данные к этому слоту уже существуют</exception>
-            /// <exception cref="NullReferenceException">если слот нулёвый</exception>
             public void Add(Slotable slotable, T current)
             {
-                Debug.Log(slotable);
                 if (_dictionary.TryAdd(slotable, current)) return;
                 throw new ArgumentException("item in this slot already contained in stash");
             }
