@@ -25,10 +25,10 @@ namespace Inventory.Items
         public Eventer Initiate(
             Entity.Entity entity,
             IInventory inventory,
-            Slotable slotable
-        ) => new(entity, slotable);
+            ItemData itemData
+        ) => new(entity, itemData);
 
-        public void Started(Entity.Entity entity, IInventory inventory, Slotable slotable)
+        public void Started(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
             _healAmount = healAmount;
         }
@@ -36,7 +36,7 @@ namespace Inventory.Items
         public void End(
             Entity.Entity entity,
             IInventory inventory,
-            Slotable slotable,
+            ItemData itemData,
             Eventer current
         )
         {
@@ -46,12 +46,12 @@ namespace Inventory.Items
         public class Eventer : IDisposable
         {
             private readonly Hp _hp;
-            private readonly Slotable _slotable;
+            private readonly ItemData _itemData;
 
-            public Eventer(Entity.Entity entity, Slotable slotable)
+            public Eventer(Entity.Entity entity, ItemData itemData)
             {
                 _hp = entity.FindAbilityByType<Hp>();
-                _slotable = slotable;
+                _itemData = itemData;
                 _hp.BeforeDie += CheckForHealth;
             }
 
@@ -59,7 +59,7 @@ namespace Inventory.Items
             {
                 if (_hp.Health > 0) return;
                 _hp.Health += _healAmount;
-                _slotable.Slot.Count -= 1;
+                _itemData.Slot.Count -= 1;
             }
 
             public void Dispose() => _hp.BeforeDie -= CheckForHealth;

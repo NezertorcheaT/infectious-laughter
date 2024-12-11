@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Inventory
 {
@@ -19,9 +18,9 @@ namespace Inventory
         /// <summary>
         /// имеет ли данные для предмета
         /// </summary>
-        /// <param name="slotable"></param>
+        /// <param name="itemData"></param>
         /// <returns></returns>
-        bool HasStored(Slotable slotable);
+        bool HasStored(ItemData itemData);
     }
 
     /// <summary>
@@ -35,81 +34,81 @@ namespace Inventory
         /// </summary>
         Stash Data { get; }
 
-        bool IStashingItem.HasStored(Slotable slotable) => Data.Has(slotable);
+        bool IStashingItem.HasStored(ItemData itemData) => Data.Has(itemData);
 
-        void IStartableItem.OnStart(Entity.Entity entity, IInventory inventory, Slotable slotable)
+        void IStartableItem.OnStart(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
-            Data.Add(slotable, Initiate(entity, inventory, slotable));
-            Started(entity, inventory, slotable);
+            Data.Add(itemData, Initiate(entity, inventory, itemData));
+            Started(entity, inventory, itemData);
         }
 
-        void IEndableItem.OnEnded(Entity.Entity entity, IInventory inventory, Slotable slotable)
+        void IEndableItem.OnEnded(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
-            var c = Data[slotable];
-            Data.Pop(slotable);
-            End(entity, inventory, slotable, c);
+            var c = Data[itemData];
+            Data.Pop(itemData);
+            End(entity, inventory, itemData, c);
         }
 
-        T Initiate(Entity.Entity entity, IInventory inventory, Slotable slotable);
-        void Started(Entity.Entity entity, IInventory inventory, Slotable slotable);
-        void End(Entity.Entity entity, IInventory inventory, Slotable slotable, T c);
+        T Initiate(Entity.Entity entity, IInventory inventory, ItemData itemData);
+        void Started(Entity.Entity entity, IInventory inventory, ItemData itemData);
+        void End(Entity.Entity entity, IInventory inventory, ItemData itemData, T c);
 
         /// <summary>
         /// структура данных, скрывающая данные каждого предмета
         /// </summary>
-        public class Stash : IEnumerable<KeyValuePair<Slotable, T>>
+        public class Stash : IEnumerable<KeyValuePair<ItemData, T>>
         {
-            private readonly ConcurrentDictionary<Slotable, T> _dictionary = new();
+            private readonly ConcurrentDictionary<ItemData, T> _dictionary = new();
 
             /// <summary>
             /// получить данные для предмета
             /// </summary>
-            /// <param name="slotable">именно слот используется как ключ к данным предмета</param>
-            public T this[Slotable slotable] => Get(slotable);
+            /// <param name="itemData">именно слот используется как ключ к данным предмета</param>
+            public T this[ItemData itemData] => Get(itemData);
 
             /// <summary>
             /// получить данные для предмета
             /// </summary>
-            /// <param name="slotable">именно слот используется как ключ к данным предмета</param>
+            /// <param name="itemData">именно слот используется как ключ к данным предмета</param>
             /// <returns>данные о предмете</returns>
             /// <exception cref="ArgumentException">если данные к этому слоту отсутствуют</exception>
-            public T Get(Slotable slotable)
+            public T Get(ItemData itemData)
             {
-                if (_dictionary.TryGetValue(slotable, out T value)) return value;
-                throw new ArgumentException($"Данные к слоту {slotable} отсутствуют");
+                if (_dictionary.TryGetValue(itemData, out T value)) return value;
+                throw new ArgumentException($"Данные к слоту {itemData} отсутствуют");
             }
 
             /// <summary>
             /// имеет ли данные для предмета
             /// </summary>
-            /// <param name="slotable"></param>
+            /// <param name="itemData"></param>
             /// <returns></returns>
-            public bool Has(Slotable slotable) => _dictionary.ContainsKey(slotable);
+            public bool Has(ItemData itemData) => _dictionary.ContainsKey(itemData);
 
             /// <summary>
             /// позволяет убрать данные о предмете
             /// </summary>
-            /// <param name="slotable">именно слот используется как ключ к данным предмета</param>
+            /// <param name="itemData">именно слот используется как ключ к данным предмета</param>
             /// <exception cref="ArgumentException">если данные к этому слоту отсутствуют</exception>
-            public void Pop(Slotable slotable)
+            public void Pop(ItemData itemData)
             {
-                if (_dictionary.TryRemove(slotable, out _)) return;
-                throw new ArgumentException($"Данные к слоту {slotable} отсутствуют");
+                if (_dictionary.TryRemove(itemData, out _)) return;
+                throw new ArgumentException($"Данные к слоту {itemData} отсутствуют");
             }
 
             /// <summary>
             /// записать данные о предмете
             /// </summary>
-            /// <param name="slotable">используется как ключ к данным предмета</param>
+            /// <param name="itemData">используется как ключ к данным предмета</param>
             /// <param name="current">данные, которые следует записать</param>
             /// <exception cref="ArgumentException">если данные к этому слоту уже существуют</exception>
-            public void Add(Slotable slotable, T current)
+            public void Add(ItemData itemData, T current)
             {
-                if (_dictionary.TryAdd(slotable, current)) return;
+                if (_dictionary.TryAdd(itemData, current)) return;
                 throw new ArgumentException("item in this slot already contained in stash");
             }
 
-            public IEnumerator<KeyValuePair<Slotable, T>> GetEnumerator() => _dictionary.GetEnumerator();
+            public IEnumerator<KeyValuePair<ItemData, T>> GetEnumerator() => _dictionary.GetEnumerator();
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
     }

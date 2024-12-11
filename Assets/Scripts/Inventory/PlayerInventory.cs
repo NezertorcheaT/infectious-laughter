@@ -158,10 +158,10 @@ namespace Inventory
 
                     if (count < value && LastItem is IStartableItem e)
                         for (var i = 1; i <= value - count; i++)
-                            e.OnStart(Inventory.Holder, Inventory, new Slotable(e, this, i + count));
+                            e.OnStart(Inventory.Holder, Inventory, new ItemData(e, this, i + count));
                     if (count > value && LastItem is IEndableItem s)
                         for (var i = 1; i <= count - value; i++)
-                            s.OnEnded(Inventory.Holder, Inventory, new Slotable(s, this, i + value));
+                            s.OnEnded(Inventory.Holder, Inventory, new ItemData(s, this, i + value));
 
                     count = value;
                     Inventory.OnChange?.Invoke();

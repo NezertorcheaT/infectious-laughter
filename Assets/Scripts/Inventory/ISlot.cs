@@ -7,7 +7,7 @@ namespace Inventory
     /// <summary>
     /// слот инветаря
     /// </summary>
-    public interface ISlot : IEnumerable<Slotable>, IEquatable<ISlot>, IEqualityComparer<ISlot>
+    public interface ISlot : IEnumerable<ItemData>, IEquatable<ISlot>, IEqualityComparer<ISlot>
     {
         /// <summary>
         /// инвентарь слота
@@ -35,12 +35,12 @@ namespace Inventory
         /// <param name="entity">сущность куда</param>
         void Use(Entity.Entity entity);
 
-        IEnumerator<Slotable> IEnumerable<Slotable>.GetEnumerator()
+        IEnumerator<ItemData> IEnumerable<ItemData>.GetEnumerator()
         {
             if (IsEmpty) yield break;
             var lastItem = LastItem;
             for (var i = 1; i <= Count; i++)
-                yield return new Slotable(lastItem, this, i);
+                yield return new ItemData(lastItem, this, i);
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
