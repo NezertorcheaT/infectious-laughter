@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Heart Pendant", menuName = "Inventory/Items/Heart Pendant", order = 0)]
-    public class HeartPendant : StashingItem<HeartPendant.Eventer>, IShopItem
+    public class HeartPendant : StashingItem<HeartPendant.Eventer>, IShopItem, ICanSpawn
     {
         public override string Name => "Heart Pendant";
         public override string Id => "il.heart_pendant";
@@ -34,8 +34,12 @@ namespace Inventory.Items
 
         protected override void End(Entity.Entity entity, IInventory inventory, ISlot slot, Eventer current)
         {
-            var position = entity.transform.position;
-            var transport = Verifier.Container.InstantiatePrefab(transportPrefab, position, Quaternion.identity, null);
+            Verifier.Container.InstantiatePrefab(
+                transportPrefab,
+                entity.CachedTransform.position,
+                Quaternion.identity,
+                null
+            );
             current.Dispose();
         }
 
