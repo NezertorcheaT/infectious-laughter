@@ -23,7 +23,6 @@ namespace Inventory.Items
         [SerializeField, Min(1)] private int maxStackSize = 1;
 
         private static int _healAmount;
-        private Currency test;
 
         protected override Eventer Initiate(Entity.Entity entity, IInventory inventory, ISlot slot) =>
             new(entity, slot);
