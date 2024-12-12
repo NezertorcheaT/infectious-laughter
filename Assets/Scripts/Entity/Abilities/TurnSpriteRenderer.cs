@@ -9,6 +9,7 @@ namespace Entity.Abilities
     public class TurnSpriteRenderer : Ability
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private GameObject model;
         [SerializeField, Min(0)] private int delay = 100;
         private HorizontalMovement _movement;
 
@@ -37,11 +38,18 @@ namespace Entity.Abilities
         private void OnTurn(bool turn)
         {
             if (!spriteRenderer) return;
+            spriteRenderer.flipX = delay != 0
+                ? _smoothTurn == 0
+                    ? spriteRenderer.flipX
+                    : _smoothTurn < 0f
+                : !turn;
 
-            if (delay != 0)
-                spriteRenderer.flipX = _smoothTurn == 0 ? spriteRenderer.flipX : _smoothTurn < 0f;
-            else
-                spriteRenderer.flipX = !turn;
+            if (!model) return;
+            model.transform.localScale =
+                spriteRenderer.flipX
+                    ? new Vector3(-1, 1, 1)
+                    : new Vector3(1, 1, 1)
+                ;
         }
 
         private float _smoothTurn;
@@ -64,7 +72,6 @@ namespace Entity.Abilities
         private void OnDestroy()
         {
             _destroyed = true;
-
         }
     }
 }
