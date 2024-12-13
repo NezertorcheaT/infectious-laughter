@@ -55,20 +55,22 @@ namespace Entity.Abilities
 
         private void HandleCollision(Collision2D collision)
         {
+            HashSet<Direction> alreadyAdded = new(directions.Length); 
             foreach (ContactPoint2D contact in collision.contacts)
             {
                 Direction contactDirection = GetDirection(GetWallType(contact));
                 contactDirection.AddCollision(collision);
+                alreadyAdded.Add(contactDirection);
 
-                RemoveCollision(collision, contactDirection);
+                RemoveCollision(collision, alreadyAdded);
             }
         }
 
-        private void RemoveCollision(Collision2D collision, params Direction[] except)
+        private void RemoveCollision(Collision2D collision, IEnumerable<Direction> except = null)
         {
             foreach (Direction dir in directions)
             {
-                if (except.Contains(dir))
+                if (except != null && except.Contains(dir))
                     continue;
 
                 dir.RemoveCollisionIfContains(collision);
@@ -106,7 +108,7 @@ namespace Entity.Abilities
 
         private class Direction
         {
-            protected readonly HashSet<Collider2D> colliders;
+            protected readonly HashSet<Collider2D> colliders = new(4);
 
             public bool IsTouching;
 
