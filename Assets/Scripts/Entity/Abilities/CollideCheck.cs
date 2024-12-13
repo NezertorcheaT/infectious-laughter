@@ -9,13 +9,13 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/Collide Check")]
     public class CollideCheck : Ability
     {
-        [SerializeField] private int maxSlopeAngle;
-        [SerializeField] private LayerMask groundLayer;
+        [SerializeField] protected int maxSlopeAngle;
+        [SerializeField] protected LayerMask groundLayer;
         [SerializeField, Min(0.01f)] private float groundDistance = 0.1f;
         [SerializeField] Collider2D collider;
         private float _colliderOffset = 0;
 
-        public bool IsTouchingGround
+        public virtual bool IsTouchingGround
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Entity.Abilities
             }
         }
 
-        public bool IsTouchingTop
+        public virtual bool IsTouchingTop
         {
             get
             {
@@ -49,7 +49,7 @@ namespace Entity.Abilities
             }
         }
 
-        public bool IsTouchingRight
+        public virtual bool IsTouchingRight
         {
             get
             {
@@ -66,7 +66,7 @@ namespace Entity.Abilities
             }
         }
 
-        public bool IsTouchingLeft
+        public virtual bool IsTouchingLeft
         {
             get
             {
@@ -83,7 +83,7 @@ namespace Entity.Abilities
             }
         }
 
-        public bool IsOnWall => IsTouchingLeft || IsTouchingRight;
+        public virtual bool IsOnWall => IsTouchingLeft || IsTouchingRight;
 
         private bool Overlap(Vector2 position, Vector2 size)
         {
