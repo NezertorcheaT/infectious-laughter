@@ -4,7 +4,8 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Broken Radio", menuName = "Inventory/Items/Broken Radio", order = 0)]
-    public class BrokenRadio : ScriptableObject, IUsableItem, ICanSpawn, IShopItem
+    public class BrokenRadio : ScriptableObject, IUsableItem, ICanSpawn, IShopItem, INameableItem, ISpriteItem,
+        IStackableClampedItem
     {
         public string Name => "Broken Radio";
         public string Id => "il.broken_radio";

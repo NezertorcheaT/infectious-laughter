@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using Installers;
 using Saving;
 using UnityEngine;
@@ -107,7 +107,8 @@ namespace Inventory.UI
             if (_player.Inventory is null) return;
 
             var j = 0;
-            foreach (var slot in _player.Inventory.Slots)
+            foreach (var slot in _player.Inventory.Slots.Where(i =>
+                         i.IsEmpty || i.LastItem is INameableItem and ISpriteItem))
             {
                 var frame = Instantiate(FrameFromPosition(j), inventoryBase.transform);
                 inventoryBase.CalculateLayoutInputVertical();
@@ -122,8 +123,8 @@ namespace Inventory.UI
                 }
                 else
                 {
-                    frame.name = $"{slot.LastItem.Name} by {slot.Count}";
-                    frame.Item.sprite = slot.LastItem.Sprite;
+                    frame.name = $"{(slot.LastItem as INameableItem)!.Name} by {slot.Count}";
+                    frame.Item.sprite = (slot.LastItem as ISpriteItem)!.Sprite;
                 }
 
                 j++;

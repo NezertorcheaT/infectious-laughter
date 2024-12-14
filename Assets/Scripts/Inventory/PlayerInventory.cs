@@ -155,19 +155,34 @@ namespace Inventory
                         : count;
                 set
                 {
-                    if (LastItem is null) return;
+                    var lastItem = LastItem;
+                    if (lastItem is null) return;
 
-                    value = LastItem is IStackableClampedItem clamped
+                    value = lastItem is IStackableClampedItem clamped
                         ? Mathf.Clamp(value, 0, clamped.MaxStackSize)
                         : Mathf.Max(value, 0);
 
                     if (count == value) return;
 
-                    if(LastItem )
-                    if (count < value && LastItem is IStartableItem e)
+                    if (lastItem is not IStackableItem)
+                    {
+                        value = Mathf.Clamp(value, 0, 1);
+                        if (count == value) return;
+
+                        if (lastItem is IStartableItem startable && count == 0 && value == 1)
+                            startable.OnStart(Inventory.Holder, Inventory, new ItemData(startable, this, 1));
+                        if (lastItem is IEndableItem endable && count == 1 && value == 0)
+                            endable.OnEnded(Inventory.Holder, Inventory, new ItemData(endable, this, 1));
+
+                        count = value;
+                        Inventory.OnChange?.Invoke();
+                        return;
+                    }
+
+                    if (count < value && lastItem is IStartableItem e)
                         for (var i = 1; i <= value - count; i++)
                             e.OnStart(Inventory.Holder, Inventory, new ItemData(e, this, i + count));
-                    if (count > value && LastItem is IEndableItem s)
+                    if (count > value && lastItem is IEndableItem s)
                         for (var i = 1; i <= count - value; i++)
                             s.OnEnded(Inventory.Holder, Inventory, new ItemData(s, this, i + value));
 

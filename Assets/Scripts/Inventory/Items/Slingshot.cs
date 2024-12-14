@@ -5,7 +5,8 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Slingshot", menuName = "Inventory/Items/Slingshot", order = 0)]
-    public class Slingshot : ScriptableObject, IUsableItem, ICanSpawn, IShopItem
+    public class Slingshot : ScriptableObject, IUsableItem, ICanSpawn, IShopItem, INameableItem, ISpriteItem,
+        IStackableClampedItem
     {
         public string Name => "Slingshot";
         public string Id => "il.slingshot";

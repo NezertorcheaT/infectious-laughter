@@ -14,7 +14,7 @@ namespace Shop
 
         private void Awake()
         {
-            var items = shopItemsPoolList.AsType<IShopItem>().ToArray();
+            var items = shopItemsPoolList.Where(i => i is INameableItem).AsType<IShopItem>().ToArray();
             var gallery = new List<IShopItem>(maxCapacity);
 
             for (var i = 0; i < maxCapacity; i++)

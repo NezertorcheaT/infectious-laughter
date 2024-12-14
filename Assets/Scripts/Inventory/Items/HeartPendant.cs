@@ -5,7 +5,8 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Heart Pendant", menuName = "Inventory/Items/Heart Pendant", order = 0)]
-    public class HeartPendant : ScriptableObject, IStashingItem<HeartPendant.Eventer>, IShopItem
+    public class HeartPendant : ScriptableObject, IStashingItem<HeartPendant.Eventer>, IShopItem, INameableItem,
+        ISpriteItem, IStackableClampedItem
     {
         public string Name => "Heart Pendant";
         public string Id => "il.heart_pendant";

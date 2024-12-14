@@ -30,10 +30,10 @@ namespace Entity.Controllers
             _moveAbility = Entity.FindAbilityByType<HorizontalMovement>();
             _crouchAbility = Entity.FindAbilityByType<Crouching>();
             _movementDowning = Entity.FindExactAbilityByType<Downing>();
-            _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
+            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
             _dashAbility = Entity.FindExactAbilityByType<Dash>();
             _followPoint = Entity.FindAbilityByType<CameraFollowPoint>();
-            
+
             OnEnable();
         }
 
@@ -68,7 +68,9 @@ namespace Entity.Controllers
             _actions.Gameplay.Crouch.canceled -= CrouchOnCanceled;
         }
 
-        private void UseInteractivePropsPerformed(InputAction.CallbackContext ctx) => _useInteractiveProps.UseInteractiveProps();
+        private void UseInteractivePropsPerformed(InputAction.CallbackContext ctx) =>
+            _useInteractiveProps.UseInteractiveProps();
+
         private void CrouchOnCanceled(InputAction.CallbackContext ctx) => _crouchAbility.UndoPerform();
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Perform();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
@@ -89,6 +91,5 @@ namespace Entity.Controllers
             _movementDowning.WallDowning(_input);
             _followPoint.MovePoint(_input, _inputY);
         }
-
     }
 }

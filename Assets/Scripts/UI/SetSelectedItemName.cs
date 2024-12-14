@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using Zenject;
 using Installers;
+using Inventory;
 
 namespace UI
 {
@@ -15,9 +16,10 @@ namespace UI
         private void SetItemName(int selectionId)
         {
             var slot = _playerInstallation.Inventory.Slots[selectionId];
+            var item = slot.LastItem as INameableItem;
             selfText.text = slot.IsEmpty
                 ? "Empty"
-                : slot.LastItem.Name;
+                : item.Name;
         }
 
         private void OnEnable()
