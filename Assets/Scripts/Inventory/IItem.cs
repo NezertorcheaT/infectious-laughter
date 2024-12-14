@@ -4,6 +4,34 @@ using UnityEngine;
 
 namespace Inventory
 {
+    public interface IStackableClampedItem : IStackableItem
+    {
+        /// <summary>
+        /// максимальное колличество в стаке
+        /// </summary>
+        int MaxStackSize { get; }
+    }
+
+    public interface IStackableItem : IItem
+    {
+    }
+
+    public interface INameableItem : IItem
+    {
+        /// <summary>
+        /// отображаемое имя предмета
+        /// </summary>
+        string Name { get; }
+    }
+
+    public interface ISpriteItem : IItem
+    {
+        /// <summary>
+        /// спрайт для отрисовки
+        /// </summary>
+        Sprite Sprite { get; }
+    }
+
     /// <summary>
     /// это предмет для инвентаря
     /// </summary>
@@ -15,24 +43,9 @@ namespace Inventory
         ScriptableObject SelfRef { get; }
 
         /// <summary>
-        /// отображаемое имя предмета
-        /// </summary>
-        string Name { get; }
-
-        /// <summary>
         /// ID предмета для сохранения
         /// </summary>
         string Id { get; }
-
-        /// <summary>
-        /// максимальное колличество в стаке
-        /// </summary>
-        int MaxStackSize { get; }
-
-        /// <summary>
-        /// спрайт для отрисовки
-        /// </summary>
-        Sprite Sprite { get; }
 
         bool IEquatable<IItem>.Equals(IItem other) => other != null && Id == other.Id;
 

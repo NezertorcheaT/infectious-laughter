@@ -40,10 +40,12 @@ namespace Inventory
                 for (var i = 0; i < Slots.Count; i++)
                 {
                     if (_slots[i].IsEmpty) continue;
-                    if (_slots[i].LastItem.GetType().Name != item.GetType().Name) continue;
-                    if (_slots[i].LastItem.SelfRef != item.SelfRef) continue;
-                    if (_slots[i].LastItem.Id != item.Id) continue;
-                    if (_slots[i].Count >= Slots[i].LastItem.MaxStackSize) continue;
+                    if (_slots[i].LastItem is not IStackableItem stackableItem) continue;
+                    if (stackableItem.GetType().Name != item.GetType().Name) continue;
+                    if (stackableItem.SelfRef != item.SelfRef) continue;
+                    if (stackableItem.Id != item.Id) continue;
+                    if (stackableItem is IStackableClampedItem clamped &&
+                        _slots[i].Count >= clamped.MaxStackSize) continue;
 
                     if (!addItem) return true;
 
@@ -54,20 +56,17 @@ namespace Inventory
                 }
             }
 
-            for (var i = 0; i < _slots.Count; i++)
-            {
-                if (!_slots[i].IsEmpty) continue;
-                if (!addItem) return true;
+            if (!addItem) return true;
 
-                _slots[i].InitializeInventory(this);
-                _slots[i].LastItem = item;
-                _slots[i].Count = 1;
-                slot = _slots[i];
-                OnChange?.Invoke();
-                return true;
-            }
+            var cur = _slots.FirstOrDefault(i => i.IsEmpty);
+            if (cur is null) return false;
 
-            return false;
+            cur.InitializeInventory(this);
+            cur.LastItem = item;
+            cur.Count = 1;
+            slot = cur;
+            OnChange?.Invoke();
+            return true;
         }
 
         public void UseLast(Entity.Entity entity)
@@ -149,13 +148,22 @@ namespace Inventory
 
             public int Count
             {
-                get => LastItem is null ? 0 : Mathf.Clamp(count, 0, LastItem.MaxStackSize);
+                get => LastItem is null
+                    ? 0
+                    : LastItem is IStackableClampedItem clamped
+                        ? Mathf.Clamp(count, 0, clamped.MaxStackSize)
+                        : count;
                 set
                 {
                     if (LastItem is null) return;
-                    value = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
+
+                    value = LastItem is IStackableClampedItem clamped
+                        ? Mathf.Clamp(value, 0, clamped.MaxStackSize)
+                        : Mathf.Max(value, 0);
+
                     if (count == value) return;
 
+                    if(LastItem )
                     if (count < value && LastItem is IStartableItem e)
                         for (var i = 1; i <= value - count; i++)
                             e.OnStart(Inventory.Holder, Inventory, new ItemData(e, this, i + count));
