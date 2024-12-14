@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Spyglass", menuName = "Inventory/Items/Spyglass", order = 0)]
-    public class Spyglass : ScriptableObject, IUsableItem, IShopItem, INameableItem, ISpriteItem
+    public class Spyglass : ScriptableObject, IUsableItem, IShopItem, ISpriteItem
     {
         public string Name => "Spyglass";
         public string Id => "il.spyglass";

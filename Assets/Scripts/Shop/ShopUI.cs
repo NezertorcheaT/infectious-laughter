@@ -77,7 +77,7 @@ namespace Shop
                 var frame = itemFrames[i];
                 i++;
                 frame.Item.sprite = item.SpriteForShop;
-                frame.Text.SetText($"{(item as INameableItem)!.Name}\nЗа {item.ItemCost} мусора");
+                frame.Text.SetText($"{item.Name}\nЗа {item.ItemCost} мусора");
                 frame.Button.onClick.AddListener(() => OnButtonClick(frame, item));
             }
         }
@@ -93,7 +93,7 @@ namespace Shop
 
             _playerInventoryInput.AddItem(item.SelfRef);
 
-            frame.Text.SetText($"{(item as INameableItem)!.Name}\nПродано");
+            frame.Text.SetText($"{item.Name}\nПродано");
         }
     }
 }

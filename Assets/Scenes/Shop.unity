@@ -750,15 +750,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCapacity: 8
   shopItemsPoolList:
-  - {fileID: 11400000, guid: 2859134343c73f4478c9dfd72c0bbf56, type: 2}
+  - {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
   - {fileID: 11400000, guid: ff3a7ea0eb5dca2408070f7feae030ea, type: 2}
   - {fileID: 11400000, guid: c8fc82275ef55b044b7868db1122c052, type: 2}
   - {fileID: 11400000, guid: 047a51507c32ccb47845b6c605952d26, type: 2}
   - {fileID: 11400000, guid: ca186346973ddb24e870bf998e5b880c, type: 2}
   - {fileID: 11400000, guid: 4fea7f1710cd2544390c03ddf61927a7, type: 2}
+  - {fileID: 11400000, guid: 2859134343c73f4478c9dfd72c0bbf56, type: 2}
   - {fileID: 11400000, guid: ef3d620f1fb4c7f4ba4bc76ea2c52903, type: 2}
   - {fileID: 11400000, guid: 08074da7347d39e409477cde94809145, type: 2}
-  - {fileID: 11400000, guid: c2a5a3994e23bd547b06e2c32430edea, type: 2}
   - {fileID: 11400000, guid: 81abc749d8d24e442a245df4d1d40d78, type: 2}
   shopUi: {fileID: 79291011}
 --- !u!4 &643609544

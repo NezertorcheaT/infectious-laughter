@@ -6,8 +6,7 @@ using UnityEngine.Serialization;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Analysing Drone", menuName = "Inventory/Items/Analysing Drone", order = 0)]
-    public class AnalysingDrone : ScriptableObject, IUsableItem, IShopItem, INameableItem, ISpriteItem,
-        IStackableClampedItem
+    public class AnalysingDrone : ScriptableObject, IUsableItem, IShopItem, ISpriteItem, IStackableClampedItem
     {
         public string Name => "Analysing Drone";
         public string Id => "il.analysing_drone";

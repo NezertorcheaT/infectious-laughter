@@ -5,8 +5,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Trap", menuName = "Inventory/Items/Trap", order = 0)]
-    public class TrapItem : ScriptableObject, IUsableItem, ICanSpawn, IShopItem, INameableItem, ISpriteItem,
-        IStackableClampedItem
+    public class TrapItem : ScriptableObject, IUsableItem, ICanSpawn, IShopItem, ISpriteItem, IStackableClampedItem
     {
         public string Name => "Trap";
         public string Id => "il.trap";

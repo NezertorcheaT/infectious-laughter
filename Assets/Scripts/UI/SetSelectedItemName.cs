@@ -12,14 +12,16 @@ namespace UI
         [Inject] private PlayerInstallation _playerInstallation;
         [SerializeField] private TMP_Text selfText;
         [SerializeField] private Inventory.UI.InventoryUI playerInventoryUI;
+        private const string EmptyLiteral = "Empty";
 
         private void SetItemName(int selectionId)
         {
             var slot = _playerInstallation.Inventory.Slots[selectionId];
-            var item = slot.LastItem as INameableItem;
             selfText.text = slot.IsEmpty
-                ? "Empty"
-                : item.Name;
+                ? EmptyLiteral
+                : slot.LastItem is INameableItem item
+                    ? item.Name
+                    : EmptyLiteral;
         }
 
         private void OnEnable()

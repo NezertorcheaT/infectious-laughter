@@ -3,8 +3,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Attracktor", menuName = "Inventory/Items/Attracktor", order = 0)]
-    public class Attracktor : ScriptableObject, IUsableItem, IShopItem, INameableItem, ISpriteItem,
-        IStackableClampedItem
+    public class Attracktor : ScriptableObject, IUsableItem, IShopItem, ISpriteItem, IStackableClampedItem
     {
         public string Name => "Attracktor";
         public string Id => "il.attracktor";

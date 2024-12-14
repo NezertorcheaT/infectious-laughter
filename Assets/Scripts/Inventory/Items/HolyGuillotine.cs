@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Holy Guillotine", menuName = "Inventory/Items/Holy Guillotine", order = 0)]
-    public class HolyGuillotine : ScriptableObject, IUsableItem, ICanSpawn, IShopItem, INameableItem, ISpriteItem,
+    public class HolyGuillotine : ScriptableObject, IUsableItem, ICanSpawn, IShopItem, ISpriteItem,
         IStackableClampedItem
     {
         public string Name => "Holy Guillotine";

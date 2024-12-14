@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Umbrella", menuName = "Inventory/Items/Umbrella", order = 0)]
-    public class Umbrella : ScriptableObject, IUsableItem, IShopItem, INameableItem, ISpriteItem, IStackableClampedItem
+    public class Umbrella : ScriptableObject, IUsableItem, IShopItem, ISpriteItem, IStackableClampedItem
     {
         public string Name => "Umbrella";
         public string Id => "il.umbrella";
