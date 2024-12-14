@@ -30,7 +30,7 @@ namespace Entity.Controllers
             _moveAbility = Entity.FindAbilityByType<HorizontalMovement>();
             _crouchAbility = Entity.FindAbilityByType<Crouching>();
             _movementDowning = Entity.FindExactAbilityByType<Downing>();
-            _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
+            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
             _dashAbility = Entity.FindExactAbilityByType<Dash>();
             _followPoint = Entity.FindAbilityByType<CameraFollowPoint>();
             

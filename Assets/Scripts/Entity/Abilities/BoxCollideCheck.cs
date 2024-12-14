@@ -5,17 +5,26 @@ using UnityEngine;
 
 namespace Entity.Abilities
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    [AddComponentMenu("Entity/Abilities/Collide Check")]
-    public class CollideCheck : Ability
+    public abstract class CollideCheck : Ability
     {
-        [SerializeField] protected int maxSlopeAngle;
-        [SerializeField] protected LayerMask groundLayer;
+        public abstract bool IsTouchingGround { get; }
+        public abstract bool IsTouchingTop { get; }
+        public abstract bool IsTouchingRight { get; }
+        public abstract bool IsTouchingLeft { get; }
+        public bool IsOnWall => IsTouchingLeft || IsTouchingRight;
+    }
+
+    [RequireComponent(typeof(Rigidbody2D))]
+    [AddComponentMenu("Entity/Abilities/Box Collide Check")]
+    public class BoxCollideCheck : CollideCheck
+    {
+        [SerializeField] private int maxSlopeAngle;
+        [SerializeField] private LayerMask groundLayer;
         [SerializeField, Min(0.01f)] private float groundDistance = 0.1f;
-        [SerializeField] Collider2D collider;
+        [SerializeField] private Collider2D collider;
         private float _colliderOffset = 0;
 
-        public virtual bool IsTouchingGround
+        public override bool IsTouchingGround
         {
             get
             {
@@ -32,7 +41,7 @@ namespace Entity.Abilities
             }
         }
 
-        public virtual bool IsTouchingTop
+        public override bool IsTouchingTop
         {
             get
             {
@@ -49,7 +58,7 @@ namespace Entity.Abilities
             }
         }
 
-        public virtual bool IsTouchingRight
+        public override bool IsTouchingRight
         {
             get
             {
@@ -66,7 +75,7 @@ namespace Entity.Abilities
             }
         }
 
-        public virtual bool IsTouchingLeft
+        public override bool IsTouchingLeft
         {
             get
             {
@@ -82,8 +91,6 @@ namespace Entity.Abilities
                 return Overlap(checkPosition, checkSize);
             }
         }
-
-        public virtual bool IsOnWall => IsTouchingLeft || IsTouchingRight;
 
         private bool Overlap(Vector2 position, Vector2 size)
         {

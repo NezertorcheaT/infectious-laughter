@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 3693047800681384998}
   - component: {fileID: 3693047800681384999}
   - component: {fileID: 3693047800681384993}
-  - component: {fileID: 3693047800681384995}
+  - component: {fileID: 3099278215789275798}
   - component: {fileID: 3693047800681385004}
   - component: {fileID: 3693047800681384992}
   - component: {fileID: 3693047800681384994}
@@ -354,12 +354,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpCount: 1
-  jumpHeight: 20
+  jumpForce: 20
   jumpTime: 3
-  walljumpHeight: 10
-  walljumpPush: 20
-  InJump: 0
---- !u!114 &3693047800681384995
+  wallJumpHeight: 10
+  wallJumpPush: 20
+--- !u!114 &3099278215789275798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -14,7 +14,7 @@ namespace Entity.Abilities
 
         private void Awake()
         {
-            _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
+            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
             _playerRb = GetComponent<Rigidbody2D>();
         }
 

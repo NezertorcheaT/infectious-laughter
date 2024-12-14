@@ -42,7 +42,7 @@ namespace Entity.Abilities
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
+            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
 
             curJumpsCount = jumpsCount;
         }
