@@ -5,7 +5,7 @@ namespace Inventory
     ///<summary>
     ///предмет в магазине
     ///</summary>
-    public interface IShopItem : IItem
+    public interface IShopItem : INameableItem
     {
         /// <summary>
         /// как предмет выглядит в магазине

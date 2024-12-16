@@ -49,6 +49,8 @@ namespace Inventory
         public void Initialize()
         {
             Instance = this;
+            foreach (var item in _items.OfType<IStashingItem>())
+                item.InitializeStash();
         }
     }
 }

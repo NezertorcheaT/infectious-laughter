@@ -48,6 +48,8 @@ namespace Installers
                 _sessionFactory.Current[SavedKeys.PlayerMaxHp]
             );
 
+            playerInventory.Bind(_player);
+            playerInventory.ClearInventory();
             JsonUtility.FromJsonOverwrite((string)_sessionFactory.Current[SavedKeys.PlayerInventory].Value,
                 playerInventory);
 
@@ -59,7 +61,6 @@ namespace Installers
             if (spawnPoint is null && _signalBus.IsSignalDeclared<ProceduralGenerationInstaller.GenerationEndSignal>())
                 _signalBus.Subscribe<ProceduralGenerationInstaller.GenerationEndSignal>(OnGenerationEnded);
 
-            playerInventory.Bind(_player);
             playerInventory.OnDeserialized();
         }
 

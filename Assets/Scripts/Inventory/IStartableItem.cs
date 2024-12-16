@@ -10,8 +10,8 @@
         /// </summary>
         /// <param name="entity">сущность привязки инвентаря</param>
         /// <param name="inventory">инвентарь, в котором находится предмет</param>
-        /// <param name="slot">слот, в котором лежит предмет</param>
-        void OnStart(Entity.Entity entity, IInventory inventory, ISlot slot);
+        /// <param name="itemData">репрезентация предмета</param>
+        void OnStart(Entity.Entity entity, IInventory inventory, ItemData itemData);
     }
 
     /// <summary>
@@ -24,7 +24,7 @@
         /// </summary>
         /// <param name="entity">сущность привязки инвентаря</param>
         /// <param name="inventory">инвентарь, в котором находится предмет</param>
-        /// <param name="slot">слот, в котором всё ещё лежит предмет</param>
-        void OnEnded(Entity.Entity entity, IInventory inventory, ISlot slot);
+        /// <param name="itemData">репрезентация предмета</param>
+        void OnEnded(Entity.Entity entity, IInventory inventory, ItemData itemData);
     }
 }

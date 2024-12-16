@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Entity.Controllers;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Inventory
@@ -39,32 +40,33 @@ namespace Inventory
                 for (var i = 0; i < Slots.Count; i++)
                 {
                     if (_slots[i].IsEmpty) continue;
-                    if (_slots[i].LastItem.GetType().Name != item.GetType().Name) continue;
-                    if (_slots[i].LastItem.SelfRef != item.SelfRef) continue;
-                    if (_slots[i].LastItem.Id != item.Id) continue;
-                    if (_slots[i].Count >= Slots[i].LastItem.MaxStackSize) continue;
+                    if (_slots[i].LastItem is not IStackableItem stackableItem) continue;
+                    if (stackableItem.GetType().Name != item.GetType().Name) continue;
+                    if (stackableItem.SelfRef != item.SelfRef) continue;
+                    if (stackableItem.Id != item.Id) continue;
+                    if (stackableItem is IStackableClampedItem clamped &&
+                        _slots[i].Count >= clamped.MaxStackSize) continue;
 
                     if (!addItem) return true;
 
-                    _slots[i] = new Slot(this, item, _slots[i].Count + 1);
+                    _slots[i].Count++;
                     slot = _slots[i];
                     OnChange?.Invoke();
                     return true;
                 }
             }
 
-            for (var i = 0; i < _slots.Count; i++)
-            {
-                if (!_slots[i].IsEmpty) continue;
-                if (!addItem) return true;
+            if (!addItem) return true;
 
-                _slots[i] = new Slot(this, item, 1);
-                slot = _slots[i];
-                OnChange?.Invoke();
-                return true;
-            }
+            var cur = _slots.FirstOrDefault(i => i.IsEmpty);
+            if (cur is null) return false;
 
-            return false;
+            cur.InitializeInventory(this);
+            cur.LastItem = item;
+            cur.Count = 1;
+            slot = cur;
+            OnChange?.Invoke();
+            return true;
         }
 
         public void UseLast(Entity.Entity entity)
@@ -91,9 +93,13 @@ namespace Inventory
         {
             for (var i = 0; i < MaxCapacity; i++)
             {
-                if (Slots[i].IsEmpty) continue;
-                Slots[i].Count = 0;
-                Slots[i].LastItem = null;
+                var slot = _slots[i];
+                if (slot.IsEmpty) continue;
+                slot.InitializeInventory(this);
+                if (slot.LastItem is IStashingItem stashingItem)
+                    foreach (var slotable in slot.Where(i => stashingItem.HasStored(i)))
+                        stashingItem.OnEnded(Holder, this, slotable);
+                _slots[i] = Slot.Empty(this);
             }
 
             OnChange?.Invoke();
@@ -123,11 +129,10 @@ namespace Inventory
             foreach (var slot in _slots)
             {
                 if (slot.IsEmpty) continue;
+                slot.InitializeInventory(this);
                 if (slot.LastItem is not IStartableItem item) continue;
-                for (var i = 0; i < slot.Count; i++)
-                {
-                    item.OnStart(Holder, this, slot);
-                }
+                foreach (var slotable in slot)
+                    item.OnStart(Holder, this, slotable);
             }
         }
 
@@ -138,16 +143,50 @@ namespace Inventory
             [SerializeField] private int count;
 
             public bool IsEmpty => LastItem == null || Count == 0;
+            public IInventory HolderInventory => Inventory;
             public PlayerInventory Inventory { get; private set; }
 
             public int Count
             {
-                get => LastItem is null ? 0 : Mathf.Clamp(count, 0, LastItem.MaxStackSize);
+                get => LastItem is null
+                    ? 0
+                    : LastItem is IStackableClampedItem clamped
+                        ? Mathf.Clamp(count, 0, clamped.MaxStackSize)
+                        : count;
                 set
                 {
-                    if (LastItem is null) return;
-                    count = Mathf.Clamp(value, 0, LastItem.MaxStackSize);
-                    if (count == 0 && LastItem is IEndableItem e) e.OnEnded(Inventory.Holder, Inventory, this);
+                    var lastItem = LastItem;
+                    if (lastItem is null) return;
+
+                    value = lastItem is IStackableClampedItem clamped
+                        ? Mathf.Clamp(value, 0, clamped.MaxStackSize)
+                        : Mathf.Max(value, 0);
+
+                    if (count == value) return;
+
+                    if (lastItem is not IStackableItem)
+                    {
+                        value = Mathf.Clamp(value, 0, 1);
+                        if (count == value) return;
+
+                        if (lastItem is IStartableItem startable && count == 0 && value == 1)
+                            startable.OnStart(Inventory.Holder, Inventory, new ItemData(startable, this, 1));
+                        if (lastItem is IEndableItem endable && count == 1 && value == 0)
+                            endable.OnEnded(Inventory.Holder, Inventory, new ItemData(endable, this, 1));
+
+                        count = value;
+                        Inventory.OnChange?.Invoke();
+                        return;
+                    }
+
+                    if (count < value && lastItem is IStartableItem e)
+                        for (var i = 1; i <= value - count; i++)
+                            e.OnStart(Inventory.Holder, Inventory, new ItemData(e, this, i + count));
+                    if (count > value && lastItem is IEndableItem s)
+                        for (var i = 1; i <= count - value; i++)
+                            s.OnEnded(Inventory.Holder, Inventory, new ItemData(s, this, i + value));
+
+                    count = value;
                     Inventory.OnChange?.Invoke();
                 }
             }
@@ -157,8 +196,26 @@ namespace Inventory
                 get => ItemsProvider.Instance.IdToItem(lastItemId);
                 set
                 {
-                    if (LastItem is IEndableItem e) e.OnEnded(Inventory.Holder, Inventory, this);
-                    lastItemId = value is null ? string.Empty : value.Id;
+                    if (value is null)
+                    {
+                        Count = 0;
+                        lastItemId = string.Empty;
+                        Inventory.OnChange?.Invoke();
+                        return;
+                    }
+
+                    if (lastItemId == value.Id)
+                        return;
+
+                    if (LastItem is IEndableItem e && lastItemId != value.Id)
+                    {
+                        var c = Count;
+                        Count = 0;
+                        lastItemId = value.Id;
+                        Count = c;
+                    }
+
+                    lastItemId = value.Id;
                     Inventory.OnChange?.Invoke();
                 }
             }
@@ -171,14 +228,19 @@ namespace Inventory
                 Count = 0;
             }
 
-            public Slot(IInventory inventory, IItem item, int count)
+            public Slot([NotNull] IInventory inventory, IItem item, int count)
             {
                 Inventory = inventory as PlayerInventory;
                 lastItemId = item is null ? string.Empty : item.Id;
                 Count = item is not null ? count : 0;
             }
 
+            public void InitializeInventory([NotNull] PlayerInventory inventory) => Inventory ??= inventory;
+
             public static Slot Empty(IInventory inventory) => new(inventory, null, 0);
+
+            public static bool operator ==(ISlot left, Slot right) => left != null && left.Equals(right);
+            public static bool operator !=(ISlot left, Slot right) => !(left != null && left.Equals(right));
         }
     }
 }

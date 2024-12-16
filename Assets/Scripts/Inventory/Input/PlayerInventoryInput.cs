@@ -35,13 +35,8 @@ namespace Inventory.Input
                 inventoryItem = i;
             }
 
-            if (!Available()) return;
-            if (
-                Inventory is not null &&
-                Inventory.TryAddItem(inventoryItem, out var slot) &&
-                inventoryItem is IStartableItem startableItem
-            )
-                startableItem.OnStart(Inventory.Holder, Inventory, slot);
+            if (Available() && Inventory is not null)
+                Inventory.TryAddItem(inventoryItem, out _);
         }
 
         public bool HasSpace(IItem item) => Inventory.TryAddItem(item, true, false);

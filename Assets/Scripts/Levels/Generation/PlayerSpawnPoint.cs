@@ -4,6 +4,5 @@ namespace Levels.Generation
 {
     public class PlayerSpawnPoint : MonoBehaviour
     {
-        
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New JawGrip", menuName = "Inventory/Items/JawGrip", order = 0)]
-    public class JawGrip : ScriptableObject, IUsableItem, IShopItem
+    public class JawGrip : ScriptableObject, IUsableItem, IShopItem, ISpriteItem, IStackableClampedItem
     {
         public string Name => "JawGrip";
         public string Id => "il.jaw_grip";
@@ -32,12 +32,17 @@ namespace Inventory.Items
             //Хватает предметы на расстоянии
             input.MaxDistance = radius;
 
-            for (int i = 0; ; i++) {
+            for (int i = 0;; i++)
+            {
                 timerUse += Time.deltaTime;
-                if (timerUse >= timerUseMax) { input.MaxDistance = defaultInventoryRadius; return; }
+                if (timerUse >= timerUseMax)
+                {
+                    input.MaxDistance = defaultInventoryRadius;
+                    return;
+                }
+
                 await UniTask.Yield();
             }
-            
         }
     }
 }

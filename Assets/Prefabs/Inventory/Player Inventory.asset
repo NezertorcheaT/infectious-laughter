@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCapacity: 6
   <_slots>k__BackingField:
+  - lastItemId: 
+    count: 0
   - lastItemId: il.heart_pendant
     count: 1
-  - lastItemId: il.spyglass
+  - lastItemId: il.heart_pendant
     count: 1
-  - lastItemId: il.umbrella
+  - lastItemId: 
     count: 0
-  - lastItemId: il.attracktor
-    count: 1
-  - lastItemId: il.slingshot
-    count: 1
+  - lastItemId: 
+    count: 0
   - lastItemId: 
     count: 0

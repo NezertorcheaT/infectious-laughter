@@ -1,133 +1,115 @@
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
-using JetBrains.Annotations;
-using UnityEngine;
+using System.Collections.Generic;
 
 namespace Inventory
 {
     /// <summary>
-    /// это предмет, который имеет данные, привязанные к конкретному предмету
+    /// это предмет (методы без обобщений), который имеет данные, привязанные к конкретному предмету
     /// </summary>
-    /// <typeparam name="T">тип данных, который будет использоваться для хранения, советую сделать побольше</typeparam>
-    public interface IStashingItem<T> : IEndableItem, IStartableItem where T : class
+    public interface IStashingItem : IEndableItem, IStartableItem
     {
         /// <summary>
-        /// это данные каждого предмета
+        /// внутренний метод для начального создания хранилища
         /// </summary>
-        Stash Data { get; }
+        void InitializeStash();
 
-        public class Stash
-        {
-            private readonly ConcurrentDictionary<ISlot, T> _dictionary;
-
-            public Stash(ISlot slot, T initial) : this() => Add(slot, initial);
-            public Stash() => _dictionary = new ConcurrentDictionary<ISlot, T>();
-
-            /// <summary>
-            /// получить данные для предмета
-            /// </summary>
-            /// <param name="slot">именно слот используется как ключ к данным предмета</param>
-            public T this[[NotNull] ISlot slot] => Get(slot);
-
-            /// <summary>
-            /// получить данные для предмета
-            /// </summary>
-            /// <param name="slot">именно слот используется как ключ к данным предмета</param>
-            /// <returns>данные о предмете</returns>
-            /// <exception cref="ArgumentException">если данные к этому слоту отсутствуют</exception>
-            /// <exception cref="NullReferenceException">если слот нулёвый</exception>
-            public T Get([NotNull] ISlot slot)
-            {
-                if (slot is null) throw new NullReferenceException($"Слоту {slot} нулёвый, идиот");
-                if (_dictionary.TryGetValue(slot, out T value)) return value;
-                throw new ArgumentException($"Данные к слоту {slot} отсутствуют");
-            }
-
-            /// <summary>
-            /// позволяет убрать данные о предмете
-            /// </summary>
-            /// <param name="slot">именно слот используется как ключ к данным предмета</param>
-            /// <exception cref="ArgumentException">если данные к этому слоту отсутствуют</exception>
-            /// <exception cref="NullReferenceException">если слот нулёвый</exception>
-            public void Pop([NotNull] ISlot slot)
-            {
-                if (slot is null) throw new NullReferenceException($"Слоту {slot} нулёвый, идиот");
-                if (_dictionary.TryRemove(slot, out _)) return;
-                throw new ArgumentException($"Данные к слоту {slot} отсутствуют");
-            }
-
-            /// <summary>
-            /// записать данные о предмете
-            /// </summary>
-            /// <param name="slot">именно слот используется как ключ к данным предмета</param>
-            /// <param name="current">данные, которые следует записать</param>
-            /// <exception cref="ArgumentException">если данные к этому слоту уже существуют</exception>
-            /// <exception cref="NullReferenceException">если слот нулёвый</exception>
-            public void Add([NotNull] ISlot slot, T current)
-            {
-                if (slot is null) throw new NullReferenceException($"Слоту {slot} нулёвый, идиот");
-                if (_dictionary.TryAdd(slot, current)) return;
-                throw new ArgumentException("item in this slot already contained in stash");
-            }
-        }
+        /// <summary>
+        /// имеет ли данные для предмета
+        /// </summary>
+        /// <param name="itemData"></param>
+        /// <returns></returns>
+        bool HasStored(ItemData itemData);
     }
 
     /// <summary>
     /// это предмет, который имеет данные, привязанные к конкретному предмету
     /// </summary>
     /// <typeparam name="T">тип данных, который будет использоваться для хранения, советую сделать побольше</typeparam>
-    public abstract class StashingItem<T> : ScriptableObject, IStashingItem<T> where T : class
+    public interface IStashingItem<T> : IStashingItem where T : class
     {
-        public abstract ScriptableObject SelfRef { get; }
-        public abstract string Name { get; }
-        public abstract string Id { get; }
-        public abstract int MaxStackSize { get; }
-        public abstract Sprite Sprite { get; }
+        /// <summary>
+        /// это данные каждого предмета
+        /// </summary>
+        Stash Data { get; }
 
-        public IStashingItem<T>.Stash Data { get; private set; }
+        bool IStashingItem.HasStored(ItemData itemData) => Data.Has(itemData);
 
-        public void OnStart(Entity.Entity entity, IInventory inventory, ISlot slot)
+        void IStartableItem.OnStart(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
-            Data ??= new IStashingItem<T>.Stash();
-            Data.Add(slot, Initiate(entity, inventory, slot));
-            Started(entity, inventory, slot);
+            Data.Add(itemData, Initiate(entity, inventory, itemData));
+            Started(entity, inventory, itemData);
         }
 
-        public void OnEnded(Entity.Entity entity, IInventory inventory, ISlot slot)
+        void IEndableItem.OnEnded(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
-            var c = Data[slot];
-            Data.Pop(slot);
-            End(entity, inventory, slot, c);
+            var c = Data[itemData];
+            Data.Pop(itemData);
+            End(entity, inventory, itemData, c);
         }
 
-        /// <summary>
-        /// нужно для создания нового экземпляра данных
-        /// </summary>
-        /// <param name="entity">сущность привязки инвентаря</param>
-        /// <param name="inventory">инвентарь, в котором находится предмет</param>
-        /// <param name="slot">слот, в котором лежит предмет</param>
-        /// <returns>новый экземпляр данных</returns>
-        protected abstract T Initiate(Entity.Entity entity, IInventory inventory, ISlot slot);
+        T Initiate(Entity.Entity entity, IInventory inventory, ItemData itemData);
+        void Started(Entity.Entity entity, IInventory inventory, ItemData itemData);
+        void End(Entity.Entity entity, IInventory inventory, ItemData itemData, T c);
 
         /// <summary>
-        /// эта кароч замена старта, чтоб заново интерфейс не делать
+        /// структура данных, скрывающая данные каждого предмета
         /// </summary>
-        /// <param name="entity">сущность привязки инвентаря</param>
-        /// <param name="inventory">инвентарь, в котором находится предмет</param>
-        /// <param name="slot">слот, в котором лежит предмет</param>
-        protected virtual void Started(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public class Stash : IEnumerable<KeyValuePair<ItemData, T>>
         {
-        }
+            private readonly ConcurrentDictionary<ItemData, T> _dictionary = new();
 
-        /// <summary>
-        /// эта кароч замена уничтожения, чтоб заново интерфейс не делать
-        /// </summary>
-        /// <param name="entity">сущность привязки инвентаря</param>
-        /// <param name="inventory">инвентарь, в котором находится предмет</param>
-        /// <param name="slot">слот, в котором лежит предмет</param>
-        /// <param name="current">данные, которые использовались для этого предмета</param>
-        protected virtual void End(Entity.Entity entity, IInventory inventory, ISlot slot, T current)
-        {
+            /// <summary>
+            /// получить данные для предмета
+            /// </summary>
+            /// <param name="itemData">именно слот используется как ключ к данным предмета</param>
+            public T this[ItemData itemData] => Get(itemData);
+
+            /// <summary>
+            /// получить данные для предмета
+            /// </summary>
+            /// <param name="itemData">именно слот используется как ключ к данным предмета</param>
+            /// <returns>данные о предмете</returns>
+            /// <exception cref="ArgumentException">если данные к этому слоту отсутствуют</exception>
+            public T Get(ItemData itemData)
+            {
+                if (_dictionary.TryGetValue(itemData, out T value)) return value;
+                throw new ArgumentException($"Данные к слоту {itemData} отсутствуют");
+            }
+
+            /// <summary>
+            /// имеет ли данные для предмета
+            /// </summary>
+            /// <param name="itemData"></param>
+            /// <returns></returns>
+            public bool Has(ItemData itemData) => _dictionary.ContainsKey(itemData);
+
+            /// <summary>
+            /// позволяет убрать данные о предмете
+            /// </summary>
+            /// <param name="itemData">именно слот используется как ключ к данным предмета</param>
+            /// <exception cref="ArgumentException">если данные к этому слоту отсутствуют</exception>
+            public void Pop(ItemData itemData)
+            {
+                if (_dictionary.TryRemove(itemData, out _)) return;
+                throw new ArgumentException($"Данные к слоту {itemData} отсутствуют");
+            }
+
+            /// <summary>
+            /// записать данные о предмете
+            /// </summary>
+            /// <param name="itemData">используется как ключ к данным предмета</param>
+            /// <param name="current">данные, которые следует записать</param>
+            /// <exception cref="ArgumentException">если данные к этому слоту уже существуют</exception>
+            public void Add(ItemData itemData, T current)
+            {
+                if (_dictionary.TryAdd(itemData, current)) return;
+                throw new ArgumentException("item in this slot already contained in stash");
+            }
+
+            public IEnumerator<KeyValuePair<ItemData, T>> GetEnumerator() => _dictionary.GetEnumerator();
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         }
     }
 }

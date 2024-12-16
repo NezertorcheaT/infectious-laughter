@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Spyglass", menuName = "Inventory/Items/Spyglass", order = 0)]
-    public class Spyglass : ScriptableObject, IUsableItem, IShopItem
+    public class Spyglass : ScriptableObject, IUsableItem, IShopItem, ISpriteItem
     {
         public string Name => "Spyglass";
         public string Id => "il.spyglass";
@@ -15,11 +15,10 @@ namespace Inventory.Items
         [SerializeField, Min(1)] private int itemCost;
         [SerializeField] private Sprite sprite;
         [SerializeField] private Sprite spriteForShop;
-        [field: SerializeField] public int MaxStackSize { get; private set; }
 
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
-            entity.FindExactAbilityByType<Entity.Abilities.CameraFollowPoint>()?.ChangeLock();
+            entity.FindAbilityByType<Entity.Abilities.CameraFollowPoint>()?.ChangeLock();
         }
     }
 }
