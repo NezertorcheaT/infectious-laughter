@@ -13,6 +13,7 @@ namespace Inventory.Items
         public ScriptableObject SelfRef => this;
         public IStashingItem<Eventer>.Stash Data { get; private set; }
 
+        [SerializeField] private GameObject transportPrefab;
         [SerializeField, Min(1)] private int healAmount = 1;
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 2;
         [field: SerializeField] public Sprite SpriteForShop { get; private set; }
