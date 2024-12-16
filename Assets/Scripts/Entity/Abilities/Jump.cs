@@ -10,24 +10,19 @@ namespace Entity.Abilities
     public class Jump : Ability, IJumpableAbility
     {
         [SerializeField, Min(1)] private int jumpCount = 1;
-        [SerializeField, Min(0)] public float jumpHeight = 3; // Не решился изменять название, может отъебнет что-нибудь
+        [SerializeField, Min(0)] public float jumpForce = 20;
         [SerializeField, Min(0)] private float jumpTime = 3;
-        [Space(10)] [SerializeField, Min(0)] private float walljumpHeight;
-        [SerializeField, Min(0)] private float walljumpPush;
-
+        [Space(10)] [SerializeField, Min(0)] private float wallJumpHeight = 10;
+        [SerializeField, Min(0)] private float wallJumpPush = 20;
         private int _jumpCountActive;
-
         private Rigidbody2D _playerRb;
         private CollideCheck _collideCheck;
         private Downing _movementDowning;
 
-        public bool InJump;
-
-
         private void Start()
         {
             _playerRb = GetComponent<Rigidbody2D>();
-            _collideCheck = Entity.FindExactAbilityByType<CollideCheck>();
+            _collideCheck = Entity.FindAbilityByType<CollideCheck>();
             _movementDowning = Entity.FindExactAbilityByType<Downing>();
             _jumpCountActive = jumpCount;
         }
@@ -45,7 +40,7 @@ namespace Entity.Abilities
         {
             _jumpCountActive = jumpCount;
             if (_jumpCountActive == 0) return;
-            _playerRb.AddForce(new Vector2(_playerRb.velocity.x, jumpHeight), ForceMode2D.Impulse);
+            _playerRb.AddForce(new Vector2(_playerRb.velocity.x, jumpForce), ForceMode2D.Impulse);
 
             _jumpCountActive -= 1;
         }
@@ -55,12 +50,12 @@ namespace Entity.Abilities
             _movementDowning.enabled = false;
             _playerRb.AddForce(
                 new Vector2(
-                    walljumpPush * (_collideCheck.IsTouchingLeft ? 1 : _collideCheck.IsTouchingRight ? -1 : 0),
-                    walljumpHeight
+                    wallJumpPush * (_collideCheck.IsTouchingLeft ? 1 : _collideCheck.IsTouchingRight ? -1 : 0),
+                    wallJumpHeight
                 ),
                 ForceMode2D.Impulse
             );
-            await Task.Delay((int) (jumpTime / 2f * 1000f));
+            await Task.Delay((int)(jumpTime / 2f * 1000f));
             _movementDowning.enabled = true;
         }
     }

@@ -6,7 +6,7 @@ namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Heart Pendant", menuName = "Inventory/Items/Heart Pendant", order = 0)]
     public class HeartPendant : ScriptableObject, IStashingItem<HeartPendant.Eventer>, IShopItem, ISpriteItem,
-        IStackableClampedItem
+        IStackableClampedItem, ICanSpawn
     {
         public string Name => "Heart Pendant";
         public string Id => "il.heart_pendant";
@@ -18,6 +18,7 @@ namespace Inventory.Items
         [field: SerializeField] public Sprite SpriteForShop { get; private set; }
         [field: SerializeField] public Sprite Sprite { get; private set; }
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
+        public ItemAdderVerifier Verifier { get; set; }
 
         private static int _healAmount;
 
@@ -41,6 +42,12 @@ namespace Inventory.Items
             Eventer current
         )
         {
+            Verifier.Container.InstantiatePrefab(
+                transportPrefab,
+                entity.CachedTransform.position,
+                Quaternion.identity,
+                null
+            );
             current.Dispose();
         }
 

@@ -20,8 +20,8 @@ namespace Inventory.Items
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
             _playerJump ??= entity.gameObject.GetComponent<Entity.Abilities.Jump>();
-            _chachedHeight = _chachedHeight == 0 ? _playerJump.jumpHeight : _chachedHeight;
-            _playerJump.jumpHeight = _used ? _chachedHeight : _chachedHeight * 1.5f;
+            _chachedHeight = _chachedHeight == 0 ? _playerJump.jumpForce : _chachedHeight;
+            _playerJump.jumpForce = _used ? _chachedHeight : _chachedHeight * 1.5f;
             _used = !_used;
         }
     }

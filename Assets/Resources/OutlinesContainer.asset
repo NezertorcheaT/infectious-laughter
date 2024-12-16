@@ -91,6 +91,8 @@ MonoBehaviour:
     Path: Outlines\Characters\Enemies\Blood Monster\Blood Monster
   - Original: {fileID: 21300000, guid: 107ded716b293f94d8b0ba55828a1e06, type: 3}
     Path: Outlines\Characters\Enemies\Butterfly Suicide\Butterfly Suicide
+  - Original: {fileID: 21300000, guid: 616715ef9f72b9a48bc38928dc1a2bcb, type: 3}
+    Path: Outlines\Characters\Enemies\Carnivorous spike\Carnivorous spike
   - Original: {fileID: 21300000, guid: fcd6677d66fceae4ba7fbe2ea488cb44, type: 3}
     Path: Outlines\Characters\Enemies\Collector\Collector
   - Original: {fileID: 21300000, guid: db4be85e4c9ef3a4cafda415d663ebb0, type: 3}
@@ -381,7 +383,7 @@ MonoBehaviour:
     Path: Outlines\Locations\Suburban Forest\Background\1locSky
   - Original: {fileID: 1485792798, guid: 553997f9c46475748b940c3d9f3e8a9d, type: 3}
     Path: Outlines\Locations\Suburban Forest\Funk\Bloody Vines
-  - Original: {fileID: -112307527, guid: 4469d63d04a077f40aa45e8e8a2db91c, type: 3}
+  - Original: {fileID: -1538231495, guid: 6e1bb42fe61d2374983e4e7dc75d38a0, type: 3}
     Path: Outlines\Locations\Suburban Forest\Funk\Bushes
   - Original: {fileID: 703718559, guid: 10a6007646813504695123aa94a1813e, type: 3}
     Path: Outlines\Locations\Suburban Forest\Funk\Light Poles
@@ -394,10 +396,14 @@ MonoBehaviour:
     Path: Outlines\Locations\Suburban Forest\Props\Armatures
   - Original: {fileID: 1425112123, guid: 53bdb00848a7dc840ad53a4804b0108e, type: 3}
     Path: Outlines\Locations\Suburban Forest\Props\Broken houses
+  - Original: {fileID: 949883745, guid: 8808cef1ef235c5488e35a0a0f7c5e77, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Bushes for tiles
   - Original: {fileID: 996656397, guid: 871def50e74592643867b28090e4df6b, type: 3}
     Path: Outlines\Locations\Suburban Forest\Props\Cars
   - Original: {fileID: -1041499492, guid: 219a04c9b92d36b45bd217b6348c277c, type: 3}
     Path: Outlines\Locations\Suburban Forest\Props\Crimson Grass
+  - Original: {fileID: -41478085, guid: 7d58ef0d58694d042881118129dde258, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Crimson trees
   - Original: {fileID: -1600455115, guid: 71c09035ea7526a42a2e1259cf601829, type: 3}
     Path: Outlines\Locations\Suburban Forest\Props\Fences
   - Original: {fileID: 2084799149, guid: bdd8f281db5055d43a7a6bb122050d65, type: 3}
@@ -414,6 +420,8 @@ MonoBehaviour:
     Path: Outlines\Locations\Suburban Forest\Props\Jails
   - Original: {fileID: -1682075018, guid: 328212ce6927cf649b63196fccdd7c60, type: 3}
     Path: Outlines\Locations\Suburban Forest\Props\Logs
+  - Original: {fileID: -401704237, guid: 9e6f45b157f554342a29e936b7268800, type: 3}
+    Path: Outlines\Locations\Suburban Forest\Props\Master of Genesis meat heaps
   - Original: {fileID: -426252028, guid: 582c6380e194ec0428a10316a672be3b, type: 3}
     Path: Outlines\Locations\Suburban Forest\Props\Master of Genesis's signs
   - Original: {fileID: -1002954367, guid: c9d45f8a02a6257479fdc30354005f45, type: 3}
@@ -480,6 +488,10 @@ MonoBehaviour:
     Path: Outlines\Characters\Enemies\Forest Reaper\Animations\idle
   - Original: {fileID: -1142827656, guid: a18d17345e02f5c42bd171649ad54fb2, type: 3}
     Path: Outlines\Characters\Enemies\Forest Reaper\Animations\walk
+  - Original: {fileID: -8628964, guid: 43406e15c1b139c4f88c1d12b3192d19, type: 3}
+    Path: Outlines\Characters\Enemies\Many-pawed\Animations\fly
+  - Original: {fileID: 236225546, guid: 1d894222bbe5c24418dc87a05e06e690, type: 3}
+    Path: Outlines\Characters\Enemies\Many-pawed\Animations\idle
   - Original: {fileID: -1576905718, guid: de2adb9997e64b64bb3f2f04444af9f7, type: 3}
     Path: Outlines\Characters\Enemies\Spirit of the Past\Animations\flight
   - Original: {fileID: -1352351563, guid: 986325ca2e3ccae40833d11c1c744ae0, type: 3}
@@ -552,5 +564,9 @@ MonoBehaviour:
     Path: Outlines\Characters\Enemies\Soaring Eye\Animations\General\flight
   - Original: {fileID: 11439920, guid: 235b71b89ab9c794d8a1e8391784bcb2, type: 3}
     Path: Outlines\Characters\Enemies\Soaring Eye\Animations\General\idle
+  - Original: {fileID: 21300000, guid: 7fea1dc7b31cfb649beb56b073d58545, type: 3}
+    Path: Outlines\Characters\NPC\Extra NPCs\Inventors\Inventor 1\Inventor 1
+  - Original: {fileID: 21300000, guid: d64edb8673514af4197d0e00f751c5e1, type: 3}
+    Path: Outlines\Characters\NPC\Extra NPCs\Laughters\Pale Laughter\PaleLaughter
   - Original: {fileID: -1346282487, guid: 629ed49c1b45f3141bb5b1fa7d9f06d9, type: 3}
     Path: Outlines\Characters\NPC\Store Dweller\Animations\General\idle
