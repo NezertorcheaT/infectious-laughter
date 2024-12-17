@@ -1,6 +1,8 @@
 using System.IO;
+using System.Linq;
 using CustomHelper;
 using UnityEditor;
+using UnityEditor.U2D;
 #if UNITY_EDITOR
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -15,22 +17,67 @@ namespace Outline
     {
         public static readonly Color OutlineColor = new(1, 1, 1, 1);
         private static int _kernel;
-        private static int _threadGroupSize = 3;
         private static ComputeShader _shader;
+        public static readonly string MainPath = $"{Application.dataPath}/Drive".Replace('/', '\\');
+        public static readonly string NewMainPath = $"{Application.dataPath}/Outlines".Replace('/', '\\');
 #if UNITY_EDITOR
+
+        public static Sprite Regenerate(Sprite original, string path)
+        {
+            Debug.Log(path);
+            _shader ??= Resources.Load<ComputeShader>("OutlineShader");
+            _kernel = _shader.FindKernel("cs_main");
+            if (original?.texture is null)
+                return null;
+            byte[] texture = GenerateNewOutline(original.texture).EncodeToPNG();
+
+            var newPath = path.Replace(MainPath, NewMainPath);
+            var relativeNewPath = path.Replace(MainPath, "Assets/Outlines");
+            var relativeMainPath = path.Replace(MainPath, "Assets/Drive");
+
+            if (!Directory.Exists(newPath.Replace(Path.GetFileName(newPath), "")))
+                Directory.CreateDirectory(newPath.Replace(Path.GetFileName(newPath), ""));
+            if (texture is not null)
+                File.WriteAllBytes(newPath, texture);
+
+            AssetDatabase.ImportAsset(
+                relativeNewPath,
+                ImportAssetOptions.ForceUpdate
+            );
+
+            var destinationImporter =
+                AssetImporter.GetAtPath(relativeNewPath) as TextureImporter;
+            EditorUtility.CopySerialized(
+                AssetImporter.GetAtPath(relativeMainPath) as TextureImporter,
+                destinationImporter
+            );
+            destinationImporter.textureCompression = TextureImporterCompression.CompressedLQ;
+            destinationImporter.crunchedCompression = true;
+            destinationImporter.compressionQuality = 50;
+            destinationImporter.SaveAndReimport();
+
+            AssetDatabase.ImportAsset(
+                relativeNewPath,
+                ImportAssetOptions.ForceUpdate
+            );
+
+            return AssetDatabase
+                .LoadAllAssetsAtPath(relativeNewPath)
+                .AsType<Sprite>()
+                .FirstOrDefault(i => i.GetSpriteID() == original.GetSpriteID());
+        }
+
         [MenuItem("File/Regenerate outlines", false, 3)]
         public static void Regenerate()
         {
-            var mainPath = $"{Application.dataPath}/Drive".Replace('/', '\\');
-            var newMainPath = $"{Application.dataPath}/Resources/Outlines".Replace('/', '\\');
-            if (Directory.Exists(newMainPath))
-                Directory.Delete(newMainPath, true);
+            if (Directory.Exists(NewMainPath))
+                Directory.Delete(NewMainPath, true);
             var container = Resources.Load<OutlinesContainer>("OutlinesContainer");
             container.Reset();
             _shader = Resources.Load<ComputeShader>("OutlineShader");
             _kernel = _shader.FindKernel("cs_main");
             foreach (var path in Directory.EnumerateFiles(
-                         mainPath,
+                         MainPath,
                          "*.*",
                          new EnumerationOptions { RecurseSubdirectories = true }
                      ))
@@ -39,39 +86,15 @@ namespace Outline
                     continue;
                 if (!path.EndsWith(".png") && !path.EndsWith(".jpg") && !path.EndsWith(".jpeg"))
                     continue;
-                var asset = AssetDatabase.LoadAssetAtPath<Sprite>(path.Replace(mainPath, "Assets/Drive"));
-                if (asset?.texture is null)
-                    continue;
-                byte[] texture = GenerateNewOutline(asset.texture).EncodeToPNG();
 
-                var newPath = path.Replace(mainPath, newMainPath);
-                if (!Directory.Exists(newPath.Replace(Path.GetFileName(newPath), "")))
-                    Directory.CreateDirectory(newPath.Replace(Path.GetFileName(newPath), ""));
-                if (texture is not null)
-                    File.WriteAllBytes(newPath, texture);
-
-                AssetDatabase.ImportAsset(
-                    path.Replace(mainPath, "Assets/Resources/Outlines"),
-                    ImportAssetOptions.ForceUpdate
-                );
-
-                var destinationImporter =
-                    AssetImporter.GetAtPath(path.Replace(mainPath, "Assets/Resources/Outlines")) as TextureImporter;
-                EditorUtility.CopySerialized(
-                    AssetImporter.GetAtPath(path.Replace(mainPath, "Assets/Drive")) as TextureImporter,
-                    destinationImporter
-                );
-                destinationImporter.textureCompression = TextureImporterCompression.CompressedLQ;
-                destinationImporter.crunchedCompression = true;
-                destinationImporter.compressionQuality = 50;
-                destinationImporter.SaveAndReimport();
-
-                AssetDatabase.ImportAsset(
-                    path.Replace(mainPath, "Assets/Resources/Outlines"),
-                    ImportAssetOptions.ForceUpdate
-                );
-                container.Cache.Add(new OutlinesContainer.OutlineType
-                    { Original = asset, Path = path.Replace(mainPath, "Outlines").Replace(".png", "") });
+                foreach (var orig in AssetDatabase.LoadAllAssetsAtPath(path.Replace(MainPath, "Assets/Drive"))
+                             .AsType<Sprite>())
+                {
+                    var outlineType = new OutlinesContainer.OutlineType
+                        { Original = orig, New = Regenerate(orig, path) };
+                    if (outlineType.New is null || outlineType.Original is null) continue;
+                    container.Cache.Add(outlineType);
+                }
             }
 
             AssetDatabase.Refresh();

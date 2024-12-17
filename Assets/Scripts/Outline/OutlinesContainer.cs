@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using NaughtyAttributes;
+using UnityEditor;
 using UnityEngine;
 
 namespace Outline
@@ -8,25 +11,44 @@ namespace Outline
     [CreateAssetMenu(fileName = "Outlines Container", menuName = "", order = 0)]
     public class OutlinesContainer : ScriptableObject
     {
+        [SerializeField] private List<Sprite> spritesToGenerate = new();
+
+#if UNITY_EDITOR
+        [Button]
+        private void Regenerate()
+        {
+            if (Directory.Exists(Outliner.NewMainPath))
+                Directory.Delete(Outliner.NewMainPath, true);
+
+            Cache = new List<OutlineType>();
+            Cache.AddRange(spritesToGenerate
+                .Select(sprite => new OutlineType
+                {
+                    Original = sprite,
+                    New = Outliner.Regenerate(
+                        sprite,
+                        Path.Combine(Outliner.MainPath.Replace("Assets\\Drive", ""), AssetDatabase.GetAssetPath(sprite))
+                            .Replace('/', '\\')
+                    )
+                })
+                .Where(outlineType => outlineType.New is not null && outlineType.Original is not null)
+            );
+        }
+#endif
+
         [Serializable]
         public struct OutlineType
         {
             public Sprite Original;
-            public string Path;
+            public Sprite New;
         }
 
-        public Sprite this[Sprite original]
-        {
-            get
-            {
-                var sprite = Outliner
-                    .GetOutlined(Cache.FirstOrDefault(t => t.Original.texture == original.texture).Path)
-                    .FirstOrDefault(t => t.name == original.name);
-                if (sprite is null)
-                    Debug.LogError($"Outliner не нашёл обводку для спрайта \"{original}\". Попробуйте обновить обводку с помощью \"File/Regenerate Outlines\"");
-                return sprite;
-            }
-        }
+        /// <summary>
+        /// превращает спрайт в обводку
+        /// </summary>
+        /// <param name="original">оригинал спрайта</param>
+        /// <returns>обводка без оригинала</returns>
+        public Sprite this[Sprite original] => ToOutline(original);
 
         /// <summary>
         /// превращает спрайт в обводку
@@ -35,11 +57,10 @@ namespace Outline
         /// <returns>обводка без оригинала</returns>
         public static Sprite ToOutline(Sprite original)
         {
-            var sprite = Outliner
-                .GetOutlined(Instance.Cache.FirstOrDefault(t => t.Original.texture == original.texture).Path)
-                .FirstOrDefault(t => t.name == original.name);
+            var sprite = Instance.Cache.FirstOrDefault(t => t.Original == original).New;
             if (sprite is null)
-                Debug.LogError($"Outliner не нашёл обводку для спрайта \"{original}\". Попробуйте обновить обводку с помощью \"File/Regenerate Outlines\"");
+                Debug.LogError(
+                    $"Outliner не нашёл обводку для спрайта \"{original}\". Попробуйте обновить обводку с помощью \"File/Regenerate Outlines\"");
             return sprite;
         }
 
