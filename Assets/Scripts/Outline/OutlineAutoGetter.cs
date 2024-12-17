@@ -28,7 +28,12 @@ namespace Outline
                 return;
             }
 
-            _new.sprite = OutlinesContainer.Instance[original.sprite];
+            var newSprite = OutlinesContainer.Instance[original.sprite];
+#if UNITY_EDITOR
+            if (newSprite is null && OutlinesContainer.Instance.TryGenerate(original.sprite))
+                newSprite = OutlinesContainer.Instance[original.sprite];
+#endif
+            _new.sprite = newSprite;
         }
     }
 }

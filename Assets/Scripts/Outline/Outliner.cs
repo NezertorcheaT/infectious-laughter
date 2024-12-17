@@ -24,7 +24,6 @@ namespace Outline
 
         public static Sprite Regenerate(Sprite original, string path)
         {
-            Debug.Log(path);
             _shader ??= Resources.Load<ComputeShader>("OutlineShader");
             _kernel = _shader.FindKernel("cs_main");
             if (original?.texture is null)

@@ -34,6 +34,27 @@ namespace Outline
                 .Where(outlineType => outlineType.New is not null && outlineType.Original is not null)
             );
         }
+
+        /// <summary>
+        /// попытаться сгенерировать обводку, если отсутствует
+        /// </summary>
+        /// <param name="sprite"></param>
+        /// <returns>true - сгенерировано false - уже существует</returns>
+        public bool TryGenerate(Sprite sprite)
+        {
+            if (Cache.Select(i => i.Original).Contains(sprite)) return false;
+            if (!spritesToGenerate.Contains(sprite)) spritesToGenerate.Add(sprite);
+            Cache.Add(new OutlineType
+            {
+                Original = sprite,
+                New = Outliner.Regenerate(
+                    sprite,
+                    Path.Combine(Outliner.MainPath.Replace("Assets\\Drive", ""), AssetDatabase.GetAssetPath(sprite))
+                        .Replace('/', '\\')
+                )
+            });
+            return true;
+        }
 #endif
 
         [Serializable]
