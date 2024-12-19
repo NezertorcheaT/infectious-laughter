@@ -97,7 +97,7 @@ namespace Levels.Generation.Steps
             _filledWithStructure.Add(cb);
 
             var intersectingPreSpawns = levelGeneration.PreSpawns
-                    .Where(i => worldBounds.Contains2D(i.Position + new Vector3(0, i.OffsetY)) &&
+                    .Where(i => worldBounds.Contains2D(i.Position) &&
                                 !i.Prefab.TryGetComponent(out PreSpawnedPersistent _))
                     .ToArray()
                 ;
