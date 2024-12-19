@@ -832,11 +832,8 @@ MonoBehaviour:
   firstChunk: {fileID: 3069874750179476996, guid: d5081cf6e749d3e478d1f8c152a43d82, type: 3}
   lastChunk: {fileID: 2355915235132976165, guid: ab88464a0aac9fa4baab91e25b8a3c26, type: 3}
   chunkBases:
-  - {fileID: 4823586720191418435, guid: 1aaea6309b44f7b4d965c9cd32de1d15, type: 3}
-  - {fileID: 4516917101330682262, guid: 3e785b396677fbe4286cbfeb9d85ea9b, type: 3}
-  - {fileID: 4516917101330682262, guid: ca1497d2e2c0e3e43a172e401a7c5c25, type: 3}
-  - {fileID: 4516917101330682262, guid: a72ae14f70984bb4f9c70879388be2f0, type: 3}
-  - {fileID: 4823586720191418435, guid: 85efce9d5aa56cb418c36469771bf08a, type: 3}
+  - {fileID: 4823586720191418435, guid: 04a9fc7cdbbfee143b76b8189cba8c03, type: 3}
+  - {fileID: 4823586720191418435, guid: 461724d13531f4941a8119e3fa8520eb, type: 3}
   specialChunks: []
 --- !u!1001 &7197755082122394182
 PrefabInstance:
