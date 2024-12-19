@@ -13,11 +13,11 @@ namespace Levels.Generation
         [Serializable]
         public class Properties
         {
-            [Tooltip("Ну это как бы сид, задаётся в сохранениях")]
-            [SerializeField] public string Seed;
+            [Tooltip("Ну это как бы сид, задаётся в сохранениях")] [SerializeField]
+            public string Seed;
 
-            [Tooltip("Это куда собственно тайлы записываться будут")]
-            [SerializeField] public Tilemap Tilemap;
+            [Tooltip("Это куда собственно тайлы записываться будут")] [SerializeField]
+            public Tilemap Tilemap;
 
             public List<PreSpawned> PreSpawns = new();
             public Random Random;
@@ -27,13 +27,25 @@ namespace Levels.Generation
             [HideInInspector] public int StructureMinX;
             [HideInInspector] public int StructureMaxX;
 
-            public struct PreSpawned
+            public struct PreSpawned : IEquatable<PreSpawned>
             {
                 public GameObject Prefab;
                 public Vector3 Position;
                 public Quaternion Rotation;
                 public float OffsetY;
                 public float OffsetX;
+
+                public bool Equals(PreSpawned other) =>
+                    Equals(Prefab, other.Prefab)
+                    && Position.Equals(other.Position)
+                    && Rotation.Equals(other.Rotation)
+                    && OffsetY.Equals(other.OffsetY)
+                    && OffsetX.Equals(other.OffsetX);
+
+                public override bool Equals(object obj) => obj is PreSpawned other && Equals(other);
+                public override int GetHashCode() => HashCode.Combine(Prefab, Position, Rotation, OffsetY, OffsetX);
+                public static bool operator ==(PreSpawned left, PreSpawned right) => left.Equals(right);
+                public static bool operator !=(PreSpawned left, PreSpawned right) => !left.Equals(right);
             }
         }
 
