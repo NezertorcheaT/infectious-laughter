@@ -119,7 +119,7 @@ namespace Levels.Generation.Steps
                 });
             }
 
-            levelGeneration.Tilemap.Insert(structure.Tilemap, gridPosition, levelGeneration.VoidTile);
+            levelGeneration.Tilemap.Insert(structure.Tilemap, gridPosition);
         }
 
 

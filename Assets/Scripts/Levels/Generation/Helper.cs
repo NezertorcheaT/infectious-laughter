@@ -5,14 +5,14 @@ namespace CustomHelper
 {
     public static partial class Helper
     {
-        public static Vector2Int ToInt(this Vector2 a) => new Vector2Int((int) a.x, (int) a.y);
-        public static Vector3Int ToInt(this Vector3 a) => new Vector3Int((int) a.x, (int) a.y, (int) a.z);
-        public static Vector3Int ToVector3Int(this Vector2Int a) => new Vector3Int((int) a.x, (int) a.y);
-        public static Vector3Int ToVector3Int(this Vector2 a) => new Vector3Int((int) a.x, (int) a.y);
-        public static Vector2Int ToVector2Int(this Vector2 a) => new Vector2Int((int) a.x, (int) a.y);
-        public static Vector3Int ToVector3Int(this Vector3 a) => new Vector3Int((int) a.x, (int) a.y);
-        public static Vector2Int ToVector2Int(this Vector3Int a) => new Vector2Int((int) a.x, (int) a.y);
-        public static Vector2Int ToVector2Int(this Vector3 a) => new Vector2Int((int) a.x, (int) a.y);
+        public static Vector2Int ToInt(this Vector2 a) => new Vector2Int((int)a.x, (int)a.y);
+        public static Vector3Int ToInt(this Vector3 a) => new Vector3Int((int)a.x, (int)a.y, (int)a.z);
+        public static Vector3Int ToVector3Int(this Vector2Int a) => new Vector3Int((int)a.x, (int)a.y);
+        public static Vector3Int ToVector3Int(this Vector2 a) => new Vector3Int((int)a.x, (int)a.y);
+        public static Vector2Int ToVector2Int(this Vector2 a) => new Vector2Int((int)a.x, (int)a.y);
+        public static Vector3Int ToVector3Int(this Vector3 a) => new Vector3Int((int)a.x, (int)a.y);
+        public static Vector2Int ToVector2Int(this Vector3Int a) => new Vector2Int((int)a.x, (int)a.y);
+        public static Vector2Int ToVector2Int(this Vector3 a) => new Vector2Int((int)a.x, (int)a.y);
 
         public static bool Contains2D(this BoundsInt a, Vector3Int point) =>
             point.x >= a.xMin &&
@@ -90,7 +90,7 @@ namespace CustomHelper
             return tilemap.GridRay(
                 gridPosition,
                 direction,
-                (int) ((cellBounds = tilemap.cellBounds).min - cellBounds.max).magnitude
+                (int)((cellBounds = tilemap.cellBounds).min - cellBounds.max).magnitude
             );
         }
 
@@ -111,15 +111,12 @@ namespace CustomHelper
             return null;
         }
 
-        public static void Insert(this Tilemap receiver, Tilemap tilemap, Vector2Int offset, TileBase voidTile = null)
+        public static void Insert(this Tilemap receiver, Tilemap tilemap, Vector2Int offset)
         {
             foreach (var mapPos in tilemap.cellBounds.allPositionsWithin)
             {
                 if (tilemap.HasTile(mapPos))
                     receiver.SetTile(mapPos + offset.ToVector3Int(), tilemap.GetTile(mapPos));
-
-                if (tilemap.GetTile(mapPos) == voidTile)
-                    receiver.SetTile(mapPos + offset.ToVector3Int(), null);
             }
         }
     }

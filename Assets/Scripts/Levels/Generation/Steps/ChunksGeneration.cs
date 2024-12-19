@@ -44,7 +44,7 @@ namespace Levels.Generation.Steps
                     });
                 }
 
-                levelGeneration.Tilemap.Insert(chunk.Tilemap, portOffset - chunk.StartPort, levelGeneration.VoidTile);
+                levelGeneration.Tilemap.Insert(chunk.Tilemap, portOffset - chunk.StartPort);
                 portOffset += chunk.EndPort - chunk.StartPort;
                 levelGeneration.StructureMaxX = portOffset.x - (chunk.EndPort - chunk.StartPort).x;
             }
