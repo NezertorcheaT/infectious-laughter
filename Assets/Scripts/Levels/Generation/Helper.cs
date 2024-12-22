@@ -5,14 +5,15 @@ namespace CustomHelper
 {
     public static partial class Helper
     {
-        public static Vector2Int ToInt(this Vector2 a) => new Vector2Int((int)a.x, (int)a.y);
-        public static Vector3Int ToInt(this Vector3 a) => new Vector3Int((int)a.x, (int)a.y, (int)a.z);
-        public static Vector3Int ToVector3Int(this Vector2Int a) => new Vector3Int((int)a.x, (int)a.y);
-        public static Vector3Int ToVector3Int(this Vector2 a) => new Vector3Int((int)a.x, (int)a.y);
-        public static Vector2Int ToVector2Int(this Vector2 a) => new Vector2Int((int)a.x, (int)a.y);
-        public static Vector3Int ToVector3Int(this Vector3 a) => new Vector3Int((int)a.x, (int)a.y);
-        public static Vector2Int ToVector2Int(this Vector3Int a) => new Vector2Int((int)a.x, (int)a.y);
-        public static Vector2Int ToVector2Int(this Vector3 a) => new Vector2Int((int)a.x, (int)a.y);
+        public static Vector2Int ToInt(this Vector2 a) => new((int)a.x, (int)a.y);
+        public static Vector3Int ToInt(this Vector3 a) => new((int)a.x, (int)a.y, (int)a.z);
+        public static Vector3Int ToVector3Int(this Vector2Int a, int def = 0) => new(a.x, a.y, def);
+        public static Vector3Int ToVector3Int(this Vector2 a, int def = 0) => new((int)a.x, (int)a.y, def);
+        public static Vector2Int ToVector2Int(this Vector2 a) => new((int)a.x, (int)a.y);
+        public static Vector3Int ToVector3Int(this Vector3 a) => new((int)a.x, (int)a.y, (int)a.z);
+        public static Vector2Int ToVector2Int(this Vector3 a) => new((int)a.x, (int)a.y);
+        public static Vector2 ToVector2(this Vector3 a) => new(a.x, a.y);
+        public static Vector2Int ToVector2Int(this Vector3Int a) => new(a.x, a.y);
 
         public static bool Contains2D(this BoundsInt a, Vector3Int point) =>
             point.x >= a.xMin &&
@@ -25,6 +26,9 @@ namespace CustomHelper
             point.x <= a.max.x &&
             point.y >= a.min.y &&
             point.y <= a.max.y;
+
+        public static Vector2Int Inverse(this Vector2Int a) => new(a.y, a.x);
+        public static Vector2 Inverse(this Vector2 a) => new(a.y, a.x);
 
         //гениально
         public static bool Intersects2D(this BoundsInt a, BoundsInt b)
@@ -78,10 +82,10 @@ namespace CustomHelper
             return false;
         }
 
-        public static Vector3 ToVector3(this Vector2 vec) => new Vector3(vec.x, vec.y, 0);
-        public static Vector3 ToVector3(this Vector2Int vec) => new Vector3(vec.x, vec.y, 0);
-        public static Vector3 ToVector3(this Vector3Int vec) => new Vector3(vec.x, vec.y, vec.z);
-        public static Vector2Int ToVector2(this Vector2Int vec) => new Vector2Int(vec.x, vec.y);
+        public static Vector3 ToVector3(this Vector2 vec) => new(vec.x, vec.y, 0);
+        public static Vector3 ToVector3(this Vector2Int vec) => new(vec.x, vec.y, 0);
+        public static Vector3 ToVector3(this Vector3Int vec) => new(vec.x, vec.y, vec.z);
+        public static Vector2Int ToVector2(this Vector2Int vec) => new(vec.x, vec.y);
 
 
         public static Vector2Int? GridRay(this Tilemap tilemap, Vector2Int gridPosition, Vector2 direction)
