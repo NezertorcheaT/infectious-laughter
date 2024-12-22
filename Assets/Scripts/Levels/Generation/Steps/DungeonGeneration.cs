@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using CustomHelper;
+using Cysharp.Threading.Tasks;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Levels.Generation.Steps
@@ -22,12 +25,20 @@ namespace Levels.Generation.Steps
         [Tooltip("Комнаты, которые будут использоваться при построении уровня")] [SerializeField]
         private RoomPrefab[] roomBases;
 
+#if UNITY_EDITOR
+        [SerializeField] private bool debugMode;
+        private bool HideButton => !debugMode || !Application.isPlaying;
+#endif
+
         private List<RoomRepresentation> _representations;
         private LevelGeneration.Properties _levelGeneration;
+#if UNITY_EDITOR
+        private bool _doNextRoom;
+#endif
 
         private class RoomRepresentation
         {
-            public int Deep = 0;
+            public int Deep;
             public RoomPrefab Base;
             public Vector2Int Position;
             public List<(RoomPrefab.Port port, RoomPrefab.Port otherPort, RoomRepresentation other)> Connections;
@@ -54,10 +65,18 @@ namespace Levels.Generation.Steps
             };
             SpawnRoom(repr, levelGeneration);
             _representations.Add(repr);
+#if UNITY_EDITOR
+            _ = RoomGenerate(repr, levelGeneration);
+#else
             RoomGenerate(repr, levelGeneration);
+#endif
         }
 
+#if UNITY_EDITOR
+        private async Task RoomGenerate(RoomRepresentation representation, LevelGeneration.Properties levelGeneration)
+#else
         private void RoomGenerate(RoomRepresentation representation, LevelGeneration.Properties levelGeneration)
+#endif
         {
             foreach (var port in representation.Base.Ports.Where(i =>
                          !representation.Connections.Select(i => i.otherPort).Contains(i)))
@@ -101,7 +120,13 @@ namespace Levels.Generation.Steps
                 representation.Connections.Add((port, newPort, newRepr));
                 _representations.Add(newRepr);
                 SpawnRoom(newRepr, levelGeneration);
+#if UNITY_EDITOR
+                await UniTask.WaitUntil(() => _doNextRoom);
+                _doNextRoom = false;
+                await RoomGenerate(newRepr, levelGeneration);
+#else
                 RoomGenerate(newRepr, levelGeneration);
+#endif
             }
         }
 
@@ -135,6 +160,9 @@ namespace Levels.Generation.Steps
         }
 
 #if UNITY_EDITOR
+        [Button, HideIf("HideButton")]
+        private void NextRoom() => _doNextRoom = true;
+
         private void OnDrawGizmos()
         {
             if (_representations is null) return;
