@@ -8,8 +8,27 @@ namespace Levels.Generation
     public class RoomPrefab : GenerationPrefab
     {
         [Serializable]
-        public class Port
+        public class Port : IEquatable<Port>
         {
+            public bool Equals(Port other)
+            {
+                if (other is null) return false;
+                if (ReferenceEquals(this, other)) return true;
+                return Position.Equals(other.Position) && Width == other.Width && Facing == other.Facing;
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (obj is null) return false;
+                if (ReferenceEquals(this, obj)) return true;
+                if (obj.GetType() != GetType()) return false;
+                return Equals((Port)obj);
+            }
+
+            public override int GetHashCode() => HashCode.Combine(Position, Width, (int)Facing);
+            public static bool operator ==(Port left, Port right) => Equals(left, right);
+            public static bool operator !=(Port left, Port right) => !Equals(left, right);
+
             [field: SerializeField] public Vector2Int Position { get; private set; }
 
             [Tooltip("обозначает ширину порта")]

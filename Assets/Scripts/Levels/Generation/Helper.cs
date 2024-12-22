@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Levels.Generation;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace CustomHelper
@@ -30,6 +33,12 @@ namespace CustomHelper
         public static Vector2Int Inverse(this Vector2Int a) => new(a.y, a.x);
         public static Vector2 Inverse(this Vector2 a) => new(a.y, a.x);
 
+        public static bool IntersectsMany2D(this BoundsInt b, IEnumerable<BoundsInt> enumerable) =>
+            enumerable.Any(a => b.Intersects2D(a));
+
+        public static bool IntersectsMany2D(this IEnumerable<BoundsInt> enumerable, BoundsInt b) =>
+            enumerable.Any(a => b.Intersects2D(a));
+
         //гениально
         public static bool Intersects2D(this BoundsInt a, BoundsInt b)
         {
@@ -55,6 +64,12 @@ namespace CustomHelper
                 return true;
             return false;
         }
+
+        public static bool IntersectsMany2D(this Bounds b, IEnumerable<Bounds> enumerable) =>
+            enumerable.Any(a => b.Intersects2D(a));
+
+        public static bool IntersectsMany2D(this IEnumerable<Bounds> enumerable, Bounds b) =>
+            enumerable.Any(a => b.Intersects2D(a));
 
         //гениально 2
         public static bool Intersects2D(this Bounds a, Bounds b)
@@ -114,6 +129,13 @@ namespace CustomHelper
 
             return null;
         }
+
+        public static RoomPrefab.Port.Direction Inverse(this RoomPrefab.Port.Direction direction) => direction switch
+        {
+            RoomPrefab.Port.Direction.Down => RoomPrefab.Port.Direction.Up,
+            RoomPrefab.Port.Direction.Right => RoomPrefab.Port.Direction.Left,
+            _ => direction
+        };
 
         public static void Insert(this Tilemap receiver, Tilemap tilemap, Vector2Int offset)
         {
