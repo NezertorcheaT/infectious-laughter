@@ -76,6 +76,13 @@ namespace Levels.Generation.Steps
                     var newPort = i.Ports
                         .Where(k => k.Facing == d && k.Width == port.Width)
                         .TakeRandomOrDefault(levelGeneration.Random);
+                    if (newPort is null)
+                        return (
+                            bounds: new BoundsInt(Vector3Int.zero, Vector3Int.zero),
+                            position: Vector3Int.zero,
+                            port: null,
+                            room: i
+                        );
                     var pos = representation.Position.ToVector3Int() +
                               port.Position.ToVector3Int() -
                               newPort.Position.ToVector3Int();
@@ -138,7 +145,7 @@ namespace Levels.Generation.Steps
         }
 
 #if UNITY_EDITOR
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             if (_representations is null) return;
             foreach (var repr in _representations)
