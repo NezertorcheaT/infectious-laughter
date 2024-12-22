@@ -64,10 +64,13 @@ namespace Levels.Generation.Steps
                 if (representation.Deep > maxDeep)
                     selection = selection.Where(i => i.Ports.Count == 1);
                 selection = selection.Where(i => i.Ports.Select(j => j.Facing).Contains(d));
+                selection = selection.Where(i => i.Ports.Select(j => j.Width).Contains(port.Width));
                 var selectionFull = selection.Select(i =>
                 {
                     var s = i.CellBounds;
-                    var newPort = i.Ports.First(k => k.Facing == d);
+                    var newPort = i.Ports
+                        .Where(k => k.Facing == d && k.Width == port.Width)
+                        .TakeRandom(levelGeneration.Random);
                     var pos = representation.Position.ToVector3Int() +
                               port.Position.ToVector3Int() -
                               newPort.Position.ToVector3Int();
