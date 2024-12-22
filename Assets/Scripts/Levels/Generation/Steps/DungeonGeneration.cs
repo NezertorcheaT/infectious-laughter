@@ -2,7 +2,6 @@
 using System.Linq;
 using CustomHelper;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Levels.Generation.Steps
 {
@@ -30,7 +29,7 @@ namespace Levels.Generation.Steps
             public int Deep = 0;
             public RoomPrefab Base;
             public Vector2Int Position;
-            public List<(RoomPrefab.Port port, RoomRepresentation other)> Connections;
+            public List<(RoomPrefab.Port port, RoomPrefab.Port otherPort, RoomRepresentation other)> Connections;
 
             public BoundsInt CellBoundsPositioned
             {
@@ -47,22 +46,29 @@ namespace Levels.Generation.Steps
             var repr = new RoomRepresentation
             {
                 Base = firstRoom,
-                Connections = new List<(RoomPrefab.Port port, RoomRepresentation other)>(),
+                Connections = new List<(RoomPrefab.Port port, RoomPrefab.Port otherPort, RoomRepresentation other)>(),
                 Position = Vector2Int.zero
             };
             SpawnRoom(repr, levelGeneration);
-            foreach (var port in repr.Base.Ports.Where(i => !repr.Connections.Select(i => i.port).Contains(i)))
+            _representations.Add(repr);
+            RoomGenerate(repr, levelGeneration);
+        }
+
+        private void RoomGenerate(RoomRepresentation representation, LevelGeneration.Properties levelGeneration)
+        {
+            foreach (var port in representation.Base.Ports.Where(i =>
+                         !representation.Connections.Select(i => i.otherPort).Contains(i)))
             {
                 var d = port.Facing.Inverse();
                 IEnumerable<RoomPrefab> selection = roomBases;
-                if (repr.Deep > maxDeep)
+                if (representation.Deep > maxDeep)
                     selection = selection.Where(i => i.Ports.Count == 1);
                 selection = selection.Where(i => i.Ports.Select(j => j.Facing).Contains(d));
                 var selectionFull = selection.Select(i =>
                 {
                     var s = i.CellBounds;
                     var newPort = i.Ports.First(k => k.Facing == d);
-                    var pos = repr.Position.ToVector3Int() +
+                    var pos = representation.Position.ToVector3Int() +
                               port.Position.ToVector3Int() -
                               newPort.Position.ToVector3Int();
                     s = new BoundsInt(s.position + pos, s.size);
@@ -81,11 +87,15 @@ namespace Levels.Generation.Steps
                 var newRepr = new RoomRepresentation
                 {
                     Base = newRoom,
-                    Connections = new List<(RoomPrefab.Port port, RoomRepresentation other)> { (newPort, repr) },
+                    Connections = new List<(RoomPrefab.Port port, RoomPrefab.Port otherPort, RoomRepresentation other)>
+                        { (newPort, port, representation) },
                     Position = newPosition.ToVector2Int(),
-                    Deep = repr.Deep + 1
+                    Deep = representation.Deep + 1
                 };
+                representation.Connections.Add((port, newPort, newRepr));
+                _representations.Add(newRepr);
                 SpawnRoom(newRepr, levelGeneration);
+                RoomGenerate(newRepr, levelGeneration);
             }
         }
 
