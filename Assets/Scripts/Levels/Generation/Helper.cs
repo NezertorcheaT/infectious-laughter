@@ -18,11 +18,15 @@ namespace CustomHelper
         public static Vector2 ToVector2(this Vector3 a) => new(a.x, a.y);
         public static Vector2Int ToVector2Int(this Vector3Int a) => new(a.x, a.y);
 
-        public static bool Contains2D(this BoundsInt a, Vector3Int point) =>
+        public static bool Contains2D(this BoundsInt a, Vector3Int point) => a.Contains2D(point.ToVector3());
+
+        public static bool Contains2D(this BoundsInt a, Vector3 point) =>
             point.x >= a.xMin &&
             point.x <= a.xMax &&
             point.y >= a.yMin &&
             point.y <= a.yMax;
+
+        public static bool Contains2D(this Bounds a, Vector3Int point) => a.Contains2D(point.ToVector3());
 
         public static bool Contains2D(this Bounds a, Vector3 point) =>
             point.x >= a.min.x &&
@@ -33,47 +37,78 @@ namespace CustomHelper
         public static Vector2Int Inverse(this Vector2Int a) => new(a.y, a.x);
         public static Vector2 Inverse(this Vector2 a) => new(a.y, a.x);
 
-        public static bool IntersectsMany2D(this BoundsInt b, IEnumerable<BoundsInt> enumerable) =>
-            enumerable.Any(a => b.Intersects2D(a));
+        public const float Intersects2DContract = 0.5f;
 
-        public static bool IntersectsMany2D(this IEnumerable<BoundsInt> enumerable, BoundsInt b) =>
-            enumerable.Any(a => b.Intersects2D(a));
+        public static bool IntersectsMany2D(this BoundsInt b, IEnumerable<BoundsInt> enumerable,
+            bool cutCorners = false) =>
+            enumerable.Any(a => b.Intersects2D(a, cutCorners));
 
         //гениально
-        public static bool Intersects2D(this BoundsInt a, BoundsInt b)
+        public static bool Intersects2D(this BoundsInt a, BoundsInt b, bool corners = false)
         {
             if (a.Contains2D(b.center.ToVector3Int()))
                 return true;
             if (b.Contains2D(a.center.ToVector3Int()))
                 return true;
-            if (a.Contains2D(b.min))
-                return true;
-            if (a.Contains2D(b.max))
-                return true;
-            if (a.Contains2D(new Vector3Int(b.xMax, b.yMin)))
-                return true;
-            if (a.Contains2D(new Vector3Int(b.xMin, b.yMax)))
-                return true;
-            if (b.Contains2D(a.min))
-                return true;
-            if (b.Contains2D(a.max))
-                return true;
-            if (b.Contains2D(new Vector3Int(a.xMax, a.yMin)))
-                return true;
-            if (b.Contains2D(new Vector3Int(a.xMin, a.yMax)))
-                return true;
+
+            if (corners)
+            {
+                if (a.Contains2D(b.min + Intersects2DContract.ToVector3()))
+                    return true;
+                if (a.Contains2D(b.max - Intersects2DContract.ToVector3()))
+                    return true;
+                if (a.Contains2D(new Vector3(b.xMax - Intersects2DContract, b.yMin + Intersects2DContract)))
+                    return true;
+                if (a.Contains2D(new Vector3(b.xMin + Intersects2DContract, b.yMax - Intersects2DContract)))
+                    return true;
+                if (b.Contains2D(a.min + Intersects2DContract.ToVector3()))
+                    return true;
+                if (b.Contains2D(a.max - Intersects2DContract.ToVector3()))
+                    return true;
+                if (b.Contains2D(new Vector3(a.xMax - Intersects2DContract, a.yMin + Intersects2DContract)))
+                    return true;
+                if (b.Contains2D(new Vector3(a.xMin + Intersects2DContract, a.yMax - Intersects2DContract)))
+                    return true;
+            }
+            else
+            {
+                if (a.Contains2D(b.min))
+                    return true;
+                if (a.Contains2D(b.max))
+                    return true;
+                if (a.Contains2D(new Vector3Int(b.xMax, b.yMin)))
+                    return true;
+                if (a.Contains2D(new Vector3Int(b.xMin, b.yMax)))
+                    return true;
+                if (b.Contains2D(a.min))
+                    return true;
+                if (b.Contains2D(a.max))
+                    return true;
+                if (b.Contains2D(new Vector3Int(a.xMax, a.yMin)))
+                    return true;
+                if (b.Contains2D(new Vector3Int(a.xMin, a.yMax)))
+                    return true;
+            }
+
             return false;
         }
 
-        public static bool IntersectsMany2D(this Bounds b, IEnumerable<Bounds> enumerable) =>
-            enumerable.Any(a => b.Intersects2D(a));
+        public static bool IntersectsMany2D(this IEnumerable<BoundsInt> enumerable, BoundsInt b,
+            bool cutCorners = false) =>
+            enumerable.Any(a => b.Intersects2D(a, cutCorners));
 
-        public static bool IntersectsMany2D(this IEnumerable<Bounds> enumerable, Bounds b) =>
-            enumerable.Any(a => b.Intersects2D(a));
+        public static bool IntersectsMany2D(this Bounds b, IEnumerable<Bounds> enumerable, bool cutCorners = false) =>
+            enumerable.Any(a => b.Intersects2D(a, cutCorners));
+
+        public static bool IntersectsMany2D(this IEnumerable<Bounds> enumerable, Bounds b, bool cutCorners = false) =>
+            enumerable.Any(a => b.Intersects2D(a, cutCorners));
 
         //гениально 2
-        public static bool Intersects2D(this Bounds a, Bounds b)
+        public static bool Intersects2D(this Bounds a, Bounds b, bool corners = false)
         {
+            if (corners)
+                a = new Bounds(a.center, a.size - Intersects2DContract.ToVector3());
+
             if (a.Contains2D(b.center.ToVector3Int()))
                 return true;
             if (b.Contains2D(a.center.ToVector3Int()))
@@ -96,6 +131,16 @@ namespace CustomHelper
                 return true;
             return false;
         }
+
+        public static Vector2Int ToVector2Int(this int a) => new(a, a);
+        public static Vector2Int ToVector2Int(this float a) => new Vector2(a, a).ToVector2Int();
+        public static Vector2 ToVector2(this int a) => new(a, a);
+        public static Vector2 ToVector2(this float a) => new(a, a);
+
+        public static Vector3Int ToVector3Int(this int a) => new(a, a, a);
+        public static Vector3Int ToVector3Int(this float a) => new Vector3(a, a, a).ToVector3Int();
+        public static Vector3 ToVector3(this int a) => new(a, a, a);
+        public static Vector3 ToVector3(this float a) => new(a, a, a);
 
         public static Vector3 ToVector3(this Vector2 vec) => new(vec.x, vec.y, 0);
         public static Vector3 ToVector3(this Vector2Int vec) => new(vec.x, vec.y, 0);

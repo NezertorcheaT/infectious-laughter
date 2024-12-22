@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using CustomHelper;
-using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -25,16 +23,8 @@ namespace Levels.Generation.Steps
         [Tooltip("Комнаты, которые будут использоваться при построении уровня")] [SerializeField]
         private RoomPrefab[] roomBases;
 
-#if UNITY_EDITOR
-        [SerializeField] private bool debugMode;
-        private bool HideButton => !debugMode || !Application.isPlaying;
-#endif
-
         private List<RoomRepresentation> _representations;
         private LevelGeneration.Properties _levelGeneration;
-#if UNITY_EDITOR
-        private bool _doNextRoom;
-#endif
 
         private class RoomRepresentation
         {
@@ -65,19 +55,12 @@ namespace Levels.Generation.Steps
             };
             SpawnRoom(repr, levelGeneration);
             _representations.Add(repr);
-#if UNITY_EDITOR
-            _ = RoomGenerate(repr, levelGeneration);
-#else
             RoomGenerate(repr, levelGeneration);
-#endif
         }
 
-#if UNITY_EDITOR
-        private async Task RoomGenerate(RoomRepresentation representation, LevelGeneration.Properties levelGeneration)
-#else
         private void RoomGenerate(RoomRepresentation representation, LevelGeneration.Properties levelGeneration)
-#endif
         {
+            Debug.Log(representation.Connections.FirstOrDefault());
             foreach (var port in representation.Base.Ports.Where(i =>
                          !representation.Connections.Select(j => j.port).Contains(i)))
             {
@@ -97,7 +80,7 @@ namespace Levels.Generation.Steps
                               port.Position.ToVector3Int() -
                               newPort.Position.ToVector3Int();
                     s = new BoundsInt(s.position + pos, s.size);
-                    if (s.IntersectsMany2D(_representations.Select(k => k.CellBoundsPositioned)))
+                    if (!s.IntersectsMany2D(_representations.Select(k => k.CellBoundsPositioned), true))
                         return (bounds: s, position: pos, port: newPort, room: i);
                     return (
                         bounds: new BoundsInt(Vector3Int.zero, Vector3Int.zero),
@@ -120,13 +103,7 @@ namespace Levels.Generation.Steps
                 representation.Connections.Add((port, newPort, newRepr));
                 _representations.Add(newRepr);
                 SpawnRoom(newRepr, levelGeneration);
-#if UNITY_EDITOR
-                await UniTask.WaitUntil(() => _doNextRoom);
-                _doNextRoom = false;
-                await RoomGenerate(newRepr, levelGeneration);
-#else
                 RoomGenerate(newRepr, levelGeneration);
-#endif
             }
         }
 
@@ -160,15 +137,14 @@ namespace Levels.Generation.Steps
         }
 
 #if UNITY_EDITOR
-        [Button, HideIf("HideButton")]
-        private void NextRoom() => _doNextRoom = true;
-
         private void OnDrawGizmos()
         {
             if (_representations is null) return;
             foreach (var repr in _representations)
             {
-                Gizmos.DrawWireCube(_levelGeneration.Tilemap.layoutGrid.CellToWorld(repr.Position.ToVector3Int()),
+                Gizmos.DrawWireCube(
+                    _levelGeneration.Tilemap.layoutGrid.CellToWorld(repr.Position.ToVector3Int()) +
+                    repr.Base.WorldBounds.center,
                     repr.Base.WorldBounds.size);
             }
         }
