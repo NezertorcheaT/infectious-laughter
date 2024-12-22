@@ -23,6 +23,7 @@ namespace Levels.Generation.Steps
         private RoomPrefab[] roomBases;
 
         private List<RoomRepresentation> _representations;
+        private LevelGeneration.Properties _levelGeneration;
 
         private class RoomRepresentation
         {
@@ -43,6 +44,8 @@ namespace Levels.Generation.Steps
 
         public override void Execute(LevelGeneration.Properties levelGeneration)
         {
+            _levelGeneration = levelGeneration;
+            _representations = new List<RoomRepresentation>();
             var repr = new RoomRepresentation
             {
                 Base = firstRoom,
@@ -130,5 +133,17 @@ namespace Levels.Generation.Steps
 
             levelGeneration.Tilemap.Insert(room.Base.Tilemap, room.Position);
         }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (_representations is null) return;
+            foreach (var repr in _representations)
+            {
+                Gizmos.DrawWireCube(_levelGeneration.Tilemap.layoutGrid.CellToWorld(repr.Position.ToVector3Int()),
+                    repr.Base.WorldBounds.size);
+            }
+        }
+#endif
     }
 }
