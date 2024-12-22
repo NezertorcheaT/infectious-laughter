@@ -132,8 +132,10 @@ namespace CustomHelper
 
         public static RoomPrefab.Port.Direction Inverse(this RoomPrefab.Port.Direction direction) => direction switch
         {
+            RoomPrefab.Port.Direction.Up => RoomPrefab.Port.Direction.Down,
             RoomPrefab.Port.Direction.Down => RoomPrefab.Port.Direction.Up,
             RoomPrefab.Port.Direction.Right => RoomPrefab.Port.Direction.Left,
+            RoomPrefab.Port.Direction.Left => RoomPrefab.Port.Direction.Right,
             _ => direction
         };
 

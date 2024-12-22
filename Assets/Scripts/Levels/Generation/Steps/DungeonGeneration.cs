@@ -79,7 +79,7 @@ namespace Levels.Generation.Steps
 #endif
         {
             foreach (var port in representation.Base.Ports.Where(i =>
-                         !representation.Connections.Select(i => i.otherPort).Contains(i)))
+                         !representation.Connections.Select(j => j.port).Contains(i)))
             {
                 var d = port.Facing.Inverse();
                 IEnumerable<RoomPrefab> selection = roomBases;
