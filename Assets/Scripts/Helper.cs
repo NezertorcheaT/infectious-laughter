@@ -15,6 +15,8 @@ namespace CustomHelper
         /// </summary>
         public static T TakeRandom<T>(this IEnumerable<T> enumerable)
         {
+            if (enumerable is IList<T> list)
+                return list[Random.Range(0, list.Count)];
             var array = enumerable.ToArray();
             return array[Random.Range(0, array.Length)];
         }
@@ -26,8 +28,7 @@ namespace CustomHelper
         public static T TakeRandom<T>(this IEnumerable<T> enumerable, int seed)
         {
             var random = new System.Random(seed);
-            var array = enumerable.ToArray();
-            return array[random.Next(0, array.Length)];
+            return enumerable.TakeRandom(random);
         }
 
         /// <summary>
@@ -36,6 +37,8 @@ namespace CustomHelper
         /// </summary>
         public static T TakeRandom<T>(this IEnumerable<T> enumerable, System.Random random)
         {
+            if (enumerable is IList<T> list)
+                return list[random.Next(0, list.Count)];
             var array = enumerable.ToArray();
             return array[random.Next(0, array.Length)];
         }

@@ -80,7 +80,8 @@ namespace Levels.Generation.Steps
                               port.Position.ToVector3Int() -
                               newPort.Position.ToVector3Int();
                     s = new BoundsInt(s.position + pos, s.size);
-                    if (!s.IntersectsMany2D(_representations.Select(k => k.CellBoundsPositioned), true))
+                    if (!s.IntersectsMany2D(
+                            _representations.Where(k => k != representation).Select(k => k.CellBoundsPositioned), true))
                         return (bounds: s, position: pos, port: newPort, room: i);
                     return (
                         bounds: new BoundsInt(Vector3Int.zero, Vector3Int.zero),
