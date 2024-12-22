@@ -695,7 +695,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2085324745}
   - component: {fileID: 2085324747}
-  - component: {fileID: 2085324750}
   - component: {fileID: 2085324754}
   - component: {fileID: 2085324755}
   m_Layer: 0
@@ -734,7 +733,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steps:
   - {fileID: 2085324755}
-  - {fileID: 2085324750}
   - {fileID: 2085324754}
   properties:
     Seed: initial
@@ -744,18 +742,6 @@ MonoBehaviour:
     MaxY: 10
     StructureMinX: 0
     StructureMaxX: 0
---- !u!114 &2085324750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085324744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5ddcec0ce44e57ac62d5d81e27a77d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2085324754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,6 +777,11 @@ MonoBehaviour:
   - {fileID: 3014881072912243323, guid: 335f07d0f705ebc46b2603d9498afea7, type: 3}
   - {fileID: 3014881072912243323, guid: ac7406ec3e551b147b6ccbc7c743cc89, type: 3}
   - {fileID: 3014881072912243323, guid: 576691fc225b3514192ba4f5fe404e92, type: 3}
+  - {fileID: 3014881072912243323, guid: 239bbb91516a71d4da935f15343d0561, type: 3}
+  - {fileID: 3014881072912243323, guid: 985947ab782dfc843a637368cbc2e094, type: 3}
+  - {fileID: 3014881072912243323, guid: 5d399eedeb0489242a3366130b5e1259, type: 3}
+  - {fileID: 3014881072912243323, guid: cf80ed1f7202d314fbcd6140bc5a12e6, type: 3}
+  - {fileID: 3014881072912243323, guid: 97f0a96e9de1bf04394e314254a0c0ac, type: 3}
   - {fileID: 3014881072912243323, guid: 77630774cbb21264db049676e5a5dc05, type: 3}
 --- !u!1001 &7197755082122394182
 PrefabInstance:
