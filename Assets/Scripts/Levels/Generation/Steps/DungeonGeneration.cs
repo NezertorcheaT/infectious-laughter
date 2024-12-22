@@ -75,7 +75,7 @@ namespace Levels.Generation.Steps
                     var s = i.CellBounds;
                     var newPort = i.Ports
                         .Where(k => k.Facing == d && k.Width == port.Width)
-                        .TakeRandom(levelGeneration.Random);
+                        .TakeRandomOrDefault(levelGeneration.Random);
                     var pos = representation.Position.ToVector3Int() +
                               port.Position.ToVector3Int() -
                               newPort.Position.ToVector3Int();

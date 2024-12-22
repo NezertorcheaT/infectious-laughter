@@ -13,6 +13,53 @@ namespace CustomHelper
         /// <para>Selects a random element of an enumerable, using Unity's random</para>
         /// Forces enumeration
         /// </summary>
+        public static T TakeRandomOrDefault<T>(this IEnumerable<T> enumerable)
+        {
+            if (enumerable is null) return default;
+            if (enumerable is IList<T> list)
+            {
+                if (list.Count == 0) return default;
+                return list[Random.Range(0, list.Count)];
+            }
+
+            var array = enumerable.ToArray();
+            if (array.Length == 0) return default;
+            return array[Random.Range(0, array.Length)];
+        }
+
+        /// <summary>
+        /// <para>Selects a random element of an enumerable, using System random</para>
+        /// Forces enumeration
+        /// </summary>
+        public static T TakeRandomOrDefault<T>(this IEnumerable<T> enumerable, int seed)
+        {
+            var random = new System.Random(seed);
+            return enumerable.TakeRandomOrDefault(random);
+        }
+
+        /// <summary>
+        /// <para>Selects a random element of an enumerable, using System random</para>
+        /// Forces enumeration
+        /// </summary>
+        public static T TakeRandomOrDefault<T>(this IEnumerable<T> enumerable, System.Random random)
+        {
+            if (enumerable is null) return default;
+            if (enumerable is IList<T> list)
+            {
+                if (list.Count == 0) return default;
+                return list[random.Next(0, list.Count)];
+            }
+
+            var array = enumerable.ToArray();
+            if (array.Length == 0) return default;
+            return array[random.Next(0, array.Length)];
+        }
+
+
+        /// <summary>
+        /// <para>Selects a random element of an enumerable, using Unity's random</para>
+        /// Forces enumeration
+        /// </summary>
         public static T TakeRandom<T>(this IEnumerable<T> enumerable)
         {
             if (enumerable is IList<T> list)
