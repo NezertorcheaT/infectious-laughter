@@ -60,7 +60,6 @@ namespace Levels.Generation.Steps
 
         private void RoomGenerate(RoomRepresentation representation, LevelGeneration.Properties levelGeneration)
         {
-            Debug.Log(representation.Connections.FirstOrDefault());
             foreach (var port in representation.Base.Ports.Where(i =>
                          !representation.Connections.Select(j => j.port).Contains(i)))
             {
