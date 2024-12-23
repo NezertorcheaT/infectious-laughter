@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CustomHelper;
-using NaughtyAttributes;
 using UnityEngine;
 
 namespace Levels.Generation.Steps
@@ -17,6 +16,12 @@ namespace Levels.Generation.Steps
         [SerializeField, Min(1)]
         private int maxDeep;
 
+        [Tooltip("Сколько попыток уйдёт перед тем как отвергнуть порт для выхода")] [SerializeField]
+        private int lastRoomMaxTry = 100;
+
+        [Tooltip("Комната выхода")] [SerializeField]
+        private RoomPrefab lastRoom;
+
         [Tooltip("Самая первая комната, обычно с точкой спавна игрока")] [SerializeField]
         private RoomPrefab firstRoom;
 
@@ -25,6 +30,7 @@ namespace Levels.Generation.Steps
 
         private List<RoomRepresentation> _representations;
         private LevelGeneration.Properties _levelGeneration;
+        private bool _lastSpawned;
 
         private class RoomRepresentation
         {
@@ -58,56 +64,84 @@ namespace Levels.Generation.Steps
             RoomGenerate(repr, levelGeneration);
         }
 
+        private class RoomSelection
+        {
+            public BoundsInt Bounds;
+            public Vector3Int Position;
+            public RoomPrefab.Port Port;
+            public RoomPrefab Base;
+
+            public void Deconstruct(out BoundsInt bounds, out Vector3Int position, out RoomPrefab.Port port,
+                out RoomPrefab prefab)
+            {
+                bounds = Bounds;
+                position = Position;
+                port = Port;
+                prefab = Base;
+            }
+        }
+
+        private RoomSelection TakeRoom(LevelGeneration.Properties levelGeneration,
+            RoomRepresentation representation, RoomPrefab.Port port)
+        {
+            var d = port.Facing.Inverse();
+            IEnumerable<RoomPrefab> selection = roomBases;
+            if (!_lastSpawned)
+                selection = selection.Append(lastRoom);
+            if (representation.Deep * representation.Base.CellBounds.size.ToVector2Int().Area() > maxDeep)
+                selection = selection.Where(i => i.Ports.Count == 1);
+            selection = selection.Where(i => i.Ports.Select(j => j.Facing).Contains(d));
+            selection = selection.Where(i => i.Ports.Select(j => j.Width).Contains(port.Width));
+            var selectionFull = selection.Select(i =>
+            {
+                var s = i.CellBounds;
+                var newPort = i.Ports
+                    .Where(k => k.Facing == d && k.Width == port.Width)
+                    .TakeRandomOrDefault(levelGeneration.Random);
+                if (newPort is null) return null;
+                var pos = representation.Position.ToVector3Int() +
+                          port.Position.ToVector3Int() -
+                          newPort.Position.ToVector3Int();
+                s = new BoundsInt(s.position + pos, s.size);
+                if (!s.IntersectsMany2D(
+                        _representations.Where(k => k != representation).Select(k => k.CellBoundsPositioned), true))
+                    return new RoomSelection { Base = i, Port = newPort, Bounds = s, Position = pos };
+                return null;
+            }).Where(i => i is not null);
+            return selectionFull.TakeRandomOrDefault(levelGeneration.Random);
+        }
+
         private void RoomGenerate(RoomRepresentation representation, LevelGeneration.Properties levelGeneration)
         {
             foreach (var port in representation.Base.Ports.Where(i =>
                          !representation.Connections.Select(j => j.port).Contains(i)))
             {
-                var d = port.Facing.Inverse();
-                IEnumerable<RoomPrefab> selection = roomBases;
-                if (representation.Deep > maxDeep)
-                    selection = selection.Where(i => i.Ports.Count == 1);
-                selection = selection.Where(i => i.Ports.Select(j => j.Facing).Contains(d));
-                selection = selection.Where(i => i.Ports.Select(j => j.Width).Contains(port.Width));
-                var selectionFull = selection.Select(i =>
+                var newStuff = TakeRoom(levelGeneration, representation, port);
+                if (newStuff is null) continue;
+                if (newStuff.Base == lastRoom)
+                    _lastSpawned = true;
+                for (
+                    var i = 0;
+                    i < lastRoomMaxTry && newStuff.Base.Ports.Count == 1 && !_lastSpawned &&
+                    representation.Deep * newStuff.Base.CellBounds.size.ToVector2Int().Area() > maxDeep;
+                    i++
+                )
                 {
-                    var s = i.CellBounds;
-                    var newPort = i.Ports
-                        .Where(k => k.Facing == d && k.Width == port.Width)
-                        .TakeRandomOrDefault(levelGeneration.Random);
-                    if (newPort is null)
-                        return (
-                            bounds: new BoundsInt(Vector3Int.zero, Vector3Int.zero),
-                            position: Vector3Int.zero,
-                            port: null,
-                            room: i
-                        );
-                    var pos = representation.Position.ToVector3Int() +
-                              port.Position.ToVector3Int() -
-                              newPort.Position.ToVector3Int();
-                    s = new BoundsInt(s.position + pos, s.size);
-                    if (!s.IntersectsMany2D(
-                            _representations.Where(k => k != representation).Select(k => k.CellBoundsPositioned), true))
-                        return (bounds: s, position: pos, port: newPort, room: i);
-                    return (
-                        bounds: new BoundsInt(Vector3Int.zero, Vector3Int.zero),
-                        position: Vector3Int.zero,
-                        port: null,
-                        room: i
-                    );
-                }).Where(i => i.port is not null);
-                selectionFull = selectionFull.ToArray();
-                if (!selectionFull.Any()) continue;
-                var (newBounds, newPosition, newPort, newRoom) = selectionFull.TakeRandom(levelGeneration.Random);
+                    newStuff = TakeRoom(levelGeneration, representation, port);
+                    if (newStuff.Base != lastRoom) continue;
+                    _lastSpawned = true;
+                    break;
+                }
+
                 var newRepr = new RoomRepresentation
                 {
-                    Base = newRoom,
+                    Base = newStuff.Base,
                     Connections = new List<(RoomPrefab.Port port, RoomPrefab.Port otherPort, RoomRepresentation other)>
-                        { (newPort, port, representation) },
-                    Position = newPosition.ToVector2Int(),
+                        { (newStuff.Port, port, representation) },
+                    Position = newStuff.Position.ToVector2Int(),
                     Deep = representation.Deep + 1
                 };
-                representation.Connections.Add((port, newPort, newRepr));
+                representation.Connections.Add((port, newStuff.Port, newRepr));
                 _representations.Add(newRepr);
                 SpawnRoom(newRepr, levelGeneration);
                 RoomGenerate(newRepr, levelGeneration);
@@ -153,6 +187,12 @@ namespace Levels.Generation.Steps
                     _levelGeneration.Tilemap.layoutGrid.CellToWorld(repr.Position.ToVector3Int()) +
                     repr.Base.WorldBounds.center,
                     repr.Base.WorldBounds.size);
+                if (repr.Base != firstRoom && repr.Base != lastRoom) continue;
+                Gizmos.DrawSphere(
+                    _levelGeneration.Tilemap.layoutGrid.CellToWorld(repr.Position.ToVector3Int()) +
+                    repr.Base.WorldBounds.center,
+                    repr.Base.WorldBounds.size.magnitude / 8f
+                );
             }
         }
 #endif
