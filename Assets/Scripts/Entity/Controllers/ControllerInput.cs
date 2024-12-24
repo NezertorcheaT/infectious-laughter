@@ -87,7 +87,7 @@ namespace Entity.Controllers
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
             _inputY = _actions.Gameplay.VerticalMove.ReadValue<float>();
-            _moveAbility.Move(_input, 0);
+            _moveAbility.Move(_input);
             _movementDowning.WallDowning(_input);
             _followPoint.MovePoint(_input, _inputY);
         }
