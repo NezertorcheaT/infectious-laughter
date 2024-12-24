@@ -7,10 +7,16 @@ namespace Levels.Generation
     {
         [field: SerializeField] public Vector2Int MinPosition { get; private set; }
         [field: SerializeField] public Vector2Int MaxPosition { get; private set; }
-        
+
         [field: Tooltip("уровень земли")]
         [field: SerializeField] public int Ground { get; private set; }
+
+        [field: Tooltip("расширения области удаления нетайловых объектов в системе сетки")]
         [field: SerializeField] public float IntersectingRemoveExpand { get; private set; } = 1.5f;
+
+        [field: Tooltip("порог высотного изменения поверхности приземления")]
+        [field: SerializeField, Min(0)] public int Flattines { get; private set; }
+
         public Grid Grid => grid;
 
         public Bounds WorldBounds

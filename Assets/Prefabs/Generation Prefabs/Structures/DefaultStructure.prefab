@@ -771,6 +771,7 @@ MonoBehaviour:
   <MaxPosition>k__BackingField: {x: 4, y: 2}
   <Ground>k__BackingField: 0
   <IntersectingRemoveExpand>k__BackingField: 0
+  <Flattines>k__BackingField: 0
   grid: {fileID: 4516917101394761846}
 --- !u!1 &4516917101394761848
 GameObject:
