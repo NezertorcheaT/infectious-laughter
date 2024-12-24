@@ -86,9 +86,9 @@ namespace Levels.Generation
                             : new Vector3(
                                 nonTile.Position.x + nonTile.OffsetX,
                                 Physics2D.Raycast(
-                                    new Vector2(nonTile.Position.x + nonTile.OffsetX, properties.MaxY),
+                                    new Vector2(nonTile.Position.x + nonTile.OffsetX, properties.MaxY * 2f),
                                     Vector2.down,
-                                    properties.MaxY * 5,
+                                    properties.MaxY * 10,
                                     1 << 0
                                 ).point.y + nonTile.OffsetY,
                                 nonTile.Position.z

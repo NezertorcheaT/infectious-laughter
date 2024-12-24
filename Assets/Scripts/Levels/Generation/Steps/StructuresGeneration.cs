@@ -100,8 +100,6 @@ namespace Levels.Generation.Steps
             for (var i = 0; i < width; i++)
                 heights[i] = Mathf.Abs(heights[i] - max);
 
-            Debug.Log(heights.ByComma());
-
             return heights.Max() <= structure.Flattines;
         }
 
