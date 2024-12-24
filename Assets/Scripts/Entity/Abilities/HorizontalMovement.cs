@@ -9,22 +9,25 @@ namespace Entity.Abilities
     public class HorizontalMovement : Ability
     {
         [SerializeField, Min(0.001f)] private float speed;
-
         [SerializeField] private bool canUseDash;
-        [SerializeField, EnableIf("canUseDash"), Min(0.001f)] private float dashSpeed;
-        [SerializeField, EnableIf("canUseDash")] private float maxDashDistance;
+        [SerializeField] private bool turn;
+
+        [SerializeField, EnableIf("canUseDash"), Min(0.001f)]
+        private float dashSpeed;
+
+        [SerializeField, EnableIf("canUseDash")]
+        private float maxDashDistance;
 
         private Rigidbody2D _rb;
-        private bool _turn;
 
         public bool Turn
         {
-            get => _turn;
+            get => turn;
             private set
             {
-                _turn = value;
+                turn = value;
                 if (TurnInFloat != 0f)
-                    OnTurn?.Invoke(_turn);
+                    OnTurn?.Invoke(turn);
             }
         }
 
@@ -53,8 +56,9 @@ namespace Entity.Abilities
             TurnInFloat = velocity;
             Turn = velocity == 0 ? Turn : velocity > 0;
 
-            if (distance < maxDashDistance && canUseDash) _rb.velocity = new Vector2(velocity * dashSpeed, _rb.velocity.y);
-            else _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
+            _rb.velocity = distance < maxDashDistance && canUseDash
+                ? new Vector2(velocity * dashSpeed, _rb.velocity.y)
+                : new Vector2(velocity * speed, _rb.velocity.y);
         }
     }
 }
