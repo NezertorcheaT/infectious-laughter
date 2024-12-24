@@ -153,17 +153,17 @@ namespace Levels.Generation.Steps
             var cb = room.Base.CellBounds;
             cb.position += room.Position.ToVector3Int();
 
-            var intersectingPreSpawns = levelGeneration.PreSpawns
+            var intersectingPreSpawns = levelGeneration.NonTileObjects
                     .Where(i => room.Base.WorldBounds.Contains2D(i.Position) &&
                                 !i.Prefab.TryGetComponent(out PreSpawnedPersistent _))
                     .ToArray()
                 ;
             foreach (var toRemove in intersectingPreSpawns)
-                levelGeneration.PreSpawns.Remove(toRemove);
+                levelGeneration.NonTileObjects.Remove(toRemove);
 
-            foreach (var noneGrid in room.Base.NoneGridObjects)
+            foreach (var noneGrid in room.Base.NoneTileChildren)
             {
-                levelGeneration.PreSpawns.Add(new LevelGeneration.Properties.PreSpawned
+                levelGeneration.NonTileObjects.Add(new LevelGeneration.Properties.NonTileObject
                 {
                     Prefab = noneGrid.gameObject,
                     Position =
