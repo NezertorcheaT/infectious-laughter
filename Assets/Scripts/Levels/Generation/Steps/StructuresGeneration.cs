@@ -10,17 +10,17 @@ namespace Levels.Generation.Steps
     public class StructuresGeneration : TilemapStep
     {
         [Tooltip("Это структуры для спавна")] [SerializeField]
-        private Structure[] structures;
+        private StructureRepresentation[] structures;
 
         [Tooltip("Максимальное колличество попыток впихнуть структуру в мир, перед тем как отвергнуть её")]
         [SerializeField, Min(1)]
         private int structuresSpawnMaxTry = 100;
 
         private List<BoundsInt> _filledWithStructure;
-        private LevelGeneration.Properties _levelGeneration;
+        private LevelGeneration.Properties _properties;
 
         [Serializable]
-        private struct Structure
+        private struct StructureRepresentation
         {
             public StructurePrefab structure;
 
@@ -28,61 +28,81 @@ namespace Levels.Generation.Steps
             public int count;
         }
 
-        public override void Execute(LevelGeneration.Properties levelGeneration)
+        public override void Execute(LevelGeneration.Properties properties)
         {
-            _levelGeneration = levelGeneration;
+            _properties = properties;
             _filledWithStructure = new List<BoundsInt>();
             foreach (var structurePrefab in structures)
             {
-                if (structurePrefab.structure is null)
-                    continue;
+                if (structurePrefab.structure is null) continue;
 
                 for (var i = 0; i < Mathf.Max(structurePrefab.count, 1); i++)
                 {
-                    var pos = levelGeneration.Tilemap.GridRay(
+                    var hit = properties.Tilemap.GridRay(
                         new Vector2Int(
-                            levelGeneration.Random.Next(levelGeneration.StructureMinX, levelGeneration.StructureMaxX),
-                            levelGeneration.MaxY * 2),
+                            properties.Random.Next(properties.StructureMinX, properties.StructureMaxX),
+                            properties.MaxY * 2),
                         Vector2.down);
                     var spawnTry = 0;
 
                     while (
                         spawnTry < structuresSpawnMaxTry &&
-                        (pos is null || !CheckStructureAtPos(structurePrefab.structure, pos.Value, levelGeneration))
+                        (!hit.isHit || !CheckStructureAtPos(structurePrefab.structure, hit.point, properties))
                     )
                     {
-                        spawnTry += 1;
-                        pos = levelGeneration.Tilemap.GridRay(
+                        spawnTry++;
+                        hit = properties.Tilemap.GridRay(
                             new Vector2Int(
-                                levelGeneration.Random.Next(levelGeneration.StructureMinX,
-                                    levelGeneration.StructureMaxX),
-                                levelGeneration.MaxY),
+                                properties.Random.Next(properties.StructureMinX,
+                                    properties.StructureMaxX),
+                                properties.MaxY),
                             Vector2.down);
                     }
 
                     if (spawnTry >= structuresSpawnMaxTry - 1)
                         continue;
 
-                    AddStructureAtPos(structurePrefab.structure,
-                        pos.Value + new Vector2Int(0, 1 - structurePrefab.structure.Ground), levelGeneration);
+                    AddStructureAtPos(
+                        structurePrefab.structure,
+                        hit.point + new Vector2Int(0, 1 - structurePrefab.structure.Ground),
+                        properties
+                    );
                 }
             }
         }
 
         private bool CheckStructureAtPos(StructurePrefab structure, Vector2Int gridPosition,
-            LevelGeneration.Properties levelGeneration)
+            LevelGeneration.Properties properties)
         {
             var structureBounds = structure.CellBounds;
             structureBounds.position += gridPosition.ToVector3Int();
 
-            if (structureBounds.xMin < levelGeneration.StructureMinX)
+            if (structureBounds.xMin < properties.StructureMinX)
                 return false;
-            if (structureBounds.xMax > levelGeneration.StructureMaxX)
+            if (structureBounds.xMax > properties.StructureMaxX)
                 return false;
             if (_filledWithStructure.Count != 0 && _filledWithStructure.Any(i => i.Intersects2D(structureBounds)))
                 return false;
 
-            return true;
+            var width = structure.MaxPosition.x - structure.MinPosition.x;
+            var heights = new int[width];
+            for (var i = 0; i < width; i++)
+            {
+                var hit = properties.Tilemap.GridRay(
+                    new Vector2Int(gridPosition.x + structure.MinPosition.x + i, properties.MaxY * 2),
+                    Vector2.down
+                );
+                if (!hit.isHit) return false;
+                heights[i] = hit.distance;
+            }
+
+            var max = heights.Max();
+            for (var i = 0; i < width; i++)
+                heights[i] = Mathf.Abs(heights[i] - max);
+
+            Debug.Log(heights.ByComma());
+
+            return heights.Max() <= structure.Flattines;
         }
 
         private void AddStructureAtPos(StructurePrefab structure, Vector2Int gridPosition,
@@ -96,19 +116,15 @@ namespace Levels.Generation.Steps
             cb.position += gridPosition.ToVector3Int();
             _filledWithStructure.Add(cb);
 
-            var intersectingPreSpawns = levelGeneration.PreSpawns
-                    .Where(i => worldBounds.Contains2D(i.Position) &&
-                                !i.Prefab.TryGetComponent(out PreSpawnedPersistent _))
+            var intersectingNonTile = levelGeneration.NonTileObjects
+                    .Where(i => worldBounds.Contains2D(i.Position) && !i.Prefab.TryGetComponent(out PreSpawnedPersistent _))
                     .ToArray()
                 ;
-            foreach (var toRemove in intersectingPreSpawns)
-            {
-                levelGeneration.PreSpawns.Remove(toRemove);
-            }
+            foreach (var toRemove in intersectingNonTile) levelGeneration.NonTileObjects.Remove(toRemove);
 
-            foreach (var noneGrid in structure.NoneGridObjects)
+            foreach (var noneGrid in structure.NoneTileChildren)
             {
-                levelGeneration.PreSpawns.Add(new LevelGeneration.Properties.PreSpawned
+                levelGeneration.NonTileObjects.Add(new LevelGeneration.Properties.NonTileObject
                 {
                     Prefab = noneGrid.gameObject,
                     Position =
@@ -130,9 +146,9 @@ namespace Levels.Generation.Steps
             foreach (var bounds in _filledWithStructure)
             {
                 Gizmos.DrawWireCube(
-                    _levelGeneration.Tilemap.layoutGrid.CellToWorld(bounds.position) +
-                    _levelGeneration.Tilemap.layoutGrid.CellToWorld(bounds.size) / 2f,
-                    _levelGeneration.Tilemap.layoutGrid.CellToWorld(bounds.size));
+                    _properties.Tilemap.layoutGrid.CellToWorld(bounds.position) +
+                    _properties.Tilemap.layoutGrid.CellToWorld(bounds.size) / 2f,
+                    _properties.Tilemap.layoutGrid.CellToWorld(bounds.size));
             }
         }
 #endif

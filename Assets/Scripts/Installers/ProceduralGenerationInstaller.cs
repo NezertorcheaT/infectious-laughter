@@ -31,7 +31,7 @@ namespace Installers
 
         private void InjectToSpawned()
         {
-            generator.InstantiatePreSpawned(Container.InstantiatePrefab);
+            generator.InstantiateNonTile(Container.InstantiatePrefab);
         }
     }
 }

@@ -15,11 +15,11 @@ namespace Levels.Generation
         {
             [Tooltip("Ну это как бы сид, задаётся в сохранениях")] [SerializeField]
             public string Seed;
-
+            
             [Tooltip("Это куда собственно тайлы записываться будут")] [SerializeField]
             public Tilemap Tilemap;
 
-            public List<PreSpawned> PreSpawns = new();
+            public List<NonTileObject> NonTileObjects = new();
             public Random Random;
             [HideInInspector] public int LayerMinX;
             [HideInInspector] public int LayerMaxX;
@@ -27,7 +27,7 @@ namespace Levels.Generation
             [HideInInspector] public int StructureMinX;
             [HideInInspector] public int StructureMaxX;
 
-            public struct PreSpawned : IEquatable<PreSpawned>
+            public struct NonTileObject : IEquatable<NonTileObject>
             {
                 public GameObject Prefab;
                 public Vector3 Position;
@@ -35,17 +35,13 @@ namespace Levels.Generation
                 public float OffsetY;
                 public float OffsetX;
 
-                public bool Equals(PreSpawned other) =>
-                    Equals(Prefab, other.Prefab)
-                    && Position.Equals(other.Position)
-                    && Rotation.Equals(other.Rotation)
-                    && OffsetY.Equals(other.OffsetY)
-                    && OffsetX.Equals(other.OffsetX);
+                public bool Equals(NonTileObject other) => Equals(Prefab, other.Prefab);
+                public override bool Equals(object obj) => obj is NonTileObject other && Equals(other);
 
-                public override bool Equals(object obj) => obj is PreSpawned other && Equals(other);
-                public override int GetHashCode() => HashCode.Combine(Prefab, Position, Rotation, OffsetY, OffsetX);
-                public static bool operator ==(PreSpawned left, PreSpawned right) => left.Equals(right);
-                public static bool operator !=(PreSpawned left, PreSpawned right) => !left.Equals(right);
+                public override int GetHashCode() => Prefab != null ? Prefab.GetHashCode() : 0;
+
+                public static bool operator ==(NonTileObject left, NonTileObject right) => left.Equals(right);
+                public static bool operator !=(NonTileObject left, NonTileObject right) => !left.Equals(right);
             }
         }
 
@@ -80,34 +76,34 @@ namespace Levels.Generation
         }
 
 
-        public void InstantiatePreSpawned(Func<GameObject, Vector3, Quaternion, Transform, GameObject> instantiate)
+        public void InstantiateNonTile(Func<GameObject, Vector3, Quaternion, Transform, GameObject> instantiate)
         {
-            (Vector3 pos, Properties.PreSpawned preSpawned)[] positions = properties.PreSpawns
-                .Select(preSpawned =>
+            (Vector3 pos, Properties.NonTileObject nonTile)[] positions = properties.NonTileObjects
+                .Select(nonTile =>
                     (
-                        preSpawned.OffsetY == 0
-                            ? preSpawned.Position
+                        nonTile.OffsetY == 0
+                            ? nonTile.Position
                             : new Vector3(
-                                preSpawned.Position.x + preSpawned.OffsetX,
+                                nonTile.Position.x + nonTile.OffsetX,
                                 Physics2D.Raycast(
-                                    new Vector2(preSpawned.Position.x + preSpawned.OffsetX, properties.MaxY),
+                                    new Vector2(nonTile.Position.x + nonTile.OffsetX, properties.MaxY),
                                     Vector2.down,
                                     properties.MaxY * 5,
                                     1 << 0
-                                ).point.y + preSpawned.OffsetY,
-                                preSpawned.Position.z
+                                ).point.y + nonTile.OffsetY,
+                                nonTile.Position.z
                             ),
-                        preSpawned
+                        preSpawned: nonTile
                     )
                 )
                 .ToArray();
 
-            foreach (var (pos, preSpawned) in positions)
+            foreach (var (pos, nonTile) in positions)
             {
                 var i = instantiate(
-                    preSpawned.Prefab,
+                    nonTile.Prefab,
                     pos,
-                    preSpawned.Rotation,
+                    nonTile.Rotation,
                     null
                 );
 
