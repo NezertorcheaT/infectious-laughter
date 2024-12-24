@@ -15,10 +15,7 @@ namespace Levels.Generation
         {
             [Tooltip("Ну это как бы сид, задаётся в сохранениях")] [SerializeField]
             public string Seed;
-
-            [Tooltip("Этот тайлик будет заменён на нихуя при генерации структур")] [SerializeField]
-            public TileBase VoidTile;
-
+            
             [Tooltip("Это куда собственно тайлы записываться будут")] [SerializeField]
             public Tilemap Tilemap;
 

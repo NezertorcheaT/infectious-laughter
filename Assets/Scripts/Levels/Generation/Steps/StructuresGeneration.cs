@@ -117,8 +117,7 @@ namespace Levels.Generation.Steps
             _filledWithStructure.Add(cb);
 
             var intersectingNonTile = levelGeneration.NonTileObjects
-                    .Where(i => worldBounds.Contains2D(i.Position + new Vector3(0, i.OffsetY)) &&
-                                !i.Prefab.TryGetComponent(out PreSpawnedPersistent _))
+                    .Where(i => worldBounds.Contains2D(i.Position) && !i.Prefab.TryGetComponent(out PreSpawnedPersistent _))
                     .ToArray()
                 ;
             foreach (var toRemove in intersectingNonTile) levelGeneration.NonTileObjects.Remove(toRemove);
@@ -136,7 +135,7 @@ namespace Levels.Generation.Steps
                 });
             }
 
-            levelGeneration.Tilemap.Insert(structure.Tilemap, gridPosition, levelGeneration.VoidTile);
+            levelGeneration.Tilemap.Insert(structure.Tilemap, gridPosition);
         }
 
 
