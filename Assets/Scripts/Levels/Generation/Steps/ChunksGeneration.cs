@@ -23,20 +23,20 @@ namespace Levels.Generation.Steps
         [Tooltip("Чанки, которые будут использоваться при построении уровня, но без повторений и гарантировано один раз")]
         [SerializeField] private ChunkPrefab[] specialChunks;
 
-        public override void Execute(LevelGeneration.Properties levelGeneration)
+        public override void Execute(LevelGeneration.Properties properties)
         {
-            var chunks = SetupChunks(levelGeneration).ToArray();
+            var chunks = SetupChunks(properties).ToArray();
 
             var portOffset = new Vector2Int();
-            levelGeneration.StructureMinX = (chunks[0].EndPort - chunks[0].StartPort).x;
+            properties.StructureMinX = (chunks[0].EndPort - chunks[0].StartPort).x;
             foreach (var chunk in chunks)
             {
-                foreach (var noneGrid in chunk.NoneGridObjects)
+                foreach (var noneGrid in chunk.NoneTileChildren)
                 {
-                    levelGeneration.PreSpawns.Add(new LevelGeneration.Properties.PreSpawned
+                    properties.NonTileObjects.Add(new LevelGeneration.Properties.NonTileObject
                     {
                         Prefab = noneGrid.gameObject,
-                        Position = levelGeneration.Tilemap.layoutGrid.CellToWorld(portOffset.ToVector3Int()) -
+                        Position = properties.Tilemap.layoutGrid.CellToWorld(portOffset.ToVector3Int()) -
                                    chunk.Grid.CellToWorld(chunk.StartPort.ToVector3Int()) +
                                    noneGrid.transform.localPosition,
                         Rotation = noneGrid.transform.localRotation,
@@ -44,13 +44,13 @@ namespace Levels.Generation.Steps
                     });
                 }
 
-                levelGeneration.Tilemap.Insert(chunk.Tilemap, portOffset - chunk.StartPort, levelGeneration.VoidTile);
+                properties.Tilemap.Insert(chunk.Tilemap, portOffset - chunk.StartPort, properties.VoidTile);
                 portOffset += chunk.EndPort - chunk.StartPort;
-                levelGeneration.StructureMaxX = portOffset.x - (chunk.EndPort - chunk.StartPort).x;
+                properties.StructureMaxX = portOffset.x - (chunk.EndPort - chunk.StartPort).x;
             }
 
-            levelGeneration.LayerMinX = 0;
-            levelGeneration.LayerMaxX = portOffset.x;
+            properties.LayerMinX = 0;
+            properties.LayerMaxX = portOffset.x;
         }
 
 

@@ -4,14 +4,14 @@ using UnityEngine;
 namespace Levels.Generation.Steps
 {
     [AddComponentMenu("Tilemap/Generation Steps/Offset by X")]
-    public class PreSpawnedOffsetsX : GenerationStep
+    public class NonTileOffsetsX : GenerationStep
     {
-        public override void Execute(LevelGeneration.Properties levelGeneration)
+        public override void Execute(LevelGeneration.Properties properties)
         {
-            for (var i = 0; i < levelGeneration.PreSpawns.Count; i++)
+            for (var i = 0; i < properties.NonTileObjects.Count; i++)
             {
-                var preSpawned = levelGeneration.PreSpawns[i];
-                var onFloor = preSpawned.Prefab.GetComponent<PreSpawnedOnFloor>();
+                var nonTile = properties.NonTileObjects[i];
+                var onFloor = nonTile.Prefab.GetComponent<PreSpawnedOnFloor>();
                 if (onFloor is null) continue;
 
                 var offset = 0f;
@@ -25,23 +25,23 @@ namespace Levels.Generation.Steps
                     var offsetX = searchDirectionMultiplier * searchTickRange * j;
 
                     var hitMiddle = Physics2D.Raycast(
-                        new Vector2(preSpawned.Position.x + onFloor.Center.x + offsetX, levelGeneration.MaxY),
+                        new Vector2(nonTile.Position.x + onFloor.Center.x + offsetX, properties.MaxY),
                         Vector2.down,
-                        levelGeneration.MaxY * 5,
+                        properties.MaxY * 5,
                         1 << 0
                     );
                     var hitLeft = Physics2D.Raycast(
-                        new Vector2(preSpawned.Position.x + onFloor.Center.x - onFloor.Size / 2f + offsetX,
-                            levelGeneration.MaxY),
+                        new Vector2(nonTile.Position.x + onFloor.Center.x - onFloor.Size / 2f + offsetX,
+                            properties.MaxY),
                         Vector2.down,
-                        levelGeneration.MaxY * 5,
+                        properties.MaxY * 5,
                         1 << 0
                     );
                     var hitRight = Physics2D.Raycast(
-                        new Vector2(preSpawned.Position.x + onFloor.Center.x + onFloor.Size / 2f + offsetX,
-                            levelGeneration.MaxY),
+                        new Vector2(nonTile.Position.x + onFloor.Center.x + onFloor.Size / 2f + offsetX,
+                            properties.MaxY),
                         Vector2.down,
-                        levelGeneration.MaxY * 5,
+                        properties.MaxY * 5,
                         1 << 0
                     );
                     if (!hitLeft.collider && !hitRight.collider && !hitMiddle.collider) continue;
@@ -52,12 +52,12 @@ namespace Levels.Generation.Steps
                     break;
                 }
 
-                levelGeneration.PreSpawns[i] = new LevelGeneration.Properties.PreSpawned
+                properties.NonTileObjects[i] = new LevelGeneration.Properties.NonTileObject
                 {
-                    Prefab = preSpawned.Prefab,
-                    Position = preSpawned.Position,
-                    Rotation = preSpawned.Rotation,
-                    OffsetY = preSpawned.OffsetY,
+                    Prefab = nonTile.Prefab,
+                    Position = nonTile.Position,
+                    Rotation = nonTile.Rotation,
+                    OffsetY = nonTile.OffsetY,
                     OffsetX = offset,
                 };
             }

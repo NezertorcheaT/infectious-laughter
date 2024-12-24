@@ -8,7 +8,7 @@ namespace Levels.Generation
     {
         [field: SerializeField] public Tilemap Tilemap { get; private set; }
 
-        public IEnumerable<GameObject> NoneGridObjects
+        public IEnumerable<GameObject> NoneTileChildren
         {
             get
             {

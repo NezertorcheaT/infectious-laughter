@@ -40,46 +40,46 @@ namespace Levels.Generation.Steps
             public int offset;
         }
 
-        public override void Execute(LevelGeneration.Properties levelGeneration)
+        public override void Execute(LevelGeneration.Properties properties)
         {
             foreach (var offsetLayer in layers)
             {
                 if (offsetLayer.layer.Infinite)
                 {
-                    ProcessLayer(offsetLayer.layer.GetMap(levelGeneration.Seed), offsetLayer, levelGeneration.LayerMinX,
-                        levelGeneration.LayerMaxX, levelGeneration);
+                    ProcessLayer(offsetLayer.layer.GetMap(properties.Seed), offsetLayer, properties.LayerMinX,
+                        properties.LayerMaxX, properties);
                     return;
                 }
 
-                var map = offsetLayer.layer.GetMap(levelGeneration.Seed).ToArray();
+                var map = offsetLayer.layer.GetMap(properties.Seed).ToArray();
                 offsetLayer.offset = (int) Mathf.Repeat(offsetLayer.offset, map.Length);
 
                 if (offsetLayer.behavior is OffsetLayer.Behavior.Clamp)
-                    ProcessLayer(map, offsetLayer, levelGeneration.LayerMaxX,
-                        Mathf.Clamp(map.Length - 1, levelGeneration.LayerMinX, levelGeneration.LayerMaxX),
-                        levelGeneration);
+                    ProcessLayer(map, offsetLayer, properties.LayerMaxX,
+                        Mathf.Clamp(map.Length - 1, properties.LayerMinX, properties.LayerMaxX),
+                        properties);
                 else if (offsetLayer.behavior is OffsetLayer.Behavior.Repeat)
                 {
-                    for (var i = -1; i < levelGeneration.LayerMaxX / map.Length; i++)
+                    for (var i = -1; i < properties.LayerMaxX / map.Length; i++)
                     {
                         ProcessLayer(map, offsetLayer,
-                            Mathf.Clamp((map.Length - 1) * i, levelGeneration.LayerMinX, levelGeneration.LayerMaxX),
-                            Mathf.Clamp((map.Length - 1) * (i + 1), levelGeneration.LayerMinX,
-                                levelGeneration.LayerMaxX),
-                            levelGeneration
+                            Mathf.Clamp((map.Length - 1) * i, properties.LayerMinX, properties.LayerMaxX),
+                            Mathf.Clamp((map.Length - 1) * (i + 1), properties.LayerMinX,
+                                properties.LayerMaxX),
+                            properties
                         );
                     }
                 }
                 else if (offsetLayer.behavior is OffsetLayer.Behavior.Mirror)
                 {
-                    for (var i = -1; i < levelGeneration.LayerMaxX / map.Length; i++)
+                    for (var i = -1; i < properties.LayerMaxX / map.Length; i++)
                     {
                         map = map.Reverse().ToArray();
                         ProcessLayer(map, offsetLayer,
-                            Mathf.Clamp((map.Length - 1) * i, levelGeneration.LayerMinX, levelGeneration.LayerMaxX),
-                            Mathf.Clamp((map.Length - 1) * (i + 1), levelGeneration.LayerMinX,
-                                levelGeneration.LayerMaxX),
-                            levelGeneration
+                            Mathf.Clamp((map.Length - 1) * i, properties.LayerMinX, properties.LayerMaxX),
+                            Mathf.Clamp((map.Length - 1) * (i + 1), properties.LayerMinX,
+                                properties.LayerMaxX),
+                            properties
                         );
                     }
                 }
@@ -106,18 +106,18 @@ namespace Levels.Generation.Steps
                     var current = enumerator.Current;
                     if (current == 0) continue;
 
-                    var ray = levelGeneration.Tilemap.GridRay(new Vector2Int(x, levelGeneration.MaxY), Vector2.down);
-                    if (ray is null) continue;
+                    var hit = levelGeneration.Tilemap.GridRay(new Vector2Int(x, levelGeneration.MaxY), Vector2.down);
+                    if (!hit.isHit) continue;
 
                     if (current < 0)
-                        levelGeneration.Tilemap.SetTile(new Vector3Int(x, ray.Value.y), null);
+                        levelGeneration.Tilemap.SetTile(new Vector3Int(x, hit.point.y), null);
 
                     for (var i = 0; i < Mathf.Abs(current) + 1; i++)
                     {
                         levelGeneration.Tilemap.SetTile(
                             new Vector3Int(
                                 x,
-                                ray.Value.y + (current > 0 ? i : -i + 1)
+                                hit.point.y + (current > 0 ? i : -i + 1)
                             ),
                             current > 0 ? layer.layer.Tile : null
                         );
