@@ -16,9 +16,9 @@ namespace Entity
         public virtual void Initialize() => Entity = GetComponent<Entity>();
 
         /// <summary>
-        /// бесполезная хуйня
+        /// бесполезная хуйня, аналог isActiveAndEnabled
         /// </summary>
-        /// <returns>аналог <code>isActiveAndEnabled</code></returns>
+        /// <returns></returns>
         public virtual bool Available() => isActiveAndEnabled;
 
         bool IInitializeByEntity.Initialized

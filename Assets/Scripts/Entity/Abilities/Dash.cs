@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Entity.Abilities
             _currentDashCount = dashCount;
         }
 
-        public async void Perform()
+        public async Task Perform()
         {
             if (!Available()) return;
             if (_currentDashCount <= 0) return;

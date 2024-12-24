@@ -75,7 +75,7 @@ namespace Entity.Controllers
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Perform();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
         private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Perform();
-        private void DashOnPerformed(InputAction.CallbackContext ctx) => _dashAbility.Perform();
+        private void DashOnPerformed(InputAction.CallbackContext ctx) => _ = _dashAbility.Perform();
 
 
         private bool _hangingRight;
