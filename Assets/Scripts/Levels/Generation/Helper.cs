@@ -13,6 +13,9 @@ namespace CustomHelper
         public static string ByComma<T>(this IEnumerable<T> enumerable) =>
             enumerable.Select(i => i.ToString()).Aggregate((a, b) => $"{a}, {b}");
 
+        public static string ByComma(this IEnumerable<string> enumerable) =>
+            enumerable.Aggregate((a, b) => $"{a}, {b}");
+
         public static int Area(this Vector2Int value) => value.x * value.y;
         public static float Area(this Vector2 value) => value.x * value.y;
 
@@ -239,7 +242,7 @@ namespace CustomHelper
             RoomPrefab.Port.Direction.Left => RoomPrefab.Port.Direction.Right,
             _ => direction
         };
-      
+
         /// <summary>
         /// вставить в тайловую карту, другую тайловую карту, с отступом
         /// </summary>

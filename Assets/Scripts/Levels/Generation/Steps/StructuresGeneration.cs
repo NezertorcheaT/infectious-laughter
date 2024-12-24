@@ -104,36 +104,36 @@ namespace Levels.Generation.Steps
         }
 
         private void AddStructureAtPos(StructurePrefab structure, Vector2Int gridPosition,
-            LevelGeneration.Properties levelGeneration)
+            LevelGeneration.Properties properties)
         {
             var worldBounds = structure.WorldBounds;
-            worldBounds.center += levelGeneration.Tilemap.layoutGrid.CellToWorld(gridPosition.ToVector3Int());
+            worldBounds.center += properties.Tilemap.layoutGrid.CellToWorld(gridPosition.ToVector3Int());
             worldBounds.Expand(structure.IntersectingRemoveExpand);
 
             var cb = structure.CellBounds;
             cb.position += gridPosition.ToVector3Int();
             _filledWithStructure.Add(cb);
 
-            var intersectingNonTile = levelGeneration.NonTileObjects
-                    .Where(i => worldBounds.Contains2D(i.Position) && !i.Prefab.TryGetComponent(out PreSpawnedPersistent _))
-                    .ToArray()
-                ;
-            foreach (var toRemove in intersectingNonTile) levelGeneration.NonTileObjects.Remove(toRemove);
+            foreach (var toRemove in properties.NonTileObjects
+                         .Where(i => worldBounds.Contains2D(i.Position) &&
+                                     !i.Prefab.TryGetComponent(out PreSpawnedPersistent _))
+                         .ToArray())
+                properties.NonTileObjects.Remove(toRemove);
 
             foreach (var noneGrid in structure.NoneTileChildren)
             {
-                levelGeneration.NonTileObjects.Add(new LevelGeneration.Properties.NonTileObject
+                properties.NonTileObjects.Add(new LevelGeneration.Properties.NonTileObject
                 {
                     Prefab = noneGrid.gameObject,
                     Position =
-                        levelGeneration.Tilemap.layoutGrid.CellToWorld(gridPosition.ToVector3Int()) +
+                        properties.Tilemap.layoutGrid.CellToWorld(gridPosition.ToVector3Int()) +
                         noneGrid.transform.localPosition,
                     Rotation = noneGrid.gameObject.transform.rotation,
                     OffsetY = 0
                 });
             }
 
-            levelGeneration.Tilemap.Insert(structure.Tilemap, gridPosition);
+            properties.Tilemap.Insert(structure.Tilemap, gridPosition);
         }
 
 

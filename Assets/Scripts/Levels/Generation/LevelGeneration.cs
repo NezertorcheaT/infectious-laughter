@@ -27,21 +27,13 @@ namespace Levels.Generation
             [HideInInspector] public int StructureMinX;
             [HideInInspector] public int StructureMaxX;
 
-            public struct NonTileObject : IEquatable<NonTileObject>
+            public class NonTileObject
             {
                 public GameObject Prefab;
                 public Vector3 Position;
                 public Quaternion Rotation;
                 public float OffsetY;
                 public float OffsetX;
-
-                public bool Equals(NonTileObject other) => Equals(Prefab, other.Prefab);
-                public override bool Equals(object obj) => obj is NonTileObject other && Equals(other);
-
-                public override int GetHashCode() => Prefab != null ? Prefab.GetHashCode() : 0;
-
-                public static bool operator ==(NonTileObject left, NonTileObject right) => left.Equals(right);
-                public static bool operator !=(NonTileObject left, NonTileObject right) => !left.Equals(right);
             }
         }
 
