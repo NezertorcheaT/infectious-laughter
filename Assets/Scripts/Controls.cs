@@ -424,11 +424,11 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b02aa857-25e5-4cc7-b3e8-6f2eefca3f8c"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""id"": ""0e1b79af-6e43-48de-9bcc-23798d3a32c6"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""PC"",
+                    ""groups"": """",
                     ""action"": ""PickItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
