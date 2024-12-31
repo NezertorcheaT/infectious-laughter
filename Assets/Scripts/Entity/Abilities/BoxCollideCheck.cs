@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using CustomHelper;
 using UnityEngine;
@@ -26,6 +27,12 @@ namespace Entity.Abilities
         private Vector3 _checkSize;
         private Vector3 _checkPosition;
         private Vector3 _size;
+        private Collider2D[] _colliders;
+
+        private void Start()
+        {
+            _colliders = new Collider2D[10];
+        }
 
         private void FixedUpdate()
         {
@@ -65,27 +72,29 @@ namespace Entity.Abilities
             _isTouchingLeft = Overlap(_checkPosition, _checkSize);
         }
 
-        private bool _isTouchingGround;
         public override bool IsTouchingGround => _isTouchingGround;
+        private bool _isTouchingGround;
 
-        private bool _isTouchingTop;
         public override bool IsTouchingTop => _isTouchingTop;
+        private bool _isTouchingTop;
 
-        private bool _isTouchingRight;
         public override bool IsTouchingRight => _isTouchingRight;
+        private bool _isTouchingRight;
 
-        private bool _isTouchingLeft;
         public override bool IsTouchingLeft => _isTouchingLeft;
+        private bool _isTouchingLeft;
 
         private bool Overlap(Vector2 position, Vector2 size)
         {
             Helper.DrawBox(position, size);
-            return Physics2D.OverlapBoxAll(
-                    position,
-                    size,
-                    0,
-                    groundLayer.value)
-                .Count(i => !i.isTrigger && !i.usedByEffector) > 0;
+            var count = Physics2D.OverlapBoxNonAlloc(
+                position,
+                size,
+                0,
+                _colliders,
+                groundLayer.value
+            );
+            return _colliders.Take(count).Any(i => !i.isTrigger && !i.usedByEffector);
         }
     }
 }

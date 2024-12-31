@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b53ce2a64aede4799a5e98738607f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpCount: 1
+  jumpCount: 0
   jumpForce: 20
   jumpTime: 3
   wallJumpPushForce: {x: 10, y: 30}

@@ -10,7 +10,7 @@ namespace Entity.Abilities
     [AddComponentMenu("Entity/Abilities/Jump")]
     public class Jump : Ability, IJumpableAbility
     {
-        [SerializeField, Min(1)] private int jumpCount = 1;
+        [SerializeField, Min(0)] private int jumpCount;
         [SerializeField, Min(0)] public float jumpForce = 20;
 
         [Tooltip("влияет только на ии")] [SerializeField, Min(0)]
