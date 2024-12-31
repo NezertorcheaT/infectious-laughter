@@ -12,9 +12,18 @@ namespace Entity.Abilities
     {
         [SerializeField, Min(1)] private int jumpCount = 1;
         [SerializeField, Min(0)] public float jumpForce = 20;
-        [SerializeField, Min(0)] private float jumpTime = 3;
-        [Space(10)] [SerializeField, Min(0)] private Vector2 wallJumpPushForce = new(10, 20);
-        [SerializeField, Min(0)] private float wallJumpDelay = 0.2f;
+
+        [Tooltip("влияет только на ии")] [SerializeField, Min(0)]
+        private float jumpTime = 3;
+
+        [Space(10)]
+        [Tooltip("вектор, обозначающий силу толчка при прыжке от стены, всегда должен быть положительным")]
+        [SerializeField, Min(0)]
+        private Vector2 wallJumpPushForce = new(10, 20);
+
+        [Tooltip("сколько вы не сможете двигаться после прыжка от стены")] [SerializeField, Min(0)]
+        private float wallJumpDelay = 0.2f;
+
         private int _jumpCountActive;
         private Rigidbody2D _playerRb;
         private CollideCheck _collideCheck;

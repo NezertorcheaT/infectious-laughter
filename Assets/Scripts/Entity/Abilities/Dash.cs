@@ -23,7 +23,7 @@ namespace Entity.Abilities
             _currentDashCount = dashCount;
         }
 
-        public async Task DisableMovement()
+        private async Task DisableMovement()
         {
             await UniTask.WaitForSeconds(dashMovementDelay);
             playerMovement.enabled = true;
