@@ -267,10 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  canUseDash: 0
   turn: 1
-  dashSpeed: 0
-  maxDashDistance: 0
 --- !u!114 &-3373324767650511719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +394,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 3693047800681385017}
-  dashForce: 7
+  dashForce: 20
+  dashMovementDelay: 0.25
   dashCooldown: 30
   dashCount: 1
 --- !u!114 &3693047800681385005

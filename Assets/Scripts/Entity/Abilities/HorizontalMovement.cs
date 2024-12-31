@@ -42,12 +42,18 @@ namespace Entity.Abilities
 
         public void Move(float velocity)
         {
-            if (!Available() || Mathf.Abs(_rb.velocity.x) > speed) return;
+            var push = velocity * speed;
+            if (!Available() || (
+                    (_rb.velocity.x >= 0 || push <= 0) &&
+                    (_rb.velocity.x <= 0 || push >= 0) &&
+                    push != 0 &&
+                    Mathf.Abs(_rb.velocity.x) > Mathf.Abs(push)
+                )) return;
 
             TurnInFloat = velocity;
             Turn = velocity == 0 ? Turn : velocity > 0;
 
-            _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
+            _rb.velocity = new Vector2(push, _rb.velocity.y);
         }
     }
 }
