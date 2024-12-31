@@ -336,8 +336,8 @@ MonoBehaviour:
   jumpCount: 1
   jumpForce: 20
   jumpTime: 3
-  wallJumpHeight: 10
-  wallJumpPush: 20
+  wallJumpPushForce: {x: 10, y: 30}
+  wallJumpDelay: 0.4
 --- !u!114 &3099278215789275798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +356,7 @@ MonoBehaviour:
     m_Bits: 1
   groundDistance: 0.1
   collider: {fileID: 3693047800681385019}
+  colliderOffset: 0.025
 --- !u!114 &3693047800681385004
 MonoBehaviour:
   m_ObjectHideFlags: 0

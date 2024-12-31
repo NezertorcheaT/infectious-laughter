@@ -29,7 +29,7 @@ namespace Entity.Abilities
 
         public void WallDowning(float playerInput)
         {
-            var downingActive = 0f;
+            var velY = 0f;
             var velX = _rb.velocity.x;
             var trajectory = _collideCheck.GetTrajectory(playerInput);
 
@@ -46,9 +46,9 @@ namespace Entity.Abilities
                 _ = WaitDowningDelay();
             }
 
-            if (_isDowning) downingActive = -speed;
+            if (_isDowning) velY = -speed;
             if (trajectory != 0) velX = 0;
-            _rb.velocity = new Vector2(velX, downingActive);
+            _rb.velocity = new Vector2(velX, velY);
 
             if (!_collideCheck.IsOnWall) _getToWall = false;
         }
