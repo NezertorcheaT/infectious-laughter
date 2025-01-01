@@ -225,6 +225,7 @@ namespace CustomHelper
             IEnumerable<TileBase> exclude
         )
         {
+            direction = direction.normalized;
             var excluded = exclude as TileBase[] ?? exclude.ToArray();
             for (var i = 0; i < distance; i++)
             {
