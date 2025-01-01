@@ -19,6 +19,8 @@ namespace CustomHelper
         public static int Area(this Vector2Int value) => value.x * value.y;
         public static float Area(this Vector2 value) => value.x * value.y;
 
+        public static Vector2 Swap(this Vector2 a) => new(a.y, a.x);
+
         public static Vector2Int ToInt(this Vector2 a) => new((int)a.x, (int)a.y);
         public static Vector3Int ToInt(this Vector3 a) => new((int)a.x, (int)a.y, (int)a.z);
         public static Vector3Int ToVector3Int(this Vector2Int a, int def = 0) => new(a.x, a.y, def);
