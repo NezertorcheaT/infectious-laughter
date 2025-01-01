@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -27,22 +28,25 @@ namespace Entity.Abilities
         private int _jumpCountActive;
         private Rigidbody2D _playerRb;
         private CollideCheck _collideCheck;
-        private Downing _movementDowning;
+        private Downing _downing;
         private HorizontalMovement _movement;
+        private bool _plm;
+        private bool _pld;
 
         private void Start()
         {
             _playerRb = GetComponent<Rigidbody2D>();
             _movement = Entity.FindAbilityByType<HorizontalMovement>();
             _collideCheck = Entity.FindAbilityByType<CollideCheck>();
-            _movementDowning = Entity.FindExactAbilityByType<Downing>();
+            _downing = Entity.FindExactAbilityByType<Downing>();
             _jumpCountActive = jumpCount;
         }
 
         private void TryJump()
         {
+            if (!Available()) return;
             if (_collideCheck.IsTouchingGround || _jumpCountActive > 0) Perform();
-            else if (_collideCheck.IsOnWall) JumpFromWall();
+            else if (_collideCheck.IsOnWall) _ = JumpFromWall();
         }
 
         void IJumpableAbility.Perform() => TryJump();
@@ -58,15 +62,17 @@ namespace Entity.Abilities
             _playerRb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
 
-        private async void JumpFromWall()
+        private async Task JumpFromWall()
         {
             if (_movement is null) return;
-            if (_movementDowning is null) return;
+            if (_downing is null) return;
             if (_collideCheck is null) return;
             if (_playerRb is null) return;
 
-            _movementDowning.enabled = false;
-            _movement.enabled = false;
+            _plm = _movement.enabled;
+            _pld = _downing.enabled;
+            if (_pld) _downing.enabled = false;
+            if (_plm) _movement.enabled = false;
 
             _playerRb.AddForce(
                 new Vector2(
@@ -78,10 +84,10 @@ namespace Entity.Abilities
 
             await UniTask.WaitForSeconds(wallJumpDelay);
             if (_movement is null) return;
-            if (_movementDowning is null) return;
+            if (_downing is null) return;
 
-            _movementDowning.enabled = true;
-            _movement.enabled = true;
+            if (_pld) _downing.enabled = true;
+            if (_plm) _movement.enabled = true;
         }
     }
 }

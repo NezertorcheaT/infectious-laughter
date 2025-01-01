@@ -16,6 +16,7 @@ namespace Entity.Abilities
         [SerializeField, Min(1)] private int dashCount;
         private int _currentDashCount;
         private Rigidbody2D _rb;
+        private bool _plm;
 
         private void Start()
         {
@@ -26,7 +27,7 @@ namespace Entity.Abilities
         private async Task DisableMovement()
         {
             await UniTask.WaitForSeconds(dashMovementDelay);
-            playerMovement.enabled = true;
+            playerMovement.enabled = _plm;
         }
 
         public async Task Perform()
@@ -34,10 +35,12 @@ namespace Entity.Abilities
             if (!Available()) return;
             if (_currentDashCount <= 0) return;
 
+            _plm = playerMovement.enabled;
             playerMovement.enabled = false;
             _rb.velocity = new Vector2(dashForce * (playerMovement.Turn ? 1f : -1f), 0);
             _currentDashCount--;
-            _ = DisableMovement();
+            if (_plm) _ = DisableMovement();
+            else playerMovement.enabled = _plm;
             await UniTask.WaitForSeconds(dashCooldown * dashCount);
             _currentDashCount = dashCount;
         }
