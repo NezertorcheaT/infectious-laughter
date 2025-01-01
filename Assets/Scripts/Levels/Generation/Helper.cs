@@ -230,7 +230,7 @@ namespace CustomHelper
             for (var i = 0; i < distance; i++)
             {
                 var pos = (gridPosition.ToVector2() + direction * i).ToVector3Int();
-                if (tilemap.HasTile(pos) && !excluded.Contains(tilemap.GetTile(pos)))
+                if (tilemap.HasTile(pos) && (excluded.Length == 0 || !excluded.Contains(tilemap.GetTile(pos))))
                     return new GridRayHit(tilemap.GetTile(pos), i, pos.ToVector2Int());
             }
 
