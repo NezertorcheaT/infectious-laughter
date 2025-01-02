@@ -38,19 +38,18 @@ namespace Entity.States.StateObjects
                 if (playerEntity)
                 {
                     direction = lastSeenPosition.x > entity.transform.position.x;
-                    moveAbility.Move(direction ? 1 : -1, Vector3.Distance(entity.transform.position, lastSeenPosition));
+                    moveAbility.Move(direction ? 1 : -1);
                 }
                 else
                 {
                     if (Vector3.Distance(entity.transform.position, lastSeenPosition) > 1f)
                     {
                         direction = lastSeenPosition.x > entity.transform.position.x;
-                        moveAbility.Move(direction ? 1 : -1,
-                            Vector3.Distance(entity.transform.position, lastSeenPosition));
+                        moveAbility.Move(direction ? 1 : -1);
                         continue;
                     }
 
-                    moveAbility.Move(0, Vector3.Distance(entity.transform.position, lastSeenPosition));
+                    moveAbility.Move(0);
                     break;
                 }
             }

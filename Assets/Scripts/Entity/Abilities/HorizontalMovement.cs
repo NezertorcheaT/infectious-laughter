@@ -1,4 +1,3 @@
-using NaughtyAttributes;
 using System;
 using UnityEngine;
 
@@ -9,22 +8,17 @@ namespace Entity.Abilities
     public class HorizontalMovement : Ability
     {
         [SerializeField, Min(0.001f)] private float speed;
-
-        [SerializeField] private bool canUseDash;
-        [SerializeField, EnableIf("canUseDash"), Min(0.001f)] private float dashSpeed;
-        [SerializeField, EnableIf("canUseDash")] private float maxDashDistance;
-
+        [SerializeField] private bool turn;
         private Rigidbody2D _rb;
-        private bool _turn;
 
         public bool Turn
         {
-            get => _turn;
+            get => turn;
             private set
             {
-                _turn = value;
+                turn = value;
                 if (TurnInFloat != 0f)
-                    OnTurn?.Invoke(_turn);
+                    OnTurn?.Invoke(turn);
             }
         }
 
@@ -46,15 +40,21 @@ namespace Entity.Abilities
             _rb = GetComponent<Rigidbody2D>();
         }
 
-        public void Move(float velocity, float distance)
+        public void Move(float velocity)
         {
-            if (!Available() || Mathf.Abs(_rb.velocity.x) > speed) return;
+            var push = velocity * speed;
 
             TurnInFloat = velocity;
             Turn = velocity == 0 ? Turn : velocity > 0;
 
-            if (distance < maxDashDistance && canUseDash) _rb.velocity = new Vector2(velocity * dashSpeed, _rb.velocity.y);
-            else _rb.velocity = new Vector2(velocity * speed, _rb.velocity.y);
+            if (!Available() || (
+                    (_rb.velocity.x >= 0 || push <= 0) &&
+                    (_rb.velocity.x <= 0 || push >= 0) &&
+                    push != 0 &&
+                    Mathf.Abs(_rb.velocity.x) > Mathf.Abs(push)
+                )) return;
+
+            _rb.velocity = new Vector2(push, _rb.velocity.y);
         }
     }
 }

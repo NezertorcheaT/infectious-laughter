@@ -19,6 +19,8 @@ namespace CustomHelper
         public static int Area(this Vector2Int value) => value.x * value.y;
         public static float Area(this Vector2 value) => value.x * value.y;
 
+        public static Vector2 Swap(this Vector2 a) => new(a.y, a.x);
+
         public static Vector2Int ToInt(this Vector2 a) => new((int)a.x, (int)a.y);
         public static Vector3Int ToInt(this Vector3 a) => new((int)a.x, (int)a.y, (int)a.z);
         public static Vector3Int ToVector3Int(this Vector2Int a, int def = 0) => new(a.x, a.y, def);
@@ -223,11 +225,12 @@ namespace CustomHelper
             IEnumerable<TileBase> exclude
         )
         {
+            direction = direction.normalized;
             var excluded = exclude as TileBase[] ?? exclude.ToArray();
             for (var i = 0; i < distance; i++)
             {
                 var pos = (gridPosition.ToVector2() + direction * i).ToVector3Int();
-                if (tilemap.HasTile(pos) && !excluded.Contains(tilemap.GetTile(pos)))
+                if (tilemap.HasTile(pos) && (excluded.Length == 0 || !excluded.Contains(tilemap.GetTile(pos))))
                     return new GridRayHit(tilemap.GetTile(pos), i, pos.ToVector2Int());
             }
 

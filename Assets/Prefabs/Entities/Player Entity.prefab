@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 3693047800681384994}
   - component: {fileID: 3693047800681385005}
   - component: {fileID: 5642917770519722054}
-  - component: {fileID: -1049219384964266344}
   - component: {fileID: 4591081283101944266}
   - component: {fileID: 3738668267681852663}
   - component: {fileID: 5696599926002409577}
@@ -268,9 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  canUseDash: 0
-  dashSpeed: 0
-  maxDashDistance: 0
+  turn: 1
 --- !u!114 &-3373324767650511719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,11 +333,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b53ce2a64aede4799a5e98738607f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpCount: 1
+  jumpCount: 0
   jumpForce: 20
   jumpTime: 3
-  wallJumpHeight: 10
-  wallJumpPush: 20
+  wallJumpPushForce: {x: 10, y: 30}
+  wallJumpDelay: 0.4
 --- !u!114 &3099278215789275798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +356,7 @@ MonoBehaviour:
     m_Bits: 1
   groundDistance: 0.1
   collider: {fileID: 3693047800681385019}
+  colliderOffset: 0.025
 --- !u!114 &3693047800681385004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 3693047800681385017}
-  dashForce: 7
+  dashForce: 20
+  dashMovementDelay: 0.25
   dashCooldown: 30
   dashCount: 1
 --- !u!114 &3693047800681385005
@@ -425,18 +424,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90d49d1264220874d8fe4f607bc44168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1049219384964266344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3693047800681385021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82c9b540f09b9334b83ddf0de7ea3cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4591081283101944266

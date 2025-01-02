@@ -75,7 +75,7 @@ namespace Entity.Controllers
         private void CrouchOnStarted(InputAction.CallbackContext ctx) => _crouchAbility.Perform();
         private void PickGarbagePerformed(InputAction.CallbackContext ctx) => _entityGarbage.PickGarbage();
         private void JumpOnPerformed(InputAction.CallbackContext ctx) => _jumpAbility.Perform();
-        private void DashOnPerformed(InputAction.CallbackContext ctx) => _dashAbility.Perform();
+        private void DashOnPerformed(InputAction.CallbackContext ctx) => _ = _dashAbility.Perform();
 
 
         private bool _hangingRight;
@@ -87,7 +87,7 @@ namespace Entity.Controllers
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
             _inputY = _actions.Gameplay.VerticalMove.ReadValue<float>();
-            _moveAbility.Move(_input, 0);
+            _moveAbility.Move(_input);
             _movementDowning.WallDowning(_input);
             _followPoint.MovePoint(_input, _inputY);
         }
