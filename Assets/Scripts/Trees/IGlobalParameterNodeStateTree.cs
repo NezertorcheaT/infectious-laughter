@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Entity.States
+namespace Trees
 {
     /// <summary>
     /// это дерево, стейты которого имеют глобальный для дерева параметр<br />

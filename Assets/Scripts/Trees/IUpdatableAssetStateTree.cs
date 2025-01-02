@@ -1,4 +1,4 @@
-﻿namespace Entity.States
+﻿namespace Trees
 {
     /// <summary>
     /// эта кароч дерево, которое может быть обновлено<br />

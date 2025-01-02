@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Entity.States
+namespace Trees
 {
     public interface IZoomableStateTree<T> : IStateTree<T>
     {

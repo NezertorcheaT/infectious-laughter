@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Entity.States
+namespace Trees
 {
     /// <summary>
     /// ДЕРЕВОООООО<br />
