@@ -77,9 +77,9 @@ namespace Entity
             }
 
             if (!Controller) return;
-            var contr = Controller as IInitializeByEntity;
-            contr.Initialized = true;
-            contr.Initialize();
+            var controller = Controller as IInitializeByEntity;
+            controller.Initialized = true;
+            controller.Initialize();
             Controller.OnInitializationComplete?.Invoke();
         }
 

@@ -6,8 +6,9 @@ namespace Entity
     /// <summary>
     /// ну значт контроллер<br />
     /// вешается рядом с ентити и только один<br />
-    /// нужен чтоб контролировать поведение сущности
+    /// нужен, чтоб контролировать поведение сущности
     /// </summary>
+    [DisallowMultipleComponent]
     public abstract class Controller : MonoBehaviour, IInitializeByEntity
     {
         /// <summary>

@@ -4,7 +4,7 @@ namespace Entity
 {
     /// <summary>
     /// ну значт способность<br />
-    /// отвечают за выполнение действия у сущностей
+    /// отвечает за выполнение действия у сущностей
     /// </summary>
     public abstract class Ability : MonoBehaviour, IInitializeByEntity
     {

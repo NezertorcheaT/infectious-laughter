@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using CustomHelper;
 using UnityEngine;
@@ -21,7 +20,7 @@ namespace Entity.Abilities
         [SerializeField] private LayerMask groundLayer;
         [SerializeField, Min(0.01f)] private float groundDistance = 0.1f;
         [SerializeField] private new Collider2D collider;
-        [SerializeField] private float colliderOffset;
+        [SerializeField, Min(0.001f)] private float colliderOffset = 0.025f;
 
         private Vector2 _checkSize;
         private Vector3 _size;

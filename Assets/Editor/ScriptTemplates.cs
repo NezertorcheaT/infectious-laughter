@@ -78,7 +78,7 @@ namespace Editor
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = ""New #REJECTED_CLASS_NAME_SPACE#"", menuName = ""Inventory/Items/#REJECTED_CLASS_NAME_SPACE#"", order = 0)]
-    public class #CLASS_NAME# : ScriptableObject, IItem
+    public class #CLASS_NAME# : ScriptableObject, IShopItem, ISpriteItem, IStackableClampedItem
     {
         public string Name => ""#REJECTED_CLASS_NAME_SPACE#"";
         public string Id => ""il.#REJECTED_CLASS_NAME_CAMEL#"";
@@ -92,30 +92,6 @@ namespace Inventory.Items
 }", "Item");
         }
 
-        [MenuItem("Assets/Code Presets/State", priority = 10000)]
-        public static void CreateStateMenu()
-        {
-            CreateFile("State", "NewState", ZenUnityEditorUtil.GetCurrentDirectoryAssetPathFromSelection(),
-                @"using System.Threading.Tasks;
-using UnityEngine;
-
-namespace Entity.States
-{
-    [CreateAssetMenu(fileName = ""#REJECTED_CLASS_NAME_SPACE# State"", menuName = ""AI Nodes/States/#REJECTED_CLASS_NAME_SPACE# State"", order = 0)]
-    public class #CLASS_NAME# : State
-    {
-        public override string Name => ""#REJECTED_CLASS_NAME_SPACE#"";
-
-        public override async Task<int> Activate(Entity entity, State previous)
-        {
-            var nextId = 0;
-
-            return nextId;
-        }
-    }
-}", "State");
-        }
-
         [MenuItem("Assets/Code Presets/Ability", priority = 10000)]
         public static void CreateAbilityMenu()
         {
@@ -127,12 +103,27 @@ namespace Entity.Abilities
     [AddComponentMenu(""Entity/Abilities/#REJECTED_CLASS_NAME_SPACE#"")]
     public class #CLASS_NAME# : Ability
     {
-        public override void Initialize()
-        {
-            base.Initialize();
-        }
+        
     }
 }", "Ability;Entity");
+        }
+
+        [MenuItem("Assets/Code Presets/Neurone", priority = 10000)]
+        public static void CreateNeuroneMenu()
+        {
+            CreateFile("Neurone", "NewNeurone", ZenUnityEditorUtil.GetCurrentDirectoryAssetPathFromSelection(),
+                @"using UnityEngine;
+
+namespace Entity.AI.Neurones
+{
+    [AddComponentMenu(""Entity/AI/Neurones/#REJECTED_CLASS_NAME_SPACE#"")]
+    public class #CLASS_NAME# : Neurone
+    {
+        public override void AfterInitialize()
+        {
+        }
+    }
+}", "Neurone");
         }
 
         [MenuItem("Assets/Code Presets/Controller", priority = 10000)]
