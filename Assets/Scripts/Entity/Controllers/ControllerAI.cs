@@ -16,6 +16,7 @@ namespace Entity.Controllers
             base.Initialize();
             OnInitializationComplete += OnEnable;
             OnEnable();
+            if (brain is null) return;
 
             if (brain.gameObject.scene.name is null)
             {
