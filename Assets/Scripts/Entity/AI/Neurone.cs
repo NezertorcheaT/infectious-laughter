@@ -32,7 +32,7 @@ namespace Entity.AI
         /// бесполезная хуйня, аналог isActiveAndEnabled
         /// </summary>
         /// <returns></returns>
-        public virtual bool Available() => isActiveAndEnabled;
+        public virtual bool Available() => isActiveAndEnabled && _initialized;
 
         /// <summary>
         /// аналог старта, чтоб была полная инициализация

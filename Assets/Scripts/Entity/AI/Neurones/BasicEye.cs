@@ -30,5 +30,11 @@ namespace Entity.AI.Neurones
                                 .Relation.Hostile)
                 .Any(i => (i.Entity.CachedTransform.position - Entity.CachedTransform.position).magnitude < range);
         }
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireSphere(transform.position, range);
+        }
+#endif
     }
 }

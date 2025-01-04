@@ -3377,11 +3377,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1329316345278413906, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0625
+      value: -52.26
       objectReference: {fileID: 0}
     - target: {fileID: 1329316345278413906, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 1329316345278413906, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3418,6 +3418,10 @@ PrefabInstance:
     - target: {fileID: 1329316345278413915, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
       propertyPath: m_Name
       value: Blood Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 4711616414352708730, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
+      propertyPath: autoFindNeurones
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
