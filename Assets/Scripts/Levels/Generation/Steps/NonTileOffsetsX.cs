@@ -23,23 +23,27 @@ namespace Levels.Generation.Steps
                     searchDirection = !searchDirection;
                     var searchDirectionMultiplier = searchDirection ? 1f : -1f;
                     var offsetX = searchDirectionMultiplier * searchTickRange * j;
+                    var positionY = Physics2D.Raycast(
+                        new Vector2(nonTile.Position.x + nonTile.OffsetX, properties.MaxY * 2f),
+                        Vector2.down,
+                        properties.MaxY * 10,
+                        1 << 0
+                    ).point.y + nonTile.OffsetY + onFloor.RayStartHeight;
 
                     var hitMiddle = Physics2D.Raycast(
-                        new Vector2(nonTile.Position.x + onFloor.Center.x + offsetX, properties.MaxY),
+                        new Vector2(nonTile.Position.x + onFloor.Center.x + offsetX, positionY),
                         Vector2.down,
                         properties.MaxY * 5,
                         1 << 0
                     );
                     var hitLeft = Physics2D.Raycast(
-                        new Vector2(nonTile.Position.x + onFloor.Center.x - onFloor.Size / 2f + offsetX,
-                            properties.MaxY),
+                        new Vector2(nonTile.Position.x + onFloor.Center.x - onFloor.Size / 2f + offsetX, positionY),
                         Vector2.down,
                         properties.MaxY * 5,
                         1 << 0
                     );
                     var hitRight = Physics2D.Raycast(
-                        new Vector2(nonTile.Position.x + onFloor.Center.x + onFloor.Size / 2f + offsetX,
-                            properties.MaxY),
+                        new Vector2(nonTile.Position.x + onFloor.Center.x + onFloor.Size / 2f + offsetX, positionY),
                         Vector2.down,
                         properties.MaxY * 5,
                         1 << 0
