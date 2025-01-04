@@ -1,3 +1,4 @@
+using CustomHelper;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -29,10 +30,10 @@ namespace Entity.AI
         }
 
         /// <summary>
-        /// бесполезная хуйня, аналог isActiveAndEnabled
+        /// бесполезная хуйня, аналог isActiveAndEnabled, око круче
         /// </summary>
         /// <returns></returns>
-        public virtual bool Available() => isActiveAndEnabled && _initialized;
+        public virtual bool Available() => isActiveAndEnabled && _initialized && !gameObject.IsPrefab();
 
         /// <summary>
         /// аналог старта, чтоб была полная инициализация

@@ -1,3 +1,4 @@
+using CustomHelper;
 using Entity.AI;
 using UnityEngine;
 using Zenject;
@@ -18,7 +19,7 @@ namespace Entity.Controllers
             OnEnable();
             if (brain is null) return;
 
-            if (brain.gameObject.scene.name is null)
+            if (brain.IsOnPrefab())
             {
                 brain = Instantiate(brain, Entity.CachedTransform);
                 _container.Inject(brain);
@@ -27,7 +28,7 @@ namespace Entity.Controllers
             if (brain.transform.parent != Entity.CachedTransform)
             {
                 Debug.LogError(
-                    $"Currently instantiated brain ({brain.gameObject.name}) is not part of de entity ({Entity.gameObject.name}). Initialization stopped");
+                    $"Selected brain ({brain.gameObject.name}) is not part of de entity ({Entity.gameObject.name}). Initialization stopped");
                 return;
             }
 

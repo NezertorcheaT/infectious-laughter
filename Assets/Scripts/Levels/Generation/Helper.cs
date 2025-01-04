@@ -11,10 +11,24 @@ namespace CustomHelper
     public static partial class Helper
     {
         public static string ByComma<T>(this IEnumerable<T> enumerable) =>
-            enumerable.Select(i => i.ToString()).Aggregate((a, b) => $"{a}, {b}");
+            enumerable.Select(i => i.ToString()).ByComma();
 
-        public static string ByComma(this IEnumerable<string> enumerable) =>
-            enumerable.Aggregate((a, b) => $"{a}, {b}");
+        public static string ByComma(this IEnumerable<GameObject> enumerable) =>
+            enumerable.Select(i => i.name).ByComma();
+
+        public static string ByComma(this IEnumerable<Entity.Entity> enumerable) =>
+            enumerable.Select(i => i.gameObject.name).ByComma();
+
+        public static string ByComma(this IEnumerable<string> enumerable)
+        {
+            var array = enumerable as string[] ?? enumerable.ToArray();
+            return array.Length == 0
+                ? string.Empty
+                : array.Aggregate((a, b) => $"{a}, {b}");
+        }
+
+        public static bool IsPrefab(this GameObject gameObject) => gameObject.scene.name is null;
+        public static bool IsOnPrefab(this Component component) => component.gameObject.scene.name is null;
 
         public static int Area(this Vector2Int value) => value.x * value.y;
         public static float Area(this Vector2 value) => value.x * value.y;

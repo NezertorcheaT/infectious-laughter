@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using CustomHelper;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEngine;
@@ -38,6 +40,8 @@ namespace Entity.AI
                 neurones = new List<Neurone>(10);
                 neurones.AddRange(gameObject.GetComponents<Neurone>());
             }
+            else
+                neurones = neurones.Where(i => !i.IsOnPrefab() && i.gameObject == gameObject).ToList();
 
             foreach (var neurone in neurones)
                 neurone.Initialize(entity, this);

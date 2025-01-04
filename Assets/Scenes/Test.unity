@@ -382,6 +382,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &105146216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4711616414352708676, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
+  m_PrefabInstance: {fileID: 4711616413100949978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &105146221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105146216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b25fdc912345fe913be70114cf46df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 5
 --- !u!1 &227561048
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,7 +3441,16 @@ PrefabInstance:
       propertyPath: autoFindNeurones
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4711616414352708731, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
+      propertyPath: eye
+      value: 
+      objectReference: {fileID: 105146221}
+    - target: {fileID: 4711616414352708731, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
+      propertyPath: hears
+      value: 
+      objectReference: {fileID: 105146221}
+    m_RemovedComponents:
+    - {fileID: 4711616414352708728, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e142ec21c69f5b94cac210a134b735a8, type: 3}
 --- !u!1001 &5070948114235853330
 PrefabInstance:
