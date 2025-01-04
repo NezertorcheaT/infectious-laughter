@@ -353,7 +353,7 @@ MonoBehaviour:
   <Size>k__BackingField: 1.5
   <MaxSearchTry>k__BackingField: 180
   <SearchUnit>k__BackingField: 0.0625
-  visualSizeY: 3.3
+  <RayStartHeight>k__BackingField: 2.23
 --- !u!1 &1241512121679443488
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,7 +3778,7 @@ MonoBehaviour:
   <Size>k__BackingField: 1.75
   <MaxSearchTry>k__BackingField: 180
   <SearchUnit>k__BackingField: 0.0625
-  visualSizeY: 3.3
+  <RayStartHeight>k__BackingField: 3.3
 --- !u!1 &4775974347117484377
 GameObject:
   m_ObjectHideFlags: 0
@@ -4048,7 +4048,7 @@ MonoBehaviour:
   <Size>k__BackingField: 1.1875
   <MaxSearchTry>k__BackingField: 180
   <SearchUnit>k__BackingField: 0.0625
-  visualSizeY: 3.3
+  <RayStartHeight>k__BackingField: 1.42
 --- !u!1 &5369267589517242234
 GameObject:
   m_ObjectHideFlags: 0

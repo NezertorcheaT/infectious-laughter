@@ -773,7 +773,7 @@ MonoBehaviour:
   <Size>k__BackingField: 2.375
   <MaxSearchTry>k__BackingField: 180
   <SearchUnit>k__BackingField: 0.0625
-  visualSizeY: 3.3
+  <RayStartHeight>k__BackingField: 3.3
 --- !u!1 &4823586720071841173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,7 +2847,7 @@ MonoBehaviour:
   <Size>k__BackingField: 3.25
   <MaxSearchTry>k__BackingField: 200
   <SearchUnit>k__BackingField: 0.0625
-  visualSizeY: 3.94
+  <RayStartHeight>k__BackingField: 1.82
 --- !u!1 &6214643141912534690
 GameObject:
   m_ObjectHideFlags: 0
