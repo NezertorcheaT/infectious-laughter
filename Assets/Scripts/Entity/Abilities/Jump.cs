@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Entity.Abilities
 {
@@ -60,6 +62,13 @@ namespace Entity.Abilities
                 _jumpCountActive--;
 
             _playerRb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            IEnumerator Stop()
+            {
+                yield return new WaitForSeconds(0.05f);
+                _playerRb.velocity = new Vector2(0f, _playerRb.velocity.y);
+            }
+            StartCoroutine(Stop());
+
         }
 
         private async Task JumpFromWall()
