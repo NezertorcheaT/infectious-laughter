@@ -29,6 +29,15 @@ namespace Entity.AI
             _initialized = true;
         }
 
+        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// важно!!!<br/>
+        /// это не обычный трансформ, как и в абилити он кеширован<br/>
+        /// пока не произошла инициализация, он будет возвращать оригинальный трансформ этого нейрона<br/>
+        /// после инициализации возвращает трансформ сущности
+        /// </summary>
+        public new Transform transform => !_initialized ? base.transform : Entity.transform;
+
         /// <summary>
         /// бесполезная хуйня, аналог isActiveAndEnabled, око круче
         /// </summary>

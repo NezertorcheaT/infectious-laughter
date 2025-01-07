@@ -45,7 +45,7 @@ namespace Inventory.Items
         {
             Verifier.Container.InstantiatePrefab(
                 transportPrefab,
-                entity.CachedTransform.position,
+                entity.transform.position,
                 Quaternion.identity,
                 null
             );

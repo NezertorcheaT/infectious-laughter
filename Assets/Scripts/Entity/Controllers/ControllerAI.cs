@@ -21,11 +21,11 @@ namespace Entity.Controllers
 
             if (brain.IsOnPrefab())
             {
-                brain = Instantiate(brain, Entity.CachedTransform);
+                brain = Instantiate(brain, transform);
                 _container.Inject(brain);
             }
 
-            if (brain.transform.parent != Entity.CachedTransform)
+            if (brain.transform.parent != transform)
             {
                 Debug.LogError(
                     $"Selected brain ({brain.gameObject.name}) is not part of de entity ({Entity.gameObject.name}). Initialization stopped");

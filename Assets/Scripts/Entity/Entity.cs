@@ -51,7 +51,22 @@ namespace Entity
         /// <summary>
         /// Ахахахвахва, я кешировал трансформ! Ухахаха
         /// </summary>
-        public Transform CachedTransform { get; protected set; }
+        public Transform CachedTransform
+        {
+            get
+            {
+                cachedTransform ??= base.transform;
+                return cachedTransform;
+            }
+        }
+
+        private Transform cachedTransform;
+
+        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Если че старый трансформ я спрятал, это новый кешированный
+        /// </summary>
+        public new Transform transform => CachedTransform;
 
 
         /// <summary>
@@ -67,8 +82,6 @@ namespace Entity
         {
             if (Controller || AutoFindController) Controller = GetComponent<Controller>();
             if (Abilities == null || AutoFindAbilities) Abilities = GetComponents<Ability>();
-
-            CachedTransform = transform;
 
             foreach (var ability in Abilities.AsType<IInitializeByEntity>())
             {

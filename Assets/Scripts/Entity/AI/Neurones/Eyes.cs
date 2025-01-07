@@ -27,24 +27,24 @@ namespace Entity.AI.Neurones
                 e.gameObject != Entity.gameObject &&
                 bounds.Intersects2D(e.Bounds)
             )
-            .Select(i => i.Entity.FindExactAbilityByType<Fraction>())
+            .Select(i => _pool.Fractions.GetValueOrDefault(i))
             .Where(i =>
                 i is not null &&
                 _fraction.CurrentFraction.GetRelation(i.CurrentFraction) is Relationships.Fraction.Relation.Hostile
             )
             .OrderBy(i => i.CurrentFraction.Influence)
             .ThenByDescending(i => Vector2.Distance(
-                i.Entity.CachedTransform.position,
-                Entity.CachedTransform.position
+                i.transform.position,
+                transform.position
             ))
             .Where(i => !(
                 i.Entity.FindExactAbilityByType<Crouching>().IsCrouching &&
                 Vector2.Distance(
-                    i.Entity.CachedTransform.position,
-                    Entity.CachedTransform.position
+                    i.transform.position,
+                    transform.position
                 ) > rangeIfHidden &&
                 Physics2D.Raycast(
-                    i.Entity.CachedTransform.position,
+                    i.transform.position,
                     Vector2.down,
                     1f,
                     1 << 6
@@ -81,7 +81,7 @@ namespace Entity.AI.Neurones
                 if (overlaps.Count == 0) return (null, null);
 
                 var hostile = overlaps.Last();
-                var hostilePosition = hostile.CachedTransform.position;
+                var hostilePosition = hostile.transform.position;
 
                 var crouching = hostile.FindAbilityByType<Crouching>();
                 if (crouching)

@@ -13,6 +13,12 @@ namespace Entity
         /// </summary>
         public Entity Entity { get; private set; }
 
+        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Если че трансформ новый, кешированный
+        /// </summary>
+        public new Transform transform => Entity.CachedTransform;
+
         public virtual void Initialize() => Entity = GetComponent<Entity>();
 
         /// <summary>

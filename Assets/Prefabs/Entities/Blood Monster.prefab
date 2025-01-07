@@ -418,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4711616414352708677}
   - component: {fileID: 4711616414352708730}
-  - component: {fileID: 4711616414352708728}
+  - component: {fileID: 889409925733406100}
   - component: {fileID: 4711616414352708731}
   m_Layer: 3
   m_Name: Brain
@@ -454,11 +454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e494ed2bb9c47c7b725954dfeaa7478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoFindNeurones: 0
-  neurones:
-  - {fileID: 4711616414352708728}
-  - {fileID: 4711616414352708731}
---- !u!114 &4711616414352708728
+  autoFindNeurones: 1
+  neurones: []
+--- !u!114 &889409925733406100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -467,7 +465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4711616414352708676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64607ff9d3551ce43b31305820680ad0, type: 3}
+  m_Script: {fileID: 11500000, guid: 22b25fdc912345fe913be70114cf46df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   range: 5
@@ -483,4 +481,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cbcc2eff474a15b35b6959a3c031e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eye: {fileID: 4711616414352708728}
+  hears: {fileID: 889409925733406100}

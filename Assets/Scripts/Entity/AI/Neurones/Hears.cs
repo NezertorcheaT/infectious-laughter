@@ -30,7 +30,7 @@ namespace Entity.AI.Neurones
                 .Where(e =>
                     e.Available() &&
                     e.gameObject != Entity.gameObject &&
-                    Vector2.Distance(e.Entity.CachedTransform.position, Entity.CachedTransform.position) < range
+                    Vector2.Distance(e.transform.position, transform.position) < range
                 )
                 .Select(i => _pool.Fractions.GetValueOrDefault(i))
                 .Where(i =>
@@ -44,8 +44,8 @@ namespace Entity.AI.Neurones
                 })
                 .OrderBy(i => i.CurrentFraction.Influence)
                 .ThenByDescending(i => Vector2.Distance(
-                    i.Entity.CachedTransform.position,
-                    Entity.CachedTransform.position
+                    i.transform.position,
+                    transform.position
                 ))
                 .Select(i => i.Entity)
                 .ToArray();

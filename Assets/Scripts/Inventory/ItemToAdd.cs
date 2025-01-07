@@ -17,8 +17,8 @@ namespace Inventory
 
         private void OnPickItem(InputAction.CallbackContext ctx)
         {
-            if (Vector2.Distance(_input.Entity.CachedTransform.position, transform.position) > _input.MaxDistance) return;
-            var entityPosition = _input.Entity.CachedTransform.position;
+            if (Vector2.Distance(_input.transform.position, transform.position) > _input.MaxDistance) return;
+            var entityPosition = _input.transform.position;
             var substr = transform.position - entityPosition;
             Debug.DrawRay(entityPosition, substr);
 

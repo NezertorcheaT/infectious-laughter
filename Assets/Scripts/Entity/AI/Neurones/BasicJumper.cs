@@ -17,7 +17,7 @@ namespace Entity.AI.Neurones
 
         private void Update()
         {
-            if (hears.Hostiles.Any()) _jumpableAbility.Perform();
+            if (hears.Available() && hears.Hostiles.Any()) _jumpableAbility.Perform();
         }
     }
 }
