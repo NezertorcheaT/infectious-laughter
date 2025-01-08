@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Entity.Abilities;
@@ -22,7 +23,7 @@ namespace Entity.AI.Neurones
         /// враги, которых слышит сейчас сущность, в порядке важности<br/>
         /// последний самый важный
         /// </summary>
-        public IReadOnlyCollection<Entity> Hostiles { get; private set; }
+        public IReadOnlyCollection<Entity> Hostiles { get; private set; } = Array.Empty<Entity>();
 
         private void Update()
         {

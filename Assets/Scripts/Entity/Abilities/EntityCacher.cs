@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Entity.Abilities
 {
-    [AddComponentMenu("Entity/Abilities/Cacher")]
+    [AddComponentMenu("Entity/Abilities/Casher")]
     public class EntityCacher : Ability
     {
         [Inject] private EntityPool _pool;
@@ -23,7 +23,6 @@ namespace Entity.Abilities
         {
             _pool.Remove(this);
         }
-
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
