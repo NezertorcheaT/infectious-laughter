@@ -17,7 +17,7 @@ namespace Entity
         /// <summary>
         /// Если че трансформ новый, кешированный
         /// </summary>
-        public new Transform transform => Entity.CachedTransform;
+        public new Transform transform => Entity ? Entity.CachedTransform : base.transform;
 
         public virtual void Initialize() => Entity = GetComponent<Entity>();
 

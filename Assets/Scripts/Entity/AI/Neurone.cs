@@ -36,7 +36,7 @@ namespace Entity.AI
         /// пока не произошла инициализация, он будет возвращать оригинальный трансформ этого нейрона<br/>
         /// после инициализации возвращает трансформ сущности
         /// </summary>
-        public new Transform transform => !_initialized ? base.transform : Entity.transform;
+        public new Transform transform => _initialized ? Entity.transform : base.transform;
 
         /// <summary>
         /// бесполезная хуйня, аналог isActiveAndEnabled, око круче

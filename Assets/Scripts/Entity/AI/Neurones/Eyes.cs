@@ -12,8 +12,7 @@ namespace Entity.AI.Neurones
     public class Eyes : Neurone
     {
         [Inject] private EntityPool _pool;
-        [SerializeField] private float range = 5f;
-        [SerializeField] private float rangeIfHidden;
+        [field: SerializeField] public float Range { get; private set; } = 5f;
         private Fraction _fraction;
         private Collider2D _entityMainCollider;
         private HorizontalMovement _movement;
@@ -24,7 +23,7 @@ namespace Entity.AI.Neurones
         {
             _movement = Entity.GetComponent<HorizontalMovement>();
             _entityMainCollider = Entity.GetComponent<Collider2D>();
-            _fraction = Entity.FindAvailableAbilityByInterface<Fraction>();
+            _fraction = Entity.GetComponent<Fraction>();
         }
 
         private void Update()
@@ -32,8 +31,8 @@ namespace Entity.AI.Neurones
             var bounds = _entityMainCollider.bounds;
             var direction = _movement.Turn ? 1f : -1f;
             var checkPosition = bounds.center +
-                                new Vector3(bounds.extents.x + range / 2f, 0) * direction;
-            var checkSize = new Vector2(range, bounds.size.y);
+                                new Vector3(bounds.extents.x + Range / 2f, 0) * direction;
+            var checkSize = new Vector2(Range, bounds.size.y);
             var newBounds = new Bounds(checkPosition, checkSize);
 
             Helper.DrawBox(checkPosition, checkSize);
@@ -43,12 +42,12 @@ namespace Entity.AI.Neurones
                     e.gameObject != Entity.gameObject &&
                     newBounds.Intersects2D(e.Bounds)
                 )
-                .Select(i => _pool.Fractions.GetValueOrDefault(i))
-                .Where(i =>
-                    i is not null &&
-                    _fraction.CurrentFraction.GetRelation(i.CurrentFraction) is Relationships.Fraction.Relation
-                        .Hostile
-                )
+                .Select(i => (_pool.Fractions.GetValueOrDefault(i, null), _pool.Fractions.ContainsKey(i)))
+                .Where(i => i.Item2 &&
+                            _fraction.CurrentFraction.GetRelation(i.Item1.CurrentFraction) is Relationships.Fraction
+                                .Relation
+                                .Hostile)
+                .Select(i => i.Item1)
                 .OrderBy(i => i.CurrentFraction.Influence)
                 .ThenByDescending(i => Vector2.Distance(
                     i.transform.position,

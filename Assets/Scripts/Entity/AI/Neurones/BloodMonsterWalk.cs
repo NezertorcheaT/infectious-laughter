@@ -1,8 +1,10 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using Entity.Abilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Entity.AI.Neurones
 {
@@ -21,10 +23,23 @@ namespace Entity.AI.Neurones
         private bool _partrollingDirection;
         private bool _destroyed;
         private Vector3 _lastSeen;
+        private long _approachStopwatch;
+        private long _approachWaitDelayTicks;
+
+        private float ApproachWaitDelay
+        {
+            get => approachWaitDelay;
+            set
+            {
+                approachWaitDelay = value;
+                _approachWaitDelayTicks = TimeSpan.FromSeconds(ApproachWaitDelay).Ticks;
+            }
+        }
 
         public override void AfterInitialize()
         {
-            _movement = Entity.FindAvailableAbilityByInterface<HorizontalMovement>();
+            _approachWaitDelayTicks = TimeSpan.FromSeconds(ApproachWaitDelay).Ticks;
+            _movement = Entity.FindAbilityByType<HorizontalMovement>();
             _ = PatrollingSwitch();
             _ = FragmentedUpdate();
         }
@@ -45,7 +60,6 @@ namespace Entity.AI.Neurones
         private void Update()
         {
             if (!Available()) return;
-            if (!_movement || !_movement.Available()) return;
 
             _currentTarget = null;
             if (eyes && eyes.Hostiles.Count != 0)
@@ -63,6 +77,7 @@ namespace Entity.AI.Neurones
                 if (thoughtDelay == 0) return;
                 await UniTask.WaitForSeconds(thoughtDelay);
                 if (_destroyed) return;
+                if (!_movement || !_movement.Available()) continue;
 
                 if (_approaching)
                 {
@@ -70,13 +85,17 @@ namespace Entity.AI.Neurones
                     {
                         _approaching = false;
                         await UniTask.WhenAny(
-                            UniTask.WaitForSeconds(approachWaitDelay),
+                            UniTask.WaitForSeconds(ApproachWaitDelay),
                             UniTask.WaitUntil(() => _currentTarget)
                         );
                     }
 
                     var velocity = (_lastSeen - transform.position).x;
                     if (velocity != 0) _movement.Move(velocity / Mathf.Abs(velocity));
+                    if (
+                        (_lastSeen - transform.position).magnitude < eyes.Range * 2 &&
+                        Stopwatch.GetTimestamp() - _approachStopwatch > _approachWaitDelayTicks
+                    ) _approaching = false;
                 }
 
                 if (!_currentTarget)
@@ -86,6 +105,7 @@ namespace Entity.AI.Neurones
                 }
 
                 _approaching = true;
+                _approachStopwatch = Stopwatch.GetTimestamp();
             }
         }
 

@@ -20,10 +20,7 @@ namespace Entity.Controllers
             if (brain is null) return;
 
             if (brain.IsOnPrefab())
-            {
-                brain = Instantiate(brain, transform);
-                _container.Inject(brain);
-            }
+                brain = _container.InstantiatePrefab(brain, transform).GetComponent<Brain>();
 
             if (brain.transform.parent != transform)
             {
