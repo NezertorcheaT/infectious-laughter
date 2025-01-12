@@ -56,10 +56,6 @@ namespace Entity.AI.Neurones
                 ))
                 .Where(i => !(
                     i.Entity.FindExactAbilityByType<Crouching>().IsCrouching &&
-                    Vector2.Distance(
-                        i.transform.position,
-                        transform.position
-                    ) > rangeIfHidden &&
                     Physics2D.Raycast(
                         i.transform.position,
                         Vector2.down,
@@ -77,7 +73,7 @@ namespace Entity.AI.Neurones
                         transformPosition.magnitude,
                         1 << 0
                     );
-                    return hit.collider;
+                    return !hit.collider;
                 });
             Hostiles = overlaps.ToArray();
         }

@@ -54,6 +54,7 @@ namespace Entity.AI.Neurones
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
+            if (!isActiveAndEnabled) return;
             Gizmos.DrawWireSphere(transform.position, range);
         }
 #endif

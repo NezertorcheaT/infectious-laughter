@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2169bbe2b3542224fb6b3244fdebb5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
   turn: 1
 --- !u!114 &-3373324767650511719
 MonoBehaviour:
@@ -350,7 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc79e116f43f4444bae6167c56e2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSlopeAngle: 80
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -542,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideBox: 1
-  offset: {x: 0, y: 0}
+  offset: {x: 0, y: 1}
   scale: {x: 1, y: 2}
 --- !u!61 &3693047800681385019
 BoxCollider2D:

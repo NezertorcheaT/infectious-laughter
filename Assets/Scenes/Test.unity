@@ -529,6 +529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyes: {fileID: 283044342}
   hears: {fileID: 889409925478169702}
+  patrollingReverseDelay: 5
+  approachMinDistance: 1
 --- !u!114 &283044342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3026,7 +3028,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4711616414626774454}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22b25fdc912345fe913be70114cf46df, type: 3}
   m_Name: 
@@ -3381,55 +3383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 0
---- !u!114 &1329316345550886308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329316345550886313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8239a5ee790d0f344910bacfbae6dd93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.6
-      value: 1
-      inSlope: 0.00000041747876
-      outSlope: -0.010162279
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.2379548
-      outWeight: 0.40412974
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -5.5687857
-      outSlope: -5.5687857
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.035398245
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  jumpHeight: 3
-  jumpTime: 0.69
-  whenMax: 0.6
-  jumpsCount: 1
 --- !u!114 &1329316345550886309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3486,7 +3439,6 @@ GameObject:
   - component: {fileID: 1329316345550886310}
   - component: {fileID: 1329316345550886305}
   - component: {fileID: 1329316345550886309}
-  - component: {fileID: 1329316345550886308}
   - component: {fileID: 1329316345550886307}
   - component: {fileID: 1329316345550886306}
   - component: {fileID: 1329316345550886300}
@@ -3517,7 +3469,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 0

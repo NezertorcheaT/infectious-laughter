@@ -81,7 +81,7 @@ namespace Entity.Abilities
 
         private bool Overlap(Vector2 position)
         {
-            Helper.DrawBox(position, _checkSize);
+            if (isActiveAndEnabled) Helper.DrawBox(position, _checkSize);
             var count = Physics2D.OverlapBoxNonAlloc(
                 position,
                 _checkSize,

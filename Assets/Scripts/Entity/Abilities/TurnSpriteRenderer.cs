@@ -16,7 +16,7 @@ namespace Entity.Abilities
         private void Start()
         {
             OnEnable();
-            FragmentedUpdate();
+            _ = FragmentedUpdate();
         }
 
         private void OnEnable()
