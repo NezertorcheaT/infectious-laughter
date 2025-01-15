@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea04ac56cc8394341b40de3fae2e61a8, type: 3}
   m_Name: Dart
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: -1942381001, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
+  dartPrefab: {fileID: 4447436422813897771, guid: bb164062a1e8fa84881f60291d21b8fe, type: 3}
+  offset: {x: 1, y: 0, z: 0}
+  speed: 15
   <ItemCost>k__BackingField: 1
   <MaxStackSize>k__BackingField: 1
