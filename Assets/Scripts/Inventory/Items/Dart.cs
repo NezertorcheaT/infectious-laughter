@@ -13,12 +13,16 @@ namespace Inventory.Items
         [SerializeField] private Sprite sprite;
         [SerializeField] private GameObject dartPrefab;
         [SerializeField] private Vector3 offset;
+        [SerializeField] private int speed;
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 1;
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
 
+        private GameObject _spawnedDart;
+
         public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
         {
-            Instantiate(dartPrefab, entity.gameObject.transform.position + offset, Quaternion.identity);
+            _spawnedDart = Instantiate(dartPrefab, entity.gameObject.transform.position + offset, Quaternion.identity);
+            _spawnedDart.GetComponent<HomingDartPrefab>().speed = speed;
         }
     }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 20
   stunTime: 15
-  speed: 5
+  speed: 15
 --- !u!1 &4447436422840895473
 GameObject:
   m_ObjectHideFlags: 0

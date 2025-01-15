@@ -5,7 +5,7 @@ public class HomingDartPrefab : MonoBehaviour
 {
     [SerializeField] private float radius;
     [SerializeField] private float stunTime;
-    [SerializeField] private float speed;
+    public float speed;
     private Transform _target;
     private Entity.Abilities.Stun _stun;
     
