@@ -12,12 +12,14 @@ namespace Entity.AI.Neurones
     public class Eyes : Neurone
     {
         [Inject] private EntityPool _pool;
-        [field: SerializeField] public float Range { get; private set; } = 5f;
+        [field: SerializeField, Min(0)] public float Range { get; private set; } = 5f;
         private Fraction _fraction;
         private Collider2D _entityMainCollider;
         private HorizontalMovement _movement;
+        private IReadOnlyCollection<Entity> _hostiles = Array.Empty<Entity>();
+        private static readonly Entity[] EmptyEntities = Array.Empty<Entity>();
 
-        public IReadOnlyCollection<Entity> Hostiles { get; private set; } = Array.Empty<Entity>();
+        public IReadOnlyCollection<Entity> Hostiles => isActiveAndEnabled ? _hostiles : EmptyEntities;
 
         public override void AfterInitialize()
         {
@@ -74,7 +76,7 @@ namespace Entity.AI.Neurones
                     );
                     return !hit.collider;
                 });
-            Hostiles = overlaps.ToArray();
+            _hostiles = overlaps.ToArray();
         }
     }
 }
