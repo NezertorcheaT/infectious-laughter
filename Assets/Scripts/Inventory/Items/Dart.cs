@@ -3,14 +3,16 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Dart", menuName = "Inventory/Items/Dart", order = 0)]
-    public class Dart : ScriptableObject, IItem, IUsableItem
+    public class Dart : ScriptableObject, IUsableItem, IShopItem, ISpriteItem, IStackableClampedItem
     {
         public string Name => "Dart";
         public string Id => "il.dart";
         public ScriptableObject SelfRef => this;
         public Sprite Sprite => sprite;
+        public Sprite SpriteForShop => spriteForShop;
 
         [SerializeField] private Sprite sprite;
+        [SerializeField] private Sprite spriteForShop;
         [SerializeField] private GameObject dartPrefab;
         [SerializeField] private Vector3 offset;
         [SerializeField] private int speed;
