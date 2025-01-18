@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using Saving;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace CustomHelper
 {
@@ -19,6 +21,7 @@ namespace CustomHelper
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>
+        [NotNull] [LinqTunnel]
         public static IEnumerable<TResult> WhereSelect<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TResult> selector,
@@ -33,21 +36,35 @@ namespace CustomHelper
         /// <param name="source"></param>
         /// <param name="selector"></param>
         /// <param name="predicate"></param>
+        /// <param name="doNullCheck">проверяет на нулёвость в Where</param>
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>
+        [NotNull] [LinqTunnel]
         public static IEnumerable<TResult> SelectWhere<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TResult> selector,
-            Func<TResult, bool> predicate
-        ) => source.Select(selector).Where(predicate);
+            Func<TResult, bool> predicate,
+            bool doNullCheck = false
+        ) => source.Select(selector).Where(i => (!doNullCheck || i is not null) && predicate(i));
+
+        /// <summary>
+        /// выбрать через Select с проверкой на нулёвость
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="selector"></param>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <returns></returns>
+        [NotNull] [LinqTunnel]
+        public static IEnumerable<TResult> SelectNotNull<TSource, TResult>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TResult> selector
+        ) => source.Select(selector).Where(i => i is not null);
 
         private static readonly IReadOnlyCollection<SavingKey> SavedKeysFields = typeof(SavedKeys)
             .GetFields()
-            .SelectWhere(
-                i => i.GetValue(null) as SavingKey,
-                i => i is not null
-            )
+            .SelectNotNull(i => i.GetValue(null) as SavingKey)
             .ToArray();
 
         /// <summary>
