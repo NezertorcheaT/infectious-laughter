@@ -1,5 +1,5 @@
-﻿using Entity.States;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
+using Trees;
 
 namespace Levels.StoryNodes
 {

@@ -4,7 +4,7 @@ namespace Entity
 {
     /// <summary>
     /// ну значт способность<br />
-    /// отвечают за выполнение действия у сущностей
+    /// отвечает за выполнение действия у сущностей
     /// </summary>
     public abstract class Ability : MonoBehaviour, IInitializeByEntity
     {
@@ -12,6 +12,12 @@ namespace Entity
         /// ссылочка на контролируемую сущность
         /// </summary>
         public Entity Entity { get; private set; }
+
+        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Если че трансформ новый, кешированный
+        /// </summary>
+        public new Transform transform => Entity ? Entity.CachedTransform : base.transform;
 
         public virtual void Initialize() => Entity = GetComponent<Entity>();
 

@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using CustomHelper;
 using UnityEngine;
@@ -21,7 +20,7 @@ namespace Entity.Abilities
         [SerializeField] private LayerMask groundLayer;
         [SerializeField, Min(0.01f)] private float groundDistance = 0.1f;
         [SerializeField] private new Collider2D collider;
-        [SerializeField] private float colliderOffset;
+        [SerializeField, Min(0.001f)] private float colliderOffset = 0.025f;
 
         private Vector2 _checkSize;
         private Vector3 _size;
@@ -39,8 +38,8 @@ namespace Entity.Abilities
             if (!Available()) return;
 
             collider ??= GetComponent<Collider2D>();
-            _size = Entity.CachedTransform.lossyScale;
-            _initialPosition = Entity.CachedTransform.position + (Vector3)collider.offset.Multiply(_size);
+            _size = transform.lossyScale;
+            _initialPosition = transform.position + (Vector3)collider.offset.Multiply(_size);
             _boundsSize = collider.bounds.size;
 
             _checkSize = new Vector2(_boundsSize.x - 2f * colliderOffset, groundDistance);
@@ -82,7 +81,7 @@ namespace Entity.Abilities
 
         private bool Overlap(Vector2 position)
         {
-            Helper.DrawBox(position, _checkSize);
+            if (isActiveAndEnabled) Helper.DrawBox(position, _checkSize);
             var count = Physics2D.OverlapBoxNonAlloc(
                 position,
                 _checkSize,

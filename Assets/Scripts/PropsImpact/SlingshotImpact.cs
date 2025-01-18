@@ -41,7 +41,7 @@ namespace PropsImpact
         public void Initialize(Entity.Entity entity, float upForce, float chargeTime, float minForce,
             float maxForce, int damage, int stunTime)
         {
-            if(_initialized) return;
+            if (_initialized) return;
             _initialized = true;
             _entity = entity;
             _upForce = upForce;
@@ -67,7 +67,7 @@ namespace PropsImpact
             if (_entity == null) return;
 
             var movement = _entity.GetComponent<HorizontalMovement>();
-            var position = _entity.CachedTransform.position;
+            var position = _entity.transform.position;
             var direction = BoolToInt(movement.Turn);
 
             var lerpValue = Mathf.Clamp01(holdTime / _chargeTime);

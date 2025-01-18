@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using CustomHelper;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
@@ -47,7 +45,7 @@ namespace Entity.Abilities
             curJumpsCount = jumpsCount;
         }
 
-        public async UniTask Jump(bool force = false)
+        private async UniTask Jump(bool force = false)
         {
             if (!Available()) return;
             if (curJumpsCount == 0 && !force)

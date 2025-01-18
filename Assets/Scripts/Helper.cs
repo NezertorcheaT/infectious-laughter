@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using NaughtyAttributes;
 using Random = UnityEngine.Random;
 
@@ -90,6 +91,7 @@ namespace CustomHelper
             return array[random.Next(0, array.Length)];
         }
 
+        [NotNull] [LinqTunnel]
         public static IEnumerable<TResult> AsType<TResult>(this IEnumerable enumerable)
         {
             foreach (var item in enumerable)

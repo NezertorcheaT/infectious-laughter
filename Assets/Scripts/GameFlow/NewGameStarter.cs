@@ -2,7 +2,6 @@
 using Levels.StoryNodes;
 using Saving;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace GameFlow

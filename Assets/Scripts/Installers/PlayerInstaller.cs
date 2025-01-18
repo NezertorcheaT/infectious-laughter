@@ -39,7 +39,7 @@ namespace Installers
                 _player.FindAbilityByType<PlayerInventoryInput>().Inventory;
 
             if (teleportCamera)
-                _playerCamera.VirtualCamera.ForceCameraPosition(_player.CachedTransform.position, Quaternion.identity);
+                _playerCamera.VirtualCamera.ForceCameraPosition(_player.transform.position, Quaternion.identity);
 
             _player.GetComponent<Hp>().FromContent(
                 _sessionFactory.Current[SavedKeys.PlayerHp],
@@ -66,7 +66,7 @@ namespace Installers
 
         private void OnGenerationEnded()
         {
-            _player.CachedTransform.position = FindObjectOfType<PlayerSpawnPoint>(true).transform.position;
+            _player.transform.position = FindObjectOfType<PlayerSpawnPoint>(true).transform.position;
             _signalBus.Unsubscribe<ProceduralGenerationInstaller.GenerationEndSignal>(OnGenerationEnded);
         }
     }

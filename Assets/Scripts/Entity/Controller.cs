@@ -6,14 +6,21 @@ namespace Entity
     /// <summary>
     /// ну значт контроллер<br />
     /// вешается рядом с ентити и только один<br />
-    /// нужен чтоб контролировать поведение сущности
+    /// нужен, чтоб контролировать поведение сущности
     /// </summary>
+    [DisallowMultipleComponent]
     public abstract class Controller : MonoBehaviour, IInitializeByEntity
     {
         /// <summary>
         /// ссылочка на контролируемую сущность
         /// </summary>
         public Entity Entity { get; private set; }
+
+        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Если че трансформ новый, кешированный
+        /// </summary>
+        public new Transform transform => Entity.CachedTransform;
 
         /// <summary>
         /// готово ли к запуску

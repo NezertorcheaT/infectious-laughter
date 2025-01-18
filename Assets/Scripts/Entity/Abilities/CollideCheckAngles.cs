@@ -88,7 +88,7 @@ namespace Entity.Abilities
 
             else if (Vector2.Angle(Vector2.up, normal) <= maxWallAngle)
             {
-                if (contact.point.x > Entity.CachedTransform.position.x)
+                if (contact.point.x > transform.position.x)
                     return WallType.Right;
                 else
                     return WallType.Left;
