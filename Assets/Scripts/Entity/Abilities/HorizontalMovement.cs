@@ -46,7 +46,6 @@ namespace Entity.Abilities
 
         public void Move(float velocity)
         {
-
             var push = velocity * (_collideCheck.IsTouchingGround ? speed : speedInJump);
 
             TurnInFloat = velocity;
