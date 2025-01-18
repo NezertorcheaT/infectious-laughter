@@ -6,7 +6,7 @@ using Entity.Abilities;
 using UnityEngine;
 using Zenject;
 
-namespace Entity.AI.Neurones
+namespace Entity.AI.Neurons
 {
     [AddComponentMenu("Entity/AI/Neurones/Eyes")]
     public class Eyes : Neurone

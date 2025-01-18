@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Entity.Abilities;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
-namespace Entity.AI.Neurones
+namespace Entity.AI.Neurons
 {
     [AddComponentMenu("Entity/AI/Neurones/Hears")]
     public class Hears : Neurone

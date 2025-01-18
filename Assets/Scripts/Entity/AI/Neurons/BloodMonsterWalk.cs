@@ -4,9 +4,8 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using Entity.Abilities;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Entity.AI.Neurones
+namespace Entity.AI.Neurons
 {
     [AddComponentMenu("Entity/AI/Neurones/Blood Monster")]
     public class BloodMonsterWalk : Neurone

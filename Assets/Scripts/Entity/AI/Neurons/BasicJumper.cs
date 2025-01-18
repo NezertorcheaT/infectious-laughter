@@ -2,7 +2,7 @@ using System.Linq;
 using Entity.Abilities;
 using UnityEngine;
 
-namespace Entity.AI.Neurones
+namespace Entity.AI.Neurons
 {
     [AddComponentMenu("Entity/AI/Neurones/Basic Jumper")]
     public class BasicJumper : Neurone
