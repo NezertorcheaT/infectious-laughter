@@ -76,12 +76,17 @@ namespace Entity.AI.Neurons
                 if (thoughtDelay == 0) return;
                 await UniTask.WaitForSeconds(thoughtDelay);
                 if (_destroyed) return;
-                if (!_movement || !_movement.Available()) continue;
+                if (!_movement || !_movement.Available())
+                {
+                    _movement?.Move(0);
+                    continue;
+                }
 
                 if (_approaching)
                 {
                     if ((transform.position - _lastSeen).magnitude < approachMinDistance)
                     {
+                        _movement.Move(0);
                         _approaching = false;
                         await UniTask.WhenAny(
                             UniTask.WaitForSeconds(ApproachWaitDelay),

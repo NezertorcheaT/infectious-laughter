@@ -36,7 +36,7 @@ namespace Inventory.UI
         {
             if (_player.Inventory is null) return;
             _player.Inventory.OnChange += UpdateGUI;
-            _actions.Gameplay.PickGarbage.performed += UseItem;
+            _actions.Gameplay.UseItem.performed += UseItem;
             _actions.Gameplay.MouseWheel.performed += CheckWheelSelect;
             _actions.Gameplay.Inv_selectSlot1.performed += SelectSlotNum1;
             _actions.Gameplay.Inv_selectSlot2.performed += SelectSlotNum2;
@@ -50,7 +50,7 @@ namespace Inventory.UI
         {
             if (_player.Inventory is null) return;
             _player.Inventory.OnChange -= UpdateGUI;
-            _actions.Gameplay.PickGarbage.performed -= UseItem;
+            _actions.Gameplay.UseItem.performed -= UseItem;
             _actions.Gameplay.MouseWheel.performed -= CheckWheelSelect;
             _actions.Gameplay.Inv_selectSlot1.performed -= SelectSlotNum1;
             _actions.Gameplay.Inv_selectSlot2.performed -= SelectSlotNum2;

@@ -500,6 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2747544496626047153}
   model: {fileID: 696387289250209803}
+  inverse: 0
   delay: 0
 --- !u!114 &-2099246456691539130
 MonoBehaviour:

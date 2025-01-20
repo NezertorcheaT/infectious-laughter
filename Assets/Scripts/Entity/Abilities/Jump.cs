@@ -62,13 +62,15 @@ namespace Entity.Abilities
                 _jumpCountActive--;
 
             _playerRb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
+            StartCoroutine(Stop());
+            return;
+
             IEnumerator Stop()
             {
                 yield return new WaitForSeconds(0.05f);
                 _playerRb.velocity = new Vector2(0f, _playerRb.velocity.y);
             }
-            StartCoroutine(Stop());
-
         }
 
         private async Task JumpFromWall()

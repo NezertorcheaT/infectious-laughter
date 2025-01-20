@@ -24,6 +24,8 @@ namespace AnimationControllers
             _movement ??= _originalEntity.GetComponent<Entity.Abilities.HorizontalMovement>();
             _stun ??= _originalEntity.GetComponent<Entity.Abilities.Stun>();
             _movement.OnTurn += ChangeAnimator;
+            _movement.OnStartedMoving += ChangeAnimator;
+            _movement.OnStopped += ChangeAnimator;
             _stun.OnStunned += ChangeAnimator;
             _stun.OnUnstunned += ChangeAnimator;
         }
@@ -34,6 +36,8 @@ namespace AnimationControllers
             _movement ??= _originalEntity.GetComponent<Entity.Abilities.HorizontalMovement>();
             _stun ??= _originalEntity.GetComponent<Entity.Abilities.Stun>();
             _movement.OnTurn -= ChangeAnimator;
+            _movement.OnStartedMoving -= ChangeAnimator;
+            _movement.OnStopped -= ChangeAnimator;
             _stun.OnStunned -= ChangeAnimator;
             _stun.OnUnstunned -= ChangeAnimator;
         }
