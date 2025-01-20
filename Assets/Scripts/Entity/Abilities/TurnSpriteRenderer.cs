@@ -10,6 +10,7 @@ namespace Entity.Abilities
     {
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject model;
+        [SerializeField] private bool inverse;
         [SerializeField, Min(0)] private int delay = 100;
         private HorizontalMovement _movement;
 
@@ -37,11 +38,18 @@ namespace Entity.Abilities
 
         private void OnTurn(bool turn)
         {
+            var smoothTurn = _smoothTurn;
+            if (inverse)
+            {
+                turn = !turn;
+                smoothTurn = -smoothTurn;
+            }
+
             if (!spriteRenderer) return;
             spriteRenderer.flipX = delay != 0
-                ? _smoothTurn == 0
+                ? smoothTurn == 0
                     ? spriteRenderer.flipX
-                    : _smoothTurn < 0f
+                    : smoothTurn < 0f
                 : !turn;
 
             if (!model) return;

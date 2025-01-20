@@ -36,19 +36,19 @@ namespace Entity.Abilities
 
             IsStunned = true;
             OnStunned?.Invoke();
-            _jumpAbility.enabled = false;
-            _moveAbility.enabled = false;
+            if (_jumpAbility) _jumpAbility.enabled = false;
+            if (_moveAbility) _moveAbility.enabled = false;
 
             for (stunTime = time; stunTime > 0; stunTime -= Time.fixedDeltaTime)
             {
-                _jumpAbility.enabled = false;
-                _moveAbility.enabled = false;
+                if (_jumpAbility) _jumpAbility.enabled = false;
+                if (_moveAbility) _moveAbility.enabled = false;
                 await UniTask.WaitForFixedUpdate();
             }
 
             stunTime = 0;
-            _jumpAbility.enabled = true;
-            _moveAbility.enabled = true;
+            if (_jumpAbility) _jumpAbility.enabled = true;
+            if (_moveAbility) _moveAbility.enabled = true;
             IsStunned = false;
             OnUnstunned?.Invoke();
         }

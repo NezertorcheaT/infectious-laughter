@@ -109,6 +109,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""UseItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""8648d60e-dd2b-4137-95de-4ec3ee941711"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""cf8824c6-a4af-4a5c-8e9d-ccfa940d481a"",
@@ -630,6 +639,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""VerticalMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7f1a7c7-298e-49db-ae91-aba3e2c48687"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -681,6 +701,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
         m_Gameplay_PickItem = m_Gameplay.FindAction("PickItem", throwIfNotFound: true);
         m_Gameplay_PickGarbage = m_Gameplay.FindAction("PickGarbage", throwIfNotFound: true);
+        m_Gameplay_UseItem = m_Gameplay.FindAction("UseItem", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         m_Gameplay_MouseWheel = m_Gameplay.FindAction("MouseWheel", throwIfNotFound: true);
         m_Gameplay_Inv_selectSlot1 = m_Gameplay.FindAction("Inv_selectSlot1", throwIfNotFound: true);
@@ -760,6 +781,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Crouch;
     private readonly InputAction m_Gameplay_PickItem;
     private readonly InputAction m_Gameplay_PickGarbage;
+    private readonly InputAction m_Gameplay_UseItem;
     private readonly InputAction m_Gameplay_Dash;
     private readonly InputAction m_Gameplay_MouseWheel;
     private readonly InputAction m_Gameplay_Inv_selectSlot1;
@@ -782,6 +804,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Gameplay_Crouch;
         public InputAction @PickItem => m_Wrapper.m_Gameplay_PickItem;
         public InputAction @PickGarbage => m_Wrapper.m_Gameplay_PickGarbage;
+        public InputAction @UseItem => m_Wrapper.m_Gameplay_UseItem;
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
         public InputAction @MouseWheel => m_Wrapper.m_Gameplay_MouseWheel;
         public InputAction @Inv_selectSlot1 => m_Wrapper.m_Gameplay_Inv_selectSlot1;
@@ -827,6 +850,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @PickGarbage.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
                 @PickGarbage.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
                 @PickGarbage.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickGarbage;
+                @UseItem.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUseItem;
+                @UseItem.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUseItem;
+                @UseItem.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUseItem;
                 @Dash.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
@@ -885,6 +911,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @PickGarbage.started += instance.OnPickGarbage;
                 @PickGarbage.performed += instance.OnPickGarbage;
                 @PickGarbage.canceled += instance.OnPickGarbage;
+                @UseItem.started += instance.OnUseItem;
+                @UseItem.performed += instance.OnUseItem;
+                @UseItem.canceled += instance.OnUseItem;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
@@ -970,6 +999,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnPickItem(InputAction.CallbackContext context);
         void OnPickGarbage(InputAction.CallbackContext context);
+        void OnUseItem(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnMouseWheel(InputAction.CallbackContext context);
         void OnInv_selectSlot1(InputAction.CallbackContext context);

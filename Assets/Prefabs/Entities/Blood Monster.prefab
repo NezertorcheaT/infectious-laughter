@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  speedInJump: 0
   turn: 0
 --- !u!114 &594005656745501960
 MonoBehaviour:
@@ -295,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 594005655420953579}
   model: {fileID: 0}
+  inverse: 1
   delay: 100
 --- !u!114 &1342410479588118039
 MonoBehaviour:
