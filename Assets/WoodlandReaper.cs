@@ -158,15 +158,10 @@ namespace Entity.AI.Neurons
             _dashNow = true;
             dashForceMultiplier = x;
             yield return new WaitForSeconds(dashTime);
-            StartCoroutine(DashCooldown());
-
-        }
-
-        private IEnumerator DashCooldown()
-        {
             _dashNow = false;
             yield return new WaitForSeconds(dashCooldown);
             _canDash = true;
+
         }
     }
 }
