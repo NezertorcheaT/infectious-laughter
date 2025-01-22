@@ -17,7 +17,7 @@ namespace Inventory.Items
         private float _chachedHeight;
         private bool _used = false;
 
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
             _playerJump ??= entity.gameObject.GetComponent<Entity.Abilities.Jump>();
             _chachedHeight = _chachedHeight == 0 ? _playerJump.jumpForce : _chachedHeight;

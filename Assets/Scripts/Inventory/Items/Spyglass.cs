@@ -16,7 +16,7 @@ namespace Inventory.Items
         [SerializeField] private Sprite sprite;
         [SerializeField] private Sprite spriteForShop;
 
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
             entity.FindAbilityByType<Entity.Abilities.CameraFollowPoint>()?.ChangeLock();
         }

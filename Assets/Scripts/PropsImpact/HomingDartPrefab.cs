@@ -1,48 +1,81 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using Entity.Abilities;
+using Entity.Relationships.Fractions;
 using UnityEngine;
-public class HomingDartPrefab : MonoBehaviour
+
+namespace PropsImpact
 {
-    [SerializeField] private float radius;
-    [SerializeField] private float stunTime;
-    public float speed;
-    private Transform _selfTransform;
-    private Transform _target;
-    private Entity.Abilities.Stun _stun;
-    
-
-    private void Start()
+    public class HomingDartPrefab : MonoBehaviour
     {
-        _selfTransform = gameObject.transform;
-        Collider2D[] hits = Physics2D.OverlapCircleAll(gameObject.transform.position, radius);
+        [SerializeField] private float radius;
+        [SerializeField] private float stunTime;
+        [SerializeField] private float speed = 1;
+        private Transform _selfTransform;
+        private EntityCacher _target;
+        private Stun _stun;
+        private bool _initialized;
+        private bool _destroyed;
 
-
-        for(int i = 0; i != hits.Length; i++)
+        private async void Start()
         {
-            if(hits[i].gameObject.GetComponent<Entity.Controllers.ControllerAI>())
+            _selfTransform = gameObject.transform;
+            while (true)
             {
-                _target = hits[i].gameObject.transform;
-                _stun = _target.gameObject.GetComponent<Entity.Abilities.Stun>();
-                StartCoroutine(GoToTarget());
-                return;
+                if (_destroyed) return;
+                var hits = Physics2D.OverlapCircleAll(gameObject.transform.position, radius);
+
+                foreach (var hit in hits)
+                {
+                    if (!hit.gameObject.TryGetComponent(out _stun)) continue;
+                    if (!hit.gameObject.TryGetComponent(out _target)) continue;
+                    if (!hit.gameObject.TryGetComponent(out Fraction fraction)) continue;
+                    if (fraction.CurrentFraction.GetRelation(new PlayerFraction()) is not Entity.Relationships.Fraction
+                            .Relation.Hostile) continue;
+                    _ = GoToTarget();
+                    return;
+                }
+
+                if (_destroyed) return;
+                await Task.Delay(100);
             }
         }
-    }
 
-    private IEnumerator GoToTarget()
-    {
-        while(true)
+        public void Initialize(float speed)
         {
-            _selfTransform.rotation = Quaternion.Euler(_selfTransform.rotation.eulerAngles.x, _selfTransform.rotation.eulerAngles.y, Mathf.Atan2(_target.position.y - _selfTransform.position.y, _target.position.x - _selfTransform.position.x) * Mathf.Rad2Deg - 90);
-            _selfTransform.position = Vector3.Lerp(_selfTransform.position, _target.position, (speed / 1000) / Vector3.Distance(_selfTransform.position, _target.position));
-            if(Vector3.Distance(_selfTransform.position, _target.position) < 0.05) Die();
-            yield return null;
+            if (_initialized) return;
+            this.speed = speed;
+            _initialized = true;
         }
-    }
 
-    private void Die()
-    {
-        _stun.Perform(stunTime);
-        Destroy(gameObject);
+        private async Task GoToTarget()
+        {
+            while (true)
+            {
+                if (_destroyed) return;
+                var targetCenter = _target.Bounds.center;
+                _selfTransform.rotation = Quaternion.Euler(
+                    _selfTransform.rotation.eulerAngles.x,
+                    _selfTransform.rotation.eulerAngles.y,
+                    Mathf.Atan2(
+                        targetCenter.y - _selfTransform.position.y,
+                        targetCenter.x - _selfTransform.position.x
+                    ) * Mathf.Rad2Deg - 90
+                );
+                _selfTransform.position += (targetCenter - _selfTransform.position).normalized * speed;
+                if (Vector3.Distance(_selfTransform.position, targetCenter) < 0.05) Die();
+                if (_destroyed) return;
+                await UniTask.WaitForFixedUpdate();
+            }
+        }
+
+        private void Die()
+        {
+            _destroyed = true;
+            _ = _stun.Perform(stunTime);
+            Destroy(gameObject);
+        }
+
+        private void OnDestroy() => _destroyed = true;
     }
 }

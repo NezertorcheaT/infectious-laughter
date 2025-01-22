@@ -15,7 +15,7 @@ namespace AnimationControllers
 
         public void Initialize(PropsImpact.SlingshotImpact slingshotImpact, Animator animator, float chargeTime)
         {
-            if(_initialized) return;
+            if (_initialized) return;
             _initialized = true;
             _slingshotImpact = slingshotImpact;
             _animator = animator;
@@ -27,6 +27,7 @@ namespace AnimationControllers
 
         private void StartChargeAnimation()
         {
+            if (!_animator) return;
             _animator.SetBool(SlingshotIsShot, false);
             _animator.SetFloat(SlingshotSpeed, _animator.GetCurrentAnimatorStateInfo(0).length / _chargeTime);
             _animator.SetBool(SlingshotCharging, true);
@@ -35,9 +36,12 @@ namespace AnimationControllers
 
         private void SootAnimation()
         {
-            _animator.SetBool(SlingshotCharging, false);
-            _animator.Play("SlingshotAfterShot");
-            _animator.SetBool(SlingshotIsShot, true);
+            if (_animator)
+            {
+                _animator.SetBool(SlingshotCharging, false);
+                _animator.Play("SlingshotAfterShot");
+                _animator.SetBool(SlingshotIsShot, true);
+            }
 
             _slingshotImpact.StartCharge -= StartChargeAnimation;
             _slingshotImpact.Shot -= SootAnimation;

@@ -17,7 +17,7 @@ namespace Entity.Abilities
 
         public bool Resistance 
         {
-            get { return _resistance; }
+            get => _resistance;
             set
             {
                 OnChangeResistance?.Invoke(value);

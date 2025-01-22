@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  speedInJump: 3.5
+  speedInJumpMultiplier: 0.7
   turn: 1
 --- !u!114 &-3373324767650511719
 MonoBehaviour:
@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crouchSizeMultiplier: 0.5
+  crouchSpeedMultiplier: 0.5
 --- !u!114 &3693047800681384998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workTime: 10
-  _friendlyForMonstersType: Entity.Relationships.Fractions.MutantsFraction, Assembly-CSharp,
+  _friendlyForMonstersType: Entity.Relationships.Fractions.NaturalsFraction, Assembly-CSharp,
     Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &-6881158307836798144
 MonoBehaviour:

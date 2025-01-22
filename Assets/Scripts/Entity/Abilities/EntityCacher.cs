@@ -27,7 +27,7 @@ namespace Entity.Abilities
         private void OnDrawGizmos()
         {
             if (hideBox) return;
-            Helper.DrawBox(transform.position + offset.ToVector3(), scale);
+            Helper.DrawBox(gameObject.transform.position + offset.ToVector3(), scale);
         }
 #endif
     }

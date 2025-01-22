@@ -22,17 +22,17 @@ namespace Inventory.Items
 
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
-        public async void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public async void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
-            slot.Count--;
-            PlayerInventoryInput input = entity.FindAbilityByType<PlayerInventoryInput>();
+            itemData.Slot.Count--;
+            var input = entity.FindAbilityByType<PlayerInventoryInput>();
             float timerUse = 0;
-            float defaultInventoryRadius = input.MaxDistance;
+            var defaultInventoryRadius = input.MaxDistance;
 
             //Хватает предметы на расстоянии
             input.MaxDistance = radius;
 
-            for (int i = 0;; i++)
+            for (var i = 0;; i++)
             {
                 timerUse += Time.deltaTime;
                 if (timerUse >= timerUseMax)
@@ -41,7 +41,7 @@ namespace Inventory.Items
                     return;
                 }
 
-                await UniTask.Yield();
+                await UniTask.WaitForFixedUpdate();
             }
         }
     }

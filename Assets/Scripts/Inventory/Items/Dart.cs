@@ -1,3 +1,4 @@
+using PropsImpact;
 using UnityEngine;
 
 namespace Inventory.Items
@@ -13,18 +14,16 @@ namespace Inventory.Items
 
         [SerializeField] private Sprite sprite;
         [SerializeField] private Sprite spriteForShop;
-        [SerializeField] private GameObject dartPrefab;
+        [SerializeField] private HomingDartPrefab dartPrefab;
         [SerializeField] private Vector3 offset;
-        [SerializeField] private int speed;
+        [SerializeField] private float speed = 1;
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 1;
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
 
-        private GameObject _spawnedDart;
-
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
-            _spawnedDart = Instantiate(dartPrefab, entity.gameObject.transform.position + offset, Quaternion.identity);
-            _spawnedDart.GetComponent<HomingDartPrefab>().speed = speed;
+            Instantiate(dartPrefab, entity.gameObject.transform.position + offset, Quaternion.identity)
+                .Initialize(speed);
         }
     }
 }

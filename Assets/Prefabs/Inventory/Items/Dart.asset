@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -1942381001, guid: 10fce25f57fc0604c98e7902b070e779, type: 3}
   spriteForShop: {fileID: 21300000, guid: 0313cadde1261364d842ae33f36bc5f3, type: 3}
-  dartPrefab: {fileID: 4447436422813897771, guid: bb164062a1e8fa84881f60291d21b8fe, type: 3}
+  dartPrefab: {fileID: 4447436422813897774, guid: bb164062a1e8fa84881f60291d21b8fe, type: 3}
   offset: {x: 1, y: 0, z: 0}
-  speed: 15
+  speed: 0.065
   <ItemCost>k__BackingField: 1
   <MaxStackSize>k__BackingField: 1

@@ -23,6 +23,7 @@ namespace Inventory
             Debug.DrawRay(entityPosition, substr);
 
             if (Physics2D.Raycast(entityPosition, substr.normalized, substr.magnitude, layer)) return;
+            if (!_input.HasSpace(item as IItem)) return;
             _input.AddItem(item);
             Destroy(gameObject);
         }

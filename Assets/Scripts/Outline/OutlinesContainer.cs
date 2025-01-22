@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEditor;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Outline
 
 #if UNITY_EDITOR
         [Button]
+        [UsedImplicitly]
         private void Regenerate()
         {
             if (Directory.Exists(Outliner.NewMainPath))
@@ -80,8 +82,23 @@ namespace Outline
         {
             var sprite = Instance.Cache.FirstOrDefault(t => t.Original == original).New;
             if (sprite is null)
-                Debug.LogError(
-                    $"Outliner не нашёл обводку для спрайта \"{original}\". Попробуйте обновить обводку с помощью \"File/Regenerate Outlines\"");
+#if UNITY_EDITOR
+            {
+                if (!Instance.TryGenerate(original))
+                {
+                    Debug.LogError(
+                        $"Спрайт \"{original}\" уже существует в пуле обводки, но сама обводка отсутствует, попробуйте добавить вручную.");
+                    return null;
+                }
+            }
+
+            sprite = Instance.Cache.FirstOrDefault(t => t.Original == original).New;
+            if (sprite is null)
+                Debug.LogError($"Непредвиденная хуита, добавьте спрайт \"{original}\" вручную.");
+#else
+                Debug.LogError($"Добавьте спрайт \"{original}\" в пул обводки в редакторе.");
+#endif
+
             return sprite;
         }
 
@@ -101,7 +118,7 @@ namespace Outline
             set;
         }
 
-        public static OutlinesContainer Instance { get; set; }
+        public static OutlinesContainer Instance { get; private set; }
 
         public void Initialize()
         {

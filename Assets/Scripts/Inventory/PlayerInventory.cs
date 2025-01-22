@@ -48,7 +48,7 @@ namespace Inventory
                         _slots[i].Count >= clamped.MaxStackSize) continue;
 
                     if (!addItem) return true;
-
+                    _slots[i].InitializeInventory(this);
                     _slots[i].Count++;
                     slot = _slots[i];
                     OnChange?.Invoke();
@@ -56,11 +56,10 @@ namespace Inventory
                 }
             }
 
-            if (!addItem) return true;
-
             var cur = _slots.FirstOrDefault(i => i.IsEmpty);
             if (cur is null) return false;
 
+            if (!addItem) return true;
             cur.InitializeInventory(this);
             cur.LastItem = item;
             cur.Count = 1;
@@ -166,7 +165,7 @@ namespace Inventory
 
                     if (lastItem is not IStackableItem)
                     {
-                        value = Mathf.Clamp(value, 0, 1);
+                        value = value == 0 ? 0 : 1;
                         if (count == value) return;
 
                         if (lastItem is IStartableItem startable && count == 0 && value == 1)
@@ -223,7 +222,7 @@ namespace Inventory
             public void Use(Entity.Entity entity)
             {
                 if (LastItem is not IUsableItem usableItem) return;
-                usableItem.Use(entity, Inventory, this);
+                usableItem.Use(entity, Inventory, new ItemData(usableItem, this, 1));
                 if (Count > 0) return;
                 Count = 0;
             }
