@@ -24,7 +24,6 @@ namespace Entity.Abilities
         private CinemachineBasicMultiChannelPerlin _cinemachineShaker;
 
         private float _shakingForce;
-        private float _storedSpeed;
 
         private void Start()
         {
@@ -54,15 +53,14 @@ namespace Entity.Abilities
 
         private void OnEnterLight(LightImpact impact)
         {
-            _storedSpeed = _movement.Speed;
-            _movement.Speed = _storedSpeed * speedMultiplier;
+            _movement.Speed *= speedMultiplier;
             StartCoroutine(ShakeCamera());
             StopCoroutine(ToDefaultShakeCamera());
         }
 
         private void OnExitLight(LightImpact impact)
         {
-            _movement.Speed = _storedSpeed;
+            _movement.Speed /= speedMultiplier;
             StartCoroutine(ToDefaultShakeCamera());
             StopCoroutine(ShakeCamera());
         }

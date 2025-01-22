@@ -19,7 +19,7 @@ namespace Inventory.Items
         [field: SerializeField, Min(1)] public int ItemCost { get; private set; } = 1;
         [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; } = 1;
 
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
             var offset = new Vector3(0, 1);
             var position = entity.gameObject.transform.position + offset;
@@ -27,7 +27,7 @@ namespace Inventory.Items
             radio.transform.SetParent(null);
             var adder = radio.GetComponent<IItemAdder>();
             adder.Input ??= entity.FindAvailableAbilityByInterface<IInventoryInput<PlayerInventory>>();
-            slot.Count--;
+            itemData.Slot.Count--;
         }
     }
 }

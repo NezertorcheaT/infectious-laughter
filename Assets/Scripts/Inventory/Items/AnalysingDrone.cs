@@ -25,9 +25,9 @@ namespace Inventory.Items
 
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
-        public async void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public async void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
-            slot.Count--;
+            itemData.Slot.Count--;
 
             var camera = entity.FindAbilityByType<CameraToItemsProvider>().Camera;
             var cameraDefaultVeiw = camera.m_Lens.OrthographicSize;

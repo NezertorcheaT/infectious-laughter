@@ -19,7 +19,7 @@ namespace Inventory.Items
         [SerializeField, Min(1)] private int itemCost;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
             foreach (var hit in Physics2D.OverlapCircleAll(entity.transform.position, explosionRadius))
             {
@@ -30,7 +30,7 @@ namespace Inventory.Items
                 hit.attachedRigidbody.AddForce(direction.normalized * explosionForce);
             }
 
-            slot.Count--;
+            itemData.Slot.Count--;
         }
     }
 }

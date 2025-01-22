@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Outline;
 using UnityEngine;
 
 namespace PropsImpact
 {
+    [RequireComponent(typeof(BuoyancyEffector2D))]
     public class HydrantImpact : MonoBehaviour
     {
         [SerializeField] private Sprite defaultHydrant;
@@ -26,19 +28,16 @@ namespace PropsImpact
 
         public void StartElevating()
         {
-            if (!_wasActivated)
-            {
-                _wasActivated = true;
-                originalRenderer.sprite = activatedHydrant;
-                var elevateTimeInMiliseconds = (int)(elevateTimeInSeconds * 1000);
-                Elevate(elevateTimeInMiliseconds);
-                _effector.enabled = true;
-            }
+            if (_wasActivated) return;
+            _wasActivated = true;
+            originalRenderer.sprite = activatedHydrant;
+            _ = Elevate(elevateTimeInSeconds);
+            _effector.enabled = true;
         }
 
-        private async void Elevate(int time)
+        private async Task Elevate(float time)
         {
-            await Task.Delay(time);
+            await UniTask.WaitForSeconds(time);
             originalRenderer.sprite = deactivatedHydrant;
             _effector.enabled = false;
         }

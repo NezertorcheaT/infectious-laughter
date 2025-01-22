@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Inventory.Items
 {
     [CreateAssetMenu(fileName = "New Fruit Of Aspiration", menuName = "Inventory/Items/Fruit Of Aspiration", order = 0)]
-    public class FruitOfAspiration : ScriptableObject, IUsableItem, INameableItem, ISpriteItem
+    public class FruitOfAspiration : ScriptableObject, INameableItem, ISpriteItem, IStartableItem, IEndableItem
     {
         public string Name => "Fruit Of Aspiration";
         public string Id => "il.fruit_of_aspiration";
@@ -11,17 +11,20 @@ namespace Inventory.Items
         public Sprite Sprite => sprite;
 
         [SerializeField] private Sprite sprite;
+        [SerializeField] private float speedMultiplier = 1.5f;
 
         private Entity.Abilities.HorizontalMovement _playerMovement;
-        private float _chachedSpeed;
-        private bool _used = false;
 
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void OnStart(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
-            _playerMovement ??= entity.gameObject.GetComponent<Entity.Abilities.HorizontalMovement>();
-            _chachedSpeed = _chachedSpeed == 0 ? _playerMovement.Speed : _chachedSpeed;
-            _playerMovement.Speed = _used ? _chachedSpeed : _chachedSpeed * 1.5f;
-            _used = !_used;
+            _playerMovement = entity.GetComponent<Entity.Abilities.HorizontalMovement>();
+            _playerMovement.Speed *= speedMultiplier;
+        }
+
+        public void OnEnded(Entity.Entity entity, IInventory inventory, ItemData itemData)
+        {
+            _playerMovement = entity.GetComponent<Entity.Abilities.HorizontalMovement>();
+            _playerMovement.Speed /= speedMultiplier;
         }
     }
 }

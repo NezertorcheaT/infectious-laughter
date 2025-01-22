@@ -24,7 +24,7 @@ namespace Inventory.Items
         [SerializeField] private Sprite spriteForShop;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
             var position = entity.transform.position;
             var spawnPosition = new Vector2(position.x, position.y + spawnHeight);
@@ -36,7 +36,7 @@ namespace Inventory.Items
             var guillotineComponent = guillotine.GetComponent<GuillotineImpact>();
 
             guillotineComponent.Impact(entity.transform.position.y - 1.5f, radius, timeOfAction);
-            slot.Count--;
+            itemData.Slot.Count--;
         }
     }
 }

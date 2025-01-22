@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 594005655420953579}
   model: {fileID: 0}
-  inverse: 1
+  inverse: 0
   delay: 100
 --- !u!114 &1342410479588118039
 MonoBehaviour:
@@ -310,9 +310,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54304a382c1631d4eb658e8df9b91c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideBox: 1
-  offset: {x: 0, y: -0.2138721}
-  scale: {x: 1, y: 2.427744}
+  hideBox: 0
+  offset: {x: 0, y: 1.8125}
+  scale: {x: 1, y: 3.625}
 --- !u!61 &594005656745501952
 BoxCollider2D:
   m_ObjectHideFlags: 0

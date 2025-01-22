@@ -30,7 +30,7 @@ namespace Inventory.Items
 
         private int _useCount;
 
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
             _useCount--;
 
@@ -50,7 +50,7 @@ namespace Inventory.Items
             slingshotImpact.Impact();
 
             if (_useCount > 0) return;
-            slot.Count--;
+            itemData.Slot.Count--;
             _useCount = useCount;
         }
     }

@@ -9,7 +9,7 @@ namespace Entity.Abilities
     public class HorizontalMovement : Ability
     {
         [SerializeField, Min(0.001f)] private float speed;
-        [SerializeField, Min(0.001f)] private float speedInJump;
+        [SerializeField, Min(0)] private float speedInJumpMultiplier = 0.7f;
         [SerializeField] private bool turn;
         private Rigidbody2D _rb;
         private CollideCheck _collideCheck;
@@ -38,11 +38,7 @@ namespace Entity.Abilities
         public float Speed
         {
             get => speed;
-            set
-            {
-                enabled = value > 0;
-                speed = Mathf.Max(value, 0);
-            }
+            set => speed = Mathf.Max(value, 0);
         }
 
         private bool _moving;
@@ -56,7 +52,7 @@ namespace Entity.Abilities
 
         public void Move(float velocity)
         {
-            var push = velocity * (_collideCheck.IsTouchingGround ? speed : speedInJump);
+            var push = velocity * speed * (_collideCheck.IsTouchingGround ? 1 : speedInJumpMultiplier);
             var turnInFloat = velocity;
 
             var available = !(!Available() || (

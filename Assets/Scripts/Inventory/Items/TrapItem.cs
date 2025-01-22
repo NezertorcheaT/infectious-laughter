@@ -22,7 +22,7 @@ namespace Inventory.Items
         [SerializeField] private GameObject trapWorld;
         [field: SerializeField] public int MaxStackSize { get; private set; }
 
-        public void Use(Entity.Entity entity, IInventory inventory, ISlot slot)
+        public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
             var position = entity.gameObject.transform.position;
             var trap = Verifier.Container.InstantiatePrefab(trapWorld,
@@ -38,7 +38,7 @@ namespace Inventory.Items
             var adder = trap.GetComponent<IItemAdder>();
             if (adder is not null)
                 adder.Input ??= entity.FindAvailableAbilityByInterface<IInventoryInput<PlayerInventory>>();
-            slot.Count--;
+            itemData.Slot.Count--;
         }
     }
 }
