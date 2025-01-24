@@ -64,7 +64,7 @@ namespace Entity.AI.Neurons
             if (eyes && eyes.Hostiles.Count != 0)
                 _currentTarget = eyes.Hostiles.LastOrDefault();
             if (hears && hears.Hostiles.Count != 0)
-                _currentTarget ??= hears.Hostiles.LastOrDefault();
+                _currentTarget = hears.Hostiles.LastOrDefault();
             if (_currentTarget)
                 _lastSeen = _currentTarget.transform.position;
         }
