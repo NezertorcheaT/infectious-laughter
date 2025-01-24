@@ -22,11 +22,13 @@ namespace Entity.AI.Neurons
         [SerializeField, Min(1)] private int dashForceMultiplier = 3;
         [SerializeField, Min(0.1f)] private float waitBeforeDash = 0.1f;
         [SerializeField, Min(0.1f)] private float dashCooldown = 7f;
-        [SerializeField, Min(1f)] private float dashTime;
+        [SerializeField, Min(0.05f)] private float dashTime;
+        [SerializeField] private int speedDuringPreparations;
+        public bool _dashNow { get; private set; }
+        public bool _startDash { get; private set; }
         private HorizontalMovement _movement;
         private Entity _currentTarget;
         private bool _canDash = true;
-        private bool _dashNow;
         private bool _approaching;
         private bool _partrollingDirection;
         private bool _destroyed;
@@ -153,11 +155,13 @@ namespace Entity.AI.Neurons
             _waitForDash = false;
             _canDash = false;
             int x = dashForceMultiplier;
-            dashForceMultiplier = 1;
-            yield return new WaitForSeconds(waitBeforeDash);
+            dashForceMultiplier = speedDuringPreparations;
             _dashNow = true;
+            yield return new WaitForSeconds(waitBeforeDash);
+            _startDash = true;
             dashForceMultiplier = x;
             yield return new WaitForSeconds(dashTime);
+            _startDash = false;
             _dashNow = false;
             yield return new WaitForSeconds(dashCooldown);
             _canDash = true;

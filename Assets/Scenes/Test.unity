@@ -3379,9 +3379,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2555447750823267136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5deb07cc0fdcf48803dc2db529180b, type: 3}
+  m_Script: {fileID: 11500000, guid: a197bc6d5605f644bb87db25d0a3eec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _brain: {fileID: 8099563637248845234}
 --- !u!114 &2555447751613042072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3635,8 +3636,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideBox: 0
-  offset: {x: 0, y: 1.8125}
-  scale: {x: 1, y: 3.625}
+  offset: {x: 0.7850876, y: 1.8125}
+  scale: {x: 3.405678, y: 3.625}
 --- !u!1001 &4301508455334729912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4210,7 +4211,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8099563637248845233
 Transform:
@@ -4219,7 +4220,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8099563637248845232}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4249,7 +4250,8 @@ MonoBehaviour:
   dashForceMultiplier: 4
   waitBeforeDash: 2
   dashCooldown: 5
-  dashTime: 1.5
+  dashTime: 0.75
+  speedDuringPreparations: 0
 --- !u!1001 &8378451721718517473
 PrefabInstance:
   m_ObjectHideFlags: 0
