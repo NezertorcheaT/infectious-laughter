@@ -55,15 +55,20 @@ namespace Entity.AI.Neurons
                     i.transform.position,
                     transform.position
                 ))
-                .Where(i => !(
-                    i.Entity.FindExactAbilityByType<Crouching>().IsCrouching &&
-                    Physics2D.Raycast(
-                        i.transform.position,
-                        Vector2.down,
-                        1f,
-                        1 << 6
-                    ).collider
-                ))
+                .Where(i =>
+                {
+                    var crouching = i.Entity.FindExactAbilityByType<Crouching>();
+                    if (!crouching) return true;
+                    return !(
+                        crouching.IsCrouching &&
+                        Physics2D.Raycast(
+                            i.transform.position,
+                            Vector2.down,
+                            1f,
+                            1 << 6
+                        ).collider
+                    );
+                })
                 .Select(i => i.Entity)
                 .Where(i =>
                 {

@@ -138,7 +138,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: c8fc82275ef55b044b7868db1122c052, type: 2}
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
 --- !u!114 &371807985212665815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203fb6a0489c2a7428728a9600a12104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTimeInSeconds: 3
+  lifeTimeInSeconds: 10
 --- !u!114 &7211069986480621141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54304a382c1631d4eb658e8df9b91c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hideBox: 1
+  offset: {x: 0.04066467, y: 0}
+  scale: {x: 1.243992, y: 1}
 --- !u!61 &9198556392796828704
 BoxCollider2D:
   m_ObjectHideFlags: 0
