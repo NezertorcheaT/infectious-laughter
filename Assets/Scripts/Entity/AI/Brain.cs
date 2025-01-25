@@ -47,6 +47,8 @@ namespace Entity.AI
                 neurone.Initialize(entity, this);
             foreach (var neurone in neurones)
                 neurone.AfterInitialize();
+
+            Neurones = neurones;
             _initialized = true;
         }
     }
