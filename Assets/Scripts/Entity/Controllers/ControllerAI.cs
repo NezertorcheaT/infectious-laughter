@@ -11,6 +11,7 @@ namespace Entity.Controllers
     {
         [Inject] private DiContainer _container;
         [SerializeField] private Brain brain;
+        public Brain CurrentBrain { get; private set; }
 
         public override void Initialize()
         {
@@ -30,6 +31,7 @@ namespace Entity.Controllers
             }
 
             brain.Initialize(Entity);
+            CurrentBrain = brain;
         }
 
         private void OnEnable()
