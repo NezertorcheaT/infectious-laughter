@@ -48,7 +48,7 @@ namespace AnimationControllers
         {
             _animator.SetBool("AnimatorIsWalk", _movement.TurnInFloat != 0);
             _animator.SetBool("AnimatorIsStun", _stun.IsStunned);
-            _animator.SetBool("AnimatorDashNow", _brain._startDash);
+            _animator.SetBool("AnimatorDashNow", _brain.StartDash);
             //_animator.SetBool("AnimatorIsAttack", _stun.IsStunned);
         }
     }

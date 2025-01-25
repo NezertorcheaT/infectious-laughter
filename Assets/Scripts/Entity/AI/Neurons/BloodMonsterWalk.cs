@@ -119,9 +119,6 @@ namespace Entity.AI.Neurons
                 Gizmos.DrawSphere(_lastSeen, 1);
         }
 
-        private void OnDestroy()
-        {
-            _destroyed = true;
-        }
+        private void OnDestroy() => _destroyed = true;
     }
 }
