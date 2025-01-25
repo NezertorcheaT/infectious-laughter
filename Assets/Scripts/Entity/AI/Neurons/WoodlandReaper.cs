@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Linq;
 using Cysharp.Threading.Tasks;
@@ -7,20 +8,31 @@ using UnityEngine;
 
 namespace Entity.AI.Neurons
 {
-    [AddComponentMenu("Entity/AI/Neurones/Blood Monster")]
-    public class BloodMonsterWalk : Neurone
+    [AddComponentMenu("Entity/AI/Neurones/Woodland Reaper")]
+    public class WoodlandReaper : Neurone
     {
+        public bool DashNow { get; private set; }
+        public bool StartDash { get; private set; }
+
         [SerializeField] private Eyes eyes;
         [SerializeField] private Hears hears;
         [SerializeField, Min(0)] private float thoughtDelay = 0.1f;
         [SerializeField, Min(0)] private float patrollingReverseDelay = 5;
         [SerializeField, Min(0)] private float approachMinDistance = 1;
         [SerializeField, Min(0)] private float approachWaitDelay = 5;
+        [SerializeField, Min(1)] private float distanceThresholdBeforeDash = 10;
+        [SerializeField, Min(1)] private int dashForceMultiplier = 3;
+        [SerializeField, Min(0.1f)] private float waitBeforeDash = 0.1f;
+        [SerializeField, Min(0.1f)] private float dashCooldown = 7f;
+        [SerializeField, Min(0.05f)] private float dashTime;
+        [SerializeField] private int speedDuringPreparations;
         private HorizontalMovement _movement;
         private Entity _currentTarget;
+        private bool _canDash = true;
         private bool _approaching;
         private bool _partrollingDirection;
         private bool _destroyed;
+        private bool _waitForDash;
         private Vector3 _lastSeen;
         private long _approachStopwatch;
         private long _approachWaitDelayTicks;
@@ -62,9 +74,20 @@ namespace Entity.AI.Neurons
 
             _currentTarget = null;
             if (eyes && eyes.Hostiles.Count != 0)
+            {
                 _currentTarget = eyes.Hostiles.LastOrDefault();
+                if (
+                    _currentTarget &&
+                    !_waitForDash &&
+                    Vector3.Distance(
+                        eyes.transform.position,
+                        _currentTarget.transform.position
+                    ) <= distanceThresholdBeforeDash
+                ) _waitForDash = true;
+            }
+
             if (hears && hears.Hostiles.Count != 0)
-                _currentTarget = hears.Hostiles.LastOrDefault();
+                _currentTarget ??= hears.Hostiles.LastOrDefault();
             if (_currentTarget)
                 _lastSeen = _currentTarget.transform.position;
         }
@@ -94,8 +117,12 @@ namespace Entity.AI.Neurons
                         );
                     }
 
+                    if (_waitForDash && _canDash) StartCoroutine(WaitForEndDash());
+
                     var velocity = (_lastSeen - transform.position).x;
-                    if (velocity != 0) _movement.Move(velocity / Mathf.Abs(velocity));
+                    if (velocity != 0)
+                        _movement.Move((velocity / Mathf.Abs(velocity)) * (DashNow ? dashForceMultiplier : 1f));
+
                     if (
                         (_lastSeen - transform.position).magnitude < eyes.Range * 2 &&
                         Stopwatch.GetTimestamp() - _approachStopwatch > _approachWaitDelayTicks
@@ -117,8 +144,26 @@ namespace Entity.AI.Neurons
         {
             if (_approaching)
                 Gizmos.DrawSphere(_lastSeen, 1);
+            Gizmos.DrawWireSphere(eyes.transform.position, distanceThresholdBeforeDash);
         }
 
         private void OnDestroy() => _destroyed = true;
+
+        private IEnumerator WaitForEndDash()
+        {
+            _waitForDash = false;
+            _canDash = false;
+            var x = dashForceMultiplier;
+            dashForceMultiplier = speedDuringPreparations;
+            DashNow = true;
+            yield return new WaitForSeconds(waitBeforeDash);
+            StartDash = true;
+            dashForceMultiplier = x;
+            yield return new WaitForSeconds(dashTime);
+            StartDash = false;
+            DashNow = false;
+            yield return new WaitForSeconds(dashCooldown);
+            _canDash = true;
+        }
     }
 }
