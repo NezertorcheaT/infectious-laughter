@@ -25,6 +25,8 @@ namespace PropsImpact
             foreach (var responsive in responsives)
             {
                 responsive.Rigidbody.gravityScale = responsive.NewGravityScale;
+                responsive.Rigidbody.velocity = new Vector2(0f,0f);
+                responsive.Movement.enabled = false;
             }
 
             await UniTask.WaitForSeconds(levitationTime);
@@ -32,6 +34,7 @@ namespace PropsImpact
             foreach (var responsive in responsives)
             {
                 responsive.Rigidbody.gravityScale = 1f;
+                responsive.Movement.enabled = true;
             }
 
             Destroy(gameObject);
