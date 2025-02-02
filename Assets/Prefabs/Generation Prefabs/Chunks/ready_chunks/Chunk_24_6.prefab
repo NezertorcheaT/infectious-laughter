@@ -784,6 +784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8773721006132184744}
   - component: {fileID: 6331746402529215892}
+  - component: {fileID: 3184427397093953489}
   m_Layer: 0
   m_Name: FG Bushes_4
   m_TagString: Untagged
@@ -858,6 +859,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3184427397093953489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439634298717024528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bdd1bcaffbc1f4191c96ecf7171bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4173253257596503946
 GameObject:
   m_ObjectHideFlags: 0
@@ -4509,6 +4522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6036799095813537834}
   - component: {fileID: 3651756379711518788}
+  - component: {fileID: 5485235895944182346}
   m_Layer: 0
   m_Name: FG Bushes_2
   m_TagString: Untagged
@@ -4583,6 +4597,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5485235895944182346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370215035844964019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bdd1bcaffbc1f4191c96ecf7171bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7392152403181830092
 GameObject:
   m_ObjectHideFlags: 0
@@ -4593,6 +4619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2375464020767364637}
   - component: {fileID: 4131460148633972836}
+  - component: {fileID: 1894832124820311978}
   m_Layer: 0
   m_Name: Broken houses_1
   m_TagString: Untagged
@@ -4667,6 +4694,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1894832124820311978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392152403181830092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bdd1bcaffbc1f4191c96ecf7171bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7659017653627496143
 GameObject:
   m_ObjectHideFlags: 0

@@ -196,6 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3733877025410857951}
   - component: {fileID: 199280548170161996}
+  - component: {fileID: 6556621570633336099}
   m_Layer: 0
   m_Name: FG Bushes_0
   m_TagString: Untagged
@@ -258,7 +259,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 798066439
   m_SortingLayer: -2
-  m_SortingOrder: -2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 2084799149, guid: bdd8f281db5055d43a7a6bb122050d65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -270,6 +271,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6556621570633336099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405134362175436259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bdd1bcaffbc1f4191c96ecf7171bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3792932575277713247
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 981924110838208271}
   - component: {fileID: 1283276627016795713}
+  - component: {fileID: 7224178125013163271}
   m_Layer: 0
   m_Name: Broken houses_3
   m_TagString: Untagged
@@ -444,7 +458,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 798066439
   m_SortingLayer: -2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1906736409, guid: 53bdb00848a7dc840ad53a4804b0108e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -456,6 +470,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7224178125013163271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986541652847894348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bdd1bcaffbc1f4191c96ecf7171bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4300046914658217250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4509,6 +4535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 540776057519983254}
   - component: {fileID: 1356952438785353230}
+  - component: {fileID: 559488035512207922}
   m_Layer: 0
   m_Name: FG Bushes_0
   m_TagString: Untagged
@@ -4571,7 +4598,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 798066439
   m_SortingLayer: -2
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 2084799149, guid: bdd8f281db5055d43a7a6bb122050d65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4583,6 +4610,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &559488035512207922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885086882645615402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bdd1bcaffbc1f4191c96ecf7171bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6847986506110307822
 GameObject:
   m_ObjectHideFlags: 0
@@ -4593,6 +4632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3923251360991330592}
   - component: {fileID: 8943670499744552}
+  - component: {fileID: 259736183355934591}
   m_Layer: 0
   m_Name: FG Bushes_4
   m_TagString: Untagged
@@ -4655,7 +4695,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 798066439
   m_SortingLayer: -2
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -715995950, guid: bdd8f281db5055d43a7a6bb122050d65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4667,6 +4707,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &259736183355934591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847986506110307822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bdd1bcaffbc1f4191c96ecf7171bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7243005081583196942
 GameObject:
   m_ObjectHideFlags: 0
