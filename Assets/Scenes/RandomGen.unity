@@ -835,7 +835,7 @@ MonoBehaviour:
   - {fileID: 4823586720191418435, guid: 04a9fc7cdbbfee143b76b8189cba8c03, type: 3}
   - {fileID: 4823586720191418435, guid: 461724d13531f4941a8119e3fa8520eb, type: 3}
   - {fileID: 4516917101330682262, guid: 793a23f1581e36d4da5e48392b2ec528, type: 3}
-  - {fileID: 4823586720191418435, guid: 9fb370f92969be04591f0deebad20dc3, type: 3}
+  - {fileID: 4823586720191418435, guid: 6815a19c7de7550449b76901619f6175, type: 3}
   specialChunks: []
 --- !u!114 &2085324754
 MonoBehaviour:
@@ -1089,6 +1089,14 @@ PrefabInstance:
     - target: {fileID: 9084249695208848485, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084249696281193796, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -76.249756
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084249696281193796, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -73.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faccb90d31af14f4fad83aed14fc8031, type: 3}
