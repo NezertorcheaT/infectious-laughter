@@ -12,11 +12,6 @@ namespace GameFlow
         [Inject] private SessionFactory sessionFactory;
         [Inject] private MenuSaveLoader saveLoader;
         [SerializeField] private Inventory.PlayerInventory playerInventory;
-        [SerializeField] private int playerInitialHp = 5;
-        [SerializeField] private int playerInitialAddictiveHp = 0;
-        [SerializeField] private int playerInitialMaxHp = 5;
-        [SerializeField] private int playerInitialMaxAddictiveHp = 5;
-        [SerializeField] private int playerInitialGarbage;
 
         public void StartNewGame()
         {
@@ -28,11 +23,6 @@ namespace GameFlow
 
             sessionFactory.Current[SavedKeys.Level].Value = levelManager.CurrentLevel.ID;
             sessionFactory.Current[SavedKeys.PlayerInventory].Value = JsonUtility.ToJson(playerInventory);
-            sessionFactory.Current[SavedKeys.PlayerHp].Value = playerInitialHp;
-            sessionFactory.Current[SavedKeys.PlayerAddictiveHp].Value = playerInitialAddictiveHp;
-            sessionFactory.Current[SavedKeys.PlayerMaxHp].Value = playerInitialMaxHp;
-            sessionFactory.Current[SavedKeys.PlayerMaxAddictiveHp].Value = playerInitialMaxAddictiveHp;
-            sessionFactory.Current[SavedKeys.PlayerGarbage].Value = playerInitialGarbage;
 
             sessionFactory.SaveCurrentSession();
 

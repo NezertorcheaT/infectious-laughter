@@ -18,6 +18,7 @@ namespace Inventory.Items
 
         public void Use(Entity.Entity entity, IInventory inventory, ItemData itemData)
         {
+            Debug.Log("hui");
             entity.FindAbilityByType<Entity.Abilities.CameraFollowPoint>()?.ChangeLock();
         }
     }

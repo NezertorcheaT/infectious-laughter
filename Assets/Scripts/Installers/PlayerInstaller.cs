@@ -32,7 +32,7 @@ namespace Installers
 
             _player.gameObject.SetActive(true);
 
-            _playerCamera.VirtualCamera.Follow = _player.transform.GetChild(1);
+            _playerCamera.VirtualCamera.Follow = _player.transform.Find("CameraFollowPoint");
             _playerCamera.VirtualCamera.LookAt = _player.transform;
 
             playerInventory ??=

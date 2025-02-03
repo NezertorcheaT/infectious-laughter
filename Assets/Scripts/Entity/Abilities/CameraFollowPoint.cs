@@ -28,17 +28,13 @@ namespace Entity.Abilities
         public void MovePoint(float turnX, float turnY)
         {
             if (_locked) return;
-            if (gameObject.transform.position.x - followPoint.position.x < maxRange && turnX < 0)
-                followPoint.Translate(-speed * Time.deltaTime, 0, 0);
+            if (gameObject.transform.position.x - followPoint.position.x < maxRange && turnX < 0) followPoint.Translate(-speed * Time.deltaTime, 0, 0);
 
-            if (gameObject.transform.position.x - followPoint.position.x > -maxRange && turnX > 0)
-                followPoint.Translate(speed * Time.deltaTime, 0, 0);
+            if (gameObject.transform.position.x - followPoint.position.x > -maxRange && turnX > 0) followPoint.Translate(speed * Time.deltaTime, 0, 0);
 
-            if (gameObject.transform.position.y - followPoint.position.y < maxRange && turnY < 0)
-                followPoint.Translate(0, -speed * Time.deltaTime, 0);
+            if (gameObject.transform.position.y - followPoint.position.y < maxRange && turnY < 0) followPoint.Translate(0, -speed * Time.deltaTime, 0);
 
-            if (gameObject.transform.position.y - followPoint.position.y > -maxRange && turnY > 0)
-                followPoint.Translate(0, speed * Time.deltaTime, 0);
+            if (gameObject.transform.position.y - followPoint.position.y > -maxRange && turnY > 0) followPoint.Translate(0, speed * Time.deltaTime, 0);
         }
 
         public void ChangeLock()

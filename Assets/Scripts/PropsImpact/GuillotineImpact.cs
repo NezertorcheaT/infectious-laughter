@@ -15,23 +15,27 @@ namespace PropsImpact
             _used = true;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
-            var responsives =
+            (GuillotineResponsive Instance, bool Enabled)[] responsives =
                     Physics2D
                         .OverlapCircleAll(gameObject.transform.position, radius)
                         .Select(a => a.gameObject.GetComponent<GuillotineResponsive>())
                         .Where(a => a is not null && a.Available())
+                        .Select(i => (i, i.Movement.enabled))
                         .ToArray()
                 ;
             foreach (var responsive in responsives)
             {
-                responsive.Rigidbody.gravityScale = responsive.NewGravityScale;
+                responsive.Instance.Rigidbody.gravityScale = responsive.Instance.NewGravityScale;
+                responsive.Instance.Rigidbody.velocity = new Vector2(0f, 0f);
+                responsive.Instance.Movement.enabled = false;
             }
 
             await UniTask.WaitForSeconds(levitationTime);
 
             foreach (var responsive in responsives)
             {
-                responsive.Rigidbody.gravityScale = 1f;
+                responsive.Instance.Rigidbody.gravityScale = 1f;
+                responsive.Instance.Movement.enabled = responsive.Enabled;
             }
 
             Destroy(gameObject);
