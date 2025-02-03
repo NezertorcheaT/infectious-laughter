@@ -17,20 +17,20 @@ namespace Saving
             SavingKey.New("game.player_garbage", 0);
 
         public static readonly SavingKey PlayerHp =
-            SavingKey.New("game.player_hp", 5);
+            SavingKey.New("game.player_hp", 6);
 
         public static readonly SavingKey PlayerAddictiveHp =
             SavingKey.New("game.player_addictive_hp", 0);
 
         public static readonly SavingKey PlayerMaxHp =
-            SavingKey.New("game.player_max_hp", 5);
+            SavingKey.New("game.player_max_hp", 6);
 
         public static readonly SavingKey PlayerMaxAddictiveHp =
             SavingKey.New("game.player_max_addictive_hp", 0);
 
         public static readonly SavingKey Seed =
             SavingKey.New("game.generation_seed", Guid.NewGuid().ToString());
-        
+
         public static readonly SavingKey PlayerInventorySelection =
             SavingKey.New("game.player_inventory_selection", 0);
     }
