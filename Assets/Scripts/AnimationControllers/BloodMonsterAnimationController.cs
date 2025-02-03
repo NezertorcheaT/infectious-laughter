@@ -46,8 +46,8 @@ namespace AnimationControllers
 
         private void ChangeAnimator()
         {
-            _animator.SetBool(AnimatorIsWalk, _movement && _movement.TurnInFloat != 0);
-            _animator.SetBool(AnimatorIsStun, _stun && _stun.IsStunned);
+            _animator?.SetBool(AnimatorIsWalk, _movement && _movement.TurnInFloat != 0);
+            _animator?.SetBool(AnimatorIsStun, _stun && _stun.IsStunned);
         }
     }
 }

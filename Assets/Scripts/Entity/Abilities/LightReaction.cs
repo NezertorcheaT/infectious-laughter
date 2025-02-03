@@ -9,7 +9,7 @@ namespace Entity.Abilities
 {
     [RequireComponent(typeof(LightResponsive))]
     [RequireComponent(typeof(HorizontalMovement))]
-    [AddComponentMenu("Entity/Abilities/Light Reaction")]
+    [AddComponentMenu("Entity/Abilities/Player Light Reaction")]
     public class LightReaction : Ability
     {
         [SerializeField] private float maxShakingForce;
@@ -42,13 +42,21 @@ namespace Entity.Abilities
             if (!IsInitialized || _responsive is null) return;
             _responsive.OnEnterLight += OnEnterLight;
             _responsive.OnExitLight += OnExitLight;
+            _responsive.OnChangeResistance += OnChangeResistance;
         }
 
         private void OnDisable()
         {
             _responsive.OnEnterLight -= OnEnterLight;
             _responsive.OnExitLight -= OnExitLight;
+            _responsive.OnChangeResistance -= OnChangeResistance;
             StopAllCoroutines();
+        }
+
+        private void OnChangeResistance(bool obj)
+        {
+            if (_responsive.InLight)
+                OnExitLight(null);
         }
 
         private void OnEnterLight(LightImpact impact)
@@ -60,6 +68,7 @@ namespace Entity.Abilities
 
         private void OnExitLight(LightImpact impact)
         {
+            if (_responsive.Resistance) return;
             _movement.Speed /= speedMultiplier;
             StartCoroutine(ToDefaultShakeCamera());
             StopCoroutine(ShakeCamera());
