@@ -5,9 +5,8 @@ namespace AnimationControllers
     [RequireComponent(typeof(Animator))]
     public class BloodMonsterAnimationController : MonoBehaviour
     {
-        private GameObject _originalEntity;
-        private Animator _animator;
-
+        [SerializeField] private Animator animator;
+        private Entity.Entity _originalEntity;
         private Entity.Abilities.HorizontalMovement _movement;
         private Entity.Abilities.Stun _stun;
         private static readonly int AnimatorIsWalk = Animator.StringToHash("isWalk");
@@ -15,14 +14,15 @@ namespace AnimationControllers
 
         private void Start()
         {
-            _animator = gameObject.GetComponent<Animator>();
+            if (!animator) animator = gameObject.GetComponent<Animator>();
         }
 
         private void OnEnable()
         {
-            _originalEntity ??= transform.parent.gameObject;
-            _movement ??= _originalEntity.GetComponent<Entity.Abilities.HorizontalMovement>();
-            _stun ??= _originalEntity.GetComponent<Entity.Abilities.Stun>();
+            if (!_originalEntity) _originalEntity = transform.parent?.GetComponent<Entity.Entity>();
+            if (!_originalEntity) _originalEntity = GetComponent<Entity.Entity>();
+            if (!_stun) _movement = _originalEntity.GetComponent<Entity.Abilities.HorizontalMovement>();
+            if (!_stun) _stun = _originalEntity.GetComponent<Entity.Abilities.Stun>();
             _movement.OnTurn += ChangeAnimator;
             _movement.OnStartedMoving += ChangeAnimator;
             _movement.OnStopped += ChangeAnimator;
@@ -32,9 +32,10 @@ namespace AnimationControllers
 
         private void OnDisable()
         {
-            _originalEntity ??= transform.parent.gameObject;
-            _movement ??= _originalEntity.GetComponent<Entity.Abilities.HorizontalMovement>();
-            _stun ??= _originalEntity.GetComponent<Entity.Abilities.Stun>();
+            if (!_originalEntity) _originalEntity = transform.parent?.GetComponent<Entity.Entity>();
+            if (!_originalEntity) _originalEntity = GetComponent<Entity.Entity>();
+            if (!_stun) _movement = _originalEntity.GetComponent<Entity.Abilities.HorizontalMovement>();
+            if (!_stun) _stun = _originalEntity.GetComponent<Entity.Abilities.Stun>();
             _movement.OnTurn -= ChangeAnimator;
             _movement.OnStartedMoving -= ChangeAnimator;
             _movement.OnStopped -= ChangeAnimator;
@@ -46,8 +47,8 @@ namespace AnimationControllers
 
         private void ChangeAnimator()
         {
-            _animator?.SetBool(AnimatorIsWalk, _movement && _movement.TurnInFloat != 0);
-            _animator?.SetBool(AnimatorIsStun, _stun && _stun.IsStunned);
+            animator?.SetBool(AnimatorIsWalk, _movement && _movement.TurnInFloat != 0);
+            animator?.SetBool(AnimatorIsStun, _stun && _stun.IsStunned);
         }
     }
 }

@@ -39,10 +39,10 @@ namespace Entity.AI
         public new Transform transform => _initialized ? Entity.transform : base.transform;
 
         /// <summary>
-        /// бесполезная хуйня, аналог isActiveAndEnabled, око круче
+        /// бесполезная хуйня, аналог isActiveAndEnabled, но круче
         /// </summary>
         /// <returns></returns>
-        public virtual bool Available() => isActiveAndEnabled && _initialized && !gameObject.IsPrefab();
+        public virtual bool Available() => isActiveAndEnabled && _initialized && Brain && !gameObject.IsPrefab();
 
         /// <summary>
         /// аналог старта, чтоб была полная инициализация
