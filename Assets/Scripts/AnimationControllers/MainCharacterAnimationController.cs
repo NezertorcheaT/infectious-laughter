@@ -1,9 +1,11 @@
 using UnityEngine;
+using Zenject;
 
 namespace AnimationControllers
 {
     public class MainCharacterAnimationController : MonoBehaviour
     {
+        [Inject] private Controls _controls;
         [SerializeField] private Animator animator;
 
         private Entity.Abilities.Crouching _crouching;
@@ -14,6 +16,7 @@ namespace AnimationControllers
         private static readonly int AnimatorJumpNow = Animator.StringToHash("jumpNow");
         private static readonly int AnimatorCrouching = Animator.StringToHash("crouching");
         private static readonly int AnimatorSpeed = Animator.StringToHash("speed");
+        private static readonly int AnimatorJumpButtonPush = Animator.StringToHash("jumpButtonPush");
 
         private void Start()
         {
@@ -31,6 +34,7 @@ namespace AnimationControllers
             animator.SetBool(AnimatorIsWalk, _movementController.TurnInFloat != 0f);
             animator.SetBool(AnimatorJumpNow, !_collideChecker.IsTouchingGround);
             animator.SetBool(AnimatorCrouching, _crouching.IsCrouching);
+            animator.SetBool(AnimatorJumpButtonPush, _controls.Gameplay.Jump.IsPressed());
         }
     }
 }

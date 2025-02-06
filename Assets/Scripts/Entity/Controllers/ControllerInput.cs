@@ -11,7 +11,6 @@ namespace Entity.Controllers
     {
         [Inject] private Controls _actions;
 
-        // Cache
         private InteractivePropsUsing _useInteractiveProps;
         private HorizontalMovement _moveAbility;
         private IJumpableAbility _jumpAbility;
@@ -49,7 +48,7 @@ namespace Entity.Controllers
 
             Entity.OnFixedUpdate += Move;
             _actions.Gameplay.Dash.performed += DashOnPerformed;
-            _actions.Gameplay.Jump.performed += JumpOnPerformed;
+            _actions.Gameplay.Jump.canceled += JumpOnPerformed;
             _actions.Gameplay.PickGarbage.performed += UseInteractivePropsPerformed;
             _actions.Gameplay.PickGarbage.performed += PickGarbagePerformed;
             _actions.Gameplay.Crouch.started += CrouchOnStarted;
@@ -63,7 +62,7 @@ namespace Entity.Controllers
 
             Entity.OnFixedUpdate -= Move;
             _actions.Gameplay.Dash.performed -= DashOnPerformed;
-            _actions.Gameplay.Jump.performed -= JumpOnPerformed;
+            _actions.Gameplay.Jump.canceled -= JumpOnPerformed;
             _actions.Gameplay.Crouch.started -= CrouchOnStarted;
             _actions.Gameplay.Crouch.canceled -= CrouchOnCanceled;
         }
@@ -87,7 +86,8 @@ namespace Entity.Controllers
         {
             _input = _actions.Gameplay.Move.ReadValue<float>();
             _inputY = _actions.Gameplay.VerticalMove.ReadValue<float>();
-            _moveAbility.Move(_input);
+            if (!_collideCheck.IsTouchingGround || !_actions.Gameplay.Jump.IsPressed()) _moveAbility.Move(_input);
+            else _moveAbility.Move(0);
             _movementDowning.WallDowning(_input);
             _followPoint.MovePoint(_input, _inputY);
         }

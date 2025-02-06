@@ -62,7 +62,7 @@ namespace Entity.Abilities
                 Mathf.Abs(_rb.velocity.x) > Mathf.Abs(push)
             ));
 
-            if (!available) turnInFloat = 0;
+            //if (!available) turnInFloat = 0;
             TurnInFloat = turnInFloat;
             Turn = velocity == 0 ? Turn : velocity > 0;
 
