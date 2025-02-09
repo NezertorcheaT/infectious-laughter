@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource _source;
+
+    public void PlayAudio(AudioSource clip, Vector3 position)
     {
-        
+        _source = clip;
+        AudioSource source = Instantiate(_source, position, Quaternion.identity);
+        source.Play();
+
+        var time = source.clip.length;
+        Destroy(source.gameObject, time);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayUIAudio(AudioSource clip)
     {
-        
+        _source = clip;
+        AudioSource source = Instantiate(_source);
+        source.Play();
+
+        var time = source.clip.length;
+        Destroy(source.gameObject, time);
     }
+
 }

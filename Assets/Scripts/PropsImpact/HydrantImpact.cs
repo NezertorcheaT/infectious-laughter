@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Outline;
+using SoundSystem;
 using UnityEngine;
 
 namespace PropsImpact
@@ -11,14 +12,21 @@ namespace PropsImpact
         [SerializeField] private Sprite defaultHydrant;
         [SerializeField] private Sprite activatedHydrant;
         [SerializeField] private Sprite deactivatedHydrant;
+
         [SerializeField] private float elevateTimeInSeconds = 2.5f;
+
         [SerializeField] private SpriteRenderer originalRenderer;
         [SerializeField] private SpriteRenderer outlineRenderer;
+
+        [SerializeField] private AudioSource waterSound;
+        private StandartSoundDeliver _soundDeliver;
+
         private BuoyancyEffector2D _effector;
         private bool _wasActivated;
 
         private void Start()
         {
+            _soundDeliver = GetComponent<StandartSoundDeliver>();
             originalRenderer ??= GetComponent<SpriteRenderer>();
             _effector = GetComponent<BuoyancyEffector2D>();
             originalRenderer.sprite = defaultHydrant;
@@ -30,6 +38,10 @@ namespace PropsImpact
         {
             if (_wasActivated) return;
             _wasActivated = true;
+
+            _soundDeliver.DeliveDefaultClip();
+            _soundDeliver.DeliveClip(waterSound);
+
             originalRenderer.sprite = activatedHydrant;
             _ = Elevate(elevateTimeInSeconds);
             _effector.enabled = true;

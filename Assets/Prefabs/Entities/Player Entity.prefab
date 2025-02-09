@@ -182,6 +182,8 @@ GameObject:
   - component: {fileID: 3693047800681385019}
   - component: {fileID: 3693047800681385016}
   - component: {fileID: 1793543876178825777}
+  - component: {fileID: 1848350266272294112}
+  - component: {fileID: 276594216708554451}
   m_Layer: 3
   m_Name: Player Entity
   m_TagString: Player
@@ -487,6 +489,9 @@ MonoBehaviour:
   leftWalkParticle: {fileID: 2047879087041207503}
   rightWalkParticle: {fileID: 5497149091057916767}
   dustFormationPeriod: 0.2
+  stepSound: {fileID: 1569602370934731610, guid: 61ffbc22ba994a140a87afc362552260, type: 3}
+  minPitchValue: 0.85
+  maxPitchValue: 1.1
 --- !u!114 &1315829960008683046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +650,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1848350266272294112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693047800681385021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c48ac6ebf8136499aec806a4070482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultClip: {fileID: 0}
+  defaultMinValue: 0
+  defaultMaxValue: 0
+--- !u!114 &276594216708554451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693047800681385021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d946c653c1277b1428b78150ff974486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultClip: {fileID: 0}
 --- !u!1 &6082639258782052464
 GameObject:
   m_ObjectHideFlags: 0
