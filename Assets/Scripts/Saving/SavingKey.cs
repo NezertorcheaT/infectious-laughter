@@ -1,21 +1,21 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Saving
 {
-    public class SavingKey
+    public readonly struct SavingKey
     {
-        public string Key { get; private set; }
-        public Type Type { get; private set; }
-        public object Default { get; private set; }
+        public readonly string Key;
+        public readonly Type Type;
+        public readonly object Default;
 
-        public static SavingKey New<T>(string key, T value)
+        private SavingKey([NotNull] string key, [NotNull] Type type, [CanBeNull] object defaultValue)
         {
-            return new SavingKey
-            {
-                Key = key,
-                Type = typeof(T),
-                Default = value
-            };
+            Key = key;
+            Type = type;
+            Default = defaultValue;
         }
+
+        public static SavingKey New<T>([NotNull] string key, [CanBeNull] T value) => new(key, typeof(T), value);
     }
 }

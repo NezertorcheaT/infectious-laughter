@@ -1,10 +1,14 @@
 ﻿using System;
+using JetBrains.Annotations;
+using UnityEngine.Scripting;
 
 namespace Saving
 {
     /// <summary>
     /// этот класс должен хранить в себе только и только ключи для сессий
     /// </summary>
+    [UsedImplicitly]
+    [Preserve]
     public static partial class SavedKeys
     {
         public static readonly SavingKey Level =

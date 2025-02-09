@@ -4,7 +4,6 @@ using System.Linq;
 using JetBrains.Annotations;
 using Saving;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace CustomHelper
 {
@@ -21,7 +20,8 @@ namespace CustomHelper
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>
-        [NotNull] [LinqTunnel]
+        [NotNull]
+        [LinqTunnel]
         public static IEnumerable<TResult> WhereSelect<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TResult> selector,
@@ -40,7 +40,8 @@ namespace CustomHelper
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>
-        [NotNull] [LinqTunnel]
+        [NotNull]
+        [LinqTunnel]
         public static IEnumerable<TResult> SelectWhere<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TResult> selector,
@@ -56,7 +57,8 @@ namespace CustomHelper
         /// <typeparam name="TSource"></typeparam>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>
-        [NotNull] [LinqTunnel]
+        [NotNull]
+        [LinqTunnel]
         public static IEnumerable<TResult> SelectNotNull<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TResult> selector
@@ -64,7 +66,7 @@ namespace CustomHelper
 
         private static readonly IReadOnlyCollection<SavingKey> SavedKeysFields = typeof(SavedKeys)
             .GetFields()
-            .SelectNotNull(i => i.GetValue(null) as SavingKey)
+            .SelectNotNull(i => (SavingKey)i.GetValue(null))
             .ToArray();
 
         /// <summary>
@@ -84,14 +86,14 @@ namespace CustomHelper
             foreach (var savingKey in SavedKeysFields)
             {
                 if (session.Has(savingKey)) continue;
-                session.Add(savingKey.Default, savingKey.Type, savingKey.Key);
+                session.Add(savingKey.Default, savingKey.Type, savingKey);
             }
         }
 
         public static void InitializeWithDefaults(this Session session)
         {
             foreach (var savingKey in SavedKeysFields)
-                session.Add(savingKey.Default, savingKey.Type, savingKey.Key);
+                session.Add(savingKey.Default, savingKey.Type, savingKey);
         }
 
         /// <summary>

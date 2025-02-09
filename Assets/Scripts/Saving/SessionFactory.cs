@@ -33,7 +33,7 @@ namespace Saving
         /// <summary>
         /// для правильного создания новой сессии
         /// </summary>
-        /// <returns>текущаяя сессия</returns>
+        /// <returns>текущая сессия</returns>
         public Session NewSession()
         {
             var session = new Session();
@@ -46,7 +46,7 @@ namespace Saving
         /// для загрузки сессии по id
         /// </summary>
         /// <param name="ID">id</param>
-        /// <returns>текущаяя сессия</returns>
+        /// <returns>текущая сессия</returns>
         /// <exception cref="ArgumentException">сессия по id не существует</exception>
         public Session LoadSession(string ID)
         {

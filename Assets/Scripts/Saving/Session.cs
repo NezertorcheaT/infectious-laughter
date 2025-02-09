@@ -11,10 +11,10 @@ namespace Saving
     /// <summary>
     /// это типа объект сохранения, вы в него записываете и из него читаете
     /// </summary>
-    public class Session : IFileSaver<string>.ISavable, IEnumerable<Tuple<string, Session.Content>>
+    public sealed class Session : IFileSaver<string>.ISavable, IEnumerable<Tuple<string, Session.Content>>
     {
         /// <summary>
-        /// id текущего сохранеия
+        /// id текущего сохранения
         /// </summary>
         public string ID { get; private set; }
 
@@ -35,7 +35,7 @@ namespace Saving
             public Type Type;
 
             /// <summary>
-            /// это типа запись в сохранениии
+            /// это типа запись в сохранении
             /// </summary>
             /// <param name="value">обязательно сериализуемый объект вашей записи</param>
             public Content(object value)
@@ -45,7 +45,7 @@ namespace Saving
             }
 
             /// <summary>
-            /// это типа запись в сохранениии
+            /// это типа запись в сохранении
             /// </summary>
             /// <param name="value">обязательно сериализуемый объект вашей записи</param>
             /// <param name="type">тип объекта вашей записи</param>
@@ -71,7 +71,7 @@ namespace Saving
 #endif
         };
 
-        private Dictionary<string, Content> _container;
+        private readonly Dictionary<string, Content> _container;
 
         /// <summary>
         /// пустая сессия
@@ -96,12 +96,12 @@ namespace Saving
         /// получите записанный контент по ключу
         /// </summary>
         /// <param name="key">ключ контента</param>
-        public Content this[string key] => _container[key];
+        private Content this[string key] => _container[key];
 
         /// <summary>
         /// получите записанный контент по ключу
         /// </summary>
-        /// <param name="key">зарегестрированный ключ контента</param>
+        /// <param name="key">зарегистрированный ключ контента</param>
         public Content this[SavingKey key]
         {
             get
@@ -119,7 +119,7 @@ namespace Saving
         /// </summary>
         /// <param name="key">ключ контента</param>
         /// <returns>существует ли записанный контент по ключу</returns>
-        public bool Has(string key) => _container.ContainsKey(key);
+        private bool Has(string key) => _container.ContainsKey(key);
 
         /// <summary>
         /// записан ли контент по ключу
@@ -128,8 +128,6 @@ namespace Saving
         /// <returns>существует ли записанный контент по ключу</returns>
         public bool Has(SavingKey key)
         {
-            if (key is null) return false;
-            
             var has = Has(key.Key);
             if (!has) return false;
 
@@ -140,16 +138,20 @@ namespace Saving
             return true;
         }
 
+        private void Add(Content content, string key)
+        {
+            if (!_container.TryAdd(key, content)) throw new ArgumentException("key already exists");
+        }
+
         /// <summary>
         /// добавить новую запись в сессию
         /// </summary>
         /// <param name="content">контент записи</param>
         /// <param name="key">ключ записи</param>
         /// <exception cref="ArgumentException">ключ записи уже существует</exception>
-        private void Add(Content content, string key)
+        private void Add(Content content, SavingKey key)
         {
-            if (_container.ContainsKey(key)) throw new ArgumentException("key already exists");
-            _container.Add(key, content);
+            if (!_container.TryAdd(key.Key, content)) throw new ArgumentException("key already exists");
         }
 
         /// <summary>
@@ -159,7 +161,7 @@ namespace Saving
         /// <param name="key">ключ записи</param>
         /// <typeparam name="T">тип объекта записи</typeparam>
         /// <exception cref="ArgumentException">ключ записи уже существует</exception>
-        public void Add<T>(T content, string key) =>
+        public void Add<T>(T content, SavingKey key) =>
             Add(new Content(content, typeof(T)), key);
 
         /// <summary>
@@ -169,7 +171,7 @@ namespace Saving
         /// <param name="type">тип объекта записи</param>
         /// <param name="key">ключ записи</param>
         /// <exception cref="ArgumentException">ключ записи уже существует</exception>
-        public void Add(object content, Type type, string key) =>
+        public void Add(object content, Type type, SavingKey key) =>
             Add(new Content(content, type), key);
 
         /// <summary>
@@ -177,19 +179,17 @@ namespace Saving
         /// </summary>
         /// <param name="key">ключ записи</param>
         /// <returns>забытый контент, его уже нет в сессии</returns>
-        public Content Forget(string key)
+        public Content Forget(SavingKey key)
         {
             var forget = this[key];
-            _container.Remove(key);
+            _container.Remove(key.Key);
             return forget;
         }
 
         private IEnumerator<Tuple<string, Content>> Enumerate()
         {
             foreach (var (key, value) in _container)
-            {
                 yield return new Tuple<string, Content>(key, value);
-            }
         }
 
         IEnumerator<Tuple<string, Content>> IEnumerable<Tuple<string, Content>>.GetEnumerator() =>
@@ -200,7 +200,7 @@ namespace Saving
         /// <summary>
         /// json ключ для id сессии
         /// </summary>
-        public static string JsonSessionIdKey => "SessionID";
+        public const string JsonSessionIdKey = "SessionID";
 
         string IFileSaver<string>.ISavable.Convert()
         {

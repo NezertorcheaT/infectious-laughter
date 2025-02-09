@@ -14,6 +14,7 @@ namespace Entity
     /// </summary>
     [AddComponentMenu("Entity/Entity")]
     [DisallowMultipleComponent]
+    [SelectionBase]
     public class Entity : MonoBehaviour, IEquatable<Entity>
     {
         [Header("Controller")] [SerializeField]
