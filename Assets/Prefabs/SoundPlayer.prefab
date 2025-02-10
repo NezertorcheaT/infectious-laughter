@@ -58,6 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a198bfe9a8d2874ba4e75ba33153a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minIntervalInSeconds: 8
+  maxIntervalInSeconds: 15
+  ambienceSounds:
+  - {fileID: 4767612203478428178, guid: bc9719d2afd534f4a9e7af929115cae1, type: 3}
+  - {fileID: 4718423905721836778, guid: f90886e1c998b3745bfee33b27614417, type: 3}
+  isWorking: 0
 --- !u!114 &8790644385746007112
 MonoBehaviour:
   m_ObjectHideFlags: 0
