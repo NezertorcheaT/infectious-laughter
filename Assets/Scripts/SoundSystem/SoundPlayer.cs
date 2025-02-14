@@ -1,3 +1,4 @@
+using SoundSystem;
 using System.Collections;
 using UnityEditorInternal;
 using UnityEngine;
@@ -34,6 +35,13 @@ public class SoundPlayer : MonoBehaviour
 
         var time = source.clip.length;
         Destroy(source.gameObject, time);
+    }
+    
+    public void SedMusic(AudioContainer music)
+    {
+        music.CopyPastePropertiesTo(_musicSource);
+        _musicVolume = _musicSource.volume;
+        FadeOutTrack();
     }
 
     public void SetMusic(AudioSource source)

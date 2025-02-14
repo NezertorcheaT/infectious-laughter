@@ -8,18 +8,23 @@ namespace SoundSystem
     public class LevelMusicDeliver : MonoBehaviour, IMusicDeliver
     {
         [SerializeField] private AudioContainer track;
-
+        private AudioSource source;
         [Inject] private SoundPlayer player;
 
         private void Start()
         {
             //DeliveMusic();
-            player.PlayUIAudio(track.soundFile);
+            //DeliveMusic();
+            source = GetComponent<AudioSource>();
+            //track.CopyPastePropertiesTo(source);
+            source.Play();
+            //track.CopyPastePropertiesTo(source);
+            //source.Play();
         }
 
         public void DeliveMusic()
         {
-            
+            player.SedMusic(track);
         }
     }
 }
