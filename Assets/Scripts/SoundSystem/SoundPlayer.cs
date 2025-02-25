@@ -56,11 +56,6 @@ public class SoundPlayer : MonoBehaviour
     public void PlayMusic() => _musicSource.Play();
     public void StopMusic() => _musicSource.Stop();
 
-    public void ChangeMusic(AudioContainer audioContainer)
-    {
-        FadeInTrack();
-        
-    }
     public void ReturnDefaultMusic() => SetMainMusic(_tempMusic, _tempMusicVolume);
 
     private void FadeInTrack() => StartCoroutine(FadeIn());
