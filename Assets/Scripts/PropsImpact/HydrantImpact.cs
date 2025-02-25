@@ -20,6 +20,7 @@ namespace PropsImpact
 
         [SerializeField] private AudioSource waterSound;
         private StandartSoundDeliver _soundDeliver;
+        private TestMusicDeliver MUSICDELIVER;
 
         private BuoyancyEffector2D _effector;
         private bool _wasActivated;
@@ -27,6 +28,7 @@ namespace PropsImpact
         private void Start()
         {
             _soundDeliver = GetComponent<StandartSoundDeliver>();
+            MUSICDELIVER = GetComponent<TestMusicDeliver>();
             originalRenderer ??= GetComponent<SpriteRenderer>();
             _effector = GetComponent<BuoyancyEffector2D>();
             originalRenderer.sprite = defaultHydrant;
@@ -37,6 +39,7 @@ namespace PropsImpact
         public void StartElevating()
         {
             if (_wasActivated) return;
+            MUSICDELIVER.DeliveMusic();
             _wasActivated = true;
 
             _soundDeliver.DeliveDefaultClip();
@@ -50,8 +53,19 @@ namespace PropsImpact
         private async Task Elevate(float time)
         {
             await UniTask.WaitForSeconds(time);
+            
             originalRenderer.sprite = deactivatedHydrant;
             _effector.enabled = false;
+        }
+
+        private void Update()
+        {
+            //ввёл чисто для проверки возвращения дефолтной музыки, до этого пробовал в методе Elevate
+            if (_effector.enabled == false && _wasActivated)
+            {
+                MUSICDELIVER.ReturnDefaultMusic();
+                Destroy(gameObject);
+            }
         }
     }
 }

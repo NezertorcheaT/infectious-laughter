@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2119337236887194033}
   - component: {fileID: 3562013885917520261}
-  - component: {fileID: 1517636792382705486}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -129,16 +128,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1517636792382705486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4972512495850871901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0676719623693a4db55248abc60e7bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundFile: {fileID: 3562013885917520261}
