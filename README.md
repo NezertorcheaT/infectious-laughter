@@ -2,7 +2,7 @@
 
 Кароч проект сдох, всем спасибо!
 
-![ohbrotherthisgystinks](https://raw.githubusercontent.com/NezertorcheaT/infectious-laughter/refs/heads/main/ohbrotherthisgystinks.gif)
+![ohbrotherthisgystinks](https://github.com/NezertorcheaT/infectious-laughter/raw/refs/heads/main/ohbrotherthisgystinks.gif)
 
 Мой [тех диздок](https://docs.google.com/document/d/1J4gFRaDGuxuzuK4dRIs9TTiOIbPODj5vBNOImMC-y2c/edit?usp=sharing) к игре.
 
